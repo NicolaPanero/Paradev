@@ -11575,9 +11575,6 @@ msgstr "Cuộc trò chuyện mới"
 msgid "New Chat"
 msgstr "Cuộc trò chuyện mới"
 
-msgid "New Chat (Choose Agent)"
-msgstr "Cuộc trò chuyện mới (chọn tác nhân)"
-
 msgid "New chat from loaded messages"
 msgstr "Chat mới từ các tin nhắn đã tải"
 
@@ -13277,9 +13274,6 @@ msgstr "Mở bảng lệnh toàn cục"
 msgid "Open the guide"
 msgstr "Mở hướng dẫn"
 
-msgid "Open the new chat dialog in the current workspace"
-msgstr "Mở hộp thoại cuộc trò chuyện mới trong workspace hiện tại"
-
 msgid "Open the new workspace modal"
 msgstr "Mở hộp thoại tạo workspace mới"
 
@@ -13578,9 +13572,6 @@ msgstr "Trang"
 
 msgid "Pages could not be loaded"
 msgstr "Không thể tải các trang"
-
-msgid "Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests."
-msgstr "Pages bị ẩn cùng các tính năng đám mây khác, và các tính năng đám mây bị ẩn không còn gửi yêu cầu nữa."
 
 msgid "Pages open in a grid, and floating keyboards work. Requires iPadOS 26 or later."
 msgstr "Trang mở dạng lưới và bàn phím nổi hoạt động bình thường. Yêu cầu iPadOS 26 trở lên."
@@ -18988,6 +18979,9 @@ msgstr "Tiêu đề hiển thị ở mọi nơi trang này được liệt kê v
 
 msgid "The turn failed"
 msgstr "Lượt thất bại"
+
+msgid "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
+msgstr "Không gian làm việc có một thao tác Trò chuyện, với lựa chọn tác nhân, tài khoản, mô hình và phím tắt hiện có của bạn."
 
 msgid "The workspace is not ready yet. Try again."
 msgstr "Workspace chưa sẵn sàng. Hãy thử lại."

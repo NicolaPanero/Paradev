@@ -11575,9 +11575,6 @@ msgstr "Yeni sohbet"
 msgid "New Chat"
 msgstr "Yeni Sohbet"
 
-msgid "New Chat (Choose Agent)"
-msgstr "Yeni sohbet (ajan seç)"
-
 msgid "New chat from loaded messages"
 msgstr "Yüklenen mesajlardan yeni sohbet"
 
@@ -13277,9 +13274,6 @@ msgstr "Genel komut paletini aç"
 msgid "Open the guide"
 msgstr "Kılavuzu aç"
 
-msgid "Open the new chat dialog in the current workspace"
-msgstr "Geçerli workspace içinde yeni sohbet iletişim kutusunu aç"
-
 msgid "Open the new workspace modal"
 msgstr "Yeni çalışma alanı penceresini aç"
 
@@ -13578,9 +13572,6 @@ msgstr "Sayfalar"
 
 msgid "Pages could not be loaded"
 msgstr "Sayfalar yüklenemedi"
-
-msgid "Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests."
-msgstr "Pages, diğer bulut özellikleriyle birlikte gizlenir ve gizlenen bulut özellikleri artık istek göndermez."
 
 msgid "Pages open in a grid, and floating keyboards work. Requires iPadOS 26 or later."
 msgstr "Sayfalar ızgara düzeninde açılır ve yüzen klavyeler çalışır. iPadOS 26 veya üstü gerekir."
@@ -18988,6 +18979,9 @@ msgstr "Başlık, bu sayfanın listelendiği her yerde ve bağlantı önizlemesi
 
 msgid "The turn failed"
 msgstr "Tur başarısız oldu"
+
+msgid "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
+msgstr "Çalışma alanında ajan, hesap ve model seçimi ile mevcut kısayolunuzu kullanan tek bir Sohbet eylemi var."
 
 msgid "The workspace is not ready yet. Try again."
 msgstr "Çalışma alanı henüz hazır değil. Yeniden deneyin."

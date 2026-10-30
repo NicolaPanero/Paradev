@@ -23,7 +23,7 @@ function AgentMenuFixture() {
 				registry={{}}
 				renderAddTabMenu={({ runAfterClose }) => (
 					<AddTabMenu
-						onAddAgent={() =>
+						onAddChat={() =>
 							runAfterClose(() => {
 								expect(
 									document.querySelector('[data-slot="dropdown-menu-content"]'),
@@ -62,8 +62,10 @@ test.each([
 	const trigger = view.getByRole("button");
 	fireEvent.keyDown(trigger, { key: "ArrowDown", code: "ArrowDown" });
 	await flush();
-	const item = view.getByRole("menuitem", { name: /^New chat/ });
+	const item = view.getByRole("menuitem", { name: /^Chat/ });
 	const menu = view.getByRole("menu");
+	expect(view.getAllByRole("menuitem", { name: /^Chat/ })).toHaveLength(1);
+	expect(view.queryByRole("menuitem", { name: /^New chat/ })).toBeNull();
 	if (target === "keyboard") {
 		fireEvent.focus(item);
 		fireEvent.keyDown(item, { key: "Enter", code: "Enter" });

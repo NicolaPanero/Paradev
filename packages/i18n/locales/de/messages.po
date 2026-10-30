@@ -11575,9 +11575,6 @@ msgstr "Neuer Chat"
 msgid "New Chat"
 msgstr "Neuer Chat"
 
-msgid "New Chat (Choose Agent)"
-msgstr "Neuer Chat (Agent wählen)"
-
 msgid "New chat from loaded messages"
 msgstr "Neuer Chat aus geladenen Nachrichten"
 
@@ -13277,9 +13274,6 @@ msgstr "Die globale Befehlspalette öffnen"
 msgid "Open the guide"
 msgstr "Anleitung öffnen"
 
-msgid "Open the new chat dialog in the current workspace"
-msgstr "Den Dialog für einen neuen Chat im aktuellen Workspace öffnen"
-
 msgid "Open the new workspace modal"
 msgstr "Den Dialog für einen neuen Arbeitsbereich öffnen"
 
@@ -13578,9 +13572,6 @@ msgstr "Seiten"
 
 msgid "Pages could not be loaded"
 msgstr "Seiten konnten nicht geladen werden"
-
-msgid "Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests."
-msgstr "Pages wird zusammen mit den anderen Cloud-Funktionen ausgeblendet, und ausgeblendete Cloud-Funktionen senden keine Anfragen mehr."
 
 msgid "Pages open in a grid, and floating keyboards work. Requires iPadOS 26 or later."
 msgstr "Pages öffnen sich in einem Raster, und schwebende Tastaturen funktionieren. Erfordert iPadOS 26 oder neuer."
@@ -18988,6 +18979,9 @@ msgstr "Der Titel erscheint überall dort, wo diese Seite aufgeführt ist, und i
 
 msgid "The turn failed"
 msgstr "Der Durchlauf ist fehlgeschlagen"
+
+msgid "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
+msgstr "Der Workspace hat eine einzige Chat-Aktion mit Agenten-, Konto- und Modellauswahl und deinem bisherigen Tastenkürzel."
 
 msgid "The workspace is not ready yet. Try again."
 msgstr "Der Arbeitsbereich ist noch nicht bereit. Versuche es erneut."

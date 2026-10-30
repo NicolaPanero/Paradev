@@ -89,8 +89,11 @@ applicable quota independently of this display.
 
 ## Chat plans and naming
 
-New Chat is the workspace action (Cmd+Shift+A); agent still names the provider
-and its configuration. The context control stays visible before the first prompt
+Chat is the single workspace action (Cmd+Shift+A), in the tab menu, the empty
+workspace and keyboard settings. It opens the agent, account and model picker.
+Saved shortcut overrides from the former New Chat action migrate to Chat; an
+explicit Chat override keeps priority. Agent still names the provider and its
+configuration. The context control stays visible before the first prompt
 and keeps the same width once usage arrives. Its ring matches the account avatar’s
 outer ring; the percentage appears inside for every reported value, including 0%.
 Unknown usage remains dashed without an estimated percentage. Account quota rings

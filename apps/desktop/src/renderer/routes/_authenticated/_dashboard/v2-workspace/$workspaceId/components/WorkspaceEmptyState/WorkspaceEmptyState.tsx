@@ -1,5 +1,4 @@
 import { useLingui } from "@lingui/react/macro";
-import { Bot } from "lucide-react";
 import { useMemo } from "react";
 import type { IconType } from "react-icons";
 import { BsTerminalPlus } from "react-icons/bs";
@@ -15,7 +14,6 @@ import { useHotkeyDisplay } from "renderer/hotkeys";
 import { EmptyTabActionButton } from "renderer/screens/main/components/WorkspaceView/ContentView/TabsContent/components/EmptyTabActionButton";
 
 interface WorkspaceEmptyStateProps {
-	onOpenAgent: () => void;
 	onOpenBrowser: () => void;
 	onOpenChanges: () => void;
 	onOpenChat?: (() => void) | undefined;
@@ -32,7 +30,6 @@ interface WorkspaceEmptyStateAction {
 }
 
 export function WorkspaceEmptyState({
-	onOpenAgent,
 	onOpenBrowser,
 	onOpenChanges,
 	onOpenChat,
@@ -40,7 +37,6 @@ export function WorkspaceEmptyState({
 	onOpenTerminal,
 }: WorkspaceEmptyStateProps) {
 	const { t } = useLingui();
-	const { keys: newAgentDisplay } = useHotkeyDisplay("NEW_AGENT");
 	const { keys: newGroupDisplay } = useHotkeyDisplay("NEW_GROUP");
 	const { keys: newChatDisplay } = useHotkeyDisplay("NEW_CHAT");
 	const { keys: newBrowserDisplay } = useHotkeyDisplay("NEW_BROWSER");
@@ -49,15 +45,6 @@ export function WorkspaceEmptyState({
 
 	const actions = useMemo<Array<WorkspaceEmptyStateAction>>(
 		() => [
-			{
-				id: "agent",
-				label: t({
-					message: "New Chat",
-				}),
-				display: newAgentDisplay,
-				icon: Bot,
-				onClick: onOpenAgent,
-			},
 			{
 				id: "terminal",
 				label: t({
@@ -107,12 +94,10 @@ export function WorkspaceEmptyState({
 			},
 		],
 		[
-			newAgentDisplay,
 			newBrowserDisplay,
 			newChatDisplay,
 			newGroupDisplay,
 			onOpenBrowser,
-			onOpenAgent,
 			onOpenChanges,
 			onOpenChat,
 			onOpenQuickOpen,

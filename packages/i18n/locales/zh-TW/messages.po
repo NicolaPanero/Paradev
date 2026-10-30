@@ -11575,9 +11575,6 @@ msgstr "新增聊天"
 msgid "New Chat"
 msgstr "新增聊天"
 
-msgid "New Chat (Choose Agent)"
-msgstr "新增聊天（選擇代理）"
-
 msgid "New chat from loaded messages"
 msgstr "從已載入的訊息建立新聊天"
 
@@ -13277,9 +13274,6 @@ msgstr "開啟全域性命令面板"
 msgid "Open the guide"
 msgstr "開啟指南"
 
-msgid "Open the new chat dialog in the current workspace"
-msgstr "在目前工作區開啟新增聊天對話方塊"
-
 msgid "Open the new workspace modal"
 msgstr "開啟新建工作區彈窗"
 
@@ -13578,9 +13572,6 @@ msgstr "頁面"
 
 msgid "Pages could not be loaded"
 msgstr "無法載入頁面"
-
-msgid "Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests."
-msgstr "Pages 會與其他雲端功能一起隱藏，被隱藏的雲端功能不再發出請求。"
 
 msgid "Pages open in a grid, and floating keyboards work. Requires iPadOS 26 or later."
 msgstr "頁面以網格顯示，並支援浮動鍵盤。需要 iPadOS 26 或以上版本。"
@@ -18988,6 +18979,9 @@ msgstr "標題會顯示在此頁面列出的所有位置以及連結預覽中。
 
 msgid "The turn failed"
 msgstr "本輪失敗"
+
+msgid "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
+msgstr "工作區統一為一個聊天操作，可選擇代理程式、帳號和模型，並保留現有快捷鍵。"
 
 msgid "The workspace is not ready yet. Try again."
 msgstr "工作區尚未就緒。請重試。"

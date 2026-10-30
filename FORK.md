@@ -167,7 +167,10 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   tool MCP e accessi fuori dal workspace, per tutti gli agenti ACP.
   Le domande all'utente e l'approvazione finale del piano restano manuali.
   La modalità nativa resta Plan; i limiti del provider e del sistema restano validi.
-- **New Chat** (⌘⇧A) apre una nuova chat nelle schede. L’icona **Find a chat**
+- **Chat** (⌘⇧A) è l’unica azione per aprire una chat: il menu **+** usa la
+  voce upstream e apre il selettore di agente, account e modello del fork.
+  La stessa azione funziona nello workspace vuoto e dalla tastiera; le
+  rimappature già salvate vengono mantenute. L’icona **Find a chat**
   nell’intestazione cerca per titolo, modello o branch nei depositi locali di
   Claude, Codex, Cursor CLI, Grok e OpenCode, nei profili e nelle cartelle del
   progetto, inclusi i worktree. Se una chat è già collegata a Superset, la riapre

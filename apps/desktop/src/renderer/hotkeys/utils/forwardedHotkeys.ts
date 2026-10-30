@@ -50,7 +50,6 @@ export const FORWARDED_HOTKEYS: ReadonlySet<HotkeyId> = new Set<HotkeyId>([
 	"NEW_GROUP",
 	"NEW_CHAT",
 	"NEW_BROWSER",
-	"NEW_AGENT",
 	"OPEN_DIFF_VIEWER",
 	"QUICK_OPEN",
 	"OPEN_COMMAND_PALETTE",

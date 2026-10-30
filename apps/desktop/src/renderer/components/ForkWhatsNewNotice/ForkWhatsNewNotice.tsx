@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "jira-workflow-layout-2026-10";
+export const FORK_WHATS_NEW_ID = "single-workspace-chat-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 const FORK_GUIDE_URL =
 	"https://github.com/NicolaPanero/superset/blob/fork/main/FORK.md";
@@ -48,7 +48,7 @@ export function ForkWhatsNewNotice() {
 		}),
 		t({
 			message:
-				"Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests.",
+				"The workspace has one Chat action, with agent, account and model selection and your existing shortcut.",
 		}),
 	];
 	const notice: DesktopNotice = {

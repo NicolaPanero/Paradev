@@ -1,5 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
+import { FORK_NEW_CHAT_KEY } from "./fork-chat-hotkeys";
 import type {
 	HotkeyCategory,
 	HotkeyDefinition,
@@ -580,18 +581,6 @@ export const HOTKEYS_REGISTRY = {
 		label: msg({ message: "New Browser" }),
 		category: "Layout",
 	},
-	NEW_AGENT: {
-		key: {
-			mac: L("meta+shift+a"),
-			windows: L("ctrl+shift+alt+a"),
-			linux: L("ctrl+shift+alt+a"),
-		},
-		label: msg({ message: "New Chat (Choose Agent)" }),
-		category: "Chat",
-		description: msg({
-			message: "Open the new chat dialog in the current workspace",
-		}),
-	},
 	CLOSE_TERMINAL: {
 		key: {
 			mac: L("meta+w"),
@@ -874,11 +863,7 @@ export const HOTKEYS_REGISTRY = {
 		category: "Chat",
 	},
 	NEW_CHAT: {
-		key: {
-			mac: L("meta+shift+j"),
-			windows: L("ctrl+shift+alt+j"),
-			linux: L("ctrl+shift+alt+j"),
-		},
+		key: FORK_NEW_CHAT_KEY,
 		label: msg({ message: "New Chat" }),
 		category: "Chat",
 	},

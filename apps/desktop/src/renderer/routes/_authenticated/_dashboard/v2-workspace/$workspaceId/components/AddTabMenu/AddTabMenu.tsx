@@ -4,14 +4,12 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 } from "@superset/ui/dropdown-menu";
-import { MessageSquarePlus } from "lucide-react";
 import { BsTerminalPlus } from "react-icons/bs";
 import { LuGitCompareArrows, LuMessageSquare } from "react-icons/lu";
 import { TbDeviceDesktop, TbWorld } from "react-icons/tb";
 import { HotkeyMenuShortcut } from "renderer/components/HotkeyMenuShortcut";
 
 interface AddTabMenuProps {
-	onAddAgent: () => void;
 	onAddTerminal: () => void;
 	runAfterClose: (action: () => void) => void;
 	onAddChat?: (() => void) | undefined;
@@ -23,7 +21,6 @@ interface AddTabMenuProps {
 }
 
 export function AddTabMenu({
-	onAddAgent,
 	onAddTerminal,
 	runAfterClose,
 	onAddChat,
@@ -35,13 +32,6 @@ export function AddTabMenu({
 }: AddTabMenuProps) {
 	return (
 		<>
-			<DropdownMenuItem className="gap-2" onSelect={onAddAgent}>
-				<MessageSquarePlus className="size-4" />
-				<span>
-					<Trans>New chat</Trans>
-				</span>
-				<HotkeyMenuShortcut hotkeyId="NEW_AGENT" />
-			</DropdownMenuItem>
 			<DropdownMenuItem
 				className="gap-2"
 				onClick={() => runAfterClose(onAddTerminal)}

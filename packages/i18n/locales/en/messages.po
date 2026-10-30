@@ -11575,9 +11575,6 @@ msgstr "New chat"
 msgid "New Chat"
 msgstr "New Chat"
 
-msgid "New Chat (Choose Agent)"
-msgstr "New Chat (Choose Agent)"
-
 msgid "New chat from loaded messages"
 msgstr "New chat from loaded messages"
 
@@ -13277,9 +13274,6 @@ msgstr "Open the global command palette"
 msgid "Open the guide"
 msgstr "Open the guide"
 
-msgid "Open the new chat dialog in the current workspace"
-msgstr "Open the new chat dialog in the current workspace"
-
 msgid "Open the new workspace modal"
 msgstr "Open the new workspace modal"
 
@@ -13578,9 +13572,6 @@ msgstr "Pages"
 
 msgid "Pages could not be loaded"
 msgstr "Pages could not be loaded"
-
-msgid "Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests."
-msgstr "Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests."
 
 msgid "Pages open in a grid, and floating keyboards work. Requires iPadOS 26 or later."
 msgstr "Pages open in a grid, and floating keyboards work. Requires iPadOS 26 or later."
@@ -18988,6 +18979,9 @@ msgstr "The title shows everywhere this page is listed and in its link preview."
 
 msgid "The turn failed"
 msgstr "The turn failed"
+
+msgid "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
+msgstr "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
 
 msgid "The workspace is not ready yet. Try again."
 msgstr "The workspace is not ready yet. Try again."

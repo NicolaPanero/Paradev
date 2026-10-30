@@ -11575,9 +11575,6 @@ msgstr "새 채팅"
 msgid "New Chat"
 msgstr "새 채팅"
 
-msgid "New Chat (Choose Agent)"
-msgstr "새 채팅 (에이전트 선택)"
-
 msgid "New chat from loaded messages"
 msgstr "불러온 메시지로 새 채팅"
 
@@ -13277,9 +13274,6 @@ msgstr "전역 명령 팔레트를 엽니다"
 msgid "Open the guide"
 msgstr "가이드 열기"
 
-msgid "Open the new chat dialog in the current workspace"
-msgstr "현재 워크스페이스에서 새 채팅 대화상자 열기"
-
 msgid "Open the new workspace modal"
 msgstr "새 워크스페이스 모달을 엽니다"
 
@@ -13578,9 +13572,6 @@ msgstr "페이지"
 
 msgid "Pages could not be loaded"
 msgstr "페이지를 불러오지 못했습니다"
-
-msgid "Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests."
-msgstr "Pages는 다른 클라우드 기능과 함께 숨겨지며, 숨겨진 클라우드 기능은 더 이상 요청을 보내지 않습니다."
 
 msgid "Pages open in a grid, and floating keyboards work. Requires iPadOS 26 or later."
 msgstr "페이지가 그리드로 열리고 플로팅 키보드도 지원합니다. iPadOS 26 이상이 필요합니다."
@@ -18988,6 +18979,9 @@ msgstr "제목은 이 페이지가 표시되는 모든 곳과 링크 미리보�
 
 msgid "The turn failed"
 msgstr "턴이 실패했습니다"
+
+msgid "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
+msgstr "워크스페이스의 채팅 동작이 하나로 통합되었습니다. 에이전트, 계정, 모델 선택과 기존 단축키를 사용할 수 있습니다."
 
 msgid "The workspace is not ready yet. Try again."
 msgstr "워크스페이스가 아직 준비되지 않았습니다. 다시 시도하세요."

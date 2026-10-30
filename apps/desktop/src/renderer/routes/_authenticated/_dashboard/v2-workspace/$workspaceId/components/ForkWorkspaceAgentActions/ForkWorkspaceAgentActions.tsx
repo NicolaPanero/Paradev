@@ -5,7 +5,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
 import { workspaceTrpc } from "@superset/workspace-client";
 import { Import } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useHotkey } from "renderer/hotkeys";
 import type { StoreApi } from "zustand/vanilla";
 import type { CreateNewAgentSession } from "../../hooks/useAgentSessionLauncher";
 import type { PaneViewerData } from "../../types";
@@ -62,7 +61,6 @@ export function ForkWorkspaceAgentActions({
 		setImportOpen(true);
 		onImportRequestConsumed?.();
 	}, [importRequested, onImportRequestConsumed]);
-	useHotkey("NEW_AGENT", () => onLaunchOpenChange(true));
 	const resume = parseResume(resumeChat);
 	return (
 		<>

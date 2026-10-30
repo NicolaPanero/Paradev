@@ -11575,9 +11575,6 @@ msgstr "Nový chat"
 msgid "New Chat"
 msgstr "Nový chat"
 
-msgid "New Chat (Choose Agent)"
-msgstr "Nový chat (vybrat agenta)"
-
 msgid "New chat from loaded messages"
 msgstr "Nový chat z načtených zpráv"
 
@@ -13277,9 +13274,6 @@ msgstr "Otevřít globální paletu příkazů"
 msgid "Open the guide"
 msgstr "Otevřít průvodce"
 
-msgid "Open the new chat dialog in the current workspace"
-msgstr "Otevřít dialog nového chatu v aktuálním workspace"
-
 msgid "Open the new workspace modal"
 msgstr "Otevřít okno nového pracovního prostoru"
 
@@ -13578,9 +13572,6 @@ msgstr "Stránky"
 
 msgid "Pages could not be loaded"
 msgstr "Stránky se nepodařilo načíst"
-
-msgid "Pages is hidden with the other cloud features, and the hidden cloud features no longer make requests."
-msgstr "Pages je skryto spolu s ostatními cloudovými funkcemi a skryté cloudové funkce už neposílají žádné požadavky."
 
 msgid "Pages open in a grid, and floating keyboards work. Requires iPadOS 26 or later."
 msgstr "Stránky se otevírají v mřížce a plovoucí klávesnice fungují. Vyžaduje iPadOS 26 nebo novější."
@@ -18988,6 +18979,9 @@ msgstr "Název se zobrazuje všude, kde je tato stránka uvedena, a v náhledu o
 
 msgid "The turn failed"
 msgstr "Tah selhal"
+
+msgid "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
+msgstr "Pracovní prostor má jednu akci Chat s výběrem agenta, účtu a modelu a vaší stávající klávesovou zkratkou."
 
 msgid "The workspace is not ready yet. Try again."
 msgstr "Pracovní prostor ještě není připravený. Zkuste to znovu."
