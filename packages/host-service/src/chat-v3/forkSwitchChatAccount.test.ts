@@ -424,3 +424,36 @@ test("a second switch cannot move the same native conversation concurrently", as
 		f.sqlite.close();
 	}
 });
+
+test("a chat that never saved a conversation switches to a new session on the target account", async () => {
+	const f = await fixture(false);
+	f.bootstrap.target = "mismatch";
+	try {
+		const result = await forkSwitchChatAccount(f.runtime, f.input, {
+			...f.deps,
+			move: async () => {
+				f.trace.push("move");
+				return { moved: false, empty: true };
+			},
+		});
+		await flush();
+		expect(result).toMatchObject({ switched: true, moved: false });
+		expect(f.trace).toEqual([
+			"validate",
+			"cancel",
+			"close",
+			"move",
+			"create:/target",
+		]);
+		expect(f.workers[1]?.options).toMatchObject({
+			accountSelection: "/target",
+			agentConfigId: "custom-claude",
+			modelId: "sonnet",
+		});
+		expect(f.workers[1]?.options.resume).toBeUndefined();
+		expect(f.workers[1]?.options.strictResume).toBeFalsy();
+	} finally {
+		await f.runtime.dispose();
+		f.sqlite.close();
+	}
+});
