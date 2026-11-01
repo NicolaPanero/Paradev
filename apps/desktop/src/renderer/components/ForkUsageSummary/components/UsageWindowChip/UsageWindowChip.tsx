@@ -18,10 +18,12 @@ import { UsageBar } from "../UsageBar";
 export function UsageWindowChip({
 	window,
 	dimmed = false,
+	hideUsedLabel = false,
 	now = new Date(),
 }: {
 	window: UsageAccount["windows"][number];
 	dimmed?: boolean;
+	hideUsedLabel?: boolean;
 	now?: Date;
 }) {
 	const { t } = useLingui();
@@ -57,7 +59,7 @@ export function UsageWindowChip({
 							tone === "ok" && "text-muted-foreground",
 						)}
 					>
-						<Trans>{used} used</Trans>
+						{hideUsedLabel ? used : <Trans>{used} used</Trans>}
 					</span>
 					{resetsIn && (
 						<span className="inline-flex items-center gap-0.5 text-muted-foreground tabular-nums">
