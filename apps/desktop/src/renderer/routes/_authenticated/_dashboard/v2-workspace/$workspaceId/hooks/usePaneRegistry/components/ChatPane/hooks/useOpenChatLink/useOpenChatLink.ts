@@ -29,6 +29,7 @@ import {
 	type TerminalLinkActionDeps,
 } from "../../../../utils/runTerminalLinkAction";
 import type { OpenLink } from "../../../ChatSession/providers/ChatPaneActionsProvider";
+import { folderCandidates } from "../../../ChatSession/utils/mentionedFolders";
 import { type LocatedPath, locatePath } from "./utils/locatePath";
 import { parseFileHref } from "./utils/parseFileHref";
 import {
@@ -79,19 +80,25 @@ export function useOpenChatLink({
 	const hostUrl = useWorkspaceHostUrl(workspaceId);
 	const saveToDownloads = electronTrpc.external.saveToDownloads.useMutation();
 	const openSavedPath = electronTrpc.external.openFolderInFinder.useMutation();
-	const locateRef = useRef<(path: string) => Promise<LocatedPath | null>>(
-		async () => null,
-	);
-	locateRef.current = (path) =>
-		locatePath(path, {
-			stat: (target) => statPath.mutateAsync({ workspaceId, path: target }),
-			resolveFile: (reference) =>
-				hostClient.filesystem.resolveFileReference.query({
-					workspaceId,
-					reference,
-					preferredRelativePaths: recentFiles.map((file) => file.relativePath),
-				}),
-		});
+	const locateRef = useRef<
+		(path: string, folders?: string[]) => Promise<LocatedPath | null>
+	>(async () => null);
+	locateRef.current = (path, folders = []) =>
+		locatePath(
+			path,
+			{
+				stat: (target) => statPath.mutateAsync({ workspaceId, path: target }),
+				resolveFile: (reference) =>
+					hostClient.filesystem.resolveFileReference.query({
+						workspaceId,
+						reference,
+						preferredRelativePaths: recentFiles.map(
+							(file) => file.relativePath,
+						),
+					}),
+			},
+			folderCandidates(path, folders),
+		);
 
 	const depsRef = useRef<TerminalLinkActionDeps>({
 		store,
@@ -137,7 +144,7 @@ export function useOpenChatLink({
 	);
 
 	return useCallback(
-		(href, event, chosen) => {
+		(href, event, chosen, context) => {
 			const isPlain = tierFor(event, "2-tier") === "plain";
 			if (WEB_URL.test(href)) {
 				const parsedMedia = parseTicketedMediaLink(href);
@@ -157,7 +164,7 @@ export function useOpenChatLink({
 
 			const file = parseFileHref(href);
 			if (!file) return false;
-			void locateRef.current(file.path).then(
+			void locateRef.current(file.path, context?.folders).then(
 				(stat) => {
 					if (!stat) {
 						const { path } = file;

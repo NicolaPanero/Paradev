@@ -6,6 +6,7 @@ import { cn } from "@superset/ui/utils";
 import { memo, type ReactNode, useMemo } from "react";
 import { env } from "renderer/env.renderer";
 import { CHAT_MARKDOWN_COMPONENTS, CHAT_REMARK_PLUGINS } from "../../constants";
+import { ForkMessageFoldersProvider } from "../../providers/ForkMessageFoldersProvider";
 import { pageLinkFinder } from "../../utils/pageLinks";
 import { CODE_CARD_CLASSNAME } from "../ChatCodeBlock";
 import { PageLinkCard } from "../PageLinkCard";
@@ -117,7 +118,9 @@ export function MarkdownView({
 			)}
 			data-find-item={findItemId}
 		>
-			{blocks}
+			<ForkMessageFoldersProvider text={text}>
+				{blocks}
+			</ForkMessageFoldersProvider>
 		</div>
 	);
 }

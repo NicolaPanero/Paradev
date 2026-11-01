@@ -208,6 +208,10 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   se l’agente fornisce solo passi, mostra quelli. Anche un piano scritto come
   risposta normale si apre a lato dal pulsante accanto alla copia del messaggio. Un riferimento a file ha il
   comando per aprire il file, senza leggerlo automaticamente.
+- Un nome di file scritto da solo in un messaggio (`report.docx`) che non esiste
+  così com’è viene cercato nelle cartelle che lo stesso messaggio nomina prima
+  (`File in /percorso/output/:`), e solo dopo per nome nel workspace
+  (`ForkMessageFoldersProvider`, `mentionedFolders`, `locatePath`).
 - Il contatore del **contesto** resta visibile fin dalla bozza, con dimensioni
   fisse per non spostare gli altri controlli, anche quando l’agente non comunica
   i token: in quel caso è tratteggiato e segnala il dato non disponibile. Grok
