@@ -31,11 +31,50 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   board e dettaglio; un trascinamento con più stati possibili chiede quale usare.
   Il dettaglio mostra i workspace collegati con azioni compatte; **Link existing
   workspace** cerca per nome, progetto o branch e riconosce quelli già collegati.
-  **Automations** configura regole locali all’host con filtri grafici o JQL;
-  può avviare una chat ACP scegliendo agente, modello e account oppure un terminale. **Start in workspace**
+  **Automations** configura regole locali all’host, senza servizi cloud:
+  nuove issue Jira (filtri grafici o JQL), commenti alle PR collegate, check
+  falliti oppure un orario, anche da template. Ogni avvio è una run con stato
+  (in coda, in corso, attende input, agente terminato, verificata, fallita),
+  limite di agenti contemporanei, ripetizione dei lanci falliti, pausa dopo tre
+  errori, anteprima, avvio manuale e un comando di verifica facoltativo.
+  Può avviare una chat ACP scegliendo agente, modello e account oppure un terminale.
+  Il dettaglio di un’issue registra le ore su Jira (**Log time**) senza doppi
+  invii e mostra le ore di oggi; **Workflow statuses** nella connessione Jira
+  sceglie gli stati di avvio lavoro e PR, con una ricerca del progetto,
+  spiegazioni della scelta automatica e controlli adattivi al tema e allo spazio.
+  **Today** raccoglie agenti in attesa,
+  run da controllare, review richieste e task assegnati in corso o chiusi senza
+  worklog, aggiornati negli ultimi 7, 30 o 90 giorni. Il layout mette i task
+  in primo piano, affianca review e automazioni quando c’è spazio e mantiene
+  i filtri visibili durante lo scroll. Gli stati usano gli stessi colori di
+  **Tasks** e i riquadri seguono il tema scelto. **Show Today** nelle
+  impostazioni mostra o nasconde la schermata. La registrazione delle ore resta
+  manuale dal task: non vengono proposte né distribuite ore automaticamente.
+  Le transizioni Jira mostrano anche i campi facoltativi della schermata, con
+  selezione multipla e testo esteso; gli errori riportano il campo da correggere.
+  **Start in workspace**
   passa l’issue all’agente; **Fix findings** fa lo stesso con i commenti aperti
   delle PR Bitbucket. Flusso, limiti e compatibilità sono in
   [docs/fork-integrations.md](docs/fork-integrations.md).
+  I cambi branch fatti da terminale aggiornano anche il workspace e il suo
+  collegamento alla PR: una PR di un altro branch non resta quella corrente,
+  anche quando era già mergiata.
+
+- Le etichette del repository e del branch nel pannello laterale usano lo spazio
+  disponibile: il branch non è più fermato a 192 px. Anche i branch dei worktree
+  importabili, le issue collegate e i riepiloghi CI si accorciano solo quando
+  non entrano nel contenitore, con il valore completo nel tooltip dove previsto.
+
+- **Settings → Fork → Agent updates** controlla una volta al giorno se ci sono
+  versioni nuove dei CLI di Claude Code e Codex (registro npm) e lo segnala con
+  un popup in basso a destra, come per gli aggiornamenti di Paradev++: **Update**
+  esegue un comando fisso e mostrato prima (`claude update`, oppure
+  `npm install -g @openai/codex@latest` per un’installazione npm), poi rilegge
+  la versione e dice se non è cambiata; **Later** nasconde il popup fino al
+  controllo del giorno dopo. Non aggiorna mai da solo e l’app non indovina come
+  è stato installato un CLI: per le installazioni che non riconosce (per
+  esempio Homebrew) mostra solo la versione nuova. Il controllo giornaliero si
+  spegne dall’interruttore nella stessa sezione; **Check now** lo forza.
 
 - **Settings → Fork → MCP servers** gestisce un solo elenco di server MCP
   (HTTP, SSE, stdio) per tutti gli agenti e gli account dell'host, salvato in
@@ -82,7 +121,9 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   Il selettore mostra tutti gli agenti come schede: modello ed effort
   dell’agente in uso si applicano subito; per un altro agente restano una
   bozza finché **Switch…** non apre la conferma, e chiudere il selettore la
-  annulla. Grok offre Grok 4.7, 4.6 e 4.5. Grok 4.7 arriva fino a xHigh
+  annulla. Il modello scelto nel selettore resta quello della chat: viene
+  salvato nei dati del pannello, quindi cambiare workspace o chat e tornare non
+  rimette l’agente sul suo modello predefinito (Auto per Cursor). Grok offre Grok 4.7, 4.6 e 4.5. Grok 4.7 arriva fino a xHigh
   quando il suo override locale dichiara `reasoning_efforts`; Grok 4.5 arriva
   fino a High.
   Modelli ed effort arrivano dall’ultima lettura salvata dall’host in
@@ -126,7 +167,10 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   tool MCP e accessi fuori dal workspace, per tutti gli agenti ACP.
   Le domande all'utente e l'approvazione finale del piano restano manuali.
   La modalità nativa resta Plan; i limiti del provider e del sistema restano validi.
-- **New Chat** (⌘⇧A) apre una nuova chat nelle schede. L’icona **Find a chat**
+- **Chat** (⌘⇧A) è l’unica azione per aprire una chat: il menu **+** usa la
+  voce upstream e apre il selettore di agente, account e modello del fork.
+  La stessa azione funziona nello workspace vuoto e dalla tastiera; le
+  rimappature già salvate vengono mantenute. L’icona **Find a chat**
   nell’intestazione cerca per titolo, modello o branch nei depositi locali di
   Claude, Codex, Cursor CLI, Grok e OpenCode, nei profili e nelle cartelle del
   progetto, inclusi i worktree. Se una chat è già collegata a Superset, la riapre
@@ -172,7 +216,8 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   30 minuti o con una lettura più vecchia di 6 ore; non è mai quota libera.
 
 - **Pages** conserva il flusso ufficiale: una pagina compare dopo una pubblicazione
-  riuscita. La chat usata per crearla rimane una sessione separata.
+  riuscita. La chat usata per crearla rimane una sessione separata. Pages è un
+  servizio cloud: con **Hide paid features** attivo è nascosto e non fa richieste.
 - I terminali usano **SF Mono a 12 px** su macOS, caricato dal sistema come nel
   Terminale nativo, con **JetBrains Mono** incluso come fallback. Windows e Linux
   usano JetBrains Mono a 12 px. Interlinea 1,1 e contrasto minimo 3:1 sono comuni.

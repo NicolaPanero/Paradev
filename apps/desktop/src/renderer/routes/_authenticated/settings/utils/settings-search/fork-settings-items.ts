@@ -1,12 +1,14 @@
 import type { SettingsItem, SettingVariant } from "./settings-search";
 
 export const FORK_SETTING_ITEM_ID = {
+	FORK_TODAY: "fork-today",
 	FORK_HIDE_CLI: "fork-hide-cli",
 	FORK_HIDE_PRO: "fork-hide-pro",
 	FORK_HOME_BACKGROUND: "fork-home-background",
 	FORK_CONNECTIONS: "fork-connections",
 	FORK_MCP_SERVERS: "fork-mcp-servers",
 	FORK_ATTACHMENT_RETENTION: "fork-attachment-retention",
+	FORK_AGENT_CLI_UPDATES: "fork-agent-cli-updates",
 	LOCAL_AGENT_ACCOUNTS: "local-agent-accounts",
 	EXPERIMENTAL_ACP_CHAT: "experimental-acp-chat",
 } as const;
@@ -16,16 +18,25 @@ export const FORK_SETTING_ITEM_VARIANT: Record<
 	SettingVariant
 > = {
 	[FORK_SETTING_ITEM_ID.LOCAL_AGENT_ACCOUNTS]: "v2",
+	[FORK_SETTING_ITEM_ID.FORK_TODAY]: "shared",
 	[FORK_SETTING_ITEM_ID.FORK_HIDE_CLI]: "shared",
 	[FORK_SETTING_ITEM_ID.FORK_HIDE_PRO]: "shared",
 	[FORK_SETTING_ITEM_ID.FORK_HOME_BACKGROUND]: "v2",
 	[FORK_SETTING_ITEM_ID.FORK_CONNECTIONS]: "shared",
 	[FORK_SETTING_ITEM_ID.FORK_MCP_SERVERS]: "shared",
 	[FORK_SETTING_ITEM_ID.FORK_ATTACHMENT_RETENTION]: "shared",
+	[FORK_SETTING_ITEM_ID.FORK_AGENT_CLI_UPDATES]: "shared",
 	[FORK_SETTING_ITEM_ID.EXPERIMENTAL_ACP_CHAT]: "v2",
 };
 
 export const FORK_SETTINGS_ITEMS: SettingsItem[] = [
+	{
+		id: FORK_SETTING_ITEM_ID.FORK_TODAY,
+		section: "fork",
+		title: "Show Today",
+		description: "Show the Today page in the sidebar.",
+		keywords: ["today", "jira", "worklog", "hours"],
+	},
 	{
 		id: FORK_SETTING_ITEM_ID.FORK_ATTACHMENT_RETENTION,
 		section: "fork",
@@ -42,6 +53,21 @@ export const FORK_SETTINGS_ITEMS: SettingsItem[] = [
 			"disk",
 			"cleanup",
 			"retention",
+		],
+	},
+	{
+		id: FORK_SETTING_ITEM_ID.FORK_AGENT_CLI_UPDATES,
+		section: "fork",
+		title: "Agent updates",
+		description: "Check for new versions of Claude Code and Codex every day.",
+		keywords: [
+			"agent",
+			"update",
+			"version",
+			"claude",
+			"codex",
+			"cli",
+			"upgrade",
 		],
 	},
 	{

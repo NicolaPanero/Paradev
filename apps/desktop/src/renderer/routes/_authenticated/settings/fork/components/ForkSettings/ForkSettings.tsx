@@ -1,6 +1,7 @@
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Label } from "@superset/ui/label";
 import { Switch } from "@superset/ui/switch";
+import { ForkAgentCliUpdatesSettings } from "renderer/components/ForkAgentCliUpdates";
 import { ForkCliOptionsSetting } from "renderer/components/ForkCliOptionsSetting";
 import { ForkIntegrations } from "renderer/components/ForkIntegrations";
 import { useForkCliOptionsStore } from "renderer/stores/fork-cli-options";
@@ -16,13 +17,15 @@ import { ForkMcpServers } from "./components/ForkMcpServers";
 
 export function ForkSettings() {
 	const { t } = useLingui();
-	const { hideProFeatures, setHideProFeatures } = useForkCliOptionsStore();
+	const { hideProFeatures, setHideProFeatures, showToday, setShowToday } =
+		useForkCliOptionsStore();
 	const { interactiveBackground, setInteractiveBackground } =
 		useForkHomeAppearance();
 	const query = useSettingsSearchQuery();
 	const matches = getMatchingItemsForSection(query, "fork");
 	const showInterface = matches.some(
 		(item) =>
+			item.id === SETTING_ITEM_ID.FORK_TODAY ||
 			item.id === SETTING_ITEM_ID.FORK_HIDE_CLI ||
 			item.id === SETTING_ITEM_ID.FORK_HIDE_PRO ||
 			item.id === SETTING_ITEM_ID.FORK_HOME_BACKGROUND,
@@ -40,6 +43,23 @@ export function ForkSettings() {
 			{showInterface && (
 				<SettingsSection title={t({ message: "Interface" })}>
 					<div className="divide-y rounded-lg border">
+						{matches.some((item) => item.id === SETTING_ITEM_ID.FORK_TODAY) && (
+							<div className="flex items-center justify-between gap-6 px-5 py-4">
+								<div className="space-y-1">
+									<Label htmlFor="fork-show-today">
+										<Trans>Show Today</Trans>
+									</Label>
+									<p className="text-xs text-muted-foreground">
+										<Trans>Show the Today page in the sidebar.</Trans>
+									</p>
+								</div>
+								<Switch
+									id="fork-show-today"
+									checked={showToday}
+									onCheckedChange={setShowToday}
+								/>
+							</div>
+						)}
 						{matches.some(
 							(item) => item.id === SETTING_ITEM_ID.FORK_HIDE_CLI,
 						) && <ForkCliOptionsSetting />}
@@ -104,6 +124,13 @@ export function ForkSettings() {
 					<div className="rounded-lg border">
 						<ForkAttachmentRetention />
 					</div>
+				</SettingsSection>
+			)}
+			{matches.some(
+				(item) => item.id === SETTING_ITEM_ID.FORK_AGENT_CLI_UPDATES,
+			) && (
+				<SettingsSection title={t({ message: "Agent updates" })}>
+					<ForkAgentCliUpdatesSettings />
 				</SettingsSection>
 			)}
 			{matches.some((item) => item.id === "fork-connections") && (

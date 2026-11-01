@@ -7,7 +7,6 @@ import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useQuickOpenStore } from "renderer/commandPalette/ui/QuickOpen/quickOpenStore";
 import { useWorkspaceHostTarget } from "renderer/hooks/host-service/useWorkspaceHostUrl";
-import { useAcpChatEnabled } from "renderer/hooks/useAcpChatEnabled";
 import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
 import { useHotkey } from "renderer/hotkeys";
 import { electronTrpc } from "renderer/lib/electron-trpc";
@@ -21,6 +20,7 @@ import {
 	readSubagentSearch,
 } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
 import { CommandPalette } from "renderer/screens/main/components/CommandPalette";
+import { useForkProFeatures } from "renderer/stores/fork-cli-options";
 import { useRightPaneAreaEnabled } from "renderer/stores/right-pane-area";
 import { getV2NotificationSourcesForTab } from "renderer/stores/v2-notifications";
 import { useStore } from "zustand";
@@ -230,6 +230,7 @@ function V2WorkspaceContent() {
 		workspaceId,
 		isPaneAreaEnabled: isRightPaneAreaEnabled,
 	});
+	const showProFeatures = useForkProFeatures();
 	const isMobilePaneEnabled =
 		useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_PANE) === true;
 	const { store: rightStore, isLayoutReady: isRightLayoutReady } =
@@ -285,17 +286,12 @@ function V2WorkspaceContent() {
 	});
 	const launcher = useV2TerminalLauncher();
 	const [forkLaunchOpen, setForkLaunchOpen] = useState(false);
-	const {
-		createNewAgentSession,
-		openAgentChat,
-		openNewChat,
-		focusAgentTerminal,
-	} = useAgentSessionLauncher({ workspaceId, store });
-	const acpChat = useAcpChatEnabled();
+	const { createNewAgentSession, openAgentChat, focusAgentTerminal } =
+		useAgentSessionLauncher({ workspaceId, store });
 	const addChatTab = useCallback(() => {
-		void openNewChat();
-	}, [openNewChat]);
-	const onAddChat = acpChat === "enabled" ? addChatTab : undefined;
+		setForkLaunchOpen(true);
+	}, []);
+	const onAddChat = addChatTab;
 	const {
 		matchedPresets,
 		newTabPresets,
@@ -576,7 +572,7 @@ function V2WorkspaceContent() {
 	useHotkey("QUICK_OPEN", handleQuickOpen);
 	const { selected: selectedFolderRepo } = useWorkspaceFolders(workspaceId);
 	const isRunBlocked = selectedFolderRepo !== null && !workspaceRun.isRunning;
-	useHotkey("NEW_CHAT", addChatTab, { enabled: acpChat !== "disabled" });
+	useHotkey("NEW_CHAT", addChatTab);
 	useHotkey("RUN_WORKSPACE_COMMAND", () => {
 		if (isRunBlocked) return;
 		void workspaceRun.toggleWorkspaceRun();
@@ -644,7 +640,11 @@ function V2WorkspaceContent() {
 			isFullScreen={rightPaneMode === "expanded"}
 			onToggleFullScreen={toggleRightPaneAreaFullScreen}
 			onAdd={addRightPane}
-			gates={{ sandbox: isSandbox, mobilePane: isMobilePaneEnabled }}
+			gates={{
+				sandbox: isSandbox,
+				mobilePane: isMobilePaneEnabled,
+				pages: showProFeatures,
+			}}
 		/>
 	);
 
@@ -724,12 +724,9 @@ function V2WorkspaceContent() {
 									}
 									renderAddTabMenu={({ runAfterClose }) => (
 										<AddTabMenu
-											onAddAgent={() =>
-												runAfterClose(() => setForkLaunchOpen(true))
-											}
 											onAddTerminal={addTerminalTab}
 											runAfterClose={runAfterClose}
-											onAddChat={onAddChat}
+											onAddChat={() => runAfterClose(onAddChat)}
 											onAddBrowser={
 												isRightPaneAreaEnabled ? undefined : addBrowserTab
 											}
@@ -798,7 +795,6 @@ function V2WorkspaceContent() {
 									)}
 									renderEmptyState={() => (
 										<WorkspaceEmptyState
-											onOpenAgent={() => setForkLaunchOpen(true)}
 											onOpenBrowser={addBrowserTab}
 											onOpenChanges={openChanges}
 											onOpenChat={onAddChat}

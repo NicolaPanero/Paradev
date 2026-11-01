@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { forkMigrateChatHotkeyOverrides } from "../fork-chat-hotkeys";
 import type { ShortcutBinding } from "../types";
 
 interface HotkeyOverridesState {
@@ -50,8 +51,11 @@ export const useHotkeyOverridesStore = create<HotkeyOverridesState>()(
 			name: "hotkey-overrides",
 			storage: createJSONStorage(() => localStorage),
 			partialize: (state) => ({ overrides: state.overrides }),
-			version: 1,
-			migrate: migrateHotkeyOverrides,
+			version: 2,
+			migrate: (persisted, version) =>
+				forkMigrateChatHotkeyOverrides(
+					migrateHotkeyOverrides(persisted, version),
+				),
 		},
 	),
 );

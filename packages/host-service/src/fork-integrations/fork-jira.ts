@@ -2,6 +2,11 @@ import type { ForkComment, ForkTask } from "@superset/shared/fork-integrations";
 import { TRPCError } from "@trpc/server";
 import { type AdfNode, adfToMarkdown, markdownToAdf } from "./fork-adf";
 import type { ForkApi } from "./fork-api";
+import type { ForkJiraStatusMapping } from "./fork-jira-status-mapping";
+import {
+	forkJiraTransitionError,
+	forkJiraTransitionFields,
+} from "./fork-jira-transition-fields";
 import type { ForkTaskProvider } from "./fork-provider";
 import type { ForkPage } from "./fork-scm";
 
@@ -184,7 +189,7 @@ export class ForkJiraProvider implements ForkTaskProvider {
 					{
 						name: string;
 						required: boolean;
-						schema?: { type: string; items?: string };
+						schema?: { type: string; items?: string; custom?: string };
 						allowedValues?: { id?: string; name?: string; value?: string }[];
 					}
 				>;
@@ -215,15 +220,22 @@ export class ForkJiraProvider implements ForkTaskProvider {
 		id: string,
 		key: string,
 		target: "progress" | "review",
+		mapping?: ForkJiraStatusMapping | null,
 	): Promise<boolean> {
 		const issue = await this.get(id, key);
+		const mapped =
+			target === "progress"
+				? mapping?.progressStatusId
+				: mapping?.reviewStatusId;
 		if (issue.status.category === "done") return false;
+		if (mapped && issue.status.id === mapped) return false;
 		if (target === "progress" && issue.status.category !== "new") return false;
-		if (target === "review" && /review/i.test(issue.status.name)) return false;
+		if (target === "review" && !mapped && /review/i.test(issue.status.name))
+			return false;
 		const d = await this.api.request<{
 			transitions: {
 				id: string;
-				to: { name: string; statusCategory?: { key: string } };
+				to: { id: string; name: string; statusCategory?: { key: string } };
 				fields?: Record<string, { required?: boolean }>;
 			}[];
 		}>(
@@ -233,8 +245,9 @@ export class ForkJiraProvider implements ForkTaskProvider {
 		const usable = d.transitions.filter(
 			(t) => !Object.values(t.fields ?? {}).some((f) => f.required),
 		);
-		const pick =
-			target === "progress"
+		const pick = mapped
+			? usable.find((t) => t.to.id === mapped)
+			: target === "progress"
 				? usable.find(
 						(t) =>
 							t.to.statusCategory?.key === "indeterminate" &&
@@ -252,6 +265,34 @@ export class ForkJiraProvider implements ForkTaskProvider {
 			{ transition: { id: pick.id } },
 		);
 		return true;
+	}
+	/** Statuses used by any issue type of a project, without duplicates. */
+	async projectStatuses(
+		id: string,
+		projectKey: string,
+	): Promise<{ id: string; name: string; category: string }[]> {
+		this.assert(id);
+		const types = await this.api.request<
+			{
+				statuses: {
+					id: string;
+					name: string;
+					statusCategory?: { key: string };
+				}[];
+			}[]
+		>(id, `/rest/api/3/project/${encodeURIComponent(projectKey)}/statuses`);
+		const statuses = new Map<
+			string,
+			{ id: string; name: string; category: string }
+		>();
+		for (const type of types)
+			for (const status of type.statuses)
+				statuses.set(status.id, {
+					id: status.id,
+					name: status.name,
+					category: status.statusCategory?.key ?? "undefined",
+				});
+		return [...statuses.values()];
 	}
 	async editMetadata(id: string, key: string) {
 		this.assert(id);
@@ -340,12 +381,22 @@ export class ForkJiraProvider implements ForkTaskProvider {
 		fields: Record<string, unknown>,
 	) {
 		this.assert(id);
-		await this.api.request(
-			id,
-			`/rest/api/3/issue/${encodeURIComponent(key)}/transitions`,
-			"POST",
-			{ transition: { id: transitionId }, fields },
-		);
+		const metadata =
+			(await this.transitions(id, key)).find((t) => t.id === transitionId)
+				?.fields ?? [];
+		try {
+			await this.api.request(
+				id,
+				`/rest/api/3/issue/${encodeURIComponent(key)}/transitions`,
+				"POST",
+				{
+					transition: { id: transitionId },
+					fields: forkJiraTransitionFields(fields, metadata),
+				},
+			);
+		} catch (error) {
+			throw forkJiraTransitionError(error, metadata);
+		}
 		return this.get(id, key);
 	}
 	async comment(id: string, key: string, body: string) {

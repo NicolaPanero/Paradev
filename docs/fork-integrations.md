@@ -152,17 +152,83 @@ and organization; they do not use the hosted automation service.
 
 Rules are saved paused. After enabling, the first successful poll records
 existing matches without launching them. The host checks once a minute while
-running. Each later matching issue starts one workspace and agent per rule,
-with `automation` and `jira` tags and the issue context in the prompt. Up to five
-new launches per rule are handled in one poll. Queries must match at most 1000
-issues; narrow a query that exceeds this limit. Offline reads launch nothing.
+running. Queries must match at most 1000 issues; narrow a query that exceeds
+this limit. Offline reads launch nothing.
 
-Run history retains the workspace and any launch error. A durable claim prevents
-automatic duplicate attempts after a failure or interrupted host. Check the
-workspace and start an agent manually after fixing a launch problem. Pausing
-prevents future launches; deleting a rule deletes its history and leaves its
-workspaces intact. The host must be running for polling; events that enter and
-leave the query entirely between polls cannot be observed.
+### Runs, queue and limits (integration version 9)
+
+Every launch is a *run* with a stored state: queued, starting, running, waits
+for you, agent finished, checking, verified, failed, cancelled, skipped or to
+check. Agent lifecycle events from terminals and ACP chats move the run:
+`Start` → running, a permission request → waits for you, `Stop` → agent
+finished, `Failed` → failed. "Agent finished" ends a turn, not the task: the run
+stays open until the optional check command exits with 0 in the workspace, or
+until you mark it verified.
+
+A scan queues at most five new runs per rule; the rest wait for the next scan.
+A dispatcher starts queued runs while at most two run at the same time and one
+per project (both editable). A launch that fails is retried after 1, 5 and 15
+minutes up to the rule's attempt limit; three failed launches in a row pause the
+rule until it is enabled again. A host that stops while a run is starting marks
+it "to check" instead of starting another agent. **Run again** creates a new run
+linked to the previous one and reuses its workspace.
+
+**Preview** shows, without changes, what the next scan would do with each match.
+**Run now** starts a run by hand (for Jira, on a chosen issue) or only shows the
+prompt.
+
+### Triggers
+
+- **New Jira issue**: the JQL query. By default an issue runs once per rule;
+  "when its status changes" starts a new run when the issue matches again with
+  another status.
+- **Pull request comments**: new comments, not written by you, on open pull
+  requests linked to the project's workspaces. Comments found in one scan run
+  together in the PR's workspace.
+- **Failed checks**: failed checks on a linked pull request, once per head
+  commit. Both PR triggers accept a limit of runs per pull request.
+- **Schedule**: chosen weekdays and time in the host time zone. A slot missed
+  while the computer was off or asleep runs late within the rule's window,
+  otherwise it is skipped.
+
+Templates prefill the trigger, prompt and limits for triage, review fixes,
+failed checks and a daily digest file. The hosted Paradev automation service is
+never used; with **Hide paid features** its screens and requests stay off.
+
+## Jira time
+
+The issue detail logs time (`POST /rest/api/3/issue/{key}/worklog`, remaining
+estimate unchanged) with a local operation id: when Jira does not answer, the
+next attempt looks for the worklog in Jira before posting again. The start time
+uses the offset of that day, so daylight saving changes are handled; a time that
+does not exist on that day is refused. **Workflow statuses** on the Jira
+connection chooses, per project, the statuses for "work started" and "pull
+request opened" instead of matching status names. The project picker supports
+search by name or key. Each event shows its target status and explains the
+automatic fallback; status colors match Tasks and the layout follows the
+active theme and available panel width. Changes are saved per project.
+
+**Today** lists your assigned in-progress and completed tasks with no worklogs.
+The 7d, 30d and 90d filters use the issue's last update date. Tasks come first;
+reviews and active automation groups sit alongside them in wide windows and
+below them in narrow windows. Empty automation groups are collapsed into one
+compact message. Titles wrap to fit the available width. Status badges share the Jira palette
+used by Tasks; surfaces, text and accents use the active theme colors.
+**Refresh** reloads
+the page data without changing the selected period. Results are paginated;
+opening a row shows the task detail, where **Log time** remains available.
+**Show Today** in Settings hides the sidebar entry and redirects direct visits
+when disabled. The preference is saved on this computer.
+
+Hour proposals and bulk proposal posting have been removed. Legacy proposal
+endpoints retain their input/output shapes for older clients, but refuse all
+requests before contacting Jira. Saved settings cannot re-enable them.
+
+Transitions with screen fields open a form even when Jira marks every field as
+optional: workflow validators can still require these fields. Text areas are
+sent as Atlassian Document Format, multiple choices as option arrays. Jira's
+validation errors show readable field names; unsupported complex fields link
+to Jira for completion.
 
 ## OAuth broker protocol, version 1
 

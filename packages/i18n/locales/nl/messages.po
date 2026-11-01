@@ -607,6 +607,9 @@ msgstr "{0}% van alle tokens · {1} tokens"
 msgid "{0}% of total cost · {1} tokens · * at API list rates"
 msgstr "{0}% van de totale kosten · {1} tokens · * tegen API-lijstprijzen"
 
+msgid "{active} in progress"
+msgstr "{active} bezig"
+
 msgid "{actor} added the label {label}"
 msgstr "{actor} heeft het label {label} toegevoegd"
 
@@ -973,6 +976,9 @@ msgstr "{kind} · door {author}"
 msgid "{kindLabel} theme"
 msgstr "{kindLabel} thema"
 
+msgid "{label} {installed} to {latest}"
+msgstr "{label} {installed} naar {latest}"
+
 msgid "{level} · {gate} · {statusLabel}"
 msgstr "{level} · {gate} · {statusLabel}"
 
@@ -1263,6 +1269,9 @@ msgstr "{toolName} onderbroken"
 
 msgid "{total, plural, one {The check passed} other {All # checks passed}}"
 msgstr "{total, plural, one {De check is geslaagd} other {Alle # checks geslaagd}}"
+
+msgid "{total} worklogs on this issue · mine among those shown: {myDuration}"
+msgstr "{total} worklogs op deze issue · van mij onder de getoonde: {myDuration}"
 
 msgid "{totalCount, plural, one {GitHub issue} other {GitHub issues}}"
 msgstr "{totalCount, plural, one {GitHub-issue} other {GitHub-issues}}"
@@ -1652,6 +1661,9 @@ msgstr "Een apart profiel dat per token wordt afgerekend. De sleutel blijft in d
 msgid "A separate profile that shares your skills, plugins, MCP servers, and settings."
 msgstr "Een apart profiel dat je skills, plugins, MCP-servers en instellingen deelt."
 
+msgid "A summary file of tasks and pull requests that need attention."
+msgstr "Een samenvattingsbestand van taken en pull requests die aandacht nodig hebben."
+
 msgid "A task key is 1 to 5 letters or numbers and starts with a letter."
 msgstr "Een taaksleutel bestaat uit 1 tot 5 letters of cijfers en begint met een letter."
 
@@ -1739,9 +1751,6 @@ msgstr "Account wordt verwijderd"
 
 msgid "Account usage"
 msgstr "Accountgebruik"
-
-msgid "Account usage rings update after each agent turn and keep the last reading instead of fading out."
-msgstr "De verbruiksringen van accounts worden na elke beurt van een agent bijgewerkt en houden de laatste meting vast in plaats van te vervagen."
 
 msgid "Achievements"
 msgstr "Prestaties"
@@ -2125,6 +2134,9 @@ msgstr "agentinstellingen"
 msgid "Agent setup"
 msgstr "Agent instellen"
 
+msgid "Agent updates"
+msgstr "Agent-updates"
+
 msgid "Agent usage rankings"
 msgstr "Ranglijst van agentgebruik"
 
@@ -2133,6 +2145,9 @@ msgstr "Previews aangestuurd door agents"
 
 msgid "Agents"
 msgstr "Agents"
+
+msgid "Agents at the same time"
+msgstr "Gelijktijdige agents"
 
 msgid "Agents complete routine tickets with no mid-task intervention."
 msgstr "Agents voltooien routinetickets zonder tussentijds ingrijpen."
@@ -2154,6 +2169,9 @@ msgstr "Agents die tegelijk draaien"
 
 msgid "Agents use this account when they call Linear tools."
 msgstr "Agents gebruiken dit account wanneer ze Linear-tools aanroepen."
+
+msgid "Agents waiting for you"
+msgstr "Agents die op je wachten"
 
 msgid "Aggregate agent usage across every developer on the Paradev leaderboard — tokens, cost, cache behaviour and which models people actually reach for."
 msgstr "Totaal agentgebruik van alle developers op het Paradev-leaderboard — tokens, kosten, cachegedrag en welke modellen mensen echt gebruiken."
@@ -2299,6 +2317,9 @@ msgstr "Alle berichten"
 msgid "All projects"
 msgstr "Alle projecten"
 
+msgid "All pull requests"
+msgstr "Alle pull requests"
+
 msgid "All releases"
 msgstr "Alle releases"
 
@@ -2392,6 +2413,9 @@ msgstr "Al overgezet naar een andere organisatie. Schakel daarnaar over om dit p
 msgid "Already brought over to another organization. Switch to it to see this workspace."
 msgstr "Al overgezet naar een andere organisatie. Schakel daarnaar over om deze werkruimte te zien."
 
+msgid "Already handled"
+msgstr "Al afgehandeld"
+
 msgid "Already have an account? <0>Sign in</0>"
 msgstr "Heb je al een account? <0>Inloggen</0>"
 
@@ -2458,6 +2482,9 @@ msgstr "Er is een onbekende fout opgetreden"
 
 msgid "An update is ready to install."
 msgstr "Er staat een update klaar om te installeren."
+
+msgid "Analysis, open questions and a plan. No ticket changes."
+msgstr "Analyse, open vragen en een plan. Geen wijzigingen aan het ticket."
 
 msgid "Android is on the way. Be first to know when it ships."
 msgstr "Android komt eraan. Hoor het als eerste wanneer het uitkomt."
@@ -3008,6 +3035,9 @@ msgstr "Taken automatiseren"
 msgid "Automate workspace setup for {projectName}"
 msgstr "Automatiseer het instellen van werkruimtes voor {projectName}"
 
+msgid "Automatic"
+msgstr "Automatisch"
+
 msgid "Automatic (email address)"
 msgstr "Automatisch (e-mailadres)"
 
@@ -3022,6 +3052,12 @@ msgstr "Deze host ondersteunt automatisch doorgaan niet."
 
 msgid "Automatic continuation needs verified quota and reset data for this chat."
 msgstr "Automatisch doorgaan vereist geverifieerde gegevens over het quotum en de reset voor deze chat."
+
+msgid "Automatic looks for an available status with “review” in its name."
+msgstr "Automatisch zoekt een beschikbare status met “review” in de naam."
+
+msgid "Automatic selects an available in-progress status."
+msgstr "Automatisch kiest een beschikbare status voor lopend werk."
 
 msgid "Automation"
 msgstr "Automatisering"
@@ -3865,6 +3901,12 @@ msgstr "Chatoppervlakken: berichten, redeneren, suggesties"
 msgid "Check again"
 msgstr "Opnieuw controleren"
 
+msgid "Check command (optional)"
+msgstr "Controleopdracht (optioneel)"
+
+msgid "Check for agent updates every day"
+msgstr "Elke dag controleren op agent-updates"
+
 msgid "Check for Update"
 msgstr "Controleren op update"
 
@@ -3877,8 +3919,14 @@ msgstr "Controleren op updates"
 msgid "Check for Updates..."
 msgstr "Controleren op updates..."
 
+msgid "Check now"
+msgstr "Nu controleren"
+
 msgid "Check on running agents and read what they changed from your iPhone or iPad."
 msgstr "Bekijk lopende agents en lees op je iPhone of iPad wat ze hebben veranderd."
+
+msgid "Check output"
+msgstr "Uitvoer van de controle"
 
 msgid "Check plans and balances"
 msgstr "Bekijk abonnementen en saldi"
@@ -3915,6 +3963,12 @@ msgstr "Check je inbox"
 
 msgid "Checkbox · Radio · Switch"
 msgstr "Checkbox · Radio · Switch"
+
+msgid "checked"
+msgstr "gecontroleerd"
+
+msgid "Checking"
+msgstr "Controleren"
 
 msgid "Checking agents…"
 msgstr "Agents controleren…"
@@ -3999,6 +4053,9 @@ msgstr "Kies een bovenliggende map"
 
 msgid "Choose a project from GitHub issues before opening an issue."
 msgstr "Kies een project bij GitHub-issues voordat je een issue opent."
+
+msgid "Choose a project, then choose where its tasks move."
+msgstr "Kies een project en stel de doelstatussen van de taken in."
 
 msgid "Choose a section."
 msgstr "Kies een onderdeel."
@@ -4550,6 +4607,9 @@ msgstr "Commando's voor setup en teardown van werkruimtes en voor de knop Uitvoe
 msgid "Comment"
 msgstr "Reageren"
 
+msgid "Comment (optional)"
+msgstr "Opmerking (optioneel)"
+
 msgid "Comment actions"
 msgstr "Reactieacties"
 
@@ -4656,8 +4716,8 @@ msgstr "Voltooi de autorisatie in je browser."
 msgid "Complete the official CLI flow, then close this window to check the result."
 msgstr "Voltooi de stappen van de officiële CLI en sluit dit venster om het resultaat te controleren."
 
-msgid "Complete the required fields to change status."
-msgstr "Vul de verplichte velden in om de status te wijzigen."
+msgid "Complete the transition fields, then confirm the status change."
+msgstr "Vul de overgangsvelden in en bevestig de statuswijziging."
 
 msgid "Completed"
 msgstr "Afgerond"
@@ -4795,6 +4855,9 @@ msgstr "Google verbinden"
 
 msgid "Connect Jira and Bitbucket"
 msgstr "Jira en Bitbucket verbinden"
+
+msgid "Connect Jira to see tasks without worklogs."
+msgstr "Verbind Jira om taken zonder geregistreerde tijd te zien."
 
 msgid "Connect Linear"
 msgstr "Linear verbinden"
@@ -6236,6 +6299,9 @@ msgstr "dagelijks 9:00"
 msgid "Daily at {time}"
 msgstr "Dagelijks om {time}"
 
+msgid "Daily digest"
+msgstr "Dagelijks overzicht"
+
 msgid "Daily practice for our team and our heaviest users."
 msgstr "Dagelijkse praktijk voor ons team en onze zwaarste gebruikers."
 
@@ -6277,6 +6343,9 @@ msgstr "Dag één"
 
 msgid "days"
 msgstr "dagen"
+
+msgid "Days"
+msgstr "Dagen"
 
 msgid "days running three agents at once"
 msgstr "dagen met drie agents tegelijk"
@@ -6687,6 +6756,9 @@ msgstr "DevTools"
 msgid "DevTools beside the page"
 msgstr "DevTools naast de pagina"
 
+msgid "Diagnoses the failure and tries a fix, at most twice per pull request."
+msgstr "Analyseert de fout en probeert een oplossing, maximaal twee keer per pull request."
+
 msgid "Dialog"
 msgstr "Dialog"
 
@@ -6780,6 +6852,9 @@ msgstr "Wijzigingen in \"{discardBasename}\" verwerpen?"
 
 msgid "Discard changes?"
 msgstr "Wijzigingen verwerpen?"
+
+msgid "Discard my changes"
+msgstr "Mijn wijzigingen verwerpen"
 
 msgid "Discard recording"
 msgstr "Opname verwerpen"
@@ -7099,6 +7174,9 @@ msgstr "Elke bijlage is maximaal {0} MB."
 msgid "Each in its own new tab"
 msgstr "Elk in een eigen nieuw tabblad"
 
+msgid "Each issue that starts to match the query gets a new workspace."
+msgstr "Elke issue die aan de query begint te voldoen, krijgt een nieuwe werkruimte."
+
 msgid "Each morning at 8am, look at yesterday's failed CI runs, diagnose the most common failure, and open a fix PR."
 msgstr "Elke ochtend om 8 uur: bekijk de mislukte CI-runs van gisteren, diagnosticeer de meest voorkomende fout en open een fix-PR."
 
@@ -7153,6 +7231,9 @@ msgstr "Bewerken"
 
 msgid "Edit and restart from here"
 msgstr "Bewerken en vanaf hier opnieuw starten"
+
+msgid "Edit automation"
+msgstr "Automatisering bewerken"
 
 msgid "Edit comment"
 msgstr "Opmerking bewerken"
@@ -7638,6 +7719,12 @@ msgstr "Mislukt"
 msgctxt "agent status"
 msgid "Failed"
 msgstr "Mislukt"
+
+msgid "Failed checks"
+msgstr "Mislukte checks"
+
+msgid "Failed checks on a linked pull request run the agent in its workspace, once per commit."
+msgstr "Mislukte checks op een gekoppelde pull request starten de agent in de bijbehorende werkruimte, één keer per commit."
 
 msgid "Failed runs <0>· 7d</0>"
 msgstr "Mislukte uitvoeringen <0>· 7d</0>"
@@ -8358,6 +8445,9 @@ msgstr "Bevindingen oplossen"
 msgid "Fix new errors in web. Reproduce each one in a test and open a draft pull request."
 msgstr "Los nieuwe fouten in web op. Reproduceer elke fout in een test en open een draft pull request."
 
+msgid "Fix review comments"
+msgstr "Reviewopmerkingen oplossen"
+
 msgid "fix-auth-redirect"
 msgstr "fix-auth-redirect"
 
@@ -8582,6 +8672,9 @@ msgstr "Gratis resets: {formattedCount}"
 
 msgid "Frequently<0/>asked questions"
 msgstr "Veelgestelde<0/>vragen"
+
+msgid "Fri"
+msgstr "Vr"
 
 msgid "from"
 msgstr "vanaf"
@@ -9307,6 +9400,9 @@ msgstr "Inactief · branch gepusht"
 msgid "If the CLI is not installed yet, install it on the computer where this agent will run before signing in."
 msgstr "Als de CLI nog niet is geïnstalleerd, installeer deze dan op de computer waarop deze agent wordt uitgevoerd voordat je je aanmeldt."
 
+msgid "If the computer is off or asleep at the scheduled time, the run starts when it wakes within this window, otherwise it is skipped. Time zone: {timeZone}."
+msgstr "Als de computer op het geplande tijdstip uit staat of slaapt, start de run bij het ontwaken binnen dit venster; anders wordt hij overgeslagen. Tijdzone: {timeZone}."
+
 msgid "If you're enjoying Paradev so far, a GitHub star helps other developers discover it."
 msgstr "Als Paradev je tot nu toe bevalt, helpt een GitHub-ster andere ontwikkelaars het te ontdekken."
 
@@ -9446,9 +9542,6 @@ msgstr "De agentinstructies verbeteren"
 msgid "Improved diff viewer"
 msgstr "Verbeterde diff-viewer"
 
-msgid "In a Claude chat, pick another account in the composer to move the chat there at once, with its full history."
-msgstr "Kies in een Claude-chat een ander account in het invoerveld om de chat er direct heen te verplaatsen, met de volledige geschiedenis."
-
 msgid "in a new session"
 msgstr "in een nieuwe sessie"
 
@@ -9500,6 +9593,9 @@ msgstr "Ingebouwde browser"
 
 msgid "In-app PR merge"
 msgstr "PR's mergen in de app"
+
+msgid "In-progress and completed tasks assigned to you, with no logged time."
+msgstr "Aan jou toegewezen lopende en afgeronde taken zonder geregistreerde tijd."
 
 msgid "Include the Linear ticket id from the prompt in the branch name (e.g. bin-344-fix-login). Prefix branches with fix/ or feat/ based on the task."
 msgstr "Neem het Linear-ticket-id uit de prompt op in de branchnaam (bijv. bin-344-fix-login). Geef branches het voorvoegsel fix/ of feat/ op basis van de taak."
@@ -9831,6 +9927,9 @@ msgstr "Issue-opmerking"
 msgid "Issue created"
 msgstr "Issue aangemaakt"
 
+msgid "Issue key"
+msgstr "Issue-sleutel"
+
 msgid "Issue not found."
 msgstr "Issue niet gevonden."
 
@@ -9909,6 +10008,9 @@ msgstr "JetBrains"
 msgid "Jira automations"
 msgstr "Jira-automatiseringen"
 
+msgid "Jira automations are now tracked until the end: a queue, a limit on agents at the same time, retries, a preview and a manual run."
+msgstr "Jira-automatiseringen worden nu tot het einde gevolgd: een wachtrij, een limiet op gelijktijdige agents, nieuwe pogingen, een voorbeeld en een handmatige run."
+
 msgid "Jira board"
 msgstr "Jira-bord"
 
@@ -9917,6 +10019,9 @@ msgstr "Jira-issues"
 
 msgid "Jira project"
 msgstr "Jira-project"
+
+msgid "Jira triage"
+msgstr "Jira-triage"
 
 msgid "Join"
 msgstr "Meedoen"
@@ -10181,6 +10286,9 @@ msgstr "Starten"
 
 msgid "Launch agents across features, bug fixes, and refactors, all in parallel. Status at a glance shows which agents are working, which are blocked, and which are waiting on you."
 msgstr "Start agents op features, bugfixes en refactors, allemaal parallel. In één oogopslag zie je welke agents werken, welke vastzitten en welke op jou wachten."
+
+msgid "Launch attempts"
+msgstr "Startpogingen"
 
 msgid "Launch mode"
 msgstr "Startmodus"
@@ -10636,6 +10744,9 @@ msgstr "Locatie"
 msgid "Location & checkout"
 msgstr "Locatie en checkout"
 
+msgid "Log {logDuration}"
+msgstr "{logDuration} registreren"
+
 msgid "Log levels"
 msgstr "Logniveaus"
 
@@ -10644,6 +10755,15 @@ msgstr "Uitloggen"
 
 msgid "Log out?"
 msgstr "Uitloggen?"
+
+msgid "Log time"
+msgstr "Tijd registreren"
+
+msgid "Log time manually and configure Jira workflow statuses with controls that adapt to your theme and window."
+msgstr "Registreer handmatig tijd en stel Jira-workflowstatussen in met bedieningselementen die zich aan je thema en venster aanpassen."
+
+msgid "Logged as {account} · {timeZone}. The remaining estimate does not change."
+msgstr "Geregistreerd als {account} · {timeZone}. De resterende schatting verandert niet."
 
 msgid "Login unverified"
 msgstr "Aanmelding niet geverifieerd"
@@ -10748,6 +10868,9 @@ msgstr "Deze pagina openbaar maken?"
 msgid "make this the main action on the page"
 msgstr "maak dit de hoofdactie op de pagina"
 
+msgid "Makes the requested changes as commits. Posts no comments."
+msgstr "Voert de gevraagde wijzigingen door als commits. Plaatst geen opmerkingen."
+
 msgid "Makes the Run button launch this terminal script for matching projects."
 msgstr "Laat de knop Uitvoeren dit terminalscript starten voor overeenkomende projecten."
 
@@ -10829,6 +10952,9 @@ msgstr "Markeren als gelezen"
 
 msgid "Mark as Unread"
 msgstr "Markeren als ongelezen"
+
+msgid "Mark as verified"
+msgstr "Markeren als geverifieerd"
 
 msgid "Mark as viewed"
 msgstr "Markeren als bekeken"
@@ -11126,9 +11252,6 @@ msgstr "model"
 msgid "Model"
 msgstr "Model"
 
-msgid "Model and effort lists open at once: Paradev++ remembers them and refreshes them in the background."
-msgstr "Lijsten met modellen en effort openen direct: Paradev++ onthoudt ze en werkt ze op de achtergrond bij."
-
 msgid "Model context usage"
 msgstr "Contextgebruik van model"
 
@@ -11158,6 +11281,9 @@ msgstr "Gebruikte modellen"
 
 msgid "Moderate reasoning effort"
 msgstr "Gemiddelde redeneerinspanning"
+
+msgid "Mon"
+msgstr "Ma"
 
 msgid "Monitor agents from your phone."
 msgstr "Volg agents vanaf je telefoon."
@@ -11252,6 +11378,9 @@ msgstr "{count} naar groep verplaatsen"
 msgid "Move {name} to background"
 msgstr "{name} naar de achtergrond verplaatsen"
 
+msgid "Move task to"
+msgstr "Taak verplaatsen naar"
+
 msgid "Move to another account"
 msgstr "Naar een ander account verplaatsen"
 
@@ -11295,6 +11424,9 @@ msgstr "Mijn Jira-issues"
 
 msgid "My Tasks"
 msgstr "Mijn taken"
+
+msgid "My time today: {todayDuration}"
+msgstr "Mijn tijd vandaag: {todayDuration}"
 
 msgid "Mystery Machinist"
 msgstr "Mysterieuze Machinist"
@@ -11443,9 +11575,6 @@ msgstr "Nieuwe chat"
 msgid "New Chat"
 msgstr "Nieuwe chat"
 
-msgid "New Chat (Choose Agent)"
-msgstr "Nieuwe chat (agent kiezen)"
-
 msgid "New chat from loaded messages"
 msgstr "Nieuwe chat uit geladen berichten"
 
@@ -11479,6 +11608,12 @@ msgstr "Nieuwe groep van werkruimte"
 msgid "New issue"
 msgstr "Nieuwe issue"
 
+msgid "New Jira issue"
+msgstr "Nieuwe Jira-issue"
+
+msgid "New local triggers: pull request comments, failed checks and a schedule, with ready-made templates."
+msgstr "Nieuwe lokale triggers: opmerkingen op pull requests, mislukte checks en een schema, met kant-en-klare sjablonen."
+
 msgid "New page"
 msgstr "Nieuwe pagina"
 
@@ -11490,6 +11625,9 @@ msgstr "Nieuw project"
 
 msgid "New push to branch"
 msgstr "Nieuwe push naar branch"
+
+msgid "New review comments on a pull request linked to a workspace of the project run the agent in that workspace."
+msgstr "Nieuwe reviewopmerkingen op een pull request die aan een werkruimte van het project is gekoppeld, starten de agent in die werkruimte."
 
 msgid "New session"
 msgstr "Nieuwe sessie"
@@ -12107,6 +12245,9 @@ msgstr "Geen resultaten voor “{query}”"
 msgid "No results found."
 msgstr "Geen resultaten gevonden."
 
+msgid "No review requested."
+msgstr "Geen review aangevraagd."
+
 msgid "No reviewers"
 msgstr "Geen reviewers"
 
@@ -12124,6 +12265,9 @@ msgstr "Geen enkele vacature past bij mij. Moet ik toch contact opnemen?"
 
 msgid "No runs yet"
 msgstr "Nog geen runs"
+
+msgid "No runs yet."
+msgstr "Nog geen runs."
 
 msgid "No screenshots yet"
 msgstr "Nog geen screenshots"
@@ -12169,6 +12313,9 @@ msgstr "Geen taken gevonden."
 
 msgid "No tasks in this project yet."
 msgstr "Dit project heeft nog geen taken."
+
+msgid "No tasks without worklogs in this period."
+msgstr "Geen taken zonder geregistreerde tijd in deze periode."
 
 msgid "No tasks yet"
 msgstr "Nog geen taken"
@@ -12326,6 +12473,9 @@ msgstr "Niet verleend"
 msgid "Not included"
 msgstr "Niet inbegrepen"
 
+msgid "Not installed on this computer."
+msgstr "Niet geïnstalleerd op deze computer."
+
 msgid "Not loaded"
 msgstr "Niet geladen"
 
@@ -12381,6 +12531,9 @@ msgstr "Er draait niets. Archiveer deze en maak een nieuwe aan."
 msgid "Nothing lives at {pathname}."
 msgstr "Er staat niets op {pathname}."
 
+msgid "Nothing matches right now."
+msgstr "Er komt nu niets overeen."
+
 msgid "Nothing needs a retry"
 msgstr "Niets hoeft opnieuw te worden geprobeerd"
 
@@ -12389,6 +12542,9 @@ msgstr "Nog niets gepubliceerd in de laatste 30 dagen. Je positie verschijnt zod
 
 msgid "Nothing running"
 msgstr "Er draait niets"
+
+msgid "Nothing to check."
+msgstr "Niets te controleren."
 
 msgid "Nothing was missed"
 msgstr "Er is niets gemist"
@@ -12721,6 +12877,9 @@ msgstr "Open een paneel of sleep er een hierheen vanuit het midden."
 
 msgid "Open a pull request to view review status, checks, and comments."
 msgstr "Open een pull request om reviewstatus, checks en opmerkingen te zien."
+
+msgid "Open a task to log time manually."
+msgstr "Open een taak om handmatig tijd te registreren."
 
 msgid "Open actions menu"
 msgstr "Actiemenu openen"
@@ -13064,6 +13223,9 @@ msgstr "Sheet openen"
 msgid "Open ship options"
 msgstr "Verzendopties openen"
 
+msgid "Open source"
+msgstr "Open source"
+
 msgid "Open System Settings"
 msgstr "Systeeminstellingen openen"
 
@@ -13111,9 +13273,6 @@ msgstr "Het globale opdrachtenpalet openen"
 
 msgid "Open the guide"
 msgstr "Handleiding openen"
-
-msgid "Open the new chat dialog in the current workspace"
-msgstr "Het dialoogvenster voor een nieuwe chat in de huidige workspace openen"
 
 msgid "Open the new workspace modal"
 msgstr "Het venster voor een nieuwe werkruimte openen"
@@ -13625,8 +13784,8 @@ msgstr "Paradev werkt met elke CLI-gebaseerde coding agent, waaronder Claude Cod
 msgid "Paradev's mobile app lets me keep my agents moving and unblock them from anywhere, even when I'm nowhere near my computer."
 msgstr "Met de mobiele app van Paradev kan ik mijn agents overal aan het werk houden en blokkades oplossen, zelfs als ik ver van mijn computer ben."
 
-msgid "Paradev++ keeps the Mac awake while your agents work, so a long task does not stop when the Mac goes idle."
-msgstr "Paradev++ houdt de Mac wakker terwijl je agents werken, zodat een lange taak niet stopt als de Mac inactief is."
+msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
+msgstr "Paradev++ zoekt één keer per dag naar nieuwe versies en toont een pop-up. Het werkt zelf nooit iets bij."
 
 msgid "Paragraph"
 msgstr "Alinea"
@@ -13761,6 +13920,9 @@ msgstr "per gemergede PR"
 
 msgid "per merged PR, lower is better"
 msgstr "per gemergede PR, lager is beter"
+
+msgid "Per project"
+msgstr "Per project"
 
 msgid "per session"
 msgstr "per sessie"
@@ -14448,11 +14610,17 @@ msgstr "Pull request #{0}, {1}"
 msgid "Pull request actions"
 msgstr "Acties voor pull request"
 
+msgid "Pull request comments"
+msgstr "Opmerkingen op pull requests"
+
 msgid "Pull request detail tabs"
 msgstr "Tabbladen van pull request-details"
 
 msgid "Pull request not found"
 msgstr "Pull request niet gevonden"
+
+msgid "Pull request opened"
+msgstr "Pull request geopend"
 
 msgid "Pull request title"
 msgstr "Titel van pull request"
@@ -14465,6 +14633,9 @@ msgstr "Pull requests"
 
 msgid "Pull Requests"
 msgstr "Pull requests"
+
+msgid "Pull requests waiting for your review"
+msgstr "Pull requests die op je review wachten"
 
 msgid "Purple"
 msgstr "Paars"
@@ -14814,6 +14985,9 @@ msgstr "Opnieuw verbinden…"
 msgid "Reconnecting… your conversation is kept."
 msgstr "Opnieuw verbinden… je gesprek blijft bewaard."
 
+msgid "Recorded on enable, not started"
+msgstr "Vastgelegd bij inschakelen, niet gestart"
+
 msgid "Recording"
 msgstr "Opnemen"
 
@@ -15150,6 +15324,9 @@ msgstr "Bezig met heropenen…"
 
 msgid "reorder agents"
 msgstr "agents herordenen"
+
+msgid "Repair failed checks"
+msgstr "Mislukte checks herstellen"
 
 msgid "Replace"
 msgstr "Vervangen"
@@ -15520,6 +15697,9 @@ msgstr "{0} hervatten…"
 msgid "Resuming the conversation…"
 msgstr "Gesprek wordt hervat…"
 
+msgid "Retried"
+msgstr "Opnieuw gestart"
+
 msgid "Retry"
 msgstr "Opnieuw"
 
@@ -15735,6 +15915,9 @@ msgstr "Draai 10+ parallelle coding agents op je machine."
 msgid "Run again"
 msgstr "Opnieuw uitvoeren"
 
+msgid "Run again on the same issue"
+msgstr "Opnieuw uitvoeren op dezelfde issue"
+
 msgid "Run agents on a schedule or when something happens."
 msgstr "Draai agents volgens schema of als er iets gebeurt."
 
@@ -15763,9 +15946,6 @@ msgstr "Voer automatiseringen uit wanneer Sentry-issues wijzigen."
 msgid "Run commands and navigate the application."
 msgstr "Opdrachten uitvoeren en door de app navigeren."
 
-msgid "Run history"
-msgstr "Uitvoeringsgeschiedenis"
-
 msgid "Run History"
 msgstr "Runs"
 
@@ -15780,6 +15960,12 @@ msgstr "Uitvoeren in werkruimte"
 
 msgid "run issues in workspaces"
 msgstr "issues in werkruimtes uitvoeren"
+
+msgid "Run late for up to (minutes)"
+msgstr "Later starten tot maximaal (minuten)"
+
+msgid "Run limit reached"
+msgstr "Limiet voor runs bereikt"
 
 msgid "Run now"
 msgstr "Nu uitvoeren"
@@ -15847,17 +16033,29 @@ msgstr "Wordt nu uitgevoerd"
 msgid "Running terminal processes continue, but older output may no longer be available after restarting the app."
 msgstr "Draaiende terminalprocessen gaan door, maar oudere uitvoer is na het herstarten van de app mogelijk niet meer beschikbaar."
 
+msgid "Runs"
+msgstr "Runs"
+
 msgid "Runs a local command on your machine"
 msgstr "Voert een lokaal commando uit op je machine"
 
 msgid "Runs appear here once an automation fires."
 msgstr "Runs verschijnen hier zodra een automatisering wordt geactiveerd."
 
+msgid "Runs beyond these limits wait in the queue and start when an agent finishes."
+msgstr "Runs boven deze limieten wachten in de wachtrij en starten wanneer een agent klaar is."
+
 msgid "Runs inside the Paradev app on that device, so updating it means updating the app there."
 msgstr "Draait in de Paradev-app op dat apparaat, dus bijwerken betekent de app daar bijwerken."
 
 msgid "Runs land in a workspace. Review the diff, merge what's good."
 msgstr "Runs komen in een werkruimte terecht. Bekijk de diff, merge wat goed is."
+
+msgid "Runs on the chosen days at the chosen time in a new workspace."
+msgstr "Wordt op de gekozen dagen op het gekozen tijdstip uitgevoerd in een nieuwe werkruimte."
+
+msgid "Runs per pull request at most"
+msgstr "Maximaal aantal runs per pull request"
 
 msgid "Runs that found no host online"
 msgstr "Runs die geen host online vonden"
@@ -15867,6 +16065,9 @@ msgstr "Uitvoeringen die hun workspace in de afgelopen 7 dagen hebben gestart"
 
 msgid "Runs the tests and reviews each pull request you're asked to review."
 msgstr "Draait de tests en reviewt elke pull request waarvoor je review wordt gevraagd."
+
+msgid "Runs to check"
+msgstr "Te controleren runs"
 
 msgid "Runs when a new workspace is created."
 msgstr "Wordt uitgevoerd bij het aanmaken van een werkruimte."
@@ -15886,6 +16087,9 @@ msgstr "San Francisco"
 msgid "Sandbox stopped responding"
 msgstr "Sandbox reageert niet meer"
 
+msgid "Sat"
+msgstr "Za"
+
 msgid "Save"
 msgstr "Opslaan"
 
@@ -15894,6 +16098,9 @@ msgstr "Opslaan en werkruimte aanmaken"
 
 msgid "Save All"
 msgstr "Alles opslaan"
+
+msgid "Save anyway"
+msgstr "Toch opslaan"
 
 msgid "Save as environment"
 msgstr "Opslaan als omgeving"
@@ -15909,6 +16116,9 @@ msgstr "Omgeving opslaan"
 
 msgid "Save failed: {message}"
 msgstr "Opslaan mislukt: {message}"
+
+msgid "Save limits"
+msgstr "Limieten opslaan"
 
 msgid "Save preferences"
 msgstr "Voorkeuren opslaan"
@@ -16309,6 +16519,9 @@ msgstr "Kies een project"
 msgid "Select a project first"
 msgstr "Kies eerst een project"
 
+msgid "Select a project to configure its workflow."
+msgstr "Selecteer een project om de workflow in te stellen."
+
 msgid "Select a project to see GitHub issues."
 msgstr "Kies een project om GitHub-issues te zien."
 
@@ -16341,6 +16554,9 @@ msgstr "Kies een editor in het dropdownmenu"
 
 msgid "Select an environment"
 msgstr "Selecteer een omgeving"
+
+msgid "Select an option"
+msgstr "Selecteer een optie"
 
 msgid "Select an organization"
 msgstr "Kies een organisatie"
@@ -16921,8 +17137,17 @@ msgstr "Status tonen en meldingen sturen voor deze agent."
 msgid "Show text"
 msgstr "Tekst tonen"
 
+msgid "Show the prompt"
+msgstr "Prompt tonen"
+
+msgid "Show the Today page in the sidebar."
+msgstr "Toon de pagina Vandaag in de zijbalk."
+
 msgid "Show the triggering payload"
 msgstr "Activerende payload tonen"
+
+msgid "Show Today"
+msgstr "Vandaag tonen"
 
 msgid "Show translation"
 msgstr "Vertaling tonen"
@@ -17256,6 +17481,9 @@ msgstr "Een deel van je v1-werk vraagt aandacht"
 msgid "Someone"
 msgstr "Iemand"
 
+msgid "Someone changed this issue in Jira while you were editing. Your save would replace their changes."
+msgstr "Iemand heeft deze issue in Jira gewijzigd terwijl u bezig was met bewerken. Als u opslaat, worden hun wijzigingen overschreven."
+
 #. js-lingui-explicit-id
 msgid "serverError.page.entryPathHeldByColleague"
 msgstr "Iemand anders heeft {entryPath} vanuit deze workspace al gepubliceerd. Publiceer met een expliciet pagina-id om een versie aan hun pagina toe te voegen, of verplaats het bestand."
@@ -17522,6 +17750,9 @@ msgstr "Nieuwe chat starten"
 msgid "Start a new chat each run"
 msgstr "Bij elke uitvoering een nieuwe chat starten"
 
+msgid "Start a run"
+msgstr "Een run starten"
+
 msgid "Start a session"
 msgstr "Sessie starten"
 
@@ -17575,6 +17806,9 @@ msgstr "Start er een met + in de tabbladbalk."
 
 msgid "Start or stop the workspace run command"
 msgstr "Het run-commando van de werkruimte starten of stoppen"
+
+msgid "Start time"
+msgstr "Starttijd"
 
 msgid "Start voice mode"
 msgstr "Spraakmodus starten"
@@ -17715,6 +17949,9 @@ msgstr "De agent stoppen en overschakelen naar {accountName}?"
 msgid "Stop the agent before you edit a message"
 msgstr "Stop de agent voordat je een bericht bewerkt"
 
+msgid "Stop tracking"
+msgstr "Niet meer volgen"
+
 msgid "Stop watching"
 msgstr "Stoppen met volgen"
 
@@ -17820,6 +18057,9 @@ msgstr "Samenvatting"
 
 msgid "Summary only"
 msgstr "Alleen samenvatting"
+
+msgid "Sun"
+msgstr "Zo"
 
 msgid "sun 11:00"
 msgstr "zo 11:00"
@@ -18133,6 +18373,9 @@ msgstr "Taken en projecten"
 msgid "Tasks created in Paradev will be synced to this Linear team."
 msgstr "Taken die in Paradev worden gemaakt, worden naar dit Linear-team gesynchroniseerd."
 
+msgid "Tasks without worklogs"
+msgstr "Taken zonder geregistreerde tijd"
+
 msgid "Tasks, the CLI and agents follow this. Each member uses their own Linear account."
 msgstr "Taken, de CLI en agents volgen dit. Elk lid gebruikt een eigen Linear-account."
 
@@ -18340,6 +18583,9 @@ msgstr "Die naam is niet toegestaan."
 msgid "That run is missed and isn't retried. Use Run now to start it later."
 msgstr "Die run wordt gemist en niet opnieuw geprobeerd. Gebruik Nu uitvoeren om hem later te starten."
 
+msgid "That time happens twice on this day because the clock moves back. Jira received the first one."
+msgstr "Dat tijdstip komt op deze dag twee keer voor omdat de klok wordt teruggezet. Jira heeft het eerste ontvangen."
+
 msgid "The 2026 bet"
 msgstr "De weddenschap voor 2026"
 
@@ -18381,9 +18627,6 @@ msgstr "De aankondiging deelt ook de seedronde van $11,5 miljoen onder leiding v
 
 msgid "The app is free to download. It requires iOS 26 or later and Paradev Pro. Android is next."
 msgstr "De app is gratis te downloaden. Vereist iOS 26 of nieuwer en Paradev Pro. Android volgt hierna."
-
-msgid "The app is now Paradev++.app. The update moves Superset++.app to the Trash, so pin the new app in the Dock again."
-msgstr "De app heet nu Paradev++.app. De update verplaatst Superset++.app naar de prullenmand, dus zet de nieuwe app opnieuw vast in het Dock."
 
 msgid "The app is on {appVersion} but attached to a host service started by something else, likely an older CLI or another Paradev build. Restarting replaces it with this app's copy."
 msgstr "De app is op {appVersion}, maar gekoppeld aan een hostservice die door iets anders is gestart, waarschijnlijk een oudere CLI of een andere Paradev-build. Opnieuw starten vervangt die door de kopie van deze app."
@@ -18523,9 +18766,6 @@ msgstr "De begeleide terminal installeert gh met Homebrew en opent de GitHub-aan
 #. placeholder {0}: info.version
 msgid "The host came back on {0}, not {targetVersion}."
 msgstr "De host kwam terug op {0}, niet op {targetVersion}."
-
-msgid "The host checks every minute. Enabling a rule records existing matches; each new matching issue starts one workspace and agent. Rules are saved paused."
-msgstr "De host controleert elke minuut. Bij het inschakelen van een regel worden bestaande overeenkomsten vastgelegd; elke nieuwe overeenkomende issue start één workspace en agent. Regels worden gepauzeerd opgeslagen."
 
 msgid "The host did not come back within fifteen minutes."
 msgstr "De host was na vijftien minuten nog niet terug."
@@ -18740,6 +18980,9 @@ msgstr "De titel verschijnt overal waar deze pagina wordt vermeld en in het link
 msgid "The turn failed"
 msgstr "De beurt is mislukt"
 
+msgid "The workspace has one Chat action, with agent, account and model selection and your existing shortcut."
+msgstr "De workspace heeft één Chat-actie met selectie van agent, account en model en je bestaande sneltoets."
+
 msgid "The workspace is not ready yet. Try again."
 msgstr "De werkruimte is nog niet klaar. Probeer het opnieuw."
 
@@ -18772,6 +19015,9 @@ msgstr "Thema's"
 
 msgid "Themes and agents"
 msgstr "Thema's en agents"
+
+msgid "These automations run on this computer, not in the cloud. The host checks every minute. Enabling a rule records what already matches; only later matches start an agent. Rules are saved paused."
+msgstr "Deze automatiseringen draaien op deze computer, niet in de cloud. De host controleert elke minuut. Bij het inschakelen van een regel wordt vastgelegd wat al overeenkomt; alleen latere overeenkomsten starten een agent. Regels worden gepauzeerd opgeslagen."
 
 msgid "These commands run automatically when a workspace is created. <0>Read our docs<1/></0>"
 msgstr "Deze commando's draaien automatisch wanneer een werkruimte wordt aangemaakt. <0>Lees onze docs<1/></0>"
@@ -18917,6 +19163,9 @@ msgstr "Deze omgeving heeft geen repository's. Maak in Instellingen een omgeving
 
 msgid "This environment's repositories are fixed; promote a workspace again to change them"
 msgstr "De repositories van deze omgeving liggen vast; promoveer opnieuw een werkruimte om ze te wijzigen"
+
+msgid "This field must be completed in Jira."
+msgstr "Dit veld moet in Jira worden ingevuld."
 
 msgid "this file"
 msgstr "dit bestand"
@@ -19122,6 +19371,9 @@ msgstr "Deze thread heeft geen opmerking om op te reageren."
 msgid "This thread is not open to agents. A person has to comment on it before an agent can reply."
 msgstr "Deze thread is niet aan een agent overgedragen. Iemand moet hem eerst vanaf de pagina overdragen."
 
+msgid "This time was already logged in Jira"
+msgstr "Deze tijd is al in Jira geregistreerd"
+
 msgid "This update restarted your terminals once. New ones open in the same folders."
 msgstr "Deze update heeft je terminals eenmalig opnieuw gestart. Nieuwe openen in dezelfde mappen."
 
@@ -19222,6 +19474,9 @@ msgstr "Drie stappen · raakt packages/ui en apps/desktop"
 msgid "Threshold"
 msgstr "Drempel"
 
+msgid "Thu"
+msgstr "Do"
+
 msgid "Ticket to production under one day, median"
 msgstr "Ticket tot productie onder één dag, mediaan"
 
@@ -19230,6 +19485,12 @@ msgstr "Tier"
 
 msgid "Time"
 msgstr "Tijd"
+
+msgid "Time logged"
+msgstr "Geregistreerde tijd"
+
+msgid "Time tracking is turned off on this Jira site."
+msgstr "Tijdregistratie is uitgeschakeld op deze Jira-site."
 
 msgid "Tinted"
 msgstr "Getint"
@@ -19245,6 +19506,9 @@ msgstr "Naar"
 
 msgid "to {name}"
 msgstr "aan {name}"
+
+msgid "To check"
+msgstr "Te controleren"
 
 msgid "To do"
 msgstr "Te doen"
@@ -19266,6 +19530,9 @@ msgstr "Vandaag"
 
 msgid "TODAY"
 msgstr "VANDAAG"
+
+msgid "Today puts tasks without worklogs first, with 7, 30 and 90 day filters and a layout that adapts to your window."
+msgstr "Vandaag zet taken zonder geregistreerde tijd voorop, met filters voor 7, 30 en 90 dagen en een indeling die zich aan je venster aanpast."
 
 msgid "Todo"
 msgstr "Te doen"
@@ -19347,6 +19614,9 @@ msgstr "tokens per sessie, laatste 30 dagen"
 
 msgid "Tokens stay off your machine"
 msgstr "Tokens blijven van je machine af"
+
+msgid "Too late, skipped"
+msgstr "Te laat, overgeslagen"
 
 msgid "Too many dictations. Try again later."
 msgstr "Te veel dicteeropdrachten. Probeer het later opnieuw."
@@ -19530,6 +19800,9 @@ msgstr "Probeer het"
 
 msgid "Try now"
 msgstr "Nu proberen"
+
+msgid "Tue"
+msgstr "Di"
 
 msgid "Tufte"
 msgstr "Tufte"
@@ -19881,6 +20154,12 @@ msgstr "Hostservice bijwerken"
 msgid "Update in the App Store"
 msgstr "Bijwerken in de App Store"
 
+msgid "Update it with the same tool you used to install it."
+msgstr "Werk het bij met hetzelfde hulpprogramma waarmee u het hebt geïnstalleerd."
+
+msgid "Update Jira when work starts or a pull request opens."
+msgstr "Werk Jira bij wanneer het werk begint of een pull request wordt geopend."
+
 msgid "Update naming instructions"
 msgstr "Naamgevingsinstructies bijwerken"
 
@@ -19931,12 +20210,18 @@ msgstr "Bijgewerkt {date}"
 msgid "Updated {updatedRelative}"
 msgstr "Bijgewerkt {updatedRelative}"
 
+msgid "Updated in the last {days} days."
+msgstr "Bijgewerkt in de afgelopen {days} dagen."
+
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "Zojuist bijgewerkt vanaf {0}."
 
 msgid "Updates"
 msgstr "Updates"
+
+msgid "Updates are available for your agent tools."
+msgstr "Er zijn updates beschikbaar voor uw agent-tools."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -20149,6 +20434,9 @@ msgstr "Vercel AI Gateway"
 msgid "Vercel AI Gateway rejected this key."
 msgstr "Vercel AI Gateway heeft deze sleutel geweigerd."
 
+msgid "Verified"
+msgstr "Geverifieerd"
+
 msgid "Verified and saved"
 msgstr "Geverifieerd en opgeslagen"
 
@@ -20173,6 +20461,12 @@ msgstr "Versie"
 #. placeholder {0}: entry.version
 msgid "Version {0}"
 msgstr "Versie {0}"
+
+msgid "Version {installed}, {latest} is available."
+msgstr "Versie {installed}, {latest} is beschikbaar."
+
+msgid "Version {installed}, up to date."
+msgstr "Versie {installed}, up-to-date."
 
 msgid "Version {sharedVersion}"
 msgstr "Versie {sharedVersion}"
@@ -20356,6 +20650,9 @@ msgstr "Wacht op je invoer"
 msgid "Waits for the reset when no other account has quota."
 msgstr "Wacht op de reset als geen ander account quotum heeft."
 
+msgid "Waits for you"
+msgstr "Wacht op jou"
+
 msgid "Waking up workspace"
 msgstr "Werkruimte wordt gewekt"
 
@@ -20469,6 +20766,9 @@ msgstr "Webhook getriggerd"
 
 msgid "Website"
 msgstr "Website"
+
+msgid "Wed"
+msgstr "Wo"
 
 msgid "Week"
 msgstr "Week"
@@ -20611,6 +20911,9 @@ msgstr "Nieuw in Paradev++"
 msgid "What's next"
 msgstr "Wat volgt"
 
+msgid "When"
+msgstr "Wanneer"
+
 msgid "When a trigger fires, the Mac you picked opens a new workspace and the agent starts on your prompt. Event runs include the event, so the agent knows what to look at. Reply to the run to keep going."
 msgstr "Als een trigger afgaat, opent de gekozen Mac een nieuwe werkruimte en begint de agent aan je prompt. Runs vanuit een gebeurtenis bevatten die gebeurtenis, dus de agent weet waar hij naar moet kijken. Antwoord in de run om verder te gaan."
 
@@ -20620,11 +20923,17 @@ msgstr "Wanneer gekochte GB-uren dalen onder"
 msgid "When fewer than {topupThreshold} GB-hours remain, add {topupPrice} ({topupGbHours} GB-hours)."
 msgstr "Wanneer er minder dan {topupThreshold} GB-uren over zijn, {topupPrice} bijkopen ({topupGbHours} GB-uren)."
 
+msgid "When its status changes and it still matches"
+msgstr "Wanneer de status verandert en het nog overeenkomt"
+
 msgid "When off, nothing else can reach the files and tools on this device. You can still connect out to remote sandboxes from here. <0>Learn more<1/></0>"
 msgstr "Als dit uitstaat, kan niets anders bij de bestanden en tools op dit apparaat. Je kunt vanaf hier nog steeds verbinden met externe sandboxes. <0>Meer informatie<1/></0>"
 
 msgid "When quota runs out"
 msgstr "Als het quotum op is"
+
+msgid "When the agent finishes, the check command runs in the workspace. Exit code 0 marks the run as verified. Without a command, you mark it yourself. A launch that fails is retried after 1, 5 and 15 minutes; three failures in a row pause the rule."
+msgstr "Wanneer de agent klaar is, wordt de controleopdracht in de werkruimte uitgevoerd. Exitcode 0 markeert de run als geverifieerd. Zonder opdracht markeer je hem zelf. Een start die mislukt, wordt na 1, 5 en 15 minuten opnieuw geprobeerd; na drie mislukkingen op rij wordt de regel gepauzeerd."
 
 msgid "Where detected-port badges in the sidebar open when clicked."
 msgstr "Waar de badges van gedetecteerde poorten in de zijbalk openen bij een klik."
@@ -20716,6 +21025,9 @@ msgstr "Zakelijk e-mailadres"
 msgid "Work from tickets"
 msgstr "Werken vanuit tickets"
 
+msgid "Work started"
+msgstr "Werk gestart"
+
 msgid "Work the action items from a call"
 msgstr "Werk de actiepunten uit een gesprek af"
 
@@ -20732,6 +21044,9 @@ msgstr "{seconds} s gewerkt"
 
 msgid "Workflow run completed…"
 msgstr "Workflow-run afgerond…"
+
+msgid "Workflow statuses"
+msgstr "Workflowstatussen"
 
 msgid "Workflow Tutorials"
 msgstr "Workflow-tutorials"
@@ -20892,6 +21207,9 @@ msgstr "Worktrees"
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Worktrees worden van de schijf verwijderd; werkruimtes op de checkout van het project worden alleen gesloten. Bestanden in de checkout blijven ongewijzigd."
 
+msgid "Would start"
+msgstr "Zou starten"
+
 msgid "Would you like to reassign it?"
 msgstr "Wil je hem opnieuw toewijzen?"
 
@@ -20921,6 +21239,9 @@ msgstr "Schrijf docs voor het onderdeel waar iedereen naar vraagt…"
 
 msgid "Write once. Runs in every agent."
 msgstr "Eén keer schrijven. Draait in elke agent."
+
+msgid "Write the duration as 45m, 1h 30m or 2h."
+msgstr "Schrijf de duur als 45m, 1h 30m of 2h."
 
 msgid "Writing code is no longer where engineer hours go. Reading it is. Teams that adopted parallel agents in 2025 hit the wall first: ten agents can produce more diffs before lunch than a team can honestly review by Friday."
 msgstr "Code schrijven is niet meer waar de uren van engineers heen gaan. Code lezen wel. Teams die in 2025 parallelle agents omarmden, liepen als eerste tegen de muur: tien agents produceren voor de lunch meer diffs dan een team eerlijk kan reviewen vóór vrijdag."
@@ -21158,6 +21479,9 @@ msgstr "Je GitHub-account kan een repository van deze omgeving niet bereiken"
 msgid "Your GitHub link comes from the account you signed in with, so it shows as verified and cannot be edited here."
 msgstr "Je GitHub-link komt van het account waarmee je bent ingelogd, daarom staat hij als geverifieerd en kun je hem hier niet bewerken."
 
+msgid "Your Jira account cannot log time on this issue."
+msgstr "Je Jira-account kan geen tijd registreren op deze issue."
+
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Je laatste betaling is mislukt. Werk je betaalmethode bij om Pro te behouden."
 
@@ -21216,6 +21540,9 @@ msgstr "Je abonnement is actief. De functies van je nieuwe abonnement zijn klaar
 
 msgid "Your subscription will be adjusted accordingly."
 msgstr "Je abonnement wordt hierop aangepast."
+
+msgid "Your tasks, reviews and agents in one place."
+msgstr "Je taken, reviews en agents op één plek."
 
 msgid "Your teammates can talk directly to your agent."
 msgstr "Je teamgenoten kunnen rechtstreeks met je agent praten."
