@@ -124,6 +124,7 @@ export function ForkJiraAutomations({
 						launch: {
 							surface: choice.surface,
 							model: choice.model,
+							effort: choice.effort,
 							accountSelection: choice.accountSelection,
 						},
 					}
@@ -207,6 +208,7 @@ export function ForkJiraAutomations({
 			agent: rule.agent,
 			surface: rule.launch?.surface === "terminal" ? "terminal" : "chat",
 			model: rule.launch?.model ?? undefined,
+			effort: rule.launch?.effort ?? undefined,
 			accountSelection: rule.launch?.accountSelection ?? undefined,
 		});
 		const config = (rule.options?.sourceConfig ?? {}) as {
@@ -248,13 +250,13 @@ export function ForkJiraAutomations({
 				</span>
 			</Button>
 			<Dialog open={open} onOpenChange={setOpen}>
-				<DialogContent className="max-h-[85vh] overflow-auto sm:max-w-2xl">
-					<DialogHeader>
+				<DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-3xl p-0 gap-0">
+					<DialogHeader className="sticky top-0 z-10 border-b bg-background px-6 py-5">
 						<DialogTitle>
 							<Trans>Jira automations</Trans>
 						</DialogTitle>
 					</DialogHeader>
-					<p className="text-xs text-muted-foreground">
+					<p className="px-6 pt-4 text-xs leading-relaxed text-muted-foreground">
 						<Trans>
 							These automations run on this computer, not in the cloud. The host
 							checks every minute. Enabling a rule records what already matches;
@@ -277,7 +279,7 @@ export function ForkJiraAutomations({
 						</p>
 					)}
 					{v2 && <ForkAutomationLimits />}
-					<div className="space-y-2">
+					<div className="space-y-2 px-6 py-4">
 						{rules.data?.map((rule) => (
 							<ForkAutomationRuleCard
 								key={rule.id}
@@ -287,7 +289,7 @@ export function ForkJiraAutomations({
 						))}
 					</div>
 					<form
-						className="space-y-3 border-t pt-4"
+						className="space-y-4 border-t bg-muted/10 p-6"
 						onSubmit={(event) => {
 							event.preventDefault();
 							mutation.mutate();
@@ -449,6 +451,7 @@ export function ForkJiraAutomations({
 							value={choice}
 							onChange={setChoice}
 							supported={launchSupported}
+							projectId={projectId || undefined}
 						/>
 						{v2 && (
 							<ForkAutomationOptions
@@ -462,6 +465,7 @@ export function ForkJiraAutomations({
 							<Trans>Instructions</Trans>
 						</Label>
 						<Textarea
+							className="min-h-32 resize-y bg-background"
 							id="jira-rule-prompt"
 							required
 							value={prompt}
@@ -471,6 +475,8 @@ export function ForkJiraAutomations({
 						<Button
 							type="submit"
 							disabled={
+								!choice.agent ||
+								!projectId ||
 								mutation.isPending ||
 								(isJira && !advanced && filtersUnavailable)
 							}

@@ -6892,9 +6892,6 @@ msgstr "Bawaan ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "Bawaan ({fallback})"
 
-msgid "Default account"
-msgstr "Akun default"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Dasar default untuk ruang kerja baru. Dapat diganti per ruang kerja saat dibuat."
 

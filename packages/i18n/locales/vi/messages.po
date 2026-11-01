@@ -6892,9 +6892,6 @@ msgstr "Mặc định ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "Mặc định ({fallback})"
 
-msgid "Default account"
-msgstr "Tài khoản mặc định"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Nhánh cơ sở mặc định cho không gian làm việc mới. Có thể ghi đè riêng khi tạo."
 

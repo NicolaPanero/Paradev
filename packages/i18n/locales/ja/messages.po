@@ -6892,9 +6892,6 @@ msgstr "デフォルト({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "デフォルト ({fallback})"
 
-msgid "Default account"
-msgstr "デフォルトのアカウント"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "新しいワークスペースの既定のベース。作成時に個別に変更できます。"
 
