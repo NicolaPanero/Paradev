@@ -571,14 +571,17 @@ non trasferisce automaticamente i suoi dati nell’app ufficiale.
 
 Le build pubblicate usano l’aggiornatore del fork: il primo controllo avviene
 circa un minuto dopo l’avvio, poi ogni 15 minuti. Un controllo viene eseguito
-anche tornando all’app o riattivando il computer, con un intervallo minimo di
-un minuto per evitare richieste ripetute durante i cambi di finestra.
+anche tornando all’app o riattivando il computer, al massimo ogni 10 minuti.
+Il controllo legge l’ultima release dal redirect web di `releases/latest`,
+fuori dal limite di 60 richieste l’ora per IP delle API REST di GitHub, che in
+un ufficio è condiviso da tutti; l’API REST serve solo a verificare checksum e
+archivio della release che si sta installando.
 La disponibilità di un aggiornamento compare in basso a destra, nella finestra
 in primo piano, senza interrompere la chat. **Later** nasconde solo quella
 release; una release successiva genera un nuovo avviso. Se l’app è in background,
 l’avviso resta in attesa del ritorno alla finestra. **Check for Updates** avvia
 una verifica manuale e ripropone la release rimandata nella finestra nativa.
-I controlli usano richieste condizionali e rispettano i limiti di GitHub.
+Se GitHub limita le richieste, i controlli attendono la scadenza indicata da GitHub.
 Con **Install and restart**, l’app mostra una finestra di avanzamento e resta
 aperta finché download, checksum e preparazione del bundle non sono completati.
 Chiudere la finestra di avanzamento annulla la preparazione. Il riavvio ha un
