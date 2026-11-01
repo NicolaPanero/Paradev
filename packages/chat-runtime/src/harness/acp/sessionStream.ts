@@ -5,7 +5,6 @@ import type {
 	ToolCall,
 	ToolContent,
 } from "@superset/chat/protocol";
-import { withoutImageData } from "./imageBlocks";
 import {
 	mapToolBody,
 	mcpServerOf,
@@ -26,6 +25,7 @@ import {
 	acpToolCallContentChunkSchema,
 	acpToolCallUpdateSchema,
 } from "./wire";
+import { withoutImageData } from "./withoutImageData";
 
 export function messageIdOf(raw: unknown): string | null {
 	const messageId = (raw as { messageId?: unknown }).messageId;

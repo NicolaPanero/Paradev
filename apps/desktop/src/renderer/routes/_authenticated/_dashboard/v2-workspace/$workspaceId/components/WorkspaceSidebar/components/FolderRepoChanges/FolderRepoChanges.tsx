@@ -13,6 +13,7 @@ interface FolderRepoChangesProps {
 		line?: number,
 		side?: undefined,
 		changeKey?: string,
+		filter?: undefined,
 		repoKey?: string,
 	) => void;
 	onSelectFile: (absolutePath: string, openInNewTab?: boolean) => void;
@@ -35,6 +36,7 @@ function FolderRepoChangesContent({
 						undefined,
 						undefined,
 						changeKey,
+						undefined,
 						repoKey,
 					)
 			: undefined,

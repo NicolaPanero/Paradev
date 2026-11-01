@@ -95,7 +95,7 @@ class Worker implements HarnessAdapter {
 		});
 	}
 	fail(
-		message = "session/prompt: Internal error: You've hit your limit · resets 5pm",
+		message = "Internal error: You've hit your limit · resets 5pm",
 		providerCode?: string,
 	) {
 		this.queue.push({
@@ -285,7 +285,7 @@ test("official ACP runtime preserves Claude JSON-RPC quota errors for recovery",
 			(e) => e.kind === "turn" && e.turn.status === "failed",
 		);
 		expect(failure?.kind === "turn" && failure.turn.error?.message).toBe(
-			"session/prompt: Internal error: You've hit your limit · resets 5pm",
+			"Internal error: You've hit your limit · resets 5pm",
 		);
 		expect(
 			failure?.kind === "turn" &&

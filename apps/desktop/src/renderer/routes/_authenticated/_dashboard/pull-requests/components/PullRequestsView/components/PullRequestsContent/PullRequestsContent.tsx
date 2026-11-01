@@ -74,7 +74,6 @@ export function PullRequestsContent({
 				"pullRequests",
 				"searchPullRequests",
 				target.key,
-				target.hostUrl,
 				debouncedQuery.trim(),
 				authorFilter,
 				reviewFilter,
@@ -116,6 +115,13 @@ export function PullRequestsContent({
 			gcTime: 10 * 60_000,
 			networkMode: "always",
 			refetchOnReconnect: true,
+			meta: {
+				persist:
+					page === 1 &&
+					!debouncedQuery.trim() &&
+					!authorFilter &&
+					!reviewFilter,
+			},
 		}),
 		getRows: (data) => data.pullRequests,
 		getRowKey: (pullRequest) =>

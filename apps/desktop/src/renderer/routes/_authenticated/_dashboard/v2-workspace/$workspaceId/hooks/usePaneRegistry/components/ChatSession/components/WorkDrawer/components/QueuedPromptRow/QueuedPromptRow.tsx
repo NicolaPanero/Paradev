@@ -7,12 +7,18 @@ import {
 	QueueItemActions,
 	QueueItemContent,
 } from "@superset/ui/ai-elements/queue";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@superset/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
 import {
 	CornerDownRight,
+	Ellipsis,
 	FileTextIcon,
 	ListEnd,
-	Pencil,
 	Trash2,
 } from "lucide-react";
 import { parseAttachmentTags } from "../../../../utils/attachmentTags";
@@ -22,8 +28,10 @@ export function QueuedPromptRow({
 	tabbable,
 	prompt,
 	actionable,
+	editing,
 	pending = false,
 	onEdit,
+	onEditEnd,
 	onRemove,
 	onSteer,
 }: {
@@ -31,8 +39,10 @@ export function QueuedPromptRow({
 	tabbable: boolean;
 	prompt: UserMessage;
 	actionable: boolean;
+	editing: boolean;
 	pending?: boolean;
-	onEdit: (prompt: UserMessage) => void;
+	onEdit: () => void;
+	onEditEnd: (text: string | null) => void;
 	onRemove: (id: string) => void;
 	onSteer: (id: string) => void;
 }) {
@@ -51,6 +61,13 @@ export function QueuedPromptRow({
 	const label =
 		text ||
 		(pastedTexts[0] ? firstLine(pastedTexts[0]) : attachmentNames.join(", "));
+	const finishEdit = (next: string | null) => {
+		if (!editing) return;
+		const trimmed = next?.trim() ?? "";
+		onEditEnd(
+			next !== null && trimmed !== "" && trimmed !== text ? next : null,
+		);
+	};
 
 	return (
 		<div
@@ -62,9 +79,31 @@ export function QueuedPromptRow({
 			tabIndex={tabbable ? 0 : -1}
 		>
 			<ListEnd className="size-3.5 shrink-0 text-muted-foreground" />
-			<QueueItemContent className="min-w-0 truncate text-foreground">
-				{label}
-			</QueueItemContent>
+			{editing ? (
+				<textarea
+					aria-label={t({ message: "Edit queued message" })}
+					// biome-ignore lint/a11y/noAutofocus: the user just asked to edit this row
+					autoFocus
+					className="field-sizing-content min-w-0 flex-1 resize-none bg-transparent py-0.5 text-foreground outline-none"
+					defaultValue={text}
+					onBlur={(event) => finishEdit(event.currentTarget.value)}
+					onKeyDown={(event) => {
+						event.stopPropagation();
+						if (event.key === "Enter" && !event.shiftKey) {
+							event.preventDefault();
+							finishEdit(event.currentTarget.value);
+						} else if (event.key === "Escape") {
+							event.preventDefault();
+							finishEdit(null);
+						}
+					}}
+					rows={1}
+				/>
+			) : (
+				<QueueItemContent className="min-w-0 truncate text-foreground">
+					{label}
+				</QueueItemContent>
+			)}
 			{pastedTexts.map((pasted, index) => {
 				const lines = countLines(pasted);
 				return (
@@ -80,13 +119,13 @@ export function QueuedPromptRow({
 					</span>
 				);
 			})}
-			{actionable && (
+			{actionable && !editing && (
 				<QueueItemActions className="shrink-0 items-center">
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<QueueItemAction
-								className="gap-1 px-1.5 py-0.5 font-normal text-xs opacity-100"
 								disabled={pending}
+								className="gap-1 px-1.5 py-0.5 font-normal text-xs opacity-100"
 								onClick={() => onSteer(prompt.id)}
 							>
 								<CornerDownRight className="size-3.5" />
@@ -98,28 +137,29 @@ export function QueuedPromptRow({
 						</TooltipContent>
 					</Tooltip>
 					<QueueItemAction
+						disabled={pending}
 						aria-label={t({ message: "Remove queued message" })}
 						className="size-6 opacity-100"
-						disabled={pending}
 						onClick={() => onRemove(prompt.id)}
 					>
 						<Trash2 className="size-3.5" />
 					</QueueItemAction>
-					<Tooltip>
-						<TooltipTrigger asChild>
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild>
 							<QueueItemAction
-								aria-label={t({ message: "Edit" })}
-								className="size-6 opacity-100"
 								disabled={pending}
-								onClick={() => onEdit(prompt)}
+								aria-label={t({ message: "More actions" })}
+								className="size-6 opacity-100"
 							>
-								<Pencil className="size-3.5" />
+								<Ellipsis className="size-3.5" />
 							</QueueItemAction>
-						</TooltipTrigger>
-						<TooltipContent>
-							<Trans>Edit</Trans>
-						</TooltipContent>
-					</Tooltip>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent align="end">
+							<DropdownMenuItem onSelect={onEdit}>
+								<Trans>Edit</Trans>
+							</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
 				</QueueItemActions>
 			)}
 		</div>

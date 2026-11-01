@@ -1,8 +1,12 @@
+import type { ComposerChip } from "@superset/chat-ui/PromptInput";
 import {
 	type ForkTask,
 	forkTaskBranch,
 } from "@superset/shared/fork-integrations";
+import { SiJira } from "react-icons/si";
 import type { HostServiceClient } from "renderer/lib/host-service-client";
+import { iconDataUrl } from "renderer/routes/_authenticated/components/AgentComposer/utils/iconDataUrl";
+import { linkedIssueChip } from "renderer/routes/_authenticated/components/AgentComposer/utils/linkedContextChips";
 import { deriveBranchName } from "renderer/routes/_authenticated/utils/deriveBranchName";
 import type {
 	LinkedIssue,
@@ -11,6 +15,7 @@ import type {
 import { useNewWorkspacePromptContextStore } from "renderer/stores/new-workspace-prompt-context/store";
 
 const JIRA_SOURCE = "jira" as const;
+const JIRA_BLUE = "#2684FF";
 
 const bodyKey = (issue: LinkedIssue) =>
 	`jira-issue:${issue.forkJira?.connectionId ?? ""}:${issue.slug}`;
@@ -140,4 +145,52 @@ export async function forkStartJiraWork(
 					);
 			}),
 	);
+}
+
+/** The composer chip for a Jira issue: the agent prompt and submit read it like any linked issue. */
+export function forkJiraChip(issue: LinkedIssue): ComposerChip {
+	return {
+		...linkedIssueChip(issue, false),
+		iconUrl: iconDataUrl(SiJira, JIRA_BLUE),
+	};
+}
+
+/** Names follow Jira issues added to or removed from the composer, unless the user changed them. */
+export function forkJiraNamingPatch(
+	before: LinkedIssue[],
+	after: LinkedIssue[],
+	draft: Pick<
+		NewWorkspaceDraft,
+		"branchName" | "branchNameEdited" | "workspaceName" | "workspaceNameEdited"
+	>,
+): Partial<NewWorkspaceDraft> {
+	const removed = before.find(
+		(issue) =>
+			issue.source === JIRA_SOURCE &&
+			!after.some((next) => next.slug === issue.slug),
+	);
+	if (removed) return forkJiraUnlinkPatch(removed, after, draft);
+	const added = after.find(
+		(issue) =>
+			issue.source === JIRA_SOURCE &&
+			!before.some((prev) => prev.slug === issue.slug),
+	);
+	if (!added) return {};
+	return {
+		...(!draft.branchNameEdited && !draft.branchName.trim()
+			? {
+					branchName:
+						added.forkJira?.branchName ??
+						forkTaskBranch(added.slug, added.title),
+					branchNameEdited: true,
+					branchNameFromProvider: false,
+				}
+			: {}),
+		...(!draft.workspaceNameEdited && !draft.workspaceName.trim()
+			? {
+					workspaceName: `${added.slug} ${added.title}`,
+					workspaceNameEdited: true,
+				}
+			: {}),
+	};
 }

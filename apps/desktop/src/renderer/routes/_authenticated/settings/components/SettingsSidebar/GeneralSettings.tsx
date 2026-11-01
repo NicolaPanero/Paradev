@@ -26,11 +26,14 @@ import {
 	HiOutlinePaintBrush,
 	HiOutlinePuzzlePiece,
 	HiOutlineShieldCheck,
+	HiOutlineSquares2X2,
 	HiOutlineUser,
 	HiOutlineUserGroup,
 } from "react-icons/hi2";
 import { LuGitBranch, LuKeyboard, LuKeyRound, LuLink } from "react-icons/lu";
+import { env } from "renderer/env.renderer";
 import { useHostsNeedingUpdateCount } from "renderer/hooks/host-version/useHostsNeedingUpdate";
+import { useIsOrganizationAdmin } from "renderer/hooks/useIsOrganizationAdmin";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { useForkProFeatures } from "renderer/stores/fork-cli-options";
@@ -63,6 +66,7 @@ type SettingsRoute =
 	| "/settings/agent-accounts"
 	| "/settings/experimental"
 	| "/settings/integrations"
+	| "/settings/plugins"
 	| "/settings/billing"
 	| "/settings/api-keys"
 	| "/settings/security"
@@ -77,6 +81,7 @@ interface SectionItem {
 	label: MessageDescriptor;
 	icon: React.ReactNode;
 	macOnly?: boolean;
+	adminOnly?: boolean;
 	/** Content wants the full pane width instead of the default centered max-w-4xl column. */
 	fullWidth?: boolean;
 }
@@ -283,6 +288,15 @@ const SECTION_GROUPS: SectionGroup[] = [
 				icon: <HiOutlinePuzzlePiece className="h-4 w-4" />,
 			},
 			{
+				id: "/settings/plugins",
+				section: "plugins",
+				label: msg({
+					message: "Plugins",
+				}),
+				icon: <HiOutlineSquares2X2 className="h-4 w-4" />,
+				adminOnly: true,
+			},
+			{
 				id: "/settings/billing",
 				section: "billing",
 				label: msg({
@@ -353,6 +367,9 @@ export const FULL_WIDTH_SECTION_PATHS: readonly string[] =
 
 export function GeneralSettings({ matchCounts }: GeneralSettingsProps) {
 	const mobileEnabled = useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_LAUNCH);
+	const pluginsFlag = useFeatureFlagEnabled(FEATURE_FLAGS.PLUGINS);
+	const pluginsEnabled = env.NODE_ENV === "development" || pluginsFlag === true;
+	const isAdmin = useIsOrganizationAdmin() === true;
 	const matchRoute = useMatchRoute();
 	const hostsNeedingUpdate = useHostsNeedingUpdateCount();
 	const { data: platform } = electronTrpc.window.getPlatform.useQuery();
@@ -378,6 +395,8 @@ export function GeneralSettings({ matchCounts }: GeneralSettingsProps) {
 					(item) =>
 						(!item.macOnly || isMac) &&
 						(item.section !== "mobile" || mobileEnabled === true) &&
+						(item.section !== "plugins" || pluginsEnabled) &&
+						(!item.adminOnly || isAdmin) &&
 						allowedSections.has(item.section),
 				);
 				const filteredItems = matchCounts

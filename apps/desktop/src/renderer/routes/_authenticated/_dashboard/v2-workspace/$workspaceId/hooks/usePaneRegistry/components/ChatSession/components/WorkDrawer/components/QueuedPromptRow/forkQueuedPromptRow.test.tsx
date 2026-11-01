@@ -1,35 +1,31 @@
 import { expect, test } from "bun:test";
 import type { UserMessage } from "@superset/chat/protocol";
-import { fireEvent, render } from "renderer/test-utils/fork-ui";
+import { render } from "renderer/test-utils/fork-ui";
 import { QueuedPromptRow } from "./QueuedPromptRow";
 
-test("the edit pencil works for an image message without opening a single-action menu", () => {
+test("a prompt still on its way to the host cannot be steered, removed or edited", () => {
 	const prompt: UserMessage = {
-		id: "queued",
+		id: "pending:queued",
 		kind: "user_message",
 		startedAtMs: 1,
-		content: [
-			{
-				type: "text",
-				text: 'Review\n<attachment path=".superset/attachments/screen.png" type="image/png" />',
-			},
-		],
+		content: [{ type: "text", text: "Review" }],
 	};
-	let edited: UserMessage | undefined;
 	const view = render(
 		<QueuedPromptRow
 			actionable
+			editing={false}
+			pending
 			rowKey="queued:queued"
 			tabbable
 			prompt={prompt}
-			onEdit={(value) => {
-				edited = value;
-			}}
+			onEdit={() => {}}
+			onEditEnd={() => {}}
 			onRemove={() => {}}
 			onSteer={() => {}}
 		/>,
 	);
-	fireEvent.click(view.getByRole("button", { name: "Edit" }));
-	expect(edited).toBe(prompt);
-	expect(view.queryByRole("button", { name: "More actions" })).toBeNull();
+	for (const name of ["Steer", "Remove queued message", "More actions"])
+		expect(view.getByRole("button", { name }).hasAttribute("disabled")).toBe(
+			true,
+		);
 });

@@ -16,6 +16,7 @@ import {
 	reportBootError,
 } from "./lib/boot-errors";
 import { installForkImageContextMenu } from "./lib/fork-image-context-menu";
+import { parseDeepLinkPath } from "./lib/parseDeepLinkPath";
 import { sweepDeadPersistedKeys } from "./lib/persisted-keys";
 import { persistentHistory } from "./lib/persistent-hash-history";
 import { posthog } from "./lib/posthog";
@@ -53,7 +54,8 @@ const unsubscribe = router.subscribe("onResolved", (event) => {
 
 const handleDeepLink = (path: string) => {
 	console.log("[deep-link] Navigating to:", path);
-	router.navigate({ href: path });
+	const { to, search } = parseDeepLinkPath(path);
+	router.navigate({ to, search } as never);
 };
 const ipcRenderer = window.ipcRenderer as typeof window.ipcRenderer | undefined;
 if (ipcRenderer) {

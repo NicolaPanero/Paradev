@@ -1,33 +1,25 @@
 import { useCallback } from "react";
-import { useAcpChatStore } from "renderer/stores/acp-chat";
+import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import {
-	useForkCliOptions,
-	useForkCliOptionsStore,
-} from "renderer/stores/fork-cli-options";
-import { useSettings } from "renderer/stores/settings";
-import { forkAcpChatChoice } from "./fork-acp-chat-choice";
+	forkResolveAcpChatChoice,
+	useForkAcpChatChoice,
+} from "./fork-acp-chat-choice";
 
-export type AcpChatAvailability = "enabled" | "disabled" | "resolving";
-
-export function useAcpChatEnabled(): AcpChatAvailability {
-	const advanced = useForkCliOptions();
-	const chosen = useAcpChatStore((state) => state.enabled);
-	const legacy = useSettings((state) => state.acpChatEnabled !== false);
-	return forkAcpChatChoice({ advanced, chosen, legacy })
-		? "enabled"
-		: "disabled";
+export function useAcpChatEnabled(): boolean {
+	const { data } = cloudTrpc.userSettings.get.useQuery();
+	return useForkAcpChatChoice(data?.experimentalChat === true);
 }
 
-export function useAwaitAcpChatEnabled(): () => Promise<boolean> {
+/** For choosing chat or terminal at launch: waits for the setting instead of reading "off" while it loads. */
+export function useResolveAcpChatEnabled(): () => Promise<boolean> {
+	const utils = cloudTrpc.useUtils();
 	return useCallback(
 		() =>
-			Promise.resolve(
-				forkAcpChatChoice({
-					advanced: useForkCliOptionsStore.getState().showCliOptions,
-					chosen: useAcpChatStore.getState().enabled,
-					legacy: useSettings.getState().acpChatEnabled !== false,
-				}),
-			),
-		[],
+			utils.userSettings.get
+				.ensureData()
+				.then((settings) => settings.experimentalChat)
+				.catch(() => false)
+				.then(forkResolveAcpChatChoice),
+		[utils],
 	);
 }

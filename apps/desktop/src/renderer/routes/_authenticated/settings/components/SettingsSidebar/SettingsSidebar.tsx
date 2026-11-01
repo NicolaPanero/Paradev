@@ -9,6 +9,7 @@ import {
 	HiXMark,
 } from "react-icons/hi2";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";
+import { usePluginsSettingsVisible } from "renderer/hooks/usePluginsSettingsVisible";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { AppMenuButton } from "renderer/routes/_authenticated/_dashboard/components/AppMenuButton";
 import { NavigationControls } from "renderer/routes/_authenticated/_dashboard/components/NavigationControls";
@@ -42,8 +43,7 @@ export function SettingsSidebar() {
 		useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_LAUNCH) === true;
 	const cloudWorkspacesEnabled =
 		useFeatureFlagEnabled(FEATURE_FLAGS.CLOUD_WORKSPACES) === true;
-	const rightPaneAreaFlag =
-		useFeatureFlagEnabled(FEATURE_FLAGS.RIGHT_PANE_AREA) === true;
+	const pluginsVisible = usePluginsSettingsVisible();
 	const acpChatFlag = useForkCliOptions();
 	const normalizedSearchQuery = searchQuery.trim();
 	const matchCounts = normalizedSearchQuery
@@ -52,7 +52,7 @@ export function SettingsSidebar() {
 				isV2CloudEnabled,
 				cloudWorkspacesEnabled,
 				mobileEnabled,
-				rightPaneAreaFlag,
+				pluginsVisible,
 				acpChatFlag,
 				!showProFeatures,
 			)

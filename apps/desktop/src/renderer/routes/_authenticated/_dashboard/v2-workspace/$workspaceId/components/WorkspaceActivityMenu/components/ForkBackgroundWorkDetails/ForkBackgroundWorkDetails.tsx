@@ -11,7 +11,7 @@ import {
 } from "@superset/ui/dialog";
 import { workspaceTrpc } from "@superset/workspace-client";
 import { useEffect, useRef } from "react";
-import type { BackgroundWork } from "../../utils/collectBackgroundWork";
+import type { AgentWork } from "../../utils/collectAgentWork";
 
 export function ForkBackgroundWorkDetails({
 	work,
@@ -22,15 +22,15 @@ export function ForkBackgroundWorkDetails({
 	onOpenChat,
 	onStop,
 }: {
-	work: BackgroundWork | null;
+	work: AgentWork | null;
 	source?: string;
 	now: number;
 	stopping: boolean;
 	onClose: () => void;
-	onOpenChat: (work: BackgroundWork) => void;
-	onStop: (work: BackgroundWork) => void;
+	onOpenChat: (work: AgentWork) => void;
+	onStop: (work: AgentWork) => void;
 }) {
-	const outputTaskId = work?.outputTaskId;
+	const outputTaskId = work?.kind === "shell" ? work.taskId : undefined;
 	const output = workspaceTrpc.agents.backgroundTaskOutput.useQuery(
 		{ terminalId: work?.terminalId ?? "", taskId: outputTaskId ?? "" },
 		{ enabled: !!outputTaskId, retry: false, refetchInterval: 2_000 },
@@ -64,9 +64,9 @@ export function ForkBackgroundWorkDetails({
 						<pre className="max-h-24 overflow-auto whitespace-pre-wrap break-words rounded-md bg-muted p-3 font-mono text-xs">
 							{work.name}
 						</pre>
-						{work.detail && (
+						{work.step && (
 							<p className="whitespace-pre-wrap break-words text-sm text-muted-foreground">
-								{work.detail}
+								{work.step}
 							</p>
 						)}
 						{outputTaskId &&
@@ -96,7 +96,7 @@ export function ForkBackgroundWorkDetails({
 					</div>
 				)}
 				<DialogFooter>
-					{work?.stop && (
+					{work?.canStop && (
 						<Button
 							variant="outline"
 							disabled={stopping}

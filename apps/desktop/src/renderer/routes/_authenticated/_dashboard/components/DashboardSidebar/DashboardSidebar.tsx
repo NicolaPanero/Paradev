@@ -44,6 +44,8 @@ import {
 } from "./components/DashboardSidebarActiveWorkspaceSwitcher";
 import { DashboardSidebarBulkActions } from "./components/DashboardSidebarBulkActions";
 import { DashboardSidebarBulkDeleteMount } from "./components/DashboardSidebarBulkDeleteMount";
+import { DashboardSidebarChannelsSection } from "./components/DashboardSidebarChannelsSection";
+import { DashboardSidebarDevsSection } from "./components/DashboardSidebarDevsSection";
 import { DashboardSidebarGithubNotice } from "./components/DashboardSidebarGithubNotice";
 import { DashboardSidebarHeader } from "./components/DashboardSidebarHeader";
 import { DashboardSidebarHiddenProjects } from "./components/DashboardSidebarHiddenProjects";
@@ -166,6 +168,8 @@ const DashboardSidebarContent = memo(function DashboardSidebarContent({
 	const isCloudEnabled =
 		useFeatureFlagEnabled(FEATURE_FLAGS.CLOUD_WORKSPACES) === true &&
 		forkProFeatures;
+	const isChannelsEnabled =
+		useFeatureFlagEnabled(FEATURE_FLAGS.CHANNELS) === true && forkProFeatures;
 	const {
 		groups,
 		hiddenProjects,
@@ -513,6 +517,12 @@ const DashboardSidebarContent = memo(function DashboardSidebarContent({
 										<ForkServiceNotices
 											hidden={isCollapsed || workspacesListCollapsed}
 										/>
+										{isChannelsEnabled && !isCollapsed && (
+											<>
+												<DashboardSidebarChannelsSection />
+												<DashboardSidebarDevsSection />
+											</>
+										)}
 										{(isCollapsed || !workspacesListCollapsed) && (
 											<DashboardSidebarPinnedSection
 												pinnedWorkspaces={displayedPinnedWorkspaces}

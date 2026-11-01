@@ -1,4 +1,9 @@
-import { WorkerPoolContextProvider } from "@pierre/diffs/react";
+import { canUseWASM } from "@pierre/diffs";
+import {
+	type WorkerInitializationRenderOptions,
+	WorkerPoolContextProvider,
+	type WorkerPoolOptions,
+} from "@pierre/diffs/react";
 import { Button } from "@superset/ui/button";
 import { Spinner } from "@superset/ui/spinner";
 import {
@@ -12,7 +17,6 @@ import { useEffect, useRef, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HiOutlineWifi } from "react-icons/hi2";
 import { ForkAgentCliUpdateNotice } from "renderer/components/ForkAgentCliUpdates";
-import { NewWorkspaceModal } from "renderer/components/NewWorkspaceModal";
 import { Paywall } from "renderer/components/Paywall";
 import { Redirect } from "renderer/components/Redirect";
 import { env } from "renderer/env.renderer";
@@ -28,9 +32,11 @@ import { isForkProRoute } from "renderer/lib/fork-settings-visibility";
 import { terminalRuntimeRegistry } from "renderer/lib/terminal/terminal-runtime-registry";
 import { showWorkspaceAutoNameWarningToast } from "renderer/lib/workspaces/showWorkspaceAutoNameWarningToast";
 import { InitGitDialog } from "renderer/react-query/projects/InitGitDialog";
+import { ChannelsRealtime } from "renderer/routes/_authenticated/components/ChannelsRealtime";
 import { DaemonAutoUpdateFailureDialog } from "renderer/routes/_authenticated/components/DaemonAutoUpdateFailureDialog";
 import { DiffThemeSync } from "renderer/routes/_authenticated/components/DiffThemeSync";
 import { LeaderboardAutoPublish } from "renderer/routes/_authenticated/components/LeaderboardAutoPublish";
+import { OrganizationPluginSync } from "renderer/routes/_authenticated/components/OrganizationPluginSync";
 import { PendingDeletionScreen } from "renderer/routes/_authenticated/components/PendingDeletionScreen";
 import { PostHogPlanFlags } from "renderer/routes/_authenticated/components/PostHogPlanFlags";
 import { RealtimeNudges } from "renderer/routes/_authenticated/components/RealtimeNudges";
@@ -89,6 +95,18 @@ const createOrganizationRedirect = (
 const onboardingRedirect = <Redirect to="/onboarding" replace />;
 
 const SESSION_PENDING_TIMEOUT_MS = 15_000;
+
+const HIGHLIGHT_WITH_WASM = canUseWASM();
+const PIERRE_POOL_OPTIONS: WorkerPoolOptions = HIGHLIGHT_WITH_WASM
+	? {
+			workerFactory: createPierreWorker,
+			poolSize: 2,
+			mainThreadMaxCharacters: 200_000,
+		}
+	: { workerFactory: createPierreWorker, poolSize: 8 };
+const PIERRE_HIGHLIGHTER_OPTIONS: WorkerInitializationRenderOptions = {
+	preferredHighlighter: HIGHLIGHT_WITH_WASM ? "highlights" : "shiki-js",
+};
 
 function AuthenticatedLayout() {
 	const {
@@ -347,11 +365,8 @@ function AuthenticatedLayout() {
 						<HostWorkspacesProvider>
 							<TagFolderWorkspacesProvider>
 								<WorkerPoolContextProvider
-									poolOptions={{
-										workerFactory: createPierreWorker,
-										poolSize: 8,
-									}}
-									highlighterOptions={{ preferredHighlighter: "shiki-wasm" }}
+									poolOptions={PIERRE_POOL_OPTIONS}
+									highlighterOptions={PIERRE_HIGHLIGHTER_OPTIONS}
 								>
 									<DiffThemeSync />
 									<AgentHooks />
@@ -360,7 +375,9 @@ function AuthenticatedLayout() {
 									<DockBadgeController />
 									<StarNagObserver />
 									<LeaderboardAutoPublish />
+									<OrganizationPluginSync />
 									<RealtimeNudges />
+									<ChannelsRealtime />
 									<DaemonAutoUpdateFailureDialog />
 									<ForkAgentCliUpdateNotice />
 									<Outlet />
@@ -381,8 +398,6 @@ function AuthenticatedLayout() {
 									)}
 									<V1AutoMigration />
 									<WorkspaceInitEffects />
-									{/* v2 creates from the /new-workspace route; only v1 has a modal. */}
-									{!isV2CloudEnabled && <NewWorkspaceModal />}
 									<InitGitDialog />
 									<GitInitConfirmDialog />
 									<TeardownLogsDialog />

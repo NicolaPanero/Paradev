@@ -1,32 +1,53 @@
-import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react/macro";
 import { Label } from "@superset/ui/label";
+import { toast } from "@superset/ui/sonner";
 import { Switch } from "@superset/ui/switch";
 import { useAcpChatEnabled } from "renderer/hooks/useAcpChatEnabled";
-import { useAcpChatStore } from "renderer/stores/acp-chat";
+import { cloudTrpc } from "renderer/lib/cloud-trpc";
+import { HighlightText } from "renderer/routes/_authenticated/settings/components/HighlightText";
 import { useForkCliOptions } from "renderer/stores/fork-cli-options";
+import { useSettingsSearchQuery } from "renderer/stores/settings-state";
 
 export function AcpChatSetting() {
+	const { t } = useLingui();
+	const searchQuery = useSettingsSearchQuery();
+	const savedEnabled = useAcpChatEnabled();
+	const utils = cloudTrpc.useUtils();
+	const updateSettings = cloudTrpc.userSettings.update.useMutation({
+		onSuccess: (settings) =>
+			utils.userSettings.get.setData(undefined, settings),
+		onError: () =>
+			toast.error(t({ message: "Couldn't update the Chat setting" })),
+	});
+	const enabled = updateSettings.isPending
+		? updateSettings.variables.experimentalChat === true
+		: savedEnabled;
 	const showCliOptions = useForkCliOptions();
-	const acpChatEnabled = useAcpChatEnabled() === "enabled";
-	const setAcpChatEnabled = useAcpChatStore((state) => state.setEnabled);
 	if (!showCliOptions) return null;
+
 	return (
 		<div className="flex items-center justify-between gap-6">
 			<div className="min-w-0 flex-1 space-y-0.5">
-				<Label htmlFor="local-acp-chat" className="text-sm font-medium">
-					<Trans>ACP chat</Trans>
+				<Label htmlFor="acp-chat" className="text-sm font-medium">
+					<HighlightText text={t({ message: "Chat" })} query={searchQuery} />
 				</Label>
 				<p className="text-xs text-muted-foreground">
-					<Trans>
-						Open new supported agents in a shared chat interface. Existing
-						sessions keep their current view. The terminal remains available.
-					</Trans>
+					<HighlightText
+						text={t({
+							message:
+								"Open Claude and Codex sessions in a chat pane instead of a terminal.",
+						})}
+						query={searchQuery}
+					/>
 				</p>
 			</div>
 			<Switch
-				id="local-acp-chat"
-				checked={acpChatEnabled}
-				onCheckedChange={setAcpChatEnabled}
+				id="acp-chat"
+				checked={enabled}
+				disabled={updateSettings.isPending}
+				onCheckedChange={(next) =>
+					updateSettings.mutate({ experimentalChat: next })
+				}
 			/>
 		</div>
 	);

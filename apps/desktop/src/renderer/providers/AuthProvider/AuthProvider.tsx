@@ -1,5 +1,5 @@
 import { type ReactNode, useEffect, useState } from "react";
-import { ForkWordmark } from "renderer/components/ForkWordmark";
+import { SupersetLogo } from "renderer/components/SupersetLogo";
 import {
 	authClient,
 	getAuthToken,
@@ -128,7 +128,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		return (
 			<div className="relative flex h-screen w-screen items-center justify-center bg-background">
 				<div className="drag absolute inset-x-0 top-0 h-12" />
-				<ForkWordmark className="h-8 w-auto" gradient />
+				<SupersetLogo className="h-8 w-auto" gradient />
 			</div>
 		);
 	}

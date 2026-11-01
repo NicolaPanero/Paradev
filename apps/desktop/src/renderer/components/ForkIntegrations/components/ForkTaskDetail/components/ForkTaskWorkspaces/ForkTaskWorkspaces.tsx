@@ -11,7 +11,10 @@ import { LuGitBranch, LuPlus } from "react-icons/lu";
 import { useOpenNewWorkspace } from "renderer/hooks/useOpenNewWorkspace";
 import { useNewWorkspaceDraftStore } from "renderer/stores/new-workspace-draft";
 import { useForkConnections } from "../../../../hooks/useForkConnections";
-import { forkJiraLinkedIssue } from "../../../../utils/forkJiraWorkspace";
+import {
+	forkJiraChip,
+	forkJiraLinkedIssue,
+} from "../../../../utils/forkJiraWorkspace";
 import { required } from "../../../../utils/required";
 import { ForkTaskWorkspacePicker } from "./components/ForkTaskWorkspacePicker";
 import { ForkTaskWorkspaceRow } from "./components/ForkTaskWorkspaceRow";
@@ -55,7 +58,9 @@ export function ForkTaskWorkspaces({ task }: { task: ForkTask }) {
 		const drafts = useNewWorkspaceDraftStore.getState();
 		drafts.resetDraft();
 		drafts.updateDraft({
-			linkedIssues: [forkJiraLinkedIssue(task)],
+			promptDraft: [
+				{ type: "chip", chip: forkJiraChip(forkJiraLinkedIssue(task)) },
+			],
 			branchName: forkTaskBranch(task.key, task.title, task.type?.name),
 			branchNameEdited: true,
 			branchNameFromProvider: false,

@@ -16,11 +16,11 @@ import {
 	fromOptionValue,
 	MODEL_CONFIG_ID,
 } from "renderer/lib/fork-model-options";
-import type { TerminalPaneData } from "../../../../../../types";
 import {
 	type AgentSwitcher,
 	ModelPicker,
-} from "../../../ChatSession/components/Composer/components/ModelPicker";
+} from "renderer/routes/_authenticated/components/AgentComposer/components/ModelPicker";
+import type { TerminalPaneData } from "../../../../../../types";
 import type { ForkSwitchRequest } from "../ForkChatSwitchDialog";
 
 function picked(
@@ -77,6 +77,7 @@ export function ForkSessionModelPicker({
 		chatConfigs.find((config) => config.id === data.acpAgentConfigId)?.id ??
 		chatConfigs.find((config) => config.presetId === data.agent?.id)?.id ??
 		null;
+	const [open, setOpen] = useState(false);
 	const [viewed, setViewed] = useState<string | null>(null);
 	const [draftModel, setDraftModel] = useState<string | null>(null);
 	const [draftEffort, setDraftEffort] = useState<string | null>(null);
@@ -157,7 +158,12 @@ export function ForkSessionModelPicker({
 
 	if (!realId)
 		return onSelect && configOptions.length > 0 ? (
-			<ModelPicker configOptions={configOptions} onSelect={onSelect} />
+			<ModelPicker
+				configOptions={configOptions}
+				onOpenChange={setOpen}
+				onSelect={onSelect}
+				open={open}
+			/>
 		) : null;
 
 	const agentSwitcher: AgentSwitcher = {
@@ -195,9 +201,11 @@ export function ForkSessionModelPicker({
 			configOptions={browsing ? draftOptions : configOptions}
 			keepOpenOnPick={browsing}
 			onCloseAutoFocus={menuDialog.onCloseAutoFocus}
-			onOpenChange={(open) => {
-				if (!open) browse(realId, null);
+			onOpenChange={(next) => {
+				setOpen(next);
+				if (!next) browse(realId, null);
 			}}
+			open={open}
 			onSelect={(configId, value) => {
 				if (!browsing) {
 					onSelect?.(configId, value);

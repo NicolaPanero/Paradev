@@ -106,6 +106,16 @@ export const CATALOG: {
 				displayName: "Vercel",
 				description: msg({ message: "Read deployment and build logs" }),
 			},
+			{
+				name: "resend",
+				displayName: "Resend",
+				description: msg({ message: "Send email and debug delivery" }),
+			},
+			{
+				name: "sazabi",
+				displayName: "Sazabi",
+				description: msg({ message: "Investigate production logs and issues" }),
+			},
 		],
 	},
 	{
@@ -135,6 +145,11 @@ export const CATALOG: {
 				name: "exa",
 				displayName: "Exa",
 				description: msg({ message: "Search the web" }),
+			},
+			{
+				name: "peec",
+				displayName: "Peec AI",
+				description: msg({ message: "Track your brand in AI search" }),
 			},
 		],
 	},

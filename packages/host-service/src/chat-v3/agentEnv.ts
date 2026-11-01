@@ -3,6 +3,7 @@ import { getBinDir } from "@superset/agent-setup";
 import { eq } from "drizzle-orm";
 import type { HostDb } from "../db";
 import { projects, workspaces } from "../db/schema";
+import { waitForSandboxManagedEnv } from "../runtime/sandbox-managed-env";
 import {
 	buildHostLaunchEnv,
 	getTerminalBaseEnv,
@@ -72,7 +73,7 @@ export async function buildChatAgentEnv(options: {
 	terminalId?: string;
 	preserveLegacyAccount?: boolean;
 }): Promise<Record<string, string>> {
-	await waitForTerminalBaseEnv();
+	await Promise.all([waitForTerminalBaseEnv(), waitForSandboxManagedEnv()]);
 	const paths = workspacePaths(options.db, options.workspaceId);
 	const config = options.agentConfigId
 		? resolveHostAgentConfig(options.db, options.agentConfigId)
