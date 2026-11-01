@@ -120,6 +120,7 @@ import { FilesTreePane } from "./components/FilesTreePane";
 import { FileViewLayout } from "./components/FileViewLayout";
 import { ForkChatExtras } from "./components/ForkChatExtras";
 import { ForkChatOrigin } from "./components/ForkChatOrigin";
+import { ForkDiffRepoBar } from "./components/ForkDiffRepoBar";
 import { MobilePane } from "./components/MobilePane";
 import { PagePane } from "./components/PagePane";
 import { PagePaneHeaderExtras } from "./components/PagePaneHeaderExtras";
@@ -446,12 +447,22 @@ export function usePaneRegistry({
 							onCreateNewAgentSession={createNewAgentSession}
 						/>
 					);
-					return repoKey ? (
-						<WorkspaceGitStatusProvider workspaceId={repoKey}>
-							{pane}
-						</WorkspaceGitStatusProvider>
-					) : (
-						pane
+					return (
+						<div className="flex h-full min-h-0 w-full flex-col">
+							<ForkDiffRepoBar context={ctx} workspaceId={workspaceId} />
+							<div className="min-h-0 flex-1">
+								{repoKey ? (
+									<WorkspaceGitStatusProvider
+										key={repoKey}
+										workspaceId={repoKey}
+									>
+										{pane}
+									</WorkspaceGitStatusProvider>
+								) : (
+									pane
+								)}
+							</div>
+						</div>
 					);
 				},
 				renderHeaderExtras: (ctx: RendererContext<PaneViewerData>) => (

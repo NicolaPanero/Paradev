@@ -193,6 +193,14 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
 - Le cartelle extra dei progetti (`project_folders`) sono tabelle del fork in
   `fork-schema.ts`, create da `ensureForkTables`: il journal delle migrazioni
   resta quello ufficiale.
+- Il selettore delle cartelle con il branch (`RepoSelector`) vive nel pannello
+  destro: in cima all’albero **Files** (`FileViewTree`, al posto del
+  `RepoPicker` ufficiale, che non ha ancora azioni), in **Files changed**
+  (`ChangesListPane`) e, se il progetto ha cartelle git, nel pannello
+  **Changes** (`ForkDiffRepoBar`), dove cambia la cartella mostrata. La vecchia
+  `WorkspaceSidebar` non è più montata da quando il pannello destro è attivo
+  per tutti: a ogni sincronizzazione va verificato che il selettore sia ancora
+  raggiungibile.
 - I **piani** hanno un’anteprima Markdown nella chat e il pulsante per aprirli
   in un pannello laterale, con avanzamento dei passi. Il documento resta leggibile
   dopo l’approvazione, anche nei piani Cursor già salvati quando il testo è nella
