@@ -2,6 +2,7 @@ import { expect, mock, test } from "bun:test";
 import { createForkReleaseLookup } from "./fork-release-lookup";
 
 const repository = "NicolaPanero/superset";
+const latestUrl = `https://github.com/${repository}/releases/latest`;
 function body(tag = "desktop-v1.37.0-fork.aaaaaaa") {
 	return {
 		tag_name: tag,
@@ -14,75 +15,107 @@ function body(tag = "desktop-v1.37.0-fork.aaaaaaa") {
 		],
 	};
 }
-test("conditional checks retain a verified asset on HTTP 304 and detect a changed release", async () => {
-	const responses = [
-		Response.json(body(), { headers: { etag: '"first"' } }),
-		new Response(null, { status: 304 }),
-		Response.json(body("desktop-v1.37.0-fork.bbbbbbb"), {
-			headers: { etag: '"second"' },
-		}),
-	];
-	const request = mock(
-		async (_url: string | URL | Request, _options?: RequestInit) => {
-			const response = responses.shift();
-			if (!response) throw new Error("Unexpected request");
-			return response;
+function redirect(tag: string) {
+	return new Response(null, {
+		status: 302,
+		headers: {
+			location: `https://github.com/${repository}/releases/tag/${tag}`,
 		},
+	});
+}
+function fixture(respond: (url: string) => Response, now?: () => number) {
+	const request = mock(
+		async (url: string | URL | Request, _options?: RequestInit) =>
+			respond(String(url)),
 	);
-	const lookup = createForkReleaseLookup({
-		repository,
-		platform: "darwin",
-		request: request as unknown as typeof fetch,
-	});
-	const first = await lookup();
-	expect(await lookup()).toEqual(first);
-	expect(request.mock.calls[1]?.[1]?.headers).toMatchObject({
-		"If-None-Match": '"first"',
-	});
-	expect((await lookup()).tag).toBe("desktop-v1.37.0-fork.bbbbbbb");
+	return {
+		request,
+		urls: () => request.mock.calls.map(([url]) => String(url)),
+		lookup: createForkReleaseLookup({
+			repository,
+			platform: "darwin",
+			request: request as unknown as typeof fetch,
+			now,
+		}),
+	};
+}
+
+test("routine checks read the latest tag from the web redirect without spending the REST API quota", async () => {
+	const f = fixture(() => redirect("desktop-v1.37.0-fork.bbbbbbb"));
+	expect(await f.lookup.latestTag()).toBe("desktop-v1.37.0-fork.bbbbbbb");
+	expect(await f.lookup.latestTag()).toBe("desktop-v1.37.0-fork.bbbbbbb");
+	expect(f.urls()).toEqual([latestUrl, latestUrl]);
+	expect(f.request.mock.calls[0]?.[1]?.redirect).toBe("manual");
 });
+
+test("installing verifies that exact release once through the REST API", async () => {
+	const tag = "desktop-v1.37.0-fork.bbbbbbb";
+	const f = fixture((url) =>
+		url.endsWith(`releases/tags/${tag}`)
+			? Response.json(body(tag))
+			: redirect(tag),
+	);
+	const asset = await f.lookup.asset(tag);
+	expect(asset).toEqual({
+		tag,
+		url: `https://github.com/${repository}/releases/download/${tag}/Superset-fork-arm64.zip`,
+		sha256: "a".repeat(64),
+	});
+	expect(await f.lookup.asset(tag)).toEqual(asset);
+	expect(f.urls()).toEqual([
+		`https://api.github.com/repos/${repository}/releases/tags/${tag}`,
+	]);
+});
+
+test("a redirect that does not name a release falls back to the REST API", async () => {
+	const f = fixture((url) =>
+		url === latestUrl
+			? new Response("<html/>", { status: 200 })
+			: Response.json(body("desktop-v1.37.0-fork.ccccccc")),
+	);
+	expect(await f.lookup.latestTag()).toBe("desktop-v1.37.0-fork.ccccccc");
+	expect(f.urls()[1]).toBe(
+		`https://api.github.com/repos/${repository}/releases/latest`,
+	);
+});
+
 test.each([
 	403, 429,
-])("rate limit HTTP %s respects GitHub's deadline without repeated requests", async (status) => {
+])("REST API rate limit HTTP %s waits for GitHub's deadline before asking again", async (status) => {
 	let clock = 1_000_000;
-	const request = mock(
-		async () =>
-			new Response(null, {
-				status,
-				headers: {
-					"retry-after": "120",
-					"x-ratelimit-reset": "1300",
-					"x-ratelimit-remaining": "0",
-				},
-			}),
+	const tag = "desktop-v1.37.0-fork.aaaaaaa";
+	let limited = true;
+	const f = fixture(
+		() =>
+			limited
+				? new Response(null, {
+						status,
+						headers: {
+							"retry-after": "120",
+							"x-ratelimit-reset": "1300",
+							"x-ratelimit-remaining": "0",
+						},
+					})
+				: Response.json(body(tag)),
+		() => clock,
 	);
-	const lookup = createForkReleaseLookup({
-		repository,
-		platform: "darwin",
-		request: request as unknown as typeof fetch,
-		now: () => clock,
-	});
-	await expect(lookup()).rejects.toThrow(`HTTP ${status}`);
+	await expect(f.lookup.asset(tag)).rejects.toThrow(`HTTP ${status}`);
 	clock += 120_000;
-	await expect(lookup()).rejects.toThrow("rate limit");
-	expect(request).toHaveBeenCalledTimes(1);
+	await expect(f.lookup.asset(tag)).rejects.toThrow("rate limit");
+	expect(f.request).toHaveBeenCalledTimes(1);
 	clock = 1_300_000;
-	request.mockResolvedValue(Response.json(body()));
-	expect((await lookup()).tag).toBe(body().tag_name);
-	expect(request).toHaveBeenCalledTimes(2);
+	limited = false;
+	expect((await f.lookup.asset(tag)).tag).toBe(tag);
+	expect(f.request).toHaveBeenCalledTimes(2);
 });
-test("an invalid archive never enters the cache, and a transient failure can retry", async () => {
-	const request = mock(async () =>
-		Response.json({ tag_name: body().tag_name, assets: [] }),
-	);
-	const lookup = createForkReleaseLookup({
-		repository,
-		platform: "darwin",
-		request: request as unknown as typeof fetch,
-	});
-	await expect(lookup()).rejects.toThrow("checksum");
-	request.mockResolvedValue(new Response(null, { status: 503 }));
-	await expect(lookup()).rejects.toThrow("HTTP 503");
-	request.mockResolvedValue(Response.json(body()));
-	expect((await lookup()).tag).toBe(body().tag_name);
+
+test("an archive without a checksum is never installed, and a transient failure can retry", async () => {
+	const tag = body().tag_name;
+	let response = () => Response.json({ tag_name: tag, assets: [] });
+	const f = fixture(() => response());
+	await expect(f.lookup.asset(tag)).rejects.toThrow("checksum");
+	response = () => new Response(null, { status: 503 });
+	await expect(f.lookup.asset(tag)).rejects.toThrow("HTTP 503");
+	response = () => Response.json(body());
+	expect((await f.lookup.asset(tag)).tag).toBe(tag);
 });

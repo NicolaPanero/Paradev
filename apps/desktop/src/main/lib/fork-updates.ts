@@ -12,7 +12,6 @@ import {
 import { createForkReleaseLookup } from "./fork-release-lookup";
 import { createForkUpdateCheck } from "./fork-update-check";
 import {
-	type ForkInstallAsset,
 	installedForkAppPath,
 	prepareForkInstaller,
 	restartPreparedForkUpdate,
@@ -26,13 +25,13 @@ import { prepareWindowsForkInstaller } from "./fork-windows-update";
 const FORK_RELEASE = process.env.SUPERSET_FORK_RELEASE ?? "";
 const FORK_REPOSITORY = process.env.SUPERSET_FORK_REPOSITORY ?? "";
 
-let availableAsset: ForkInstallAsset | undefined;
+let availableTag: string | undefined;
 let installing: Promise<boolean> | undefined;
 
-const lookupRelease = createForkReleaseLookup({ repository: FORK_REPOSITORY });
+const releases = createForkReleaseLookup({ repository: FORK_REPOSITORY });
 async function latestRelease(): Promise<string> {
-	availableAsset = await lookupRelease();
-	return availableAsset.tag;
+	availableTag = await releases.latestTag();
+	return availableTag;
 }
 
 function installAndRestart(tag: string): Promise<boolean> {
@@ -44,10 +43,10 @@ function installAndRestart(tag: string): Promise<boolean> {
 			| Awaited<ReturnType<typeof showForkUpdateProgress>>
 			| undefined;
 		try {
-			if (availableAsset?.tag !== tag)
+			if (availableTag !== tag)
 				throw new Error("Fork release changed; check again");
-			const asset = availableAsset;
 			progress = await showForkUpdateProgress(() => abort.abort());
+			const asset = await releases.asset(tag);
 			await restartPreparedForkUpdate({
 				signal: abort.signal,
 				prepare: () =>
@@ -170,6 +169,7 @@ const check = createForkUpdateCheck({
 						message: "Failed to check for updates. Please try again later.",
 					}),
 				),
+				detail: error instanceof Error ? error.message : String(error),
 			});
 		}
 	},
@@ -200,7 +200,7 @@ export function checkForForkUpdatesInteractive(): boolean {
 export async function installAvailableForkUpdate(
 	tag: string,
 ): Promise<boolean> {
-	if (!canCheckForkUpdates() || availableAsset?.tag !== tag) return false;
+	if (!canCheckForkUpdates() || availableTag !== tag) return false;
 	const installed = await installAndRestart(tag);
 	if (installed) forkUpdateNotices.dismiss(tag);
 	return installed;
