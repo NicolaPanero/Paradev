@@ -617,6 +617,9 @@ La versione validata è fissata in `scripts/fork/txcript-version.json`; nuove
 release del motore non vengono adottate implicitamente. Aggiornare il file,
 eseguire i controlli e solo allora creare una build. Per installare il
 motore fissato localmente: `bun scripts/build-txcript-transfer.ts`.
+Da `v0.14.4-fork.25` il motore scrive le chiamate parallele di un turno in un solo messaggio
+dell'assistente: senza, Cursor rifiutava con "Provider Error" ogni chat convertita da Claude Code
+che le conteneva, con qualunque modello Anthropic.
 Zed è stato dismesso. La pubblicazione di txcript non cambia il motore usato
 da Paradev++: serve aggiornare esplicitamente il pin. Il repository remoto di Zed conserva lo storico con Actions disabilitate.
 
