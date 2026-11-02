@@ -1,6 +1,8 @@
 import { Trans, useLingui } from "@lingui/react/macro";
+import { FEATURE_FLAGS } from "@superset/shared/constants";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
+import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useEffect, useMemo, useRef } from "react";
 import { useHostProjects } from "renderer/hooks/host-projects/useHostProjects";
 import { useHostUrl } from "renderer/hooks/host-service/useHostTargetUrl";
@@ -13,6 +15,7 @@ import { DeleteProjectSection } from "./components/DeleteProjectSection";
 import { ProjectLocationSection } from "./components/ProjectLocationSection";
 import { V2ProjectSettingsBody } from "./components/V2ProjectSettingsBody";
 import { V2ScriptsEditor } from "./components/V2ScriptsEditor";
+import { WorkspaceConfigEditor } from "./components/WorkspaceConfigEditor";
 
 interface V2ProjectSettingsProps {
 	projectId: string;
@@ -29,6 +32,8 @@ export function V2ProjectSettings({
 	const hostId = useForkHostId(requestedHostId);
 	const navigate = useNavigate();
 	const { t } = useLingui();
+	const usesConfigToml =
+		useFeatureFlagEnabled(FEATURE_FLAGS.WORKSPACE_CONFIG_TOML) === true;
 	const { machineId } = useLocalHostService();
 	const { currentDeviceName, localHostId, otherHosts } =
 		useWorkspaceHostOptions();
@@ -166,10 +171,16 @@ export function V2ProjectSettings({
 					onChanged={() => refetchHostProject()}
 				/>
 			}
+			usesConfigToml={usesConfigToml}
 			scriptsEditor={
-				targetHostUrl ? (
+				!targetHostUrl ? null : usesConfigToml ? (
+					<WorkspaceConfigEditor
+						hostUrl={targetHostUrl}
+						projectId={projectId}
+					/>
+				) : (
 					<V2ScriptsEditor hostUrl={targetHostUrl} projectId={projectId} />
-				) : null
+				)
 			}
 			dangerZone={
 				<DeleteProjectSection

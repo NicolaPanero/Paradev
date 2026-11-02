@@ -17,7 +17,10 @@ afterEach(() => {
 	requests.length = 0;
 });
 /** Stopping a chat is a request to the host's chat router. */
-const chatStops = () => requests.filter((url) => url.includes("/chat-v3/"));
+const chatStops = () =>
+	requests.filter(
+		(url) => url.includes("/chat-v3/") && !url.includes("/listSessions"),
+	);
 function fixture() {
 	const sessionId = `background-close-${++next}`;
 	const store = createWorkspaceStore<PaneViewerData>();

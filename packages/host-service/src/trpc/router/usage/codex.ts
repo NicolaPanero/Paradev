@@ -114,7 +114,31 @@ export async function fetchCodexAccounts(): Promise<UsageAccount[]> {
 			fetchCodexAccountForHome(home, home.home === defaultHome),
 		),
 	);
-	return accounts.flat();
+	// Each isolated profile is its own launch account, even with the same login.
+	return accounts.flat().map(({ account }) => account);
+}
+
+export interface CodexHomeAccount {
+	account: UsageAccount;
+	chatgptAccountId: string | null;
+}
+
+export function dedupeCodexAccounts(
+	accounts: CodexHomeAccount[],
+): UsageAccount[] {
+	const seen = new Set<string>();
+	return accounts
+		.filter(({ account, chatgptAccountId }) => {
+			// One email can hold several ChatGPT accounts: a personal plan and workspace seats.
+			const key =
+				account.email && chatgptAccountId
+					? JSON.stringify([account.email, chatgptAccountId])
+					: account.accountKey;
+			if (seen.has(key)) return false;
+			seen.add(key);
+			return true;
+		})
+		.map(({ account }) => account);
 }
 
 /** What the ChatGPT usage endpoint says about one access token. */
@@ -199,7 +223,7 @@ export async function fetchCodexSubscriptionQuota(
 async function fetchCodexAccountForHome(
 	home: CodexHome,
 	isDefaultHome: boolean,
-): Promise<UsageAccount[]> {
+): Promise<CodexHomeAccount[]> {
 	const codexHome = home.home;
 	const authPath = join(codexHome, "auth.json");
 	const base = {
@@ -219,14 +243,17 @@ async function fetchCodexAccountForHome(
 	if (home.credentialKind === "api_key") {
 		return [
 			{
-				...base,
-				email: null,
-				plan: null,
-				status: "ok",
-				statusDetail:
-					"Billed per token through the OpenAI Platform — no quota windows.",
-				windows: [],
-				creditsBalance: null,
+				account: {
+					...base,
+					email: null,
+					plan: null,
+					status: "ok",
+					statusDetail:
+						"Billed per token through the OpenAI Platform — no quota windows.",
+					windows: [],
+					creditsBalance: null,
+				},
+				chatgptAccountId: null,
 			},
 		];
 	}
@@ -247,11 +274,14 @@ async function fetchCodexAccountForHome(
 	);
 	return [
 		{
-			...base,
-			...quota,
-			identityFingerprint: createHash("sha256")
-				.update(accessToken)
-				.digest("hex"),
+			account: {
+				...base,
+				...quota,
+				identityFingerprint: createHash("sha256")
+					.update(accessToken)
+					.digest("hex"),
+			},
+			chatgptAccountId: auth.tokens?.account_id ?? null,
 		},
 	];
 }

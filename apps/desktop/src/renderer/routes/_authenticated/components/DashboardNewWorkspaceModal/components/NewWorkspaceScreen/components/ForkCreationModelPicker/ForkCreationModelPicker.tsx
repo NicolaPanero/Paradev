@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
 import type { AgentModelOption } from "@superset/shared/agent-models";
-import { type ReactNode, useEffect, useMemo, useRef } from "react";
+import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useIsDarkTheme } from "renderer/assets/app-icons/preset-icons";
 import type { AgentSelectAgent } from "renderer/components/AgentSelect";
 import { ForkModelCatalogStatus } from "renderer/components/ForkModelCatalogStatus";
@@ -15,11 +15,11 @@ import {
 import {
 	type AgentSwitcher,
 	ModelPicker,
-} from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/ChatSession/components/Composer/components/ModelPicker";
+} from "renderer/routes/_authenticated/components/AgentComposer/components/ModelPicker";
 import {
 	MENU_PANEL_CLASS,
 	MENU_ROW_CLASS,
-} from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/ChatSession/components/Composer/constants";
+} from "renderer/routes/_authenticated/components/AgentComposer/constants";
 
 const NO_AGENT = "none";
 
@@ -51,6 +51,7 @@ export function ForkCreationModelPicker({
 }) {
 	const { t } = useLingui();
 	const isDark = useIsDarkTheme();
+	const [open, setOpen] = useState(false);
 	const choices = useMemo(
 		() =>
 			agentChoices(
@@ -108,6 +109,8 @@ export function ForkCreationModelPicker({
 			agentSwitcher={agentSwitcher}
 			configOptions={configOptions}
 			emptyLabel={t({ message: "No agent" })}
+			open={open}
+			onOpenChange={setOpen}
 			onSelect={(configId, value) => {
 				if (configId === MODEL_CONFIG_ID) onModelChange(fromOptionValue(value));
 				if (configId === EFFORT_CONFIG_ID)

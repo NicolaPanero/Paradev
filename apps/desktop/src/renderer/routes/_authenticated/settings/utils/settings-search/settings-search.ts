@@ -84,8 +84,8 @@ export const SETTING_ITEM_ID = {
 	EXPERIMENTAL_V1_MIGRATION: "experimental-v1-migration",
 	EXPERIMENTAL_INLINE_WORKSPACE_PORTS: "experimental-inline-workspace-ports",
 	EXPERIMENTAL_WORKSPACE_AGENTS: "experimental-workspace-agents",
-	EXPERIMENTAL_RIGHT_PANE_AREA: "experimental-right-pane-area",
 	EXPERIMENTAL_ACP_CHAT: "experimental-acp-chat",
+	EXPERIMENTAL_CHAT_TURN_SNAPSHOTS: "experimental-chat-turn-snapshots",
 	EXPERIMENTAL_WAIT_FOR_SETUP_BEFORE_AGENT:
 		"experimental-wait-for-setup-before-agent",
 
@@ -100,6 +100,9 @@ export const SETTING_ITEM_ID = {
 	PROJECT_WORKTREE_LOCATION: "project-worktree-location",
 	PROJECT_SPARSE_CHECKOUT: "project-sparse-checkout",
 	PROJECT_IMPORT_WORKTREES: "project-import-worktrees",
+
+	ORGANIZATION_PLUGIN_SOURCES: "organization-plugin-sources",
+	ORGANIZATION_PLUGIN_ACCESS: "organization-plugin-access",
 
 	API_KEYS_LIST: "api-keys-list",
 	API_KEYS_GENERATE: "api-keys-generate",
@@ -244,8 +247,8 @@ export const SETTING_ITEM_VARIANT: Record<SettingItemId, SettingVariant> = {
 	[SETTING_ITEM_ID.EXPERIMENTAL_V1_MIGRATION]: "v2",
 	[SETTING_ITEM_ID.EXPERIMENTAL_INLINE_WORKSPACE_PORTS]: "v2",
 	[SETTING_ITEM_ID.EXPERIMENTAL_WORKSPACE_AGENTS]: "v2",
-	[SETTING_ITEM_ID.EXPERIMENTAL_RIGHT_PANE_AREA]: "v2",
 	[SETTING_ITEM_ID.EXPERIMENTAL_ACP_CHAT]: "v2",
+	[SETTING_ITEM_ID.EXPERIMENTAL_CHAT_TURN_SNAPSHOTS]: "v2",
 	// Gates both the v1 renderer launch and the v2 host-side launch.
 	[SETTING_ITEM_ID.EXPERIMENTAL_WAIT_FOR_SETUP_BEFORE_AGENT]: "shared",
 
@@ -260,6 +263,9 @@ export const SETTING_ITEM_VARIANT: Record<SettingItemId, SettingVariant> = {
 	[SETTING_ITEM_ID.PROJECT_WORKTREE_LOCATION]: "shared",
 	[SETTING_ITEM_ID.PROJECT_SPARSE_CHECKOUT]: "v2",
 	[SETTING_ITEM_ID.PROJECT_IMPORT_WORKTREES]: "v1",
+
+	[SETTING_ITEM_ID.ORGANIZATION_PLUGIN_SOURCES]: "shared",
+	[SETTING_ITEM_ID.ORGANIZATION_PLUGIN_ACCESS]: "shared",
 
 	[SETTING_ITEM_ID.API_KEYS_LIST]: "shared",
 	[SETTING_ITEM_ID.API_KEYS_GENERATE]: "shared",
@@ -1492,25 +1498,6 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 		],
 	},
 	{
-		id: SETTING_ITEM_ID.EXPERIMENTAL_RIGHT_PANE_AREA,
-		section: "experimental",
-		title: "Right pane area",
-		description:
-			"Open files, diffs and browsers in tabs on the right, and keep the center for terminals and chats",
-		keywords: [
-			"experimental",
-			"right",
-			"pane",
-			"panes",
-			"area",
-			"sidebar",
-			"tabs",
-			"changes",
-			"toggle",
-			"switch",
-		],
-	},
-	{
 		id: SETTING_ITEM_ID.EXPERIMENTAL_ACP_CHAT,
 		section: "experimental",
 		title: "Chat",
@@ -1525,6 +1512,27 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 			"codex",
 			"session",
 			"pane",
+			"toggle",
+			"switch",
+		],
+	},
+	{
+		id: SETTING_ITEM_ID.EXPERIMENTAL_CHAT_TURN_SNAPSHOTS,
+		section: "experimental",
+		title: "Track file changes per turn",
+		description:
+			"Snapshot the worktree before and after each chat turn, so its card lists every changed file, shell edits included, and can undo them",
+		keywords: [
+			"experimental",
+			"chat",
+			"turn",
+			"snapshot",
+			"checkpoint",
+			"changes",
+			"files",
+			"edited",
+			"undo",
+			"diff",
 			"toggle",
 			"switch",
 		],
@@ -1716,6 +1724,36 @@ export const SETTINGS_ITEMS: SettingsItem[] = [
 			"existing",
 			"disk",
 			"add",
+		],
+	},
+	{
+		id: SETTING_ITEM_ID.ORGANIZATION_PLUGIN_SOURCES,
+		section: "plugins",
+		title: "Plugin Sources",
+		description: "GitHub repositories your organization's plugins sync from",
+		keywords: [
+			"plugins",
+			"marketplace",
+			"repository",
+			"github",
+			"source",
+			"sync",
+			"organization",
+		],
+	},
+	{
+		id: SETTING_ITEM_ID.ORGANIZATION_PLUGIN_ACCESS,
+		section: "plugins",
+		title: "Organization Plugins",
+		description: "Choose which roles can install each organization plugin",
+		keywords: [
+			"plugins",
+			"roles",
+			"access",
+			"policy",
+			"install",
+			"members",
+			"admins",
 		],
 	},
 	{
@@ -2127,7 +2165,7 @@ export function getVisibleMatchCountBySection(
 	isV2: boolean,
 	cloudWorkspaces: boolean,
 	mobileEnabled = false,
-	rightPaneAreaFlag = false,
+	pluginsVisible = false,
 	acpChatFlag = false,
 	hideProFeatures = false,
 ): Partial<Record<SettingsSection, number>> {
@@ -2135,8 +2173,7 @@ export function getVisibleMatchCountBySection(
 		(item) =>
 			isItemOffered(item, isV2, cloudWorkspaces) &&
 			(item.section !== "mobile" || mobileEnabled) &&
-			(item.id !== SETTING_ITEM_ID.EXPERIMENTAL_RIGHT_PANE_AREA ||
-				rightPaneAreaFlag) &&
+			(item.section !== "plugins" || pluginsVisible) &&
 			(item.id !== SETTING_ITEM_ID.EXPERIMENTAL_ACP_CHAT || acpChatFlag) &&
 			(!hideProFeatures || !isForkProSetting(item)),
 	);

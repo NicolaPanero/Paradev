@@ -21,3 +21,17 @@ test("only a window near its limit shows the time to its reset", () => {
 	);
 	expect(view.container.textContent).not.toContain("2h 14m");
 });
+
+test("the used label can be left to the surrounding text", () => {
+	const window = {
+		id: "five_hour",
+		label: "5 hours",
+		usedPercent: 74,
+		resetsAt,
+	};
+	const view = render(<UsageWindowChip now={now} window={window} />);
+	expect(view.container.textContent).toContain("74% used");
+	view.rerender(<UsageWindowChip now={now} window={window} hideUsedLabel />);
+	expect(view.container.textContent).toContain("74%");
+	expect(view.container.textContent).not.toContain("used");
+});

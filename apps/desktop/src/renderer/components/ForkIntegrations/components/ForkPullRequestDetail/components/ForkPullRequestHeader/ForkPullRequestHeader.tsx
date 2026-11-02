@@ -17,7 +17,11 @@ export function ForkPullRequestHeader({
 		<header className="shrink-0 pb-4">
 			<div className="flex min-w-0 items-center gap-2">
 				<PullRequestStatePill
-					data={{ state: pr.state, isDraft: pr.isDraft ?? false }}
+					data={{
+						state: pr.state,
+						isDraft: pr.isDraft ?? false,
+						mergeability: "unknown",
+					}}
 					pendingLabel={pendingLabel}
 				/>
 				<a

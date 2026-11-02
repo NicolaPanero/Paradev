@@ -33,6 +33,7 @@ import { electronTrpc } from "renderer/lib/electron-trpc";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 import { useForkProFeatures } from "renderer/stores/fork-cli-options";
 import { HelpSubMenu } from "./components/HelpSubMenu";
+import { PauseNotificationsSubMenu } from "./components/PauseNotificationsSubMenu";
 import { SubmitPromptDialog } from "./components/SubmitPromptDialog";
 
 export function OrganizationDropdown({
@@ -80,10 +81,11 @@ export function OrganizationDropdown({
 			message: "Organization",
 		});
 
-	const { plan: currentPlan } = useCurrentPlan();
+	const { plan: currentPlan, activePlan } = useCurrentPlan();
 	const showProFeatures = useForkProFeatures();
 	const isPaid = showProFeatures && currentPlan !== "free";
-	const planLabel = currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1);
+	const planName = activePlan?.planTier ?? currentPlan;
+	const planLabel = planName.charAt(0).toUpperCase() + planName.slice(1);
 	const planBadge = isPaid ? (
 		<Badge
 			variant="default"
@@ -226,6 +228,8 @@ export function OrganizationDropdown({
 							<Trans>New window</Trans>
 						</span>
 					</DropdownMenuItem>
+
+					<PauseNotificationsSubMenu />
 
 					<HelpSubMenu onSubmitPrompt={() => setSubmitPromptOpen(true)} />
 

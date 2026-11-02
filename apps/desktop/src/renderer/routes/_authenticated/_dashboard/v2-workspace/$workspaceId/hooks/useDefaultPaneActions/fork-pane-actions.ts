@@ -14,3 +14,12 @@ export function useForkPaneActions<TData>(
 			Object.keys(context.tab.panes).length > 1 ? actions : withoutClose;
 	}, [actions]);
 }
+
+export function mapForkPaneActions<TData>(
+	actions: PaneActionConfig<TData>[] | ForkPaneActions<TData>,
+	map: (actions: PaneActionConfig<TData>[]) => PaneActionConfig<TData>[],
+): PaneActionConfig<TData>[] | ForkPaneActions<TData> {
+	return typeof actions === "function"
+		? (context) => map(actions(context))
+		: map(actions);
+}

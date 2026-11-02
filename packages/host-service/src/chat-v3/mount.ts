@@ -29,6 +29,7 @@ import { resolveAgentCli } from "./agentCli";
 import { buildChatAgentEnv } from "./agentEnv";
 import type { ChatAgentBridge } from "./chatAgentBridge";
 import { pruneSessionEventsOnce } from "./forkJournalCleanup";
+import { createGitCheckpoints } from "./gitCheckpoints";
 import { createResolveCwd } from "./resolveCwd";
 import {
 	recordUnfinishedChats,
@@ -145,6 +146,7 @@ export function createChatV3Mount(options: {
 			migrationsFolder: migrationsFolder(),
 			harnesses: harnessRegistry(options.db, options.agents),
 			observer: options.agents,
+			checkpoints: createGitCheckpoints(),
 			onSessionChanged: options.onSessionChanged,
 			forkKeepLatestSessionEvent: true,
 		});

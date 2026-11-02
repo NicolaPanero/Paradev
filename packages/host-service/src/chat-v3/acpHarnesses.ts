@@ -11,6 +11,7 @@ import { ACP_HARNESSES } from "./acpCatalogue";
 import { resolveAgentCli } from "./agentCli";
 import { buildChatAgentEnv } from "./agentEnv";
 import { storeAgentImage } from "./agentImages";
+import { agentLoginCommand } from "./agentLogin";
 import type { ChatAgentBridge } from "./chatAgentBridge";
 import {
 	antigravityDistribution,
@@ -131,6 +132,8 @@ export function acpHarnessFactory(
 								}
 							})
 							.catch(() => undefined);
+						const loginCommand = agentLoginCommand(entry.binary, env);
+						const login = loginCommand ? { loginCommand } : {};
 						if (!adapterEntry) {
 							return {
 								command: cli.command,
@@ -141,6 +144,7 @@ export function acpHarnessFactory(
 												.args
 										: entry.args,
 								env,
+								...login,
 							};
 						}
 						if (!entry.executableEnv) {
@@ -156,6 +160,7 @@ export function acpHarnessFactory(
 								ELECTRON_RUN_AS_NODE: "1",
 								[entry.executableEnv]: cli.command,
 							},
+							...login,
 						};
 					},
 				});

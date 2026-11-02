@@ -1,7 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { SUPPORTED_LOCALES } from "@superset/i18n";
 import type { ReactNode } from "react";
-import { OnboardingLanguageRow } from "renderer/routes/_authenticated/onboarding/components/OnboardingLanguageRow";
 import { ForkIntegrations } from "../../ForkIntegrations";
 import { useForkConnections } from "../../hooks/useForkConnections";
 export function ForkOnboardingConnections({
@@ -18,7 +16,6 @@ export function ForkOnboardingConnections({
 		);
 	return (
 		<div className="space-y-5">
-			{!isError && SUPPORTED_LOCALES.length > 1 && <OnboardingLanguageRow />}
 			<div className="space-y-1.5 text-sm">
 				<p className="font-medium">
 					<Trans>Repository access is separate from Superset sign-in.</Trans>

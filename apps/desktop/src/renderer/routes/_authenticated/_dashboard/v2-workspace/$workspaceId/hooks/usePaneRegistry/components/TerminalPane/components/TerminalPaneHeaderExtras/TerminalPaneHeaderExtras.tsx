@@ -1,15 +1,10 @@
-import { useLingui } from "@lingui/react/macro";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
-import { SquarePen } from "lucide-react";
-import { useHotkeyDisplay } from "renderer/hotkeys";
 import type { SubagentPaneData } from "../../../../../../types";
+import type {
+	SurfaceForkPlacement,
+	SurfaceForkSource,
+} from "../../../../hooks/useSurfaceFork";
 import { AccountUsage } from "../../../AccountUsage";
 import { ForkChatOrigin } from "../../../ForkChatOrigin";
-import {
-	terminalRichInputOpenStore,
-	useTerminalRichInputOpen,
-} from "../../richInputOpenStore";
 import {
 	ForkHandoffMenus,
 	type ForkHandoffMenusProps,
@@ -34,35 +29,22 @@ interface TerminalPaneHeaderExtrasProps {
 	}) => Promise<{ terminalId: string } | null>;
 	/** Open (or focus) the live transcript pane for one of this agent's subagents. */
 	onOpenSubagent: (data: SubagentPaneData) => void;
+	onForkIntoOtherSurface: (
+		source: SurfaceForkSource,
+		placement: SurfaceForkPlacement,
+	) => void;
 }
 
-/**
- * Header affordance that opens the rich-input overlay, so the ⌘I composer is
- * discoverable without knowing the shortcut. Toggles the same shared open-state
- * the hotkey drives; the tooltip carries the shortcut as the teach path.
- * Also hosts the connection indicator and identifier copy menu.
- */
 export function TerminalPaneHeaderExtras({
 	workspaceId,
 	terminalId,
 	terminalInstanceId,
 	fork,
 	onCreateNewAgentSession,
+	onForkIntoOtherSurface,
 	onOpenSubagent,
 	onNewShell,
 }: TerminalPaneHeaderExtrasProps) {
-	const { t } = useLingui();
-	const isOpen = useTerminalRichInputOpen();
-	const hotkeyText = useHotkeyDisplay("TOGGLE_TERMINAL_RICH_INPUT").text;
-	const label =
-		hotkeyText === "Unassigned"
-			? t({
-					message: "Rich input",
-				})
-			: t({
-					message: `Rich input (${hotkeyText})`,
-				});
-
 	return (
 		<div className="flex items-center gap-1">
 			{fork && <ForkChatOrigin ctx={fork.ctx} workspaceId={workspaceId} />}
@@ -92,6 +74,7 @@ export function TerminalPaneHeaderExtras({
 				workspaceId={workspaceId}
 				terminalId={terminalId}
 				onCreateNewAgentSession={onCreateNewAgentSession}
+				onForkIntoOtherSurface={onForkIntoOtherSurface}
 			/>
 			{fork && (
 				<ForkHandoffMenus
@@ -100,26 +83,6 @@ export function TerminalPaneHeaderExtras({
 					fork={fork}
 				/>
 			)}
-			<Tooltip>
-				<TooltipTrigger asChild>
-					<button
-						type="button"
-						onClick={() => terminalRichInputOpenStore.toggle("header_button")}
-						aria-label={label}
-						aria-pressed={isOpen}
-						className={cn(
-							// ⌘I still opens it; the button yields to split/close first.
-							"hidden rounded p-1 transition-colors @min-[200px]/pane-header:block",
-							isOpen
-								? "bg-secondary text-foreground"
-								: "text-muted-foreground/60 hover:text-muted-foreground",
-						)}
-					>
-						<SquarePen className="size-3.5" />
-					</button>
-				</TooltipTrigger>
-				<TooltipContent side="bottom">{label}</TooltipContent>
-			</Tooltip>
 		</div>
 	);
 }

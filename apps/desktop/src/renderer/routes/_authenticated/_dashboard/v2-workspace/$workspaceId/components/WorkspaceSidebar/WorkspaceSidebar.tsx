@@ -19,7 +19,11 @@ import {
 import { useReviewCommentNavigation } from "../../hooks/useReviewCommentNavigation";
 import { useWorkspaceFolders } from "../../hooks/useWorkspaceFolders";
 import { useRowlessSidebarTabStore } from "../../state/rowlessSidebarTabStore";
-import type { CommentPaneData, DiffFocusSide } from "../../types";
+import type {
+	CommentPaneData,
+	DiffFocusSide,
+	DiffPaneFilter,
+} from "../../types";
 import {
 	DEFAULT_WORKSPACE_SIDEBAR_TAB,
 	setWorkspaceSidebarTab,
@@ -56,6 +60,7 @@ interface WorkspaceSidebarProps {
 		line?: number,
 		side?: DiffFocusSide,
 		changeKey?: string,
+		filter?: DiffPaneFilter,
 		repoKey?: string,
 	) => void;
 	onOpenComment?: (comment: CommentPaneData) => void;

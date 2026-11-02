@@ -1,1 +1,1 @@
-export { ForkChatFileMenu } from "./ForkChatFileMenu";
+export { ForkChatFileMenuItems } from "./ForkChatFileMenu";

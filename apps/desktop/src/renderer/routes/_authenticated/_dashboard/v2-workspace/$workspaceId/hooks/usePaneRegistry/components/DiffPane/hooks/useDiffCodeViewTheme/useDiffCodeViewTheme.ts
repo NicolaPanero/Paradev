@@ -72,16 +72,7 @@ export function useDiffCodeViewTheme() {
 		],
 	);
 
-	const additionColor =
-		activeTheme.type === "dark"
-			? "var(--color-green-400)"
-			: "var(--color-green-700)";
-	const deletionColor =
-		activeTheme.type === "dark"
-			? "var(--color-red-500)"
-			: "var(--color-red-700)";
-
-	const options = useMemo<CodeViewOptions<DiffAnnotationMetadata>>(
+	const options = useMemo<CodeViewOptions<DiffAnnotationMetadata, undefined>>(
 		() => ({
 			diffStyle,
 			expandUnchanged,
@@ -111,12 +102,20 @@ export function useDiffCodeViewTheme() {
 				[data-line-annotation] {
 					container-type: inline-size;
 				}
+				/* Placeholder items are files with one blank line that only
+				 * carry annotations; drop the line and its gutter. */
+				[data-file] [data-gutter],
+				[data-file] [data-content] > [data-line] {
+					display: none;
+				}
+				[data-file] [data-code] {
+					grid-template-columns: 0 minmax(0, 1fr);
+				}
 				/* Container query host for the "Viewed" label visibility rule
 				 * (see DiffHeaderMetadata: @min-[380px]/diff-header:inline). */
 				[data-diffs-header='default'] {
 					container-type: inline-size;
 					container-name: diff-header;
-					justify-content: flex-start;
 				}
 				[data-diffs-header='default'] [data-header-content] {
 					flex: 0 1 auto;
@@ -129,12 +128,9 @@ export function useDiffCodeViewTheme() {
 				[data-diffs-header='default'] [data-change-icon] {
 					display: none;
 				}
-				/* Match the file header bar to the DiffSectionBar background
-				 * (bg-muted/40 flattened over the pane background) so the
-				 * pinned section strip and the file title strip read as one.
-				 * Pierre paints these with --diffs-bg (the diff surface
-				 * color); the [data-sticky] selector is needed to out-rank
-				 * Pierre's own two-attribute sticky rule. */
+				/* bg-muted/40 flattened over the pane background. The
+				 * [data-sticky] selector out-ranks Pierre's own two-attribute
+				 * sticky rule. */
 				[data-diffs-header='default'],
 				[data-diffs-header='default'][data-sticky] {
 					background-color: color-mix(
@@ -143,14 +139,8 @@ export function useDiffCodeViewTheme() {
 						var(--background)
 					);
 				}
-				[data-diffs-header='default'] [data-additions-count] {
-					color: ${additionColor};
-				}
-				[data-diffs-header='default'] [data-deletions-count] {
-					color: ${deletionColor};
-				}
 				/* Pierre sets --diffs-light-bg/--diffs-dark-bg
-				 * inline on <pre data-diff> from the Shiki theme;
+				 * inline on <pre data-diff> from the theme;
 				 * inline beats :host so we override at the pre. */
 				[data-diff] {
 					--diffs-light-bg: ${surfaceBg} !important;
@@ -171,14 +161,7 @@ export function useDiffCodeViewTheme() {
 				}
 			`,
 		}),
-		[
-			activeTheme,
-			additionColor,
-			deletionColor,
-			diffStyle,
-			expandUnchanged,
-			surfaceBg,
-		],
+		[activeTheme, diffStyle, expandUnchanged, surfaceBg],
 	);
 
 	return { options, style };

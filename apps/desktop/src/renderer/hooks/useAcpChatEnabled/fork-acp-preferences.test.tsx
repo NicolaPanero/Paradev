@@ -1,50 +1,32 @@
 import { afterEach, expect, test } from "bun:test";
-import { useAcpChatStore } from "renderer/stores/acp-chat";
 import { useForkCliOptionsStore } from "renderer/stores/fork-cli-options";
-import { useSettings } from "renderer/stores/settings";
 import { act, renderHook } from "renderer/test-utils/fork-ui";
-import { useAcpChatEnabled, useAwaitAcpChatEnabled } from "./useAcpChatEnabled";
+import {
+	forkResolveAcpChatChoice,
+	useForkAcpChatChoice,
+} from "./fork-acp-chat-choice";
 
-const initial = {
-	chosen: useAcpChatStore.getState().enabled,
-	advanced: useForkCliOptionsStore.getState().showCliOptions,
-	legacy: useSettings.getState().acpChatEnabled,
-};
+const initial = useForkCliOptionsStore.getState().showCliOptions;
 
 afterEach(() => {
-	useAcpChatStore.setState({ enabled: initial.chosen });
-	useForkCliOptionsStore.getState().setShowCliOptions(initial.advanced);
-	useSettings.getState().update("acpChatEnabled", initial.legacy);
+	useForkCliOptionsStore.getState().setShowCliOptions(initial);
 });
 
-test("advanced mode preserves the legacy ACP choice until the new preference is set", async () => {
-	useForkCliOptionsStore.getState().setShowCliOptions(true);
-	useSettings.getState().update("acpChatEnabled", false);
-	useAcpChatStore.setState({ enabled: null });
-	const hook = renderHook(() => ({
-		availability: useAcpChatEnabled(),
-		awaitEnabled: useAwaitAcpChatEnabled(),
-	}));
-	expect(hook.result.current.availability).toBe("disabled");
-	expect(await hook.result.current.awaitEnabled()).toBe(false);
-	act(() => useAcpChatStore.getState().setEnabled(true));
-	expect(hook.result.current.availability).toBe("enabled");
-	expect(await hook.result.current.awaitEnabled()).toBe(true);
-	expect(useSettings.getState().acpChatEnabled).toBe(false);
-});
-
-test("basic mode enables ACP while retaining the advanced preference", async () => {
+test("basic mode always opens chats, whatever the account Chat setting says", () => {
 	useForkCliOptionsStore.getState().setShowCliOptions(false);
-	useSettings.getState().update("acpChatEnabled", true);
-	useAcpChatStore.getState().setEnabled(false);
-	const hook = renderHook(() => ({
-		availability: useAcpChatEnabled(),
-		awaitEnabled: useAwaitAcpChatEnabled(),
-	}));
-	expect(hook.result.current.availability).toBe("enabled");
-	expect(await hook.result.current.awaitEnabled()).toBe(true);
-	act(() => useForkCliOptionsStore.getState().setShowCliOptions(true));
-	expect(hook.result.current.availability).toBe("disabled");
-	expect(await hook.result.current.awaitEnabled()).toBe(false);
-	expect(useAcpChatStore.getState().enabled).toBe(false);
+	const hook = renderHook(() => useForkAcpChatChoice(false));
+	expect(hook.result.current).toBe(true);
+	expect(forkResolveAcpChatChoice(false)).toBe(true);
+});
+
+test("advanced mode follows the account Chat setting", () => {
+	useForkCliOptionsStore.getState().setShowCliOptions(true);
+	const off = renderHook(() => useForkAcpChatChoice(false));
+	const on = renderHook(() => useForkAcpChatChoice(true));
+	expect(off.result.current).toBe(false);
+	expect(on.result.current).toBe(true);
+	expect(forkResolveAcpChatChoice(false)).toBe(false);
+	expect(forkResolveAcpChatChoice(true)).toBe(true);
+	act(() => useForkCliOptionsStore.getState().setShowCliOptions(false));
+	expect(off.result.current).toBe(true);
 });

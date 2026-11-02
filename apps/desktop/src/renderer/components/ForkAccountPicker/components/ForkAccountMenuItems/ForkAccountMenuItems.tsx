@@ -112,6 +112,7 @@ export function ForkAccountMenuItems({
 									model={model}
 									compact
 									hideStatus
+									hideUsedLabel
 								/>
 								{(usage?.status === "signed_out" ||
 									usage?.status === "token_expired") && (

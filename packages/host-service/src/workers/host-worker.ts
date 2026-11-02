@@ -5,6 +5,7 @@
 import { parentPort, workerData } from "node:worker_threads";
 import type { WorkerTaskDefinition } from "./define-worker-task.ts";
 import { startGitDirectoryWorker } from "./git-directory-worker.ts";
+import { checkpointTasks } from "./tasks/checkpoints.ts";
 import { folderWorktreeTasks } from "./tasks/folder-worktrees.ts";
 import { gitTasks } from "./tasks/git.ts";
 import { harnessTasks } from "./tasks/harness.ts";
@@ -26,6 +27,7 @@ if (!parentPort) {
 const registry = new Map<string, WorkerTaskDefinition<any, unknown>>();
 for (const def of [
 	...folderWorktreeTasks,
+	...checkpointTasks,
 	...gitTasks,
 	...harnessTasks,
 	...usageTasks,

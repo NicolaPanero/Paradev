@@ -74,7 +74,7 @@ Several of these now isolate parallel work too. Cursor 2.0 can run multiple agen
 
 ### 2. Agent workspaces
 
-These treat the agent as the primary unit. The product is built around launching many agents, isolating each task in its own Git worktree, and reviewing and merging results. Paradev, Conductor, Orca, [Parallel Code](/compare/superset-vs-parallel-code), Augment Intent, and Crystal (now Nimbalyst) fit here. They are less about typing code yourself and more about directing a fleet of agents and reviewing what they produce.
+These treat the agent as the primary unit. The product is built around launching many agents, giving each task its own Git worktree, and reviewing and merging results. Paradev, Conductor, Orca, [Parallel Code](/compare/superset-vs-parallel-code), Augment Intent, and Crystal (now Nimbalyst) fit here. They are less about typing code yourself and more about directing a fleet of agents and reviewing what they produce.
 
 Many developers end up using one of each: an editor for hands-on work and an agent workspace for larger parallel runs.
 
@@ -84,7 +84,7 @@ Many developers end up using one of each: an editor for hands-on work and an age
 
 Paradev is an agent-agnostic workspace built around running coding agents in parallel. New local branch-based workspaces get separate working directories and terminals. Worktrees do not sandbox processes, isolate shared services, or prevent merge conflicts. Around that core it adds a built-in diff and file editor, an in-app browser for docs and dev servers, port management, MCP tooling, Remote Access to your other machines, and cloud workspaces. It runs Claude Code, Codex, OpenCode, Cursor, Copilot, Gemini, Mistral Vibe, and custom agents, and hands off to VS Code, Cursor, JetBrains, or Xcode when you want a full editor.
 
-Paradev desktop supports macOS and experimental Linux; Windows is not available. Its iPhone and iPad app requires iOS 26 or iPadOS 26 or later and Pro. It works with cloud workspaces without keeping your own computer connected; workspaces on your own machine need an online host. Check [pricing](/pricing) and [remote access requirements](https://docs.superset.sh/remote-access).
+Paradev desktop supports macOS and experimental Linux; Windows is not available. Its iPhone and iPad app requires iOS 26 or iPadOS 26 or later and Pro. It works with cloud workspaces without keeping your own computer connected; workspaces on your own machine need an online host. Check [pricing](/pricing) and [remote access requirements](https://docs.paradev.com/remote-access).
 
 Best for:
 
@@ -179,7 +179,7 @@ There is no single "best agentic IDE" in the abstract. There is a best tool for 
 - VS Code + Copilot if you want VS Code extensions and GitHub integration
 - JetBrains + Junie if you live in JetBrains IDEs
 - Augment Intent if you want a coordinator agent to plan, decompose, and verify PR-sized features
-- Paradev if you want to orchestrate many agents in parallel on one repo, with isolation and review as the core
+- Paradev if you want to orchestrate many agents in parallel on one repo, with a worktree per task and review as the core
 
 If task organization and review are your bottlenecks, try Paradev with your own repository and existing CLI agent. Start with one task, inspect its diff, then return to the workspace to continue where you left off. [Download Paradev](/download) to try it.
 
@@ -205,4 +205,4 @@ It varies. Paradev, Orca, Conductor, Augment Intent, and Cursor 2.0 use local Gi
 
 ### Is Paradev an IDE or an orchestrator?
 
-Both, depending on how you use it. It is a workspace where agents are first-class: you orchestrate many of them in isolated worktrees, then review and merge, or hand off to a full editor like VS Code or JetBrains.
+Both, depending on how you use it. It is a workspace where agents are first-class: you orchestrate many of them in separate worktrees, then review and merge, or hand off to a full editor like VS Code or JetBrains.

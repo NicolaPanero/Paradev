@@ -17,6 +17,7 @@ import {
 	isDevAppProfileDirName,
 	workspaceDevAppProfileDirName,
 } from "@superset/shared/dev-app-profile";
+import { HTML_PREVIEW_SCHEME } from "@superset/shared/html-preview";
 import {
 	app,
 	BrowserWindow,
@@ -62,13 +63,17 @@ import { setWorkspaceDockIcon } from "./lib/dock-icon";
 import { loadWebviewBrowserExtension } from "./lib/extensions";
 import { setupForkUpdates } from "./lib/fork-updates";
 import { getHostServiceCoordinator } from "./lib/host-service-coordinator";
+import { htmlPreviewProtocolHandler } from "./lib/html-preview-protocol";
 import { resolveAppLocale } from "./lib/language";
 import { localDb } from "./lib/local-db";
 import { requestLocalNetworkAccess } from "./lib/local-network-permission";
 import { menuEmitter } from "./lib/menu-events";
 import { allowRendererToReachDeviceHub } from "./lib/mobile-hub-origin";
 
-import { syncInstalledPluginMcpServers } from "./lib/plugin-installs";
+import {
+	finishPendingOrganizationForget,
+	syncInstalledPluginMcpServers,
+} from "./lib/plugin-installs";
 import { portForwardManager } from "./lib/port-forward";
 import { ensureProjectIconsDir, getProjectIconPath } from "./lib/project-icons";
 import { runQuitCleanup } from "./lib/quit-sequence";
@@ -456,6 +461,13 @@ protocol.registerSchemesAsPrivileged([
 			corsEnabled: true,
 		},
 	},
+	{
+		scheme: HTML_PREVIEW_SCHEME,
+		privileges: {
+			standard: true,
+			secure: true,
+		},
+	},
 ]);
 
 const gotTheLock = app.requestSingleInstanceLock();
@@ -551,6 +563,11 @@ if (!gotTheLock) {
 				.protocol.handle("superset-font", fontProtocolHandler);
 		}
 
+		protocol.handle(HTML_PREVIEW_SCHEME, htmlPreviewProtocolHandler);
+		session
+			.fromPartition("persist:superset")
+			.protocol.handle(HTML_PREVIEW_SCHEME, htmlPreviewProtocolHandler);
+
 		ensureProjectIconsDir();
 		setWorkspaceDockIcon();
 		initSentry();
@@ -644,6 +661,9 @@ if (!gotTheLock) {
 		} catch (error) {
 			console.error("[main] Failed to sync plugin MCP servers:", error);
 		}
+		void finishPendingOrganizationForget().catch((error) =>
+			console.error("[main] Failed to remove organization plugins:", error),
+		);
 		try {
 			installBundledCliShim();
 		} catch (error) {

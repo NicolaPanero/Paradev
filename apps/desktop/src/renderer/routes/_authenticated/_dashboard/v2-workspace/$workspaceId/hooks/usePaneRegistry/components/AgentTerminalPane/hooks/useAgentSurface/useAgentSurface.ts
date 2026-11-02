@@ -45,8 +45,7 @@ export function useAgentSurface(
 	// The pane remembers an agent it has already opened as a chat, so the
 	// surface survives the binding going away with the pty.
 	const chatCapable = Boolean(
-		(acpChat === "enabled" || data.agentSurface === "acp") &&
-			(agent || data.agent),
+		(acpChat || data.agentSurface === "acp") && (agent || data.agent),
 	);
 	const surface: AgentSurface = "cli";
 

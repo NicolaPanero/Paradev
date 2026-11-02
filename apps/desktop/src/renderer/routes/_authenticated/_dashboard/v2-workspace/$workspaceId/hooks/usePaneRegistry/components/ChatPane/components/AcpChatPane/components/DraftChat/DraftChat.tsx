@@ -1,4 +1,3 @@
-import { emptySnapshot } from "@superset/chat/core";
 import type { UserContent } from "@superset/chat/protocol";
 import { ComposerDropZone } from "@superset/chat-ui/ComposerDropZone";
 import type { ReactNode } from "react";
@@ -16,9 +15,6 @@ import { heldPromptQueue } from "../../../../../ChatSession/utils/heldPromptQueu
 import { ForkDraftChatIntro } from "./components/ForkDraftChatIntro";
 
 const NO_COMMANDS: never[] = [];
-const NO_TASKS: never[] = [];
-const EMPTY_SNAPSHOT = emptySnapshot();
-const IGNORE = () => {};
 
 export function DraftChat({
 	draftKey,
@@ -58,20 +54,13 @@ export function DraftChat({
 			/>
 			<ConnectionNotice>{notice}</ConnectionNotice>
 			<WorkDrawer
-				onAppendToComposer={(text) => composerRef.current?.appendText(text)}
 				onExit={(exit) => composerRef.current?.returnFocus(exit === "history")}
-				onMoveToBackground={IGNORE}
-				onOpenSubagent={IGNORE}
-				onStop={IGNORE}
 				paneRef={paneRef}
 				queue={promptQueue}
 				ref={drawerRef}
-				snapshot={EMPTY_SNAPSHOT}
-				tasks={NO_TASKS}
 			/>
 			<Composer
 				availableCommands={NO_COMMANDS}
-				canQueue={promptQueue !== undefined}
 				draftKey={draftKey}
 				inputRef={composerRef}
 				isActive={isActive}

@@ -28,12 +28,15 @@ export function ForkUsageSummary({
 	model,
 	compact = false,
 	hideStatus = false,
+	hideUsedLabel = false,
 }: {
 	account?: UsageAccount;
 	model?: string;
 	compact?: boolean;
 	/** The status is shown elsewhere, such as a chip beside the account name. */
 	hideStatus?: boolean;
+	/** The surrounding text already says the values are used quota. */
+	hideUsedLabel?: boolean;
 }) {
 	const state = accountQuotaState(account, model, undefined, "display");
 	const shown = account && accountQuotaWithResets(account);
@@ -53,11 +56,16 @@ export function ForkUsageSummary({
 			COMPACT_WINDOW_LIMIT,
 		);
 		return (
-			<span className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-xs">
+			<span className="inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-0.5 text-xs">
 				{!hideStatus && <ForkUsageStatus account={account} model={model} />}
 				{showsWindows &&
 					chips.map((window) => (
-						<UsageWindowChip key={window.id} window={window} dimmed={dimmed} />
+						<UsageWindowChip
+							key={window.id}
+							window={window}
+							dimmed={dimmed}
+							hideUsedLabel={hideUsedLabel}
+						/>
 					))}
 			</span>
 		);

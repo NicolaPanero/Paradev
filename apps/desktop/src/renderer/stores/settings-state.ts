@@ -19,6 +19,7 @@ export type SettingsSection =
 	| "files"
 	| "experimental"
 	| "integrations"
+	| "plugins"
 	| "billing"
 	| "apikeys"
 	| "permissions"

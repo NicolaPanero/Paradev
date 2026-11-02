@@ -12,6 +12,7 @@ import type {
 	CommentPaneData,
 	DiffFocusSide,
 	DiffPaneData,
+	DiffPaneFilter,
 	PagePaneData,
 	PaneTarget,
 	PaneViewerData,
@@ -54,6 +55,7 @@ export function useWorkspacePaneOpeners({
 		line?: number,
 		side?: DiffFocusSide,
 		changeKey?: string,
+		filter?: DiffPaneFilter,
 		repoKey?: string,
 	) => void;
 	addTerminalTab: () => Promise<void>;
@@ -73,6 +75,7 @@ export function useWorkspacePaneOpeners({
 			line?: number,
 			side?: DiffFocusSide,
 			changeKey?: string,
+			filter?: DiffPaneFilter,
 			repoKey?: string,
 		) => {
 			viewer.reveal();
@@ -83,6 +86,7 @@ export function useWorkspacePaneOpeners({
 				focusLine: line,
 				focusSide: line != null ? side : undefined,
 				focusTick: Date.now(),
+				filter,
 			};
 			if (openInNewTab) {
 				state.addTab({

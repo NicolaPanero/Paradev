@@ -28,3 +28,9 @@ test("new chats default to Full access, while saved or explicit modes and resume
 	).toBeUndefined();
 	expect(resolveChatStartMode("ask", FULL_ACCESS_CHAT_MODE, true)).toBe("ask");
 });
+
+test("never saves plan as the mode new chats start in", () => {
+	expect(withSavedMode({ claude: "auto" }, "claude", "plan")).toEqual({
+		claude: "auto",
+	});
+});

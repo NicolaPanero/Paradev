@@ -1,4 +1,5 @@
 import { router } from "../index";
+import { agentJobsRouter } from "./agent-jobs";
 import { agentToolingRouter } from "./agent-tooling";
 import { agentsRouter } from "./agents";
 import { attachmentsRouter } from "./attachments";
@@ -49,6 +50,7 @@ export const appRouter = router({
 	forkScm: forkScmRouter,
 	forkTasks: forkTasksRouter,
 	agents: agentsRouter,
+	agentJobs: agentJobsRouter,
 	sessions: sessionsRouter,
 	agentTooling: agentToolingRouter,
 	attachments: attachmentsRouter,

@@ -6,7 +6,7 @@ import { toast } from "@superset/ui/sonner";
 import { useWorkspaceClient, workspaceTrpc } from "@superset/workspace-client";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
-import { useAwaitAcpChatEnabled } from "renderer/hooks/useAcpChatEnabled";
+import { useResolveAcpChatEnabled } from "renderer/hooks/useAcpChatEnabled";
 import { useTerminalAppearance } from "renderer/hooks/useTerminalAppearance";
 import {
 	useV2AgentConfigs,
@@ -34,6 +34,7 @@ export interface CreateNewAgentSessionInput {
 	accountSelection?: string | null;
 	configId: string;
 	placement: "split-pane" | "new-tab";
+	besidePaneId?: string;
 	prompt: string;
 	forkSessionId?: string;
 	nativeTransferId?: string;
@@ -77,7 +78,7 @@ export function useAgentSessionLauncher({
 	const runAgent = workspaceTrpc.agents.run.useMutation();
 	const launchTransfer = workspaceTrpc.sessionTransfer.launch.useMutation();
 	const appearance = useTerminalAppearance();
-	const awaitAcpChatEnabled = useAwaitAcpChatEnabled();
+	const resolveAcpChatEnabled = useResolveAcpChatEnabled();
 	const { hostUrl } = useWorkspaceClient();
 	const { data: agentConfigs } = useV2AgentConfigs(hostUrl);
 	const queryClient = useQueryClient();
@@ -86,7 +87,8 @@ export function useAgentSessionLauncher({
 		async (input) => {
 			// A handoff out of an open chat continues it, so the flag that gates
 			// new chats does not apply.
-			if (!input.resumeSessionId && !(await awaitAcpChatEnabled())) return null;
+			if (!input.resumeSessionId && !(await resolveAcpChatEnabled()))
+				return null;
 			const configs = await queryClient
 				.ensureQueryData(v2AgentConfigsQueryOptions(hostUrl))
 				.catch(() => agentConfigs ?? []);
@@ -154,7 +156,7 @@ export function useAgentSessionLauncher({
 			return { terminalId };
 		},
 		[
-			awaitAcpChatEnabled,
+			resolveAcpChatEnabled,
 			queryClient,
 			hostUrl,
 			agentConfigs,
@@ -272,7 +274,17 @@ export function useAgentSessionLauncher({
 					kind: "terminal" as const,
 					data: { terminalId, cliTitle: result.label } as TerminalPaneData,
 				};
-				if (input.placement === "split-pane" && state.activeTabId) {
+				const beside = input.besidePaneId
+					? state.getPane(input.besidePaneId)
+					: null;
+				if (input.placement === "split-pane" && beside) {
+					state.splitPane({
+						tabId: beside.tabId,
+						paneId: beside.pane.id,
+						position: "right",
+						newPane: pane,
+					});
+				} else if (input.placement === "split-pane" && state.activeTabId) {
 					state.addPane({ tabId: state.activeTabId, pane });
 				} else {
 					state.addTab({ panes: [pane] });
