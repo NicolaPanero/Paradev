@@ -24,7 +24,8 @@ export type ForkSwitchChatAccountResult =
 
 type SwitchDependencies = {
 	validateTarget(): Promise<void>;
-	move(): Promise<{ moved: boolean }>;
+	/** `empty`: no login holds a transcript, so the chat never ran a turn. */
+	move(): Promise<{ moved: boolean; empty?: boolean }>;
 	clearRecovery(): void;
 	now?: () => number;
 	wait?: (ms: number) => Promise<void>;
@@ -102,14 +103,14 @@ export async function forkSwitchChatAccount(
 				});
 			}
 		};
-		const awaitReady = async (sessionId: string) => {
+		const awaitReady = async (sessionId: string, fresh: boolean) => {
 			const readyBy = now() + (deps.readinessMs ?? 10_000);
 			while (true) {
 				const current = runtime.live.get(sessionId);
 				if (!current || current.state.status === "dead")
 					throw new Error("chat_account_bootstrap_failed");
 				if (current.state.status === "idle") {
-					if (current.state.harnessSessionId !== input.sessionId)
+					if (!fresh && current.state.harnessSessionId !== input.sessionId)
 						throw new Error("chat_account_resume_mismatch");
 					return;
 				}
@@ -118,21 +119,29 @@ export async function forkSwitchChatAccount(
 			}
 		};
 		await stop(input.chatSessionId);
-		const reopen = async (accountSelection: string | null | undefined) => {
+		const reopen = async (
+			accountSelection: string | null | undefined,
+			fresh = false,
+		) => {
+			const { resume: _resume, strictResume: _strict, ...rest } = launch;
 			const created = runtime.commands.createSession({
-				...launch,
+				...rest,
 				commandId: randomUUID(),
 				modeId,
 				modelId,
 				accountSelection,
-				strictResume: true,
-				resume: { harnessSessionId: input.sessionId },
+				...(fresh
+					? {}
+					: {
+							strictResume: true,
+							resume: { harnessSessionId: input.sessionId },
+						}),
 			});
 			try {
 				runtime.live
 					.require(created.sessionId)
 					.promptOnceStarted([], pausedPrompts);
-				await awaitReady(created.sessionId);
+				await awaitReady(created.sessionId, fresh);
 			} catch (error) {
 				await stop(created.sessionId);
 				return { ready: false as const, error };
@@ -156,14 +165,14 @@ export async function forkSwitchChatAccount(
 				error: error instanceof Error ? error.message : String(error),
 			};
 		};
-		let moved: { moved: boolean };
+		let moved: { moved: boolean; empty?: boolean };
 		try {
 			moved = await deps.move();
 			deps.clearRecovery();
 		} catch (error) {
 			return await recover(error);
 		}
-		const target = await reopen(input.targetSelection);
+		const target = await reopen(input.targetSelection, moved.empty === true);
 		if (!target.ready) return await recover(target.error);
 		return {
 			switched: true,
@@ -198,10 +207,13 @@ export async function switchClaudeChatAccount(
 				});
 		},
 		move: async () => {
+			const source = runtime.live.get(input.chatSessionId)?.launchOptions
+				?.accountSelection;
 			const result = await moveClaudeSession({
 				sessionId: input.sessionId,
 				configDirs: [
 					systemDir,
+					...(typeof source === "string" ? [source] : []),
 					...(await discoverClaudeProfiles()).map(
 						(profile) => profile.configDir,
 					),
@@ -209,10 +221,7 @@ export async function switchClaudeChatAccount(
 				targetDir: input.targetSelection ?? systemDir,
 			});
 			if (!result.moved && result.reason === "session_not_found")
-				throw new TRPCError({
-					code: "NOT_FOUND",
-					message: "session_not_found",
-				});
+				return { moved: false, empty: true };
 			return result;
 		},
 		clearRecovery: () =>
