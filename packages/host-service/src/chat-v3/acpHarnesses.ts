@@ -21,6 +21,7 @@ import { chatAccountUsesApiCredentials } from "./forkChatAccount";
 import { forkConfiguredCli } from "./forkConfiguredCli";
 import { startInFullAccess } from "./forkFullAccessStart";
 import { forkGeminiAuthMethod } from "./forkGeminiAuth";
+import { forkGrokAuthMethod } from "./forkGrokAuth";
 import { forkLaunchChoices } from "./forkLaunchChoices";
 import { forkQuotaRecoveryHarness } from "./forkQuotaRecoveryHarness";
 
@@ -117,6 +118,8 @@ export function acpHarnessFactory(
 						const env = cli.env;
 						if (harness === "gemini-acp")
 							authMethodId = forkGeminiAuthMethod(env, entry.authMethodId);
+						if (harness === "grok-acp")
+							authMethodId = forkGrokAuthMethod(env, entry.authMethodId);
 						agents?.launched?.(options.sessionId, env);
 						await captureSessionAccount(
 							entry.binary,
