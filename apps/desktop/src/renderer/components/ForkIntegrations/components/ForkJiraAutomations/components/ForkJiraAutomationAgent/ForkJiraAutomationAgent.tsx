@@ -108,27 +108,25 @@ export function ForkJiraAutomationAgent({
 				/>
 			</div>
 			{supported && (
-				<>
-					<div className="space-y-1.5">
-						<Label htmlFor="jira-rule-surface">
-							<Trans>Open in</Trans>
-						</Label>
-						<select
-							id="jira-rule-surface"
-							className={selectClass}
-							value={value.surface}
-							onChange={(e) =>
-								onChange({
-									...value,
-									surface: e.target.value as "terminal" | "chat",
-								})
-							}
-						>
-							<option value="chat">{t({ message: "ACP chat" })}</option>
-							<option value="terminal">{t({ message: "Terminal" })}</option>
-						</select>
-					</div>
-				</>
+				<div className="space-y-1.5">
+					<Label htmlFor="jira-rule-surface">
+						<Trans>Open in</Trans>
+					</Label>
+					<select
+						id="jira-rule-surface"
+						className={selectClass}
+						value={value.surface}
+						onChange={(e) =>
+							onChange({
+								...value,
+								surface: e.target.value as "terminal" | "chat",
+							})
+						}
+					>
+						<option value="chat">{t({ message: "ACP chat" })}</option>
+						<option value="terminal">{t({ message: "Terminal" })}</option>
+					</select>
+				</div>
 			)}
 			{(agents.error || accounts.error) && (
 				<p role="alert" className="col-span-2 text-xs text-destructive">
