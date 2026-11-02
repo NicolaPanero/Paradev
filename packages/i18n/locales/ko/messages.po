@@ -6892,9 +6892,6 @@ msgstr "기본값({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "기본값 ({fallback})"
 
-msgid "Default account"
-msgstr "기본 계정"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "새 작업 공간의 기본 기준 브랜치입니다. 생성 시 작업 공간별로 변경할 수 있습니다."
 

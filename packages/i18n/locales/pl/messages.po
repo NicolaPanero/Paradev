@@ -6892,9 +6892,6 @@ msgstr "Domyślny ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "Domyślnie ({fallback})"
 
-msgid "Default account"
-msgstr "Konto domyślne"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Domyślna baza nowych obszarów roboczych. Można zmienić ją osobno podczas tworzenia."
 

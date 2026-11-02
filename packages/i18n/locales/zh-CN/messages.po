@@ -6892,9 +6892,6 @@ msgstr "默认（{defaultWorktreePath}）"
 msgid "Default ({fallback})"
 msgstr "默认（{fallback}）"
 
-msgid "Default account"
-msgstr "默认账户"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "新工作区的默认基础分支。可在创建时为各工作区单独覆盖。"
 

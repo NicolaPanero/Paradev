@@ -6892,9 +6892,6 @@ msgstr "По умолчанию ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "По умолчанию ({fallback})"
 
-msgid "Default account"
-msgstr "Аккаунт по умолчанию"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "База по умолчанию для новых рабочих пространств. Можно изменить при создании каждого пространства."
 
