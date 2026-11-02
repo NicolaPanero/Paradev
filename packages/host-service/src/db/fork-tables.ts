@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS fork_jira_automations (
 );
 CREATE TABLE IF NOT EXISTS fork_jira_automation_launches (
  rule_id text PRIMARY KEY NOT NULL REFERENCES fork_jira_automations(id) ON DELETE CASCADE,
- surface text NOT NULL, model text, account_selection text
+ surface text NOT NULL, model text, account_selection text, effort text
 );
 CREATE TABLE IF NOT EXISTS fork_jira_automation_runs (
  rule_id text NOT NULL REFERENCES fork_jira_automations(id) ON DELETE CASCADE,
@@ -159,6 +159,17 @@ CREATE INDEX IF NOT EXISTS \`background_chats_workspace_idx\` ON \`background_ch
 `;
 
 /** Creates the tables in fork-schema.ts. Runs after upstream migrations. */
+const FORK_ADDED_COLUMNS = [
+	"ALTER TABLE fork_jira_automation_launches ADD COLUMN effort text",
+];
+
 export function ensureForkTables(sqlite: { exec(sql: string): unknown }): void {
 	sqlite.exec(FORK_TABLES_SQL);
+	for (const statement of FORK_ADDED_COLUMNS) {
+		try {
+			sqlite.exec(statement);
+		} catch (error) {
+			if (!String(error).includes("duplicate column")) throw error;
+		}
+	}
 }

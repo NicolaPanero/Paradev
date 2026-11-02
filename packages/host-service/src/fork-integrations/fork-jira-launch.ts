@@ -17,6 +17,7 @@ export const forkJiraLaunchSchema = z.object({
 	surface: z.enum(["terminal", "chat"]),
 	model: z.string().min(1).optional(),
 	accountSelection: z.string().min(1).optional(),
+	effort: z.string().min(1).optional(),
 });
 
 export async function prepareForkJiraLaunch(
