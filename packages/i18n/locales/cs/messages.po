@@ -6892,9 +6892,6 @@ msgstr "Výchozí ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "Výchozí ({fallback})"
 
-msgid "Default account"
-msgstr "Výchozí účet"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Výchozí základ nových pracovních prostorů. Lze jej změnit při vytváření jednotlivých prostorů."
 

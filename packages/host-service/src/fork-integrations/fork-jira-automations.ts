@@ -52,6 +52,7 @@ export async function forkLaunchAutomationAttempt(
 				surface: options.surface,
 				model: options.model ?? undefined,
 				accountSelection: options.accountSelection ?? undefined,
+				effort: options.effort ?? undefined,
 			})
 		: {};
 	const workspaceId = attempt.workspaceId;

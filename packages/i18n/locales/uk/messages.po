@@ -6886,9 +6886,6 @@ msgstr "За замовчуванням ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "За замовчуванням ({fallback})"
 
-msgid "Default account"
-msgstr "Обліковий запис за замовчуванням"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Базова гілка за замовчуванням для нових робочих просторів. Її можна змінити для кожного простору під час створення."
 

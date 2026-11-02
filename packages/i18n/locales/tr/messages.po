@@ -6892,9 +6892,6 @@ msgstr "Varsayılan ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "Varsayılan ({fallback})"
 
-msgid "Default account"
-msgstr "Varsayılan hesap"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Yeni çalışma alanları için varsayılan temel. Oluştururken her çalışma alanı için değiştirilebilir."
 
