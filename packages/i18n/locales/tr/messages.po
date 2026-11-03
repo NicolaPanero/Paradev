@@ -1708,6 +1708,9 @@ msgstr "Kurulumdan ilk ajan çalıştırmanıza, rehberli bir ilk çalışma ala
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Ajanlarınızın neyi değiştirdiğini incelemek için daha hızlı, daha net bir fark deneyimi."
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "Bir sohbet mesajındaki dosya adı, aynı mesajın andığı klasörden açılır."
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "{where} konumunda '{firstName}' adlı bir dosya zaten var. Değiştirmek istiyor musunuz?"
 
@@ -1749,9 +1752,6 @@ msgstr "Devam etmek için Paradev'in yeni bir sürümü gerekiyor. Lütfen en so
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Bu daldan yeni bir çalışma alanı; konuşma yeni bir aracıya devredilir"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Görünümler ve filtreler içeren yeni bir çalışma alanları listesi. Ukraynaca dil olarak kullanılabilir."
 
 msgid "A newsletter or blog"
 msgstr "Bir bülten veya blog"
@@ -3511,9 +3511,6 @@ msgstr "PR #{0} temel alınarak"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "Son 30 gündeki {0} token temel alınmıştır; {1} sayılıyor."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Paradev 2.0.3 tabanlıdır: çalışma alanı değiştirme ve ajan etkinliği daha az iş yükü getirir, böylece uygulama akıcı kalır."
-
 msgid "Become a design partner"
 msgstr "Geliştirme ortağı olun"
 
@@ -4238,6 +4235,9 @@ msgstr "Güncellemeleri denetle"
 
 msgid "Check for Updates"
 msgstr "Güncellemeleri denetle"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "Güncellemeleri Denetle, bir ofis GitHub'ın istek sınırını paylaştığında artık başarısız olmuyor. Claude hesabı değiştirme ve Grok sohbetleri doğru şekilde yeniden açılıyor."
 
 msgid "Check for Updates..."
 msgstr "Güncellemeleri denetle..."
@@ -7351,9 +7351,6 @@ msgstr "Fark değişikliklerine genel bakış"
 
 msgid "diff in new tab"
 msgstr "yeni sekmede fark"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Diff'ler binlerce dosyalı değişiklikler için açılır ve düzenleyiciyle tek bir vurgulayıcıyı paylaşır."
 
 msgid "Digital Product Designer"
 msgstr "Dijital Ürün Tasarımcısı"
@@ -10799,6 +10796,9 @@ msgstr "Jira kayıtları"
 
 msgid "Jira project"
 msgstr "Jira projesi"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Bir workspace'e bağlı Jira görevleri etkinlik menüsünde görünür. Okumak ve durumunu değiştirmek için birini açın."
 
 msgid "Jira triage"
 msgstr "Jira sınıflandırma"
@@ -20278,11 +20278,11 @@ msgstr "Havuz her ay sıfırlanır. Havuzu aşan kullanım her planda gösterile
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "Birincil depo, ortamın depolarından biri olmalıdır"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "Proje klasörü seçici sağ panele geri döndü: Dosyalar, Değişen dosyalar ve Değişiklikler seçtiğiniz klasörü izler."
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Projenin checkout'u olduğu gibi: dosyalar ve dal paylaşılır"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "İstem kutusu zengin metni destekler. Kullanım sınırı artık kuyruğu duraklatır ve sıfırlanınca devam etmeyi önerir."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23077,9 +23077,6 @@ msgstr "GitHub bağlantın oturum açtığın hesaptan gelir, bu yüzden doğrul
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Jira hesabınız bu kayıtta süre kaydedemez."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Jira otomasyonlarınız, Bugün görünümü, Sohbet kısayolu ve hesaplarınız eskisi gibi çalışır."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Son ödemeniz başarısız oldu. Pro'yu sürdürmek için ödeme yönteminizi güncelleyin."

@@ -1708,6 +1708,9 @@ msgstr "インストールから最初のエージェント実行までの道の
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "エージェントの変更をレビューするための、より速く分かりやすい差分体験。"
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "チャットメッセージ内のファイル名は、同じメッセージが挙げているフォルダから開きます。"
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "{where}には「{firstName}」という名前のファイルがすでに存在します。置き換えますか?"
 
@@ -1749,9 +1752,6 @@ msgstr "続行するには新しいバージョンのParadevが必要です。�
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "このブランチから新しいワークスペースを作り、会話を新しいエージェントに引き継ぎます"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "ビューとフィルターを備えた新しいワークスペース一覧。言語としてウクライナ語を選べます。"
 
 msgid "A newsletter or blog"
 msgstr "ニュースレター・ブログ"
@@ -3511,9 +3511,6 @@ msgstr "PR #{0} をベースに"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "過去30日間の{0}トークンに基づく({1}を集計)。"
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Paradev 2.0.3 をベースに、ワークスペースの切り替えとエージェントのアクティビティの負荷を減らし、アプリの応答性を保ちます。"
-
 msgid "Become a design partner"
 msgstr "共同開発パートナーになる"
 
@@ -4238,6 +4235,9 @@ msgstr "更新を確認"
 
 msgid "Check for Updates"
 msgstr "アップデートを確認"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "オフィスで GitHub のリクエスト上限を共有していても、「アップデートを確認」が失敗しなくなりました。Claude アカウントの切り替えと Grok のチャットも正しく再開されます。"
 
 msgid "Check for Updates..."
 msgstr "アップデートを確認..."
@@ -7351,9 +7351,6 @@ msgstr "差分変更の概要"
 
 msgid "diff in new tab"
 msgstr "新しいタブで差分"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "数千ファイルの変更でも差分を開けるようになり、エディターとハイライターを共有します。"
 
 msgid "Digital Product Designer"
 msgstr "デジタルプロダクトデザイナー"
@@ -10799,6 +10796,9 @@ msgstr "Jira 課題"
 
 msgid "Jira project"
 msgstr "Jiraプロジェクト"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "ワークスペースにリンクした Jira タスクが、そのアクティビティメニューに表示されます。開いて内容を読み、ステータスを変更できます。"
 
 msgid "Jira triage"
 msgstr "Jira トリアージ"
@@ -20278,11 +20278,11 @@ msgstr "プールは毎月リセットされます。超過分は各プランに
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "プライマリリポジトリは環境のリポジトリのいずれかである必要があります"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "プロジェクトのフォルダ選択が右パネルに戻りました。ファイル、変更されたファイル、変更は選んだフォルダに従います。"
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "プロジェクトのチェックアウトをそのまま使用: ファイルとブランチは共有されます"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "プロンプト入力欄がリッチテキストに対応しました。使用上限に達するとキューを一時停止し、リセット時に再開するか確認します。"
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23077,9 +23077,6 @@ msgstr "GitHub のリンクはサインインしたアカウントから取得�
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "あなたの Jira アカウントではこの課題に時間を記録できません。"
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Jira の自動化、Today ビュー、チャットのショートカット、アカウントはこれまでどおり動作します。"
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "前回の支払いに失敗しました。Pro を継続するには支払い方法を更新してください。"

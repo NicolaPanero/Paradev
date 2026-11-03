@@ -1708,6 +1708,9 @@ msgstr "Rychlejší cesta od instalace k prvnímu běhu agenta, s prvním pracov
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Rychlejší a přehlednější práce s rozdíly při revizi toho, co agenti změnili."
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "Název souboru ve zprávě chatu se otevře ze složky, kterou uvádí tatáž zpráva."
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "V {where} už existuje soubor s názvem „{firstName}“. Chcete ho nahradit?"
 
@@ -1749,9 +1752,6 @@ msgstr "Pro pokračování je potřeba novější verze Paradev. Aktualizujte pr
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Nový pracovní prostor z této větve; konverzace se předá novému agentovi"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Nový seznam pracovních prostorů se zobrazeními a filtry. Ukrajinština je dostupná jako jazyk."
 
 msgid "A newsletter or blog"
 msgstr "Newsletter nebo blog"
@@ -3511,9 +3511,6 @@ msgstr "na základě PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "Na základě {0} tokenů za posledních 30 dní, počítáno z {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Vychází z Paradev 2.0.3: přepínání pracovních prostorů a aktivita agentů zatěžují méně, takže aplikace zůstává svižná."
-
 msgid "Become a design partner"
 msgstr "Staňte se partnerem pro vývoj"
 
@@ -4238,6 +4235,9 @@ msgstr "Zkontrolovat aktualizace"
 
 msgid "Check for Updates"
 msgstr "Zkontrolovat aktualizace"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "Kontrola aktualizací už neselhává, když si kancelář sdílí limit požadavků GitHubu. Změna účtu Claude a chaty Grok se znovu otevírají správně."
 
 msgid "Check for Updates..."
 msgstr "Zkontrolovat aktualizace..."
@@ -7351,9 +7351,6 @@ msgstr "Přehled změn diff"
 
 msgid "diff in new tab"
 msgstr "rozdíl na nové kartě"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Diffy se otevřou i u změn s tisíci soubory a sdílejí se editorem jeden zvýrazňovač."
 
 msgid "Digital Product Designer"
 msgstr "Designér digitálních produktů"
@@ -10799,6 +10796,9 @@ msgstr "Úkoly Jira"
 
 msgid "Jira project"
 msgstr "Projekt Jira"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Úlohy Jira propojené s workspace se zobrazují v jeho nabídce aktivity. Otevřete jednu, abyste ji přečetli a změnili její stav."
 
 msgid "Jira triage"
 msgstr "Třídění Jira"
@@ -20278,11 +20278,11 @@ msgstr "Fond se každý měsíc obnovuje. Využití nad jeho rámec se účtuje 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "Primární repozitář musí být jedním z repozitářů prostředí"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "Výběr složek projektu je zpět v pravém panelu: Soubory, Změněné soubory a Změny sledují vybranou složku."
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Checkout projektu tak, jak je: soubory a větev jsou sdílené"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "Pole promptu podporuje formátovaný text. Dosažení limitu využití nyní pozastaví frontu a nabídne pokračování po obnovení limitu."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23077,9 +23077,6 @@ msgstr "Odkaz na GitHub pochází z účtu, kterým jste se přihlásili, proto 
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Váš účet Jira nemůže na tento úkol vykazovat čas."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Vaše automatizace Jira, zobrazení Dnes, zkratka Chatu a účty fungují jako dřív."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Poslední platba se nezdařila. Aktualizujte způsob platby, abyste si Pro zachovali."

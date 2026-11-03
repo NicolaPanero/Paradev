@@ -1708,6 +1708,9 @@ msgstr "Een snellere weg van installatie naar je eerste agentrun, met een begele
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Een snellere, duidelijkere diff-ervaring om te reviewen wat je agents hebben veranderd."
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "Een bestandsnaam in een chatbericht opent vanuit de map die datzelfde bericht noemt."
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "Er bestaat al een bestand met de naam '{firstName}' in {where}. Wil je het vervangen?"
 
@@ -1749,9 +1752,6 @@ msgstr "Er is een nieuwe versie van Paradev nodig om verder te gaan. Werk bij na
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Een nieuwe workspace vanaf deze branch, met het gesprek overgedragen aan een nieuwe agent"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Een nieuwe workspacelijst met weergaven en filters. Oekraïens is beschikbaar als taal."
 
 msgid "A newsletter or blog"
 msgstr "Een nieuwsbrief of blog"
@@ -3511,9 +3511,6 @@ msgstr "gebaseerd op PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "Op basis van {0} tokens in de laatste 30 dagen, gerekend over {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Gebaseerd op Paradev 2.0.3: wisselen van workspace en agentactiviteit kosten minder werk, zodat de app responsief blijft."
-
 msgid "Become a design partner"
 msgstr "Word ontwerppartner"
 
@@ -4238,6 +4235,9 @@ msgstr "Controleren op updates"
 
 msgid "Check for Updates"
 msgstr "Controleren op updates"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "Controleren op updates mislukt niet meer wanneer een kantoor de aanvraaglimiet van GitHub deelt. Het wisselen van Claude-account en Grok-chats worden correct heropend."
 
 msgid "Check for Updates..."
 msgstr "Controleren op updates..."
@@ -7351,9 +7351,6 @@ msgstr "Overzicht van diff-wijzigingen"
 
 msgid "diff in new tab"
 msgstr "diff in nieuw tabblad"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Diffs openen ook voor wijzigingen met duizenden bestanden en delen één highlighter met de editor."
 
 msgid "Digital Product Designer"
 msgstr "Ontwerper van digitale producten"
@@ -10799,6 +10796,9 @@ msgstr "Jira-issues"
 
 msgid "Jira project"
 msgstr "Jira-project"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Jira-taken die aan een workspace zijn gekoppeld, staan in het activiteitenmenu. Open er een om hem te lezen en de status te wijzigen."
 
 msgid "Jira triage"
 msgstr "Jira-triage"
@@ -20278,11 +20278,11 @@ msgstr "De pool wordt elke maand vernieuwd. Gebruik daarboven wordt per GB-uur g
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "De primaire repository moet een van de repository's van de omgeving zijn"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "De mapkiezer van het project is terug in het rechterpaneel: Bestanden, Gewijzigde bestanden en Wijzigingen volgen de gekozen map."
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "De checkout van het project zoals die is: bestanden en branch worden gedeeld"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "Het promptveld ondersteunt opgemaakte tekst. Een gebruikslimiet pauzeert nu de wachtrij en biedt aan te hervatten bij de reset."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23077,9 +23077,6 @@ msgstr "Je GitHub-link komt van het account waarmee je bent ingelogd, daarom sta
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Je Jira-account kan geen tijd registreren op deze issue."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Je Jira-automatiseringen, de weergave Vandaag, de Chat-snelkoppeling en accounts werken zoals voorheen."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Je laatste betaling is mislukt. Werk je betaalmethode bij om Pro te behouden."

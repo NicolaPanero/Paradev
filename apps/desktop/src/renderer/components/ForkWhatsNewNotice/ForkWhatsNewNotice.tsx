@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-2-0-3-sync-2026-11";
+export const FORK_WHATS_NEW_ID = "linked-tasks-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 const FORK_GUIDE_URL =
 	"https://github.com/NicolaPanero/superset/blob/fork/main/FORK.md";
@@ -32,23 +32,19 @@ export function ForkWhatsNewNotice() {
 	const highlights = [
 		t({
 			message:
-				"Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive.",
+				"Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status.",
 		}),
 		t({
 			message:
-				"The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset.",
+				"The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick.",
 		}),
 		t({
 			message:
-				"Diffs open for changes with thousands of files and share one highlighter with the editor.",
+				"A file name in a chat message opens from the folder that same message names.",
 		}),
 		t({
 			message:
-				"A new Workspaces list with views and filters. Ukrainian is available as a language.",
-		}),
-		t({
-			message:
-				"Your Jira automations, Today view, Chat shortcut and accounts work as before.",
+				"Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly.",
 		}),
 	];
 	const notice: DesktopNotice = {

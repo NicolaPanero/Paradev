@@ -73,6 +73,8 @@ import { ChangesMenuRow } from "./components/ChangesMenuRow";
 import { FinishedSubagentRow } from "./components/FinishedSubagentRow";
 import { ForkBackgroundChatsGroup } from "./components/ForkBackgroundChatsGroup";
 import { ForkBackgroundWorkDetails } from "./components/ForkBackgroundWorkDetails";
+import { ForkLinkedTaskDialog } from "./components/ForkLinkedTaskDialog";
+import { ForkLinkedTasksGroup } from "./components/ForkLinkedTasksGroup";
 import { ForkStopAllWorkButton } from "./components/ForkStopAllWorkButton";
 import { MenuGroup } from "./components/MenuGroup";
 import { PagesMenuRow } from "./components/PagesMenuRow";
@@ -677,6 +679,7 @@ export function WorkspaceActivityMenu({
 								/>
 							</section>
 						)}
+						<ForkLinkedTasksGroup workspaceId={workspaceId} enabled={open} />
 						{pullRequests.length > 0 && (
 							<MenuGroup
 								title={<Trans>Pull requests</Trans>}
@@ -770,6 +773,7 @@ export function WorkspaceActivityMenu({
 
 	return (
 		<>
+			<ForkLinkedTaskDialog />
 			<ForkBackgroundWorkDetails
 				work={selectedWork}
 				source={selectedWork ? sourceOf(selectedWork.terminalId) : undefined}

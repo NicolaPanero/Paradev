@@ -1708,6 +1708,9 @@ msgstr "Un percorso più rapido dall'installazione alla prima esecuzione di un a
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Un'esperienza di diff più veloce e più chiara per rivedere cosa hanno cambiato i tuoi agenti."
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "Un nome di file in un messaggio della chat si apre dalla cartella che lo stesso messaggio indica."
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "Un file chiamato '{firstName}' esiste già in {where}. Vuoi sostituirlo?"
 
@@ -1749,9 +1752,6 @@ msgstr "Per continuare è necessaria una nuova versione di Paradev. Aggiorna all
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Un nuovo workspace da questo branch, con la conversazione consegnata a un nuovo agente"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Un nuovo elenco di workspace con viste e filtri. L'ucraino è disponibile come lingua."
 
 msgid "A newsletter or blog"
 msgstr "Una newsletter o un blog"
@@ -3511,9 +3511,6 @@ msgstr "basato sulla PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "In base a {0} token negli ultimi 30 giorni, contando {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Basato su Paradev 2.0.3: il cambio di workspace e l'attività degli agenti richiedono meno lavoro, così l'app resta reattiva."
-
 msgid "Become a design partner"
 msgstr "Diventa partner di progettazione"
 
@@ -4238,6 +4235,9 @@ msgstr "Controlla aggiornamenti"
 
 msgid "Check for Updates"
 msgstr "Controlla aggiornamenti"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "Check for Updates non fallisce più quando un ufficio condivide il limite di richieste di GitHub. Il cambio di account Claude e le chat Grok si riaprono correttamente."
 
 msgid "Check for Updates..."
 msgstr "Controlla aggiornamenti..."
@@ -7351,9 +7351,6 @@ msgstr "Panoramica delle modifiche del diff"
 
 msgid "diff in new tab"
 msgstr "diff in una nuova scheda"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "I diff si aprono anche per modifiche con migliaia di file e condividono un evidenziatore con l'editor."
 
 msgid "Digital Product Designer"
 msgstr "Designer di prodotti digitali"
@@ -10799,6 +10796,9 @@ msgstr "Issue Jira"
 
 msgid "Jira project"
 msgstr "Progetto Jira"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "I task Jira collegati a un workspace compaiono nel suo menu attività. Aprine uno per leggerlo e cambiarne lo stato."
 
 msgid "Jira triage"
 msgstr "Triage Jira"
@@ -20278,11 +20278,11 @@ msgstr "Il pool si azzera ogni mese. L'uso oltre il pool viene addebitato per GB
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "Il repository principale deve essere uno dei repository dell'ambiente"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "Il selettore delle cartelle del progetto è tornato nel pannello destro: File, File modificati e Modifiche seguono la cartella scelta."
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Il checkout del progetto così com'è: file e branch sono condivisi"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "La casella del prompt supporta il rich text. Un limite di utilizzo ora mette in pausa la coda e propone di riprendere al ripristino."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23077,9 +23077,6 @@ msgstr "Il tuo link GitHub proviene dall'account con cui hai effettuato l'access
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Il tuo account Jira non può registrare tempo su questa issue."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Le tue automazioni Jira, la vista Oggi, la scorciatoia Chat e gli account funzionano come prima."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "L'ultimo pagamento non è andato a buon fine. Aggiorna il metodo di pagamento per mantenere Pro."

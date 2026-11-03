@@ -1708,6 +1708,9 @@ msgstr "A faster path from install to your first agent run, with a guided first 
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "A faster, clearer diff experience for reviewing what your agents changed."
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "A file name in a chat message opens from the folder that same message names."
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 
@@ -1749,9 +1752,6 @@ msgstr "A new version of Paradev is required to continue. Please update to the l
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "A new workspace off this branch, with the conversation handed to a fresh agent"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "A new Workspaces list with views and filters. Ukrainian is available as a language."
 
 msgid "A newsletter or blog"
 msgstr "A newsletter or blog"
@@ -3511,9 +3511,6 @@ msgstr "based off PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "Based on {0} tokens in the last 30 days, counting {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-
 msgid "Become a design partner"
 msgstr "Become a design partner"
 
@@ -4238,6 +4235,9 @@ msgstr "Check for updates"
 
 msgid "Check for Updates"
 msgstr "Check for Updates"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
 
 msgid "Check for Updates..."
 msgstr "Check for Updates..."
@@ -7351,9 +7351,6 @@ msgstr "Diff change overview"
 
 msgid "diff in new tab"
 msgstr "diff in new tab"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Diffs open for changes with thousands of files and share one highlighter with the editor."
 
 msgid "Digital Product Designer"
 msgstr "Digital Product Designer"
@@ -10799,6 +10796,9 @@ msgstr "Jira issues"
 
 msgid "Jira project"
 msgstr "Jira project"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
 
 msgid "Jira triage"
 msgstr "Jira triage"
@@ -20278,11 +20278,11 @@ msgstr "The pool resets every month. Usage past it is billed per GB-hour at the 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "The primary repository must be one of the environment's repositories"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "The project's checkout as it is: files and branch are shared"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23077,9 +23077,6 @@ msgstr "Your GitHub link comes from the account you signed in with, so it shows 
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Your Jira account cannot log time on this issue."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Your Jira automations, Today view, Chat shortcut and accounts work as before."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Your last payment failed. Update your payment method to keep Pro."

@@ -1708,6 +1708,9 @@ msgstr "Đường đi nhanh hơn từ lúc cài đến lần chạy agent đầu
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Trải nghiệm xem diff nhanh và rõ hơn để review những gì agent đã thay đổi."
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "Tên tệp trong tin nhắn trò chuyện được mở từ thư mục mà chính tin nhắn đó nêu."
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "Đã có tệp tên '{firstName}' trong {where}. Bạn có muốn thay thế không?"
 
@@ -1749,9 +1752,6 @@ msgstr "Cần phiên bản Paradev mới để tiếp tục. Vui lòng cập nh�
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Một workspace mới từ nhánh này, hội thoại được bàn giao cho tác nhân mới"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Danh sách không gian làm việc mới với các chế độ xem và bộ lọc. Tiếng Ukraina đã có sẵn làm ngôn ngữ."
 
 msgid "A newsletter or blog"
 msgstr "Bản tin hoặc blog"
@@ -3511,9 +3511,6 @@ msgstr "dựa trên PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "Dựa trên {0} token trong 30 ngày qua, tính cả {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Dựa trên Paradev 2.0.3: việc chuyển không gian làm việc và hoạt động của agent tốn ít công việc hơn, nên ứng dụng luôn phản hồi nhanh."
-
 msgid "Become a design partner"
 msgstr "Trở thành đối tác đồng phát triển"
 
@@ -4238,6 +4235,9 @@ msgstr "Kiểm tra cập nhật"
 
 msgid "Check for Updates"
 msgstr "Kiểm tra cập nhật"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "Kiểm tra cập nhật không còn lỗi khi một văn phòng dùng chung giới hạn yêu cầu của GitHub. Việc đổi tài khoản Claude và các cuộc trò chuyện Grok được mở lại đúng cách."
 
 msgid "Check for Updates..."
 msgstr "Kiểm tra cập nhật..."
@@ -7351,9 +7351,6 @@ msgstr "Tổng quan thay đổi diff"
 
 msgid "diff in new tab"
 msgstr "diff ở tab mới"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Diff mở được cho các thay đổi có hàng nghìn tệp và dùng chung một bộ tô sáng với trình soạn thảo."
 
 msgid "Digital Product Designer"
 msgstr "Nhà thiết kế sản phẩm số"
@@ -10799,6 +10796,9 @@ msgstr "Issue Jira"
 
 msgid "Jira project"
 msgstr "Dự án Jira"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Các tác vụ Jira được liên kết với một workspace hiển thị trong menu hoạt động của nó. Mở một tác vụ để đọc và đổi trạng thái."
 
 msgid "Jira triage"
 msgstr "Phân loại Jira"
@@ -20278,11 +20278,11 @@ msgstr "Quỹ được làm mới mỗi tháng. Phần sử dụng vượt quỹ
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "Kho lưu trữ chính phải là một trong các kho lưu trữ của môi trường"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "Bộ chọn thư mục dự án đã trở lại ở bảng bên phải: Tệp, Tệp đã thay đổi và Thay đổi theo thư mục bạn chọn."
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Checkout của dự án như hiện có: tệp và nhánh được dùng chung"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "Ô prompt hỗ trợ văn bản đa dạng thức. Giới hạn sử dụng giờ sẽ tạm dừng hàng đợi và đề nghị tiếp tục khi được đặt lại."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23077,9 +23077,6 @@ msgstr "Liên kết GitHub của bạn lấy từ tài khoản bạn đã đăng
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Tài khoản Jira của bạn không thể ghi giờ cho issue này."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Tự động hóa Jira, chế độ xem Hôm nay, lối tắt Chat và tài khoản của bạn hoạt động như trước."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Lần thanh toán gần nhất không thành công. Hãy cập nhật phương thức thanh toán để giữ Pro."

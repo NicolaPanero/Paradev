@@ -1702,6 +1702,9 @@ msgstr "Швидший шлях від встановлення до першо�
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Швидший і зрозуміліший diff для рев'ю того, що змінили ваші агенти."
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "Назва файлу в повідомленні чату відкривається з папки, яку називає те саме повідомлення."
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "У {where} уже є файл з назвою «{firstName}». Замінити його?"
 
@@ -1743,9 +1746,6 @@ msgstr "Щоб продовжити, потрібна нова версія Para
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Новий робочий простір від цієї гілки, розмову буде передано новому агенту"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Новий список робочих просторів із поданнями та фільтрами. Українська мова доступна."
 
 msgid "A newsletter or blog"
 msgstr "Розсилка або блог"
@@ -3505,9 +3505,6 @@ msgstr "на основі PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "На основі {0} токенів за останні 30 днів з урахуванням {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Базується на Paradev 2.0.3: перемикання робочих просторів і активність агентів потребують менше ресурсів, тож застосунок залишається чутливим."
-
 msgid "Become a design partner"
 msgstr "Стати дизайн-партнером"
 
@@ -4232,6 +4229,9 @@ msgstr "Перевірити оновлення"
 
 msgid "Check for Updates"
 msgstr "Перевірити оновлення"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "Перевірка оновлень більше не завершується помилкою, коли офіс ділить ліміт запитів GitHub. Зміна облікового запису Claude і чати Grok повторно відкриваються правильно."
 
 msgid "Check for Updates..."
 msgstr "Перевірити оновлення..."
@@ -7345,9 +7345,6 @@ msgstr "Огляд змін у diff"
 
 msgid "diff in new tab"
 msgstr "diff у новій вкладці"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Діфи відкриваються для змін із тисячами файлів і спільно з редактором використовують один підсвічувач."
 
 msgid "Digital Product Designer"
 msgstr "Дизайнер цифрових продуктів"
@@ -10793,6 +10790,9 @@ msgstr "Задачі Jira"
 
 msgid "Jira project"
 msgstr "Проєкт Jira"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Завдання Jira, пов'язані з workspace, показуються в його меню активності. Відкрийте завдання, щоб прочитати його й змінити статус."
 
 msgid "Jira triage"
 msgstr "Тріаж Jira"
@@ -20272,11 +20272,11 @@ msgstr "Пул оновлюється щомісяця. Використання
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "Основний репозиторій має бути одним із репозиторіїв середовища"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "Вибір папок проєкту повернувся в праву панель: Файли, Змінені файли та Зміни слідують за обраною папкою."
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Робоча копія проєкту як є: файли та гілка спільні"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "Поле промпту підтримує форматований текст. Ліміт використання тепер призупиняє чергу й пропонує відновити після скидання."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23071,9 +23071,6 @@ msgstr "Ваше посилання на GitHub походить з обліко
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Ваш обліковий запис Jira не може записувати час у це завдання."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Ваші автоматизації Jira, подання «Сьогодні», ярлик чату й облікові записи працюють як раніше."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Ваш останній платіж не вдався. Оновіть спосіб оплати, щоб зберегти Pro."

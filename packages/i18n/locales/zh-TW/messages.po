@@ -1708,6 +1708,9 @@ msgstr "從安裝到第一次執行代理程式的更快路徑，並有引導式
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "更快、更清晰的差異體驗，便於審查代理程式改了什麼。"
 
+msgid "A file name in a chat message opens from the folder that same message names."
+msgstr "聊天訊息中的檔名會從同一則訊息提到的資料夾開啟。"
+
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "{where}中已存在名為「{firstName}」的檔案。是否要替換它？"
 
@@ -1749,9 +1752,6 @@ msgstr "需要新版本的Paradev才能繼續。請更新到最新版本。"
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "以該分支建立新工作區，並將對話交給新的代理"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "全新的工作區清單，支援檢視和篩選。現已支援烏克蘭語。"
 
 msgid "A newsletter or blog"
 msgstr "電子報或部落格"
@@ -3511,9 +3511,6 @@ msgstr "基於PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "基於最近30天的{0}個token，統計{1}。"
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "基於 Paradev 2.0.3：切換工作區和代理程式活動的負擔更小，應用程式保持流暢回應。"
-
 msgid "Become a design partner"
 msgstr "成為共創夥伴"
 
@@ -4238,6 +4235,9 @@ msgstr "檢查更新"
 
 msgid "Check for Updates"
 msgstr "檢查更新"
+
+msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
+msgstr "當辦公室共用 GitHub 請求上限時，「檢查更新」不再失敗。切換 Claude 帳號和 Grok 聊天也能正確重新開啟。"
 
 msgid "Check for Updates..."
 msgstr "檢查更新..."
@@ -7351,9 +7351,6 @@ msgstr "差異變更概覽"
 
 msgid "diff in new tab"
 msgstr "在新分頁看差異"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "可以開啟包含數千個檔案的變更差異，並與編輯器共用同一個醒目提示器。"
 
 msgid "Digital Product Designer"
 msgstr "數位產品設計師"
@@ -10799,6 +10796,9 @@ msgstr "Jira 議題"
 
 msgid "Jira project"
 msgstr "Jira 專案"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "與工作區連結的 Jira 任務會顯示在其活動選單中。開啟任務即可閱讀並變更狀態。"
 
 msgid "Jira triage"
 msgstr "Jira 分類"
@@ -20278,11 +20278,11 @@ msgstr "時數池每月重置。超出部分按各方案標示的每 GB 小時�
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "主要儲存庫必須是此環境的儲存庫之一"
 
+msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
+msgstr "專案資料夾選擇器回到了右側面板：檔案、已變更檔案和變更會跟隨所選資料夾。"
+
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "按原樣使用專案的簽出: 檔案和分支是共用的"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "提示詞輸入框支援富文字。達到使用上限時現在會暫停佇列，並提示在額度重設時繼續。"
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -23077,9 +23077,6 @@ msgstr "你的 GitHub 連結來自登入所用的帳號，因此顯示為已驗�
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "你的 Jira 帳戶無法在此議題上記錄工時。"
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "您的 Jira 自動化、今日檢視、聊天捷徑和帳號均照常使用。"
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "上次付款失敗。請更新支付方式以繼續使用 Pro。"
