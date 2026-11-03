@@ -1711,9 +1711,6 @@ msgstr "從安裝到第一次執行代理程式的更快路徑，並有引導式
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "更快、更清晰的差異體驗，便於審查代理程式改了什麼。"
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "聊天訊息中的檔名會從同一則訊息提到的資料夾開啟。"
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "{where}中已存在名為「{firstName}」的檔案。是否要替換它？"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI與SDK"
-
-msgid "CLI default"
-msgstr "CLI 預設值"
 
 msgid "CLI docs"
 msgstr "CLI文件"
@@ -12489,6 +12483,9 @@ msgstr "新增聊天"
 
 msgid "New chat from loaded messages"
 msgstr "從已載入的訊息建立新聊天"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "新聊天使用與建立工作區相同的代理、帳號、模型和思考強度選擇器。"
 
 msgid "New chats"
 msgstr "新聊天"

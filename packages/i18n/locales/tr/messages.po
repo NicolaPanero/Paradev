@@ -1711,9 +1711,6 @@ msgstr "Kurulumdan ilk ajan çalıştırmanıza, rehberli bir ilk çalışma ala
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Ajanlarınızın neyi değiştirdiğini incelemek için daha hızlı, daha net bir fark deneyimi."
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "Bir sohbet mesajındaki dosya adı, aynı mesajın andığı klasörden açılır."
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "{where} konumunda '{firstName}' adlı bir dosya zaten var. Değiştirmek istiyor musunuz?"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI ve SDK"
-
-msgid "CLI default"
-msgstr "CLI varsayılanı"
 
 msgid "CLI docs"
 msgstr "CLI belgeleri"
@@ -12489,6 +12483,9 @@ msgstr "Yeni Sohbet"
 
 msgid "New chat from loaded messages"
 msgstr "Yüklenen mesajlardan yeni sohbet"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "Yeni sohbet, çalışma alanı oluşturmayla aynı ajan, hesap, model ve düşünme çabası seçicisini kullanır."
 
 msgid "New chats"
 msgstr "Yeni sohbetler"

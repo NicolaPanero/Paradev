@@ -1711,9 +1711,6 @@ msgstr "Rychlejší cesta od instalace k prvnímu běhu agenta, s prvním pracov
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Rychlejší a přehlednější práce s rozdíly při revizi toho, co agenti změnili."
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "Název souboru ve zprávě chatu se otevře ze složky, kterou uvádí tatáž zpráva."
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "V {where} už existuje soubor s názvem „{firstName}“. Chcete ho nahradit?"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI a SDK"
-
-msgid "CLI default"
-msgstr "Výchozí nastavení CLI"
 
 msgid "CLI docs"
 msgstr "Dokumentace CLI"
@@ -12489,6 +12483,9 @@ msgstr "Nový chat"
 
 msgid "New chat from loaded messages"
 msgstr "Nový chat z načtených zpráv"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "Nový chat používá stejný výběr agenta, účtu, modelu a úsilí jako vytváření pracovních prostorů."
 
 msgid "New chats"
 msgstr "Nové chaty"

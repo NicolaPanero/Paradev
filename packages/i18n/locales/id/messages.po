@@ -1711,9 +1711,6 @@ msgstr "Jalur lebih cepat dari pemasangan sampai run agen pertama Anda, dengan w
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Pengalaman diff yang lebih cepat dan jelas untuk mereview apa yang diubah agen Anda."
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "Nama file dalam pesan obrolan dibuka dari folder yang disebut pesan yang sama."
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "File bernama '{firstName}' sudah ada di {where}. Ingin menggantinya?"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI & SDK"
-
-msgid "CLI default"
-msgstr "Default CLI"
 
 msgid "CLI docs"
 msgstr "Dokumentasi CLI"
@@ -12489,6 +12483,9 @@ msgstr "Chat Baru"
 
 msgid "New chat from loaded messages"
 msgstr "Chat baru dari pesan yang dimuat"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "Obrolan baru menggunakan pemilih agen, akun, model, dan upaya yang sama seperti saat membuat workspace."
 
 msgid "New chats"
 msgstr "Chat baru"

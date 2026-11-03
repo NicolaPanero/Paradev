@@ -1711,9 +1711,6 @@ msgstr "Đường đi nhanh hơn từ lúc cài đến lần chạy agent đầu
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Trải nghiệm xem diff nhanh và rõ hơn để review những gì agent đã thay đổi."
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "Tên tệp trong tin nhắn trò chuyện được mở từ thư mục mà chính tin nhắn đó nêu."
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "Đã có tệp tên '{firstName}' trong {where}. Bạn có muốn thay thế không?"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI & SDK"
-
-msgid "CLI default"
-msgstr "Mặc định của CLI"
 
 msgid "CLI docs"
 msgstr "Tài liệu CLI"
@@ -12489,6 +12483,9 @@ msgstr "Cuộc trò chuyện mới"
 
 msgid "New chat from loaded messages"
 msgstr "Chat mới từ các tin nhắn đã tải"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "Cuộc trò chuyện mới dùng cùng bộ chọn tác nhân, tài khoản, mô hình và mức suy luận như khi tạo không gian làm việc."
 
 msgid "New chats"
 msgstr "Cuộc trò chuyện mới"

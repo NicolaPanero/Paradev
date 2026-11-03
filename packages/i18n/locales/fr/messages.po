@@ -1711,9 +1711,6 @@ msgstr "Un chemin plus court de l'installation à votre première exécution d'a
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Une expérience de diff plus rapide et plus claire pour relire ce que vos agents ont changé."
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "Un nom de fichier dans un message du chat s'ouvre depuis le dossier que ce même message nomme."
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "Un fichier nommé « {firstName} » existe déjà dans {where}. Voulez-vous le remplacer ?"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI et SDK"
-
-msgid "CLI default"
-msgstr "Valeur par défaut du CLI"
 
 msgid "CLI docs"
 msgstr "Docs de la CLI"
@@ -12489,6 +12483,9 @@ msgstr "Nouveau chat"
 
 msgid "New chat from loaded messages"
 msgstr "Nouveau chat à partir des messages chargés"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "Nouveau chat utilise le même sélecteur d’agent, de compte, de modèle et d’effort que la création d’espaces de travail."
 
 msgid "New chats"
 msgstr "Nouveaux chats"

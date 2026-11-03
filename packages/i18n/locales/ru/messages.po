@@ -1711,9 +1711,6 @@ msgstr "Более короткий путь от установки до пер
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Быстрее и понятнее смотреть diff, чтобы проверять, что изменили ваши агенты."
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "Имя файла в сообщении чата открывается из папки, которую называет то же сообщение."
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "В {where} уже есть файл с именем «{firstName}». Заменить его?"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI и SDK"
-
-msgid "CLI default"
-msgstr "По умолчанию в CLI"
 
 msgid "CLI docs"
 msgstr "Документация CLI"
@@ -12489,6 +12483,9 @@ msgstr "Новый чат"
 
 msgid "New chat from loaded messages"
 msgstr "Новый чат из загруженных сообщений"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "Новый чат использует тот же выбор агента, аккаунта, модели и усилий, что и создание рабочих пространств."
 
 msgid "New chats"
 msgstr "Новые чаты"

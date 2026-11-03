@@ -1711,9 +1711,6 @@ msgstr "从安装到第一次运行智能体的更快路径，并有引导式的
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "更快、更清晰的差异体验，便于审查智能体改了什么。"
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "聊天消息中的文件名会从同一条消息提到的文件夹中打开。"
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "{where}中已存在名为「{firstName}」的文件。是否要替换它？"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI与SDK"
-
-msgid "CLI default"
-msgstr "CLI 默认值"
 
 msgid "CLI docs"
 msgstr "CLI文档"
@@ -12489,6 +12483,9 @@ msgstr "新建聊天"
 
 msgid "New chat from loaded messages"
 msgstr "从已加载的消息新建聊天"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "新聊天使用与创建工作区相同的代理、账号、模型和思考强度选择器。"
 
 msgid "New chats"
 msgstr "新聊天"

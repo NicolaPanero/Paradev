@@ -1711,9 +1711,6 @@ msgstr "インストールから最初のエージェント実行までの道の
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "エージェントの変更をレビューするための、より速く分かりやすい差分体験。"
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "チャットメッセージ内のファイル名は、同じメッセージが挙げているフォルダから開きます。"
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "{where}には「{firstName}」という名前のファイルがすでに存在します。置き換えますか?"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLIとSDK"
-
-msgid "CLI default"
-msgstr "CLIのデフォルト"
 
 msgid "CLI docs"
 msgstr "CLIドキュメント"
@@ -12489,6 +12483,9 @@ msgstr "新しいチャット"
 
 msgid "New chat from loaded messages"
 msgstr "読み込んだメッセージから新しいチャット"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "新しいチャットでは、ワークスペース作成と同じエージェント、アカウント、モデル、思考量の選択メニューを使います。"
 
 msgid "New chats"
 msgstr "新しいチャット"

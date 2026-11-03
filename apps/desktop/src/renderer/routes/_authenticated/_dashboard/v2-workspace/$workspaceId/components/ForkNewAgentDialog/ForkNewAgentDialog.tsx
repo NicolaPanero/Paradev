@@ -1,4 +1,4 @@
-import { Trans, useLingui } from "@lingui/react/macro";
+import { Trans } from "@lingui/react/macro";
 import { Button } from "@superset/ui/button";
 import {
 	Dialog,
@@ -8,17 +8,19 @@ import {
 	DialogTitle,
 } from "@superset/ui/dialog";
 import { useRef, useState } from "react";
-import { AgentModelSelect } from "renderer/components/AgentModelSelect";
-import { AgentSelect } from "renderer/components/AgentSelect";
 import { ForkAccountEmptyState } from "renderer/components/ForkAccountEmptyState";
-import { ForkAccountPicker } from "renderer/components/ForkAccountPicker";
-import { ForkModelCatalogStatus } from "renderer/components/ForkModelCatalogStatus";
+import {
+	ForkAccountPicker,
+	ForkAccountSubmenu,
+} from "renderer/components/ForkAccountPicker";
 import { useWorkspaceHostUrl } from "renderer/hooks/host-service/useWorkspaceHostUrl";
 import { useForkModelCatalog } from "renderer/hooks/useForkModelCatalog";
 import { useV2AgentConfigs } from "renderer/hooks/useV2AgentConfigs";
+import { ForkCreationModelPicker } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/ForkCreationModelPicker";
 import { useForkCliOptions } from "renderer/stores/fork-cli-options";
 import type { CreateNewAgentSession } from "../../hooks/useAgentSessionLauncher";
 import { useForkNewAgentAccount } from "./hooks/useForkNewAgentAccount";
+import { launchForkChat } from "./utils/launchForkChat";
 
 export function ForkNewAgentDialog({
 	open,
@@ -33,11 +35,11 @@ export function ForkNewAgentDialog({
 	workspaceName: string;
 	onCreateNewAgentSession: CreateNewAgentSession;
 }) {
-	const { t } = useLingui();
 	const showCliOptions = useForkCliOptions();
 	const hostUrl = useWorkspaceHostUrl(workspaceId);
 	const [configId, setConfigId] = useState<string>();
 	const [model, setModel] = useState<string | null>(null);
+	const [effort, setEffort] = useState<string | null>(null);
 	const [busy, setBusy] = useState(false);
 	const launchLock = useRef(false);
 	const configs = useV2AgentConfigs(hostUrl);
@@ -70,6 +72,7 @@ export function ForkNewAgentDialog({
 	const selectConfig = (id: string) => {
 		setConfigId(id);
 		setModel(null);
+		setEffort(null);
 	};
 	const launchSession = async () => {
 		if (!selected || accountMissing || catalog.isFetching || launchLock.current)
@@ -77,19 +80,22 @@ export function ForkNewAgentDialog({
 		launchLock.current = true;
 		setBusy(true);
 		try {
-			const result = await onCreateNewAgentSession({
-				configId: selected.id,
-				modelCatalog: "agent",
-				placement: "new-tab",
-				prompt: "",
-
-				...(model && models.some((o) => o.id === model)
-					? { modelId: model }
-					: {}),
-				...(managed && !account.forcedApi && account.selection !== undefined
-					? { accountSelection: account.selection }
-					: {}),
-			});
+			const result = await launchForkChat(
+				onCreateNewAgentSession,
+				{
+					configId: selected.id,
+					modelCatalog: "agent",
+					placement: "new-tab",
+					prompt: "",
+					...(model && models.some((o) => o.id === model)
+						? { modelId: model }
+						: {}),
+					...(managed && !account.forcedApi && account.selection !== undefined
+						? { accountSelection: account.selection }
+						: {}),
+				},
+				catalog.efforts.some((option) => option.id === effort) ? effort : null,
+			);
 			if (result) onOpenChange(false);
 		} finally {
 			launchLock.current = false;
@@ -103,81 +109,64 @@ export function ForkNewAgentDialog({
 				if (!busy) onOpenChange(value);
 			}}
 		>
-			<DialogContent>
+			<DialogContent className="sm:max-w-sm">
 				<DialogHeader>
 					<DialogTitle>
 						<Trans>New chat</Trans>
 					</DialogTitle>
 					<DialogDescription>{workspaceName}</DialogDescription>
 				</DialogHeader>
-				<div className="space-y-2">
-					<p className="text-sm">
-						<Trans>Agent</Trans>
-					</p>
-					<AgentSelect
+				<fieldset
+					disabled={busy}
+					className="flex min-w-0 flex-wrap items-center gap-2 rounded-lg border bg-muted/20 p-2"
+				>
+					<ForkCreationModelPicker
 						agents={peers.map((config) => ({
 							id: config.id,
 							label: config.label,
+							presetId: config.presetId,
 							iconId: config.iconId ?? config.presetId,
 						}))}
-						value={selected?.id}
-						placeholder={t({ message: "Select agent" })}
-						onValueChange={selectConfig}
-						disabled={busy}
-						onBeforeConfigureAgents={() => onOpenChange(false)}
-					/>
-				</div>
-				{managed && (
-					<div className="space-y-2">
-						<p className="text-sm">
-							<Trans>Account</Trans>
-						</p>
-						<ForkAccountPicker
-							account={account}
-							provider={selected?.presetId ?? null}
-							model={model ?? undefined}
-							disabled={busy}
-						/>
-						{account.options.isSuccess && accountMissing && selected && (
-							<ForkAccountEmptyState
-								hostUrl={hostUrl}
-								agent={selected.presetId as "claude" | "codex"}
-								onAccountAdded={() => {
-									void account.options.refetch();
-									void account.quota.refresh().catch(() => {});
-									void account.refreshDefault();
-								}}
+						catalog={catalog}
+						selectedAgent={selected?.id ?? ""}
+						onSelectAgent={selectConfig}
+						selectedModel={model}
+						onModelChange={(value) => {
+							setModel(value);
+							setEffort(null);
+						}}
+						efforts={catalog.efforts}
+						selectedEffort={effort}
+						onEffortChange={setEffort}
+						renderAccountItem={(rowClassName, panelClassName) => (
+							<ForkAccountSubmenu
+								account={account}
+								provider={selected?.presetId ?? null}
+								model={model ?? undefined}
+								className={rowClassName}
+								contentClassName={panelClassName}
 							/>
 						)}
-					</div>
+					/>
+					<ForkAccountPicker
+						account={account}
+						provider={selected?.presetId ?? null}
+						model={model ?? undefined}
+						compact
+						disabled={busy}
+					/>
+				</fieldset>
+				{account.options.isSuccess && accountMissing && selected && (
+					<ForkAccountEmptyState
+						hostUrl={hostUrl}
+						agent={selected.presetId as "claude" | "codex"}
+						onAccountAdded={() => {
+							void account.options.refetch();
+							void account.quota.refresh().catch(() => {});
+							void account.refreshDefault();
+						}}
+					/>
 				)}
-				<ForkModelCatalogStatus
-					loading={catalog.isFetching}
-					error={catalog.isError}
-					refresh={() => {
-						void catalog.refetch();
-					}}
-				/>
-				{models.length > 0 && (
-					<div className="space-y-2">
-						<p className="text-sm">
-							<Trans>Model</Trans>
-						</p>
-						<AgentModelSelect
-							models={models}
-							value={model}
-							onValueChange={setModel}
-							defaultLabel={t({ message: "CLI default" })}
-							disabled={busy}
-						/>
-					</div>
-				)}
-				<div className="space-y-2">
-					<p className="text-sm">
-						<Trans>Workspace</Trans>
-					</p>
-					<p className="rounded-md border p-2 text-sm">{workspaceName}</p>
-				</div>
 				<Button
 					onClick={() => void launchSession()}
 					disabled={

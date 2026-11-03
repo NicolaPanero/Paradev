@@ -1711,9 +1711,6 @@ msgstr "Een snellere weg van installatie naar je eerste agentrun, met een begele
 msgid "A faster, clearer diff experience for reviewing what your agents changed."
 msgstr "Een snellere, duidelijkere diff-ervaring om te reviewen wat je agents hebben veranderd."
 
-msgid "A file name in a chat message opens from the folder that same message names."
-msgstr "Een bestandsnaam in een chatbericht opent vanuit de map die datzelfde bericht noemt."
-
 msgid "A file named '{firstName}' already exists in {where}. Do you want to replace it?"
 msgstr "Er bestaat al een bestand met de naam '{firstName}' in {where}. Wil je het vervangen?"
 
@@ -4561,9 +4558,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI & SDK"
-
-msgid "CLI default"
-msgstr "CLI-standaard"
 
 msgid "CLI docs"
 msgstr "CLI-docs"
@@ -12489,6 +12483,9 @@ msgstr "Nieuwe chat"
 
 msgid "New chat from loaded messages"
 msgstr "Nieuwe chat uit geladen berichten"
+
+msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
+msgstr "Nieuwe chat gebruikt dezelfde kiezer voor agent, account, model en denkinspanning als bij het maken van een workspace."
 
 msgid "New chats"
 msgstr "Nieuwe chats"
