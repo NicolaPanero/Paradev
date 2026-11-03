@@ -3,6 +3,7 @@ import type {
 	ForkTaskLink,
 } from "@superset/shared/fork-integrations";
 import { cn } from "@superset/ui/utils";
+import type { MouseEvent } from "react";
 import { jiraStatusTone } from "renderer/components/ForkIntegrations/components/ForkJiraTasks/fork-jira-query";
 import { ForkProviderIcon } from "renderer/components/ForkIntegrations/components/ForkProviderIcon";
 
@@ -13,7 +14,7 @@ export function ForkLinkedTaskRows({
 }: {
 	links: ForkTaskLink[];
 	tasks: Map<string, ForkTask>;
-	onOpen: (link: ForkTaskLink) => void;
+	onOpen: (link: ForkTaskLink, event: MouseEvent) => void;
 }) {
 	return (
 		<div>
@@ -23,7 +24,7 @@ export function ForkLinkedTaskRows({
 					<button
 						key={`${link.connectionId}:${link.taskId}`}
 						type="button"
-						onClick={() => onOpen(link)}
+						onClick={(event) => onOpen(link, event)}
 						className="flex min-h-7 w-full min-w-0 items-center gap-2 rounded-sm py-0.5 pr-2 pl-2 text-left text-xs outline-none transition-colors hover:bg-accent focus-visible:bg-accent"
 					>
 						<ForkProviderIcon provider="jira" className="size-3.5" />

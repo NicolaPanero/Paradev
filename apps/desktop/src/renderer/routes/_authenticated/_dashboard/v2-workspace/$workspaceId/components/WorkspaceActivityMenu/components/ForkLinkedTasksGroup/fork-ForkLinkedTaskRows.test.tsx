@@ -4,7 +4,6 @@ import type {
 	ForkTaskLink,
 } from "@superset/shared/fork-integrations";
 import { fireEvent, render } from "renderer/test-utils/fork-ui";
-import { useForkLinkedTaskStore } from "../../stores/forkLinkedTaskStore";
 import { ForkLinkedTaskRows } from "./ForkLinkedTaskRows";
 
 const links: ForkTaskLink[] = [
@@ -46,22 +45,10 @@ test("each linked task is a row with its key, the live title and status when loa
 });
 
 test("clicking a row opens exactly that task", () => {
-	const onOpen = mock((_link: ForkTaskLink) => {});
+	const onOpen = mock((_link: ForkTaskLink, _event: unknown) => {});
 	const view = render(
 		<ForkLinkedTaskRows links={links} tasks={new Map()} onOpen={onOpen} />,
 	);
 	fireEvent.click(view.getAllByRole("button")[1] as HTMLElement);
-	expect(onOpen.mock.calls).toEqual([[links[1]]]);
-});
-
-test("the opened task lives in a store the menu does not own, so it survives the menu closing", () => {
-	const target = {
-		hostUrl: "http://h",
-		connectionId: "jira-1",
-		key: "B4BN-5230",
-	};
-	useForkLinkedTaskStore.getState().open(target);
-	expect(useForkLinkedTaskStore.getState().target).toEqual(target);
-	useForkLinkedTaskStore.getState().close();
-	expect(useForkLinkedTaskStore.getState().target).toBeNull();
+	expect(onOpen.mock.calls[0]?.[0]).toBe(links[1]);
 });

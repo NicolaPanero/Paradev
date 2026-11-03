@@ -86,6 +86,7 @@ import {
 	consumeChatStopped,
 	markChatStopped,
 } from "../../utils/forkChatCloseIntent/forkChatCloseIntent";
+import { FORK_TASK_PANE_KIND } from "../../utils/forkTaskPane";
 import { openPagePaneInStore } from "../../utils/openPagePaneInStore";
 import { replaceNewTabPane } from "../../utils/replaceNewTabPane";
 import { useAgentSessionLauncher } from "../useAgentSessionLauncher";
@@ -121,6 +122,7 @@ import { FileViewLayout } from "./components/FileViewLayout";
 import { ForkChatExtras } from "./components/ForkChatExtras";
 import { ForkChatOrigin } from "./components/ForkChatOrigin";
 import { ForkDiffRepoBar } from "./components/ForkDiffRepoBar";
+import { forkTaskPaneDefinition } from "./components/ForkTaskPane";
 import { MobilePane } from "./components/MobilePane";
 import { PagePane } from "./components/PagePane";
 import { PagePaneHeaderExtras } from "./components/PagePaneHeaderExtras";
@@ -1148,6 +1150,7 @@ export function usePaneRegistry({
 							: d,
 					),
 			},
+			[FORK_TASK_PANE_KIND]: forkTaskPaneDefinition,
 			[SUBAGENT_PANE_KIND]: {
 				getIcon: () => <LuBot className="size-3.5" />,
 				getTitle: (pane) => {

@@ -3,6 +3,7 @@ import type { WorkspaceStore } from "@superset/panes";
 import type { AgentIdentityId } from "@superset/shared/agent-catalog";
 import type { ForkPullRequestIdentity } from "renderer/lib/fork-pull-request-ref";
 import type { StoreApi } from "zustand/vanilla";
+import type { ForkTaskPaneData } from "./utils/forkTaskPane";
 export interface FilePosition {
 	line: number;
 	column?: number;
@@ -254,4 +255,5 @@ export type PaneViewerData =
 	| ReviewPaneData
 	| PagesListPaneData
 	| NewTabPaneData
-	| SubagentPaneData;
+	| SubagentPaneData
+	| ForkTaskPaneData;

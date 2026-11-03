@@ -618,9 +618,10 @@ release del motore non vengono adottate implicitamente. Aggiornare il file,
 eseguire i controlli e solo allora creare una build. Per installare il
 motore fissato localmente: `bun scripts/build-txcript-transfer.ts`.
 Il menu attività del workspace elenca i task Jira collegati (`fork_external_task_links`, gli stessi
-della pagina Tasks) sopra le pull request. Un clic apre il dettaglio con il cambio di stato in una
-finestra (`ForkLinkedTasksGroup`, `ForkLinkedTaskDialog`); in `WorkspaceActivityMenu.tsx` ci sono solo
-due righe di aggancio, da ricontrollare a ogni sync con upstream. Issue GitHub e task Paradev non sono inclusi.
+della pagina Tasks) sopra le pull request. Un clic apre il dettaglio con il cambio di stato come pannello nel pannello destro, come le pull request
+(split o scheda secondo il clic, esterno apre Jira): `ForkLinkedTasksGroup`, `ForkTaskPane`, tipo di pannello
+`fork-task`. Punti di aggancio in file di upstream da ricontrollare a ogni sync: una riga in
+`WorkspaceActivityMenu.tsx`, la voce nel registro di `usePaneRegistry.tsx`, il tipo in `types.ts` e il caso in `getPaneKey.ts`. Issue GitHub e task Paradev non sono inclusi.
 Da `v0.14.4-fork.25` il motore scrive le chiamate parallele di un turno in un solo messaggio
 dell'assistente: senza, Cursor rifiutava con "Provider Error" ogni chat convertita da Claude Code
 che le conteneva, con qualunque modello Anthropic.
