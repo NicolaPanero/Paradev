@@ -12484,8 +12484,8 @@ msgstr "Chat Baru"
 msgid "New chat from loaded messages"
 msgstr "Chat baru dari pesan yang dimuat"
 
-msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
-msgstr "Obrolan baru menggunakan pemilih agen, akun, model, dan upaya yang sama seperti saat membuat workspace."
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "Obrolan baru memakai satu pemilih ringkas untuk agen, akun, model, dan upaya. Daftar model disimpan dalam cache selama satu hari per agen."
 
 msgid "New chats"
 msgstr "Chat baru"

@@ -12484,8 +12484,8 @@ msgstr "새 채팅"
 msgid "New chat from loaded messages"
 msgstr "불러온 메시지로 새 채팅"
 
-msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
-msgstr "새 채팅에서 워크스페이스 생성과 동일한 에이전트, 계정, 모델, 사고 수준 선택 메뉴를 사용합니다."
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "새 채팅에서 하나의 간결한 메뉴로 에이전트, 계정, 모델, 사고 수준을 선택합니다. 모델 목록은 에이전트별로 하루 동안 캐시됩니다."
 
 msgid "New chats"
 msgstr "새 채팅"

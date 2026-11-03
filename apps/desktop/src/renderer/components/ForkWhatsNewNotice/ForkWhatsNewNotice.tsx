@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "chat-picker-2026-11";
+export const FORK_WHATS_NEW_ID = "daily-model-cache-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 const FORK_GUIDE_URL =
 	"https://github.com/NicolaPanero/superset/blob/fork/main/FORK.md";
@@ -40,7 +40,7 @@ export function ForkWhatsNewNotice() {
 		}),
 		t({
 			message:
-				"New chat uses the same agent, account, model and effort selector as workspace creation.",
+				"New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent.",
 		}),
 		t({
 			message:

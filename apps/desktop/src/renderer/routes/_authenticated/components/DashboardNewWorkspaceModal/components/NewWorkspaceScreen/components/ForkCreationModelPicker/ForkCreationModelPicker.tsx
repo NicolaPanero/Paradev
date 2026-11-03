@@ -34,6 +34,7 @@ export function ForkCreationModelPicker({
 	selectedEffort,
 	onEffortChange,
 	renderAccountItem,
+	fullWidth,
 }: {
 	agents: AgentSelectAgent[];
 	catalog: ReturnType<typeof useForkModelCatalog>;
@@ -48,6 +49,7 @@ export function ForkCreationModelPicker({
 		rowClassName: string,
 		panelClassName: string,
 	) => ReactNode;
+	fullWidth?: boolean;
 }) {
 	const { t } = useLingui();
 	const isDark = useIsDarkTheme();
@@ -106,6 +108,7 @@ export function ForkCreationModelPicker({
 
 	return (
 		<ModelPicker
+			fullWidth={fullWidth}
 			agentSwitcher={agentSwitcher}
 			configOptions={configOptions}
 			emptyLabel={t({ message: "No agent" })}

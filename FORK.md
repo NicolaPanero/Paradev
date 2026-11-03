@@ -127,12 +127,13 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   quando il suo override locale dichiara `reasoning_efforts`; Grok 4.5 arriva
   fino a High.
   Modelli ed effort arrivano dall’ultima lettura salvata dall’host in
-  `$SUPERSET_HOME_DIR/fork/model-catalog.json`, una per agente e account, valida
-  per tutti i workspace (64 voci, 30 giorni). Leggere i modelli avvia l’agente,
-  quindi l’host lo fa solo alla prima apertura, dopo 24 ore (in background,
-  mostrando intanto la lista salvata) o con il refresh del selettore; ogni
-  lettura riuscita aggiorna il file. La lista cambia se cambiano configurazione,
-  variabili o account dell’agente. Cambiando modello resta visibile l’effort
+  `$SUPERSET_HOME_DIR/fork/model-catalog.json`, condivisa per agente sullo stesso
+  host, per tutti gli account e workspace (64 voci, 30 giorni). Il catalogo resta
+  valido per 24 ore anche nel renderer: cambiare account o workspace non svuota
+  la lista e non avvia una nuova lettura. Dopo 24 ore la lista salvata resta
+  visibile mentre si aggiorna; il refresh manuale aggiorna subito, anche con
+  un modello già selezionato. Ogni lettura riuscita aggiorna il file. Cambiare
+  la configurazione dell’agente crea un catalogo distinto. Cambiando modello resta visibile l’effort
   attuale finché arrivano le opzioni del nuovo modello.
   Il tondino elenca gli account con la quota, la continuazione
   automatica, i reset del provider e la copia dell’ID sessione. In una chat
@@ -169,8 +170,10 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   La modalità nativa resta Plan; i limiti del provider e del sistema restano validi.
 - **Chat** (⌘⇧A) è l’unica azione per aprire una chat: il menu **+** usa la
   voce upstream e apre lo stesso selettore compatto della creazione workspace:
-  agente, account, modello ed effort. L’effort scelto si applica appena la nuova
-  chat espone le sue opzioni.
+  agente, account, modello ed effort. L’account si sceglie soltanto nel menu;
+  il dialog non ripete il nome del workspace. Il selettore e il menu hanno la
+  stessa larghezza del pulsante **Start**, indipendente dal modello scelto.
+  L’effort scelto si applica appena la nuova chat espone le sue opzioni.
   La stessa azione funziona nello workspace vuoto e dalla tastiera; le
   rimappature già salvate vengono mantenute. L’icona **Find a chat**
   nell’intestazione cerca per titolo, modello o branch nei depositi locali di

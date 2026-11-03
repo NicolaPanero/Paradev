@@ -12478,8 +12478,8 @@ msgstr "Новий чат"
 msgid "New chat from loaded messages"
 msgstr "Новий чат із завантажених повідомлень"
 
-msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
-msgstr "Новий чат використовує той самий вибір агента, облікового запису, моделі й зусиль, що й створення робочих просторів."
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "Новий чат використовує один компактний вибір агента, облікового запису, моделі й зусиль. Списки моделей кешуються на добу для кожного агента."
 
 msgid "New chats"
 msgstr "Нові чати"

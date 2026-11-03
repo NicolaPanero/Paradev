@@ -163,7 +163,11 @@ export function ModelPicker({
 		<DropdownMenu onOpenChange={onOpenChange} open={open}>
 			<DropdownMenuTrigger asChild>
 				<button
-					className={cn(PILL_TRIGGER_CLASS, "group")}
+					className={cn(
+						PILL_TRIGGER_CLASS,
+						"group",
+						fork.fullWidth && "w-full justify-start",
+					)}
 					title={hiddenLabels || undefined}
 					type="button"
 					data-footer-label
@@ -195,7 +199,9 @@ export function ModelPicker({
 							{effortLabel}
 						</span>
 					) : null}
-					<LuChevronDown className={PILL_CHEVRON_CLASS} />
+					<LuChevronDown
+						className={cn(PILL_CHEVRON_CLASS, fork.fullWidth && "ml-auto")}
+					/>
 				</button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
@@ -203,6 +209,7 @@ export function ModelPicker({
 				className={cn(
 					MENU_PANEL_CLASS,
 					"flex w-[296px] flex-col overflow-hidden p-0",
+					fork.fullWidth && "w-(--radix-dropdown-menu-trigger-width)",
 				)}
 				onCloseAutoFocus={onCloseAutoFocus}
 				side="top"

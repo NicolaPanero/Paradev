@@ -1,7 +1,9 @@
 import type { SessionConfigOption } from "@superset/chat/protocol";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo, useRef } from "react";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
+
+const CATALOG_DAY_MS = 24 * 60 * 60_000;
 
 type Input = {
 	hostUrl: string | null;
@@ -19,6 +21,8 @@ export function useForkModelCatalog(
 	const { hostUrl, enabled = true, model, ...selection } = input;
 	const active =
 		enabled && !!hostUrl && !!selection.agent && selection.agent !== "none";
+	const queryClient = useQueryClient();
+	const key = ["fork-model-catalog", hostUrl, selection.agent];
 	const forced = useRef(false);
 	const fetch = async (model?: string) => {
 		const refresh = forced.current;
@@ -28,29 +32,29 @@ export function useForkModelCatalog(
 				configOptions: [] as SessionConfigOption[],
 				modelConfigOptions: undefined,
 			};
-		return clientForHost(hostUrl).agents.modelCatalog.query({
-			...selection,
-			agent: selection.agent,
-			model,
-			refresh,
-		});
+		const agent = selection.agent;
+		const query = (refresh: boolean) =>
+			clientForHost(hostUrl).agents.modelCatalog.query({
+				...selection,
+				agent,
+				model,
+				refresh,
+			});
+		const catalog = await query(refresh);
+		if (!refresh && catalog.fetchedAt <= Date.now() - CATALOG_DAY_MS) {
+			queryClient.setQueryData([...key, model ?? null], catalog, {
+				updatedAt: catalog.fetchedAt,
+			});
+			return query(true);
+		}
+		return catalog;
 	};
-	const key = [
-		"fork-model-catalog",
-		hostUrl,
-		selection.agent,
-		selection.accountSelection === undefined
-			? { defaultAccount: true }
-			: selection.accountSelection,
-		selection.workspaceId,
-		selection.projectId,
-	];
 	const base = useQuery({
 		queryKey: [...key, null],
 		enabled: active,
 		queryFn: () => fetch(),
-		staleTime: 5 * 60_000,
-		gcTime: 30 * 60_000,
+		staleTime: CATALOG_DAY_MS,
+		gcTime: CATALOG_DAY_MS,
 		retry: false,
 	});
 	const models = useMemo(
@@ -73,8 +77,8 @@ export function useForkModelCatalog(
 		queryKey: [...key, requested ?? null],
 		enabled: active && !!requested && !nativeTraits,
 		queryFn: () => fetch(requested),
-		staleTime: 5 * 60_000,
-		gcTime: 30 * 60_000,
+		staleTime: CATALOG_DAY_MS,
+		gcTime: CATALOG_DAY_MS,
 		retry: false,
 	});
 	const withRequestedModel = (options: SessionConfigOption[]) =>
@@ -101,9 +105,14 @@ export function useForkModelCatalog(
 		isFetching:
 			base.isFetching || (!!requested && !nativeTraits && traits.isFetching),
 		isError: base.isError || (!!requested && !nativeTraits && traits.isError),
-		refetch: () => {
+		refetch: async () => {
 			forced.current = true;
-			return requested && !nativeTraits ? traits.refetch() : base.refetch();
+			const refreshed = await base.refetch();
+			if (requested && !refreshed.data?.modelConfigOptions?.[requested]) {
+				forced.current = true;
+				return traits.refetch();
+			}
+			return refreshed;
 		},
 		isSuccess:
 			base.isSuccess && (!requested || !!nativeTraits || traits.isSuccess),

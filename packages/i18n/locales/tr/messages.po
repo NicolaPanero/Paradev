@@ -12484,8 +12484,8 @@ msgstr "Yeni Sohbet"
 msgid "New chat from loaded messages"
 msgstr "Yüklenen mesajlardan yeni sohbet"
 
-msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
-msgstr "Yeni sohbet, çalışma alanı oluşturmayla aynı ajan, hesap, model ve düşünme çabası seçicisini kullanır."
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "Yeni sohbet ajan, hesap, model ve düşünme çabası için tek bir kompakt seçici kullanır. Model listeleri ajan başına bir gün önbellekte tutulur."
 
 msgid "New chats"
 msgstr "Yeni sohbetler"

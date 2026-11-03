@@ -46,3 +46,67 @@ test("opening the catalog reuses the host cache and only Refresh probes the agen
 	});
 	expect(calls[2]?.refresh).toBe(true);
 });
+
+test("Refresh updates the model list even when a model with separate effort options is selected", async () => {
+	let expanded = false;
+	const client = (() => ({
+		agents: {
+			modelCatalog: {
+				query: async (input: { model?: string; refresh?: boolean }) => {
+					if (input.refresh) expanded = true;
+					return {
+						fetchedAt: Date.now(),
+						configOptions: [
+							{
+								id: "model",
+								label: "Model",
+								category: "model",
+								currentValue: input.model ?? "default-model",
+								options: [
+									"default-model",
+									"chosen-model",
+									...(expanded ? ["new-model"] : []),
+								].map((id) => ({ id, label: id })),
+							},
+							{
+								id: "effort",
+								label: "Effort",
+								category: "thought_level",
+								options: [{ id: "high", label: "High" }],
+							},
+						],
+					};
+				},
+			},
+		},
+	})) as unknown as typeof import("renderer/lib/host-service-client").getHostServiceClientByUrl;
+	const fixture = queryFixture();
+	const view = renderHook(
+		() =>
+			useForkModelCatalog(
+				{
+					hostUrl: "http://refresh-host",
+					agent: "claude",
+					model: "chosen-model",
+				},
+				client,
+			),
+		{ wrapper: fixture.wrapper },
+	);
+	await flush();
+	expect(
+		view.result.current.models.some((model) => model.id === "new-model"),
+	).toBe(false);
+	await act(async () => {
+		await view.result.current.refetch();
+	});
+	expect(
+		view.result.current.models.some((model) => model.id === "new-model"),
+	).toBe(true);
+	expect(
+		view.result.current.configOptions.find(
+			(option) => option.category === "model",
+		)?.currentValue,
+	).toBe("chosen-model");
+	expect(view.result.current.efforts[0]?.id).toBe("high");
+});

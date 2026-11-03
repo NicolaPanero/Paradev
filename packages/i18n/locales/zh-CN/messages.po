@@ -12484,8 +12484,8 @@ msgstr "新建聊天"
 msgid "New chat from loaded messages"
 msgstr "从已加载的消息新建聊天"
 
-msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
-msgstr "新聊天使用与创建工作区相同的代理、账号、模型和思考强度选择器。"
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "新聊天使用一个紧凑的选择器来选择代理、账号、模型和思考强度。模型列表按代理缓存一天。"
 
 msgid "New chats"
 msgstr "新聊天"

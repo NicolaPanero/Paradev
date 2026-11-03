@@ -14,10 +14,7 @@ import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import type { HostDb } from "../db";
 import { projects, workspaces } from "../db/schema";
-import {
-	agentLaunchEnv,
-	resolveHostAgentConfig,
-} from "../terminal-agents/agent-config";
+import { resolveHostAgentConfig } from "../terminal-agents/agent-config";
 import { acpHarnessForPreset } from "./acpCatalogue";
 import { acpHarnessFactory } from "./acpHarnesses";
 import { ForkCursorModelCatalogAdapter } from "./forkCursorModelCatalogAdapter";
@@ -241,18 +238,8 @@ export async function getForkModelCatalog(
 				.concat(parameters),
 		};
 	};
-	// One catalog per agent and account for every workspace: probing starts the
-	// agent, and its models do not depend on the folder.
 	const key = createHash("sha256")
-		.update(
-			JSON.stringify([
-				config,
-				agentLaunchEnv(db, config),
-				input.accountSelection ?? null,
-				input.accountSelection === undefined,
-				cursor ? null : input.model,
-			]),
-		)
+		.update(JSON.stringify([config, cursor ? null : input.model]))
 		.digest("hex");
 	let cache = caches.get(db);
 	if (!cache) {

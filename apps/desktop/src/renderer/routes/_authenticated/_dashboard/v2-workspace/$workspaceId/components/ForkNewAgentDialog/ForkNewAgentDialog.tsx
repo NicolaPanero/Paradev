@@ -3,14 +3,13 @@ import { Button } from "@superset/ui/button";
 import {
 	Dialog,
 	DialogContent,
-	DialogDescription,
 	DialogHeader,
 	DialogTitle,
 } from "@superset/ui/dialog";
 import { useRef, useState } from "react";
 import { ForkAccountEmptyState } from "renderer/components/ForkAccountEmptyState";
 import {
-	ForkAccountPicker,
+	ForkAccountDialogs,
 	ForkAccountSubmenu,
 } from "renderer/components/ForkAccountPicker";
 import { useWorkspaceHostUrl } from "renderer/hooks/host-service/useWorkspaceHostUrl";
@@ -26,7 +25,6 @@ export function ForkNewAgentDialog({
 	open,
 	onOpenChange,
 	workspaceId,
-	workspaceName,
 	onCreateNewAgentSession,
 }: {
 	open: boolean;
@@ -109,18 +107,15 @@ export function ForkNewAgentDialog({
 				if (!busy) onOpenChange(value);
 			}}
 		>
-			<DialogContent className="sm:max-w-sm">
+			<DialogContent className="sm:max-w-sm" aria-describedby={undefined}>
 				<DialogHeader>
 					<DialogTitle>
 						<Trans>New chat</Trans>
 					</DialogTitle>
-					<DialogDescription>{workspaceName}</DialogDescription>
 				</DialogHeader>
-				<fieldset
-					disabled={busy}
-					className="flex min-w-0 flex-wrap items-center gap-2 rounded-lg border bg-muted/20 p-2"
-				>
+				<fieldset disabled={busy} className="min-w-0">
 					<ForkCreationModelPicker
+						fullWidth
 						agents={peers.map((config) => ({
 							id: config.id,
 							label: config.label,
@@ -148,14 +143,11 @@ export function ForkNewAgentDialog({
 							/>
 						)}
 					/>
-					<ForkAccountPicker
-						account={account}
-						provider={selected?.presetId ?? null}
-						model={model ?? undefined}
-						compact
-						disabled={busy}
-					/>
 				</fieldset>
+				<ForkAccountDialogs
+					account={account}
+					provider={selected?.presetId ?? null}
+				/>
 				{account.options.isSuccess && accountMissing && selected && (
 					<ForkAccountEmptyState
 						hostUrl={hostUrl}

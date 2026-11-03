@@ -12484,8 +12484,8 @@ msgstr "Cuộc trò chuyện mới"
 msgid "New chat from loaded messages"
 msgstr "Chat mới từ các tin nhắn đã tải"
 
-msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
-msgstr "Cuộc trò chuyện mới dùng cùng bộ chọn tác nhân, tài khoản, mô hình và mức suy luận như khi tạo không gian làm việc."
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "Cuộc trò chuyện mới dùng một bộ chọn gọn cho tác nhân, tài khoản, mô hình và mức suy luận. Danh sách mô hình được lưu đệm một ngày cho mỗi tác nhân."
 
 msgid "New chats"
 msgstr "Cuộc trò chuyện mới"

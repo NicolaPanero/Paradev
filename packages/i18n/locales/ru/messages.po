@@ -12484,8 +12484,8 @@ msgstr "Новый чат"
 msgid "New chat from loaded messages"
 msgstr "Новый чат из загруженных сообщений"
 
-msgid "New chat uses the same agent, account, model and effort selector as workspace creation."
-msgstr "Новый чат использует тот же выбор агента, аккаунта, модели и усилий, что и создание рабочих пространств."
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "Новый чат использует один компактный выбор агента, аккаунта, модели и усилий. Списки моделей кэшируются на сутки для каждого агента."
 
 msgid "New chats"
 msgstr "Новые чаты"
