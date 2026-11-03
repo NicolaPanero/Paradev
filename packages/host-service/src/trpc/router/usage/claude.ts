@@ -14,7 +14,12 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { quotaFetch, quotaResponseTiming } from "./fork-quota-fetch";
+import { accountQuotaProviderMs } from "@superset/shared/fork-account-usage";
+import {
+	quotaFetch,
+	quotaResponseTiming,
+	tightenQuotaFetch,
+} from "./fork-quota-fetch";
 import {
 	discoverClaudeProfiles,
 	keychainServicesForConfigDir,
@@ -521,6 +526,7 @@ export async function fetchClaudeSubscriptionQuota(
 			};
 		}
 
+		tightenQuotaFetch(usageResponse, accountQuotaProviderMs(windows));
 		return {
 			...quotaResponseTiming(usageResponse),
 			email: apiEmail,

@@ -1,6 +1,9 @@
 import { expect, test } from "bun:test";
 import {
+	ACCOUNT_QUOTA_PROVIDER_MIN_MS,
+	ACCOUNT_QUOTA_PROVIDER_MS,
 	type AccountQuota,
+	accountQuotaProviderMs,
 	accountQuotaRings,
 	accountQuotaState,
 } from "./fork-account-usage";
@@ -351,4 +354,18 @@ test("a window past its reset shows empty instead of last known", () => {
 		remaining: 100,
 	});
 	expect(accountQuotaState(account, "opus", later).reason).toBe("stale");
+});
+
+test("an account is read more often the closer it is to a limit, never faster than the floor", () => {
+	const at = (usedPercent: number) => accountQuotaProviderMs([{ usedPercent }]);
+	expect(at(10)).toBe(ACCOUNT_QUOTA_PROVIDER_MS);
+	expect(at(50)).toBe(3 * 60_000);
+	expect(at(85)).toBe(ACCOUNT_QUOTA_PROVIDER_MIN_MS);
+	expect(at(100)).toBe(3 * 60_000);
+	expect(
+		accountQuotaProviderMs([{ usedPercent: 20 }, { usedPercent: 90 }]),
+	).toBe(ACCOUNT_QUOTA_PROVIDER_MIN_MS);
+	expect(accountQuotaProviderMs([])).toBe(ACCOUNT_QUOTA_PROVIDER_MS);
+	for (const percent of [0, 30, 60, 90, 120])
+		expect(at(percent)).toBeGreaterThanOrEqual(ACCOUNT_QUOTA_PROVIDER_MIN_MS);
 });

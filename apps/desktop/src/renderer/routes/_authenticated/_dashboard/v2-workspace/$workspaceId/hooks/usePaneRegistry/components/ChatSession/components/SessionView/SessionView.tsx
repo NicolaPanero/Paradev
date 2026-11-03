@@ -865,6 +865,7 @@ export function SessionView({
 								modelLabel={usageLimit.modelLabel}
 								onRespond={usageLimit.respond}
 								onSwitchAccount={usageLimit.onSwitchAccount}
+								fork={{ workspaceId, terminalId }}
 								sessionAccount={usageLimit.sessionAccount}
 							/>
 						)

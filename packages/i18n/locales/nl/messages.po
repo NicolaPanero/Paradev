@@ -1683,6 +1683,9 @@ msgstr "Er bestaat al een kanaal met deze naam"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Een chat kan niet halverwege naar een andere provider overstappen. Start een nieuwe {label}-chat of splits dit gesprek af naar een nieuwe chat. Deze {currentLabel}-chat blijft open."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Een chat die van Claude Code naar Cursor is gewisseld, werkt met Anthropic-modellen, afbeeldingen en slash-commando's. In de balk voor de gebruikslimiet kies je hoe een chat verdergaat."
+
 msgid "A chat takes its name from the agent."
 msgstr "Een chat krijgt zijn naam van de agent."
 
@@ -15844,9 +15847,6 @@ msgstr "Het quotum wordt getoond als de provider dit ondersteunt."
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Quotum gebruikt · buitenste ring 5h: {fiveHour} · binnenste ring wekelijks: {weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Quotum gebruikt: buitenste ring 5h, binnenste ring wekelijks."
 
 msgid "Quote"
 msgstr "Citaat"

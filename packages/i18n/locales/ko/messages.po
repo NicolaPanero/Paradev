@@ -1683,6 +1683,9 @@ msgstr "이 이름의 채널이 이미 있습니다"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "채팅 도중에는 다른 제공자로 전환할 수 없습니다. 새 {label} 채팅을 시작하거나 이 대화를 새 채팅으로 분기하세요. 이 {currentLabel} 채팅은 계속 열려 있습니다."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Claude Code에서 Cursor로 전환한 채팅이 Anthropic 모델, 이미지, 슬래시 명령과 함께 작동합니다. 사용량 한도 막대에서 채팅을 이어 가는 방법을 선택할 수 있습니다."
+
 msgid "A chat takes its name from the agent."
 msgstr "채팅 이름은 에이전트 이름을 따릅니다."
 
@@ -15844,9 +15847,6 @@ msgstr "공급자가 지원하는 경우 할당량이 표시됩니다."
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "할당량 사용 · 바깥쪽 링 5시간: {fiveHour} · 안쪽 링 주간: {weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "할당량 사용: 바깥쪽 링은 5시간, 안쪽 링은 주간입니다."
 
 msgid "Quote"
 msgstr "인용"

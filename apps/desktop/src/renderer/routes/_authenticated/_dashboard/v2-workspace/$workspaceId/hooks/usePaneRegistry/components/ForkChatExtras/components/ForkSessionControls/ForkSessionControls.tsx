@@ -168,6 +168,7 @@ export function ForkSessionControls({
 						hostUrl={account.hostUrl}
 						account={usage}
 						hideEmail
+						quiet
 					/>
 				</div>
 			)}

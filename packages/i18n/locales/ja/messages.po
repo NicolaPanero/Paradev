@@ -1683,6 +1683,9 @@ msgstr "この名前のチャンネルはすでに存在します"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "チャットの途中で別のプロバイダーに切り替えることはできません。新しい {label} チャットを始めるか、この会話を新しいチャットに分岐してください。この {currentLabel} チャットは開いたままです。"
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Claude Code から Cursor に切り替えたチャットが、Anthropic のモデル、画像、スラッシュコマンドで動作するようになりました。使用量上限のバーで、チャットの続け方を選べます。"
+
 msgid "A chat takes its name from the agent."
 msgstr "チャットの名前はエージェントから付けられます。"
 
@@ -15844,9 +15847,6 @@ msgstr "プロバイダーが対応している場合に利用枠を表示しま
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "割り当て使用量 · 外側のリングは5時間：{fiveHour} · 内側のリングは週間：{weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "割り当て使用量：外側のリングは5時間、内側のリングは週間。"
 
 msgid "Quote"
 msgstr "引用"

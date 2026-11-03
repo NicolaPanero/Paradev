@@ -1683,6 +1683,9 @@ msgstr "Un canal portant ce nom existe déjà"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Un chat ne peut pas changer de fournisseur en cours de route. Démarrez un nouveau chat {label}, ou dupliquez cette conversation dans un nouveau chat. Ce chat {currentLabel} reste ouvert."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Un chat passé de Claude Code à Cursor fonctionne avec les modèles Anthropic, les images et les commandes slash. La barre de limite d'usage permet de choisir comment un chat continue."
+
 msgid "A chat takes its name from the agent."
 msgstr "Un chat prend son nom de l'agent."
 
@@ -15844,9 +15847,6 @@ msgstr "Le quota est affiché si le fournisseur le permet."
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Quota utilisé · anneau externe 5h : {fiveHour} · anneau interne hebdomadaire : {weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Quota utilisé : anneau externe 5h, anneau interne hebdomadaire."
 
 msgid "Quote"
 msgstr "Citation"

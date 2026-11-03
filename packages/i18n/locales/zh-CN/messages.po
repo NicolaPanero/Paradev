@@ -1683,6 +1683,9 @@ msgstr "已存在同名频道"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "聊天进行中无法切换到其他提供方。请开始一个新的 {label} 聊天，或将此对话分叉到新聊天中。此 {currentLabel} 聊天会保持打开。"
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "从 Claude Code 切换到 Cursor 的聊天现在可以配合 Anthropic 模型、图片和斜杠命令使用。用量上限栏可让你选择聊天如何继续。"
+
 msgid "A chat takes its name from the agent."
 msgstr "聊天的名称来自智能体。"
 
@@ -15844,9 +15847,6 @@ msgstr "提供商支持时会显示配额。"
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "配额使用量 · 外环5小时：{fiveHour} · 内环每周：{weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "配额使用量：外环为5小时，内环为每周。"
 
 msgid "Quote"
 msgstr "引用"

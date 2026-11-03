@@ -84,7 +84,7 @@ export function ForkAccountPicker({
 				)}
 				<DropdownMenuContent
 					className={cn(
-						"w-96 max-w-[calc(100vw-32px)] max-h-[min(60vh,var(--radix-dropdown-menu-content-available-height))] overflow-x-hidden overflow-y-auto",
+						"w-80 max-w-[calc(100vw-32px)] max-h-[min(60vh,var(--radix-dropdown-menu-content-available-height))] overflow-x-hidden overflow-y-auto",
 						!compact && "min-w-(--radix-dropdown-menu-trigger-width)",
 					)}
 					align="start"

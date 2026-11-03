@@ -1683,6 +1683,9 @@ msgstr "Kanál s tímto názvem už existuje"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Chat nemůže uprostřed přejít k jinému poskytovateli. Začněte nový chat {label}, nebo tuto konverzaci rozvětvete do nového chatu. Tento chat {currentLabel} zůstane otevřený."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Chat přepnutý z Claude Code do Cursoru funguje s modely Anthropic, obrázky i příkazy slash. Lišta limitu využití umožňuje zvolit, jak chat pokračuje."
+
 msgid "A chat takes its name from the agent."
 msgstr "Chat přebírá název od agenta."
 
@@ -15844,9 +15847,6 @@ msgstr "Kvóta se zobrazuje, pokud ji poskytovatel podporuje."
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Využitá kvóta · vnější kruh 5h: {fiveHour} · vnitřní kruh týdně: {weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Využitá kvóta: vnější kruh 5h, vnitřní kruh týdně."
 
 msgid "Quote"
 msgstr "Citace"

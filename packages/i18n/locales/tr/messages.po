@@ -1683,6 +1683,9 @@ msgstr "Bu adda bir kanal zaten var"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Bir sohbet konuşmanın ortasında başka bir sağlayıcıya geçemez. Yeni bir {label} sohbeti başlatın veya bu konuşmayı yeni bir sohbete ayırın. Bu {currentLabel} sohbeti açık kalır."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Claude Code'dan Cursor'a geçirilen bir sohbet Anthropic modelleri, görseller ve slash komutlarıyla çalışır. Kullanım sınırı çubuğu, sohbetin nasıl devam edeceğini seçmenizi sağlar."
+
 msgid "A chat takes its name from the agent."
 msgstr "Sohbet adını ajandan alır."
 
@@ -15844,9 +15847,6 @@ msgstr "Sağlayıcı destekliyorsa kota gösterilir."
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Kullanılan kota · dış halka 5sa: {fiveHour} · iç halka haftalık: {weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Kullanılan kota: dış halka 5sa, iç halka haftalık."
 
 msgid "Quote"
 msgstr "Alıntı"

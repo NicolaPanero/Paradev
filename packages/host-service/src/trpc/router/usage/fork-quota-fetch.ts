@@ -67,6 +67,7 @@ export async function quotaFetch(
 				Math.max(TTL, retryAfterMs(response.headers.get("retry-after"), now));
 		const headers = new Headers(response.headers);
 		headers.set("x-superset-quota-sampled-at", String(now));
+		headers.set("x-superset-quota-key", key);
 		if (response.status === 429)
 			headers.set("x-superset-quota-retry-at", String(entry.until));
 		return new Response(await response.arrayBuffer(), {
@@ -77,6 +78,16 @@ export async function quotaFetch(
 	});
 	entries.set(key, entry);
 	return (await entry.promise).clone();
+}
+
+/** After a read, lets the next one reach the provider sooner than the default wait, unless the provider asked to wait. */
+export function tightenQuotaFetch(response: FetchResponse, ms: number) {
+	const key = response.headers.get("x-superset-quota-key");
+	const entry = key ? entries.get(key) : undefined;
+	if (!entry || entry.limited) return;
+	const sampledAt = Number(response.headers.get("x-superset-quota-sampled-at"));
+	if (Number.isFinite(sampledAt))
+		entry.until = Math.min(entry.until, sampledAt + ms);
 }
 
 export function quotaResponseTiming(response: FetchResponse) {

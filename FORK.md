@@ -622,9 +622,17 @@ della pagina Tasks) sopra le pull request. Un clic apre il dettaglio con il camb
 (split o scheda secondo il clic, esterno apre Jira): `ForkLinkedTasksGroup`, `ForkTaskPane`, tipo di pannello
 `fork-task`. Punti di aggancio in file di upstream da ricontrollare a ogni sync: una riga in
 `WorkspaceActivityMenu.tsx`, la voce nel registro di `usePaneRegistry.tsx`, il tipo in `types.ts` e il caso in `getPaneKey.ts`. Issue GitHub e task Paradev non sono inclusi.
-Da `v0.14.4-fork.25` il motore scrive le chiamate parallele di un turno in un solo messaggio
-dell'assistente: senza, Cursor rifiutava con "Provider Error" ogni chat convertita da Claude Code
-che le conteneva, con qualunque modello Anthropic.
+La barra del limite d'uso usa lo stesso motore di continuazione automatica del fork: il pulsante
+"Resume at reset" diventa una tendina con le quattro scelte di "Automatic continuation" (`ForkUsageLimitContinue`,
+hook `useForkQuotaRecovery`), salvate per chat sull'host. In `UsageLimitNotice.tsx` ci sono un import, una prop `fork`
+e un ramo; in `SessionView.tsx` una riga. Il timer di upstream si usa solo se l'host non sa continuare da solo.
+L'uso degli account si rilegge a intervalli adattivi: da 5 a 2 minuti per gli account oltre l'80%
+(`accountQuotaProviderMs`, mai sotto i 2 minuti per non far scattare il limite del provider).
+Da `v0.14.4-fork.26` il motore scrive per Cursor chat che i modelli Anthropic accettano: le chiamate
+parallele di un turno in un solo messaggio (anche con un risultato scritto in mezzo), l'output dei
+comandi slash come testo dell'utente e non come risultato senza chiamata, le immagini come
+`{image, mimeType}`. Senza, Cursor rifiutava la cronologia ("Provider Error") o si fermava con
+`Cannot read properties of undefined (reading 'toString')`.
 Zed è stato dismesso. La pubblicazione di txcript non cambia il motore usato
 da Paradev++: serve aggiornare esplicitamente il pin. Il repository remoto di Zed conserva lo storico con Actions disabilitate.
 

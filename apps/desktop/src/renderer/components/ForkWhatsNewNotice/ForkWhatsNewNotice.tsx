@@ -46,6 +46,10 @@ export function ForkWhatsNewNotice() {
 			message:
 				"Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly.",
 		}),
+		t({
+			message:
+				"A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues.",
+		}),
 	];
 	const notice: DesktopNotice = {
 		id: `fork-whats-new:${FORK_WHATS_NEW_ID}`,

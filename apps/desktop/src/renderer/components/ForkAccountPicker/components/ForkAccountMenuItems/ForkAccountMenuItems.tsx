@@ -1,10 +1,9 @@
 import { Trans, useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@superset/i18n/errors";
 import { formatDate } from "@superset/i18n/format";
-import { ACCOUNT_QUOTA_PROVIDER_MS } from "@superset/shared/fork-account-usage";
+import { accountQuotaProviderMs } from "@superset/shared/fork-account-usage";
 import {
 	DropdownMenuItem,
-	DropdownMenuLabel,
 	DropdownMenuSeparator,
 } from "@superset/ui/dropdown-menu";
 import { toast } from "@superset/ui/sonner";
@@ -57,12 +56,6 @@ export function ForkAccountMenuItems({
 		: null;
 	return (
 		<>
-			<DropdownMenuLabel>
-				<Trans>Account</Trans>
-			</DropdownMenuLabel>
-			<p className="px-2 pb-2 text-[11px] text-muted-foreground">
-				<Trans>Quota used: outer ring 5h, inner ring weekly.</Trans>
-			</p>
 			{account.options.isSuccess && choices.length === 0 && (
 				<p className="px-2 py-2 text-xs text-muted-foreground">
 					<Trans>Add an account to start chatting.</Trans>
@@ -153,7 +146,7 @@ export function ForkAccountMenuItems({
 						<Trans>Reconnect account</Trans>
 					</DropdownMenuItem>
 				)}
-			{canSignIn && (
+			{canSignIn && account.options.isSuccess && choices.length === 0 && (
 				<DropdownMenuItem
 					onSelect={() => afterClose(() => account.setAdding(true))}
 				>
@@ -178,7 +171,11 @@ export function ForkAccountMenuItems({
 								...checked.map((row) => row.fetchedAt.getTime()),
 							);
 							if (checked.length === 0 || latest >= startedAt) return;
-							const nextAt = latest + ACCOUNT_QUOTA_PROVIDER_MS;
+							const nextAt =
+								latest +
+								Math.min(
+									...checked.map((row) => accountQuotaProviderMs(row.windows)),
+								);
 							if (nextAt > Date.now()) {
 								const next = formatDate(new Date(nextAt), {
 									hour: "numeric",

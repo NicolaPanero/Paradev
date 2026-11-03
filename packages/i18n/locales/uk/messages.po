@@ -1677,6 +1677,9 @@ msgstr "Канал із такою назвою вже існує"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Чат не можна перемкнути на іншого провайдера посеред розмови. Почніть новий чат {label} або створіть його як форк цієї розмови. Цей чат {currentLabel} залишиться відкритим."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Чат, переключений з Claude Code на Cursor, працює з моделями Anthropic, зображеннями та slash-командами. Панель ліміту використання дає змогу обрати, як чат продовжиться."
+
 msgid "A chat takes its name from the agent."
 msgstr "Чат отримує назву від агента."
 
@@ -15838,9 +15841,6 @@ msgstr "Квота показується, якщо провайдер це пі
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Використана квота · зовнішнє кільце 5 год: {fiveHour} · внутрішнє кільце за тиждень: {weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Використана квота: зовнішнє кільце 5 год, внутрішнє кільце за тиждень."
 
 msgid "Quote"
 msgstr "Цитата"

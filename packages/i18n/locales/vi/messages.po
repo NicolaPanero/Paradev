@@ -1683,6 +1683,9 @@ msgstr "Đã có kênh với tên này"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Không thể chuyển chat sang nhà cung cấp khác giữa chừng. Hãy bắt đầu một chat {label} mới, hoặc tách cuộc trò chuyện này sang một chat mới. Chat {currentLabel} này vẫn mở."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Cuộc trò chuyện chuyển từ Claude Code sang Cursor hoạt động với các mô hình Anthropic, hình ảnh và lệnh slash. Thanh giới hạn sử dụng cho phép chọn cách cuộc trò chuyện tiếp tục."
+
 msgid "A chat takes its name from the agent."
 msgstr "Chat lấy tên từ agent."
 
@@ -15844,9 +15847,6 @@ msgstr "Hạn mức được hiển thị khi nhà cung cấp hỗ trợ."
 
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Hạn mức đã dùng · vòng ngoài 5 giờ: {fiveHour} · vòng trong hàng tuần: {weekly}"
-
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Hạn mức đã dùng: vòng ngoài 5 giờ, vòng trong hàng tuần."
 
 msgid "Quote"
 msgstr "Trích dẫn"
