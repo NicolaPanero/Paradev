@@ -4212,6 +4212,9 @@ msgstr "Елементи чату: повідомлення, міркуванн�
 msgid "Chats"
 msgstr "Чати"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Чати видаленого worktree знову з'являються в розділі «Знайти чат». Картка при наведенні на робочий простір показує, локальний він чи worktree."
+
 msgid "Check again"
 msgstr "Перевірити знову"
 
@@ -4229,9 +4232,6 @@ msgstr "Перевірити оновлення"
 
 msgid "Check for Updates"
 msgstr "Перевірити оновлення"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Перевірка оновлень більше не завершується помилкою, коли офіс ділить ліміт запитів GitHub. Зміна облікового запису Claude і чати Grok повторно відкриваються правильно."
 
 msgid "Check for Updates..."
 msgstr "Перевірити оновлення..."
@@ -5602,6 +5602,9 @@ msgstr "Копіювати назву гілки"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Скопіюйте історію перегляду й дані входу з Chrome, Brave, Arc або іншого браузера на основі Chromium у Paradev."
+
+msgid "Copy chat ID"
+msgstr "Копіювати ID чату"
 
 msgid "Copy code"
 msgstr "Копіювати код"
@@ -10746,6 +10749,9 @@ msgstr "Елемент"
 msgid "Iterate."
 msgstr "Доопрацьовуйте."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Його чати залишаються доступними в розділі «Знайти чат»."
+
 msgid "Its comments and history go with it."
 msgstr "Його коментарі та історію буде видалено разом із ним."
 
@@ -11566,6 +11572,9 @@ msgstr "локальний"
 
 msgid "Local"
 msgstr "Локальний"
+
+msgid "Local · the project folder"
+msgstr "Локальний · папка проєкту"
 
 msgid "Local agent accounts"
 msgstr "Локальні облікові записи агентів"
@@ -22726,6 +22735,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · власна папка"
 
 msgid "Worktree location"
 msgstr "Розташування worktree"

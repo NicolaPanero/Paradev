@@ -4218,6 +4218,9 @@ msgstr "채팅 화면: 메시지, 추론, 제안"
 msgid "Chats"
 msgstr "채팅"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "삭제된 worktree의 채팅이 채팅 찾기에 다시 표시됩니다. 워크스페이스 위에 마우스를 올리면 로컬인지 worktree인지 표시됩니다."
+
 msgid "Check again"
 msgstr "다시 확인"
 
@@ -4235,9 +4238,6 @@ msgstr "업데이트 확인"
 
 msgid "Check for Updates"
 msgstr "업데이트 확인"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "사무실에서 GitHub 요청 한도를 공유해도 '업데이트 확인'이 더 이상 실패하지 않습니다. Claude 계정 전환과 Grok 채팅도 올바르게 다시 열립니다."
 
 msgid "Check for Updates..."
 msgstr "업데이트 확인..."
@@ -5608,6 +5608,9 @@ msgstr "브랜치 이름 복사"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Chrome, Brave, Arc 등 Chromium 브라우저의 방문 기록과 로그인 정보를 Paradev로 복사합니다."
+
+msgid "Copy chat ID"
+msgstr "채팅 ID 복사"
 
 msgid "Copy code"
 msgstr "코드 복사"
@@ -10752,6 +10755,9 @@ msgstr "항목"
 msgid "Iterate."
 msgstr "반복."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "이 채팅은 채팅 찾기에서 계속 사용할 수 있습니다."
+
 msgid "Its comments and history go with it."
 msgstr "댓글과 기록도 함께 삭제됩니다."
 
@@ -11572,6 +11578,9 @@ msgstr "로컬"
 
 msgid "Local"
 msgstr "로컬"
+
+msgid "Local · the project folder"
+msgstr "로컬 · 프로젝트 폴더"
 
 msgid "Local agent accounts"
 msgstr "로컬 에이전트 계정"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "worktree"
+
+msgid "Worktree · its own folder"
+msgstr "worktree · 전용 폴더"
 
 msgid "Worktree location"
 msgstr "worktree 위치"

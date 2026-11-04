@@ -4218,6 +4218,9 @@ msgstr "Sohbet yüzeyleri: mesajlar, akıl yürütme, öneriler"
 msgid "Chats"
 msgstr "Sohbetler"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Silinmiş bir worktree'nin sohbetleri Sohbet bul bölümünde yeniden görünür. Bir çalışma alanının üzerine gelince açılan kart, Yerel mi Worktree mi olduğunu gösterir."
+
 msgid "Check again"
 msgstr "Yeniden denetle"
 
@@ -4235,9 +4238,6 @@ msgstr "Güncellemeleri denetle"
 
 msgid "Check for Updates"
 msgstr "Güncellemeleri denetle"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Güncellemeleri Denetle, bir ofis GitHub'ın istek sınırını paylaştığında artık başarısız olmuyor. Claude hesabı değiştirme ve Grok sohbetleri doğru şekilde yeniden açılıyor."
 
 msgid "Check for Updates..."
 msgstr "Güncellemeleri denetle..."
@@ -5608,6 +5608,9 @@ msgstr "Dal adını kopyala"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Tarama geçmişini ve oturum bilgilerini Chrome, Brave, Arc veya başka bir Chromium tarayıcısından Paradev'e kopyalayın."
+
+msgid "Copy chat ID"
+msgstr "Sohbet kimliğini kopyala"
 
 msgid "Copy code"
 msgstr "Kodu kopyala"
@@ -10752,6 +10755,9 @@ msgstr "Öğe"
 msgid "Iterate."
 msgstr "Yineleyin."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Sohbetleri Sohbet bul bölümünde kullanılabilir kalır."
+
 msgid "Its comments and history go with it."
 msgstr "Yorumları ve geçmişi de silinir."
 
@@ -11572,6 +11578,9 @@ msgstr "yerel"
 
 msgid "Local"
 msgstr "Yerel"
+
+msgid "Local · the project folder"
+msgstr "Yerel · proje klasörü"
 
 msgid "Local agent accounts"
 msgstr "Yerel ajan hesapları"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · kendi klasörü"
 
 msgid "Worktree location"
 msgstr "Worktree konumu"

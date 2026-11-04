@@ -4218,6 +4218,9 @@ msgstr "Chat-Oberflächen: Nachrichten, Reasoning, Vorschläge"
 msgid "Chats"
 msgstr "Chats"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Chats eines gelöschten Worktrees erscheinen wieder unter „Chat finden“. Die Hover-Karte eines Workspaces zeigt, ob er Lokal oder ein Worktree ist."
+
 msgid "Check again"
 msgstr "Erneut prüfen"
 
@@ -4235,9 +4238,6 @@ msgstr "Nach Updates suchen"
 
 msgid "Check for Updates"
 msgstr "Nach Updates suchen"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "„Nach Updates suchen“ schlägt nicht mehr fehl, wenn sich ein Büro das Anfragelimit von GitHub teilt. Wechsel des Claude-Kontos und Grok-Chats werden korrekt wieder geöffnet."
 
 msgid "Check for Updates..."
 msgstr "Nach Updates suchen..."
@@ -5608,6 +5608,9 @@ msgstr "Branch-Namen kopieren"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Kopiere Browserverlauf und Logins aus Chrome, Brave, Arc oder einem anderen Chromium-Browser nach Paradev."
+
+msgid "Copy chat ID"
+msgstr "Chat-ID kopieren"
 
 msgid "Copy code"
 msgstr "Code kopieren"
@@ -10752,6 +10755,9 @@ msgstr "Eintrag"
 msgid "Iterate."
 msgstr "Iterieren."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Seine Chats bleiben unter „Chat finden“ verfügbar."
+
 msgid "Its comments and history go with it."
 msgstr "Kommentare und Verlauf werden mitgelöscht."
 
@@ -11572,6 +11578,9 @@ msgstr "lokal"
 
 msgid "Local"
 msgstr "Lokal"
+
+msgid "Local · the project folder"
+msgstr "Lokal · der Projektordner"
 
 msgid "Local agent accounts"
 msgstr "Lokale Agentenkonten"
@@ -22732,6 +22741,9 @@ msgstr "Worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · eigener Ordner"
 
 msgid "Worktree location"
 msgstr "Worktree-Speicherort"

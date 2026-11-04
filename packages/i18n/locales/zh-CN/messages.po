@@ -4218,6 +4218,9 @@ msgstr "聊天界面：消息、推理、建议"
 msgid "Chats"
 msgstr "聊天"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "已删除 worktree 的聊天会重新显示在“查找聊天”中。将鼠标悬停在工作区上的卡片会显示它是本地还是 worktree。"
+
 msgid "Check again"
 msgstr "重新检查"
 
@@ -4235,9 +4238,6 @@ msgstr "检查更新"
 
 msgid "Check for Updates"
 msgstr "检查更新"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "当办公室共用 GitHub 请求限额时，“检查更新”不再失败。切换 Claude 账号和 Grok 聊天也能正确重新打开。"
 
 msgid "Check for Updates..."
 msgstr "检查更新..."
@@ -5608,6 +5608,9 @@ msgstr "复制分支名"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "将Chrome、Brave、Arc或其他Chromium浏览器的浏览历史和登录信息复制到Paradev。"
+
+msgid "Copy chat ID"
+msgstr "复制聊天 ID"
 
 msgid "Copy code"
 msgstr "复制代码"
@@ -10752,6 +10755,9 @@ msgstr "条目"
 msgid "Iterate."
 msgstr "迭代。"
 
+msgid "Its chats stay available in Find a chat."
+msgstr "它的聊天仍可在“查找聊天”中使用。"
+
 msgid "Its comments and history go with it."
 msgstr "其评论和历史记录也会一并删除。"
 
@@ -11572,6 +11578,9 @@ msgstr "本地"
 
 msgid "Local"
 msgstr "本地"
+
+msgid "Local · the project folder"
+msgstr "本地 · 项目文件夹"
 
 msgid "Local agent accounts"
 msgstr "本地智能体账户"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "worktree"
+
+msgid "Worktree · its own folder"
+msgstr "worktree · 专用文件夹"
 
 msgid "Worktree location"
 msgstr "worktree位置"

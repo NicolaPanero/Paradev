@@ -4218,6 +4218,9 @@ msgstr "Chat surfaces: messages, reasoning, suggestions"
 msgid "Chats"
 msgstr "Chats"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+
 msgid "Check again"
 msgstr "Check again"
 
@@ -4235,9 +4238,6 @@ msgstr "Check for updates"
 
 msgid "Check for Updates"
 msgstr "Check for Updates"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
 
 msgid "Check for Updates..."
 msgstr "Check for Updates..."
@@ -5608,6 +5608,9 @@ msgstr "Copy Branch Name"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
+
+msgid "Copy chat ID"
+msgstr "Copy chat ID"
 
 msgid "Copy code"
 msgstr "Copy code"
@@ -10752,6 +10755,9 @@ msgstr "Item"
 msgid "Iterate."
 msgstr "Iterate."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Its chats stay available in Find a chat."
+
 msgid "Its comments and history go with it."
 msgstr "Its comments and history go with it."
 
@@ -11572,6 +11578,9 @@ msgstr "local"
 
 msgid "Local"
 msgstr "Local"
+
+msgid "Local · the project folder"
+msgstr "Local · the project folder"
 
 msgid "Local agent accounts"
 msgstr "Local agent accounts"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · its own folder"
 
 msgid "Worktree location"
 msgstr "Worktree location"

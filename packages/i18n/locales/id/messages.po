@@ -4218,6 +4218,9 @@ msgstr "Permukaan chat: pesan, penalaran, saran"
 msgid "Chats"
 msgstr "Obrolan"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Percakapan dari worktree yang dihapus muncul lagi di Cari percakapan. Kartu saat kursor di atas workspace menunjukkan apakah itu Lokal atau Worktree."
+
 msgid "Check again"
 msgstr "Periksa lagi"
 
@@ -4235,9 +4238,6 @@ msgstr "Periksa pembaruan"
 
 msgid "Check for Updates"
 msgstr "Periksa Pembaruan"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Periksa Pembaruan tidak lagi gagal saat sebuah kantor berbagi batas permintaan GitHub. Pergantian akun Claude dan obrolan Grok dibuka kembali dengan benar."
 
 msgid "Check for Updates..."
 msgstr "Periksa Pembaruan..."
@@ -5608,6 +5608,9 @@ msgstr "Salin Nama Branch"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Salin riwayat penjelajahan dan login dari Chrome, Brave, Arc, atau browser Chromium lain ke Paradev."
+
+msgid "Copy chat ID"
+msgstr "Salin ID percakapan"
 
 msgid "Copy code"
 msgstr "Salin kode"
@@ -10752,6 +10755,9 @@ msgstr "Item"
 msgid "Iterate."
 msgstr "Iterasi."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Percakapannya tetap tersedia di Cari percakapan."
+
 msgid "Its comments and history go with it."
 msgstr "Komentar dan riwayatnya ikut terhapus."
 
@@ -11572,6 +11578,9 @@ msgstr "lokal"
 
 msgid "Local"
 msgstr "Lokal"
+
+msgid "Local · the project folder"
+msgstr "Lokal · folder proyek"
 
 msgid "Local agent accounts"
 msgstr "Akun agen lokal"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · folder sendiri"
 
 msgid "Worktree location"
 msgstr "Lokasi worktree"

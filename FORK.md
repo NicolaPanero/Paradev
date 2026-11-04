@@ -178,7 +178,7 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   rimappature già salvate vengono mantenute. L’icona **Find a chat**
   nell’intestazione cerca per titolo, modello o branch nei depositi locali di
   Claude, Codex, Cursor CLI, Grok e OpenCode, nei profili e nelle cartelle del
-  progetto, inclusi i worktree. Se una chat è già collegata a Superset, la riapre
+  progetto, inclusi i worktree anche già eliminati. Se una chat è già collegata a Superset, la riapre
   e la mette a fuoco. Gli elenchi seguono l’ordine e le icone delle impostazioni.
 - **CLI / CHAT**, disponibile attivando le opzioni CLI avanzate, riprende la
   stessa sessione nell’altra vista, conservando
@@ -448,6 +448,16 @@ da remoto, condivisi o non verificabili restano conservati; nessun nome di branc
 attribuisce retroattivamente una provenienza. Il backend ricontrolla prima di
 eliminare e il flag `force` non aggira queste protezioni. Non elimina branch remoti.
 Nelle cancellazioni multiple la preferenza si applica solo ai branch idonei.
+
+Eliminare un workspace non cancella le sue chat: la cronologia sta nello store
+dell’agente, legata alla cartella in cui girava. “Find a chat” cerca anche sotto
+la cartella dei worktree del progetto (`<base>/<nome progetto>`, più le forme con
+suffisso e con ID usate in passato), quindi ritrova le chat di un worktree già
+rimosso e le riapre nel workspace corrente come quelle di altre cartelle; per
+Claude la sessione viene copiata. La conferma di eliminazione lo ricorda. La
+scheda che compare sul workspace nella barra laterale dice se è **Local** (la
+cartella del progetto) o un **Worktree** (cartella propria); l’icona nell’elenco
+(portatile o punto) la sostituisce la PR quando c’è.
 
 ### Allegati vecchi
 
@@ -770,7 +780,7 @@ Accanto alla cronologia dei prompt compare “Find a chat”, con un'icona di
 importazione distinta. Dopo aver scelto il progetto, apre la ricerca nel
 workspace locale già esistente oppure ne registra uno sul checkout del
 progetto, senza inviare prompt, avviare agenti o creare worktree. La ricerca
-copre anche le sessioni negli altri worktree del progetto.
+copre anche le sessioni negli altri worktree del progetto, compresi quelli eliminati.
 “Continue with” segue tutte le configurazioni e il loro ordine nelle
 impostazioni. Le configurazioni eliminate non vengono ripristinate attraverso
 preset impliciti; quelle senza conversione verificata restano visibili con

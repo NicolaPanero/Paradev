@@ -4218,6 +4218,9 @@ msgstr "Powierzchnie czatu: wiadomości, rozumowanie, sugestie"
 msgid "Chats"
 msgstr "Czaty"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Czaty usuniętego worktree znów pojawiają się w Znajdź czat. Karta po najechaniu na workspace pokazuje, czy jest Lokalny, czy to Worktree."
+
 msgid "Check again"
 msgstr "Sprawdź ponownie"
 
@@ -4235,9 +4238,6 @@ msgstr "Sprawdź aktualizacje"
 
 msgid "Check for Updates"
 msgstr "Sprawdź aktualizacje"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Sprawdzanie aktualizacji nie kończy się już błędem, gdy biuro dzieli limit żądań GitHuba. Zmiana konta Claude i czaty Grok otwierają się poprawnie."
 
 msgid "Check for Updates..."
 msgstr "Sprawdź aktualizacje..."
@@ -5608,6 +5608,9 @@ msgstr "Kopiuj nazwę gałęzi"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Skopiuj historię przeglądania i dane logowania z Chrome, Brave, Arc lub innej przeglądarki opartej na Chromium do Paradev."
+
+msgid "Copy chat ID"
+msgstr "Kopiuj ID czatu"
 
 msgid "Copy code"
 msgstr "Kopiuj kod"
@@ -10752,6 +10755,9 @@ msgstr "Element"
 msgid "Iterate."
 msgstr "Ulepszaj."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Jego czaty pozostają dostępne w Znajdź czat."
+
 msgid "Its comments and history go with it."
 msgstr "Komentarze i historia też zostaną usunięte."
 
@@ -11572,6 +11578,9 @@ msgstr "lokalny"
 
 msgid "Local"
 msgstr "Lokalny"
+
+msgid "Local · the project folder"
+msgstr "Lokalny · folder projektu"
 
 msgid "Local agent accounts"
 msgstr "Lokalne konta agentów"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · własny folder"
 
 msgid "Worktree location"
 msgstr "Lokalizacja worktree"

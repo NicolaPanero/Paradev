@@ -4218,6 +4218,9 @@ msgstr "Superfícies de chat: mensagens, raciocínio, sugestões"
 msgid "Chats"
 msgstr "Chats"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "As conversas de um worktree excluído voltam a aparecer em Encontrar uma conversa. O cartão ao passar o mouse sobre um workspace mostra se ele é Local ou um Worktree."
+
 msgid "Check again"
 msgstr "Verificar novamente"
 
@@ -4235,9 +4238,6 @@ msgstr "Verificar atualizações"
 
 msgid "Check for Updates"
 msgstr "Verificar atualizações"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Verificar atualizações não falha mais quando um escritório compartilha o limite de solicitações do GitHub. A troca de conta do Claude e os chats do Grok reabrem corretamente."
 
 msgid "Check for Updates..."
 msgstr "Verificar atualizações..."
@@ -5608,6 +5608,9 @@ msgstr "Copiar nome da branch"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Copie o histórico de navegação e os logins do Chrome, Brave, Arc ou outro navegador Chromium para o Paradev."
+
+msgid "Copy chat ID"
+msgstr "Copiar ID da conversa"
 
 msgid "Copy code"
 msgstr "Copiar código"
@@ -10752,6 +10755,9 @@ msgstr "Item"
 msgid "Iterate."
 msgstr "Itere."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "As conversas dele continuam disponíveis em Encontrar uma conversa."
+
 msgid "Its comments and history go with it."
 msgstr "Os comentários e o histórico também serão excluídos."
 
@@ -11572,6 +11578,9 @@ msgstr "local"
 
 msgid "Local"
 msgstr "Local"
+
+msgid "Local · the project folder"
+msgstr "Local · a pasta do projeto"
 
 msgid "Local agent accounts"
 msgstr "Contas locais dos agentes"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · pasta própria"
 
 msgid "Worktree location"
 msgstr "Local das worktrees"

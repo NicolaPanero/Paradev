@@ -12,6 +12,7 @@ import {
 import { Checkbox } from "@superset/ui/checkbox";
 import { Label } from "@superset/ui/label";
 import { useId } from "react";
+import { ForkChatsKeptNote } from "renderer/components/ForkChatsKeptNote";
 import { shouldConfirmDeleteDialogKey } from "../../utils/shouldConfirmDeleteDialogKey";
 
 interface DestroyConfirmPaneProps {
@@ -104,6 +105,7 @@ export function DestroyConfirmPane({
 						)}
 					</div>
 				</div>
+				{!isSession && <ForkChatsKeptNote />}
 				{blockingReason && (
 					<div className="px-4 pb-2">
 						<div className="text-xs text-destructive bg-destructive/10 border border-destructive/20 rounded-md px-2.5 py-1.5">

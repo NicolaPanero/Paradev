@@ -4218,6 +4218,9 @@ msgstr "Superficies de chat: mensajes, razonamiento, sugerencias"
 msgid "Chats"
 msgstr "Chats"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Los chats de un worktree eliminado vuelven a aparecer en Buscar un chat. La tarjeta de un workspace indica si es Local o un Worktree."
+
 msgid "Check again"
 msgstr "Volver a comprobar"
 
@@ -4235,9 +4238,6 @@ msgstr "Buscar actualizaciones"
 
 msgid "Check for Updates"
 msgstr "Buscar actualizaciones"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Buscar actualizaciones ya no falla cuando una oficina comparte el límite de solicitudes de GitHub. El cambio de cuenta de Claude y los chats de Grok se reabren correctamente."
 
 msgid "Check for Updates..."
 msgstr "Buscar actualizaciones..."
@@ -5608,6 +5608,9 @@ msgstr "Copiar el nombre de la rama"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Copia a Paradev el historial de navegación y los inicios de sesión de Chrome, Brave, Arc u otro navegador basado en Chromium."
+
+msgid "Copy chat ID"
+msgstr "Copiar ID del chat"
 
 msgid "Copy code"
 msgstr "Copiar código"
@@ -10752,6 +10755,9 @@ msgstr "Elemento"
 msgid "Iterate."
 msgstr "Itera."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Sus chats siguen disponibles en Buscar un chat."
+
 msgid "Its comments and history go with it."
 msgstr "Sus comentarios e historial también se eliminan."
 
@@ -11572,6 +11578,9 @@ msgstr "local"
 
 msgid "Local"
 msgstr "Local"
+
+msgid "Local · the project folder"
+msgstr "Local · la carpeta del proyecto"
 
 msgid "Local agent accounts"
 msgstr "Cuentas locales de agentes"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · su propia carpeta"
 
 msgid "Worktree location"
 msgstr "Ubicación del worktree"

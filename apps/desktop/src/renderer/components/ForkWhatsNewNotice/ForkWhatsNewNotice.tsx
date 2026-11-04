@@ -44,7 +44,7 @@ export function ForkWhatsNewNotice() {
 		}),
 		t({
 			message:
-				"Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly.",
+				"Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree.",
 		}),
 		t({
 			message:

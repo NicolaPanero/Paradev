@@ -78,6 +78,7 @@ import {
 import { terminalLaunchConfigId } from "../agents/fork-launch";
 import { toTerminalSessionError } from "../terminal/errors";
 import { discoverClaudeProfiles, discoverCodexHomes } from "../usage/profiles";
+import { removedWorktreeRoots, sessionFolder } from "./fork-removed-worktrees";
 
 type Prepared = {
 	result?: Extract<TransferResult, { mode: "native" }>;
@@ -863,11 +864,16 @@ export const sessionTransferRouter = router({
 					message: "workspace_unavailable",
 				});
 			const cwd = await realpath(root);
-			const [folders, codexHomes, claudeProfiles] = await Promise.all([
+			const [liveFolders, codexHomes, claudeProfiles] = await Promise.all([
 				projectFolders(cwd),
 				discoverCodexHomes(),
 				discoverClaudeProfiles(),
 			]);
+			const removedRoots = await removedWorktreeRoots(
+				ctx.db,
+				workspace?.projectId ?? input.projectId,
+			);
+			const folders = [...liveFolders, ...removedRoots];
 			const baseEnv = { ...process.env, CODEX_HOME: codexHomes[0]?.home };
 			const sessions = await externalSessionsCache(
 				cwd,
@@ -935,7 +941,11 @@ export const sessionTransferRouter = router({
 				}
 			}
 			return sessions.map((session) => {
-				const folder = folderOf(session.cwd, folders) ?? cwd;
+				const folder = sessionFolder(
+					folderOf(session.cwd, folders) ?? cwd,
+					session.cwd,
+					removedRoots,
+				);
 				return {
 					...session,
 					folder,

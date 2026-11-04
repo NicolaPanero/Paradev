@@ -4218,6 +4218,9 @@ msgstr "Các bề mặt chat: tin nhắn, suy luận, gợi ý"
 msgid "Chats"
 msgstr "Cuộc trò chuyện"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Các cuộc trò chuyện của worktree đã xóa xuất hiện lại trong Tìm cuộc trò chuyện. Thẻ khi di chuột qua workspace cho biết đó là Cục bộ hay Worktree."
+
 msgid "Check again"
 msgstr "Kiểm tra lại"
 
@@ -4235,9 +4238,6 @@ msgstr "Kiểm tra cập nhật"
 
 msgid "Check for Updates"
 msgstr "Kiểm tra cập nhật"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Kiểm tra cập nhật không còn lỗi khi một văn phòng dùng chung giới hạn yêu cầu của GitHub. Việc đổi tài khoản Claude và các cuộc trò chuyện Grok được mở lại đúng cách."
 
 msgid "Check for Updates..."
 msgstr "Kiểm tra cập nhật..."
@@ -5608,6 +5608,9 @@ msgstr "Sao chép tên nhánh"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Sao chép lịch sử duyệt web và thông tin đăng nhập từ Chrome, Brave, Arc hoặc trình duyệt Chromium khác vào Paradev."
+
+msgid "Copy chat ID"
+msgstr "Sao chép ID cuộc trò chuyện"
 
 msgid "Copy code"
 msgstr "Sao chép mã"
@@ -10752,6 +10755,9 @@ msgstr "Item"
 msgid "Iterate."
 msgstr "Cải tiến."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Các cuộc trò chuyện của nó vẫn có trong Tìm cuộc trò chuyện."
+
 msgid "Its comments and history go with it."
 msgstr "Bình luận và lịch sử cũng bị xóa theo."
 
@@ -11572,6 +11578,9 @@ msgstr "cục bộ"
 
 msgid "Local"
 msgstr "Cục bộ"
+
+msgid "Local · the project folder"
+msgstr "Cục bộ · thư mục dự án"
 
 msgid "Local agent accounts"
 msgstr "Tài khoản tác nhân cục bộ"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · thư mục riêng"
 
 msgid "Worktree location"
 msgstr "Vị trí worktree"

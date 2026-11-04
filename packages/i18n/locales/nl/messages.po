@@ -4218,6 +4218,9 @@ msgstr "Chatoppervlakken: berichten, redeneren, suggesties"
 msgid "Chats"
 msgstr "Chats"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Chats van een verwijderde worktree verschijnen weer in Een chat zoeken. De hovercard van een workspace laat zien of die Lokaal of een Worktree is."
+
 msgid "Check again"
 msgstr "Opnieuw controleren"
 
@@ -4235,9 +4238,6 @@ msgstr "Controleren op updates"
 
 msgid "Check for Updates"
 msgstr "Controleren op updates"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Controleren op updates mislukt niet meer wanneer een kantoor de aanvraaglimiet van GitHub deelt. Het wisselen van Claude-account en Grok-chats worden correct heropend."
 
 msgid "Check for Updates..."
 msgstr "Controleren op updates..."
@@ -5608,6 +5608,9 @@ msgstr "Branchnaam kopiëren"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Kopieer browsegeschiedenis en logins uit Chrome, Brave, Arc of een andere Chromium-browser naar Paradev."
+
+msgid "Copy chat ID"
+msgstr "Chat-ID kopiëren"
 
 msgid "Copy code"
 msgstr "Code kopiëren"
@@ -10752,6 +10755,9 @@ msgstr "Item"
 msgid "Iterate."
 msgstr "Verbeter."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "De chats blijven beschikbaar in Een chat zoeken."
+
 msgid "Its comments and history go with it."
 msgstr "De reacties en geschiedenis worden ook verwijderd."
 
@@ -11572,6 +11578,9 @@ msgstr "lokaal"
 
 msgid "Local"
 msgstr "Lokaal"
+
+msgid "Local · the project folder"
+msgstr "Lokaal · de projectmap"
 
 msgid "Local agent accounts"
 msgstr "Lokale agentaccounts"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · eigen map"
 
 msgid "Worktree location"
 msgstr "Worktree-locatie"

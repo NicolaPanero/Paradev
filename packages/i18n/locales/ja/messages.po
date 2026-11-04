@@ -4218,6 +4218,9 @@ msgstr "チャットの構成要素: メッセージ、推論、提案"
 msgid "Chats"
 msgstr "チャット"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "削除したワークツリーのチャットが、チャットを探すに再び表示されます。ワークスペースにカーソルを置くと、ローカルかワークツリーかが表示されます。"
+
 msgid "Check again"
 msgstr "再確認"
 
@@ -4235,9 +4238,6 @@ msgstr "更新を確認"
 
 msgid "Check for Updates"
 msgstr "アップデートを確認"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "オフィスで GitHub のリクエスト上限を共有していても、「アップデートを確認」が失敗しなくなりました。Claude アカウントの切り替えと Grok のチャットも正しく再開されます。"
 
 msgid "Check for Updates..."
 msgstr "アップデートを確認..."
@@ -5608,6 +5608,9 @@ msgstr "ブランチ名をコピー"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Chrome、Brave、Arc、その他ChromiumブラウザからブラウジングHistoryとログイン情報をParadevにコピーします。"
+
+msgid "Copy chat ID"
+msgstr "チャット ID をコピー"
 
 msgid "Copy code"
 msgstr "コードをコピー"
@@ -10752,6 +10755,9 @@ msgstr "Item"
 msgid "Iterate."
 msgstr "改善。"
 
+msgid "Its chats stay available in Find a chat."
+msgstr "このチャットは「チャットを探す」で引き続き利用できます。"
+
 msgid "Its comments and history go with it."
 msgstr "コメントと履歴も削除されます。"
 
@@ -11572,6 +11578,9 @@ msgstr "ローカル"
 
 msgid "Local"
 msgstr "ローカル"
+
+msgid "Local · the project folder"
+msgstr "ローカル · プロジェクトのフォルダ"
 
 msgid "Local agent accounts"
 msgstr "ローカルのエージェントアカウント"
@@ -22732,6 +22741,9 @@ msgstr "ワークツリー"
 
 msgid "Worktree"
 msgstr "ワークツリー"
+
+msgid "Worktree · its own folder"
+msgstr "ワークツリー · 専用フォルダ"
 
 msgid "Worktree location"
 msgstr "ワークツリーの場所"

@@ -4218,6 +4218,9 @@ msgstr "Plochy chatu: zprávy, uvažování, návrhy"
 msgid "Chats"
 msgstr "Chaty"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Chaty smazaného worktree se znovu objeví v části Najít chat. Karta při najetí na pracovní prostor ukazuje, zda jde o Lokální prostor nebo o Worktree."
+
 msgid "Check again"
 msgstr "Zkontrolovat znovu"
 
@@ -4235,9 +4238,6 @@ msgstr "Zkontrolovat aktualizace"
 
 msgid "Check for Updates"
 msgstr "Zkontrolovat aktualizace"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Kontrola aktualizací už neselhává, když si kancelář sdílí limit požadavků GitHubu. Změna účtu Claude a chaty Grok se znovu otevírají správně."
 
 msgid "Check for Updates..."
 msgstr "Zkontrolovat aktualizace..."
@@ -5608,6 +5608,9 @@ msgstr "Kopírovat název větve"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Zkopírujte historii prohlížení a přihlášení z Chrome, Brave, Arc nebo jiného prohlížeče na Chromiu do Paradev."
+
+msgid "Copy chat ID"
+msgstr "Kopírovat ID chatu"
 
 msgid "Copy code"
 msgstr "Kopírovat kód"
@@ -10752,6 +10755,9 @@ msgstr "Položka"
 msgid "Iterate."
 msgstr "Vylepšujte."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Jeho chaty zůstanou dostupné v části Najít chat."
+
 msgid "Its comments and history go with it."
 msgstr "Smažou se i jeho komentáře a historie."
 
@@ -11572,6 +11578,9 @@ msgstr "místní"
 
 msgid "Local"
 msgstr "Lokální"
+
+msgid "Local · the project folder"
+msgstr "Lokální · složka projektu"
 
 msgid "Local agent accounts"
 msgstr "Místní účty agentů"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · vlastní složka"
 
 msgid "Worktree location"
 msgstr "Umístění worktree"

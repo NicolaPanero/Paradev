@@ -4218,6 +4218,9 @@ msgstr "Поверхности чата: сообщения, рассужден�
 msgid "Chats"
 msgstr "Чаты"
 
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Чаты удалённого worktree снова появляются в разделе «Найти чат». Карточка при наведении на рабочее пространство показывает, локальное оно или worktree."
+
 msgid "Check again"
 msgstr "Проверить снова"
 
@@ -4235,9 +4238,6 @@ msgstr "Проверить обновления"
 
 msgid "Check for Updates"
 msgstr "Проверить обновления"
-
-msgid "Check for Updates no longer fails when an office shares GitHub's request limit. Claude account switches and Grok chats reopen correctly."
-msgstr "Проверка обновлений больше не завершается ошибкой, когда офис делит лимит запросов GitHub. Смена аккаунта Claude и чаты Grok открываются повторно без ошибок."
 
 msgid "Check for Updates..."
 msgstr "Проверить обновления..."
@@ -5608,6 +5608,9 @@ msgstr "Скопировать имя ветки"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Скопируйте историю просмотров и логины из Chrome, Brave, Arc или другого браузера на Chromium в Paradev."
+
+msgid "Copy chat ID"
+msgstr "Копировать ID чата"
 
 msgid "Copy code"
 msgstr "Копировать код"
@@ -10752,6 +10755,9 @@ msgstr "Элемент"
 msgid "Iterate."
 msgstr "Дорабатывайте."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Его чаты остаются доступны в разделе «Найти чат»."
+
 msgid "Its comments and history go with it."
 msgstr "Комментарии и история тоже будут удалены."
 
@@ -11572,6 +11578,9 @@ msgstr "локальный"
 
 msgid "Local"
 msgstr "Локальная"
+
+msgid "Local · the project folder"
+msgstr "Локальная · папка проекта"
 
 msgid "Local agent accounts"
 msgstr "Локальные учётные записи агентов"
@@ -22732,6 +22741,9 @@ msgstr "worktree"
 
 msgid "Worktree"
 msgstr "Worktree"
+
+msgid "Worktree · its own folder"
+msgstr "Worktree · собственная папка"
 
 msgid "Worktree location"
 msgstr "Расположение worktree"
