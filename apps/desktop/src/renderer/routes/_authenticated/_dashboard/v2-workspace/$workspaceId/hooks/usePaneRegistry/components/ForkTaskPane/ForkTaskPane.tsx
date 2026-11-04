@@ -34,7 +34,7 @@ export function ForkTaskPane({
 		enabled: !!client,
 	});
 	return (
-		<div className="h-full min-h-0 overflow-auto">
+		<div className="h-full min-h-0 w-full min-w-0 overflow-auto">
 			{detail.data ? (
 				<ForkTaskDetail
 					key={detail.data.connectionId + detail.data.id}
