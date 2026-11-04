@@ -36,7 +36,7 @@ export function ForkWhatsNewNotice() {
 		}),
 		t({
 			message:
-				"The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick.",
+				"Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect.",
 		}),
 		t({
 			message:

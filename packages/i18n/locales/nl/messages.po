@@ -278,6 +278,10 @@ msgstr "{0, plural, one {# taak} other {# taken}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, one {# terminal actief} other {# terminals actief}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# tool} other {# tools}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3954,6 +3958,9 @@ msgstr "Paden van externe werkruimtes kunnen niet in Finder worden geopend"
 msgid "Can't reach the host"
 msgstr "Host niet bereikbaar"
 
+msgid "Can't reach the server"
+msgstr "Server niet bereikbaar"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "Ongedaan maken kan niet terwijl een chat in deze werkruimte bezig is."
 
@@ -5375,6 +5382,9 @@ msgstr "Verbinding"
 
 msgid "Connection Closed"
 msgstr "Verbinding gesloten"
+
+msgid "Connection failed"
+msgstr "Verbinding mislukt"
 
 msgid "Connection failed."
 msgstr "Verbinding mislukt."
@@ -9323,6 +9333,9 @@ msgstr "Sessie forken…"
 msgid "Fork Settings"
 msgstr "Fork-instellingen"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "De fork-instellingen tonen per MCP-server of die online is, hoeveel tools hij biedt of waarom hij geen verbinding maakt."
+
 msgid "Fork to new chat"
 msgstr "Forken naar nieuwe chat"
 
@@ -12735,6 +12748,9 @@ msgstr "Nog geen agents"
 
 msgid "No agents yet."
 msgstr "Nog geen agents."
+
+msgid "No answer"
+msgstr "Geen antwoord"
 
 msgid "No API keys yet."
 msgstr "Nog geen API-sleutels."
@@ -18567,6 +18583,9 @@ msgstr "Inloggen mislukt"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Inloggen mislukt ({reason}). Probeer het opnieuw."
 
+msgid "Sign-in required"
+msgstr "Aanmelden vereist"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Ingelogd als <0>{userName}</0>"
 
@@ -20035,6 +20054,9 @@ msgstr "De cloudwerkruimte had gestart moeten zijn, maar reageerde niet op tijd.
 msgid "The code expired. Start again."
 msgstr "De code is verlopen. Begin opnieuw."
 
+msgid "The command doesn't start"
+msgstr "De opdracht start niet"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "De opdrachten die Paradev uitvoert om de werkruimtes van dit project in te richten, te starten en te archiveren, uit .superset/config.toml."
 
@@ -20283,9 +20305,6 @@ msgstr "De pool wordt elke maand vernieuwd. Gebruik daarboven wordt per GB-uur g
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "De primaire repository moet een van de repository's van de omgeving zijn"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "De mapkiezer van het project is terug in het rechterpaneel: Bestanden, Gewijzigde bestanden en Wijzigingen volgen de gekozen map."
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "De checkout van het project zoals die is: bestanden en branch worden gedeeld"

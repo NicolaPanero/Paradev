@@ -278,6 +278,10 @@ msgstr "{0, plural, one {작업 #개} other {작업 #개}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, other {터미널 #개 실행 중}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {도구 #개} other {도구 #개}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3954,6 +3958,9 @@ msgstr "원격 워크스페이스 경로는 Finder에서 열 수 없습니다"
 msgid "Can't reach the host"
 msgstr "호스트에 연결할 수 없습니다"
 
+msgid "Can't reach the server"
+msgstr "서버에 연결할 수 없음"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "이 워크스페이스에서 채팅이 작업 중이어서 실행 취소할 수 없습니다."
 
@@ -5375,6 +5382,9 @@ msgstr "연결"
 
 msgid "Connection Closed"
 msgstr "연결이 닫힘"
+
+msgid "Connection failed"
+msgstr "연결 실패"
 
 msgid "Connection failed."
 msgstr "연결에 실패했습니다."
@@ -9323,6 +9333,9 @@ msgstr "세션 포크…"
 msgid "Fork Settings"
 msgstr "포크 설정"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "포크 설정에 각 MCP 서버의 온라인 여부, 제공하는 도구 수, 연결되지 않는 이유가 표시됩니다."
+
 msgid "Fork to new chat"
 msgstr "새 채팅으로 포크"
 
@@ -12735,6 +12748,9 @@ msgstr "아직 에이전트가 없습니다"
 
 msgid "No agents yet."
 msgstr "아직 에이전트가 없습니다."
+
+msgid "No answer"
+msgstr "응답 없음"
 
 msgid "No API keys yet."
 msgstr "아직 API 키가 없습니다."
@@ -18567,6 +18583,9 @@ msgstr "로그인 실패"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "로그인에 실패했습니다({reason}). 다시 시도해 주세요."
 
+msgid "Sign-in required"
+msgstr "로그인 필요"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "<0>{userName}</0>(으)로 로그인됨"
 
@@ -20035,6 +20054,9 @@ msgstr "클라우드 워크스페이스가 시작되었어야 하지만 제시�
 msgid "The code expired. Start again."
 msgstr "코드가 만료되었습니다. 다시 시작하세요."
 
+msgid "The command doesn't start"
+msgstr "명령이 시작되지 않음"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Paradev이 이 프로젝트의 워크스페이스를 설정, 실행, 보관할 때 실행하는 명령어(.superset/config.toml)."
 
@@ -20283,9 +20305,6 @@ msgstr "풀은 매달 초기화됩니다. 초과 사용량은 각 플랜에 표�
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "기본 저장소는 환경의 저장소 중 하나여야 합니다"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "프로젝트 폴더 선택기가 오른쪽 패널로 돌아왔습니다. 파일, 변경된 파일, 변경 사항이 선택한 폴더를 따릅니다."
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "프로젝트의 체크아웃을 그대로 사용: 파일과 브랜치가 공유됩니다"

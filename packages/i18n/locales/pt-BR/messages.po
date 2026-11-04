@@ -278,6 +278,10 @@ msgstr "{0, plural, one {# tarefa} other {# tarefas}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, one {# terminal em execução} other {# terminais em execução}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# ferramenta} other {# ferramentas}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3954,6 +3958,9 @@ msgstr "Não dá para abrir caminhos de áreas de trabalho remotas no Finder"
 msgid "Can't reach the host"
 msgstr "Não foi possível acessar o host"
 
+msgid "Can't reach the server"
+msgstr "Não foi possível acessar o servidor"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "Não é possível desfazer enquanto um chat nesta área de trabalho está trabalhando."
 
@@ -5375,6 +5382,9 @@ msgstr "Conexão"
 
 msgid "Connection Closed"
 msgstr "Conexão fechada"
+
+msgid "Connection failed"
+msgstr "Falha na conexão"
 
 msgid "Connection failed."
 msgstr "A conexão falhou."
@@ -9323,6 +9333,9 @@ msgstr "Bifurcar sessão…"
 msgid "Fork Settings"
 msgstr "Configurações do fork"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "As configurações do fork mostram se cada servidor MCP está online, quantas ferramentas oferece ou por que não se conecta."
+
 msgid "Fork to new chat"
 msgstr "Bifurcar para um novo chat"
 
@@ -12735,6 +12748,9 @@ msgstr "Nenhum agente ainda"
 
 msgid "No agents yet."
 msgstr "Nenhum agente ainda."
+
+msgid "No answer"
+msgstr "Sem resposta"
 
 msgid "No API keys yet."
 msgstr "Nenhuma chave de API ainda."
@@ -18567,6 +18583,9 @@ msgstr "Falha no login"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Falha ao entrar ({reason}). Tente novamente."
 
+msgid "Sign-in required"
+msgstr "É necessário entrar"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Conectado como <0>{userName}</0>"
 
@@ -20035,6 +20054,9 @@ msgstr "A área de trabalho na nuvem deveria ter iniciado, mas não respondeu a 
 msgid "The code expired. Start again."
 msgstr "O código expirou. Comece de novo."
 
+msgid "The command doesn't start"
+msgstr "O comando não inicia"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Os comandos que o Paradev executa para preparar, rodar e arquivar as áreas de trabalho deste projeto, a partir de .superset/config.toml."
 
@@ -20283,9 +20305,6 @@ msgstr "O pool é renovado todo mês. O uso além dele é cobrado por GB-hora pe
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "O repositório principal deve ser um dos repositórios do ambiente"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "O seletor de pastas do projeto voltou ao painel direito: Arquivos, Arquivos alterados e Alterações seguem a pasta escolhida."
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "O checkout do projeto como está: arquivos e branch são compartilhados"

@@ -278,6 +278,10 @@ msgstr "{0, plural, one {# task} other {# tasks}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, one {# terminal running} other {# terminals running}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# tool} other {# tools}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3954,6 +3958,9 @@ msgstr "Can't open remote workspace paths in Finder"
 msgid "Can't reach the host"
 msgstr "Can't reach the host"
 
+msgid "Can't reach the server"
+msgstr "Can't reach the server"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "Can't undo while a chat in this workspace is working."
 
@@ -5375,6 +5382,9 @@ msgstr "Connection"
 
 msgid "Connection Closed"
 msgstr "Connection Closed"
+
+msgid "Connection failed"
+msgstr "Connection failed"
 
 msgid "Connection failed."
 msgstr "Connection failed."
@@ -9323,6 +9333,9 @@ msgstr "Fork session…"
 msgid "Fork Settings"
 msgstr "Fork Settings"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+
 msgid "Fork to new chat"
 msgstr "Fork to new chat"
 
@@ -12735,6 +12748,9 @@ msgstr "No agents yet"
 
 msgid "No agents yet."
 msgstr "No agents yet."
+
+msgid "No answer"
+msgstr "No answer"
 
 msgid "No API keys yet."
 msgstr "No API keys yet."
@@ -18567,6 +18583,9 @@ msgstr "Sign-in failed"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Sign-in failed ({reason}). Please try again."
 
+msgid "Sign-in required"
+msgstr "Sign-in required"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Signed in as <0>{userName}</0>"
 
@@ -20035,6 +20054,9 @@ msgstr "The cloud workspace should have started but didn't answer in time. The n
 msgid "The code expired. Start again."
 msgstr "The code expired. Start again."
 
+msgid "The command doesn't start"
+msgstr "The command doesn't start"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 
@@ -20283,9 +20305,6 @@ msgstr "The pool resets every month. Usage past it is billed per GB-hour at the 
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "The primary repository must be one of the environment's repositories"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "The project's checkout as it is: files and branch are shared"

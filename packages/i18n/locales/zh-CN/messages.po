@@ -278,6 +278,10 @@ msgstr "{0, plural, one {#个任务} other {#个任务}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, other {# 个终端正在运行}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {#个工具} other {#个工具}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3954,6 +3958,9 @@ msgstr "无法在Finder中打开远程工作区路径"
 msgid "Can't reach the host"
 msgstr "无法连接主机"
 
+msgid "Can't reach the server"
+msgstr "无法访问服务器"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "此工作区中有聊天正在工作，无法撤销。"
 
@@ -5375,6 +5382,9 @@ msgstr "连接"
 
 msgid "Connection Closed"
 msgstr "连接已关闭"
+
+msgid "Connection failed"
+msgstr "连接失败"
 
 msgid "Connection failed."
 msgstr "连接失败。"
@@ -9323,6 +9333,9 @@ msgstr "分叉会话…"
 msgid "Fork Settings"
 msgstr "Fork 设置"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "Fork 设置会显示每个 MCP 服务器是否在线、提供多少工具，或无法连接的原因。"
+
 msgid "Fork to new chat"
 msgstr "分叉到新聊天"
 
@@ -12735,6 +12748,9 @@ msgstr "暂无智能体"
 
 msgid "No agents yet."
 msgstr "暂无智能体。"
+
+msgid "No answer"
+msgstr "无响应"
 
 msgid "No API keys yet."
 msgstr "暂无API密钥。"
@@ -18567,6 +18583,9 @@ msgstr "登录失败"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "登录失败（{reason}）。请重试。"
 
+msgid "Sign-in required"
+msgstr "需要登录"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "已登录为<0>{userName}</0>"
 
@@ -20035,6 +20054,9 @@ msgstr "云端工作区本应已启动，但没有及时响应。下次运行时
 msgid "The code expired. Start again."
 msgstr "代码已过期。请重新开始。"
 
+msgid "The command doesn't start"
+msgstr "命令无法启动"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Paradev 在设置、运行和归档此项目的工作区时执行的命令，来自 .superset/config.toml。"
 
@@ -20283,9 +20305,6 @@ msgstr "时长池每月重置。超出部分按各套餐标注的每 GB 小时�
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "主仓库必须是该环境的仓库之一"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "项目文件夹选择器回到了右侧面板：文件、已更改文件和更改会跟随所选文件夹。"
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "按原样使用项目的检出: 文件和分支是共享的"

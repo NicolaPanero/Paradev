@@ -272,6 +272,10 @@ msgstr "{0, plural, one {# завдання} few {# завдання} many {# з
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, one {Запущено # термінал} few {Запущено # термінали} many {Запущено # терміналів} other {Запущено # термінала}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# інструмент} few {# інструменти} many {# інструментів} other {# інструменту}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3948,6 +3952,9 @@ msgstr "Не вдається відкрити шляхи віддаленого
 msgid "Can't reach the host"
 msgstr "Хост недоступний"
 
+msgid "Can't reach the server"
+msgstr "Сервер недоступний"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "Не можна скасувати, поки в цьому робочому просторі працює чат."
 
@@ -5369,6 +5376,9 @@ msgstr "З'єднання"
 
 msgid "Connection Closed"
 msgstr "З'єднання закрито"
+
+msgid "Connection failed"
+msgstr "Помилка підключення"
 
 msgid "Connection failed."
 msgstr "Не вдалося підключитися."
@@ -9317,6 +9327,9 @@ msgstr "Створити форк сеансу…"
 msgid "Fork Settings"
 msgstr "Налаштування форка"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "Налаштування форка показують, чи доступний кожен MCP-сервер, скільки інструментів він пропонує або чому не підключається."
+
 msgid "Fork to new chat"
 msgstr "Відгалузити в новий чат"
 
@@ -12729,6 +12742,9 @@ msgstr "Агентів ще немає"
 
 msgid "No agents yet."
 msgstr "Агентів ще немає."
+
+msgid "No answer"
+msgstr "Немає відповіді"
 
 msgid "No API keys yet."
 msgstr "Ключів API ще немає."
@@ -18561,6 +18577,9 @@ msgstr "Не вдалося увійти"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Не вдалося увійти ({reason}). Спробуйте ще раз."
 
+msgid "Sign-in required"
+msgstr "Потрібен вхід"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Ви ввійшли як <0>{userName}</0>"
 
@@ -20029,6 +20048,9 @@ msgstr "Хмарний робочий простір мав запуститис
 msgid "The code expired. Start again."
 msgstr "Термін дії коду минув. Почніть знову."
 
+msgid "The command doesn't start"
+msgstr "Команда не запускається"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Команди з .superset/config.toml, які Paradev виконує, щоб налаштувати, запустити й архівувати робочі простори цього проєкту."
 
@@ -20277,9 +20299,6 @@ msgstr "Пул оновлюється щомісяця. Використання
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "Основний репозиторій має бути одним із репозиторіїв середовища"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "Вибір папок проєкту повернувся в праву панель: Файли, Змінені файли та Зміни слідують за обраною папкою."
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Робоча копія проєкту як є: файли та гілка спільні"

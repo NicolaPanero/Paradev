@@ -278,6 +278,10 @@ msgstr "{0, plural, one {#件のタスク} other {#件のタスク}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, other {ターミナル # 個が実行中}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {#個のツール} other {#個のツール}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3954,6 +3958,9 @@ msgstr "リモートワークスペースのパスはFinderで開けません"
 msgid "Can't reach the host"
 msgstr "ホストに接続できません"
 
+msgid "Can't reach the server"
+msgstr "サーバーに接続できません"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "このワークスペースでチャットが作業中のため取り消せません。"
 
@@ -5375,6 +5382,9 @@ msgstr "接続"
 
 msgid "Connection Closed"
 msgstr "接続が閉じられました"
+
+msgid "Connection failed"
+msgstr "接続に失敗しました"
 
 msgid "Connection failed."
 msgstr "接続に失敗しました。"
@@ -9323,6 +9333,9 @@ msgstr "セッションをフォーク…"
 msgid "Fork Settings"
 msgstr "フォーク設定"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "フォーク設定に、各 MCP サーバーがオンラインかどうか、提供するツールの数、接続できない理由が表示されます。"
+
 msgid "Fork to new chat"
 msgstr "新しいチャットにフォーク"
 
@@ -12735,6 +12748,9 @@ msgstr "エージェントはまだありません"
 
 msgid "No agents yet."
 msgstr "エージェントはまだありません。"
+
+msgid "No answer"
+msgstr "応答がありません"
 
 msgid "No API keys yet."
 msgstr "APIキーはまだありません。"
@@ -18567,6 +18583,9 @@ msgstr "サインインに失敗しました"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "サインインに失敗しました（{reason}）。もう一度お試しください。"
 
+msgid "Sign-in required"
+msgstr "サインインが必要です"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "<0>{userName}</0>としてサインイン中"
 
@@ -20035,6 +20054,9 @@ msgstr "クラウドワークスペースは起動しているはずですが、
 msgid "The code expired. Start again."
 msgstr "コードの有効期限が切れました。やり直してください。"
 
+msgid "The command doesn't start"
+msgstr "コマンドが起動しません"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "このプロジェクトのワークスペースをセットアップ、実行、アーカイブするときに Paradev が実行するコマンド（.superset/config.toml）。"
 
@@ -20283,9 +20305,6 @@ msgstr "プールは毎月リセットされます。超過分は各プランに
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "プライマリリポジトリは環境のリポジトリのいずれかである必要があります"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "プロジェクトのフォルダ選択が右パネルに戻りました。ファイル、変更されたファイル、変更は選んだフォルダに従います。"
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "プロジェクトのチェックアウトをそのまま使用: ファイルとブランチは共有されます"

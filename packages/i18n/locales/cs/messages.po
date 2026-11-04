@@ -278,6 +278,10 @@ msgstr "{0, plural, one {# úkol} few {# úkoly} many {# úkolu} other {# úkol�
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, one {# běžící terminál} few {# běžící terminály} many {# běžícího terminálu} other {# běžících terminálů}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# nástroj} few {# nástroje} many {# nástroje} other {# nástrojů}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3954,6 +3958,9 @@ msgstr "Cesty vzdáleného pracovního prostoru nejde otevřít ve Finderu"
 msgid "Can't reach the host"
 msgstr "Host není dostupný"
 
+msgid "Can't reach the server"
+msgstr "Server není dostupný"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "Nelze vrátit, dokud v tomto pracovním prostoru pracuje chat."
 
@@ -5375,6 +5382,9 @@ msgstr "Připojení"
 
 msgid "Connection Closed"
 msgstr "Spojení uzavřeno"
+
+msgid "Connection failed"
+msgstr "Připojení selhalo"
 
 msgid "Connection failed."
 msgstr "Připojení selhalo."
@@ -9323,6 +9333,9 @@ msgstr "Forkovat relaci…"
 msgid "Fork Settings"
 msgstr "Nastavení forku"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "Nastavení forku ukazují, zda je každý MCP server online, kolik nástrojů nabízí, nebo proč se nepřipojí."
+
 msgid "Fork to new chat"
 msgstr "Rozvětvit do nového chatu"
 
@@ -12735,6 +12748,9 @@ msgstr "Zatím žádní agenti"
 
 msgid "No agents yet."
 msgstr "Zatím žádní agenti."
+
+msgid "No answer"
+msgstr "Bez odpovědi"
 
 msgid "No API keys yet."
 msgstr "Zatím žádné API klíče."
@@ -18567,6 +18583,9 @@ msgstr "Přihlášení selhalo"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Přihlášení se nezdařilo ({reason}). Zkuste to prosím znovu."
 
+msgid "Sign-in required"
+msgstr "Vyžaduje přihlášení"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Přihlášeni jako <0>{userName}</0>"
 
@@ -20035,6 +20054,9 @@ msgstr "Cloudový pracovní prostor se měl spustit, ale neodpověděl včas. Da
 msgid "The code expired. Start again."
 msgstr "Platnost kódu vypršela. Začněte znovu."
 
+msgid "The command doesn't start"
+msgstr "Příkaz se nespustí"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Příkazy, které Paradev spouští při přípravě, spuštění a archivaci pracovních prostorů tohoto projektu, ze souboru .superset/config.toml."
 
@@ -20283,9 +20305,6 @@ msgstr "Fond se každý měsíc obnovuje. Využití nad jeho rámec se účtuje 
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "Primární repozitář musí být jedním z repozitářů prostředí"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "Výběr složek projektu je zpět v pravém panelu: Soubory, Změněné soubory a Změny sledují vybranou složku."
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Checkout projektu tak, jak je: soubory a větev jsou sdílené"

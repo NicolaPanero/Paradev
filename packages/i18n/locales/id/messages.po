@@ -278,6 +278,10 @@ msgstr "{0, plural, one {# tugas} other {# tugas}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, other {# terminal berjalan}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# alat} other {# alat}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -3954,6 +3958,9 @@ msgstr "Tidak bisa membuka path workspace jarak jauh di Finder"
 msgid "Can't reach the host"
 msgstr "Tidak dapat menjangkau host"
 
+msgid "Can't reach the server"
+msgstr "Server tidak dapat dijangkau"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "Tidak bisa dibatalkan selagi chat di workspace ini bekerja."
 
@@ -5375,6 +5382,9 @@ msgstr "Koneksi"
 
 msgid "Connection Closed"
 msgstr "Koneksi Ditutup"
+
+msgid "Connection failed"
+msgstr "Koneksi gagal"
 
 msgid "Connection failed."
 msgstr "Koneksi gagal."
@@ -9323,6 +9333,9 @@ msgstr "Fork sesi…"
 msgid "Fork Settings"
 msgstr "Pengaturan fork"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "Pengaturan fork menunjukkan apakah setiap server MCP online, berapa banyak alat yang ditawarkan, atau mengapa tidak tersambung."
+
 msgid "Fork to new chat"
 msgstr "Cabangkan ke chat baru"
 
@@ -12735,6 +12748,9 @@ msgstr "Belum ada agen"
 
 msgid "No agents yet."
 msgstr "Belum ada agen."
+
+msgid "No answer"
+msgstr "Tidak ada jawaban"
 
 msgid "No API keys yet."
 msgstr "Belum ada kunci API."
@@ -18567,6 +18583,9 @@ msgstr "Gagal masuk"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Gagal masuk ({reason}). Silakan coba lagi."
 
+msgid "Sign-in required"
+msgstr "Perlu masuk"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Masuk sebagai <0>{userName}</0>"
 
@@ -20035,6 +20054,9 @@ msgstr "Workspace cloud seharusnya sudah berjalan, tetapi tidak merespons tepat 
 msgid "The code expired. Start again."
 msgstr "Kode kedaluwarsa. Mulai lagi."
 
+msgid "The command doesn't start"
+msgstr "Perintah tidak berjalan"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Perintah yang dijalankan Paradev untuk menyiapkan, menjalankan, dan mengarsipkan workspace proyek ini, dari .superset/config.toml."
 
@@ -20283,9 +20305,6 @@ msgstr "Kumpulan direset setiap bulan. Penggunaan di atasnya ditagih per GB-jam 
 
 msgid "The primary repository must be one of the environment's repositories"
 msgstr "Repositori utama harus salah satu repositori lingkungan"
-
-msgid "The project folder selector is back in the right pane: Files, Files changed and Changes follow the folder you pick."
-msgstr "Pemilih folder proyek kembali di panel kanan: File, File yang diubah, dan Perubahan mengikuti folder yang Anda pilih."
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Checkout proyek apa adanya: file dan branch dibagikan"

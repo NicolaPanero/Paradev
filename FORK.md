@@ -82,6 +82,15 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   `~/.claude.json` senza toccarli. Le chat ACP ricevono l'elenco a ogni sessione;
   i terminali `claude` e `codex` lo ricevono dai wrapper (`--mcp-config` e `-c`).
   Header e variabili restano sull'host: l'interfaccia mostra solo i nomi.
+  Ogni server attivo mostra **Online · N tools** (i nomi si espandono) oppure
+  il motivo: login richiesto (401/403), server irraggiungibile, comando che
+  non parte, nessuna risposta entro 10 secondi o connessione fallita. L'host si
+  collega con il client MCP ufficiale come farebbe un agente (i server stdio
+  partono con l'ambiente della shell degli agenti), elenca i tool e chiude; il
+  risultato vale un minuto, **Check again** lo rifà e al massimo tre controlli
+  girano insieme. Dice se il server risponde adesso, non lo stato della
+  connessione dentro una chat già aperta: se qui è online ma la chat non vede i
+  tool, riaprire la chat le ripassa i server.
 
 - **Icona nella barra dei menu → Keep the Mac Awake** (solo macOS) impedisce lo
   stop per inattività: **While Agents Work** (predefinito) lo fa solo quando

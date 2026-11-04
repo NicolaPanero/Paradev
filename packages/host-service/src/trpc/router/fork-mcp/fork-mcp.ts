@@ -1,15 +1,35 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import {
+	createForkMcpStatus,
 	ForkMcpListInvalidError,
 	type ForkMcpServer,
 	forkMcpPaths,
+	probeForkMcpServer,
 	readForkMcpServers,
 	readForkMcpServersForUpdate,
 	writeForkMcpServers,
 } from "../../../fork-mcp";
 import { MCP_SERVER_NAME } from "../../../fork-mcp/fork-mcp-servers";
+import {
+	getTerminalBaseEnv,
+	waitForTerminalBaseEnv,
+} from "../../../terminal/env";
 import { protectedProcedure, router } from "../../index";
+
+/** Stdio servers start with the shell environment that agents get. */
+async function agentShellEnv(): Promise<Record<string, string>> {
+	await waitForTerminalBaseEnv();
+	try {
+		return getTerminalBaseEnv();
+	} catch {
+		return process.env as Record<string, string>;
+	}
+}
+
+const serverStatus = createForkMcpStatus(async (server) =>
+	probeForkMcpServer(server, { env: await agentShellEnv() }),
+);
 
 function editableServers(): ForkMcpServer[] {
 	try {
@@ -94,6 +114,21 @@ export const forkMcpRouter = router({
 		path: forkMcpPaths().servers,
 		servers: readForkMcpServers().map(publicServer),
 	})),
+
+	/** Connects to an enabled server and lists its tools; null when disabled. */
+	status: protectedProcedure
+		.input(z.object({ name: z.string(), refresh: z.boolean().optional() }))
+		.query(({ input }) => {
+			const server = readForkMcpServers().find(
+				(candidate) => candidate.name === input.name,
+			);
+			if (!server)
+				throw new TRPCError({
+					code: "NOT_FOUND",
+					message: "server_unavailable",
+				});
+			return server.enabled ? serverStatus(server, input.refresh) : null;
+		}),
 
 	save: protectedProcedure
 		.input(
