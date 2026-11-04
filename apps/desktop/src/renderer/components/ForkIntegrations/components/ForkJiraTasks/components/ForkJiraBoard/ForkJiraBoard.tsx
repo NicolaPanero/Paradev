@@ -64,7 +64,11 @@ export function ForkJiraBoard({
 		setOver(null);
 		setDropping(true);
 		try {
-			const result = await change.transitions.refetch();
+			// Loaded when the drag started; only wait if that request is still out.
+			const result =
+				change.transitions.data && !change.transitions.isFetching
+					? change.transitions
+					: await change.transitions.refetch({ cancelRefetch: false });
 			if (!result.data || result.error) {
 				setDragError(result.error);
 				setMoving(null);
