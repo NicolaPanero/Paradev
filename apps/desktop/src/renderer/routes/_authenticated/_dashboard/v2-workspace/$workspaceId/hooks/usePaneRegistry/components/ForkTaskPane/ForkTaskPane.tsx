@@ -40,6 +40,7 @@ export function ForkTaskPane({
 					key={detail.data.connectionId + detail.data.id}
 					task={detail.data}
 					onBack={onClose}
+					embedded
 				/>
 			) : (
 				<div className="space-y-4 p-6">

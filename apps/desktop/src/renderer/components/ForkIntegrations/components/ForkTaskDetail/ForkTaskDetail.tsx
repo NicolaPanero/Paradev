@@ -52,10 +52,13 @@ export function ForkTaskDetail({
 	task,
 	columns,
 	onBack,
+	embedded = false,
 }: {
 	task: ForkTask;
 	columns?: ForkJiraColumn[];
 	onBack: () => void;
+	/** In a pane: the pane's tab closes it and the menu opens Jira. */
+	embedded?: boolean;
 }) {
 	const { t } = useLingui(),
 		{ client, hostUrl } = useForkConnections(),
@@ -194,66 +197,73 @@ export function ForkTaskDetail({
 		setEdit(null);
 		setConflict(null);
 	};
+	const actions = (
+		<>
+			{!editing && (
+				<Button size="xs" variant="outline" onClick={startEdit}>
+					<LuPencil className="size-3.5" />
+					<Trans>Edit</Trans>
+				</Button>
+			)}
+			<DropdownMenu>
+				<DropdownMenuTrigger asChild>
+					<Button
+						size="icon-xs"
+						variant="ghost"
+						aria-label={t({ message: "More actions" })}
+					>
+						<LuEllipsis className="size-4" />
+					</Button>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent align="end" className="w-48">
+					<DropdownMenuItem asChild>
+						<a href={task.url} target="_blank" rel="noreferrer">
+							<LuArrowUpRight />
+							<Trans>Open in Jira</Trans>
+						</a>
+					</DropdownMenuItem>
+					<DropdownMenuItem onSelect={() => setLogTime(true)}>
+						<LuClock />
+						<Trans>Log time</Trans>
+					</DropdownMenuItem>
+					<DropdownMenuSeparator />
+					<DropdownMenuItem
+						variant="destructive"
+						onSelect={() => setConfirmDelete(true)}
+					>
+						<LuTrash2 />
+						<Trans>Delete task</Trans>
+					</DropdownMenuItem>
+				</DropdownMenuContent>
+			</DropdownMenu>
+		</>
+	);
 	return (
 		<div className="flex min-h-0 min-w-0 flex-1 flex-col">
-			<div className="flex h-11 shrink-0 items-center gap-2 border-b px-3">
-				<Button
-					variant="ghost"
-					size="icon-xs"
-					aria-label={t({ message: "Close" })}
-					onClick={onBack}
-				>
-					<LuX className="size-4" />
-				</Button>
-				<ForkProviderIcon provider="jira" />
-				<a
-					href={task.url}
-					target="_blank"
-					rel="noreferrer"
-					className="group inline-flex min-w-0 items-center gap-1 font-mono text-xs text-muted-foreground hover:text-foreground"
-				>
-					<span className="truncate">{task.key}</span>
-					<LuArrowUpRight className="size-3 shrink-0" />
-				</a>
-				<div className="ml-auto" />
-				{!editing && (
-					<Button size="xs" variant="outline" onClick={startEdit}>
-						<LuPencil className="size-3.5" />
-						<Trans>Edit</Trans>
+			{!embedded && (
+				<div className="flex h-11 shrink-0 items-center gap-2 border-b px-3">
+					<Button
+						variant="ghost"
+						size="icon-xs"
+						aria-label={t({ message: "Close" })}
+						onClick={onBack}
+					>
+						<LuX className="size-4" />
 					</Button>
-				)}
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild>
-						<Button
-							size="icon-xs"
-							variant="ghost"
-							aria-label={t({ message: "More actions" })}
-						>
-							<LuEllipsis className="size-4" />
-						</Button>
-					</DropdownMenuTrigger>
-					<DropdownMenuContent align="end" className="w-48">
-						<DropdownMenuItem asChild>
-							<a href={task.url} target="_blank" rel="noreferrer">
-								<LuArrowUpRight />
-								<Trans>Open in Jira</Trans>
-							</a>
-						</DropdownMenuItem>
-						<DropdownMenuItem onSelect={() => setLogTime(true)}>
-							<LuClock />
-							<Trans>Log time</Trans>
-						</DropdownMenuItem>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem
-							variant="destructive"
-							onSelect={() => setConfirmDelete(true)}
-						>
-							<LuTrash2 />
-							<Trans>Delete task</Trans>
-						</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
-			</div>
+					<ForkProviderIcon provider="jira" />
+					<a
+						href={task.url}
+						target="_blank"
+						rel="noreferrer"
+						className="group inline-flex min-w-0 items-center gap-1 font-mono text-xs text-muted-foreground hover:text-foreground"
+					>
+						<span className="truncate">{task.key}</span>
+						<LuArrowUpRight className="size-3 shrink-0" />
+					</a>
+					<div className="ml-auto" />
+					{actions}
+				</div>
+			)}
 			{(unavailable ||
 				confirmDelete ||
 				conflict ||
@@ -329,6 +339,9 @@ export function ForkTaskDetail({
 					<header className="shrink-0 pb-4">
 						<div className="flex min-w-0 items-center gap-2">
 							<ForkTaskStatus task={task} columns={columns} />
+							{embedded && (
+								<div className="ml-auto flex items-center gap-1">{actions}</div>
+							)}
 						</div>
 						{editing ? (
 							<Input
