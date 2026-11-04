@@ -27,7 +27,7 @@ concurrency:
 
 jobs:
   check:
-    if: github.repository == 'NicolaPanero/superset'
+    if: github.repository == 'NicolaPanero/Paradev'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:

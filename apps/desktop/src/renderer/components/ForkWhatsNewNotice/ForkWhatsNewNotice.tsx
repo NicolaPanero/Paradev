@@ -6,7 +6,7 @@ import { NoticeDialog } from "renderer/components/DesktopNotices/components/Noti
 export const FORK_WHATS_NEW_ID = "daily-model-cache-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 const FORK_GUIDE_URL =
-	"https://github.com/NicolaPanero/superset/blob/fork/main/FORK.md";
+	"https://github.com/NicolaPanero/Paradev/blob/fork/main/FORK.md";
 
 interface ForkWhatsNewStorage {
 	getItem: (key: string) => string | null;

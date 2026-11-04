@@ -6,7 +6,7 @@ const config: Configuration = {
 	...base,
 	// The Windows installer of every released build accepts only Superset++.exe.
 	productName: FORK_PRODUCT_NAME,
-	publish: { provider: "github", owner: "NicolaPanero", repo: "superset" },
+	publish: { provider: "github", owner: "NicolaPanero", repo: "Paradev" },
 	nsis: {
 		...base.nsis,
 		oneClick: true,
