@@ -6,7 +6,7 @@ import {
 	waitForForkInstaller,
 } from "./fork-update-install";
 
-const repository = "NicolaPanero/superset";
+const repository = "NicolaPanero/Paradev";
 const tag = "desktop-v1.37.0-fork.454baf2-tx8";
 const url = `https://github.com/${repository}/releases/download/${tag}/Superset-fork-arm64.zip`;
 const body = {

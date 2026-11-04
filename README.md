@@ -6,7 +6,7 @@
 
 Fork personale di [Paradev](https://github.com/ParadevAI/Paradev), già Superset++, per lavorare con più agenti e account, conservando le conversazioni.
 
-[**Scarica Paradev++ per Mac**](https://github.com/NicolaPanero/superset/releases/latest) &nbsp;&bull;&nbsp; [Guida del fork](FORK.md) &nbsp;&bull;&nbsp; [Profili account](docs/fork-accounts.md) &nbsp;&bull;&nbsp; [Progetto ufficiale](https://github.com/ParadevAI/Paradev)
+[**Scarica Paradev++ per Mac**](https://github.com/NicolaPanero/Paradev/releases/latest) &nbsp;&bull;&nbsp; [Guida del fork](FORK.md) &nbsp;&bull;&nbsp; [Profili account](docs/fork-accounts.md) &nbsp;&bull;&nbsp; [Progetto ufficiale](https://github.com/ParadevAI/Paradev)
 
 </div>
 
@@ -28,10 +28,10 @@ Le release includono **macOS Apple Silicon**. **Windows non è ancora supportato
 Su Mac, chiudi l’app prima di installarla o aggiornarla:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/NicolaPanero/superset/fork/main/scripts/fork/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/NicolaPanero/Paradev/fork/main/scripts/fork/install.sh | sh
 ```
 
-Lo script scarica l’ultima release del fork e installa `Paradev++.app`, sostituendo un eventuale `Superset++.app`. Per il download manuale, scegli `Superset-fork-arm64.zip` nelle [release del fork](https://github.com/NicolaPanero/superset/releases/latest).
+Lo script scarica l’ultima release del fork e installa `Paradev++.app`, sostituendo un eventuale `Superset++.app`. Per il download manuale, scegli `Superset-fork-arm64.zip` nelle [release del fork](https://github.com/NicolaPanero/Paradev/releases/latest).
 
 Chat, impostazioni e profili del fork restano conservati durante gli aggiornamenti. Le build pubblicate controllano gli aggiornamenti del fork; **Check for Updates** ripropone anche un aggiornamento rimandato. Per passare da una build locale a questo canale, installa una release del fork. [Installazione e compatibilità dei dati →](FORK.md#installazione-e-compatibilità-dei-dati)
 

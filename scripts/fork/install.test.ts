@@ -83,7 +83,7 @@ function fixture(
 		"--app-path",
 		app,
 		"--download-url",
-		"https://github.com/NicolaPanero/superset/releases/download/desktop-v1.37.0-fork.fixture/Superset-fork-arm64.zip",
+		"https://github.com/NicolaPanero/Paradev/releases/download/desktop-v1.37.0-fork.fixture/Superset-fork-arm64.zip",
 		"--sha256",
 		mode === "checksum" ? "0".repeat(64) : digest,
 		"--status-file",

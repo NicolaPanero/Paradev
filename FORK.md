@@ -564,12 +564,12 @@ prove usano archivi temporanei ed eseguono il motore fissato prima della build.
 ## Installazione e compatibilità dei dati
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/NicolaPanero/superset/fork/main/scripts/fork/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/NicolaPanero/Paradev/fork/main/scripts/fork/install.sh | sh
 ```
 
 Le release includono **macOS Apple Silicon**. Su Mac chiudi l’app prima di eseguire
 lo script. Per installare manualmente, scarica `Superset-fork-arm64.zip` dalle
-[release del fork](https://github.com/NicolaPanero/superset/releases/latest).
+[release del fork](https://github.com/NicolaPanero/Paradev/releases/latest).
 
 **Windows non è ancora supportato.** La build e l’installer Windows sono sospesi:
 le release non contengono più `Superset-fork-x64.exe` e i workflow non li compilano.
