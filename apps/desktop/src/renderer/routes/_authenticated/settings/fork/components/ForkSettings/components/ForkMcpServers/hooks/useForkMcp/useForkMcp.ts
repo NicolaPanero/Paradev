@@ -20,6 +20,7 @@ export function useForkMcp() {
 	return {
 		...query,
 		client,
+		hostUrl,
 		refresh: () => cache.invalidateQueries({ queryKey }),
 	};
 }

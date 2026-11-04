@@ -36,6 +36,7 @@ import {
 } from "renderer/routes/_authenticated/components/AgentComposer/constants";
 import { useSetDefaultUsageAccount } from "renderer/routes/_authenticated/settings/usage/hooks/useSetDefaultUsageAccount";
 import { formatResetLabel } from "renderer/utils/usage/formatResetIn";
+import { ForkUsageLimitContinue } from "../../../../../ForkChatExtras/components/ForkUsageLimitContinue";
 
 const TICK_MS = 30_000;
 const CLOSE_TICK_MS = 5_000;
@@ -73,6 +74,7 @@ export function UsageLimitNotice({
 	sessionAccount,
 	onRespond,
 	onSwitchAccount,
+	fork,
 }: {
 	sessionAccount?: TerminalAgentBinding["account"];
 	limit: UsageLimit;
@@ -83,6 +85,7 @@ export function UsageLimitNotice({
 	agent?: SwitchableAgent | undefined;
 	hostUrl?: string | null | undefined;
 	onSwitchAccount?: SwitchAccount | undefined;
+	fork?: { workspaceId: string; terminalId?: string | undefined } | undefined;
 }) {
 	const { i18n, t } = useLingui();
 	const [now, setNow] = useState(() => Date.now());
@@ -176,6 +179,13 @@ export function UsageLimitNotice({
 						<Play className="size-3.5" />
 						<Trans>Resume</Trans>
 					</button>
+				) : fork && agent ? (
+					<ForkUsageLimitContinue
+						agent={agent}
+						onRespond={onRespond}
+						terminalId={fork.terminalId}
+						workspaceId={fork.workspaceId}
+					/>
 				) : limit.resumeAtReset ? (
 					<button
 						className={cn(PILL_TRIGGER_CLASS, ARMED_CLASS)}

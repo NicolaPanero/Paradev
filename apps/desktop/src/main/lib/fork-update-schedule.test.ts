@@ -45,17 +45,18 @@ test("checks one minute after startup and every fifteen minutes", () => {
 	f.event("periodic");
 	expect(f.check).toHaveBeenCalledTimes(2);
 });
-test("returning to the app or waking checks promptly without a rapid focus loop", () => {
+test("switching windows checks at most every ten minutes, so one user cannot drain the shared GitHub quota", () => {
 	const f = fixture();
+	f.at(540_000);
 	f.event("focus");
 	expect(f.check).not.toHaveBeenCalled();
-	f.at(120_000);
+	f.at(600_000);
 	f.event("focus");
-	f.at(120_001);
+	f.at(600_001);
 	f.event("focus");
 	f.event("resume");
 	expect(f.check).toHaveBeenCalledTimes(1);
-	f.at(600_000);
+	f.at(1_200_000);
 	f.event("resume");
 	expect(f.check).toHaveBeenCalledTimes(2);
 });

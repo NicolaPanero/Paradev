@@ -381,9 +381,12 @@ export class ForkJiraProvider implements ForkTaskProvider {
 		fields: Record<string, unknown>,
 	) {
 		this.assert(id);
-		const metadata =
+		// Field metadata only shapes field values and names fields in errors,
+		// so a move without fields skips that extra request.
+		const loadMetadata = async () =>
 			(await this.transitions(id, key)).find((t) => t.id === transitionId)
 				?.fields ?? [];
+		const metadata = Object.keys(fields).length > 0 ? await loadMetadata() : [];
 		try {
 			await this.api.request(
 				id,
@@ -395,7 +398,10 @@ export class ForkJiraProvider implements ForkTaskProvider {
 				},
 			);
 		} catch (error) {
-			throw forkJiraTransitionError(error, metadata);
+			const known = metadata.length
+				? metadata
+				: await loadMetadata().catch(() => []);
+			throw forkJiraTransitionError(error, known);
 		}
 		return this.get(id, key);
 	}

@@ -278,6 +278,10 @@ msgstr "{0, plural, one {작업 #개} other {작업 #개}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, other {터미널 #개 실행 중}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {도구 #개} other {도구 #개}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -1683,6 +1687,9 @@ msgstr "이 이름의 채널이 이미 있습니다"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "채팅 도중에는 다른 제공자로 전환할 수 없습니다. 새 {label} 채팅을 시작하거나 이 대화를 새 채팅으로 분기하세요. 이 {currentLabel} 채팅은 계속 열려 있습니다."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Claude Code에서 Cursor로 전환한 채팅이 Anthropic 모델, 이미지, 슬래시 명령과 함께 작동합니다. 사용량 한도 막대에서 채팅을 이어 가는 방법을 선택할 수 있습니다."
+
 msgid "A chat takes its name from the agent."
 msgstr "채팅 이름은 에이전트 이름을 따릅니다."
 
@@ -1749,9 +1756,6 @@ msgstr "계속하려면 새 버전의 Paradev가 필요합니다. 최신 버전�
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "이 브랜치에서 새 워크스페이스를 만들고 대화를 새 에이전트에 넘깁니다"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "보기와 필터가 있는 새 워크스페이스 목록. 우크라이나어를 언어로 사용할 수 있습니다."
 
 msgid "A newsletter or blog"
 msgstr "뉴스레터 또는 블로그"
@@ -3511,9 +3515,6 @@ msgstr "PR #{0} 기반"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "최근 30일간 토큰 {0}개 기준이며, {1}을(를) 집계했습니다."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Paradev 2.0.3 기반: 워크스페이스 전환과 에이전트 활동의 작업량이 줄어 앱이 계속 빠르게 반응합니다."
-
 msgid "Become a design partner"
 msgstr "공동 개발 파트너 되기"
 
@@ -3957,6 +3958,9 @@ msgstr "원격 워크스페이스 경로는 Finder에서 열 수 없습니다"
 msgid "Can't reach the host"
 msgstr "호스트에 연결할 수 없습니다"
 
+msgid "Can't reach the server"
+msgstr "서버에 연결할 수 없음"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "이 워크스페이스에서 채팅이 작업 중이어서 실행 취소할 수 없습니다."
 
@@ -4220,6 +4224,9 @@ msgstr "채팅 화면: 메시지, 추론, 제안"
 
 msgid "Chats"
 msgstr "채팅"
+
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "삭제된 worktree의 채팅이 채팅 찾기에 다시 표시됩니다. 워크스페이스 위에 마우스를 올리면 로컬인지 worktree인지 표시됩니다."
 
 msgid "Check again"
 msgstr "다시 확인"
@@ -4558,9 +4565,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI 및 SDK"
-
-msgid "CLI default"
-msgstr "CLI 기본값"
 
 msgid "CLI docs"
 msgstr "CLI 문서"
@@ -5379,6 +5383,9 @@ msgstr "연결"
 msgid "Connection Closed"
 msgstr "연결이 닫힘"
 
+msgid "Connection failed"
+msgstr "연결 실패"
+
 msgid "Connection failed."
 msgstr "연결에 실패했습니다."
 
@@ -5611,6 +5618,9 @@ msgstr "브랜치 이름 복사"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Chrome, Brave, Arc 등 Chromium 브라우저의 방문 기록과 로그인 정보를 Paradev로 복사합니다."
+
+msgid "Copy chat ID"
+msgstr "채팅 ID 복사"
 
 msgid "Copy code"
 msgstr "코드 복사"
@@ -6892,9 +6902,6 @@ msgstr "기본값({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "기본값 ({fallback})"
 
-msgid "Default account"
-msgstr "기본 계정"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "새 작업 공간의 기본 기준 브랜치입니다. 생성 시 작업 공간별로 변경할 수 있습니다."
 
@@ -7354,9 +7361,6 @@ msgstr "차이 변경 개요"
 
 msgid "diff in new tab"
 msgstr "새 탭에서 차이"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "수천 개 파일이 바뀐 변경 사항도 diff로 열 수 있으며 편집기와 하이라이터를 공유합니다."
 
 msgid "Digital Product Designer"
 msgstr "디지털 제품 디자이너"
@@ -9329,6 +9333,9 @@ msgstr "세션 포크…"
 msgid "Fork Settings"
 msgstr "포크 설정"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "포크 설정에 각 MCP 서버의 온라인 여부, 제공하는 도구 수, 연결되지 않는 이유가 표시됩니다."
+
 msgid "Fork to new chat"
 msgstr "새 채팅으로 포크"
 
@@ -10761,6 +10768,9 @@ msgstr "항목"
 msgid "Iterate."
 msgstr "반복."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "이 채팅은 채팅 찾기에서 계속 사용할 수 있습니다."
+
 msgid "Its comments and history go with it."
 msgstr "댓글과 기록도 함께 삭제됩니다."
 
@@ -10802,6 +10812,9 @@ msgstr "Jira 이슈"
 
 msgid "Jira project"
 msgstr "Jira 프로젝트"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "워크스페이스에 연결된 Jira 작업이 활동 메뉴에 표시됩니다. 작업을 열어 내용을 읽고 상태를 변경할 수 있습니다."
 
 msgid "Jira triage"
 msgstr "Jira 분류"
@@ -11578,6 +11591,9 @@ msgstr "로컬"
 
 msgid "Local"
 msgstr "로컬"
+
+msgid "Local · the project folder"
+msgstr "로컬 · 프로젝트 폴더"
 
 msgid "Local agent accounts"
 msgstr "로컬 에이전트 계정"
@@ -12490,6 +12506,9 @@ msgstr "새 채팅"
 msgid "New chat from loaded messages"
 msgstr "불러온 메시지로 새 채팅"
 
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "새 채팅에서 하나의 간결한 메뉴로 에이전트, 계정, 모델, 사고 수준을 선택합니다. 모델 목록은 에이전트별로 하루 동안 캐시됩니다."
+
 msgid "New chats"
 msgstr "새 채팅"
 
@@ -12729,6 +12748,9 @@ msgstr "아직 에이전트가 없습니다"
 
 msgid "No agents yet."
 msgstr "아직 에이전트가 없습니다."
+
+msgid "No answer"
+msgstr "응답 없음"
 
 msgid "No API keys yet."
 msgstr "아직 API 키가 없습니다."
@@ -15848,9 +15870,6 @@ msgstr "공급자가 지원하는 경우 할당량이 표시됩니다."
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "할당량 사용 · 바깥쪽 링 5시간: {fiveHour} · 안쪽 링 주간: {weekly}"
 
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "할당량 사용: 바깥쪽 링은 5시간, 안쪽 링은 주간입니다."
-
 msgid "Quote"
 msgstr "인용"
 
@@ -18564,6 +18583,9 @@ msgstr "로그인 실패"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "로그인에 실패했습니다({reason}). 다시 시도해 주세요."
 
+msgid "Sign-in required"
+msgstr "로그인 필요"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "<0>{userName}</0>(으)로 로그인됨"
 
@@ -20032,6 +20054,9 @@ msgstr "클라우드 워크스페이스가 시작되었어야 하지만 제시�
 msgid "The code expired. Start again."
 msgstr "코드가 만료되었습니다. 다시 시작하세요."
 
+msgid "The command doesn't start"
+msgstr "명령이 시작되지 않음"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Paradev이 이 프로젝트의 워크스페이스를 설정, 실행, 보관할 때 실행하는 명령어(.superset/config.toml)."
 
@@ -20283,9 +20308,6 @@ msgstr "기본 저장소는 환경의 저장소 중 하나여야 합니다"
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "프로젝트의 체크아웃을 그대로 사용: 파일과 브랜치가 공유됩니다"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "프롬프트 입력창이 서식 있는 텍스트를 지원합니다. 사용 한도에 도달하면 대기열을 일시 중지하고 초기화 시 재개할지 묻습니다."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -22739,6 +22761,9 @@ msgstr "worktree"
 msgid "Worktree"
 msgstr "worktree"
 
+msgid "Worktree · its own folder"
+msgstr "worktree · 전용 폴더"
+
 msgid "Worktree location"
 msgstr "worktree 위치"
 
@@ -23080,9 +23105,6 @@ msgstr "GitHub 링크는 로그인에 사용한 계정에서 가져오므로 확
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "내 Jira 계정으로는 이 이슈에 시간을 기록할 수 없습니다."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Jira 자동화, 오늘 보기, 채팅 단축키, 계정은 이전과 같이 작동합니다."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "최근 결제에 실패했습니다. Pro를 유지하려면 결제 수단을 업데이트하세요."

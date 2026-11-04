@@ -5,6 +5,11 @@ import {
 	SUBAGENT_PANE_KIND,
 	type SubagentPaneData,
 } from "../../types";
+import {
+	FORK_TASK_PANE_KIND,
+	type ForkTaskPaneData,
+	forkTaskPaneKey,
+} from "../forkTaskPane";
 
 export const PULL_REQUEST_PANE_KEY = "pull-request";
 
@@ -18,6 +23,8 @@ export const getPaneKey: GetPaneKey<PaneViewerData> = ({ kind, data }) => {
 		}
 		case "pull-request":
 			return PULL_REQUEST_PANE_KEY;
+		case FORK_TASK_PANE_KIND:
+			return forkTaskPaneKey(data as ForkTaskPaneData);
 		default:
 			return undefined;
 	}

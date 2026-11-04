@@ -278,6 +278,10 @@ msgstr "{0, plural, one {# tác vụ} other {# tác vụ}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, other {# terminal đang chạy}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# công cụ} other {# công cụ}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -1683,6 +1687,9 @@ msgstr "Đã có kênh với tên này"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Không thể chuyển chat sang nhà cung cấp khác giữa chừng. Hãy bắt đầu một chat {label} mới, hoặc tách cuộc trò chuyện này sang một chat mới. Chat {currentLabel} này vẫn mở."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Cuộc trò chuyện chuyển từ Claude Code sang Cursor hoạt động với các mô hình Anthropic, hình ảnh và lệnh slash. Thanh giới hạn sử dụng cho phép chọn cách cuộc trò chuyện tiếp tục."
+
 msgid "A chat takes its name from the agent."
 msgstr "Chat lấy tên từ agent."
 
@@ -1749,9 +1756,6 @@ msgstr "Cần phiên bản Paradev mới để tiếp tục. Vui lòng cập nh�
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Một workspace mới từ nhánh này, hội thoại được bàn giao cho tác nhân mới"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Danh sách không gian làm việc mới với các chế độ xem và bộ lọc. Tiếng Ukraina đã có sẵn làm ngôn ngữ."
 
 msgid "A newsletter or blog"
 msgstr "Bản tin hoặc blog"
@@ -3511,9 +3515,6 @@ msgstr "dựa trên PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "Dựa trên {0} token trong 30 ngày qua, tính cả {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Dựa trên Paradev 2.0.3: việc chuyển không gian làm việc và hoạt động của agent tốn ít công việc hơn, nên ứng dụng luôn phản hồi nhanh."
-
 msgid "Become a design partner"
 msgstr "Trở thành đối tác đồng phát triển"
 
@@ -3957,6 +3958,9 @@ msgstr "Không thể mở đường dẫn workspace từ xa trong Finder"
 msgid "Can't reach the host"
 msgstr "Không thể kết nối với host"
 
+msgid "Can't reach the server"
+msgstr "Không thể truy cập máy chủ"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "Không thể hoàn tác khi một chat trong workspace này đang làm việc."
 
@@ -4220,6 +4224,9 @@ msgstr "Các bề mặt chat: tin nhắn, suy luận, gợi ý"
 
 msgid "Chats"
 msgstr "Cuộc trò chuyện"
+
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Các cuộc trò chuyện của worktree đã xóa xuất hiện lại trong Tìm cuộc trò chuyện. Thẻ khi di chuột qua workspace cho biết đó là Cục bộ hay Worktree."
 
 msgid "Check again"
 msgstr "Kiểm tra lại"
@@ -4558,9 +4565,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI & SDK"
-
-msgid "CLI default"
-msgstr "Mặc định của CLI"
 
 msgid "CLI docs"
 msgstr "Tài liệu CLI"
@@ -5379,6 +5383,9 @@ msgstr "Kết nối"
 msgid "Connection Closed"
 msgstr "Kết nối đã đóng"
 
+msgid "Connection failed"
+msgstr "Kết nối thất bại"
+
 msgid "Connection failed."
 msgstr "Kết nối thất bại."
 
@@ -5611,6 +5618,9 @@ msgstr "Sao chép tên nhánh"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Sao chép lịch sử duyệt web và thông tin đăng nhập từ Chrome, Brave, Arc hoặc trình duyệt Chromium khác vào Paradev."
+
+msgid "Copy chat ID"
+msgstr "Sao chép ID cuộc trò chuyện"
 
 msgid "Copy code"
 msgstr "Sao chép mã"
@@ -6892,9 +6902,6 @@ msgstr "Mặc định ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "Mặc định ({fallback})"
 
-msgid "Default account"
-msgstr "Tài khoản mặc định"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Nhánh cơ sở mặc định cho không gian làm việc mới. Có thể ghi đè riêng khi tạo."
 
@@ -7354,9 +7361,6 @@ msgstr "Tổng quan thay đổi diff"
 
 msgid "diff in new tab"
 msgstr "diff ở tab mới"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Diff mở được cho các thay đổi có hàng nghìn tệp và dùng chung một bộ tô sáng với trình soạn thảo."
 
 msgid "Digital Product Designer"
 msgstr "Nhà thiết kế sản phẩm số"
@@ -9329,6 +9333,9 @@ msgstr "Fork phiên…"
 msgid "Fork Settings"
 msgstr "Cài đặt fork"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "Cài đặt fork cho biết mỗi máy chủ MCP có trực tuyến không, cung cấp bao nhiêu công cụ, hoặc vì sao không kết nối được."
+
 msgid "Fork to new chat"
 msgstr "Tách sang cuộc trò chuyện mới"
 
@@ -10761,6 +10768,9 @@ msgstr "Item"
 msgid "Iterate."
 msgstr "Cải tiến."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Các cuộc trò chuyện của nó vẫn có trong Tìm cuộc trò chuyện."
+
 msgid "Its comments and history go with it."
 msgstr "Bình luận và lịch sử cũng bị xóa theo."
 
@@ -10802,6 +10812,9 @@ msgstr "Issue Jira"
 
 msgid "Jira project"
 msgstr "Dự án Jira"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Các tác vụ Jira được liên kết với một workspace hiển thị trong menu hoạt động của nó. Mở một tác vụ để đọc và đổi trạng thái."
 
 msgid "Jira triage"
 msgstr "Phân loại Jira"
@@ -11578,6 +11591,9 @@ msgstr "cục bộ"
 
 msgid "Local"
 msgstr "Cục bộ"
+
+msgid "Local · the project folder"
+msgstr "Cục bộ · thư mục dự án"
 
 msgid "Local agent accounts"
 msgstr "Tài khoản tác nhân cục bộ"
@@ -12490,6 +12506,9 @@ msgstr "Cuộc trò chuyện mới"
 msgid "New chat from loaded messages"
 msgstr "Chat mới từ các tin nhắn đã tải"
 
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "Cuộc trò chuyện mới dùng một bộ chọn gọn cho tác nhân, tài khoản, mô hình và mức suy luận. Danh sách mô hình được lưu đệm một ngày cho mỗi tác nhân."
+
 msgid "New chats"
 msgstr "Cuộc trò chuyện mới"
 
@@ -12729,6 +12748,9 @@ msgstr "Chưa có agent nào"
 
 msgid "No agents yet."
 msgstr "Chưa có agent nào."
+
+msgid "No answer"
+msgstr "Không có phản hồi"
 
 msgid "No API keys yet."
 msgstr "Chưa có khóa API nào."
@@ -15848,9 +15870,6 @@ msgstr "Hạn mức được hiển thị khi nhà cung cấp hỗ trợ."
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Hạn mức đã dùng · vòng ngoài 5 giờ: {fiveHour} · vòng trong hàng tuần: {weekly}"
 
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Hạn mức đã dùng: vòng ngoài 5 giờ, vòng trong hàng tuần."
-
 msgid "Quote"
 msgstr "Trích dẫn"
 
@@ -18564,6 +18583,9 @@ msgstr "Đăng nhập thất bại"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Đăng nhập thất bại ({reason}). Vui lòng thử lại."
 
+msgid "Sign-in required"
+msgstr "Cần đăng nhập"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Đang đăng nhập với <0>{userName}</0>"
 
@@ -20032,6 +20054,9 @@ msgstr "Workspace cloud lẽ ra đã khởi động nhưng không phản hồi k
 msgid "The code expired. Start again."
 msgstr "Mã đã hết hạn. Hãy bắt đầu lại."
 
+msgid "The command doesn't start"
+msgstr "Lệnh không khởi động"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Các lệnh Paradev chạy để thiết lập, chạy và lưu trữ các workspace của dự án này, từ .superset/config.toml."
 
@@ -20283,9 +20308,6 @@ msgstr "Kho lưu trữ chính phải là một trong các kho lưu trữ của m
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Checkout của dự án như hiện có: tệp và nhánh được dùng chung"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "Ô prompt hỗ trợ văn bản đa dạng thức. Giới hạn sử dụng giờ sẽ tạm dừng hàng đợi và đề nghị tiếp tục khi được đặt lại."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -22739,6 +22761,9 @@ msgstr "worktree"
 msgid "Worktree"
 msgstr "Worktree"
 
+msgid "Worktree · its own folder"
+msgstr "Worktree · thư mục riêng"
+
 msgid "Worktree location"
 msgstr "Vị trí worktree"
 
@@ -23080,9 +23105,6 @@ msgstr "Liên kết GitHub của bạn lấy từ tài khoản bạn đã đăng
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Tài khoản Jira của bạn không thể ghi giờ cho issue này."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Tự động hóa Jira, chế độ xem Hôm nay, lối tắt Chat và tài khoản của bạn hoạt động như trước."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Lần thanh toán gần nhất không thành công. Hãy cập nhật phương thức thanh toán để giữ Pro."

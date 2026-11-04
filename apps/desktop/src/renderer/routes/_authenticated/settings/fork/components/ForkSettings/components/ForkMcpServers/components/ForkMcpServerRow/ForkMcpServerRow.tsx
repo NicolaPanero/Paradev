@@ -9,6 +9,7 @@ import {
 } from "@superset/ui/dropdown-menu";
 import { Switch } from "@superset/ui/switch";
 import { cn } from "@superset/ui/utils";
+import type { ReactNode } from "react";
 import { HiEllipsisHorizontal } from "react-icons/hi2";
 import { LuServer } from "react-icons/lu";
 import type { ForkMcpServerSummary } from "../../hooks/useForkMcp";
@@ -19,12 +20,14 @@ export function ForkMcpServerRow({
 	onToggle,
 	onEdit,
 	onDelete,
+	status,
 }: {
 	server: ForkMcpServerSummary;
 	pending: boolean;
 	onToggle: (enabled: boolean) => void;
 	onEdit: () => void;
 	onDelete: () => void;
+	status?: ReactNode;
 }) {
 	const { t } = useLingui();
 	const target =
@@ -48,6 +51,7 @@ export function ForkMcpServerRow({
 					{server.secretNames.length > 0 &&
 						` · ${server.secretNames.join(", ")}`}
 				</p>
+				{status}
 			</div>
 			<Switch
 				aria-label={

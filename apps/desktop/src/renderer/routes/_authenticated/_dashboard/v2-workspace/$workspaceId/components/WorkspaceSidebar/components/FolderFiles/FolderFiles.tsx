@@ -11,6 +11,7 @@ interface FolderFilesProps {
 	selectedFilePath?: string;
 	pendingReveal?: { path: string; isDirectory: boolean } | null;
 	onSearch?: () => void;
+	variant?: "sidebar" | "fileView";
 }
 
 function GitFolderFiles(props: Omit<FolderFilesProps, "isGitRepo">) {
@@ -18,6 +19,7 @@ function GitFolderFiles(props: Omit<FolderFilesProps, "isGitRepo">) {
 	return (
 		<FilesTab
 			workspaceId={props.repoKey}
+			variant={props.variant}
 			gitStatus={gitStatus.data}
 			onSelectFile={props.onSelectFile}
 			selectedFilePath={props.selectedFilePath}
@@ -33,6 +35,7 @@ export function FolderFiles({ isGitRepo, ...props }: FolderFilesProps) {
 		return (
 			<FilesTab
 				workspaceId={props.repoKey}
+				variant={props.variant}
 				gitStatus={undefined}
 				onSelectFile={props.onSelectFile}
 				selectedFilePath={props.selectedFilePath}

@@ -28,6 +28,8 @@ export type OpenLink = (
 	href: string,
 	event: ModifierEvent & { clientX: number; clientY: number },
 	action?: LinkAction,
+	/** Folders the message names, where a bare file name may be found. */
+	context?: { folders?: string[] },
 ) => boolean;
 
 export type ChatPaneActions = {

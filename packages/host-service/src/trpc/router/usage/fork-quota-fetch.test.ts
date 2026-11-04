@@ -5,6 +5,7 @@ import {
 	quotaFetch,
 	quotaResponseTiming,
 	retryAfterMs,
+	tightenQuotaFetch,
 } from "./fork-quota-fetch";
 
 test("concurrent and explicit refreshes share requests and respect Retry-After", async () => {
@@ -124,6 +125,50 @@ test("expiring reads refetches usage but keeps a provider's Retry-After", async 
 		await quotaFetch(`${base}/limited`, init, "expire-profile");
 		expect(calls).toEqual({ ok: 2, limited: 1 });
 	} finally {
+		await server.stop(true);
+	}
+});
+
+test("a read that finds an account near its limit lets the next one reach the provider sooner, but a provider backoff still wins", async () => {
+	let now = Date.parse("2026-10-09T12:00:00Z"),
+		calls = 0,
+		limited = false;
+	const clock = spyOn(Date, "now").mockImplementation(() => now);
+	const server = Bun.serve({
+		port: 0,
+		fetch: () => {
+			calls++;
+			return limited
+				? new Response("no", { status: 429, headers: { "Retry-After": "900" } })
+				: Response.json({ calls });
+		},
+	});
+	try {
+		const url = `http://localhost:${server.port}/quota-tighten`;
+		const init = { headers: { Authorization: "Bearer tighten-test-only" } };
+		const first = await quotaFetch(url, init, "tighten-profile");
+		tightenQuotaFetch(first, 2 * 60_000);
+		now += 60_000;
+		await quotaFetch(url, init, "tighten-profile");
+		expect(calls).toBe(1);
+		now += 61_000;
+		await quotaFetch(url, init, "tighten-profile");
+		expect(calls).toBe(2);
+		limited = true;
+		now += 5 * 60_000 + 1;
+		const backoff = await quotaFetch(url, init, "tighten-profile");
+		expect(backoff.status).toBe(429);
+		expect(calls).toBe(3);
+		tightenQuotaFetch(backoff, 2 * 60_000);
+		now += 6 * 60_000;
+		await quotaFetch(url, init, "tighten-profile");
+		expect(calls).toBe(3);
+		limited = false;
+		now += 10 * 60_000;
+		await quotaFetch(url, init, "tighten-profile");
+		expect(calls).toBe(4);
+	} finally {
+		clock.mockRestore();
 		await server.stop(true);
 	}
 });

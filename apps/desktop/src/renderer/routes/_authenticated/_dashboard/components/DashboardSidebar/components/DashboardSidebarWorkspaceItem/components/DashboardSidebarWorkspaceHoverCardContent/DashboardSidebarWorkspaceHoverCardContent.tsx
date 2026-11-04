@@ -9,6 +9,7 @@ import {
 	LuTriangleAlert,
 } from "react-icons/lu";
 import { ForkScmLinkLabel } from "renderer/components/ForkScmLinkLabel";
+import { ForkWorkspaceKindBadge } from "renderer/components/ForkWorkspaceKindBadge";
 import type { DiffStats } from "renderer/hooks/host-service/useDiffStats";
 import { useHotkeyDisplay } from "renderer/hotkeys";
 import { forkBranchBrowserLink } from "renderer/lib/fork-scm-browser";
@@ -115,6 +116,7 @@ export function DashboardSidebarWorkspaceHoverCardContent({
 						)}
 					</div>
 				</div>
+				<ForkWorkspaceKindBadge type={workspace.type} />
 				<span className="text-xs text-muted-foreground block">
 					{formatDistanceToNow(createdAt, { addSuffix: true })}
 				</span>

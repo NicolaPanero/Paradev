@@ -168,6 +168,7 @@ export function ForkSessionControls({
 						hostUrl={account.hostUrl}
 						account={usage}
 						hideEmail
+						quiet
 					/>
 				</div>
 			)}
@@ -180,7 +181,7 @@ export function ForkSessionControls({
 					}
 				>
 					<LuCopy className="size-3.5 shrink-0 text-muted-foreground" />
-					<Trans>Copy session ID</Trans>
+					<Trans>Copy chat ID</Trans>
 				</DropdownMenuItem>
 			)}
 		</>

@@ -8,13 +8,14 @@ import {
 	type ForkMcpServerInput,
 } from "./components/ForkMcpServerForm";
 import { ForkMcpServerRow } from "./components/ForkMcpServerRow";
+import { ForkMcpServerStatus } from "./components/ForkMcpServerStatus";
 import { useForkMcp } from "./hooks/useForkMcp";
 
 const NEW_SERVER = Symbol("new");
 
 export function ForkMcpServers() {
 	const { t } = useLingui();
-	const { client, data, isError, isPending, refresh } = useForkMcp();
+	const { client, data, hostUrl, isError, isPending, refresh } = useForkMcp();
 	const [editing, setEditing] = useState<string | typeof NEW_SERVER | null>(
 		null,
 	);
@@ -105,6 +106,15 @@ export function ForkMcpServers() {
 					<div key={server.name}>
 						<ForkMcpServerRow
 							server={server}
+							status={
+								client ? (
+									<ForkMcpServerStatus
+										client={client}
+										hostUrl={hostUrl}
+										server={server}
+									/>
+								) : null
+							}
 							pending={toggle.isPending}
 							onToggle={(enabled) =>
 								toggle.mutate({ name: server.name, enabled })

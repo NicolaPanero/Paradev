@@ -35,6 +35,7 @@ export const forkJiraAutomationLaunches = sqliteTable(
 		surface: text().notNull().$type<"terminal" | "chat">(),
 		model: text(),
 		accountSelection: text("account_selection"),
+		effort: text(),
 	},
 );
 

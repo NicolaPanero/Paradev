@@ -8,7 +8,12 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { quotaFetch, quotaResponseTiming } from "./fork-quota-fetch";
+import { accountQuotaProviderMs } from "@superset/shared/fork-account-usage";
+import {
+	quotaFetch,
+	quotaResponseTiming,
+	tightenQuotaFetch,
+} from "./fork-quota-fetch";
 import { type CodexHome, discoverCodexHomes } from "./profiles";
 import type {
 	UsageAccount,
@@ -200,6 +205,7 @@ export async function fetchCodexSubscriptionQuota(
 		const usage = (await response.json()) as CodexUsageResponse;
 		const windows = mapWindows(usage);
 		const balance = Number.parseFloat(usage.credits?.balance ?? "");
+		tightenQuotaFetch(response, accountQuotaProviderMs(windows));
 		return {
 			...quotaResponseTiming(response),
 			email: usage.email ?? null,

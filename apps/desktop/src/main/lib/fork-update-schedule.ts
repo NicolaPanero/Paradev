@@ -1,6 +1,6 @@
 export const FORK_UPDATE_INTERVAL_MS = 15 * 60_000;
 export const FORK_UPDATE_FIRST_DELAY_MS = 60_000;
-const FOREGROUND_COOLDOWN_MS = 60_000;
+const FOREGROUND_COOLDOWN_MS = 10 * 60_000;
 
 interface ForkUpdateSchedule {
 	check: () => void;

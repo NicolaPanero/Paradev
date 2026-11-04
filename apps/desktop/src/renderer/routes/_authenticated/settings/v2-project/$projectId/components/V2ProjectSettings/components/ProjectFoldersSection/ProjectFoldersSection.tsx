@@ -8,6 +8,7 @@ import { LuFolderPlus, LuGitBranch, LuX } from "react-icons/lu";
 import { addProjectFolders } from "renderer/lib/addProjectFolders";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
+import { notifyProjectFoldersChanged } from "renderer/lib/projectFoldersChanged";
 import { ClickablePath } from "../../../../../../components/ClickablePath";
 
 interface ProjectFoldersSectionProps {
@@ -33,6 +34,7 @@ export function ProjectFoldersSection({
 	const refresh = () => {
 		void queryClient.invalidateQueries({ queryKey });
 		void queryClient.invalidateQueries({ queryKey: ["project-folders"] });
+		notifyProjectFoldersChanged();
 	};
 
 	const add = useMutation({

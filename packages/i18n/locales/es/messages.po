@@ -278,6 +278,10 @@ msgstr "{0, plural, one {# tarea} other {# tareas}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, one {# terminal en ejecución} other {# terminales en ejecución}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# herramienta} other {# herramientas}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -1683,6 +1687,9 @@ msgstr "Ya existe un canal con este nombre"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Un chat no puede cambiar de proveedor a mitad de camino. Inicia un chat nuevo de {label} o bifurca esta conversación en uno. Este chat de {currentLabel} sigue abierto."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Un chat cambiado de Claude Code a Cursor funciona con modelos de Anthropic, imágenes y comandos slash. La barra del límite de uso permite elegir cómo continúa un chat."
+
 msgid "A chat takes its name from the agent."
 msgstr "Un chat toma su nombre del agente."
 
@@ -1749,9 +1756,6 @@ msgstr "Se necesita una versión nueva de Paradev para continuar. Actualiza a la
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Un nuevo espacio de trabajo desde esta rama, con la conversación entregada a un agente nuevo"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Una nueva lista de espacios de trabajo con vistas y filtros. El ucraniano está disponible como idioma."
 
 msgid "A newsletter or blog"
 msgstr "Un boletín o blog"
@@ -3511,9 +3515,6 @@ msgstr "basado en la PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "Según {0} tokens en los últimos 30 días, contando {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Basado en Paradev 2.0.3: cambiar de espacio de trabajo y la actividad de los agentes requieren menos trabajo, así que la app sigue siendo fluida."
-
 msgid "Become a design partner"
 msgstr "Conviértete en socio de diseño"
 
@@ -3957,6 +3958,9 @@ msgstr "No se pueden abrir rutas de espacios de trabajo remotos en Finder"
 msgid "Can't reach the host"
 msgstr "No se puede conectar con el host"
 
+msgid "Can't reach the server"
+msgstr "No se puede acceder al servidor"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "No se puede deshacer mientras un chat de este espacio de trabajo está trabajando."
 
@@ -4220,6 +4224,9 @@ msgstr "Superficies de chat: mensajes, razonamiento, sugerencias"
 
 msgid "Chats"
 msgstr "Chats"
+
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Los chats de un worktree eliminado vuelven a aparecer en Buscar un chat. La tarjeta de un workspace indica si es Local o un Worktree."
 
 msgid "Check again"
 msgstr "Volver a comprobar"
@@ -4558,9 +4565,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI y SDK"
-
-msgid "CLI default"
-msgstr "Predeterminado de CLI"
 
 msgid "CLI docs"
 msgstr "Documentación de la CLI"
@@ -5379,6 +5383,9 @@ msgstr "Conexión"
 msgid "Connection Closed"
 msgstr "Conexión cerrada"
 
+msgid "Connection failed"
+msgstr "Error de conexión"
+
 msgid "Connection failed."
 msgstr "Falló la conexión."
 
@@ -5611,6 +5618,9 @@ msgstr "Copiar el nombre de la rama"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Copia a Paradev el historial de navegación y los inicios de sesión de Chrome, Brave, Arc u otro navegador basado en Chromium."
+
+msgid "Copy chat ID"
+msgstr "Copiar ID del chat"
 
 msgid "Copy code"
 msgstr "Copiar código"
@@ -6892,9 +6902,6 @@ msgstr "Predeterminada ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "Predeterminado ({fallback})"
 
-msgid "Default account"
-msgstr "Cuenta predeterminada"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Base predeterminada para nuevos espacios de trabajo. Se puede cambiar al crear cada uno."
 
@@ -7354,9 +7361,6 @@ msgstr "Resumen de cambios del diff"
 
 msgid "diff in new tab"
 msgstr "diff en pestaña nueva"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Los diffs se abren para cambios con miles de archivos y comparten un resaltador con el editor."
 
 msgid "Digital Product Designer"
 msgstr "Diseñador de productos digitales"
@@ -9329,6 +9333,9 @@ msgstr "Bifurcar sesión…"
 msgid "Fork Settings"
 msgstr "Configuración del fork"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "La configuración del fork muestra si cada servidor MCP está en línea, cuántas herramientas ofrece o por qué no se conecta."
+
 msgid "Fork to new chat"
 msgstr "Bifurcar a un chat nuevo"
 
@@ -10761,6 +10768,9 @@ msgstr "Elemento"
 msgid "Iterate."
 msgstr "Itera."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Sus chats siguen disponibles en Buscar un chat."
+
 msgid "Its comments and history go with it."
 msgstr "Sus comentarios e historial también se eliminan."
 
@@ -10802,6 +10812,9 @@ msgstr "Incidencias de Jira"
 
 msgid "Jira project"
 msgstr "Proyecto de Jira"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Las tareas de Jira vinculadas a un workspace aparecen en su menú de actividad. Abre una para leerla y cambiar su estado."
 
 msgid "Jira triage"
 msgstr "Triaje de Jira"
@@ -11578,6 +11591,9 @@ msgstr "local"
 
 msgid "Local"
 msgstr "Local"
+
+msgid "Local · the project folder"
+msgstr "Local · la carpeta del proyecto"
 
 msgid "Local agent accounts"
 msgstr "Cuentas locales de agentes"
@@ -12490,6 +12506,9 @@ msgstr "Nuevo chat"
 msgid "New chat from loaded messages"
 msgstr "Nuevo chat desde los mensajes cargados"
 
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "Nuevo chat usa un único selector compacto de agente, cuenta, modelo y esfuerzo. Las listas de modelos se guardan en caché un día por agente."
+
 msgid "New chats"
 msgstr "Nuevos chats"
 
@@ -12729,6 +12748,9 @@ msgstr "Aún no hay agentes"
 
 msgid "No agents yet."
 msgstr "Aún no hay agentes."
+
+msgid "No answer"
+msgstr "Sin respuesta"
 
 msgid "No API keys yet."
 msgstr "Aún no hay claves de API."
@@ -15848,9 +15870,6 @@ msgstr "La cuota se muestra cuando el proveedor lo permite."
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Cuota usada · anillo exterior 5h: {fiveHour} · anillo interior semanal: {weekly}"
 
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Cuota usada: anillo exterior 5h, anillo interior semanal."
-
 msgid "Quote"
 msgstr "Cita"
 
@@ -18564,6 +18583,9 @@ msgstr "Error al iniciar sesión"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Error al iniciar sesión ({reason}). Inténtalo de nuevo."
 
+msgid "Sign-in required"
+msgstr "Requiere iniciar sesión"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Sesión iniciada como <0>{userName}</0>"
 
@@ -20032,6 +20054,9 @@ msgstr "El espacio de trabajo en la nube debería haberse iniciado, pero no resp
 msgid "The code expired. Start again."
 msgstr "El código caducó. Empieza de nuevo."
 
+msgid "The command doesn't start"
+msgstr "El comando no se inicia"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Los comandos que Paradev ejecuta para preparar, iniciar y archivar los espacios de trabajo de este proyecto, desde .superset/config.toml."
 
@@ -20283,9 +20308,6 @@ msgstr "El repositorio principal debe ser uno de los repositorios del entorno"
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "El checkout del proyecto tal cual: los archivos y la rama se comparten"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "El cuadro de prompt admite texto enriquecido. Un límite de uso ahora pausa la cola y ofrece reanudar al restablecerse."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -22739,6 +22761,9 @@ msgstr "worktree"
 msgid "Worktree"
 msgstr "Worktree"
 
+msgid "Worktree · its own folder"
+msgstr "Worktree · su propia carpeta"
+
 msgid "Worktree location"
 msgstr "Ubicación del worktree"
 
@@ -23080,9 +23105,6 @@ msgstr "Tu enlace de GitHub procede de la cuenta con la que iniciaste sesión, p
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Tu cuenta de Jira no puede registrar tiempo en esta incidencia."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Tus automatizaciones de Jira, la vista Hoy, el acceso directo al Chat y las cuentas funcionan como antes."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Tu último pago falló. Actualiza tu método de pago para conservar Pro."

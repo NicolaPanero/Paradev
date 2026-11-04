@@ -1,6 +1,20 @@
 export const ACCOUNT_QUOTA_POLL_MS = 15_000;
 export const ACCOUNT_QUOTA_CACHE_MS = 15_000;
 export const ACCOUNT_QUOTA_PROVIDER_MS = 5 * 60_000;
+// An account that is filling up is read more often, but never faster than the
+// provider's usage endpoint tolerates (it answers 429 and a Retry-After).
+export const ACCOUNT_QUOTA_PROVIDER_MIN_MS = 2 * 60_000;
+
+/** How long to wait before asking the provider again: shorter the closer an account is to a limit. */
+export function accountQuotaProviderMs(
+	windows: ReadonlyArray<{ usedPercent: number }>,
+): number {
+	const highest = Math.max(0, ...windows.map((window) => window.usedPercent));
+	if (highest >= 100) return 3 * 60_000;
+	if (highest >= 80) return ACCOUNT_QUOTA_PROVIDER_MIN_MS;
+	if (highest >= 50) return 3 * 60_000;
+	return ACCOUNT_QUOTA_PROVIDER_MS;
+}
 // Allow a polling cycle and a bounded request before classifying a sample as old.
 export const ACCOUNT_QUOTA_FRESH_MS = ACCOUNT_QUOTA_PROVIDER_MS + 60_000;
 // Usage only moves when the account is used, so a sample stays on screen as

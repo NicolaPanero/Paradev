@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-2-0-3-sync-2026-11";
+export const FORK_WHATS_NEW_ID = "daily-model-cache-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 const FORK_GUIDE_URL =
 	"https://github.com/NicolaPanero/superset/blob/fork/main/FORK.md";
@@ -32,23 +32,23 @@ export function ForkWhatsNewNotice() {
 	const highlights = [
 		t({
 			message:
-				"Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive.",
+				"Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status.",
 		}),
 		t({
 			message:
-				"The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset.",
+				"Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect.",
 		}),
 		t({
 			message:
-				"Diffs open for changes with thousands of files and share one highlighter with the editor.",
+				"New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent.",
 		}),
 		t({
 			message:
-				"A new Workspaces list with views and filters. Ukrainian is available as a language.",
+				"Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree.",
 		}),
 		t({
 			message:
-				"Your Jira automations, Today view, Chat shortcut and accounts work as before.",
+				"A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues.",
 		}),
 	];
 	const notice: DesktopNotice = {

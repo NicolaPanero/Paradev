@@ -7,6 +7,7 @@ import { LuFolderPlus } from "react-icons/lu";
 import { addProjectFolders } from "renderer/lib/addProjectFolders";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
+import { notifyProjectFoldersChanged } from "renderer/lib/projectFoldersChanged";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider/LocalHostServiceProvider";
 
 interface AddFolderMenuItemProps {
@@ -36,6 +37,7 @@ export function AddFolderMenuItem({ projectId }: AddFolderMenuItemProps) {
 					JSON.stringify(query.queryKey).includes("project-folders") ||
 					JSON.stringify(query.queryKey).includes("projectFolders"),
 			});
+			notifyProjectFoldersChanged();
 		} catch (error) {
 			toast.error(errorMessage(error));
 		}

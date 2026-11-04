@@ -2,17 +2,9 @@ import { expect, test } from "bun:test";
 import { queryFixture, renderHook } from "renderer/test-utils/fork-ui";
 import { useForkModelCatalog } from "./useForkModelCatalog";
 
-test("cached model options and native efforts stay scoped to the selected host and account", () => {
+test("cached model options and native efforts survive account changes and stay scoped to the host and agent", () => {
 	const fixture = queryFixture();
-	const key = [
-		"fork-model-catalog",
-		"http://host-a",
-		"cursor",
-		"account-a",
-		undefined,
-		undefined,
-		null,
-	];
+	const key = ["fork-model-catalog", "http://host-a", "cursor", null];
 	fixture.client.setQueryData(key, {
 		configOptions: [
 			{
@@ -53,29 +45,19 @@ test("cached model options and native efforts stay scoped to the selected host a
 	expect(view.result.current.models.map((o) => o.id)).toEqual(["argon"]);
 	expect(view.result.current.efforts.map((o) => o.id)).toEqual(["high"]);
 	view.rerender({ hostUrl: "http://host-a", accountSelection: "account-b" });
-	expect(view.result.current.models).toEqual([]);
+	expect(view.result.current.models.map((o) => o.id)).toEqual(["argon"]);
+	expect(view.result.current.efforts.map((o) => o.id)).toEqual(["high"]);
 	view.rerender({ hostUrl: "http://host-b", accountSelection: "account-a" });
 	expect(view.result.current.models).toEqual([]);
-	fixture.client.setQueryData(
-		[...key.slice(0, 3), { defaultAccount: true }, ...key.slice(4)],
-		fixture.client.getQueryData(key),
-	);
 	view.rerender({ hostUrl: "http://host-a", accountSelection: undefined });
 	expect(view.result.current.models.map((o) => o.id)).toEqual(["argon"]);
 	view.rerender({ hostUrl: "http://host-a", accountSelection: null });
-	expect(view.result.current.models).toEqual([]);
+	expect(view.result.current.models.map((o) => o.id)).toEqual(["argon"]);
 });
 
 test("picking a model keeps an effort on screen until its own efforts load", () => {
 	const fixture = queryFixture();
-	const key = [
-		"fork-model-catalog",
-		"http://host-a",
-		"claude",
-		{ defaultAccount: true },
-		undefined,
-		undefined,
-	];
+	const key = ["fork-model-catalog", "http://host-a", "claude"];
 	const options = (model: string, effort: string) => [
 		{
 			id: "model",

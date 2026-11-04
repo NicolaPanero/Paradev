@@ -18,11 +18,14 @@ export function ForkAccountResets({
 	hostUrl,
 	account,
 	hideEmail = false,
+	quiet = false,
 	useResets = useForkAccountResets,
 }: {
 	hostUrl: string | null;
 	account: UsageAccount;
 	hideEmail?: boolean;
+	/** Only what can be acted on here: no link out to the provider's site. */
+	quiet?: boolean;
 	useResets?: typeof useForkAccountResets;
 }) {
 	const { t } = useLingui();
@@ -75,9 +78,10 @@ export function ForkAccountResets({
 	)
 		return null;
 	const external =
-		account.agent === "claude" ||
-		account.selection === null ||
-		(!resets.isPending && (!ready || count === null));
+		!quiet &&
+		(account.agent === "claude" ||
+			account.selection === null ||
+			(!resets.isPending && (!ready || count === null)));
 	const expiry = credit?.expiresAt
 		? formatDate(new Date(credit.expiresAt), { month: "short", day: "numeric" })
 		: null;

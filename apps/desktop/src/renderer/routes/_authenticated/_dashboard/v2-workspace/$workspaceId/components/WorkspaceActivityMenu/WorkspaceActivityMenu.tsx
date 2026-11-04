@@ -73,6 +73,7 @@ import { ChangesMenuRow } from "./components/ChangesMenuRow";
 import { FinishedSubagentRow } from "./components/FinishedSubagentRow";
 import { ForkBackgroundChatsGroup } from "./components/ForkBackgroundChatsGroup";
 import { ForkBackgroundWorkDetails } from "./components/ForkBackgroundWorkDetails";
+import { ForkLinkedTasksGroup } from "./components/ForkLinkedTasksGroup";
 import { ForkStopAllWorkButton } from "./components/ForkStopAllWorkButton";
 import { MenuGroup } from "./components/MenuGroup";
 import { PagesMenuRow } from "./components/PagesMenuRow";
@@ -677,6 +678,11 @@ export function WorkspaceActivityMenu({
 								/>
 							</section>
 						)}
+						<ForkLinkedTasksGroup
+							workspaceId={workspaceId}
+							store={store}
+							enabled={open}
+						/>
 						{pullRequests.length > 0 && (
 							<MenuGroup
 								title={<Trans>Pull requests</Trans>}

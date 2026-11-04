@@ -26,7 +26,7 @@ import { useForkCreationAccount } from "./useForkCreationAccount";
 test.each([
 	"compact",
 	"submenu",
-] as const)("the %s picker opens usage with one Codex account", async (surface) => {
+] as const)("the %s picker opens usage with one Codex account and offers no Add account", async (surface) => {
 	const usage: UsageAccount = {
 		agent: "codex",
 		selection: "/work",
@@ -115,7 +115,8 @@ test.each([
 	}
 	await flush();
 	expect(view.getByRole("menuitem", { name: /Refresh/ })).toBeDefined();
-	expect(view.getByRole("menuitem", { name: /Add account/ })).toBeDefined();
+	expect(view.queryByRole("menuitem", { name: /Add account/ })).toBeNull();
+	expect(view.getByRole("menuitem", { name: /Manage accounts/ })).toBeDefined();
 	expect(view.getByRole("progressbar").getAttribute("aria-valuenow")).toBe(
 		"25",
 	);

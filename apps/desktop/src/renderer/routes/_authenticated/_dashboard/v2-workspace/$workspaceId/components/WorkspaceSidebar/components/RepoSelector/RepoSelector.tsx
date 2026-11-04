@@ -14,6 +14,7 @@ import { LuFolderPlus, LuFolderTree } from "react-icons/lu";
 import { addProjectFolders } from "renderer/lib/addProjectFolders";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getBaseName } from "renderer/lib/pathBasename/pathBasename";
+import { notifyProjectFoldersChanged } from "renderer/lib/projectFoldersChanged";
 import { useWorkspaceFolders } from "../../../../hooks/useWorkspaceFolders";
 import { useSelectedRepoStore } from "../../../../state/selectedRepoStore";
 import { RepoOptionLabel } from "./components/RepoOptionLabel";
@@ -23,12 +24,35 @@ const ADD_FOLDER_VALUE = "__add__";
 
 interface RepoSelectorProps {
 	workspaceId: string;
+	/** Controls the choice instead of the workspace-wide selection; `null` is the main repository. */
+	value?: string | null;
+	onValueChange?: (repoKey: string | null) => void;
+	/** Lists only folders that are git repositories. */
+	gitOnly?: boolean;
+	className?: string;
 }
 
-export function RepoSelector({ workspaceId }: RepoSelectorProps) {
+export function RepoSelector({
+	workspaceId,
+	value,
+	onValueChange,
+	gitOnly = false,
+	className = "border-b px-2 py-1.5",
+}: RepoSelectorProps) {
 	const { t } = useLingui();
-	const { folders, selected } = useWorkspaceFolders(workspaceId);
-	const select = useSelectedRepoStore((state) => state.select);
+	const { folders: allFolders, selected } = useWorkspaceFolders(workspaceId);
+	const folders = gitOnly
+		? allFolders.filter((folder) => folder.isGitRepo)
+		: allFolders;
+	const selectShared = useSelectedRepoStore((state) => state.select);
+	const select = (repoKey: string | null) =>
+		onValueChange ? onValueChange(repoKey) : selectShared(workspaceId, repoKey);
+	const current =
+		value === undefined
+			? (selected?.workspaceKey ?? null)
+			: folders.some((folder) => folder.workspaceKey === value)
+				? value
+				: null;
 	const utils = workspaceTrpc.useUtils();
 	const selectDirectory = electronTrpc.window.selectDirectory.useMutation();
 	const addFolder = workspaceTrpc.projectFolders.add.useMutation();
@@ -58,23 +82,24 @@ export function RepoSelector({ workspaceId }: RepoSelectorProps) {
 			const updated = await utils.projectFolders.listForWorkspace.fetch({
 				workspaceId,
 			});
+			notifyProjectFoldersChanged();
 			const added = updated.find((folder) => folder.id === ids[0]);
-			if (added) select(workspaceId, added.workspaceKey);
+			if (added) select(added.workspaceKey);
 		} catch (error) {
 			toast.error(errorMessage(error));
 		}
 	};
 
 	return (
-		<div className="border-b px-2 py-1.5">
+		<div className={className}>
 			<Select
-				value={selected?.workspaceKey ?? MAIN_REPO_VALUE}
+				value={current ?? MAIN_REPO_VALUE}
 				onValueChange={(value) => {
 					if (value === ADD_FOLDER_VALUE) {
 						void pickAndAddFolder();
 						return;
 					}
-					select(workspaceId, value === MAIN_REPO_VALUE ? null : value);
+					select(value === MAIN_REPO_VALUE ? null : value);
 				}}
 			>
 				<SelectTrigger

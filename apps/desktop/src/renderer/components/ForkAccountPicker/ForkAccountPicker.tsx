@@ -1,19 +1,17 @@
 import { useLingui } from "@lingui/react/macro";
-import { errorMessage } from "@superset/i18n/errors";
 import { accountQuotaRings } from "@superset/shared/fork-account-usage";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
 } from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
 import { cn } from "@superset/ui/utils";
 import type { ReactNode } from "react";
 import { LuChevronDown } from "react-icons/lu";
 import { useForkMenuDialog } from "renderer/hooks/useForkMenuDialog";
 import { forkAccountLabel } from "renderer/lib/fork-account-label";
-import { AddAccountDialog } from "renderer/routes/_authenticated/settings/usage/components/UsageView/components/AddAccountDialog";
 import { ForkAccountAvatar } from "./components/ForkAccountAvatar";
+import { ForkAccountDialogs } from "./components/ForkAccountDialogs";
 import { ForkAccountMenuItems } from "./components/ForkAccountMenuItems";
 import { useForkAccountChoices } from "./useForkAccountChoices";
 import type { useForkCreationAccount } from "./useForkCreationAccount";
@@ -84,7 +82,7 @@ export function ForkAccountPicker({
 				)}
 				<DropdownMenuContent
 					className={cn(
-						"w-96 max-w-[calc(100vw-32px)] max-h-[min(60vh,var(--radix-dropdown-menu-content-available-height))] overflow-x-hidden overflow-y-auto",
+						"w-80 max-w-[calc(100vw-32px)] max-h-[min(60vh,var(--radix-dropdown-menu-content-available-height))] overflow-x-hidden overflow-y-auto",
 						!compact && "min-w-(--radix-dropdown-menu-trigger-width)",
 					)}
 					align="start"
@@ -101,37 +99,7 @@ export function ForkAccountPicker({
 					/>
 				</DropdownMenuContent>
 			</DropdownMenu>
-			{(account.reconnect || account.adding) &&
-				(provider === "claude" || provider === "codex") && (
-					<AddAccountDialog
-						open
-						hostUrl={account.hostUrl}
-						agent={account.reconnect?.agent ?? provider}
-						switchTarget={account.reconnect}
-						onOpenChange={(open) => {
-							if (!open) {
-								account.setReconnect(null);
-								account.setAdding(false);
-							}
-						}}
-						onAccountAdded={() => {
-							const reconnected = account.reconnect;
-							if (reconnected && reconnected.selection !== account.selection)
-								account.choose(reconnected.selection);
-							void account.quota
-								.refresh()
-								.catch((error) => toast.error(errorMessage(error)));
-							void account.options.refetch();
-							void account.refreshDefault();
-						}}
-						onDefaultSwitched={() => {
-							void account.refreshDefault();
-							void account.quota
-								.refresh()
-								.catch((error) => toast.error(errorMessage(error)));
-						}}
-					/>
-				)}
+			<ForkAccountDialogs account={account} provider={provider} />
 		</>
 	);
 }

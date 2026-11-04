@@ -82,6 +82,15 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   `~/.claude.json` senza toccarli. Le chat ACP ricevono l'elenco a ogni sessione;
   i terminali `claude` e `codex` lo ricevono dai wrapper (`--mcp-config` e `-c`).
   Header e variabili restano sull'host: l'interfaccia mostra solo i nomi.
+  Ogni server attivo mostra **Online · N tools** (i nomi si espandono) oppure
+  il motivo: login richiesto (401/403), server irraggiungibile, comando che
+  non parte, nessuna risposta entro 10 secondi o connessione fallita. L'host si
+  collega con il client MCP ufficiale come farebbe un agente (i server stdio
+  partono con l'ambiente della shell degli agenti), elenca i tool e chiude; il
+  risultato vale un minuto, **Check again** lo rifà e al massimo tre controlli
+  girano insieme. Dice se il server risponde adesso, non lo stato della
+  connessione dentro una chat già aperta: se qui è online ma la chat non vede i
+  tool, riaprire la chat le ripassa i server.
 
 - **Icona nella barra dei menu → Keep the Mac Awake** (solo macOS) impedisce lo
   stop per inattività: **While Agents Work** (predefinito) lo fa solo quando
@@ -127,12 +136,13 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   quando il suo override locale dichiara `reasoning_efforts`; Grok 4.5 arriva
   fino a High.
   Modelli ed effort arrivano dall’ultima lettura salvata dall’host in
-  `$SUPERSET_HOME_DIR/fork/model-catalog.json`, una per agente e account, valida
-  per tutti i workspace (64 voci, 30 giorni). Leggere i modelli avvia l’agente,
-  quindi l’host lo fa solo alla prima apertura, dopo 24 ore (in background,
-  mostrando intanto la lista salvata) o con il refresh del selettore; ogni
-  lettura riuscita aggiorna il file. La lista cambia se cambiano configurazione,
-  variabili o account dell’agente. Cambiando modello resta visibile l’effort
+  `$SUPERSET_HOME_DIR/fork/model-catalog.json`, condivisa per agente sullo stesso
+  host, per tutti gli account e workspace (64 voci, 30 giorni). Il catalogo resta
+  valido per 24 ore anche nel renderer: cambiare account o workspace non svuota
+  la lista e non avvia una nuova lettura. Dopo 24 ore la lista salvata resta
+  visibile mentre si aggiorna; il refresh manuale aggiorna subito, anche con
+  un modello già selezionato. Ogni lettura riuscita aggiorna il file. Cambiare
+  la configurazione dell’agente crea un catalogo distinto. Cambiando modello resta visibile l’effort
   attuale finché arrivano le opzioni del nuovo modello.
   Il tondino elenca gli account con la quota, la continuazione
   automatica, i reset del provider e la copia dell’ID sessione. In una chat
@@ -168,12 +178,16 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   Le domande all'utente e l'approvazione finale del piano restano manuali.
   La modalità nativa resta Plan; i limiti del provider e del sistema restano validi.
 - **Chat** (⌘⇧A) è l’unica azione per aprire una chat: il menu **+** usa la
-  voce upstream e apre il selettore di agente, account e modello del fork.
+  voce upstream e apre lo stesso selettore compatto della creazione workspace:
+  agente, account, modello ed effort. L’account si sceglie soltanto nel menu;
+  il dialog non ripete il nome del workspace. Il selettore e il menu hanno la
+  stessa larghezza del pulsante **Start**, indipendente dal modello scelto.
+  L’effort scelto si applica appena la nuova chat espone le sue opzioni.
   La stessa azione funziona nello workspace vuoto e dalla tastiera; le
   rimappature già salvate vengono mantenute. L’icona **Find a chat**
   nell’intestazione cerca per titolo, modello o branch nei depositi locali di
   Claude, Codex, Cursor CLI, Grok e OpenCode, nei profili e nelle cartelle del
-  progetto, inclusi i worktree. Se una chat è già collegata a Superset, la riapre
+  progetto, inclusi i worktree anche già eliminati. Se una chat è già collegata a Superset, la riapre
   e la mette a fuoco. Gli elenchi seguono l’ordine e le icone delle impostazioni.
 - **CLI / CHAT**, disponibile attivando le opzioni CLI avanzate, riprende la
   stessa sessione nell’altra vista, conservando
@@ -193,6 +207,14 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
 - Le cartelle extra dei progetti (`project_folders`) sono tabelle del fork in
   `fork-schema.ts`, create da `ensureForkTables`: il journal delle migrazioni
   resta quello ufficiale.
+- Il selettore delle cartelle con il branch (`RepoSelector`) vive nel pannello
+  destro: in cima all’albero **Files** (`FileViewTree`, al posto del
+  `RepoPicker` ufficiale, che non ha ancora azioni), in **Files changed**
+  (`ChangesListPane`) e, se il progetto ha cartelle git, nel pannello
+  **Changes** (`ForkDiffRepoBar`), dove cambia la cartella mostrata. La vecchia
+  `WorkspaceSidebar` non è più montata da quando il pannello destro è attivo
+  per tutti: a ogni sincronizzazione va verificato che il selettore sia ancora
+  raggiungibile.
 - I **piani** hanno un’anteprima Markdown nella chat e il pulsante per aprirli
   in un pannello laterale, con avanzamento dei passi. Il documento resta leggibile
   dopo l’approvazione, anche nei piani Cursor già salvati quando il testo è nella
@@ -200,6 +222,10 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   se l’agente fornisce solo passi, mostra quelli. Anche un piano scritto come
   risposta normale si apre a lato dal pulsante accanto alla copia del messaggio. Un riferimento a file ha il
   comando per aprire il file, senza leggerlo automaticamente.
+- Un nome di file scritto da solo in un messaggio (`report.docx`) che non esiste
+  così com’è viene cercato nelle cartelle che lo stesso messaggio nomina prima
+  (`File in /percorso/output/:`), e solo dopo per nome nel workspace
+  (`ForkMessageFoldersProvider`, `mentionedFolders`, `locatePath`).
 - Il contatore del **contesto** resta visibile fin dalla bozza, con dimensioni
   fisse per non spostare gli altri controlli, anche quando l’agente non comunica
   i token: in quel caso è tratteggiato e segnala il dato non disponibile. Grok
@@ -432,6 +458,16 @@ attribuisce retroattivamente una provenienza. Il backend ricontrolla prima di
 eliminare e il flag `force` non aggira queste protezioni. Non elimina branch remoti.
 Nelle cancellazioni multiple la preferenza si applica solo ai branch idonei.
 
+Eliminare un workspace non cancella le sue chat: la cronologia sta nello store
+dell’agente, legata alla cartella in cui girava. “Find a chat” cerca anche sotto
+la cartella dei worktree del progetto (`<base>/<nome progetto>`, più le forme con
+suffisso e con ID usate in passato), quindi ritrova le chat di un worktree già
+rimosso e le riapre nel workspace corrente come quelle di altre cartelle; per
+Claude la sessione viene copiata. La conferma di eliminazione lo ricorda. La
+scheda che compare sul workspace nella barra laterale dice se è **Local** (la
+cartella del progetto) o un **Worktree** (cartella propria); l’icona nell’elenco
+(portatile o punto) la sostituisce la PR quando c’è.
+
 ### Allegati vecchi
 
 Immagini e file incollati restano in `.superset/attachments` del workspace; sulla
@@ -563,14 +599,17 @@ non trasferisce automaticamente i suoi dati nell’app ufficiale.
 
 Le build pubblicate usano l’aggiornatore del fork: il primo controllo avviene
 circa un minuto dopo l’avvio, poi ogni 15 minuti. Un controllo viene eseguito
-anche tornando all’app o riattivando il computer, con un intervallo minimo di
-un minuto per evitare richieste ripetute durante i cambi di finestra.
+anche tornando all’app o riattivando il computer, al massimo ogni 10 minuti.
+Il controllo legge l’ultima release dal redirect web di `releases/latest`,
+fuori dal limite di 60 richieste l’ora per IP delle API REST di GitHub, che in
+un ufficio è condiviso da tutti; l’API REST serve solo a verificare checksum e
+archivio della release che si sta installando.
 La disponibilità di un aggiornamento compare in basso a destra, nella finestra
 in primo piano, senza interrompere la chat. **Later** nasconde solo quella
 release; una release successiva genera un nuovo avviso. Se l’app è in background,
 l’avviso resta in attesa del ritorno alla finestra. **Check for Updates** avvia
 una verifica manuale e ripropone la release rimandata nella finestra nativa.
-I controlli usano richieste condizionali e rispettano i limiti di GitHub.
+Se GitHub limita le richieste, i controlli attendono la scadenza indicata da GitHub.
 Con **Install and restart**, l’app mostra una finestra di avanzamento e resta
 aperta finché download, checksum e preparazione del bundle non sono completati.
 Chiudere la finestra di avanzamento annulla la preparazione. Il riavvio ha un
@@ -602,6 +641,22 @@ La versione validata è fissata in `scripts/fork/txcript-version.json`; nuove
 release del motore non vengono adottate implicitamente. Aggiornare il file,
 eseguire i controlli e solo allora creare una build. Per installare il
 motore fissato localmente: `bun scripts/build-txcript-transfer.ts`.
+Il menu attività del workspace elenca i task Jira collegati (`fork_external_task_links`, gli stessi
+della pagina Tasks) sopra le pull request. Un clic apre il dettaglio con il cambio di stato come pannello nel pannello destro, come le pull request
+(split o scheda secondo il clic, esterno apre Jira): `ForkLinkedTasksGroup`, `ForkTaskPane`, tipo di pannello
+`fork-task`. Punti di aggancio in file di upstream da ricontrollare a ogni sync: una riga in
+`WorkspaceActivityMenu.tsx`, la voce nel registro di `usePaneRegistry.tsx`, il tipo in `types.ts` e il caso in `getPaneKey.ts`. Issue GitHub e task Paradev non sono inclusi.
+La barra del limite d'uso usa lo stesso motore di continuazione automatica del fork: il pulsante
+"Resume at reset" diventa una tendina con le quattro scelte di "Automatic continuation" (`ForkUsageLimitContinue`,
+hook `useForkQuotaRecovery`), salvate per chat sull'host. In `UsageLimitNotice.tsx` ci sono un import, una prop `fork`
+e un ramo; in `SessionView.tsx` una riga. Il timer di upstream si usa solo se l'host non sa continuare da solo.
+L'uso degli account si rilegge a intervalli adattivi: da 5 a 2 minuti per gli account oltre l'80%
+(`accountQuotaProviderMs`, mai sotto i 2 minuti per non far scattare il limite del provider).
+Da `v0.14.4-fork.26` il motore scrive per Cursor chat che i modelli Anthropic accettano: le chiamate
+parallele di un turno in un solo messaggio (anche con un risultato scritto in mezzo), l'output dei
+comandi slash come testo dell'utente e non come risultato senza chiamata, le immagini come
+`{image, mimeType}`. Senza, Cursor rifiutava la cronologia ("Provider Error") o si fermava con
+`Cannot read properties of undefined (reading 'toString')`.
 Zed è stato dismesso. La pubblicazione di txcript non cambia il motore usato
 da Paradev++: serve aggiornare esplicitamente il pin. Il repository remoto di Zed conserva lo storico con Actions disabilitate.
 
@@ -734,7 +789,7 @@ Accanto alla cronologia dei prompt compare “Find a chat”, con un'icona di
 importazione distinta. Dopo aver scelto il progetto, apre la ricerca nel
 workspace locale già esistente oppure ne registra uno sul checkout del
 progetto, senza inviare prompt, avviare agenti o creare worktree. La ricerca
-copre anche le sessioni negli altri worktree del progetto.
+copre anche le sessioni negli altri worktree del progetto, compresi quelli eliminati.
 “Continue with” segue tutte le configurazioni e il loro ordine nelle
 impostazioni. Le configurazioni eliminate non vengono ripristinate attraverso
 preset impliciti; quelle senza conversione verificata restano visibili con

@@ -278,6 +278,10 @@ msgstr "{0, plural, one {# úkol} few {# úkoly} many {# úkolu} other {# úkol�
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, one {# běžící terminál} few {# běžící terminály} many {# běžícího terminálu} other {# běžících terminálů}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {# nástroj} few {# nástroje} many {# nástroje} other {# nástrojů}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -1683,6 +1687,9 @@ msgstr "Kanál s tímto názvem už existuje"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Chat nemůže uprostřed přejít k jinému poskytovateli. Začněte nový chat {label}, nebo tuto konverzaci rozvětvete do nového chatu. Tento chat {currentLabel} zůstane otevřený."
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "Chat přepnutý z Claude Code do Cursoru funguje s modely Anthropic, obrázky i příkazy slash. Lišta limitu využití umožňuje zvolit, jak chat pokračuje."
+
 msgid "A chat takes its name from the agent."
 msgstr "Chat přebírá název od agenta."
 
@@ -1749,9 +1756,6 @@ msgstr "Pro pokračování je potřeba novější verze Paradev. Aktualizujte pr
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "Nový pracovní prostor z této větve; konverzace se předá novému agentovi"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "Nový seznam pracovních prostorů se zobrazeními a filtry. Ukrajinština je dostupná jako jazyk."
 
 msgid "A newsletter or blog"
 msgstr "Newsletter nebo blog"
@@ -3511,9 +3515,6 @@ msgstr "na základě PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "Na základě {0} tokenů za posledních 30 dní, počítáno z {1}."
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "Vychází z Paradev 2.0.3: přepínání pracovních prostorů a aktivita agentů zatěžují méně, takže aplikace zůstává svižná."
-
 msgid "Become a design partner"
 msgstr "Staňte se partnerem pro vývoj"
 
@@ -3957,6 +3958,9 @@ msgstr "Cesty vzdáleného pracovního prostoru nejde otevřít ve Finderu"
 msgid "Can't reach the host"
 msgstr "Host není dostupný"
 
+msgid "Can't reach the server"
+msgstr "Server není dostupný"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "Nelze vrátit, dokud v tomto pracovním prostoru pracuje chat."
 
@@ -4220,6 +4224,9 @@ msgstr "Plochy chatu: zprávy, uvažování, návrhy"
 
 msgid "Chats"
 msgstr "Chaty"
+
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "Chaty smazaného worktree se znovu objeví v části Najít chat. Karta při najetí na pracovní prostor ukazuje, zda jde o Lokální prostor nebo o Worktree."
 
 msgid "Check again"
 msgstr "Zkontrolovat znovu"
@@ -4558,9 +4565,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI a SDK"
-
-msgid "CLI default"
-msgstr "Výchozí nastavení CLI"
 
 msgid "CLI docs"
 msgstr "Dokumentace CLI"
@@ -5379,6 +5383,9 @@ msgstr "Připojení"
 msgid "Connection Closed"
 msgstr "Spojení uzavřeno"
 
+msgid "Connection failed"
+msgstr "Připojení selhalo"
+
 msgid "Connection failed."
 msgstr "Připojení selhalo."
 
@@ -5611,6 +5618,9 @@ msgstr "Kopírovat název větve"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "Zkopírujte historii prohlížení a přihlášení z Chrome, Brave, Arc nebo jiného prohlížeče na Chromiu do Paradev."
+
+msgid "Copy chat ID"
+msgstr "Kopírovat ID chatu"
 
 msgid "Copy code"
 msgstr "Kopírovat kód"
@@ -6892,9 +6902,6 @@ msgstr "Výchozí ({defaultWorktreePath})"
 msgid "Default ({fallback})"
 msgstr "Výchozí ({fallback})"
 
-msgid "Default account"
-msgstr "Výchozí účet"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "Výchozí základ nových pracovních prostorů. Lze jej změnit při vytváření jednotlivých prostorů."
 
@@ -7354,9 +7361,6 @@ msgstr "Přehled změn diff"
 
 msgid "diff in new tab"
 msgstr "rozdíl na nové kartě"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "Diffy se otevřou i u změn s tisíci soubory a sdílejí se editorem jeden zvýrazňovač."
 
 msgid "Digital Product Designer"
 msgstr "Designér digitálních produktů"
@@ -9329,6 +9333,9 @@ msgstr "Forkovat relaci…"
 msgid "Fork Settings"
 msgstr "Nastavení forku"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "Nastavení forku ukazují, zda je každý MCP server online, kolik nástrojů nabízí, nebo proč se nepřipojí."
+
 msgid "Fork to new chat"
 msgstr "Rozvětvit do nového chatu"
 
@@ -10761,6 +10768,9 @@ msgstr "Položka"
 msgid "Iterate."
 msgstr "Vylepšujte."
 
+msgid "Its chats stay available in Find a chat."
+msgstr "Jeho chaty zůstanou dostupné v části Najít chat."
+
 msgid "Its comments and history go with it."
 msgstr "Smažou se i jeho komentáře a historie."
 
@@ -10802,6 +10812,9 @@ msgstr "Úkoly Jira"
 
 msgid "Jira project"
 msgstr "Projekt Jira"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "Úlohy Jira propojené s workspace se zobrazují v jeho nabídce aktivity. Otevřete jednu, abyste ji přečetli a změnili její stav."
 
 msgid "Jira triage"
 msgstr "Třídění Jira"
@@ -11578,6 +11591,9 @@ msgstr "místní"
 
 msgid "Local"
 msgstr "Lokální"
+
+msgid "Local · the project folder"
+msgstr "Lokální · složka projektu"
 
 msgid "Local agent accounts"
 msgstr "Místní účty agentů"
@@ -12490,6 +12506,9 @@ msgstr "Nový chat"
 msgid "New chat from loaded messages"
 msgstr "Nový chat z načtených zpráv"
 
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "Nový chat používá jeden kompaktní výběr agenta, účtu, modelu a úsilí. Seznamy modelů se ukládají do mezipaměti na jeden den pro každého agenta."
+
 msgid "New chats"
 msgstr "Nové chaty"
 
@@ -12729,6 +12748,9 @@ msgstr "Zatím žádní agenti"
 
 msgid "No agents yet."
 msgstr "Zatím žádní agenti."
+
+msgid "No answer"
+msgstr "Bez odpovědi"
 
 msgid "No API keys yet."
 msgstr "Zatím žádné API klíče."
@@ -15848,9 +15870,6 @@ msgstr "Kvóta se zobrazuje, pokud ji poskytovatel podporuje."
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "Využitá kvóta · vnější kruh 5h: {fiveHour} · vnitřní kruh týdně: {weekly}"
 
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "Využitá kvóta: vnější kruh 5h, vnitřní kruh týdně."
-
 msgid "Quote"
 msgstr "Citace"
 
@@ -18564,6 +18583,9 @@ msgstr "Přihlášení selhalo"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "Přihlášení se nezdařilo ({reason}). Zkuste to prosím znovu."
 
+msgid "Sign-in required"
+msgstr "Vyžaduje přihlášení"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "Přihlášeni jako <0>{userName}</0>"
 
@@ -20032,6 +20054,9 @@ msgstr "Cloudový pracovní prostor se měl spustit, ale neodpověděl včas. Da
 msgid "The code expired. Start again."
 msgstr "Platnost kódu vypršela. Začněte znovu."
 
+msgid "The command doesn't start"
+msgstr "Příkaz se nespustí"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Příkazy, které Paradev spouští při přípravě, spuštění a archivaci pracovních prostorů tohoto projektu, ze souboru .superset/config.toml."
 
@@ -20283,9 +20308,6 @@ msgstr "Primární repozitář musí být jedním z repozitářů prostředí"
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "Checkout projektu tak, jak je: soubory a větev jsou sdílené"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "Pole promptu podporuje formátovaný text. Dosažení limitu využití nyní pozastaví frontu a nabídne pokračování po obnovení limitu."
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -22739,6 +22761,9 @@ msgstr "worktree"
 msgid "Worktree"
 msgstr "Worktree"
 
+msgid "Worktree · its own folder"
+msgstr "Worktree · vlastní složka"
+
 msgid "Worktree location"
 msgstr "Umístění worktree"
 
@@ -23080,9 +23105,6 @@ msgstr "Odkaz na GitHub pochází z účtu, kterým jste se přihlásili, proto 
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "Váš účet Jira nemůže na tento úkol vykazovat čas."
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "Vaše automatizace Jira, zobrazení Dnes, zkratka Chatu a účty fungují jako dřív."
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "Poslední platba se nezdařila. Aktualizujte způsob platby, abyste si Pro zachovali."

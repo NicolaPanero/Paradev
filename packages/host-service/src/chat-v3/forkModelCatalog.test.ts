@@ -82,7 +82,7 @@ test("ACP discovery reads the same options as chat without sending a prompt", as
 	);
 });
 
-test("model discovery caches requests and isolates agent accounts and refreshes", async () => {
+test("one daily model catalog serves every account and Refresh uses the selected account", async () => {
 	const db = cursorDb();
 	const { store } = memoryStore();
 	let starts = 0;
@@ -110,15 +110,23 @@ test("model discovery caches requests and isolates agent accounts and refreshes"
 		factory,
 		store,
 	);
-	expect(second.configOptions[0]?.options[0]?.id).toBe("/account-b");
-	expect(starts).toBe(2);
+	expect(second).toBe(first);
+	expect(starts).toBe(1);
 	await getForkModelCatalog(
 		db,
-		{ agent: "cursor", accountSelection: "/account-a", refresh: true },
+		{ agent: "cursor", accountSelection: "/account-b", refresh: true },
 		factory,
 		store,
 	);
-	expect(starts).toBe(3);
+	expect(starts).toBe(2);
+	const shared = await getForkModelCatalog(
+		db,
+		{ agent: "cursor", accountSelection: "/account-a" },
+		factory,
+		store,
+	);
+	expect(shared.configOptions[0]?.options[0]?.id).toBe("/account-b");
+	expect(starts).toBe(2);
 });
 
 test("a saved catalog answers at once after a restart and a stale one refreshes behind it", async () => {
@@ -134,7 +142,7 @@ test("a saved catalog answers at once after a restart and a stale one refreshes 
 
 	const restarted = await getForkModelCatalog(
 		cursorDb(),
-		input,
+		{ ...input, accountSelection: "/account-b" },
 		factory,
 		memory.store,
 	);

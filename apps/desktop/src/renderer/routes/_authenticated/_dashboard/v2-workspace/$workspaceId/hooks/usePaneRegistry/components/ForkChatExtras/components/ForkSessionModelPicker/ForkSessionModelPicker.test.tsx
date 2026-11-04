@@ -42,18 +42,9 @@ function renderPicker(element: ReactElement) {
 				options: efforts,
 			},
 		];
-		fixture.client.setQueryData(
-			[
-				"fork-model-catalog",
-				null,
-				agent,
-				{ defaultAccount: true },
-				undefined,
-				undefined,
-				null,
-			],
-			{ configOptions },
-		);
+		fixture.client.setQueryData(["fork-model-catalog", null, agent, null], {
+			configOptions,
+		});
 	}
 	return render(element, { wrapper: fixture.wrapper });
 }

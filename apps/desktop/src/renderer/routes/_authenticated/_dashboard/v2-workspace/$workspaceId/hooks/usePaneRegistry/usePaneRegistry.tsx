@@ -86,6 +86,7 @@ import {
 	consumeChatStopped,
 	markChatStopped,
 } from "../../utils/forkChatCloseIntent/forkChatCloseIntent";
+import { FORK_TASK_PANE_KIND } from "../../utils/forkTaskPane";
 import { openPagePaneInStore } from "../../utils/openPagePaneInStore";
 import { replaceNewTabPane } from "../../utils/replaceNewTabPane";
 import { useAgentSessionLauncher } from "../useAgentSessionLauncher";
@@ -120,6 +121,8 @@ import { FilesTreePane } from "./components/FilesTreePane";
 import { FileViewLayout } from "./components/FileViewLayout";
 import { ForkChatExtras } from "./components/ForkChatExtras";
 import { ForkChatOrigin } from "./components/ForkChatOrigin";
+import { ForkDiffRepoBar } from "./components/ForkDiffRepoBar";
+import { forkTaskPaneDefinition } from "./components/ForkTaskPane";
 import { MobilePane } from "./components/MobilePane";
 import { PagePane } from "./components/PagePane";
 import { PagePaneHeaderExtras } from "./components/PagePaneHeaderExtras";
@@ -446,12 +449,22 @@ export function usePaneRegistry({
 							onCreateNewAgentSession={createNewAgentSession}
 						/>
 					);
-					return repoKey ? (
-						<WorkspaceGitStatusProvider workspaceId={repoKey}>
-							{pane}
-						</WorkspaceGitStatusProvider>
-					) : (
-						pane
+					return (
+						<div className="flex h-full min-h-0 w-full flex-col">
+							<ForkDiffRepoBar context={ctx} workspaceId={workspaceId} />
+							<div className="min-h-0 flex-1">
+								{repoKey ? (
+									<WorkspaceGitStatusProvider
+										key={repoKey}
+										workspaceId={repoKey}
+									>
+										{pane}
+									</WorkspaceGitStatusProvider>
+								) : (
+									pane
+								)}
+							</div>
+						</div>
 					);
 				},
 				renderHeaderExtras: (ctx: RendererContext<PaneViewerData>) => (
@@ -1137,6 +1150,7 @@ export function usePaneRegistry({
 							: d,
 					),
 			},
+			[FORK_TASK_PANE_KIND]: forkTaskPaneDefinition,
 			[SUBAGENT_PANE_KIND]: {
 				getIcon: () => <LuBot className="size-3.5" />,
 				getTitle: (pane) => {

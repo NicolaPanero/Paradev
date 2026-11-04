@@ -4,6 +4,7 @@ import type { ComponentProps, KeyboardEvent } from "react";
 import { FileIcon } from "renderer/lib/fileIcons";
 import { useIsInsideChatLink } from "../../providers/ChatLinkProvider";
 import { useChatPaneActions } from "../../providers/ChatPaneActionsProvider";
+import { useMessageFolders } from "../../providers/ForkMessageFoldersProvider";
 import { isLocalPathText, pathFileName } from "../../utils/pathText";
 import { FileLinkMenu } from "../FileLinkMenu";
 
@@ -16,6 +17,7 @@ const OPENABLE_CLASSNAME =
 export function ChatInlineCode(props: ComponentProps<typeof PlainInlineCode>) {
 	const { openLink } = useChatPaneActions();
 	const insideLink = useIsInsideChatLink();
+	const folders = useMessageFolders();
 	const text = typeof props.children === "string" ? props.children.trim() : "";
 	const fileName = pathFileName(text);
 	if (!fileName) return <PlainInlineCode {...props} />;
@@ -37,13 +39,18 @@ export function ChatInlineCode(props: ComponentProps<typeof PlainInlineCode>) {
 		if (event.key !== "Enter" && event.key !== " ") return;
 		event.preventDefault();
 		const { left, bottom } = event.currentTarget.getBoundingClientRect();
-		openLink?.(text, {
-			metaKey: event.metaKey,
-			ctrlKey: event.ctrlKey,
-			shiftKey: event.shiftKey,
-			clientX: left,
-			clientY: bottom,
-		});
+		openLink?.(
+			text,
+			{
+				metaKey: event.metaKey,
+				ctrlKey: event.ctrlKey,
+				shiftKey: event.shiftKey,
+				clientX: left,
+				clientY: bottom,
+			},
+			undefined,
+			{ folders },
+		);
 	};
 	const chip = (
 		<code
@@ -57,7 +64,7 @@ export function ChatInlineCode(props: ComponentProps<typeof PlainInlineCode>) {
 				? {
 						role: "link",
 						tabIndex: 0,
-						onClick: (event) => openLink(text, event),
+						onClick: (event) => openLink(text, event, undefined, { folders }),
 						onKeyDown,
 					}
 				: {})}

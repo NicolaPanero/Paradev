@@ -278,6 +278,10 @@ msgstr "{0, plural, one {#个任务} other {#个任务}}"
 msgid "{0, plural, one {# terminal running} other {# terminals running}}"
 msgstr "{0, plural, other {# 个终端正在运行}}"
 
+#. placeholder {0}: result.tools.length
+msgid "{0, plural, one {# tool} other {# tools}}"
+msgstr "{0, plural, one {#个工具} other {#个工具}}"
+
 #. placeholder {0}: group.workspaceCount
 #. placeholder {0}: selectedWorkspaces.length
 msgid "{0, plural, one {# workspace} other {# workspaces}}"
@@ -1683,6 +1687,9 @@ msgstr "已存在同名频道"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "聊天进行中无法切换到其他提供方。请开始一个新的 {label} 聊天，或将此对话分叉到新聊天中。此 {currentLabel} 聊天会保持打开。"
 
+msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
+msgstr "从 Claude Code 切换到 Cursor 的聊天现在可以配合 Anthropic 模型、图片和斜杠命令使用。用量上限栏可让你选择聊天如何继续。"
+
 msgid "A chat takes its name from the agent."
 msgstr "聊天的名称来自智能体。"
 
@@ -1749,9 +1756,6 @@ msgstr "需要新版本的Paradev才能继续。请更新到最新版本。"
 
 msgid "A new workspace off this branch, with the conversation handed to a fresh agent"
 msgstr "基于该分支创建新工作区，并将对话交给新的智能体"
-
-msgid "A new Workspaces list with views and filters. Ukrainian is available as a language."
-msgstr "全新的工作区列表，支持视图和筛选。现已支持乌克兰语。"
 
 msgid "A newsletter or blog"
 msgstr "新闻通讯或博客"
@@ -3511,9 +3515,6 @@ msgstr "基于PR #{0}"
 msgid "Based on {0} tokens in the last 30 days, counting {1}."
 msgstr "基于最近30天的{0}个token，统计{1}。"
 
-msgid "Based on Paradev 2.0.3: switching workspaces and agent activity use less work, so the app stays responsive."
-msgstr "基于 Paradev 2.0.3：切换工作区和智能体活动的开销更小，应用保持流畅响应。"
-
 msgid "Become a design partner"
 msgstr "成为共创伙伴"
 
@@ -3957,6 +3958,9 @@ msgstr "无法在Finder中打开远程工作区路径"
 msgid "Can't reach the host"
 msgstr "无法连接主机"
 
+msgid "Can't reach the server"
+msgstr "无法访问服务器"
+
 msgid "Can't undo while a chat in this workspace is working."
 msgstr "此工作区中有聊天正在工作，无法撤销。"
 
@@ -4220,6 +4224,9 @@ msgstr "聊天界面：消息、推理、建议"
 
 msgid "Chats"
 msgstr "聊天"
+
+msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
+msgstr "已删除 worktree 的聊天会重新显示在“查找聊天”中。将鼠标悬停在工作区上的卡片会显示它是本地还是 worktree。"
 
 msgid "Check again"
 msgstr "重新检查"
@@ -4558,9 +4565,6 @@ msgstr "CLI"
 
 msgid "CLI & SDK"
 msgstr "CLI与SDK"
-
-msgid "CLI default"
-msgstr "CLI 默认值"
 
 msgid "CLI docs"
 msgstr "CLI文档"
@@ -5379,6 +5383,9 @@ msgstr "连接"
 msgid "Connection Closed"
 msgstr "连接已关闭"
 
+msgid "Connection failed"
+msgstr "连接失败"
+
 msgid "Connection failed."
 msgstr "连接失败。"
 
@@ -5611,6 +5618,9 @@ msgstr "复制分支名"
 
 msgid "Copy browsing history and logins from Chrome, Brave, Arc, or another Chromium browser into Paradev."
 msgstr "将Chrome、Brave、Arc或其他Chromium浏览器的浏览历史和登录信息复制到Paradev。"
+
+msgid "Copy chat ID"
+msgstr "复制聊天 ID"
 
 msgid "Copy code"
 msgstr "复制代码"
@@ -6892,9 +6902,6 @@ msgstr "默认（{defaultWorktreePath}）"
 msgid "Default ({fallback})"
 msgstr "默认（{fallback}）"
 
-msgid "Default account"
-msgstr "默认账户"
-
 msgid "Default base for new workspaces. Override per-workspace at creation."
 msgstr "新工作区的默认基础分支。可在创建时为各工作区单独覆盖。"
 
@@ -7354,9 +7361,6 @@ msgstr "差异更改概览"
 
 msgid "diff in new tab"
 msgstr "在新标签页看差异"
-
-msgid "Diffs open for changes with thousands of files and share one highlighter with the editor."
-msgstr "可以打开包含数千个文件的变更差异，并与编辑器共用同一个高亮器。"
 
 msgid "Digital Product Designer"
 msgstr "数字产品设计师"
@@ -9329,6 +9333,9 @@ msgstr "分叉会话…"
 msgid "Fork Settings"
 msgstr "Fork 设置"
 
+msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
+msgstr "Fork 设置会显示每个 MCP 服务器是否在线、提供多少工具，或无法连接的原因。"
+
 msgid "Fork to new chat"
 msgstr "分叉到新聊天"
 
@@ -10761,6 +10768,9 @@ msgstr "条目"
 msgid "Iterate."
 msgstr "迭代。"
 
+msgid "Its chats stay available in Find a chat."
+msgstr "它的聊天仍可在“查找聊天”中使用。"
+
 msgid "Its comments and history go with it."
 msgstr "其评论和历史记录也会一并删除。"
 
@@ -10802,6 +10812,9 @@ msgstr "Jira 事务"
 
 msgid "Jira project"
 msgstr "Jira 项目"
+
+msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
+msgstr "与工作区关联的 Jira 任务会显示在其活动菜单中。打开任务即可阅读并更改状态。"
 
 msgid "Jira triage"
 msgstr "Jira 分类"
@@ -11578,6 +11591,9 @@ msgstr "本地"
 
 msgid "Local"
 msgstr "本地"
+
+msgid "Local · the project folder"
+msgstr "本地 · 项目文件夹"
 
 msgid "Local agent accounts"
 msgstr "本地智能体账户"
@@ -12490,6 +12506,9 @@ msgstr "新建聊天"
 msgid "New chat from loaded messages"
 msgstr "从已加载的消息新建聊天"
 
+msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
+msgstr "新聊天使用一个紧凑的选择器来选择代理、账号、模型和思考强度。模型列表按代理缓存一天。"
+
 msgid "New chats"
 msgstr "新聊天"
 
@@ -12729,6 +12748,9 @@ msgstr "暂无智能体"
 
 msgid "No agents yet."
 msgstr "暂无智能体。"
+
+msgid "No answer"
+msgstr "无响应"
 
 msgid "No API keys yet."
 msgstr "暂无API密钥。"
@@ -15848,9 +15870,6 @@ msgstr "提供商支持时会显示配额。"
 msgid "Quota used · outer ring 5h: {fiveHour} · inner ring weekly: {weekly}"
 msgstr "配额使用量 · 外环5小时：{fiveHour} · 内环每周：{weekly}"
 
-msgid "Quota used: outer ring 5h, inner ring weekly."
-msgstr "配额使用量：外环为5小时，内环为每周。"
-
 msgid "Quote"
 msgstr "引用"
 
@@ -18564,6 +18583,9 @@ msgstr "登录失败"
 msgid "Sign-in failed ({reason}). Please try again."
 msgstr "登录失败（{reason}）。请重试。"
 
+msgid "Sign-in required"
+msgstr "需要登录"
+
 msgid "Signed in as <0>{userName}</0>"
 msgstr "已登录为<0>{userName}</0>"
 
@@ -20032,6 +20054,9 @@ msgstr "云端工作区本应已启动，但没有及时响应。下次运行时
 msgid "The code expired. Start again."
 msgstr "代码已过期。请重新开始。"
 
+msgid "The command doesn't start"
+msgstr "命令无法启动"
+
 msgid "The commands Paradev runs to set up, run and archive this project's workspaces, from .superset/config.toml."
 msgstr "Paradev 在设置、运行和归档此项目的工作区时执行的命令，来自 .superset/config.toml。"
 
@@ -20283,9 +20308,6 @@ msgstr "主仓库必须是该环境的仓库之一"
 
 msgid "The project's checkout as it is: files and branch are shared"
 msgstr "按原样使用项目的检出: 文件和分支是共享的"
-
-msgid "The prompt box supports rich text. A usage limit now pauses the queue and offers to resume at the reset."
-msgstr "提示词输入框支持富文本。达到使用上限时现在会暂停队列，并提示在额度重置时恢复。"
 
 #. placeholder {0}: params?.status
 msgid "The provider answered {0}."
@@ -22739,6 +22761,9 @@ msgstr "worktree"
 msgid "Worktree"
 msgstr "worktree"
 
+msgid "Worktree · its own folder"
+msgstr "worktree · 专用文件夹"
+
 msgid "Worktree location"
 msgstr "worktree位置"
 
@@ -23080,9 +23105,6 @@ msgstr "你的 GitHub 链接来自登录所用的账号，因此显示为已验�
 
 msgid "Your Jira account cannot log time on this issue."
 msgstr "你的 Jira 账户无法在此事务上记录工时。"
-
-msgid "Your Jira automations, Today view, Chat shortcut and accounts work as before."
-msgstr "您的 Jira 自动化、今日视图、聊天快捷方式和账户均照常使用。"
 
 msgid "Your last payment failed. Update your payment method to keep Pro."
 msgstr "上次付款失败。请更新支付方式以继续使用 Pro。"
