@@ -14,6 +14,7 @@ import { LuFolderPlus, LuFolderTree } from "react-icons/lu";
 import { addProjectFolders } from "renderer/lib/addProjectFolders";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getBaseName } from "renderer/lib/pathBasename/pathBasename";
+import { notifyProjectFoldersChanged } from "renderer/lib/projectFoldersChanged";
 import { useWorkspaceFolders } from "../../../../hooks/useWorkspaceFolders";
 import { useSelectedRepoStore } from "../../../../state/selectedRepoStore";
 import { RepoOptionLabel } from "./components/RepoOptionLabel";
@@ -81,6 +82,7 @@ export function RepoSelector({
 			const updated = await utils.projectFolders.listForWorkspace.fetch({
 				workspaceId,
 			});
+			notifyProjectFoldersChanged();
 			const added = updated.find((folder) => folder.id === ids[0]);
 			if (added) select(added.workspaceKey);
 		} catch (error) {

@@ -1,5 +1,6 @@
 import { workspaceTrpc } from "@superset/workspace-client";
 import { useCallback, useMemo } from "react";
+import { useProjectFoldersChanged } from "renderer/lib/projectFoldersChanged";
 import { useSelectedRepoStore } from "../../state/selectedRepoStore";
 import { pickFolderForPath } from "./pickFolderForPath";
 
@@ -9,6 +10,7 @@ export function useWorkspaceFolders(workspaceId: string) {
 		{ workspaceId },
 		{ refetchOnWindowFocus: true },
 	);
+	useProjectFoldersChanged(() => void query.refetch({ cancelRefetch: false }));
 	const folders = useMemo(
 		() => (query.data ?? []).filter((folder) => folder.exists),
 		[query.data],
