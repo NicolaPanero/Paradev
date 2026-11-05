@@ -276,7 +276,7 @@ review.
 
 ## Paradev++ fork rules
 
-This checkout is the `NicolaPanero/superset` fork. `FORK.md` describes its features, branches
+This checkout is the `NicolaPanero/Paradev` fork. `FORK.md` describes its features, branches
 and releases. These rules apply to every agent:
 
 - Work on a branch made from `fork/main` and open a PR to `fork/main`. Never commit or push to

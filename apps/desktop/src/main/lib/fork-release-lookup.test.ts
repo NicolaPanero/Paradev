@@ -1,7 +1,7 @@
 import { expect, mock, test } from "bun:test";
 import { createForkReleaseLookup } from "./fork-release-lookup";
 
-const repository = "NicolaPanero/superset";
+const repository = "NicolaPanero/Paradev";
 const latestUrl = `https://github.com/${repository}/releases/latest`;
 function body(tag = "desktop-v1.37.0-fork.aaaaaaa") {
 	return {

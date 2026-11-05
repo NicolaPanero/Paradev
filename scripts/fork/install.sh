@@ -2,7 +2,7 @@
 # Install the latest Paradev++ release on Apple Silicon. Data stays outside the bundle.
 # The archive may hold Superset++.app or Paradev++.app; the old name is replaced.
 set -eu
-repo="NicolaPanero/superset"
+repo="NicolaPanero/Paradev"
 app_asset="Superset-fork-arm64.zip"
 current_path=""
 wait_pid=""

@@ -31,7 +31,7 @@ function request(response: Response) {
 	return async () => response;
 }
 test("Windows updates choose the verified installer from the same release", () => {
-	const repository = "NicolaPanero/superset";
+	const repository = "NicolaPanero/Paradev";
 	const url = `https://github.com/${repository}/releases/download/${asset.tag}/Superset-fork-x64.exe`;
 	const body = {
 		tag_name: asset.tag,
