@@ -35,6 +35,7 @@ import {
 	recordUnfinishedChats,
 	resumeUnfinishedChats,
 } from "./resumeAfterUpdate";
+import { withForkEmptyResume } from "./withForkEmptyResume";
 import { withForkMcpServers } from "./withForkMcpServers";
 import { withProjectFolders } from "./withProjectFolders";
 
@@ -110,7 +111,7 @@ function harnessRegistry(
 	return new Map(
 		entries.map(([name, factory]) => [
 			name,
-			withForkMcpServers(withProjectFolders(db, factory)),
+			withForkEmptyResume(withForkMcpServers(withProjectFolders(db, factory))),
 		]),
 	);
 }

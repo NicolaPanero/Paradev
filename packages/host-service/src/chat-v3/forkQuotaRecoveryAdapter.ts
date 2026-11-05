@@ -110,6 +110,33 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 	private now() {
 		return this.deps.now?.() ?? Date.now();
 	}
+	/** The worker started on another login than the one the chat saved. */
+	accountReplaced(selection: string | null, text: string) {
+		this.selection = selection;
+		const at = this.now();
+		const turnId = crypto.randomUUID();
+		this.queue.push({
+			kind: "turn",
+			turn: {
+				id: turnId,
+				status: "completed",
+				startedAtMs: at,
+				completedAtMs: at,
+			},
+		});
+		this.queue.push({
+			kind: "item",
+			item: {
+				id: crypto.randomUUID(),
+				kind: "notice",
+				noticeKind: "info",
+				text,
+				startedAtMs: at,
+				completedAtMs: at,
+			},
+			turnId,
+		});
+	}
 	changed() {
 		const failure = this.quotaFailure,
 			account = this.deps.account(),

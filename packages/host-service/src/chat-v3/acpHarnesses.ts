@@ -64,7 +64,8 @@ export function acpHarnessFactory(
 			db,
 			harness,
 			options,
-			(accountSelection, captured) => {
+			(savedSelection, captured, usable) => {
+				let accountSelection = savedSelection;
 				let authMethodId = entry.authMethodId;
 				const adapter = createAdapter({
 					command: entry.binary,
@@ -84,6 +85,7 @@ export function acpHarnessFactory(
 					...(entry.clientApprovalModes ? { clientApprovalModes: true } : {}),
 					onSpawn: (pid) => agents?.spawned(options.sessionId, pid),
 					launch: async () => {
+						if (usable) accountSelection = await usable();
 						const choices = forkLaunchChoices(db, harness, {
 							...options,
 							accountSelection,

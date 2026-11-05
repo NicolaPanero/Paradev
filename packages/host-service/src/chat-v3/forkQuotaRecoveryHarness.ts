@@ -6,6 +6,7 @@ import type {
 } from "@superset/chat-runtime";
 import type { HostDb } from "../db";
 import { agentAccountOptions } from "../trpc/router/agents/account-selection";
+import { getDefaultAccountSelections } from "../trpc/router/usage/default-account";
 import { assertIsolatedAccount } from "../trpc/router/usage/fork-isolated-accounts";
 import {
 	type SessionAccount,
@@ -22,6 +23,7 @@ import {
 	writeRecovery,
 } from "./forkQuotaRecoveryStore";
 import { forkRecoveryQuota } from "./forkRecoveryQuota";
+import { forkUsableChatAccount } from "./forkUsableChatAccount";
 
 export function forkQuotaRecoveryHarness(
 	db: HostDb,
@@ -30,6 +32,7 @@ export function forkQuotaRecoveryHarness(
 	worker: (
 		selection: string | null | undefined,
 		captured: (account: SessionAccount) => void,
+		usable?: () => Promise<string | null | undefined>,
 	) => HarnessAdapter,
 ): HarnessAdapter {
 	if (
@@ -39,10 +42,67 @@ export function forkQuotaRecoveryHarness(
 		return worker(options.accountSelection, () => {});
 	const agent = harness === "codex-acp" ? "codex" : "claude";
 	let account: SessionAccount | undefined;
-	const create = (selection: string | null | undefined) =>
-		worker(selection, (value) => {
-			account = value;
+	const usable = async (selection: string | null | undefined) => {
+		const nativeSessionId = options.resume?.harnessSessionId;
+		const result = await forkUsableChatAccount(selection, {
+			validate: (candidate) => assertIsolatedAccount(agent, candidate),
+			fallback: () => {
+				const defaults = getDefaultAccountSelections(db);
+				return agent === "codex"
+					? defaults.codexHome
+					: defaults.claudeConfigDir;
+			},
+			move: async (target) => {
+				if (!nativeSessionId || typeof selection !== "string") return;
+				if (agent === "codex") {
+					await moveCodexSession({
+						sessionId: nativeSessionId,
+						sourceDir: selection,
+						targetDir: target,
+					}).catch((error: Error) => {
+						if (error.message !== "session_not_found") throw error;
+					});
+					return;
+				}
+				const systemDir = join(homedir(), ".claude");
+				await moveClaudeSession({
+					sessionId: nativeSessionId,
+					configDirs: (await agentAccountOptions(agent)).map(
+						(option) => option.selection ?? systemDir,
+					),
+					targetDir: target,
+				});
+			},
 		});
+		if (!result.replaced) return result.selection;
+		writeRecovery(db, options.scopeId, terminalId, {
+			hasSelection: true,
+			nativeSessionId: nativeSessionId ?? null,
+			accountSelection: result.replaced.to,
+		});
+		const labels = await agentAccountOptions(agent);
+		const label = (selection: string) =>
+			labels.find((option) => option.selection === selection)?.label ??
+			selection;
+		adapter.accountReplaced(
+			result.replaced.to,
+			`The account ${label(result.replaced.from)} can no longer be used, so this chat continues on ${label(result.replaced.to)}.`,
+		);
+		return result.selection;
+	};
+	const create = (selection: string | null | undefined) => {
+		let checked: Promise<string | null | undefined> | undefined;
+		return worker(
+			selection,
+			(value) => {
+				account = value;
+			},
+			() => {
+				checked ??= usable(selection);
+				return checked;
+			},
+		);
+	};
 	const saved = readRecovery(db, options.scopeId, options.terminalId);
 	const initial =
 		saved?.hasSelection &&

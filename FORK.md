@@ -149,6 +149,15 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   Claude, scegliere un altro account sposta subito la chat su quell’account con
   tutta la cronologia; se l’agente sta lavorando chiede prima di interrompere il
   turno. Per Codex scegliere un altro account apre la stessa conferma.
+  Il cambio funziona anche su una chat che non è riuscita a partire.
+  Se l’account salvato di una chat Claude o Codex non è più utilizzabile
+  (disconnesso, token o abbonamento scaduto) e quello predefinito sì, la chat
+  riparte sull’account predefinito invece di fermarsi su "Reconnect account":
+  copia la conversazione nel nuovo profilo, lo ricorda per le riaperture
+  successive e lo dice nella chat. Se nemmeno il predefinito funziona resta
+  l’errore. Una chat Claude aperta e chiusa senza messaggi non ha una
+  conversazione da riprendere: alla riapertura riparte come nuova invece di
+  dare "Resource not found".
 - La conferma sceglie account, posizione (stessa chat, pannello affiancato o
   nuova scheda) e trasferimento: **Full history** riprende la conversazione
   nativa con gli strumenti, **Summary only** passa solo i messaggi. La chat di
