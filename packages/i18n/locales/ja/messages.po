@@ -1687,9 +1687,6 @@ msgstr "この名前のチャンネルはすでに存在します"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "チャットの途中で別のプロバイダーに切り替えることはできません。新しい {label} チャットを始めるか、この会話を新しいチャットに分岐してください。この {currentLabel} チャットは開いたままです。"
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "Claude Code から Cursor に切り替えたチャットが、Anthropic のモデル、画像、スラッシュコマンドで動作するようになりました。使用量上限のバーで、チャットの続け方を選べます。"
-
 msgid "A chat takes its name from the agent."
 msgstr "チャットの名前はエージェントから付けられます。"
 
@@ -2330,6 +2327,9 @@ msgstr "エージェントの設定"
 
 msgid "Agent updates"
 msgstr "エージェントのアップデート"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "エージェントの更新に Cursor Agent と Grok が加わり、それぞれ自身を更新するコマンドを使います。"
 
 msgid "Agent usage rankings"
 msgstr "エージェント使用量ランキング"
@@ -4225,9 +4225,6 @@ msgstr "チャットの構成要素: メッセージ、推論、提案"
 msgid "Chats"
 msgstr "チャット"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "削除したワークツリーのチャットが、チャットを探すに再び表示されます。ワークスペースにカーソルを置くと、ローカルかワークツリーかが表示されます。"
-
 msgid "Check again"
 msgstr "再確認"
 
@@ -4459,6 +4456,9 @@ msgstr "CIが失敗しました"
 
 msgid "Clarify this"
 msgstr "これを明確にして"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Claude Code の更新は更新チャネルに従います。stable では、claude update がインストールしないバージョンを通知しなくなりました。"
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code、Codex、OpenCodeはエージェントであり、Paradevはそれらを同時に何体も動かす場所です。タスクごとに専用のGitワークツリーとブランチが割り当てられるので、10体のエージェントが10本のブランチで同時に作業する間、1か所から監視・レビュー・マージができます。"
@@ -6728,6 +6728,9 @@ msgstr "現在のタブ"
 
 msgid "Cursor"
 msgstr "カーソル"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "日付形式の Cursor Agent のバージョンを正しく比較し、新しいビルドを通知します。"
 
 msgid "Cursor blinking"
 msgstr "カーソルの点滅"
@@ -9333,9 +9336,6 @@ msgstr "セッションをフォーク…"
 msgid "Fork Settings"
 msgstr "フォーク設定"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "フォーク設定に、各 MCP サーバーがオンラインかどうか、提供するツールの数、接続できない理由が表示されます。"
-
 msgid "Fork to new chat"
 msgstr "新しいチャットにフォーク"
 
@@ -10812,9 +10812,6 @@ msgstr "Jira 課題"
 
 msgid "Jira project"
 msgstr "Jiraプロジェクト"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "ワークスペースにリンクした Jira タスクが、そのアクティビティメニューに表示されます。開いて内容を読み、ステータスを変更できます。"
 
 msgid "Jira triage"
 msgstr "Jira トリアージ"
@@ -12505,9 +12502,6 @@ msgstr "新しいチャット"
 
 msgid "New chat from loaded messages"
 msgstr "読み込んだメッセージから新しいチャット"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "新しいチャットでは、エージェント、アカウント、モデル、思考量を1つのコンパクトなメニューで選べます。モデル一覧はエージェントごとに1日間キャッシュされます。"
 
 msgid "New chats"
 msgstr "新しいチャット"

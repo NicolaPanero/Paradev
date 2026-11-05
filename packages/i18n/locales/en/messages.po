@@ -1687,9 +1687,6 @@ msgstr "A channel with this name already exists"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-
 msgid "A chat takes its name from the agent."
 msgstr "A chat takes its name from the agent."
 
@@ -2330,6 +2327,9 @@ msgstr "Agent setup"
 
 msgid "Agent updates"
 msgstr "Agent updates"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
 
 msgid "Agent usage rankings"
 msgstr "Agent usage rankings"
@@ -4225,9 +4225,6 @@ msgstr "Chat surfaces: messages, reasoning, suggestions"
 msgid "Chats"
 msgstr "Chats"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-
 msgid "Check again"
 msgstr "Check again"
 
@@ -4459,6 +4456,9 @@ msgstr "CI failed"
 
 msgid "Clarify this"
 msgstr "Clarify this"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
@@ -6728,6 +6728,9 @@ msgstr "Current tab"
 
 msgid "Cursor"
 msgstr "Cursor"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
 
 msgid "Cursor blinking"
 msgstr "Cursor blinking"
@@ -9333,9 +9336,6 @@ msgstr "Fork session…"
 msgid "Fork Settings"
 msgstr "Fork Settings"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-
 msgid "Fork to new chat"
 msgstr "Fork to new chat"
 
@@ -10812,9 +10812,6 @@ msgstr "Jira issues"
 
 msgid "Jira project"
 msgstr "Jira project"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
 
 msgid "Jira triage"
 msgstr "Jira triage"
@@ -12505,9 +12502,6 @@ msgstr "New Chat"
 
 msgid "New chat from loaded messages"
 msgstr "New chat from loaded messages"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
 
 msgid "New chats"
 msgstr "New chats"

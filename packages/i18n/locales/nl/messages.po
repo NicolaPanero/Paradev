@@ -1687,9 +1687,6 @@ msgstr "Er bestaat al een kanaal met deze naam"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Een chat kan niet halverwege naar een andere provider overstappen. Start een nieuwe {label}-chat of splits dit gesprek af naar een nieuwe chat. Deze {currentLabel}-chat blijft open."
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "Een chat die van Claude Code naar Cursor is gewisseld, werkt met Anthropic-modellen, afbeeldingen en slash-commando's. In de balk voor de gebruikslimiet kies je hoe een chat verdergaat."
-
 msgid "A chat takes its name from the agent."
 msgstr "Een chat krijgt zijn naam van de agent."
 
@@ -2330,6 +2327,9 @@ msgstr "Agent instellen"
 
 msgid "Agent updates"
 msgstr "Agent-updates"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "Agent-updates omvatten nu Cursor Agent en Grok, elk met de opdracht waarmee het zichzelf bijwerkt."
 
 msgid "Agent usage rankings"
 msgstr "Ranglijst van agentgebruik"
@@ -4225,9 +4225,6 @@ msgstr "Chatoppervlakken: berichten, redeneren, suggesties"
 msgid "Chats"
 msgstr "Chats"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "Chats van een verwijderde worktree verschijnen weer in Een chat zoeken. De hovercard van een workspace laat zien of die Lokaal of een Worktree is."
-
 msgid "Check again"
 msgstr "Opnieuw controleren"
 
@@ -4459,6 +4456,9 @@ msgstr "CI mislukt"
 
 msgid "Clarify this"
 msgstr "Verduidelijk dit"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Claude Code-updates volgen je updatekanaal: op stable biedt de melding geen versie meer aan die claude update niet installeert."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex en OpenCode zijn de agents; Paradev is waar je er veel tegelijk draait. Elke taak krijgt een eigen Git-worktree en branch, zodat tien agents tegelijk aan tien branches kunnen werken terwijl jij vanaf één plek monitort, reviewt en merget."
@@ -6728,6 +6728,9 @@ msgstr "Huidig tabblad"
 
 msgid "Cursor"
 msgstr "Cursor"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "Cursor Agent-versies, die datums zijn, worden correct vergeleken, zodat een nieuwere build wordt gemeld."
 
 msgid "Cursor blinking"
 msgstr "Knipperende cursor"
@@ -9333,9 +9336,6 @@ msgstr "Sessie forken…"
 msgid "Fork Settings"
 msgstr "Fork-instellingen"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "De fork-instellingen tonen per MCP-server of die online is, hoeveel tools hij biedt of waarom hij geen verbinding maakt."
-
 msgid "Fork to new chat"
 msgstr "Forken naar nieuwe chat"
 
@@ -10812,9 +10812,6 @@ msgstr "Jira-issues"
 
 msgid "Jira project"
 msgstr "Jira-project"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "Jira-taken die aan een workspace zijn gekoppeld, staan in het activiteitenmenu. Open er een om hem te lezen en de status te wijzigen."
 
 msgid "Jira triage"
 msgstr "Jira-triage"
@@ -12505,9 +12502,6 @@ msgstr "Nieuwe chat"
 
 msgid "New chat from loaded messages"
 msgstr "Nieuwe chat uit geladen berichten"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "Nieuwe chat gebruikt één compacte kiezer voor agent, account, model en denkinspanning. Modellijsten worden per agent een dag in de cache bewaard."
 
 msgid "New chats"
 msgstr "Nieuwe chats"

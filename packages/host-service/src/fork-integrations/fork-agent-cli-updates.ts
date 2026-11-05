@@ -1,5 +1,11 @@
 import { execFile } from "node:child_process";
-import { accessSync, constants, realpathSync, statSync } from "node:fs";
+import {
+	accessSync,
+	constants,
+	readFileSync,
+	realpathSync,
+	statSync,
+} from "node:fs";
 import { homedir } from "node:os";
 import { delimiter, dirname, join } from "node:path";
 import { promisify } from "node:util";
@@ -19,30 +25,43 @@ const VERSION_TIMEOUT_MS = 10_000;
 const UPDATE_TIMEOUT_MS = 5 * 60 * 1000;
 const SETTINGS_SCOPE = "host";
 
-export type ForkAgentCliId = "claude" | "codex";
+export type ForkAgentCliId = "claude" | "codex" | "cursor" | "grok";
 
 interface Spec {
 	id: ForkAgentCliId;
 	label: string;
 	binary: string;
-	npmPackage: string;
+	/** The newest version on the channel this install updates from. */
+	latest: (
+		deps: ForkAgentCliDeps,
+		installPath: string,
+	) => Promise<string | null>;
+	/** Each update channel keeps its own cached version. */
+	cacheKey?: (deps: ForkAgentCliDeps) => string;
 	/** The command that updates this install, or null when the app cannot tell how it was installed. */
 	update: (installPath: string) => { command: string; args: string[] } | null;
 }
+
+const CURSOR_INSTALL_SCRIPT = "https://cursor.com/install";
 
 const SPECS: Spec[] = [
 	{
 		id: "claude",
 		label: "Claude Code",
 		binary: "claude",
-		npmPackage: "@anthropic-ai/claude-code",
+		// `claude update` follows `autoUpdatesChannel`; comparing with npm's
+		// `latest` tag offered an update that `stable` users never receive.
+		latest: (deps) =>
+			deps.latest("@anthropic-ai/claude-code", claudeChannel(deps)),
+		cacheKey: (deps) =>
+			claudeChannel(deps) === "latest" ? "claude" : "claude@stable",
 		update: (installPath) => ({ command: installPath, args: ["update"] }),
 	},
 	{
 		id: "codex",
 		label: "Codex",
 		binary: "codex",
-		npmPackage: "@openai/codex",
+		latest: (deps) => deps.latest("@openai/codex"),
 		update: (installPath) => {
 			if (!resolved(installPath).includes("node_modules")) return null;
 			return {
@@ -51,7 +70,43 @@ const SPECS: Spec[] = [
 			};
 		},
 	},
+	{
+		id: "cursor",
+		label: "Cursor Agent",
+		binary: "cursor-agent",
+		latest: async (deps) => {
+			const script = await deps.fetchText?.(CURSOR_INSTALL_SCRIPT);
+			return (
+				script?.match(/downloads\.cursor\.com\/lab\/(\d[\w.-]*)\//)?.[1] ?? null
+			);
+		},
+		update: (installPath) => ({ command: installPath, args: ["update"] }),
+	},
+	{
+		id: "grok",
+		label: "Grok",
+		binary: "grok",
+		latest: async (deps, installPath) => {
+			try {
+				const { stdout } = await deps.run(
+					installPath,
+					["update", "--check", "--json"],
+					VERSION_TIMEOUT_MS,
+				);
+				const version = (JSON.parse(stdout) as { latestVersion?: unknown })
+					.latestVersion;
+				return typeof version === "string" ? version : null;
+			} catch {
+				return null;
+			}
+		},
+		update: (installPath) => ({ command: installPath, args: ["update"] }),
+	},
 ];
+
+function claudeChannel(deps: ForkAgentCliDeps): "latest" | "stable" {
+	return deps.claudeChannel?.() ?? "latest";
+}
 
 export const FORK_AGENT_CLI_IDS = SPECS.map((spec) => spec.id) as [
 	ForkAgentCliId,
@@ -67,7 +122,9 @@ export interface ForkAgentCliDeps {
 		args: string[],
 		timeoutMs: number,
 	) => Promise<{ stdout: string; stderr: string }>;
-	latest: (npmPackage: string) => Promise<string | null>;
+	latest: (npmPackage: string, tag?: string) => Promise<string | null>;
+	fetchText?: (url: string) => Promise<string | null>;
+	claudeChannel?: () => "latest" | "stable";
 }
 
 export interface ForkAgentCliStatus {
@@ -129,17 +186,39 @@ export function forkAgentCliDeps(): ForkAgentCliDeps {
 			});
 			return { stdout: result.stdout, stderr: result.stderr };
 		},
-		latest: async (npmPackage) => {
+		latest: async (npmPackage, tag = "latest") => {
 			try {
 				const response = await fetch(
-					`https://registry.npmjs.org/${npmPackage.replace("/", "%2F")}/latest`,
+					`https://registry.npmjs.org/-/package/${npmPackage.replace("/", "%2F")}/dist-tags`,
 					{ signal: AbortSignal.timeout(VERSION_TIMEOUT_MS) },
 				);
 				if (!response.ok) return null;
-				const body = (await response.json()) as { version?: unknown };
-				return typeof body.version === "string" ? body.version : null;
+				const tags = (await response.json()) as Record<string, unknown>;
+				return typeof tags[tag] === "string" ? tags[tag] : null;
 			} catch {
 				return null;
+			}
+		},
+		fetchText: async (url) => {
+			try {
+				const response = await fetch(url, {
+					signal: AbortSignal.timeout(VERSION_TIMEOUT_MS),
+				});
+				return response.ok ? await response.text() : null;
+			} catch {
+				return null;
+			}
+		},
+		claudeChannel: () => {
+			const env = { ...process.env, ...getTerminalBaseEnv() };
+			const dir = env.CLAUDE_CONFIG_DIR || join(homedir(), ".claude");
+			try {
+				const settings = JSON.parse(
+					readFileSync(join(dir, "settings.json"), "utf8"),
+				) as { autoUpdatesChannel?: unknown };
+				return settings.autoUpdatesChannel === "stable" ? "stable" : "latest";
+			} catch {
+				return "latest";
 			}
 		},
 	};
@@ -213,8 +292,11 @@ export function forkAgentCliIsNewer(
 	installed: string | null,
 	latest: string | null,
 ): boolean {
-	const a = coerce(installed);
-	const b = coerce(latest);
+	// Date versions such as Cursor's 2026.11.05 are not valid semver as written.
+	const numeric = (version: string | null) =>
+		version?.replace(/(^|\.)0+(\d)/g, "$1$2") ?? null;
+	const a = coerce(numeric(installed));
+	const b = coerce(numeric(latest));
 	return Boolean(a && b && gt(b, a));
 }
 
@@ -226,17 +308,18 @@ async function statusOf(
 ): Promise<ForkAgentCliStatus> {
 	const now = deps.now();
 	const path = deps.find(spec.binary);
-	let row = saved(ctx, spec.id);
+	const key = spec.cacheKey?.(deps) ?? spec.id;
+	let row = saved(ctx, key);
 	if (path && (force || !row || now - row.checkedAt >= FORK_AGENT_CLI_DAY_MS)) {
-		const latest = await deps.latest(spec.npmPackage);
-		save(ctx, spec.id, {
+		const latest = await spec.latest(deps, path);
+		save(ctx, key, {
 			// A failed check tries again within the hour, not on every call.
 			checkedAt: latest
 				? now
 				: now - FORK_AGENT_CLI_DAY_MS + RETRY_AFTER_FAILURE_MS,
 			latest: latest ?? row?.latest ?? null,
 		});
-		row = saved(ctx, spec.id);
+		row = saved(ctx, key);
 	}
 	const installed = path ? await installedVersion(deps, path) : null;
 	const latest = row?.latest ?? null;
@@ -265,15 +348,10 @@ export async function forkAgentCliStatuses(
 
 /** "Later" hides the notice until the next daily check. */
 export function forkSnoozeAgentCliUpdates(ctx: Ctx, now: number): void {
-	for (const spec of SPECS) {
-		const row = saved(ctx, spec.id);
-		if (!row) continue;
-		ctx.db
-			.update(forkAgentCliUpdates)
-			.set({ snoozedUntil: now + FORK_AGENT_CLI_DAY_MS })
-			.where(eq(forkAgentCliUpdates.agent, spec.id))
-			.run();
-	}
+	ctx.db
+		.update(forkAgentCliUpdates)
+		.set({ snoozedUntil: now + FORK_AGENT_CLI_DAY_MS })
+		.run();
 }
 
 const updating = new Set<ForkAgentCliId>();

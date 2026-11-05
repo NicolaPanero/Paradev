@@ -1687,9 +1687,6 @@ msgstr "이 이름의 채널이 이미 있습니다"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "채팅 도중에는 다른 제공자로 전환할 수 없습니다. 새 {label} 채팅을 시작하거나 이 대화를 새 채팅으로 분기하세요. 이 {currentLabel} 채팅은 계속 열려 있습니다."
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "Claude Code에서 Cursor로 전환한 채팅이 Anthropic 모델, 이미지, 슬래시 명령과 함께 작동합니다. 사용량 한도 막대에서 채팅을 이어 가는 방법을 선택할 수 있습니다."
-
 msgid "A chat takes its name from the agent."
 msgstr "채팅 이름은 에이전트 이름을 따릅니다."
 
@@ -2330,6 +2327,9 @@ msgstr "에이전트 설정"
 
 msgid "Agent updates"
 msgstr "에이전트 업데이트"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "에이전트 업데이트에 Cursor Agent와 Grok이 추가되었으며, 각각 자체 업데이트 명령을 사용합니다."
 
 msgid "Agent usage rankings"
 msgstr "에이전트 사용량 순위"
@@ -4225,9 +4225,6 @@ msgstr "채팅 화면: 메시지, 추론, 제안"
 msgid "Chats"
 msgstr "채팅"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "삭제된 worktree의 채팅이 채팅 찾기에 다시 표시됩니다. 워크스페이스 위에 마우스를 올리면 로컬인지 worktree인지 표시됩니다."
-
 msgid "Check again"
 msgstr "다시 확인"
 
@@ -4459,6 +4456,9 @@ msgstr "CI 실패"
 
 msgid "Clarify this"
 msgstr "이것을 명확히 해 주세요"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Claude Code 업데이트는 업데이트 채널을 따릅니다. stable에서는 claude update가 설치하지 않는 버전을 더 이상 알리지 않습니다."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex, OpenCode는 에이전트이고, Paradev는 그 에이전트들을 한 번에 여러 개 실행하는 곳입니다. 작업마다 자체 Git 워크트리와 브랜치가 생기므로, 에이전트 열 개가 브랜치 열 개에서 동시에 작업하는 동안 한곳에서 모니터링, 리뷰, 병합할 수 있습니다."
@@ -6728,6 +6728,9 @@ msgstr "현재 탭"
 
 msgid "Cursor"
 msgstr "커서"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "날짜 형식인 Cursor Agent 버전을 올바르게 비교하므로 더 새로운 빌드를 알려 줍니다."
 
 msgid "Cursor blinking"
 msgstr "커서 깜박임"
@@ -9333,9 +9336,6 @@ msgstr "세션 포크…"
 msgid "Fork Settings"
 msgstr "포크 설정"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "포크 설정에 각 MCP 서버의 온라인 여부, 제공하는 도구 수, 연결되지 않는 이유가 표시됩니다."
-
 msgid "Fork to new chat"
 msgstr "새 채팅으로 포크"
 
@@ -10812,9 +10812,6 @@ msgstr "Jira 이슈"
 
 msgid "Jira project"
 msgstr "Jira 프로젝트"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "워크스페이스에 연결된 Jira 작업이 활동 메뉴에 표시됩니다. 작업을 열어 내용을 읽고 상태를 변경할 수 있습니다."
 
 msgid "Jira triage"
 msgstr "Jira 분류"
@@ -12505,9 +12502,6 @@ msgstr "새 채팅"
 
 msgid "New chat from loaded messages"
 msgstr "불러온 메시지로 새 채팅"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "새 채팅에서 하나의 간결한 메뉴로 에이전트, 계정, 모델, 사고 수준을 선택합니다. 모델 목록은 에이전트별로 하루 동안 캐시됩니다."
 
 msgid "New chats"
 msgstr "새 채팅"

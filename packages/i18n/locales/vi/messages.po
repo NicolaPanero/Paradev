@@ -1687,9 +1687,6 @@ msgstr "Đã có kênh với tên này"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Không thể chuyển chat sang nhà cung cấp khác giữa chừng. Hãy bắt đầu một chat {label} mới, hoặc tách cuộc trò chuyện này sang một chat mới. Chat {currentLabel} này vẫn mở."
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "Cuộc trò chuyện chuyển từ Claude Code sang Cursor hoạt động với các mô hình Anthropic, hình ảnh và lệnh slash. Thanh giới hạn sử dụng cho phép chọn cách cuộc trò chuyện tiếp tục."
-
 msgid "A chat takes its name from the agent."
 msgstr "Chat lấy tên từ agent."
 
@@ -2330,6 +2327,9 @@ msgstr "Thiết lập tác nhân"
 
 msgid "Agent updates"
 msgstr "Cập nhật agent"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "Cập nhật agent giờ bao gồm Cursor Agent và Grok, mỗi công cụ dùng lệnh riêng để tự cập nhật."
 
 msgid "Agent usage rankings"
 msgstr "Xếp hạng mức dùng agent"
@@ -4225,9 +4225,6 @@ msgstr "Các bề mặt chat: tin nhắn, suy luận, gợi ý"
 msgid "Chats"
 msgstr "Cuộc trò chuyện"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "Các cuộc trò chuyện của worktree đã xóa xuất hiện lại trong Tìm cuộc trò chuyện. Thẻ khi di chuột qua workspace cho biết đó là Cục bộ hay Worktree."
-
 msgid "Check again"
 msgstr "Kiểm tra lại"
 
@@ -4459,6 +4456,9 @@ msgstr "CI thất bại"
 
 msgid "Clarify this"
 msgstr "Làm rõ điều này"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Cập nhật Claude Code theo kênh cập nhật của bạn: trên stable, thông báo không còn đề xuất phiên bản mà claude update không cài đặt."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex và OpenCode là các agent; Paradev là nơi bạn chạy nhiều agent cùng lúc. Mỗi tác vụ có Git worktree và nhánh riêng, nên mười agent có thể làm việc trên mười nhánh cùng lúc trong khi bạn theo dõi, xem xét và hợp nhất từ một nơi."
@@ -6728,6 +6728,9 @@ msgstr "Tab hiện tại"
 
 msgid "Cursor"
 msgstr "Con trỏ"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "Các phiên bản Cursor Agent, vốn là ngày tháng, được so sánh đúng nên bản dựng mới hơn sẽ được báo."
 
 msgid "Cursor blinking"
 msgstr "Con trỏ nhấp nháy"
@@ -9333,9 +9336,6 @@ msgstr "Fork phiên…"
 msgid "Fork Settings"
 msgstr "Cài đặt fork"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "Cài đặt fork cho biết mỗi máy chủ MCP có trực tuyến không, cung cấp bao nhiêu công cụ, hoặc vì sao không kết nối được."
-
 msgid "Fork to new chat"
 msgstr "Tách sang cuộc trò chuyện mới"
 
@@ -10812,9 +10812,6 @@ msgstr "Issue Jira"
 
 msgid "Jira project"
 msgstr "Dự án Jira"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "Các tác vụ Jira được liên kết với một workspace hiển thị trong menu hoạt động của nó. Mở một tác vụ để đọc và đổi trạng thái."
 
 msgid "Jira triage"
 msgstr "Phân loại Jira"
@@ -12505,9 +12502,6 @@ msgstr "Cuộc trò chuyện mới"
 
 msgid "New chat from loaded messages"
 msgstr "Chat mới từ các tin nhắn đã tải"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "Cuộc trò chuyện mới dùng một bộ chọn gọn cho tác nhân, tài khoản, mô hình và mức suy luận. Danh sách mô hình được lưu đệm một ngày cho mỗi tác nhân."
 
 msgid "New chats"
 msgstr "Cuộc trò chuyện mới"

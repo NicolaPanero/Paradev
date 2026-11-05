@@ -1681,9 +1681,6 @@ msgstr "Канал із такою назвою вже існує"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Чат не можна перемкнути на іншого провайдера посеред розмови. Почніть новий чат {label} або створіть його як форк цієї розмови. Цей чат {currentLabel} залишиться відкритим."
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "Чат, переключений з Claude Code на Cursor, працює з моделями Anthropic, зображеннями та slash-командами. Панель ліміту використання дає змогу обрати, як чат продовжиться."
-
 msgid "A chat takes its name from the agent."
 msgstr "Чат отримує назву від агента."
 
@@ -2324,6 +2321,9 @@ msgstr "Налаштування агента"
 
 msgid "Agent updates"
 msgstr "Оновлення агентів"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "Оновлення агентів тепер охоплюють Cursor Agent і Grok, кожен зі своєю командою самооновлення."
 
 msgid "Agent usage rankings"
 msgstr "Рейтинги використання агентів"
@@ -4219,9 +4219,6 @@ msgstr "Елементи чату: повідомлення, міркуванн�
 msgid "Chats"
 msgstr "Чати"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "Чати видаленого worktree знову з'являються в розділі «Знайти чат». Картка при наведенні на робочий простір показує, локальний він чи worktree."
-
 msgid "Check again"
 msgstr "Перевірити знову"
 
@@ -4453,6 +4450,9 @@ msgstr "CI не пройдено"
 
 msgid "Clarify this"
 msgstr "Уточнити це"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Оновлення Claude Code відповідають вашому каналу оновлень: на stable сповіщення більше не пропонує версію, яку claude update не встановлює."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex і OpenCode — це агенти, а Paradev — місце, де ви запускаєте багато з них одночасно. Кожна задача отримує власний Git worktree і гілку, тож десять агентів можуть працювати в десяти гілках одночасно, поки ви стежите, переглядаєте й зливаєте зміни з одного місця."
@@ -6722,6 +6722,9 @@ msgstr "Поточна вкладка"
 
 msgid "Cursor"
 msgstr "Курсор"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "Версії Cursor Agent, що є датами, порівнюються правильно, тож про новішу збірку повідомляється."
 
 msgid "Cursor blinking"
 msgstr "Блимання курсора"
@@ -9327,9 +9330,6 @@ msgstr "Створити форк сеансу…"
 msgid "Fork Settings"
 msgstr "Налаштування форка"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "Налаштування форка показують, чи доступний кожен MCP-сервер, скільки інструментів він пропонує або чому не підключається."
-
 msgid "Fork to new chat"
 msgstr "Відгалузити в новий чат"
 
@@ -10806,9 +10806,6 @@ msgstr "Задачі Jira"
 
 msgid "Jira project"
 msgstr "Проєкт Jira"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "Завдання Jira, пов'язані з workspace, показуються в його меню активності. Відкрийте завдання, щоб прочитати його й змінити статус."
 
 msgid "Jira triage"
 msgstr "Тріаж Jira"
@@ -12499,9 +12496,6 @@ msgstr "Новий чат"
 
 msgid "New chat from loaded messages"
 msgstr "Новий чат із завантажених повідомлень"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "Новий чат використовує один компактний вибір агента, облікового запису, моделі й зусиль. Списки моделей кешуються на добу для кожного агента."
 
 msgid "New chats"
 msgstr "Нові чати"

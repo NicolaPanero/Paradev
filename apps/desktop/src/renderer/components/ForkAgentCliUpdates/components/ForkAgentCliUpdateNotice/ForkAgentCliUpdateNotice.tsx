@@ -2,7 +2,10 @@ import { useLingui } from "@lingui/react/macro";
 import { errorMessage } from "@superset/i18n/errors";
 import { toast } from "@superset/ui/sonner";
 import { useEffect, useRef } from "react";
-import { useForkAgentCliUpdates } from "../../hooks/useForkAgentCliUpdates";
+import {
+	type ForkAgentCliAgent,
+	useForkAgentCliUpdates,
+} from "../../hooks/useForkAgentCliUpdates";
 import { ForkAgentCliUpdateToast } from "../ForkAgentCliUpdateToast";
 
 const TOAST_ID = "fork-agent-cli-updates";
@@ -35,7 +38,7 @@ export function ForkAgentCliUpdateNotice() {
 							if (!agent.command) continue;
 							try {
 								const result = await actions.current.update.mutateAsync(
-									agent.id as "claude" | "codex",
+									agent.id as ForkAgentCliAgent,
 								);
 								const { label, installed } = result;
 								toast.success(
