@@ -1,6 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useForkConnections } from "../../ForkIntegrations/hooks/useForkConnections";
 
+type ForkAgentCliUpdateInput = Parameters<
+	NonNullable<
+		ReturnType<typeof useForkConnections>["client"]
+	>["forkAgentCli"]["update"]["mutate"]
+>[0];
+export type ForkAgentCliAgent = ForkAgentCliUpdateInput["agent"];
+
 const SIX_HOURS = 6 * 60 * 60 * 1000;
 const FIRST_VERSION = 10;
 
@@ -39,7 +46,7 @@ export function useForkAgentCliUpdates() {
 		onSuccess: () => cache.invalidateQueries({ queryKey: key }),
 	});
 	const update = useMutation({
-		mutationFn: (agent: "claude" | "codex") =>
+		mutationFn: (agent: ForkAgentCliAgent) =>
 			required(client).forkAgentCli.update.mutate({ agent }),
 		onSettled: () => cache.invalidateQueries({ queryKey: key }),
 	});

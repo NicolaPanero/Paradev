@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "daily-model-cache-2026-11";
+export const FORK_WHATS_NEW_ID = "agent-cli-updates-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 const FORK_GUIDE_URL =
 	"https://github.com/NicolaPanero/Paradev/blob/fork/main/FORK.md";
@@ -32,23 +32,15 @@ export function ForkWhatsNewNotice() {
 	const highlights = [
 		t({
 			message:
-				"Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status.",
+				"Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself.",
 		}),
 		t({
 			message:
-				"Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect.",
+				"Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install.",
 		}),
 		t({
 			message:
-				"New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent.",
-		}),
-		t({
-			message:
-				"Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree.",
-		}),
-		t({
-			message:
-				"A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues.",
+				"Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported.",
 		}),
 	];
 	const notice: DesktopNotice = {

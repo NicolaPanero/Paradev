@@ -66,9 +66,16 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   non entrano nel contenitore, con il valore completo nel tooltip dove previsto.
 
 - **Settings → Fork → Agent updates** controlla una volta al giorno se ci sono
-  versioni nuove dei CLI di Claude Code e Codex (registro npm) e lo segnala con
-  un popup in basso a destra, come per gli aggiornamenti di Paradev++: **Update**
-  esegue un comando fisso e mostrato prima (`claude update`, oppure
+  versioni nuove dei CLI di Claude Code, Codex, Cursor Agent e Grok e lo segnala
+  con un popup in basso a destra, come per gli aggiornamenti di Paradev++.
+  Claude Code segue il canale di `claude update` (`autoUpdatesChannel` nel
+  `settings.json` del profilo, predefinito `latest`) e lo confronta con il tag
+  npm dello stesso canale; ogni canale ha la sua cache. Codex usa il tag npm
+  `latest`, Cursor Agent la versione nello script `https://cursor.com/install`,
+  Grok `grok update --check --json` (il suo canale). Le versioni a data di
+  Cursor si confrontano senza zeri iniziali. **Update**
+  esegue un comando fisso e mostrato prima (`claude update`, `cursor-agent update`,
+  `grok update`, oppure
   `npm install -g @openai/codex@latest` per un’installazione npm), poi rilegge
   la versione e dice se non è cambiata; **Later** nasconde il popup fino al
   controllo del giorno dopo. Non aggiorna mai da solo e l’app non indovina come

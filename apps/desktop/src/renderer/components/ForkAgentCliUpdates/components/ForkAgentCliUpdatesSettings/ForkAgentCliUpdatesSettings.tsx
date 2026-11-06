@@ -4,7 +4,10 @@ import { Button } from "@superset/ui/button";
 import { Label } from "@superset/ui/label";
 import { toast } from "@superset/ui/sonner";
 import { Switch } from "@superset/ui/switch";
-import { useForkAgentCliUpdates } from "../../hooks/useForkAgentCliUpdates";
+import {
+	type ForkAgentCliAgent,
+	useForkAgentCliUpdates,
+} from "../../hooks/useForkAgentCliUpdates";
 
 export function ForkAgentCliUpdatesSettings() {
 	const { supported, status, checkNow, setEnabled, update } =
@@ -70,7 +73,7 @@ export function ForkAgentCliUpdatesSettings() {
 								size="sm"
 								disabled={update.isPending}
 								onClick={() =>
-									update.mutate(agent.id as "claude" | "codex", {
+									update.mutate(agent.id as ForkAgentCliAgent, {
 										onError: (error) => toast.error(errorMessage(error)),
 									})
 								}

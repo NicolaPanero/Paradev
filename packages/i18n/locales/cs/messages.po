@@ -1687,9 +1687,6 @@ msgstr "Kanál s tímto názvem už existuje"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Chat nemůže uprostřed přejít k jinému poskytovateli. Začněte nový chat {label}, nebo tuto konverzaci rozvětvete do nového chatu. Tento chat {currentLabel} zůstane otevřený."
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "Chat přepnutý z Claude Code do Cursoru funguje s modely Anthropic, obrázky i příkazy slash. Lišta limitu využití umožňuje zvolit, jak chat pokračuje."
-
 msgid "A chat takes its name from the agent."
 msgstr "Chat přebírá název od agenta."
 
@@ -2330,6 +2327,9 @@ msgstr "Nastavení agenta"
 
 msgid "Agent updates"
 msgstr "Aktualizace agentů"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "Aktualizace agentů nyní zahrnují Cursor Agent a Grok, každý s příkazem, kterým se sám aktualizuje."
 
 msgid "Agent usage rankings"
 msgstr "Žebříček využití agentů"
@@ -4225,9 +4225,6 @@ msgstr "Plochy chatu: zprávy, uvažování, návrhy"
 msgid "Chats"
 msgstr "Chaty"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "Chaty smazaného worktree se znovu objeví v části Najít chat. Karta při najetí na pracovní prostor ukazuje, zda jde o Lokální prostor nebo o Worktree."
-
 msgid "Check again"
 msgstr "Zkontrolovat znovu"
 
@@ -4459,6 +4456,9 @@ msgstr "CI selhalo"
 
 msgid "Clarify this"
 msgstr "Vyjasni to"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Aktualizace Claude Code sledují váš kanál aktualizací: na kanálu stable už upozornění nenabízí verzi, kterou claude update nenainstaluje."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex a OpenCode jsou agenti; Paradev je místo, kde jich spouštíte mnoho najednou. Každý úkol dostane vlastní Git worktree a větev, takže deset agentů může současně pracovat na deseti větvích, zatímco vy vše sledujete, kontrolujete a slučujete z jednoho místa."
@@ -6728,6 +6728,9 @@ msgstr "Aktuální karta"
 
 msgid "Cursor"
 msgstr "Kurzor"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "Verze Cursor Agent, které jsou data, se porovnávají správně, takže novější build je nahlášen."
 
 msgid "Cursor blinking"
 msgstr "Blikání kurzoru"
@@ -9333,9 +9336,6 @@ msgstr "Forkovat relaci…"
 msgid "Fork Settings"
 msgstr "Nastavení forku"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "Nastavení forku ukazují, zda je každý MCP server online, kolik nástrojů nabízí, nebo proč se nepřipojí."
-
 msgid "Fork to new chat"
 msgstr "Rozvětvit do nového chatu"
 
@@ -10812,9 +10812,6 @@ msgstr "Úkoly Jira"
 
 msgid "Jira project"
 msgstr "Projekt Jira"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "Úlohy Jira propojené s workspace se zobrazují v jeho nabídce aktivity. Otevřete jednu, abyste ji přečetli a změnili její stav."
 
 msgid "Jira triage"
 msgstr "Třídění Jira"
@@ -12505,9 +12502,6 @@ msgstr "Nový chat"
 
 msgid "New chat from loaded messages"
 msgstr "Nový chat z načtených zpráv"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "Nový chat používá jeden kompaktní výběr agenta, účtu, modelu a úsilí. Seznamy modelů se ukládají do mezipaměti na jeden den pro každého agenta."
 
 msgid "New chats"
 msgstr "Nové chaty"

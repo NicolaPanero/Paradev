@@ -1687,9 +1687,6 @@ msgstr "已存在同名频道"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "聊天进行中无法切换到其他提供方。请开始一个新的 {label} 聊天，或将此对话分叉到新聊天中。此 {currentLabel} 聊天会保持打开。"
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "从 Claude Code 切换到 Cursor 的聊天现在可以配合 Anthropic 模型、图片和斜杠命令使用。用量上限栏可让你选择聊天如何继续。"
-
 msgid "A chat takes its name from the agent."
 msgstr "聊天的名称来自智能体。"
 
@@ -2330,6 +2327,9 @@ msgstr "配置智能体"
 
 msgid "Agent updates"
 msgstr "智能体更新"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "代理更新现在包括 Cursor Agent 和 Grok，各自使用自己的更新命令。"
 
 msgid "Agent usage rankings"
 msgstr "智能体使用量排行"
@@ -4225,9 +4225,6 @@ msgstr "聊天界面：消息、推理、建议"
 msgid "Chats"
 msgstr "聊天"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "已删除 worktree 的聊天会重新显示在“查找聊天”中。将鼠标悬停在工作区上的卡片会显示它是本地还是 worktree。"
-
 msgid "Check again"
 msgstr "重新检查"
 
@@ -4459,6 +4456,9 @@ msgstr "CI失败"
 
 msgid "Clarify this"
 msgstr "阐明这里"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Claude Code 更新会遵循你的更新渠道：在 stable 上，通知不再提供 claude update 不会安装的版本。"
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code、Codex 和 OpenCode 是智能体；Paradev 是你同时运行多个智能体的地方。每个任务都有自己的 Git worktree 和分支，因此十个智能体可以同时在十个分支上工作，而你在一个地方监控、审查和合并。"
@@ -6728,6 +6728,9 @@ msgstr "当前标签页"
 
 msgid "Cursor"
 msgstr "光标"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "Cursor Agent 的版本是日期，现在能正确比较，因此会提示更新的构建。"
 
 msgid "Cursor blinking"
 msgstr "光标闪烁"
@@ -9333,9 +9336,6 @@ msgstr "分叉会话…"
 msgid "Fork Settings"
 msgstr "Fork 设置"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "Fork 设置会显示每个 MCP 服务器是否在线、提供多少工具，或无法连接的原因。"
-
 msgid "Fork to new chat"
 msgstr "分叉到新聊天"
 
@@ -10812,9 +10812,6 @@ msgstr "Jira 事务"
 
 msgid "Jira project"
 msgstr "Jira 项目"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "与工作区关联的 Jira 任务会显示在其活动菜单中。打开任务即可阅读并更改状态。"
 
 msgid "Jira triage"
 msgstr "Jira 分类"
@@ -12505,9 +12502,6 @@ msgstr "新建聊天"
 
 msgid "New chat from loaded messages"
 msgstr "从已加载的消息新建聊天"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "新聊天使用一个紧凑的选择器来选择代理、账号、模型和思考强度。模型列表按代理缓存一天。"
 
 msgid "New chats"
 msgstr "新聊天"

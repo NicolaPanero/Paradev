@@ -1687,9 +1687,6 @@ msgstr "Esiste già un canale con questo nome"
 msgid "A chat can't switch to another provider partway through. Start a fresh {label} chat, or fork this conversation into one. This {currentLabel} chat stays open."
 msgstr "Una chat non può passare a un altro provider a metà. Avvia una nuova chat {label} oppure dirama questa conversazione in una nuova chat. Questa chat {currentLabel} resta aperta."
 
-msgid "A chat switched from Claude Code to Cursor works with Anthropic models, images and slash commands. The usage limit bar lets you choose how a chat continues."
-msgstr "Una chat passata da Claude Code a Cursor funziona con i modelli Anthropic, le immagini e i comandi slash. La barra del limite d'uso permette di scegliere come prosegue una chat."
-
 msgid "A chat takes its name from the agent."
 msgstr "Una chat prende il nome dall'agente."
 
@@ -2330,6 +2327,9 @@ msgstr "Configurazione agente"
 
 msgid "Agent updates"
 msgstr "Aggiornamenti degli agenti"
+
+msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
+msgstr "Gli aggiornamenti degli agenti ora includono Cursor Agent e Grok, ciascuno con il comando che usa per aggiornarsi."
 
 msgid "Agent usage rankings"
 msgstr "Classifiche d'uso degli agenti"
@@ -4225,9 +4225,6 @@ msgstr "Superfici della chat: messaggi, ragionamento, suggerimenti"
 msgid "Chats"
 msgstr "Chat"
 
-msgid "Chats of a deleted worktree show up again in Find a chat. A workspace's hover card says if it is Local or a Worktree."
-msgstr "Le chat di un worktree eliminato ricompaiono in Trova una chat. La scheda al passaggio del mouse su un workspace indica se è Locale o un Worktree."
-
 msgid "Check again"
 msgstr "Controlla di nuovo"
 
@@ -4459,6 +4456,9 @@ msgstr "CI fallita"
 
 msgid "Clarify this"
 msgstr "Chiarisci questo"
+
+msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
+msgstr "Gli aggiornamenti di Claude Code seguono il tuo canale: su stable l'avviso non propone più una versione che claude update non installa."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex e OpenCode sono gli agenti; Paradev è dove ne esegui molti contemporaneamente. Ogni attività ha il proprio worktree Git e il proprio branch, quindi dieci agenti possono lavorare su dieci branch contemporaneamente mentre tu monitori, revisioni e fai il merge da un unico posto."
@@ -6728,6 +6728,9 @@ msgstr "Scheda corrente"
 
 msgid "Cursor"
 msgstr "Cursore"
+
+msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
+msgstr "Le versioni di Cursor Agent, che sono date, vengono confrontate correttamente, quindi una build più recente viene segnalata."
 
 msgid "Cursor blinking"
 msgstr "Cursore lampeggiante"
@@ -9333,9 +9336,6 @@ msgstr "Biforca sessione…"
 msgid "Fork Settings"
 msgstr "Impostazioni fork"
 
-msgid "Fork Settings shows whether each MCP server is online, how many tools it offers, or why it does not connect."
-msgstr "Le impostazioni fork mostrano se ogni server MCP è online, quanti tool offre o perché non si collega."
-
 msgid "Fork to new chat"
 msgstr "Fork in una nuova chat"
 
@@ -10812,9 +10812,6 @@ msgstr "Issue Jira"
 
 msgid "Jira project"
 msgstr "Progetto Jira"
-
-msgid "Jira tasks linked to a workspace show in its activity menu. Open one to read it and change its status."
-msgstr "I task Jira collegati a un workspace compaiono nel suo menu attività. Aprine uno per leggerlo e cambiarne lo stato."
 
 msgid "Jira triage"
 msgstr "Triage Jira"
@@ -12505,9 +12502,6 @@ msgstr "Nuova chat"
 
 msgid "New chat from loaded messages"
 msgstr "Nuova chat dai messaggi caricati"
-
-msgid "New chat uses one compact selector for agent, account, model and effort. Model lists are cached daily per agent."
-msgstr "Nuova chat usa un solo selettore compatto per agente, account, modello ed effort. Gli elenchi dei modelli sono salvati in cache per un giorno per agente."
 
 msgid "New chats"
 msgstr "Nuove chat"
