@@ -35,6 +35,19 @@ type SwitchDependencies = {
 
 const switching = new WeakMap<ChatRuntime, Set<string>>();
 
+type LiveChat = NonNullable<ReturnType<ChatRuntime["live"]["get"]>>;
+
+/** A chat that died before its agent answered, as when its login expired,
+ * still names the conversation it was reopening. */
+function nativeSessionId(live: LiveChat): string | undefined {
+	return (
+		live.state.harnessSessionId ??
+		(live.state.status === "dead"
+			? live.launchOptions?.resume?.harnessSessionId
+			: undefined)
+	);
+}
+
 export async function forkSwitchChatAccount(
 	runtime: ChatRuntime,
 	input: ForkSwitchChatAccountInput,
@@ -58,7 +71,7 @@ export async function forkSwitchChatAccount(
 			live.scopeId !== input.workspaceId ||
 			live.terminalId !== input.terminalId ||
 			live.harness !== "claude-acp" ||
-			live.state.harnessSessionId !== input.sessionId
+			nativeSessionId(live) !== input.sessionId
 		)
 			throw new TRPCError({
 				code: "PRECONDITION_FAILED",
@@ -69,7 +82,7 @@ export async function forkSwitchChatAccount(
 		if (
 			!launch ||
 			runtime.live.get(input.chatSessionId) !== live ||
-			live.state.harnessSessionId !== input.sessionId
+			nativeSessionId(live) !== input.sessionId
 		)
 			throw new TRPCError({
 				code: "PRECONDITION_FAILED",
