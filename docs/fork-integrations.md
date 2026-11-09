@@ -74,7 +74,8 @@ GitHub and Bitbucket share the existing PR list, project filters and split view.
 Provider icons identify each repository. Discovery reads the live Git remote;
 stale GitHub metadata does not send a Bitbucket repository to GitHub search.
 An unavailable account leaves the other repositories visible with a connection
-notice. The review-requested filter includes Bitbucket reviewers. Other GitHub review
+notice. The review-requested filter includes Bitbucket reviewers, but not the pull
+requests you already approved or requested changes on. Other GitHub review
 filters keep a notice when Bitbucket cannot represent their semantics.
 Bitbucket supports approvals, change requests, threaded comments, inline diff
 comments (including removed lines), checks, merge, decline,
