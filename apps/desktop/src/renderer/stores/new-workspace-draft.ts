@@ -66,7 +66,7 @@ function buildInitialDraft(): NewWorkspaceDraft {
 		selectedProjectId: null,
 		isSession: false,
 		hostId: null,
-		checkout: "local",
+		checkout: "worktree",
 		promptDraft: [],
 		baseBranch: null,
 		baseBranchSource: null,
