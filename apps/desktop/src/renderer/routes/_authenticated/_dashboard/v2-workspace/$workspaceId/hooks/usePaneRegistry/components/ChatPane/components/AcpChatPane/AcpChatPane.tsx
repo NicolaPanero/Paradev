@@ -139,7 +139,7 @@ export function AcpChatPane({
 	const { t } = useLingui();
 	const snapshotWorktree = useChatTurnSnapshotsEnabled();
 	const { client, wiring } = useSessionClient(sessionId);
-	const { forkToWorktree, canForkToWorktree } = useForkChat(workspaceId);
+	const { forkToWorktree, canForkToWorktree } = useForkChat();
 	const { hostUrl } = useWorkspaceClient();
 	const { data: agentConfigs } = useV2AgentConfigs(hostUrl);
 	const agentLabel = agentConfigs?.find(
