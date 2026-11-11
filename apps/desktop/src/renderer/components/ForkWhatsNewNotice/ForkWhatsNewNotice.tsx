@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "agent-cli-updates-2026-11";
+export const FORK_WHATS_NEW_ID = "reviews-worktrees-cpu-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 const FORK_GUIDE_URL =
 	"https://github.com/NicolaPanero/Paradev/blob/fork/main/FORK.md";
@@ -32,15 +32,19 @@ export function ForkWhatsNewNotice() {
 	const highlights = [
 		t({
 			message:
-				"Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself.",
+				"Paradev++ no longer slows down after hours open: animations pause while its window is in the background.",
 		}),
 		t({
 			message:
-				"Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install.",
+				"Today hides the pull requests you already approved or asked to change.",
 		}),
 		t({
 			message:
-				"Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported.",
+				"Branch in a new worktree works from every workspace, and new workspaces start on a worktree again.",
+		}),
+		t({
+			message:
+				"A signed-in account no longer shows Reconnect account after one failed check.",
 		}),
 	];
 	const notice: DesktopNotice = {

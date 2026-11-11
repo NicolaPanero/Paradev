@@ -1803,6 +1803,9 @@ msgstr "A separate pay-per-token profile. The key stays in the {0} CLI."
 msgid "A separate profile that shares your skills, plugins, MCP servers, and settings."
 msgstr "A separate profile that shares your skills, plugins, MCP servers, and settings."
 
+msgid "A signed-in account no longer shows Reconnect account after one failed check."
+msgstr "A signed-in account no longer shows Reconnect account after one failed check."
+
 msgid "A summary file of tasks and pull requests that need attention."
 msgstr "A summary file of tasks and pull requests that need attention."
 
@@ -2327,9 +2330,6 @@ msgstr "Agent setup"
 
 msgid "Agent updates"
 msgstr "Agent updates"
-
-msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
-msgstr "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
 
 msgid "Agent usage rankings"
 msgstr "Agent usage rankings"
@@ -3650,6 +3650,9 @@ msgstr "Branch from here"
 msgid "Branch in a new worktree"
 msgstr "Branch in a new worktree"
 
+msgid "Branch in a new worktree works from every workspace, and new workspaces start on a worktree again."
+msgstr "Branch in a new worktree works from every workspace, and new workspaces start on a worktree again."
+
 msgid "Branch in this workspace"
 msgstr "Branch in this workspace"
 
@@ -4456,9 +4459,6 @@ msgstr "CI failed"
 
 msgid "Clarify this"
 msgstr "Clarify this"
-
-msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
-msgstr "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
@@ -6728,9 +6728,6 @@ msgstr "Current tab"
 
 msgid "Cursor"
 msgstr "Cursor"
-
-msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
-msgstr "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
 
 msgid "Cursor blinking"
 msgstr "Cursor blinking"
@@ -14859,6 +14856,9 @@ msgstr "Paradev's mobile app lets me keep my agents moving and unblock them from
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 
+msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
+msgstr "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
+
 msgid "Paragraph"
 msgstr "Paragraph"
 
@@ -21002,6 +21002,9 @@ msgstr "Today"
 
 msgid "TODAY"
 msgstr "TODAY"
+
+msgid "Today hides the pull requests you already approved or asked to change."
+msgstr "Today hides the pull requests you already approved or asked to change."
 
 msgid "Todo"
 msgstr "Todo"

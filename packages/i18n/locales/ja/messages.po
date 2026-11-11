@@ -1803,6 +1803,9 @@ msgstr "トークン単位で課金される別プロファイルです。キー
 msgid "A separate profile that shares your skills, plugins, MCP servers, and settings."
 msgstr "スキル、プラグイン、MCPサーバー、設定を共有する別プロファイルです。"
 
+msgid "A signed-in account no longer shows Reconnect account after one failed check."
+msgstr "サインイン済みのアカウントは、確認に 1 回失敗しただけでは「アカウントを再接続」と表示されなくなりました。"
+
 msgid "A summary file of tasks and pull requests that need attention."
 msgstr "対応が必要なタスクとプルリクエストをまとめたファイルです。"
 
@@ -2327,9 +2330,6 @@ msgstr "エージェントの設定"
 
 msgid "Agent updates"
 msgstr "エージェントのアップデート"
-
-msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
-msgstr "エージェントの更新に Cursor Agent と Grok が加わり、それぞれ自身を更新するコマンドを使います。"
 
 msgid "Agent usage rankings"
 msgstr "エージェント使用量ランキング"
@@ -3650,6 +3650,9 @@ msgstr "ここから分岐"
 msgid "Branch in a new worktree"
 msgstr "新しい worktree で分岐"
 
+msgid "Branch in a new worktree works from every workspace, and new workspaces start on a worktree again."
+msgstr "「新しい worktree で分岐」がどのワークスペースからでも使えるようになり、新しいワークスペースは再び worktree で始まります。"
+
 msgid "Branch in this workspace"
 msgstr "このワークスペースで分岐"
 
@@ -4456,9 +4459,6 @@ msgstr "CIが失敗しました"
 
 msgid "Clarify this"
 msgstr "これを明確にして"
-
-msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
-msgstr "Claude Code の更新は更新チャネルに従います。stable では、claude update がインストールしないバージョンを通知しなくなりました。"
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code、Codex、OpenCodeはエージェントであり、Paradevはそれらを同時に何体も動かす場所です。タスクごとに専用のGitワークツリーとブランチが割り当てられるので、10体のエージェントが10本のブランチで同時に作業する間、1か所から監視・レビュー・マージができます。"
@@ -6728,9 +6728,6 @@ msgstr "現在のタブ"
 
 msgid "Cursor"
 msgstr "カーソル"
-
-msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
-msgstr "日付形式の Cursor Agent のバージョンを正しく比較し、新しいビルドを通知します。"
 
 msgid "Cursor blinking"
 msgstr "カーソルの点滅"
@@ -14859,6 +14856,9 @@ msgstr "Paradevのモバイルアプリなら、コンピューターから遠�
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ は1日に1回新しいバージョンを確認し、ポップアップを表示します。自動で更新することはありません。"
 
+msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
+msgstr "Paradev++ は長時間開いたままでも遅くならなくなりました。ウィンドウがバックグラウンドにある間はアニメーションが一時停止します。"
+
 msgid "Paragraph"
 msgstr "段落"
 
@@ -21002,6 +21002,9 @@ msgstr "今日"
 
 msgid "TODAY"
 msgstr "現在"
+
+msgid "Today hides the pull requests you already approved or asked to change."
+msgstr "今日には、すでに承認したプルリクエストや変更をリクエストしたプルリクエストが表示されなくなりました。"
 
 msgid "Todo"
 msgstr "未着手"

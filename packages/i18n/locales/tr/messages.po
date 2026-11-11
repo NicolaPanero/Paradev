@@ -1803,6 +1803,9 @@ msgstr "Token başına faturalandırılan ayrı bir profil. Anahtar {0} CLI içi
 msgid "A separate profile that shares your skills, plugins, MCP servers, and settings."
 msgstr "Becerilerinizi, eklentilerinizi, MCP sunucularınızı ve ayarlarınızı paylaşan ayrı bir profil."
 
+msgid "A signed-in account no longer shows Reconnect account after one failed check."
+msgstr "Oturum açılmış bir hesap, tek bir başarısız denetimden sonra artık “Hesabı yeniden bağla” göstermiyor."
+
 msgid "A summary file of tasks and pull requests that need attention."
 msgstr "Dikkat edilmesi gereken görevlerin ve pull request'lerin özet dosyası."
 
@@ -2327,9 +2330,6 @@ msgstr "Ajan kurulumu"
 
 msgid "Agent updates"
 msgstr "Ajan güncellemeleri"
-
-msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
-msgstr "Ajan güncellemeleri artık Cursor Agent ve Grok'u da kapsıyor; her biri kendini güncellemek için kendi komutunu kullanıyor."
 
 msgid "Agent usage rankings"
 msgstr "Ajan kullanım sıralamaları"
@@ -3650,6 +3650,9 @@ msgstr "Buradan dallandır"
 msgid "Branch in a new worktree"
 msgstr "Yeni bir worktree'de çatalla"
 
+msgid "Branch in a new worktree works from every workspace, and new workspaces start on a worktree again."
+msgstr "“Yeni bir worktree'de çatalla” her çalışma alanından çalışıyor ve yeni çalışma alanları yeniden bir worktree'de başlıyor."
+
 msgid "Branch in this workspace"
 msgstr "Bu çalışma alanında çatalla"
 
@@ -4456,9 +4459,6 @@ msgstr "CI başarısız"
 
 msgid "Clarify this"
 msgstr "Bunu netleştir"
-
-msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
-msgstr "Claude Code güncellemeleri güncelleme kanalınızı izler: stable kanalında bildirim artık claude update'in yüklemediği bir sürümü önermez."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex ve OpenCode ajanlardır; Paradev ise bunların birçoğunu aynı anda çalıştırdığınız yerdir. Her görev kendi Git worktree'sini ve dalını alır, böylece siz tek bir yerden izler, inceler ve birleştirirken on ajan aynı anda on dalda çalışabilir."
@@ -6728,9 +6728,6 @@ msgstr "Geçerli sekme"
 
 msgid "Cursor"
 msgstr "İmleç"
-
-msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
-msgstr "Tarih biçimindeki Cursor Agent sürümleri doğru karşılaştırılır, böylece daha yeni bir derleme bildirilir."
 
 msgid "Cursor blinking"
 msgstr "İmleç yanıp sönmesi"
@@ -14859,6 +14856,9 @@ msgstr "Paradev'in mobil uygulaması, bilgisayarımdan çok uzakta olsam bile aj
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ günde bir kez yeni sürümleri arar ve bir açılır pencere gösterir. Hiçbir şeyi kendiliğinden güncellemez."
 
+msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
+msgstr "Paradev++ saatlerce açık kaldıktan sonra artık yavaşlamıyor: penceresi arka plandayken animasyonlar duraklıyor."
+
 msgid "Paragraph"
 msgstr "Paragraf"
 
@@ -21002,6 +21002,9 @@ msgstr "Bugün"
 
 msgid "TODAY"
 msgstr "BUGÜN"
+
+msgid "Today hides the pull requests you already approved or asked to change."
+msgstr "Bugün, zaten onayladığınız veya değişiklik istediğiniz pull request'leri gizliyor."
 
 msgid "Todo"
 msgstr "Yapılacak"

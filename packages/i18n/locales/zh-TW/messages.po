@@ -1803,6 +1803,9 @@ msgstr "按 token 計費的獨立配置檔案。金鑰保存在 {0} CLI 中。"
 msgid "A separate profile that shares your skills, plugins, MCP servers, and settings."
 msgstr "共享你的技能、外掛、MCP伺服器和設定的獨立配置檔案。"
 
+msgid "A signed-in account no longer shows Reconnect account after one failed check."
+msgstr "已登入的帳戶不再因為一次檢查失敗就顯示「重新連接帳戶」。"
+
 msgid "A summary file of tasks and pull requests that need attention."
 msgstr "需要關注的任務與拉取請求的摘要檔案。"
 
@@ -2327,9 +2330,6 @@ msgstr "設定代理"
 
 msgid "Agent updates"
 msgstr "代理程式更新"
-
-msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
-msgstr "代理程式更新現在包含 Cursor Agent 和 Grok，各自使用自己的更新命令。"
 
 msgid "Agent usage rankings"
 msgstr "代理程式使用量排行"
@@ -3650,6 +3650,9 @@ msgstr "從此處分支"
 msgid "Branch in a new worktree"
 msgstr "在新的 worktree 中分叉"
 
+msgid "Branch in a new worktree works from every workspace, and new workspaces start on a worktree again."
+msgstr "「在新的 worktree 中分叉」可在任何工作區中使用，新工作區也重新預設從 worktree 開始。"
+
 msgid "Branch in this workspace"
 msgstr "在此工作區分叉"
 
@@ -4456,9 +4459,6 @@ msgstr "CI失敗"
 
 msgid "Clarify this"
 msgstr "闡明這裡"
-
-msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
-msgstr "Claude Code 更新會依循你的更新頻道：在 stable 上，通知不再提供 claude update 不會安裝的版本。"
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code、Codex 和 OpenCode 是代理；Paradev 是你同時執行多個代理的地方。每個任務都有自己的 Git worktree 和分支，因此十個代理可以同時在十個分支上工作，而你在同一處監控、審查與合併。"
@@ -6728,9 +6728,6 @@ msgstr "目前分頁"
 
 msgid "Cursor"
 msgstr "游標"
-
-msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
-msgstr "Cursor Agent 的版本是日期，現在能正確比較，因此會提示較新的建置。"
 
 msgid "Cursor blinking"
 msgstr "游標閃爍"
@@ -14859,6 +14856,9 @@ msgstr "Paradev 手機應用程式讓我可以隨時隨地推動代理程式工�
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ 每天檢查一次新版本並顯示彈出視窗。它絕不會自行更新任何內容。"
 
+msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
+msgstr "Paradev++ 長時間開啟後不再變慢：視窗處於背景時動畫會暫停。"
+
 msgid "Paragraph"
 msgstr "段落"
 
@@ -21002,6 +21002,9 @@ msgstr "今天"
 
 msgid "TODAY"
 msgstr "今天"
+
+msgid "Today hides the pull requests you already approved or asked to change."
+msgstr "今天會隱藏你已核准或已要求修改的拉取請求。"
 
 msgid "Todo"
 msgstr "待辦"

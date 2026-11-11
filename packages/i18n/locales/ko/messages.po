@@ -1803,6 +1803,9 @@ msgstr "토큰 단위로 과금되는 별도 프로필입니다. 키는 {0} CLI 
 msgid "A separate profile that shares your skills, plugins, MCP servers, and settings."
 msgstr "스킬, 플러그인, MCP 서버, 설정을 공유하는 별도 프로필입니다."
 
+msgid "A signed-in account no longer shows Reconnect account after one failed check."
+msgstr "로그인된 계정은 확인이 한 번 실패해도 더 이상 '계정 다시 연결'을 표시하지 않습니다."
+
 msgid "A summary file of tasks and pull requests that need attention."
 msgstr "확인이 필요한 작업과 풀 리퀘스트를 요약한 파일입니다."
 
@@ -2327,9 +2330,6 @@ msgstr "에이전트 설정"
 
 msgid "Agent updates"
 msgstr "에이전트 업데이트"
-
-msgid "Agent updates now cover Cursor Agent and Grok, each with the command it uses to update itself."
-msgstr "에이전트 업데이트에 Cursor Agent와 Grok이 추가되었으며, 각각 자체 업데이트 명령을 사용합니다."
 
 msgid "Agent usage rankings"
 msgstr "에이전트 사용량 순위"
@@ -3650,6 +3650,9 @@ msgstr "여기서 분기"
 msgid "Branch in a new worktree"
 msgstr "새 worktree에서 분기"
 
+msgid "Branch in a new worktree works from every workspace, and new workspaces start on a worktree again."
+msgstr "'새 worktree에서 분기'가 모든 워크스페이스에서 작동하며, 새 워크스페이스는 다시 worktree에서 시작합니다."
+
 msgid "Branch in this workspace"
 msgstr "이 워크스페이스에서 분기"
 
@@ -4456,9 +4459,6 @@ msgstr "CI 실패"
 
 msgid "Clarify this"
 msgstr "이것을 명확히 해 주세요"
-
-msgid "Claude Code updates follow your update channel: on stable, the notice no longer offers a version that claude update does not install."
-msgstr "Claude Code 업데이트는 업데이트 채널을 따릅니다. stable에서는 claude update가 설치하지 않는 버전을 더 이상 알리지 않습니다."
 
 msgid "Claude Code, Codex, and OpenCode are the agents; Paradev is where you run many of them at once. Each task gets its own Git worktree and branch, so ten agents can work on ten branches simultaneously while you monitor, review, and merge from one place."
 msgstr "Claude Code, Codex, OpenCode는 에이전트이고, Paradev는 그 에이전트들을 한 번에 여러 개 실행하는 곳입니다. 작업마다 자체 Git 워크트리와 브랜치가 생기므로, 에이전트 열 개가 브랜치 열 개에서 동시에 작업하는 동안 한곳에서 모니터링, 리뷰, 병합할 수 있습니다."
@@ -6728,9 +6728,6 @@ msgstr "현재 탭"
 
 msgid "Cursor"
 msgstr "커서"
-
-msgid "Cursor Agent versions, which are dates, are compared correctly, so a newer build is reported."
-msgstr "날짜 형식인 Cursor Agent 버전을 올바르게 비교하므로 더 새로운 빌드를 알려 줍니다."
 
 msgid "Cursor blinking"
 msgstr "커서 깜박임"
@@ -14859,6 +14856,9 @@ msgstr "Paradev 모바일 앱 덕분에 컴퓨터에서 멀리 떨어져 있어�
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++는 하루에 한 번 새 버전을 확인하고 팝업을 표시합니다. 스스로 아무것도 업데이트하지 않습니다."
 
+msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
+msgstr "Paradev++가 몇 시간 동안 열려 있어도 더 이상 느려지지 않습니다. 창이 백그라운드에 있는 동안 애니메이션이 일시 중지됩니다."
+
 msgid "Paragraph"
 msgstr "본문"
 
@@ -21002,6 +21002,9 @@ msgstr "오늘"
 
 msgid "TODAY"
 msgstr "오늘"
+
+msgid "Today hides the pull requests you already approved or asked to change."
+msgstr "오늘에서 이미 승인했거나 변경을 요청한 풀 리퀘스트를 숨깁니다."
 
 msgid "Todo"
 msgstr "할 일"
