@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { forkMotionPaused } from "../../lib/fork-motion";
 import { cn } from "../../lib/utils";
 
 const FRAME_MS = 50;
@@ -29,6 +30,7 @@ export function WaveSpinner({ className }: WaveSpinnerProps) {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
+			if (forkMotionPaused()) return;
 			setFrame((current) => (current + 1) % FRAMES_PER_LOOP);
 		}, FRAME_MS);
 		return () => clearInterval(interval);

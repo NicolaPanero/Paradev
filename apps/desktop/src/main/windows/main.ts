@@ -31,6 +31,7 @@ import {
 import { browserManager } from "../lib/browser/browser-manager";
 import { attachEditContextMenu } from "../lib/edit-context-menu";
 import { attachForkImageContextMenu } from "../lib/fork-image-context-menu";
+import { attachForkWindowActivity } from "../lib/fork-window-activity";
 import { createApplicationMenu } from "../lib/menu";
 import { menuEmitter } from "../lib/menu-events";
 import { playNotificationSound } from "../lib/notification-sound";
@@ -447,6 +448,7 @@ export async function createPlatformWindow({
 
 	attachEditContextMenu(window.webContents);
 	attachForkImageContextMenu(window.webContents);
+	attachForkWindowActivity(window);
 
 	if (wasEmpty) {
 		startSharedServices();

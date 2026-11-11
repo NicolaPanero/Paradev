@@ -1,6 +1,7 @@
 import "./globals.css";
 import "./styles/bundled-fonts.css";
 import "./styles/fork-terminal-fonts/fork-terminal-fonts.css";
+import "./styles/fork-window-activity.css";
 import { initSentry } from "./lib/sentry";
 
 initSentry();
@@ -16,6 +17,7 @@ import {
 	reportBootError,
 } from "./lib/boot-errors";
 import { installForkImageContextMenu } from "./lib/fork-image-context-menu";
+import { installForkWindowActivity } from "./lib/fork-window-activity";
 import { parseDeepLinkPath } from "./lib/parseDeepLinkPath";
 import { sweepDeadPersistedKeys } from "./lib/persisted-keys";
 import { persistentHistory } from "./lib/persistent-hash-history";
@@ -34,6 +36,7 @@ pruneExpiredTerminalState();
 // Keys from removed features otherwise live on user profiles forever.
 sweepDeadPersistedKeys();
 installForkImageContextMenu();
+installForkWindowActivity();
 
 const router = createRouter({
 	routeTree,

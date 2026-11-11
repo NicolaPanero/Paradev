@@ -822,7 +822,7 @@ export function WorkspaceActivityMenu({
 							<ListTree className="size-3.5 shrink-0" />
 							{runningCount > 0 ? (
 								<>
-									<span className="size-1.5 shrink-0 animate-pulse rounded-full bg-emerald-500" />
+									<span className="size-1.5 shrink-0 rounded-full bg-emerald-500" />
 									<span className="tabular-nums">{runningCount}</span>
 								</>
 							) : (
