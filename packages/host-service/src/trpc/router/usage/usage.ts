@@ -22,6 +22,7 @@ import {
 	getDefaultAccountSelections,
 	setDefaultAccountSelection,
 } from "./default-account";
+import { holdLapsedAccounts } from "./fork-account-hold";
 import { forkAccountRegistry } from "./fork-account-registry";
 import {
 	assertIsolatedAccount,
@@ -87,7 +88,7 @@ export const usageRouter = router({
 		.query(async ({ ctx, input }) => {
 			let accounts = await getQuota(input?.forceRefresh ?? false);
 			if (input?.isolated) {
-				accounts = await isolatedAccountQuota(accounts);
+				accounts = holdLapsedAccounts(await isolatedAccountQuota(accounts));
 				await ensureIsolatedDefault(ctx.db, "claude");
 				await ensureIsolatedDefault(ctx.db, "codex");
 			}
