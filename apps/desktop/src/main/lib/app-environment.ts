@@ -3,8 +3,10 @@ import { join } from "node:path";
 import { moveLegacyAppHome } from "@superset/agent-setup/legacy-home-move";
 import { resolveUserHomeDir } from "@superset/agent-setup/paths";
 import { getWorkspaceName } from "shared/env.shared";
+import { pinForkDataHome } from "./fork-data-migration/fork-app-home";
 
 const workspace = getWorkspaceName();
+pinForkDataHome(workspace);
 if (workspace && !process.env.SUPERSET_HOME_DIR?.trim()) {
 	process.env.SUPERSET_HOME_DIR = join(
 		resolveUserHomeDir(),
