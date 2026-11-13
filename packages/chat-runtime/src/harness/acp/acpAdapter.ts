@@ -59,6 +59,7 @@ import {
 	isTerminalAirState,
 } from "./air";
 import { cursorApproval } from "./cursorExtensions";
+import { forkCursorClientMeta } from "./forkCursorClientMeta";
 import { ForkCursorModelSelection } from "./forkCursorModelSelection";
 import { ForkCursorPromptFailure } from "./forkCursorPromptFailure";
 import {
@@ -1169,7 +1170,7 @@ export class AcpAdapter implements HarnessAdapter {
 					plan: {},
 					_meta: {
 						...AIR_CLIENT_META,
-						...(this.cursorModels ? { parameterizedModelPicker: true } : {}),
+						...forkCursorClientMeta(this.cursorModels !== null),
 					},
 				},
 				// Do not advertise fs/terminal: the agent falls back to its own
@@ -1181,7 +1182,7 @@ export class AcpAdapter implements HarnessAdapter {
 					plan: {},
 					_meta: {
 						...AIR_CLIENT_META,
-						...(this.cursorModels ? { parameterizedModelPicker: true } : {}),
+						...forkCursorClientMeta(this.cursorModels !== null),
 					},
 				},
 			},

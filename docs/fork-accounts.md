@@ -153,6 +153,16 @@ Some adapters reconcile running processes only on subsequent session activity;
 age alone is not evidence that a process has finished, so there is no age-based
 termination or automatic dismissal.
 
+Cursor chats advertise `_meta.subagents: {}` in both ACP initialize capability
+fields. Cursor otherwise sends generic Task tool calls without the native
+subagent lifecycle that feeds Workspace activity. With the capability enabled,
+the existing adapter tracks child sessions, nested output, progress and terminal
+states, including background work that outlives the Task launch call. Individual
+controls remain limited to those the agent reports. Restart the updated app and
+resume the Cursor chat to negotiate this capability; an already connected
+process keeps its original initialization. Old Task entries alone are not
+treated as running subagents.
+
 The chat mode menu is ordered by increasing permissions: Ask (read-only Q&A),
 Plan, Ask for approval, Approve for me, and Full access, using only modes offered
 by the agent. New chats use Full access when no explicit or saved per-agent mode
