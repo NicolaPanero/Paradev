@@ -9,6 +9,7 @@ export {
 	type SandboxCaller,
 	sandboxCredentialWorkspaceId,
 } from "./api-credential";
+export { bootBeganSince, recordBootSpans } from "./boot-trace";
 export {
 	type BoxHookOutcome,
 	rerunBoxStartHook,
@@ -25,6 +26,7 @@ export {
 	type RefreshSandboxCredentialsOutcome,
 	refreshSandboxCredentials,
 } from "./refresh-credentials";
+export { renewChatgptSignInsAndBoxes } from "./renew-chatgpt-sign-ins";
 export { readRepoHooks } from "./repo-hooks";
 export {
 	cloneUrl,

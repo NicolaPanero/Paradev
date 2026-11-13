@@ -15,6 +15,7 @@ test.each([
 	const factory = acpHarnessFactory(
 		harness,
 		{} as HostDb,
+		async () => null,
 		undefined,
 		(options) => {
 			launches.push({ ...options });

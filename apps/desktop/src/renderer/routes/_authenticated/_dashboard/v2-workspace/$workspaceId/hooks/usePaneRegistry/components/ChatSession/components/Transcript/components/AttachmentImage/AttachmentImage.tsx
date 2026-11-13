@@ -1,4 +1,4 @@
-import { Badge } from "@superset/ui/badge";
+import { AttachmentFileCard } from "@superset/chat-ui/AttachmentFileCard";
 import { useCallback, useState } from "react";
 import { ImagePreviewOverlay } from "renderer/routes/_authenticated/components/ImagePreviewOverlay";
 import { useSaveImageToDownloads } from "renderer/routes/_authenticated/hooks/useSaveImageToDownloads";
@@ -10,6 +10,7 @@ import { PreviewableImage } from "./components/PreviewableImage";
 
 export function AttachmentImage({
 	alt,
+	name: attachedName,
 	owner,
 	path,
 	type,
@@ -22,10 +23,11 @@ export function AttachmentImage({
 	alt?: string | undefined;
 	/** Image bytes as a data URL, when no file in the worktree holds them. */
 	src?: string | undefined;
+	name?: string | undefined;
 }) {
 	const { open, registerThumbnail } = useChatImageGallery();
 	const id = galleryImageId(owner, path);
-	const name = path.split("/").pop() ?? path;
+	const name = attachedName || (path.split("/").pop() ?? path);
 	const source = useChatImageSource(
 		inlineSrc ? null : { path, mimeType: type },
 		{ full: false },
@@ -62,7 +64,7 @@ export function AttachmentImage({
 			</>
 		);
 	if (source.status === "error" || unrenderable)
-		return <Badge variant="secondary">{name}</Badge>;
+		return <AttachmentFileCard name={name} mediaType={type} />;
 	if (source.status === "loading")
 		return (
 			<div className="size-40 animate-pulse rounded-2xl bg-foreground/10" />

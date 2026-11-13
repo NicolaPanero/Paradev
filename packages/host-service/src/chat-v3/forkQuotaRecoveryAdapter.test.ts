@@ -136,7 +136,9 @@ class Worker implements HarnessAdapter {
 	}
 	cancelTurn() {}
 	respondToApproval() {}
-	setMode() {}
+	setMode() {
+		return Promise.resolve(true);
+	}
 	async dispose() {
 		this.disposed = true;
 		this.queue.close();

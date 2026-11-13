@@ -1,6 +1,6 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup";
+import { resolveAppHomeDir } from "@superset/agent-setup";
 import { ACCOUNT_QUOTA_CACHE_MS } from "@superset/shared/fork-account-usage";
 import { fetchAgyAccounts } from "./agy-quota";
 import { fetchClaudeAccounts } from "./claude";
@@ -18,8 +18,7 @@ const lastSuccess = new Map<string, UsageAccount>();
 let restored = false;
 const key = (account: UsageAccount) =>
 	`${account.agent}:${account.selection ?? ""}:${account.credentialKind}:${account.accountKey}`;
-const file = () =>
-	join(resolveSupersetHomeDir(), "fork", "quota-last-success.json");
+const file = () => join(resolveAppHomeDir(), "fork", "quota-last-success.json");
 
 export function includeClaudeSystemLogin(
 	accounts: UsageAccount[],
@@ -150,7 +149,7 @@ async function load() {
 		lastSuccess,
 	);
 	try {
-		await mkdir(join(resolveSupersetHomeDir(), "fork"), {
+		await mkdir(join(resolveAppHomeDir(), "fork"), {
 			recursive: true,
 			mode: 0o700,
 		});

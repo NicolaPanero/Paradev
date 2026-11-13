@@ -18,6 +18,7 @@ import { useForkProFeatures } from "renderer/stores/fork-cli-options";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";
 import type { CandidateRow } from "./components/AddMemberDropdown";
 import { AddMemberDropdown } from "./components/AddMemberDropdown";
+import { CloudWorkspaceAccessSection } from "./components/CloudWorkspaceAccessSection";
 import { DeleteHostSection } from "./components/DeleteHostSection";
 import { HostHeader } from "./components/HostHeader";
 import { HostServiceSection } from "./components/HostServiceSection";
@@ -210,6 +211,25 @@ export function HostSettings({ hostId }: HostSettingsProps) {
 							/>
 						</h3>
 						<ExposeViaRelaySection />
+					</section>
+				)}
+
+				{showProFeatures && isOwner && host.organizationId && (
+					<section className="space-y-3">
+						<h3 className="text-sm font-medium">
+							<HighlightText
+								text={t({
+									message: "Cloud workspaces",
+								})}
+								query={searchQuery}
+							/>
+						</h3>
+						<CloudWorkspaceAccessSection
+							key={`${host.organizationId}:${host.machineId}`}
+							organizationId={host.organizationId}
+							machineId={host.machineId}
+							allowed={host.allowCloudWorkspaces ?? false}
+						/>
 					</section>
 				)}
 

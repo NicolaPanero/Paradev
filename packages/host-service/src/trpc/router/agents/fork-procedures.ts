@@ -153,7 +153,7 @@ export const forkAgentProcedures = {
 			const harness = Object.entries(ACP_HARNESSES).find(
 				([, entry]) => entry.binary === config.presetId,
 			)?.[0];
-			if (!harness || !acpHarnessFactory(harness, ctx.db))
+			if (!harness || !acpHarnessFactory(harness, ctx.db, async () => null))
 				throw new TRPCError({
 					code: "PRECONDITION_FAILED",
 					message: "acp_unavailable",

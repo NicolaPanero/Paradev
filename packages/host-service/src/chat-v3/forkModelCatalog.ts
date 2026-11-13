@@ -2,7 +2,7 @@ import { createHash, randomUUID } from "node:crypto";
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup";
+import { resolveAppHomeDir } from "@superset/agent-setup";
 import type { SessionConfigOption } from "@superset/chat/protocol";
 import {
 	createAcpAdapter,
@@ -50,7 +50,7 @@ export interface ForkModelCatalogStore {
 }
 
 export function fileModelCatalogStore(
-	file = () => join(resolveSupersetHomeDir(), "fork", "model-catalog.json"),
+	file = () => join(resolveAppHomeDir(), "fork", "model-catalog.json"),
 	maxAgeMs = 30 * 24 * 60 * 60_000,
 	now = Date.now,
 ): ForkModelCatalogStore {
@@ -266,10 +266,15 @@ export async function getForkModelCatalog(
 			return previous.value.then(selected);
 	}
 	if (previous?.pending) return previous.value.then(selected);
-	const factory = createFactory(harness, db, undefined, (options) =>
-		cursor
-			? new ForkCursorModelCatalogAdapter(options)
-			: createAcpAdapter(options),
+	const factory = createFactory(
+		harness,
+		db,
+		async () => null,
+		undefined,
+		(options) =>
+			cursor
+				? new ForkCursorModelCatalogAdapter(options)
+				: createAcpAdapter(options),
 	);
 	if (!factory)
 		throw new TRPCError({

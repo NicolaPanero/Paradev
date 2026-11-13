@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, mock } from "bun:test";
 import { mkdirSync, mkdtempSync, realpathSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { claudeProjectDirName } from "@superset/agent-setup/claude-project-links";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/bun-sqlite";
@@ -10,7 +11,12 @@ import { migrate } from "drizzle-orm/bun-sqlite/migrator";
 import type { HostDb } from "../../../db";
 import * as schema from "../../../db/schema";
 import { TerminalAgentStore } from "../../../terminal-agents";
-import { claudeProjectDirName } from "../../../terminal-agents/harness-sessions/claude";
+import { importCloudAttachments } from "../attachments/attachments";
+import {
+	type AttachmentMetadata,
+	readAttachmentMetadata,
+	writeAttachment,
+} from "../attachments/storage";
 import { setDefaultAccountSelection } from "../usage/default-account";
 import {
 	bindResumedSession,
@@ -22,6 +28,7 @@ import {
 	launchChatAgent,
 	validateAgentEffortSelection,
 	validateAgentForkSelection,
+	validateAgentLaunchOptions,
 	validateAgentModelSelection,
 	validateAgentModeSelection,
 	validateAgentResumeSelection,
@@ -846,6 +853,58 @@ describe("validateAgentModeSelection", () => {
 	});
 });
 
+describe("validateAgentLaunchOptions", () => {
+	function seedClaude(db: HostDb) {
+		db.insert(schema.hostAgentConfigs)
+			.values({
+				id: "00000000-0000-0000-0000-00000000000d",
+				presetId: "claude",
+				label: "Claude",
+				command: "claude",
+				argsJson: "[]",
+				promptTransport: "argv",
+				promptArgsJson: "[]",
+				envJson: "{}",
+				displayOrder: 0,
+			})
+			.run();
+	}
+
+	it("accepts a chat permission mode for a chat launch", () => {
+		const db = createTestDb();
+		seedClaude(db);
+		for (const mode of ["default", "acceptEdits", "auto", "plan"]) {
+			expect(() =>
+				validateAgentLaunchOptions(db, {
+					agent: "claude",
+					mode,
+					surface: "chat",
+				}),
+			).not.toThrow();
+		}
+	});
+
+	it("rejects a mode the chat does not offer", () => {
+		const db = createTestDb();
+		seedClaude(db);
+		expect(() =>
+			validateAgentLaunchOptions(db, {
+				agent: "claude",
+				mode: "review",
+				surface: "chat",
+			}),
+		).toThrow('Unsupported launch mode "review" for Claude');
+	});
+
+	it("keeps rejecting a chat mode on a terminal launch", () => {
+		const db = createTestDb();
+		seedClaude(db);
+		expect(() =>
+			validateAgentLaunchOptions(db, { agent: "claude", mode: "auto" }),
+		).toThrow("Claude does not support a launch mode override");
+	});
+});
+
 describe("bindResumedSession", () => {
 	function seedCodexConfig(db: HostDb) {
 		db.insert(schema.hostAgentConfigs)
@@ -1172,12 +1231,51 @@ describe("continuationTarget", () => {
 		).toEqual({
 			harness: "claude-acp",
 			label: "Claude",
+			agentConfigId: "00000000-0000-0000-0000-00000000000a",
 			attachments: [],
 		});
 		expect(chatLaunchTarget(db, launch)).toBeNull();
 		expect(
 			chatLaunchTarget(db, { ...launch, surface: "chat", effort: "high" }),
 		).toBeNull();
+	});
+
+	it("chats as a custom agent that runs the claude or codex CLI", () => {
+		const db = createTestDb();
+		const seedCustom = (id: string, label: string, command: string) =>
+			db
+				.insert(schema.hostAgentConfigs)
+				.values({
+					id,
+					presetId: "custom",
+					label,
+					command,
+					argsJson: '["--permission-mode","auto"]',
+					promptTransport: "argv",
+					promptArgsJson: "[]",
+					envJson: JSON.stringify({ CLAUDE_CONFIG_DIR: "/tmp/personal" }),
+					displayOrder: 1,
+				})
+				.run();
+		seedCustom("00000000-0000-0000-0000-0000000000c1", "Personal", "claude");
+		seedCustom("00000000-0000-0000-0000-0000000000c2", "Codex", "/bin/codex");
+		seedCustom("00000000-0000-0000-0000-0000000000c3", "Other", "aider");
+		const chat = (agent: string) =>
+			chatLaunchTarget(db, { workspaceId, agent, prompt: "", surface: "chat" });
+
+		expect(chat("00000000-0000-0000-0000-0000000000c1")).toEqual({
+			harness: "claude-acp",
+			label: "Personal",
+			agentConfigId: "00000000-0000-0000-0000-0000000000c1",
+			attachments: [],
+		});
+		expect(chat("00000000-0000-0000-0000-0000000000c2")).toEqual({
+			harness: "codex-acp",
+			label: "Codex",
+			agentConfigId: "00000000-0000-0000-0000-0000000000c2",
+			attachments: [],
+		});
+		expect(chat("00000000-0000-0000-0000-0000000000c3")).toBeNull();
 	});
 
 	// A hook-recorded binding carries only the binary's builtin id, while a
@@ -1277,5 +1375,112 @@ describe("fork new workspace chat routing", () => {
 		expect(prompt.mock.calls[0]?.[0]).toMatchObject({
 			content: [{ type: "text", text: "first prompt" }],
 		});
+	});
+});
+
+describe("attachments handed to an agent launch", () => {
+	const workspaceId = "11111111-1111-1111-1111-111111111111";
+	let manifestDir: string;
+
+	beforeEach(() => {
+		manifestDir = mkdtempSync(join(tmpdir(), "superset-agent-attachments-"));
+		process.env.HOST_MANIFEST_DIR = manifestDir;
+	});
+
+	afterEach(() => {
+		rmSync(manifestDir, { recursive: true, force: true });
+		delete process.env.HOST_MANIFEST_DIR;
+	});
+
+	function seedClaude(db: HostDb) {
+		db.insert(schema.hostAgentConfigs)
+			.values({
+				id: "00000000-0000-0000-0000-00000000000a",
+				presetId: "claude",
+				label: "Claude",
+				command: "claude",
+				argsJson: "[]",
+				promptTransport: "argv",
+				promptArgsJson: "[]",
+				resumeArgsJson: "[]",
+				forkArgsJson: "[]",
+				envJson: "{}",
+				displayOrder: 0,
+			})
+			.run();
+	}
+
+	it("a cloud launch's first-prompt part carries the fileId it was imported from", async () => {
+		const server = Bun.serve({
+			port: 0,
+			fetch: () => new Response("png"),
+		});
+		try {
+			const fileId = crypto.randomUUID();
+			const [imported] = await importCloudAttachments(
+				{
+					api: {
+						attachment: {
+							resolve: {
+								mutate: async () => [
+									{
+										fileId,
+										name: "shot.png",
+										contentType: "image/png",
+										sizeBytes: 3,
+										url: server.url.href,
+									},
+								],
+							},
+						},
+					},
+				},
+				[fileId],
+			);
+			const db = createTestDb();
+			seedClaude(db);
+
+			const target = chatLaunchTarget(db, {
+				workspaceId,
+				agent: "claude",
+				prompt: "look",
+				surface: "chat",
+				attachmentIds: [imported?.attachmentId ?? ""],
+			});
+			expect(target?.attachments).toEqual([
+				{
+					attachmentId: imported?.attachmentId ?? "",
+					fileId,
+					name: "shot.png",
+					mimeType: "image/png",
+					sizeBytes: 3,
+				},
+			]);
+		} finally {
+			server.stop(true);
+		}
+	});
+
+	it("a terminal launch stamps the attachments it lists as used", () => {
+		const metadata: AttachmentMetadata = {
+			attachmentId: crypto.randomUUID(),
+			mediaType: "image/png",
+			sizeBytes: 1,
+			createdAt: 0,
+			lastUsedAt: 0,
+		};
+		writeAttachment(new Uint8Array([1]), metadata);
+		const db = createTestDb();
+		seedClaude(db);
+
+		buildTerminalAgentLaunch(db, {
+			workspaceId,
+			agent: "claude",
+			prompt: "look",
+			attachmentIds: [metadata.attachmentId],
+		});
+		expect(
+			readAttachmentMetadata(metadata.attachmentId)?.lastUsedAt,
+		).toBeGreaterThan(0);
 	});
 });

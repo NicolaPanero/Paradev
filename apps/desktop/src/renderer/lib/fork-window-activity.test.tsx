@@ -1,7 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import { WaveSpinner } from "@superset/ui/atoms/WaveSpinner";
 import { FORK_MOTION_PAUSED_ATTRIBUTE } from "@superset/ui/lib/fork-motion";
-import { act, render } from "renderer/test-utils/fork-ui";
+import { render } from "renderer/test-utils/fork-ui";
 import { FORK_WINDOW_ACTIVE_CHANNEL } from "shared/fork-window-activity";
 import { installForkWindowActivity } from "./fork-window-activity";
 
@@ -47,22 +47,12 @@ test("motion pauses while the window is inactive and resumes when it is active",
 	expect(root.hasAttribute(FORK_MOTION_PAUSED_ATTRIBUTE)).toBe(false);
 });
 
-test("the wave spinner stops rendering frames while motion is paused", async () => {
-	const opacities = (container: HTMLElement) =>
-		[...container.querySelectorAll<HTMLElement>("span span")]
-			.map((cell) => cell.style.opacity)
-			.join(",");
-	const wait = (ms: number) =>
-		act(() => new Promise((resolve) => setTimeout(resolve, ms)));
-
-	root.setAttribute(FORK_MOTION_PAUSED_ATTRIBUTE, "");
+test("the wave spinner animates with CSS, so the paused-motion rule stops it", () => {
 	const view = render(<WaveSpinner />);
-	const initial = opacities(view.container);
-	await wait(160);
-	expect(opacities(view.container)).toBe(initial);
-
-	root.removeAttribute(FORK_MOTION_PAUSED_ATTRIBUTE);
-	await wait(160);
-	expect(opacities(view.container)).not.toBe(initial);
+	const cells = [...view.container.querySelectorAll<HTMLElement>("span span")];
+	expect(cells.length).toBe(9);
+	expect(
+		cells.every((cell) => cell.classList.contains("animate-wave-cell")),
+	).toBe(true);
 	view.unmount();
 });

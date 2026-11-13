@@ -81,28 +81,38 @@ export function copyForkData({
 	return true;
 }
 
+/** Paradev moved its home to ~/.paradev and left ~/.superset as a symlink. */
+function officialHome(): string {
+	const paradev = join(homedir(), ".paradev");
+	return existsSync(paradev) ? paradev : join(homedir(), ".superset");
+}
+
 export function copyForkDataOnFirstLaunch(
 	homeDirName: string,
 	appData: string,
 	productName: string,
 ) {
 	if (homeDirName !== ".superset-fork") return;
-	// Launched from Superset (its terminal, its updater), the fork inherits
+	// Launched from Paradev (its terminal, its updater), the fork inherits
 	// the official home; that one is never the fork's.
-	if (process.env.SUPERSET_HOME_DIR === join(homedir(), ".superset"))
+	if (
+		[".superset", ".paradev"].some(
+			(official) => process.env.SUPERSET_HOME_DIR === join(homedir(), official),
+		)
+	)
 		delete process.env.SUPERSET_HOME_DIR;
 	if (process.env.SUPERSET_HOME_DIR) return;
 	try {
 		if (
 			copyForkData({
-				fromHome: join(homedir(), ".superset"),
+				fromHome: officialHome(),
 				toHome: join(homedir(), homeDirName),
 				fromProfile: join(appData, "Superset"),
 				toProfile: join(appData, productName),
 			})
 		)
-			console.log("[fork] Copied data from ~/.superset");
+			console.log("[fork] Copied data from the Paradev home");
 	} catch (error) {
-		console.warn("[fork] Could not copy data from ~/.superset", error);
+		console.warn("[fork] Could not copy data from the Paradev home", error);
 	}
 }

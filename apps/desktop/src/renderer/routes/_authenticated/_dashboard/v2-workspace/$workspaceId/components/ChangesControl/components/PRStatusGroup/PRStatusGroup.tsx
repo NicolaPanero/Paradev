@@ -19,7 +19,6 @@ import { LuArrowUpRight } from "react-icons/lu";
 import {
 	VscChevronDown,
 	VscGitCommit,
-	VscGitMerge,
 	VscGitPullRequest,
 	VscLoading,
 	VscRepoPush,
@@ -40,6 +39,7 @@ import { usePullRequestActions } from "../../../../hooks/usePullRequestActions";
 import { useShipActions } from "../../../../hooks/useShipActions";
 import type { PRFlowState } from "../../../../utils/getPRFlowState";
 import { CommitForm } from "../../../CommitForm";
+import { MergeMethodMenuItems } from "../../../MergeMethodMenuItems";
 import { PRStatusIndicators } from "../../../PRStatusIndicators";
 import { PRDetailCard } from "./components/PRDetailCard";
 
@@ -298,30 +298,13 @@ export function PRStatusGroup({
 									>
 										<Trans>Merge</Trans>
 									</DropdownMenuLabel>
-									<DropdownMenuItem
-										onClick={() => prActions.merge("squash")}
+									<MergeMethodMenuItems
+										target={target}
+										isMerging={prActions.isMerging}
+										onMerge={prActions.merge}
 										className="text-xs"
-										disabled={prActions.isMerging}
-									>
-										<VscGitMerge className="size-3.5" />
-										<Trans>Squash and merge</Trans>
-									</DropdownMenuItem>
-									<DropdownMenuItem
-										onClick={() => prActions.merge("merge")}
-										className="text-xs"
-										disabled={prActions.isMerging}
-									>
-										<VscGitMerge className="size-3.5" />
-										<Trans>Create merge commit</Trans>
-									</DropdownMenuItem>
-									<DropdownMenuItem
-										onClick={() => prActions.merge("rebase")}
-										className="text-xs"
-										disabled={prActions.isMerging}
-									>
-										<VscGitMerge className="size-3.5" />
-										<Trans>Rebase and merge</Trans>
-									</DropdownMenuItem>
+										iconClassName="size-3.5"
+									/>
 									<DropdownMenuSeparator />
 								</>
 							)}

@@ -117,7 +117,9 @@ export class ForkCursorModelCatalogAdapter implements HarnessAdapter {
 		throw new Error("Model discovery cannot send prompts");
 	}
 	cancelTurn(): void {}
-	setMode(): void {}
+	setMode(): Promise<boolean> {
+		return Promise.resolve(false);
+	}
 	respondToApproval(): void {
 		throw new Error("Model discovery cannot approve tools");
 	}

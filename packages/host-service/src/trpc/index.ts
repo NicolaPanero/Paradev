@@ -13,7 +13,9 @@ import type { HostServiceContext } from "../types";
 import { readErrorDiagnostics } from "./error-diagnostics";
 import {
 	type DeleteInProgressCause,
+	type GitEnvironmentReason,
 	isDeleteInProgressCause,
+	isGitEnvironmentCause,
 	isProjectDirMissingCause,
 	isProjectNotSetupCause,
 	isTeardownFailureCause,
@@ -68,6 +70,11 @@ const t = initTRPC
 				isDeleteInProgressCause(error.cause)
 					? { kind: "DELETE_IN_PROGRESS" }
 					: undefined;
+			const gitEnvironment:
+				| { kind: "GIT_ENVIRONMENT"; reason: GitEnvironmentReason | null }
+				| undefined = isGitEnvironmentCause(error.cause)
+				? { kind: "GIT_ENVIRONMENT", reason: error.cause.reason ?? null }
+				: undefined;
 			const i18nCause = isI18nErrorCause(error.cause) ? error.cause : null;
 			return {
 				...shape,
@@ -77,6 +84,7 @@ const t = initTRPC
 					projectNotSetup,
 					projectDirMissing,
 					deleteInProgress,
+					gitEnvironment,
 					i18nKey: i18nCause?.i18nKey ?? null,
 					i18nParams: i18nCause?.i18nParams ?? null,
 				},

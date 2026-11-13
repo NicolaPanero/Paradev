@@ -15,7 +15,7 @@ import type {
 } from "../../../../../../types";
 import {
 	markChatSessionClosed,
-	markChatSessionOpened,
+	reopenChatSession,
 } from "../../../../../../utils/closedChatSessions";
 import { markChatStopped } from "../../../../../../utils/forkChatCloseIntent/forkChatCloseIntent";
 import { useChatWiring } from "../../../ChatSession/hooks/useSessionClient";
@@ -214,7 +214,7 @@ export function useAgentSurfaceSwitch(workspaceId: string): AgentSurfaceSwitch {
 				});
 			} finally {
 				if (!replaced && data.sessionId) {
-					markChatSessionOpened(data.sessionId);
+					reopenChatSession(data.sessionId);
 					void queryClient.invalidateQueries({
 						queryKey: ["acp-chat-session", data.sessionId],
 					});

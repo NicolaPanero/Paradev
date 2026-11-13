@@ -2,7 +2,7 @@ import { constants } from "node:fs";
 import { lstat, open, realpath } from "node:fs/promises";
 import { homedir, tmpdir } from "node:os";
 import { isAbsolute, join, relative, resolve, sep } from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup";
+import { resolveAppHomeDir } from "@superset/agent-setup";
 import { z } from "zod";
 import { protectedProcedure } from "../../index";
 
@@ -19,7 +19,7 @@ export function forkBackgroundOutputRoots(profile?: string | null): string[] {
 		join(home, ".cursor", "chats"),
 		join(home, ".cursor", "acp-sessions"),
 		join(home, ".grok", "sessions"),
-		join(resolveSupersetHomeDir(), "tmp"),
+		join(resolveAppHomeDir(), "tmp"),
 		...(profile ? [join(profile, "projects"), join(profile, "sessions")] : []),
 	];
 }

@@ -266,7 +266,13 @@ export function WorkDrawer({
 								!(queue.pausedByLimit && notice) && (
 									<QueuePausedBar
 										actionable={queue.actionable && !prompts.some(forkPending)}
-										byLimit={queue.pausedByLimit === true}
+										reason={
+											queue.pausedByLimit
+												? "limit"
+												: queue.pausedByShutdown
+													? "shutdown"
+													: "interrupt"
+										}
 										onClear={queueActions.onClear}
 										onResume={queueActions.onResume}
 									/>

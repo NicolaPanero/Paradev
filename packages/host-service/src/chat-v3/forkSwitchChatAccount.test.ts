@@ -81,7 +81,9 @@ class Worker implements HarnessAdapter {
 		});
 	}
 	respondToApproval() {}
-	setMode() {}
+	setMode() {
+		return Promise.resolve(true);
+	}
 	async dispose() {
 		this.trace.push("close");
 		this.queue.close();
