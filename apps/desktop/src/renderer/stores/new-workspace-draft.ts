@@ -32,9 +32,10 @@ export type WorkspaceCheckout = "worktree" | "local";
 export interface NewWorkspaceDraft {
 	forkAccountChoice?: { key: string; selection: string | null };
 	selectedProjectId: string | null;
+	/** `owner/name`, so the pick can follow its repository to another host. */
+	selectedProjectRepository: string | null;
 	/** Explicit "No project" (session) choice — distinct from not-yet-selected. */
 	isSession: boolean;
-	hostId: string | null;
 	checkout: WorkspaceCheckout;
 	promptDraft: ComposerDraftSegment[];
 	baseBranch: string | null;
@@ -56,7 +57,7 @@ export interface NewWorkspaceDraft {
 interface NewWorkspaceDraftState extends NewWorkspaceDraft {
 	resetKey: number;
 	updateDraft: (patch: Partial<NewWorkspaceDraft>) => void;
-	selectProject: (projectId: string) => void;
+	selectProject: (projectId: string, repository?: string | null) => void;
 	selectSession: () => void;
 	resetDraft: () => void;
 }
@@ -64,8 +65,8 @@ interface NewWorkspaceDraftState extends NewWorkspaceDraft {
 function buildInitialDraft(): NewWorkspaceDraft {
 	return {
 		selectedProjectId: null,
+		selectedProjectRepository: null,
 		isSession: false,
-		hostId: null,
 		checkout: "local",
 		promptDraft: [],
 		baseBranch: null,
@@ -88,13 +89,18 @@ export const useNewWorkspaceDraftStore = create<NewWorkspaceDraftState>(
 		// The only writers of the selectedProjectId/isSession pair — a project
 		// selection that leaves isSession behind makes submit reject PR
 		// checkouts while the picker shows the project as selected.
-		selectProject: (projectId) =>
-			set({ selectedProjectId: projectId, isSession: false }),
+		selectProject: (projectId, repository = null) =>
+			set({
+				selectedProjectId: projectId,
+				selectedProjectRepository: repository,
+				isSession: false,
+			}),
 		// Sessions can't check out a PR or fork a branch — clear the
 		// repo-scoped inputs instead of failing at submit.
 		selectSession: () =>
 			set({
 				selectedProjectId: null,
+				selectedProjectRepository: null,
 				isSession: true,
 				baseBranch: null,
 				baseBranchSource: null,
@@ -102,7 +108,6 @@ export const useNewWorkspaceDraftStore = create<NewWorkspaceDraftState>(
 		resetDraft: () =>
 			set((state) => ({
 				...buildInitialDraft(),
-				hostId: state.hostId,
 				resetKey: state.resetKey + 1,
 			})),
 	}),

@@ -5,8 +5,9 @@ import {
 } from "@superset/workspace-fs/host";
 import { eq } from "drizzle-orm";
 import type { HostDb } from "../../db/index.ts";
-import { projects, workspaces } from "../../db/schema.ts";
+import { workspaces } from "../../db/schema.ts";
 import { resolveFolderWorkspaceRoot } from "../../project-folders/index.ts";
+import { getLocalProject } from "../../projects/local-project-store.ts";
 import { WatchAttachGuard } from "./watch-attach-guard.ts";
 import {
 	scanGitIgnoredDirectories,
@@ -59,9 +60,7 @@ export class WorkspaceFilesystemManager {
 	}
 
 	resolveProjectRoot(projectId: string): string {
-		const project = this.db.query.projects
-			.findFirst({ where: eq(projects.id, projectId) })
-			.sync();
+		const project = getLocalProject(this.db, projectId);
 
 		if (!project) {
 			throw new ProjectNotFoundError(`Project not found: ${projectId}`);

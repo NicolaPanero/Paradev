@@ -576,7 +576,10 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 		this.cancelled = true;
 		this.mode = mode;
 		this.changed();
-		this.child.setMode(mode);
+		return this.child.setMode(mode);
+	}
+	startSelections() {
+		return this.child.startSelections?.() ?? Promise.resolve({});
 	}
 	async setConfigOption(id: string, value: string) {
 		this.quotaFailure = undefined;

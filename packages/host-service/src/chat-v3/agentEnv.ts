@@ -2,7 +2,8 @@ import { delimiter, dirname, join } from "node:path";
 import { getBinDir } from "@superset/agent-setup";
 import { eq } from "drizzle-orm";
 import type { HostDb } from "../db";
-import { projects, workspaces } from "../db/schema";
+import { workspaces } from "../db/schema";
+import { getProjectIncludingDeleted } from "../projects/local-project-store";
 import { waitForSandboxManagedEnv } from "../runtime/sandbox-managed-env";
 import {
 	buildHostLaunchEnv,
@@ -14,6 +15,7 @@ import {
 	resolveHostAgentConfig,
 } from "../terminal-agents/agent-config";
 import { selectedAccountEnv } from "../trpc/router/agents/account-selection";
+import { chatLaunchPresetId } from "../trpc/router/agents/agents";
 import { resolveDefaultAccountTerminalEnv } from "../trpc/router/usage/default-account";
 import { assertIsolatedAccount } from "../trpc/router/usage/fork-isolated-accounts";
 import { ensureIsolatedDefault } from "../trpc/router/usage/fork-isolated-default";
@@ -26,9 +28,7 @@ function workspacePaths(
 		.findFirst({ where: eq(workspaces.id, workspaceId) })
 		.sync();
 	const project = workspace?.projectId
-		? db.query.projects
-				.findFirst({ where: eq(projects.id, workspace.projectId) })
-				.sync()
+		? getProjectIncludingDeleted(db, workspace.projectId)
 		: undefined;
 	return {
 		workspacePath: workspace?.worktreePath ?? "",
@@ -59,10 +59,12 @@ function withoutAmbientKeys(
 
 /**
  * A chat agent is launched with the env a terminal would launch it with, so
- * the same CLI resolves the same tools and auth either way. `~/.superset/bin`
+ * the same CLI resolves the same tools and auth either way. `~/.paradev/bin`
  * leads PATH because a terminal picks that up from the shell bootstrap, which
  * a directly spawned agent never runs, and it is what puts the superset CLI
- * and the agent wrappers in reach.
+ * and the agent wrappers in reach. A chat opened with an agent config gets
+ * that config's env on top, as its terminal would, so a "Claude (work)" chat
+ * runs on the work account; a key set there is the user's own and stays.
  */
 export async function buildChatAgentEnv(options: {
 	db: HostDb;
@@ -72,14 +74,21 @@ export async function buildChatAgentEnv(options: {
 	accountSelection?: string | null;
 	terminalId?: string;
 	preserveLegacyAccount?: boolean;
+	/** The CLI the chat runs (`claude`, `codex`, …); a config applies only to its own. */
+	presetId?: string;
 }): Promise<Record<string, string>> {
 	await Promise.all([waitForTerminalBaseEnv(), waitForSandboxManagedEnv()]);
 	const paths = workspacePaths(options.db, options.workspaceId);
-	const config = options.agentConfigId
+	const resolved = options.agentConfigId
 		? resolveHostAgentConfig(options.db, options.agentConfigId)
 		: null;
-	if (options.agentConfigId && !config)
+	if (options.agentConfigId && !resolved)
 		throw new Error("agent_config_unavailable");
+	const config =
+		resolved &&
+		(!options.presetId || chatLaunchPresetId(resolved) === options.presetId)
+			? resolved
+			: null;
 	if (
 		!options.preserveLegacyAccount &&
 		options.accountSelection === undefined &&
@@ -147,13 +156,17 @@ export async function buildChatAgentEnv(options: {
 			...configEnv,
 		}),
 	);
+	const configKeys = Boolean(
+		configEnv.ANTHROPIC_API_KEY || configEnv.ANTHROPIC_AUTH_TOKEN,
+	);
 	for (const key of ["ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"]) {
 		const value =
 			configEnv[key] ??
-			(options.accountSelection === undefined
+			(options.accountSelection === undefined && !configKeys
 				? getTerminalBaseEnv()[key]
 				: undefined);
 		if (value) result[key] = value;
+		else if (configKeys) delete result[key];
 	}
 	if (config?.presetId === "claude" && options.accountSelection === null)
 		delete result.CLAUDE_CONFIG_DIR;

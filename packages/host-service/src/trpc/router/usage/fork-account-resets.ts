@@ -1,7 +1,7 @@
 import { accessSync, constants } from "node:fs";
 import { mkdir, mkdtemp, rm } from "node:fs/promises";
 import { delimiter, join } from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup";
+import { resolveAppHomeDir } from "@superset/agent-setup";
 import {
 	CodexRpcClient,
 	spawnCodexTransport,
@@ -85,7 +85,7 @@ export async function withCodexResetRpc<T>(
 			await waitForTerminalBaseEnv();
 			return getTerminalBaseEnv();
 		},
-		root: () => join(resolveSupersetHomeDir(), "fork", "reset-probes"),
+		root: () => join(resolveAppHomeDir(), "fork", "reset-probes"),
 		spawn: spawnCodexTransport,
 	},
 ): Promise<T> {

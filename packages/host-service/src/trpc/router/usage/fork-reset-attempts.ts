@@ -9,7 +9,7 @@ import {
 	writeFileSync,
 } from "node:fs";
 import { basename, join } from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup";
+import { resolveAppHomeDir } from "@superset/agent-setup";
 import { z } from "zod";
 
 const schema = z.object({
@@ -81,6 +81,6 @@ export class ResetAttemptLedger {
 }
 export function resetAttemptLedger() {
 	return new ResetAttemptLedger(
-		join(resolveSupersetHomeDir(), "fork", "reset-attempts"),
+		join(resolveAppHomeDir(), "fork", "reset-attempts"),
 	);
 }

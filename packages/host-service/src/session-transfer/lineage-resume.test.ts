@@ -9,12 +9,12 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { claudeProjectDirName } from "@superset/agent-setup/claude-project-links";
 import { runMigrations } from "@superset/shared/sqlite-migrations";
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import type { HostDb } from "../db";
 import * as schema from "../db/schema";
-import { claudeProjectDirName } from "../terminal-agents/harness-sessions/claude";
 import type { LineageNode } from "./lineage";
 import { lineageResumeLaunch } from "./lineage-resume";
 

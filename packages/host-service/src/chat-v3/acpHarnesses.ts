@@ -1,11 +1,10 @@
-import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
-import type { HarnessFactory } from "@superset/chat-runtime";
+import { presetForAcpHarness } from "@superset/chat/core";
+import type { HarnessFactory, ResolveAttachment } from "@superset/chat-runtime";
 import { createAcpAdapter } from "@superset/chat-runtime";
 import type { HostDb } from "../db";
 import { resolveHostAgentConfig } from "../terminal-agents/agent-config";
-import { resolveAttachmentPath } from "../trpc/router/attachments/storage";
 import { captureSessionAccount } from "../trpc/router/usage/session-account/session-account";
 import { ACP_HARNESSES } from "./acpCatalogue";
 import { resolveAgentCli } from "./agentCli";
@@ -25,16 +24,6 @@ import { forkGrokAuthMethod } from "./forkGrokAuth";
 import { forkLaunchChoices } from "./forkLaunchChoices";
 import { forkQuotaRecoveryHarness } from "./forkQuotaRecoveryHarness";
 
-async function resolveAttachment(attachmentId: string) {
-	const resolved = resolveAttachmentPath(attachmentId);
-	if (!resolved) return null;
-	return {
-		path: resolved.path,
-		mimeType: resolved.metadata.mediaType,
-		data: (await readFile(resolved.path)).toString("base64"),
-	};
-}
-
 function resolveAdapterEntry(packageName: string): string {
 	const moduleRequire = createRequire(import.meta.url);
 	const pkgJson = moduleRequire.resolve(`${packageName}/package.json`);
@@ -44,6 +33,7 @@ function resolveAdapterEntry(packageName: string): string {
 export function acpHarnessFactory(
 	harness: string,
 	db: HostDb,
+	resolveAttachment: ResolveAttachment,
 	agents?: ChatAgentBridge,
 	createAdapter: typeof createAcpAdapter = createAcpAdapter,
 ): HarnessFactory | null {
@@ -114,6 +104,8 @@ export function acpHarnessFactory(
 										accountSelection,
 									}),
 									terminalId: options.terminalId,
+									presetId:
+										presetForAcpHarness(options.harness) ?? entry.binary,
 									preserveLegacyAccount: !!options.resume,
 								}),
 						});
@@ -176,11 +168,12 @@ export function acpHarnessFactory(
 
 export function acpHarnessEntries(
 	db: HostDb,
+	resolveAttachment: ResolveAttachment,
 	agents?: ChatAgentBridge,
 ): [string, HarnessFactory][] {
 	const entries: [string, HarnessFactory][] = [];
 	for (const harness of Object.keys(ACP_HARNESSES)) {
-		const factory = acpHarnessFactory(harness, db, agents);
+		const factory = acpHarnessFactory(harness, db, resolveAttachment, agents);
 		if (factory) entries.push([harness, factory]);
 	}
 	return entries;

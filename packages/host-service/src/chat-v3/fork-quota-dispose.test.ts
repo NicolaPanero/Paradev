@@ -26,7 +26,9 @@ class Worker implements HarnessAdapter {
 	prompt(_content: UserContent[]) {}
 	cancelTurn() {}
 	respondToApproval() {}
-	setMode() {}
+	setMode() {
+		return Promise.resolve(true);
+	}
 	async dispose() {
 		this.stops += 1;
 		await this.stop();

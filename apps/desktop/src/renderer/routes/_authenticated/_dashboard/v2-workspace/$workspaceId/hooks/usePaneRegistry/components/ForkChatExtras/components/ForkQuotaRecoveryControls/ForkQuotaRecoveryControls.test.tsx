@@ -50,6 +50,7 @@ function fixture(
 												projectNotSetup: undefined,
 												projectDirMissing: undefined,
 												deleteInProgress: undefined,
+												gitEnvironment: undefined,
 											},
 										},
 									},

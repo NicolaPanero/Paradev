@@ -3,33 +3,24 @@ import type {
 	ChatPaneData,
 	PaneViewerData,
 } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
+import type { SessionInfo } from "../../components/AcpChatPane/utils/sessionInfoFromState";
+import { sessionInfoPaneData } from "../sessionInfoPaneData";
 
 export function syncChatSessionInfo(
 	ctx: RendererContext<PaneViewerData>,
-	info: { harnessSessionId?: string; title?: string },
+	info: SessionInfo,
 	agentLabel?: string,
-) {
+): ChatPaneData | null {
 	const state = ctx.store.getState();
 	const current = state.getPane(ctx.pane.id);
-	if (!current || current.pane.kind !== "chat-v3") return;
+	if (!current || current.pane.kind !== "chat-v3") return null;
 	const data = current.pane.data as ChatPaneData;
-	const rebound =
-		info.harnessSessionId !== undefined &&
-		data.agent &&
-		info.harnessSessionId !== data.agent.sessionId;
-	const title = info.title?.trim() || data.chatTitle;
-	if (rebound || title !== data.chatTitle) {
-		state.setPaneData({
-			paneId: current.pane.id,
-			data: {
-				...data,
-				...(rebound && data.agent
-					? { agent: { ...data.agent, sessionId: info.harnessSessionId } }
-					: {}),
-				...(title ? { chatTitle: title } : {}),
-			},
-		});
-	}
+	const next = sessionInfoPaneData(data, {
+		...info,
+		title: info.title?.trim() || undefined,
+	});
+	if (next) state.setPaneData({ paneId: current.pane.id, data: next });
+	const title = (next ?? data).chatTitle;
 	if (
 		title &&
 		current.pane.titleOverride &&
@@ -42,4 +33,5 @@ export function syncChatSessionInfo(
 			titleOverride: undefined,
 		});
 	}
+	return next;
 }

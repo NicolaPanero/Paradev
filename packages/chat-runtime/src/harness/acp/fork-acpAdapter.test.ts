@@ -372,6 +372,13 @@ async function flush(times = 8): Promise<void> {
 	for (let i = 0; i < times; i++) await Promise.resolve();
 }
 
+/** Lets the adapter stop waiting for start options the fake agent never lists. */
+async function settleStart(): Promise<void> {
+	await flush(32);
+	await new Promise((resolve) => setTimeout(resolve, 0));
+	await flush(32);
+}
+
 function startAdapter(
 	agent: FakeAcpAgent,
 	resume?: string,
@@ -386,6 +393,7 @@ function startAdapter(
 		| "backgroundDetailIntervalMs"
 		| "startupTimeoutMs"
 		| "forkGrokContextUsage"
+		| "startOptionsGraceMs"
 	> = {},
 ): { adapter: AcpAdapter; events: AdapterEvent[] } {
 	let counter = 0;
@@ -394,6 +402,7 @@ function startAdapter(
 		createTransport: (_opts, handlers) => agent.transport(handlers),
 		now: () => 1,
 		mintId: () => `id-${++counter}`,
+		startOptionsGraceMs: 0,
 		...adapterOptions,
 	});
 	const events: AdapterEvent[] = [];
@@ -1126,7 +1135,7 @@ describe("per-chat Full access", () => {
 			{ cwd, modeId: "plan" },
 			{ defaultModeId: "bypassPermissions" },
 		);
-		await flush(32);
+		await settleStart();
 		agent.notify("sess-1", {
 			sessionUpdate: "tool_call",
 			toolCallId: "plan-read",
@@ -1186,7 +1195,7 @@ describe("per-chat Full access", () => {
 		agent.newSessionModes = { currentModeId: "plan", availableModes: [] };
 		const cwd = process.cwd();
 		const { adapter } = startAdapter(agent, undefined, { cwd, modeId: "plan" });
-		await flush(32);
+		await settleStart();
 		agent.requestServer(
 			"session/request_permission",
 			{
@@ -1249,7 +1258,7 @@ describe("per-chat Full access", () => {
 			{ cwd },
 			{ defaultModeId: "bypassPermissions" },
 		);
-		await flush(32);
+		await settleStart();
 		agent.holdSelections = true;
 		adapter.setMode("plan");
 		const ask = (id: number) =>

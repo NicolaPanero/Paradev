@@ -79,7 +79,7 @@ async function searchPullRequests(
 	client: HostServiceClient,
 	input: SearchInput,
 	previous?: SearchPage,
-) {
+): Promise<SearchPage & { checksDeferred?: boolean }> {
 	const supported = await forkUnifiedSearchSupported(client);
 	if (supported)
 		return forkKeepUnavailablePullRequests(

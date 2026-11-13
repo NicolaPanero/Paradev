@@ -6,13 +6,13 @@ test.each([
 	{ acp: false, hidePro: true },
 	{ acp: true, hidePro: false },
 	{ acp: true, hidePro: true },
-])("ACP visibility and hidden Pro settings remain independent: %j", ({
+])("the chat setting shows whatever the flags, and hidden Pro settings stay independent: %j", ({
 	acp,
 	hidePro,
 }) => {
 	const counts = (query: string) =>
 		getVisibleMatchCountBySection(query, true, true, true, false, acp, hidePro);
-	expect(counts("acp").experimental).toBe(acp ? 1 : undefined);
+	expect(counts("acp").behavior).toBe(1);
 	if (hidePro) expect(counts("billing").billing).toBeUndefined();
 	else expect(counts("billing").billing).toBeGreaterThan(0);
 });

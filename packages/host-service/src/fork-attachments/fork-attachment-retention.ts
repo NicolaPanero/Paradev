@@ -9,7 +9,7 @@ import {
 	writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup";
+import { resolveAppHomeDir } from "@superset/agent-setup";
 import { WORKSPACE_ATTACHMENTS_DIR } from "@superset/shared/workspace-attachments";
 import { z } from "zod";
 import type { HostDb } from "../db";
@@ -24,7 +24,7 @@ const retentionFile = z.object({
 	days: z.number().int().min(0).max(MAX_ATTACHMENT_RETENTION_DAYS),
 });
 
-export function attachmentRetentionPath(home = resolveSupersetHomeDir()) {
+export function attachmentRetentionPath(home = resolveAppHomeDir()) {
 	return join(home, "fork", "attachment-retention.json");
 }
 
