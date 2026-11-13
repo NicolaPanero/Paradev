@@ -105,6 +105,10 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		["cloud-sidebar"],
 	],
 	[
+		"src/renderer/routes/_authenticated/_dashboard/stores/chatTabsStore/chatTabsStore.ts",
+		["chat-tabs"],
+	],
+	[
 		"src/renderer/routes/_authenticated/_dashboard/stores/listDisplayStore/listDisplayStore.ts",
 		["list-display"],
 	],
@@ -131,6 +135,10 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 	],
 	["src/renderer/stores/v2-notifications/store.ts", ["v2-notifications-v1"]],
 	["src/renderer/stores/hiring-banner/store.ts", ["hiring-banner-v1"]],
+	[
+		"src/renderer/stores/payment-failed-card-dismissal/store.ts",
+		["payment-failed-card-dismissal-v1"],
+	],
 	["src/renderer/stores/star-nag/store.ts", ["star-nag-v1"]],
 	[
 		"src/renderer/stores/release-notes-card/store.ts",
@@ -197,7 +205,7 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 		["chatFavoriteModels"],
 	],
 	[
-		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/ChatPane/utils/savedChatMode/savedChatMode.ts",
+		"src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/utils/savedChatMode/savedChatMode.ts",
 		["chatModeByAgent"],
 	],
 	[

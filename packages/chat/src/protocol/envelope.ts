@@ -101,6 +101,8 @@ export const sessionStateSchema = z.looseObject({
 	usageLimit: usageLimitSchema.optional(),
 	/** The queue paused for a usage limit, which stays the reason after its notice is dismissed. */
 	queuePausedByLimit: z.boolean().optional(),
+	/** The queue was waiting when Paradev closed, and stays paused until someone resumes it. */
+	queuePausedByShutdown: z.boolean().optional(),
 	backgroundTasks: z.array(backgroundTaskSchema).optional(),
 	awaitingBackground: z.boolean().optional(),
 	/** Tokens in the agent's context window, from its latest usage report. */
@@ -123,6 +125,7 @@ export const TURN_FAILURE_KINDS = [
 	"refused",
 	"usage_limit",
 	"session_lost",
+	"host_stopped",
 	"unknown",
 ] as const;
 export const turnFailureKindSchema = z.enum(TURN_FAILURE_KINDS);

@@ -11,7 +11,7 @@ import {
 } from "@superset/ui/dialog";
 import { workspaceTrpc } from "@superset/workspace-client";
 import { useEffect, useRef } from "react";
-import type { AgentWork } from "../../utils/collectAgentWork";
+import type { AgentWork } from "../../../../utils/collectAgentWork";
 
 export function ForkBackgroundWorkDetails({
 	work,

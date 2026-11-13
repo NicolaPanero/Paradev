@@ -9,7 +9,7 @@ import type {
 } from "../../types";
 import {
 	markChatSessionClosed,
-	markChatSessionOpened,
+	reopenChatSession,
 } from "../../utils/closedChatSessions";
 import { findTerminalPaneLocation } from "../../utils/focusTerminalPane";
 import { useChatWiring } from "../usePaneRegistry/components/ChatSession/hooks/useSessionClient";
@@ -93,7 +93,7 @@ export function useForkBackgroundChats(workspaceId: string) {
 		(store: StoreApi<WorkspaceStore<PaneViewerData>>, chat: BackgroundChat) => {
 			if (findTerminalPaneLocation(store.getState(), chat.terminalId)) return;
 			if (chat.paneData.acpSessionId)
-				markChatSessionOpened(chat.paneData.acpSessionId);
+				reopenChatSession(chat.paneData.acpSessionId);
 			store.getState().addTab({
 				panes: [
 					{

@@ -1,6 +1,6 @@
 import { cp, readdir, realpath, stat } from "node:fs/promises";
 import { join } from "node:path";
-import { claudeProjectDirName } from "../terminal-agents/harness-sessions/claude";
+import { claudeProjectDirName } from "@superset/agent-setup/claude-project-links";
 
 export type MoveClaudeSessionResult =
 	| { moved: true; from: string }

@@ -1,24 +1,29 @@
 import { randomUUID } from "node:crypto";
-import type { DiscoverSessionsResult, Envelope } from "@superset/chat/protocol";
+import type { ChatSelections } from "@superset/chat/core";
+import type {
+	DiscoverSessionsResult,
+	Envelope,
+	TurnError,
+} from "@superset/chat/protocol";
 import type { ChatCheckpoints, SessionCheckpoints } from "../../checkpoints";
 import type {
 	DiscoverNativeSessionsInput,
 	HarnessAdapter,
 } from "../../harness";
 import type { ChatJournal } from "../../journal";
+import { HOST_STOPPED } from "../../journal";
 import type { UnfinishedSession } from "../liveSession";
 import { LiveSession } from "../liveSession";
 
-export type HarnessFactoryOptions = {
+export type HarnessFactoryOptions = ChatSelections & {
 	sessionId: string;
 	scopeId: string;
 	harness: string;
+	/** The host agent config the harness launches with. */
+	agentConfigId?: string;
 	cwd: string;
-	modeId?: string;
-	modelId?: string;
 	forkEffort?: string;
 	resume?: { harnessSessionId: string; quiet?: boolean };
-	agentConfigId?: string;
 	accountSelection?: string | null;
 	strictResume?: boolean;
 	terminalId?: string;
@@ -92,6 +97,7 @@ export class LiveSessionRegistry {
 		harness: string;
 		scopeId: string;
 		cwd: string;
+		agentConfigId?: string;
 		cursor?: string;
 	}): Promise<DiscoverSessionsResult> {
 		const query: DiscoverNativeSessionsInput = {
@@ -102,6 +108,7 @@ export class LiveSessionRegistry {
 			(session) =>
 				session.harness === input.harness &&
 				session.scopeId === input.scopeId &&
+				session.agentConfigId === input.agentConfigId &&
 				session.state.status !== "dead" &&
 				session.supportsNativeDiscovery(),
 		);
@@ -113,6 +120,7 @@ export class LiveSessionRegistry {
 			sessionId: `discover-${randomUUID()}`,
 			scopeId: input.scopeId,
 			harness: input.harness,
+			...(input.agentConfigId ? { agentConfigId: input.agentConfigId } : {}),
 			cwd: input.cwd,
 		});
 		let failure: unknown;
@@ -145,6 +153,9 @@ export class LiveSessionRegistry {
 			scopeId: options.scopeId,
 			cwd: options.cwd,
 			harness: options.harness,
+			...(options.agentConfigId
+				? { agentConfigId: options.agentConfigId }
+				: {}),
 			terminalId: options.terminalId,
 			journal: this.options.journal,
 			publish: (envelope) => {
@@ -172,6 +183,8 @@ export class LiveSessionRegistry {
 				cwd: options.cwd,
 				modeId: options.modeId,
 				modelId: options.modelId,
+				effortId: options.effortId,
+				...(options.fast ? { fast: options.fast } : {}),
 				forkEffort: options.forkEffort,
 				resume: options.resume,
 				strictResume: options.strictResume,
@@ -201,6 +214,15 @@ export class LiveSessionRegistry {
 		return false;
 	}
 
+	/** The newest live session bound to a terminal: where a reopened pane's chat lives now. */
+	forTerminal(terminalId: string): LiveSession | null {
+		let found: LiveSession | null = null;
+		for (const session of this.live.values()) {
+			if (session.terminalId === terminalId) found = session;
+		}
+		return found;
+	}
+
 	get(sessionId: string): LiveSession | null {
 		return this.live.get(sessionId) ?? null;
 	}
@@ -218,17 +240,18 @@ export class LiveSessionRegistry {
 		});
 	}
 
-	async dispose(sessionId: string): Promise<void> {
+	async dispose(sessionId: string, error?: TurnError): Promise<void> {
 		const session = this.live.get(sessionId);
 		if (!session) return;
-		await session.dispose();
+		await session.dispose(error);
 		if (this.live.get(sessionId) !== session) return;
 		this.live.delete(sessionId);
 		this.observe(() => this.options.observer?.stopped(sessionId));
 	}
 
+	/** The host is going away, so every running turn ends without the user asking. */
 	async disposeAll(): Promise<void> {
-		await this.disposeWhere(() => true);
+		await this.disposeWhere(() => true, HOST_STOPPED);
 	}
 
 	async disposeScope(scopeId: string): Promise<string[]> {
@@ -237,10 +260,11 @@ export class LiveSessionRegistry {
 
 	private async disposeWhere(
 		matches: (session: LiveSession) => boolean,
+		error?: TurnError,
 	): Promise<string[]> {
 		const sessions = [...this.live.values()].filter(matches);
 		const results = await Promise.allSettled(
-			sessions.map((session) => this.dispose(session.sessionId)),
+			sessions.map((session) => this.dispose(session.sessionId, error)),
 		);
 		const failure = results.find((result) => result.status === "rejected");
 		if (failure?.status === "rejected") throw failure.reason;

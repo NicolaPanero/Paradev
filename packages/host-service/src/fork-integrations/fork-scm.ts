@@ -87,6 +87,8 @@ export interface ForkPage<T> {
 	nextCursor: string | null;
 }
 const part = (s: string) => encodeURIComponent(s);
+const BITBUCKET_MAX_PAGE_LENGTH = 50;
+const REVIEW_SCAN_PAGES = 10;
 const diffstatCache = new Map<
 	string,
 	{ at: number; value: { additions: number; deletions: number } }
@@ -254,6 +256,43 @@ export class ForkScmProvider implements ForkSourceControlProvider {
 		if (input.reviewer)
 			filters.push(`reviewers.uuid=${JSON.stringify(input.reviewer)}`);
 		if (filters.length) params.set("q", filters.join(" AND "));
+		const reviewer = input.reviewer;
+		if (reviewer) {
+			params.set("fields", "+values.participants");
+			params.set("pagelen", String(BITBUCKET_MAX_PAGE_LENGTH));
+			const end = input.page * input.limit;
+			const awaiting: BBPull[] = [];
+			let next: string | undefined;
+			for (
+				let page = 1;
+				page <= REVIEW_SCAN_PAGES && awaiting.length <= end;
+				page++
+			) {
+				params.set("page", String(page));
+				const data = await this.api.request<{
+					values: BBPull[];
+					next?: string;
+				}>(id, `${prefix}?${params}`);
+				awaiting.push(
+					...data.values.filter(
+						(p) =>
+							!p.participants?.some(
+								(x) => x.user.uuid === reviewer && (x.approved || x.state),
+							),
+					),
+				);
+				next = data.next;
+				if (!next) break;
+			}
+			return {
+				items: awaiting
+					.slice(end - input.limit, end)
+					.map((p) => bbPR(p, r, id)),
+				totalCount: awaiting.length,
+				nextCursor:
+					awaiting.length > end || next ? String(input.page + 1) : null,
+			};
+		}
 		const data = await this.api.request<{
 			values: BBPull[];
 			next?: string;

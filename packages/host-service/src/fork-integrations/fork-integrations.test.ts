@@ -289,6 +289,71 @@ test("Bitbucket search sends state, text and page filters to the API", async () 
 		sqlite.close();
 	}
 });
+test("Bitbucket reviewer search skips pull requests the reviewer already reviewed", async () => {
+	const { sqlite, store } = fixture();
+	try {
+		const c = store.create("bitbucket", "token", null);
+		store.save(c, { token: "test", email: "user@example.test" });
+		const pull = (
+			id: number,
+			participant?: { approved: boolean; state?: string | null },
+		) => ({
+			id,
+			title: `PR ${id}`,
+			description: "",
+			state: "OPEN",
+			author: { display_name: "Dev" },
+			source: { branch: { name: `b${id}` }, commit: { hash: `c${id}` } },
+			destination: { branch: { name: "main" } },
+			updated_on: "",
+			links: { html: { href: `https://bitbucket.org/team/app/${id}` } },
+			participants: participant
+				? [
+						{
+							user: { display_name: "Me", uuid: "{me}" },
+							role: "REVIEWER",
+							...participant,
+						},
+					]
+				: [],
+		});
+		const requested: URL[] = [];
+		const transport: typeof forkFetch = async <T>(url: string | URL) => {
+			const parsed = new URL(url);
+			requested.push(parsed);
+			return (
+				parsed.searchParams.get("page") === "1"
+					? {
+							values: [
+								pull(1, { approved: true }),
+								pull(2, { approved: false, state: "changes_requested" }),
+								pull(3, { approved: false }),
+							],
+							next: `https://api.bitbucket.org/2.0/repositories/team/app/pullrequests?page=2`,
+						}
+					: { values: [pull(4)] }
+			) as T;
+		};
+		const scm = new ForkScmProvider(new ForkApi(store, fallback, transport));
+		const page = await scm.searchBitbucket(
+			c.id,
+			{
+				provider: "bitbucket",
+				host: "bitbucket.org",
+				owner: "team",
+				name: "app",
+			},
+			{ reviewer: "{me}", page: 1, limit: 2 },
+		);
+		expect(page.items.map((pr) => pr.number)).toEqual([3, 4]);
+		expect(page.nextCursor).toBeNull();
+		expect(requested[0]?.searchParams.get("fields")).toBe(
+			"+values.participants",
+		);
+	} finally {
+		sqlite.close();
+	}
+});
 test("merging a changed PR fails before the write request", async () => {
 	const { sqlite, store } = fixture();
 	const calls: string[] = [];

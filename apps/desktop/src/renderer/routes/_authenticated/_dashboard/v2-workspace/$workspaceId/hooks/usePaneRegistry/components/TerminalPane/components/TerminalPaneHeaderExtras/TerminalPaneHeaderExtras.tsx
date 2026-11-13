@@ -1,8 +1,5 @@
 import type { SubagentPaneData } from "../../../../../../types";
-import type {
-	SurfaceForkPlacement,
-	SurfaceForkSource,
-} from "../../../../hooks/useSurfaceFork";
+import type { SurfaceForkSource } from "../../../../hooks/useSurfaceFork";
 import { AccountUsage } from "../../../AccountUsage";
 import { ForkChatOrigin } from "../../../ForkChatOrigin";
 import {
@@ -29,10 +26,7 @@ interface TerminalPaneHeaderExtrasProps {
 	}) => Promise<{ terminalId: string } | null>;
 	/** Open (or focus) the live transcript pane for one of this agent's subagents. */
 	onOpenSubagent: (data: SubagentPaneData) => void;
-	onForkIntoOtherSurface: (
-		source: SurfaceForkSource,
-		placement: SurfaceForkPlacement,
-	) => void;
+	onForkIntoOtherSurface: (source: SurfaceForkSource) => void;
 }
 
 export function TerminalPaneHeaderExtras({

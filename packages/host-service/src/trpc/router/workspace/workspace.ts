@@ -5,6 +5,7 @@ import { eq, isNotNull, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { projects, workspaces } from "../../../db/schema";
 import { readFolderWorkspaceView } from "../../../project-folders";
+import { getProjectIncludingDeleted } from "../../../projects/local-project-store";
 import { isMissingPath } from "../../../runtime/path-state";
 import {
 	getWorkspaceTags,
@@ -57,9 +58,7 @@ export const workspaceRouter = router({
 				});
 			}
 			const project = workspace.projectId
-				? ctx.db.query.projects
-						.findFirst({ where: eq(projects.id, workspace.projectId) })
-						.sync()
+				? getProjectIncludingDeleted(ctx.db, workspace.projectId)
 				: undefined;
 			return [
 				{

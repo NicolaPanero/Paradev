@@ -6,12 +6,12 @@ describe("useNewWorkspaceDraftStore checkout", () => {
 		useNewWorkspaceDraftStore.getState().resetDraft();
 	});
 
-	it("starts every new workspace on the local checkout", () => {
-		expect(useNewWorkspaceDraftStore.getState().checkout).toBe("local");
+	it("starts every new workspace on a worktree", () => {
+		expect(useNewWorkspaceDraftStore.getState().checkout).toBe("worktree");
 
-		useNewWorkspaceDraftStore.getState().updateDraft({ checkout: "worktree" });
+		useNewWorkspaceDraftStore.getState().updateDraft({ checkout: "local" });
 		useNewWorkspaceDraftStore.getState().resetDraft();
 
-		expect(useNewWorkspaceDraftStore.getState().checkout).toBe("local");
+		expect(useNewWorkspaceDraftStore.getState().checkout).toBe("worktree");
 	});
 });

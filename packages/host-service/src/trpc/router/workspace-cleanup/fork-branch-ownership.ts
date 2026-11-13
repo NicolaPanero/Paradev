@@ -1,3 +1,4 @@
+import { realpathSync } from "node:fs";
 import { resolve } from "node:path";
 import type { SimpleGit } from "simple-git";
 
@@ -24,6 +25,14 @@ export async function recordCreatedBranch(
 		`branch.${branch}.supersetForkRef`,
 		`refs/heads/${branch}`,
 	]);
+}
+
+function realPath(path: string): string {
+	try {
+		return realpathSync(resolve(path));
+	} catch {
+		return resolve(path);
+	}
 }
 
 export async function branchDeletionEligibility(
@@ -61,7 +70,7 @@ export async function branchDeletionEligibility(
 			if (field.startsWith("worktree ")) path = field.slice(9);
 			if (
 				field === `branch refs/heads/${branch}` &&
-				(!ownPath || resolve(path) !== resolve(ownPath))
+				(!ownPath || realPath(path) !== realPath(ownPath))
 			)
 				return { branch, eligible: false, reason: "shared" };
 		}

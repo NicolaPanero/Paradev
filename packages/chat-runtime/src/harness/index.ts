@@ -10,6 +10,7 @@ export {
 	createAcpAdapter,
 	spawnAcpTransport,
 } from "./acp";
+export { attachedFilesBlock } from "./attachedFiles";
 export { BackgroundTasks } from "./backgroundTasks";
 export type {
 	ClaudeAdapterOptions,
@@ -27,8 +28,11 @@ export type { FakeHarnessScript, ScriptedEvent } from "./fake";
 export { FakeHarness } from "./fake";
 export type {
 	AdapterEvent,
+	AttachmentPart,
 	DiscoverNativeSessionsInput,
 	HarnessAdapter,
 	HarnessMcpServer,
 	HarnessStartOptions,
+	ResolveAttachment,
+	ResolvedAttachment,
 } from "./types";

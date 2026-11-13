@@ -1,0 +1,6 @@
+:root[data-fork-motion-paused] *,
+:root[data-fork-motion-paused] *::before,
+:root[data-fork-motion-paused] *::after {
+	/* biome-ignore lint/complexity/noImportantStyles: animations set in inline styles must pause too */
+	animation-play-state: paused !important;
+}

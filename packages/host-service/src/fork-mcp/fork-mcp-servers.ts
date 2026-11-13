@@ -8,7 +8,7 @@ import {
 } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup";
+import { resolveAppHomeDir } from "@superset/agent-setup";
 import type { HarnessMcpServer } from "@superset/chat-runtime";
 import { z } from "zod";
 
@@ -48,7 +48,7 @@ export interface ForkMcpPaths {
 	codexEnv: string;
 }
 
-export function forkMcpPaths(home = resolveSupersetHomeDir()): ForkMcpPaths {
+export function forkMcpPaths(home = resolveAppHomeDir()): ForkMcpPaths {
 	return {
 		servers: join(home, "fork", "mcp-servers.json"),
 		claudeConfig: join(home, "state", "fork-mcp-claude.json"),

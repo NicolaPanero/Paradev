@@ -10,7 +10,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { claudeProjectDirName } from "../terminal-agents/harness-sessions/claude";
+import { claudeProjectDirName } from "@superset/agent-setup/claude-project-links";
 import {
 	copyClaudeSessionToFolder,
 	moveClaudeSession,

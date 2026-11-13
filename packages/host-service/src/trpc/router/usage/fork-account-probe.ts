@@ -2,7 +2,7 @@ import { accessSync, constants } from "node:fs";
 import { mkdir, mkdtemp, rm } from "node:fs/promises";
 import { homedir } from "node:os";
 import { delimiter, join } from "node:path";
-import { resolveSupersetHomeDir } from "@superset/agent-setup";
+import { resolveAppHomeDir } from "@superset/agent-setup";
 import {
 	CodexRpcClient,
 	spawnCodexTransport,
@@ -243,7 +243,7 @@ export async function probeAccount(
 				selection ??
 				(await discoverCodexHomes())[0]?.home ??
 				join(homedir(), ".codex");
-		const root = join(resolveSupersetHomeDir(), "fork", "usage-probes");
+		const root = join(resolveAppHomeDir(), "fork", "usage-probes");
 		await mkdir(root, { recursive: true, mode: 0o700 });
 		const cwd = await mkdtemp(join(root, "probe-"));
 		try {

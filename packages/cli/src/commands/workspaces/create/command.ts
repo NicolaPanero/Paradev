@@ -11,7 +11,7 @@ export default command({
 	description:
 		"Create a workspace: in the cloud by default if your account has cloud workspaces, else on this machine; --local or --host picks a host",
 	options: {
-		host: string().desc("Create on this host (machineId)"),
+		host: string().desc("Create on this host (machineId), or `cloud`"),
 		local: boolean().desc("Create on this machine"),
 		environment: string().desc(
 			"Environment ID a cloud workspace starts from (see: superset environments list); required when several have repositories",
@@ -62,7 +62,7 @@ export default command({
 		attachment: string()
 			.variadic()
 			.desc(
-				"Local file path to upload as an attachment to the host. Repeatable. Only used when --agent is set",
+				"Local file path to give the agent as an attachment. Repeatable. Only used when --agent is set",
 			),
 		tag: string()
 			.variadic()
@@ -215,7 +215,11 @@ export default command({
 		}
 
 		const attachmentIds = options.attachment
-			? await uploadAttachments(target.client, options.attachment)
+			? await uploadAttachments({
+					target,
+					api: ctx.api,
+					paths: options.attachment,
+				})
 			: [];
 
 		const agents =

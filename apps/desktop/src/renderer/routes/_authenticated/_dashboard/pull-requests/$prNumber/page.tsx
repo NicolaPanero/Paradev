@@ -13,6 +13,7 @@ import {
 } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/PullRequestDetailTabs";
 import { PullRequestListToggle } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/PullRequestListToggle";
 import { usePullRequestDetail } from "renderer/routes/_authenticated/_dashboard/pull-requests/hooks/usePullRequestDetail";
+import { usePullRequestListPreview } from "renderer/routes/_authenticated/_dashboard/pull-requests/hooks/usePullRequestListPreview";
 import { useRefreshPullRequest } from "renderer/routes/_authenticated/_dashboard/pull-requests/hooks/useRefreshPullRequest";
 import {
 	canActOnPullRequest,
@@ -47,6 +48,11 @@ function PullRequestDetailPage() {
 		projectId,
 		prNumber,
 		repoFullName: search.repo,
+	});
+	const preview = usePullRequestListPreview({
+		projectId,
+		repoFullName: search.repo ?? null,
+		prNumber,
 	});
 	const data = detail.data ?? null;
 	const diffStat =
@@ -107,6 +113,7 @@ function PullRequestDetailPage() {
 				hostUrl={hostUrl}
 				hostId={hostId}
 				commentTarget={commentTarget}
+				preview={preview}
 			/>
 		</div>
 	);

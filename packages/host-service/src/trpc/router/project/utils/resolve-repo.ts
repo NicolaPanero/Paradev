@@ -14,6 +14,10 @@ import {
 	isPermissionDenied,
 	isUnreadable,
 } from "../../../../runtime/path-state";
+import {
+	rethrowEnvironmentalGitError,
+	rethrowGitToolsMissing,
+} from "../../git/utils/classify-git-error";
 import { scaffoldIdentityArgs, throwIfGitMissing } from "./fork-git-setup";
 import {
 	findMatchingRemote,
@@ -67,7 +71,7 @@ export function validateDirectoryPath(path: string, label: string): void {
  * Ensure the parent directory we're about to create a project under exists,
  * creating it (and any missing ancestors) when it doesn't. Unlike
  * `validateDirectoryPath`, a missing parent is a recoverable condition: the
- * default project location (e.g. `~/.superset/projects`) won't exist on a
+ * default project location (e.g. `~/.paradev/projects`) won't exist on a
  * fresh machine, and the user shouldn't have to pre-create it before their
  * first clone. Still rejects when the path exists but is a file.
  */
@@ -188,7 +192,9 @@ async function gitInitMainBranch(targetPath: string): Promise<void> {
 	const git = createUserSimpleGit(targetPath);
 	try {
 		await git.init(["--initial-branch=main"]);
-	} catch {
+	} catch (err) {
+		// Retrying cannot help when git itself cannot run.
+		rethrowGitToolsMissing(err);
 		await git.init();
 	}
 }
@@ -272,6 +278,9 @@ export async function tryRevParseGitRoot(path: string): Promise<string | null> {
 		error = err;
 	}
 	throwIfGitMissing(error);
+	// Without git every folder would look like a non-repo, and the caller would
+	// offer `git init` on a real repository.
+	rethrowGitToolsMissing(error);
 	const blockedPath = isPermissionDenied(error)
 		? path
 		: findUnreadableRepoAbove(path);
@@ -557,6 +566,8 @@ export async function cloneRepoInto(
 	} catch (err) {
 		await rollbackTargetDir(targetPath);
 		throwIfGitMissing(err);
+		rethrowGitToolsMissing(err);
+		rethrowEnvironmentalGitError(err);
 		throw new TRPCError({
 			code: "BAD_REQUEST",
 			message: `Failed to clone repository: ${

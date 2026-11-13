@@ -42,6 +42,8 @@ export type ChatPaneActions = {
 	/** Absent where the chat has no workspace to open pages into. */
 	openPage?: OpenPage | undefined;
 	openLink?: OpenLink | undefined;
+	/** Absent where the chat has no workspace panes to open files in. */
+	getOpenFilePaths?: (() => ReadonlySet<string>) | undefined;
 	/** Absent where messages can't be edited, such as while the chat resumes. */
 	editMessage?: ((itemId: string, text: string) => void) | undefined;
 	editableMessageIds?: ReadonlySet<string> | undefined;
@@ -62,6 +64,7 @@ export function ChatPaneActionsProvider({
 	workspaceId,
 	openPage,
 	openLink,
+	getOpenFilePaths,
 	editMessage,
 	editableMessageIds,
 }: ChatPaneActions & { children: ReactNode }) {
@@ -73,6 +76,7 @@ export function ChatPaneActionsProvider({
 			workspaceId,
 			openPage,
 			openLink,
+			getOpenFilePaths,
 			editMessage,
 			editableMessageIds,
 		}),
@@ -83,6 +87,7 @@ export function ChatPaneActionsProvider({
 			workspaceId,
 			openPage,
 			openLink,
+			getOpenFilePaths,
 			editMessage,
 			editableMessageIds,
 		],
