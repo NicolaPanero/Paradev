@@ -101,7 +101,8 @@ export function copyForkDataOnFirstLaunch(
 		)
 	)
 		delete process.env.SUPERSET_HOME_DIR;
-	if (process.env.SUPERSET_HOME_DIR) return;
+	const configuredHome = process.env.SUPERSET_HOME_DIR?.trim();
+	if (configuredHome && configuredHome !== join(homedir(), homeDirName)) return;
 	try {
 		if (
 			copyForkData({
