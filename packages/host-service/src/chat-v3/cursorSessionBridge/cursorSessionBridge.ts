@@ -1,4 +1,4 @@
-import { createHash, randomUUID } from "node:crypto";
+import { randomUUID } from "node:crypto";
 import {
 	lstat,
 	mkdir,
@@ -11,6 +11,10 @@ import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import Database from "better-sqlite3";
 import { z } from "zod";
+import {
+	forkCursorCliDirectory,
+	forkCursorWorkspaceMatches,
+} from "./fork-cursor-session-paths";
 
 const pending = new Set<string>();
 const sessionIdSchema = z.string().uuid();
@@ -45,11 +49,11 @@ export async function bridgeCursorSession(
 ) {
 	const id = sessionIdSchema.parse(options.sessionId);
 	const root = options.cursorRoot ?? join(homedir(), ".cursor");
-	const cliDir = join(
+	const cliDir = await forkCursorCliDirectory(
 		root,
-		"chats",
-		createHash("md5").update(options.cwd).digest("hex"),
 		id,
+		options.cwd,
+		options.from,
 	);
 	const acpDir = join(root, "acp-sessions", id);
 	const sourceDir = options.from === "cli" ? cliDir : acpDir;
@@ -65,7 +69,10 @@ export async function bridgeCursorSession(
 			const meta = JSON.parse(
 				await readFile(join(acpDir, "meta.json"), "utf8"),
 			);
-			if (meta.schemaVersion !== 1 || meta.cwd !== options.cwd)
+			if (
+				meta.schemaVersion !== 1 ||
+				!(await forkCursorWorkspaceMatches(meta.cwd, options.cwd))
+			)
 				throw new Error("cursor_session_workspace_mismatch");
 		}
 		let needsCheckpoint = false;
