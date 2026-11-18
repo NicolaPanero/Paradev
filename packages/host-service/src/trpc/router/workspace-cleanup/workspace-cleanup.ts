@@ -1,11 +1,10 @@
-import { rm } from "node:fs/promises";
 import { sanitizePromptForPty } from "@superset/shared/agent-prompt-launch";
 import { TRPCError } from "@trpc/server";
 import { eq, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { pullRequests, workspaces } from "../../../db/schema";
 import { invalidateLabelCache } from "../../../ports/static-ports";
-import { removeFolderWorktrees } from "../../../project-folders";
+import { removeForkFolderWorktrees as removeFolderWorktrees } from "../../../project-folders/fork-folder-worktree-cleanup";
 import { isMissingPath } from "../../../runtime/path-state";
 import { coercePullRequestState } from "../../../runtime/pull-requests/utils/pull-request-mappers";
 import { trackConfigResolved } from "../../../runtime/setup/track-config-resolved";
@@ -29,12 +28,15 @@ import type {
 } from "../../error-types";
 import { protectedProcedure, router } from "../../index";
 import { getHostWorktreeBaseDir } from "../settings/worktree-location";
-import { isInsideSessionsRoot } from "../workspace-creation/shared/session-paths";
-import { isInsideProjectWorktreesRoot } from "../workspace-creation/shared/worktree-paths";
 import {
 	type BranchDeletion,
 	branchDeletionEligibility,
 } from "./fork-branch-ownership";
+import {
+	isInsideForkProjectWorktreesRoot as isInsideProjectWorktreesRoot,
+	isInsideForkSessionsRoot as isInsideSessionsRoot,
+} from "./fork-managed-worktree-paths";
+import { assertForkWorktreeUnshared } from "./fork-worktree-ownership";
 import { cleanupGitOps, isIndeterminateGitTaskFailure } from "./git-ops";
 import { isLocalCheckoutWorkspace } from "./is-local-checkout-workspace";
 import { removeDirectoryTree } from "./remove-directory-tree";
@@ -522,6 +524,8 @@ async function runDestroyPhases(
 		warnings.push(`Failed to stop chat sessions: ${message}`);
 	}
 
+	if (local && !sharesProjectCheckout)
+		assertForkWorktreeUnshared(ctx, local.id, local.worktreePath);
 	warnings.push(...(await removeFolderWorktrees(ctx, input.workspaceId)));
 
 	// 3b. Worktree. Double-force unlocks the rare locked-worktree case and
@@ -550,7 +554,7 @@ async function runDestroyPhases(
 				);
 			} else {
 				try {
-					await rm(local.worktreePath, { recursive: true, force: true });
+					await removeDirectoryTree(local.worktreePath);
 					worktreeRemoved = true;
 				} catch (err) {
 					const message = err instanceof Error ? err.message : String(err);
@@ -600,7 +604,7 @@ async function runDestroyPhases(
 				);
 			} else {
 				try {
-					await rm(local.worktreePath, { recursive: true, force: true });
+					await removeDirectoryTree(local.worktreePath);
 					worktreeRemoved = true;
 				} catch (err) {
 					const message = err instanceof Error ? err.message : String(err);

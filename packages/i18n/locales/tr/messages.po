@@ -2042,6 +2042,9 @@ msgstr "API anahtarı oluşturmak için etkin bir kuruluş gerekir"
 msgid "Active sessions"
 msgstr "Etkin oturumlar"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "Korunan etkin çalışma alanları: {activeCount}"
+
 msgid "Activities"
 msgstr "Etkinlikler"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropic bu token'ı reddetti."
 msgid "any account"
 msgstr "herhangi bir hesap"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "Her ajan oturumu sohbette veya terminalde açılır. Sohbet ayarı artık yalnızca yeni oturumların nasıl başlayacağını seçer."
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "Paradev'de kurduğunuz herhangi bir ajan, örneğin Claude Code veya Codex."
 
@@ -3623,6 +3623,9 @@ msgstr "Arka planda · {count}"
 msgid "Background chats"
 msgstr "Arka plandaki sohbetler"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "Workspace etkinliğinde arka plan sohbetleri, alt ajan geçmişinden önce görünür."
+
 msgid "Background processes"
 msgstr "Arka plan işlemleri"
 
@@ -3634,6 +3637,10 @@ msgstr "Arka plan terminal belleği"
 
 msgid "Backlog"
 msgstr "Bekleyen işler"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "Yedekler: {0}"
 
 msgid "Badge"
 msgstr "Rozet"
@@ -4408,12 +4415,6 @@ msgstr "Sohbet yüzeyleri: mesajlar, akıl yürütme, öneriler"
 msgid "Chats"
 msgstr "Sohbetler"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "Sohbetler, Claude'un neden onay istediğini gösterir ve her ajan için modeli, çabayı, modu ve hızlı modu hatırlar."
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "CLI'dan veya başka bir cihazdan başlatılan sohbetler sekme olarak açılır ve bir bulut workspace uyanırken sohbetlerini gösterir."
-
 msgid "Check again"
 msgstr "Yeniden denetle"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code, Codex, Cursor, OpenCode ve daha fazlası."
 msgid "Claude is now running in workspace component-showcase."
 msgstr "Claude artık component-showcase çalışma alanında çalışıyor."
 
+msgid "Clean up deleted workspaces"
+msgstr "Silinen çalışma alanlarını temizle"
+
 msgid "Clean up stale TODOs…"
 msgstr "Eskimiş TODO'ları temizle…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "Temizleme başarısız oldu. Kalan klasörleri incelemek için yeniden tarayın."
 
 msgid "Clear"
 msgstr "Şeffaf"
@@ -7377,6 +7384,9 @@ msgstr "Rutini sil"
 msgid "Delete script"
 msgstr "Betiği sil"
 
+msgid "Delete selected folders"
+msgstr "Seçili klasörleri sil"
+
 msgid "Delete selected workspaces"
 msgstr "Seçili çalışma alanlarını sil"
 
@@ -7480,6 +7490,9 @@ msgstr "Silinen projeler, onlarla birlikte silinen çalışma alanlarıyla birli
 
 msgid "Deleted user"
 msgstr "Silinmiş kullanıcı"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "Kontrol edilen silinmiş çalışma alanları: {archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "Çalışma alanları silindi, ancak kenar çubuğu güncellenemedi"
@@ -8456,6 +8469,9 @@ msgstr "kapatmak için esc"
 msgid "esc to exit"
 msgstr "çıkmak için esc"
 
+msgid "Estimated space: {size}"
+msgstr "Tahmini alan: {size}"
+
 msgid "Event"
 msgstr "Olay"
 
@@ -9412,6 +9428,9 @@ msgstr "Takım bul…"
 
 msgid "Find and fix a small bug"
 msgstr "Küçük bir hata bul ve düzelt"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "Silinen çalışma alanlarından kalan klasörleri bulun ve kaldırın. Etkin çalışma alanları ve ek klasörleri korunur."
 
 msgid "Find another reaction"
 msgstr "Başka tepki bul"
@@ -10968,6 +10987,9 @@ msgstr "Kurun."
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "Yüklü"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "Yüklü uygulamanın önizlemesi. Silme devre dışıdır."
 
 msgid "Installed by your organization"
 msgstr "Kuruluşunuz tarafından yüklendi"
@@ -14151,6 +14173,9 @@ msgstr "Son 30 günde henüz hiçbir şey yayınlanmadı. Bu makinedeki kullanı
 msgid "Nothing to check."
 msgstr "Kontrol edilecek bir şey yok."
 
+msgid "Nothing to clean up."
+msgstr "Temizlenecek bir şey yok."
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "Henüz açılacak bir şey yok. Önce bir mesaj gönderin."
 
@@ -14386,6 +14411,9 @@ msgstr "Yalnızca macOS'ta kullanılabilir."
 msgid "Only channel admins can do that"
 msgstr "Bunu yalnızca kanal yöneticileri yapabilir"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "Yalnızca silinen çalışma alanlarının klasörleri listelenir. Etkin çalışma alanları ve Git dalları korunur. Yerel değişiklikler silinmeden önce yedeklenir."
+
 msgid "Only host owners can change membership"
 msgstr "Üyeliği yalnızca host sahipleri değiştirebilir"
 
@@ -14448,6 +14476,9 @@ msgstr "Yorumu yalnızca yazarı değiştirebilir"
 
 msgid "Only the author can edit a comment"
 msgstr "Bir yorumu yalnızca yazarı düzenleyebilir"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "Yalnızca en son tamamlanan beş alt ajan gösterilir. Daha eskileri görmek için listeyi genişletin."
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Bulut çalışma alanlarının erişimine yalnızca host'un sahibi izin verebilir"
@@ -15020,6 +15051,9 @@ msgstr "{appName} açılıyor…"
 msgid "Opening {what}"
 msgstr "{what} açılıyor"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "Tamamlanan bir alt ajanı açmak, kullanılabilir durumdaysa arka plan sohbetini yeniden açar."
+
 msgid "Opening files"
 msgstr "Dosyaları açma"
 
@@ -15508,9 +15542,6 @@ msgstr "Paradev'in mobil uygulaması, bilgisayarımdan çok uzakta olsam bile aj
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ günde bir kez yeni sürümleri arar ve bir açılır pencere gösterir. Hiçbir şeyi kendiliğinden güncellemez."
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ saatlerce açık kaldıktan sonra artık yavaşlamıyor: penceresi arka plandayken animasyonlar duraklıyor."
 
 msgid "Paragraph"
 msgstr "Paragraf"
@@ -17741,6 +17772,9 @@ msgstr "Ajan çalışmasını Sayfalar ile inceleyin"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "İnceleme ve CI kuyrukları, ajanların yarattığı kazancı yiyor."
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "Fork Ayarları’nda silinen çalışma alanlarından kalan klasörleri inceleyin ve temizleyin."
+
 msgid "Review becomes the bottleneck"
 msgstr "İnceleme darboğaz hâline gelir"
 
@@ -18191,6 +18225,9 @@ msgstr "iPhone için Paradev’i indirmek üzere tarayın"
 
 msgid "Scanning transcript logs…"
 msgstr "Kayıt günlükleri taranıyor…"
+
+msgid "Scanning…"
+msgstr "Taranıyor…"
 
 msgid "Schedule"
 msgstr "Zamanlama"
@@ -19620,6 +19657,9 @@ msgstr "Bazı dosyalar kabul edilen türde değil ve eklenmedi."
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "Bazı dosyalar en büyük boyutu aşıyor ve eklenmedi."
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "Hangi çalışma alanına ait oldukları doğrulanamadığı için bazı klasörler korundu."
 
 msgid "Some models were priced with a fallback rate"
 msgstr "Bazı modeller yedek bir tarifeyle fiyatlandırıldı"
@@ -21773,6 +21813,9 @@ msgstr "Bu alt ajan şu anda arka plana taşınamıyor"
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "Bu alt ajan artık ana makine tarafından izlenmiyor. Dökümü, ajanın oturum dizininde diskte kalır."
 
+msgid "This subagent's chat is no longer available"
+msgstr "Bu alt ajanın sohbeti artık kullanılamıyor"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "Bu terminalde henüz devredilecek çıktı yok."
 
@@ -21974,9 +22017,6 @@ msgstr "Bugün"
 
 msgid "TODAY"
 msgstr "BUGÜN"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "Bugün, zaten onayladığınız veya değişiklik istediğiniz pull request'leri gizliyor."
 
 msgid "Todo"
 msgstr "Yapılacak"
@@ -22677,6 +22717,9 @@ msgstr "Paradev’i o cihazda güncelleyin. Uygulama içinden güncelleme için 
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Çalışma alanı yapılandırmasını düzenlemek için bu ana bilgisayardaki Paradev'i güncelleyin."
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "Çalışma ağaçlarını temizlemek için Paradev++ uygulamasını güncelleyin."
 
 msgid "Update payment method"
 msgstr "Ödeme yöntemini güncelle"

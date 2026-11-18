@@ -4,6 +4,7 @@ import { and, eq, isNotNull, isNull } from "drizzle-orm";
 import { projects, workspaces } from "../db/schema";
 import { destroyWorkspace } from "../trpc/router/workspace-cleanup";
 import type { HostServiceContext } from "../types";
+import { canReconcileForkWorktree } from "./fork-partial-worktree-cleanup";
 
 /**
  * Finish crash-interrupted deletes. The destroy pipeline archives the row
@@ -44,7 +45,7 @@ export async function runArchivedWorkspaceReconcile(
 
 	let resumed = 0;
 	for (const row of stranded) {
-		if (!isSameWorktree(row)) {
+		if (!canReconcileForkWorktree(ctx, row, isSameWorktree(row))) {
 			console.warn(
 				"[archived-workspace-reconcile] left a reused or unreadable folder alone",
 				{ workspaceId: row.id, worktreePath: row.worktreePath },

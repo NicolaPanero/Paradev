@@ -1,3 +1,5 @@
+import { forkDesktopDevEnvironment } from "./fork-dev-environment";
+
 // `bun dev` runs this on a laptop and inside a cloud sandbox alike. The one
 // thing Electron forces apart is root: it refuses to start as root unless
 // `--no-sandbox` is on its command line (an env var arrives too late), and the
@@ -14,7 +16,7 @@ const child = Bun.spawn(
 	{
 		stdio: ["inherit", "inherit", "inherit"],
 		env: {
-			...process.env,
+			...forkDesktopDevEnvironment(process.env),
 			NODE_ENV: "development",
 			NODE_OPTIONS: "--max-old-space-size=8192",
 		},

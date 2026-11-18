@@ -2042,6 +2042,9 @@ msgstr "Cần có tổ chức đang hoạt động để tạo khóa API"
 msgid "Active sessions"
 msgstr "Phiên đang hoạt động"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "Không gian làm việc đang hoạt động được bảo vệ: {activeCount}"
+
 msgid "Activities"
 msgstr "Hoạt động"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropic đã từ chối token này."
 msgid "any account"
 msgstr "bất kỳ tài khoản nào"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "Mọi phiên tác tử đều mở được trong chat hoặc trong terminal. Cài đặt chat giờ chỉ chọn cách các phiên mới bắt đầu."
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "Bất kỳ agent nào bạn đã thiết lập trong Paradev, như Claude Code hoặc Codex."
 
@@ -3623,6 +3623,9 @@ msgstr "Chạy nền · {count}"
 msgid "Background chats"
 msgstr "Cuộc trò chuyện chạy nền"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "Các cuộc trò chuyện nền xuất hiện trước lịch sử tác nhân phụ trong hoạt động workspace."
+
 msgid "Background processes"
 msgstr "Tiến trình nền"
 
@@ -3634,6 +3637,10 @@ msgstr "Bộ nhớ terminal chạy nền"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "Bản sao lưu: {0}"
 
 msgid "Badge"
 msgstr "Badge"
@@ -4408,12 +4415,6 @@ msgstr "Các bề mặt chat: tin nhắn, suy luận, gợi ý"
 msgid "Chats"
 msgstr "Cuộc trò chuyện"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "Chat hiển thị lý do Claude yêu cầu phê duyệt và ghi nhớ mô hình, mức nỗ lực, chế độ và chế độ nhanh cho từng tác tử."
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "Các chat được bắt đầu từ CLI hoặc thiết bị khác mở thành tab, và workspace đám mây hiển thị các chat của nó trong lúc khởi động lại."
-
 msgid "Check again"
 msgstr "Kiểm tra lại"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code, Codex, Cursor, OpenCode và nhiều nữa."
 msgid "Claude is now running in workspace component-showcase."
 msgstr "Claude hiện đang chạy trong workspace component-showcase."
 
+msgid "Clean up deleted workspaces"
+msgstr "Dọn dẹp không gian làm việc đã xóa"
+
 msgid "Clean up stale TODOs…"
 msgstr "Dọn các TODO cũ…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "Dọn dẹp thất bại. Quét lại để kiểm tra các thư mục còn lại."
 
 msgid "Clear"
 msgstr "Trong suốt"
@@ -7377,6 +7384,9 @@ msgstr "Xóa quy trình"
 msgid "Delete script"
 msgstr "Xóa script"
 
+msgid "Delete selected folders"
+msgstr "Xóa các thư mục đã chọn"
+
 msgid "Delete selected workspaces"
 msgstr "Xóa các workspace đã chọn"
 
@@ -7480,6 +7490,9 @@ msgstr "Dự án đã xóa có thể được khôi phục trong 30 ngày, cùng
 
 msgid "Deleted user"
 msgstr "Người dùng đã xóa"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "Không gian làm việc đã xóa được kiểm tra: {archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "Đã xóa workspace, nhưng không cập nhật xong thanh bên"
@@ -8456,6 +8469,9 @@ msgstr "esc để đóng"
 msgid "esc to exit"
 msgstr "esc để thoát"
 
+msgid "Estimated space: {size}"
+msgstr "Dung lượng ước tính: {size}"
+
 msgid "Event"
 msgstr "Sự kiện"
 
@@ -9412,6 +9428,9 @@ msgstr "Tìm nhóm…"
 
 msgid "Find and fix a small bug"
 msgstr "Tìm và sửa một lỗi nhỏ"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "Tìm và xóa các thư mục còn lại từ không gian làm việc đã xóa. Không gian làm việc đang hoạt động và các thư mục bổ sung được bảo vệ."
 
 msgid "Find another reaction"
 msgstr "Tìm cảm xúc khác"
@@ -10968,6 +10987,9 @@ msgstr "Cài đặt."
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "Đã cài"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "Xem trước dữ liệu ứng dụng đã cài đặt. Tính năng xóa bị vô hiệu hóa."
 
 msgid "Installed by your organization"
 msgstr "Do tổ chức của bạn cài"
@@ -14151,6 +14173,9 @@ msgstr "Chưa có gì được công khai trong 30 ngày qua. Thứ hạng của
 msgid "Nothing to check."
 msgstr "Không có gì cần kiểm tra."
 
+msgid "Nothing to clean up."
+msgstr "Không có gì cần dọn dẹp."
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "Chưa có gì để mở. Hãy gửi tin nhắn trước."
 
@@ -14386,6 +14411,9 @@ msgstr "Chỉ có trên macOS."
 msgid "Only channel admins can do that"
 msgstr "Chỉ quản trị viên kênh mới có thể làm việc này"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "Chỉ liệt kê thư mục của không gian làm việc đã xóa. Không gian làm việc đang hoạt động và các nhánh Git được giữ lại. Thay đổi cục bộ được sao lưu trước khi xóa."
+
 msgid "Only host owners can change membership"
 msgstr "Chỉ chủ sở hữu host mới thay đổi được thành viên"
 
@@ -14448,6 +14476,9 @@ msgstr "Chỉ tác giả mới có thể sửa bình luận"
 
 msgid "Only the author can edit a comment"
 msgstr "Chỉ tác giả mới sửa được bình luận"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "Chỉ hiển thị năm tác nhân phụ hoàn thành gần nhất. Mở rộng danh sách để xem các mục cũ hơn."
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Chỉ chủ sở hữu host mới có thể cho phép workspace cloud truy cập"
@@ -15020,6 +15051,9 @@ msgstr "Đang mở {appName}…"
 msgid "Opening {what}"
 msgstr "Đang mở {what}"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "Mở một tác nhân phụ đã hoàn thành sẽ mở lại cuộc trò chuyện nền của nó nếu còn khả dụng."
+
 msgid "Opening files"
 msgstr "Mở tệp"
 
@@ -15508,9 +15542,6 @@ msgstr "Ứng dụng di động Paradev giúp tôi duy trì công việc của c
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ kiểm tra phiên bản mới mỗi ngày một lần và hiện một cửa sổ bật lên. Nó không bao giờ tự cập nhật gì."
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ không còn chậm đi sau nhiều giờ mở: hiệu ứng động tạm dừng khi cửa sổ ở chế độ nền."
 
 msgid "Paragraph"
 msgstr "Đoạn văn"
@@ -17741,6 +17772,9 @@ msgstr "Duyệt công việc của agent bằng Trang"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Hàng đợi review và CI ăn mất phần lợi mà agent tạo ra."
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "Kiểm tra và dọn dẹp các thư mục còn lại từ không gian làm việc đã xóa trong Cài đặt bản phân nhánh."
+
 msgid "Review becomes the bottleneck"
 msgstr "Review trở thành nút thắt"
 
@@ -18191,6 +18225,9 @@ msgstr "Quét để tải Paradev cho iPhone"
 
 msgid "Scanning transcript logs…"
 msgstr "Đang quét log transcript…"
+
+msgid "Scanning…"
+msgstr "Đang quét…"
 
 msgid "Schedule"
 msgstr "Lịch"
@@ -19620,6 +19657,9 @@ msgstr "Một số tệp không thuộc loại được chấp nhận nên khôn
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "Một số tệp vượt quá kích thước tối đa nên không được thêm."
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "Một số thư mục được giữ lại vì không thể xác minh quyền sở hữu."
 
 msgid "Some models were priced with a fallback rate"
 msgstr "Một số mô hình được tính giá theo mức dự phòng"
@@ -21773,6 +21813,9 @@ msgstr "Không thể chuyển agent con này sang chạy nền lúc này"
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "Máy chủ không còn theo dõi agent con này. Bản ghi vẫn nằm trên đĩa trong thư mục phiên của agent."
 
+msgid "This subagent's chat is no longer available"
+msgstr "Cuộc trò chuyện của tác nhân phụ này không còn khả dụng"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "Terminal này chưa có kết quả nào để bàn giao."
 
@@ -21974,9 +22017,6 @@ msgstr "Hôm nay"
 
 msgid "TODAY"
 msgstr "HÔM NAY"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "Hôm nay ẩn các pull request bạn đã phê duyệt hoặc đã yêu cầu thay đổi."
 
 msgid "Todo"
 msgstr "Cần làm"
@@ -22677,6 +22717,9 @@ msgstr "Cập nhật Paradev trên thiết bị đó. Cập nhật từ ứng d�
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Hãy cập nhật Paradev trên máy chủ này để chỉnh sửa cấu hình workspace."
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "Cập nhật Paradev++ để sử dụng tính năng dọn dẹp cây làm việc."
 
 msgid "Update payment method"
 msgstr "Cập nhật phương thức thanh toán"

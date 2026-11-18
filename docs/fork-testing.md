@@ -1,5 +1,22 @@
 # Test delle funzionalità Paradev++
 
+## Avviare l'app in un workspace nuovo
+
+```sh
+./.paradev/setup.local.sh
+bun run dev
+```
+
+Il setup crea `.env`, assegna porte dedicate e prepara Postgres, proxy Neon e
+Redis locali. Usa un account di sviluppo e una cartella dati separata. Le porte
+sono elencate in `.paradev/ports.json`; senza il setup l'API ripiega sulla 3001,
+che può essere già occupata da un altro progetto.
+
+Il controllo di Postgres attende la connessione TCP, così il proxy parte dopo
+l'inizializzazione completa. Le migrazioni locali usano il driver TCP di Bun e
+verificano che la porta appartenga al container di questo workspace. Il launcher
+desktop rimuove `ELECTRON_RUN_AS_NODE` ereditato dal terminale per avviare la GUI.
+
 ## Eseguire le regressioni
 
 Dal checkout con dipendenze installate:

@@ -164,7 +164,7 @@ local_db_up() {
 
 local_migrate() {
   echo "📜 Applying database migrations..."
-  if ! bun run db:migrate; then
+  if ! bun scripts/fork/migrate-local.ts "$LOCAL_DB_PROJECT"; then
     error "db:migrate failed"
     return 1
   fi

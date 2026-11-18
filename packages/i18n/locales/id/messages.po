@@ -2042,6 +2042,9 @@ msgstr "Organisasi aktif diperlukan untuk membuat kunci API"
 msgid "Active sessions"
 msgstr "Sesi aktif"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "Ruang kerja aktif yang dilindungi: {activeCount}"
+
 msgid "Activities"
 msgstr "Aktivitas"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropic menolak token ini."
 msgid "any account"
 msgstr "akun apa pun"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "Setiap sesi agen dapat dibuka di chat atau di terminal. Pengaturan chat kini hanya memilih cara sesi baru dimulai."
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "Agen apa pun yang sudah Anda siapkan di Paradev, seperti Claude Code atau Codex."
 
@@ -3623,6 +3623,9 @@ msgstr "Latar belakang · {count}"
 msgid "Background chats"
 msgstr "Chat di latar belakang"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "Chat latar belakang muncul sebelum riwayat subagen di aktivitas workspace."
+
 msgid "Background processes"
 msgstr "Proses latar belakang"
 
@@ -3634,6 +3637,10 @@ msgstr "Memori terminal latar belakang"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "Cadangan: {0}"
 
 msgid "Badge"
 msgstr "Badge"
@@ -4408,12 +4415,6 @@ msgstr "Permukaan chat: pesan, penalaran, saran"
 msgid "Chats"
 msgstr "Obrolan"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "Chat menampilkan alasan Claude meminta persetujuan dan mengingat model, upaya, mode, serta mode cepat untuk setiap agen."
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "Chat yang dimulai dari CLI atau perangkat lain terbuka sebagai tab, dan workspace cloud menampilkan chat-nya saat sedang aktif kembali."
-
 msgid "Check again"
 msgstr "Periksa lagi"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code, Codex, Cursor, OpenCode, dan lainnya."
 msgid "Claude is now running in workspace component-showcase."
 msgstr "Claude kini berjalan di workspace component-showcase."
 
+msgid "Clean up deleted workspaces"
+msgstr "Bersihkan ruang kerja yang dihapus"
+
 msgid "Clean up stale TODOs…"
 msgstr "Bereskan TODO yang basi…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "Pembersihan gagal. Pindai ulang untuk memeriksa folder yang tersisa."
 
 msgid "Clear"
 msgstr "Bening"
@@ -7377,6 +7384,9 @@ msgstr "Hapus rutinitas"
 msgid "Delete script"
 msgstr "Hapus skrip"
 
+msgid "Delete selected folders"
+msgstr "Hapus folder yang dipilih"
+
 msgid "Delete selected workspaces"
 msgstr "Hapus workspace yang dipilih"
 
@@ -7480,6 +7490,9 @@ msgstr "Proyek yang dihapus dapat dipulihkan selama 30 hari, bersama workspace y
 
 msgid "Deleted user"
 msgstr "Pengguna dihapus"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "Ruang kerja terhapus yang diperiksa: {archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "Workspace terhapus, tapi tidak bisa menyelesaikan pembaruan sidebar"
@@ -8456,6 +8469,9 @@ msgstr "esc untuk menutup"
 msgid "esc to exit"
 msgstr "esc untuk keluar"
 
+msgid "Estimated space: {size}"
+msgstr "Perkiraan ruang: {size}"
+
 msgid "Event"
 msgstr "Peristiwa"
 
@@ -9412,6 +9428,9 @@ msgstr "Cari tim…"
 
 msgid "Find and fix a small bug"
 msgstr "Cari dan perbaiki bug kecil"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "Cari dan hapus folder yang tertinggal dari ruang kerja yang dihapus. Ruang kerja aktif dan folder tambahannya dilindungi."
 
 msgid "Find another reaction"
 msgstr "Cari reaksi lain"
@@ -10968,6 +10987,9 @@ msgstr "Instal."
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "Terpasang"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "Pratinjau aplikasi terinstal. Penghapusan dinonaktifkan."
 
 msgid "Installed by your organization"
 msgstr "Dipasang oleh organisasi Anda"
@@ -14151,6 +14173,9 @@ msgstr "Belum ada yang dipublikasikan dalam 30 hari terakhir. Peringkat Anda mun
 msgid "Nothing to check."
 msgstr "Tidak ada yang perlu diperiksa."
 
+msgid "Nothing to clean up."
+msgstr "Tidak ada yang perlu dibersihkan."
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "Belum ada yang bisa dibuka. Kirim pesan dulu."
 
@@ -14386,6 +14411,9 @@ msgstr "Hanya tersedia di macOS."
 msgid "Only channel admins can do that"
 msgstr "Hanya admin kanal yang dapat melakukannya"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "Hanya folder ruang kerja yang dihapus yang ditampilkan. Ruang kerja aktif dan cabang Git dipertahankan. Perubahan lokal dicadangkan sebelum penghapusan."
+
 msgid "Only host owners can change membership"
 msgstr "Hanya pemilik host yang bisa mengubah keanggotaan"
 
@@ -14448,6 +14476,9 @@ msgstr "Hanya penulis yang bisa mengubah komentar"
 
 msgid "Only the author can edit a comment"
 msgstr "Hanya penulis yang bisa mengedit komentar"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "Hanya lima subagen yang terakhir selesai yang ditampilkan. Perluas daftar untuk melihat yang lebih lama."
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Hanya pemilik host yang bisa mengizinkan workspace cloud menjangkaunya"
@@ -15020,6 +15051,9 @@ msgstr "Membuka {appName}…"
 msgid "Opening {what}"
 msgstr "Membuka {what}"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "Membuka subagen yang sudah selesai akan membuka kembali chat latar belakangnya jika tersedia."
+
 msgid "Opening files"
 msgstr "Membuka file"
 
@@ -15508,9 +15542,6 @@ msgstr "Aplikasi seluler Paradev memungkinkan saya menjaga agen tetap bekerja da
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ mencari versi baru sekali sehari dan menampilkan popup. Paradev++ tidak pernah memperbarui apa pun sendiri."
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ tidak lagi melambat setelah berjam-jam terbuka: animasi dijeda saat jendelanya berada di latar belakang."
 
 msgid "Paragraph"
 msgstr "Paragraf"
@@ -17741,6 +17772,9 @@ msgstr "Tinjau pekerjaan agen dengan Halaman"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Antrean review dan CI memakan keuntungan yang dihasilkan agen."
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "Periksa dan bersihkan folder yang tertinggal dari ruang kerja yang dihapus di Pengaturan Fork."
+
 msgid "Review becomes the bottleneck"
 msgstr "Review menjadi hambatan utama"
 
@@ -18191,6 +18225,9 @@ msgstr "Pindai untuk mengunduh Paradev untuk iPhone"
 
 msgid "Scanning transcript logs…"
 msgstr "Memindai log transkrip…"
+
+msgid "Scanning…"
+msgstr "Memindai…"
 
 msgid "Schedule"
 msgstr "Jadwal"
@@ -19620,6 +19657,9 @@ msgstr "Sebagian file bukan tipe yang diterima dan tidak ditambahkan."
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "Sebagian file melebihi ukuran maksimum dan tidak ditambahkan."
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "Beberapa folder dipertahankan karena kepemilikannya tidak dapat diverifikasi."
 
 msgid "Some models were priced with a fallback rate"
 msgstr "Sebagian model dihitung dengan tarif cadangan"
@@ -21773,6 +21813,9 @@ msgstr "Subagen ini tidak bisa dipindahkan ke latar belakang sekarang"
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "Subagen ini tidak lagi dilacak oleh host. Transkripnya tetap tersimpan di disk pada direktori sesi agen."
 
+msgid "This subagent's chat is no longer available"
+msgstr "Chat subagen ini tidak lagi tersedia"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "Terminal ini belum punya keluaran untuk diserahkan."
 
@@ -21974,9 +22017,6 @@ msgstr "Hari ini"
 
 msgid "TODAY"
 msgstr "HARI INI"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "Hari ini menyembunyikan pull request yang sudah Anda setujui atau yang Anda minta diubah."
 
 msgid "Todo"
 msgstr "Todo"
@@ -22677,6 +22717,9 @@ msgstr "Perbarui Paradev di perangkat tersebut. Pembaruan dari aplikasi memerluk
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Perbarui Paradev di host ini untuk mengedit konfigurasi workspace-nya."
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "Perbarui Paradev++ untuk membersihkan pohon kerja."
 
 msgid "Update payment method"
 msgstr "Perbarui metode pembayaran"

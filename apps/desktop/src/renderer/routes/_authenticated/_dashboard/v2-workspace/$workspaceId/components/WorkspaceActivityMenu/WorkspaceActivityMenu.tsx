@@ -73,9 +73,9 @@ import { ActivityMenuHeader } from "./components/ActivityMenuHeader";
 import { AnimatedHeight } from "./components/AnimatedHeight";
 import { BackgroundWorkRow } from "./components/BackgroundWorkRow";
 import { ChangesMenuRow } from "./components/ChangesMenuRow";
-import { FinishedSubagentRow } from "./components/FinishedSubagentRow";
 import { ForkBackgroundChatsGroup } from "./components/ForkBackgroundChatsGroup";
 import { ForkBackgroundWorkDetails } from "./components/ForkBackgroundWorkDetails";
+import { ForkFinishedSubagents } from "./components/ForkFinishedSubagents";
 import { ForkLinkedTasksGroup } from "./components/ForkLinkedTasksGroup";
 import { ForkStopAllWorkButton } from "./components/ForkStopAllWorkButton";
 import { MenuGroup } from "./components/MenuGroup";
@@ -91,7 +91,7 @@ import {
 	VIEW_ENTER_CLASSNAME,
 } from "./constants";
 import { useAgentWork } from "./hooks/useAgentWork";
-import { useAgentWorkActions } from "./hooks/useAgentWorkActions";
+import { useForkAgentWorkActions } from "./hooks/useForkAgentWorkActions";
 import { useWorkspacePullRequests } from "./hooks/useWorkspacePullRequests";
 import { useActivityPanelStore } from "./stores/activityPanelStore";
 import {
@@ -390,7 +390,9 @@ export function WorkspaceActivityMenu({
 		() => [store, ...linkedStores],
 		[store, linkedStores],
 	);
-	const agentActions = useAgentWorkActions(paneStores);
+	const agentActions = useForkAgentWorkActions(paneStores, workspaceId, () =>
+		setFloating(false),
+	);
 	const runningCount =
 		processes.length + agentWork.subagents.length + agentWork.shells.length;
 	const stoppableShells = agentWork.shells.filter(
@@ -700,6 +702,11 @@ export function WorkspaceActivityMenu({
 								<div>{pullRequests.map(pullRequestRow)}</div>
 							</MenuGroup>
 						)}
+						<ForkBackgroundChatsGroup
+							workspaceId={workspaceId}
+							store={store}
+							onOpened={() => setFloating(false)}
+						/>
 						{agentWork.subagents.length + agentWork.finished.length > 0 && (
 							<MenuGroup
 								title={<Trans>Subagents</Trans>}
@@ -707,16 +714,14 @@ export function WorkspaceActivityMenu({
 							>
 								<div>
 									{agentRows(agentWork.subagents)}
-									{agentWork.finished.map((entry) => (
-										<FinishedSubagentRow
-											key={entry.key}
-											entry={entry}
-											source={sourceOf(entry.terminalId)}
-											onOpen={(target) =>
-												agentActions.open(target, { subagent: true })
-											}
-										/>
-									))}
+									<ForkFinishedSubagents
+										key={workspaceId}
+										entries={agentWork.finished}
+										sourceOf={sourceOf}
+										onOpen={(target) =>
+											agentActions.open(target, { subagent: true })
+										}
+									/>
 								</div>
 							</MenuGroup>
 						)}
@@ -741,11 +746,6 @@ export function WorkspaceActivityMenu({
 								</div>
 							</MenuGroup>
 						)}
-						<ForkBackgroundChatsGroup
-							workspaceId={workspaceId}
-							store={store}
-							onOpened={() => setFloating(false)}
-						/>
 						<MenuGroup
 							hidden={!showPages}
 							title={<Trans>Pages</Trans>}
