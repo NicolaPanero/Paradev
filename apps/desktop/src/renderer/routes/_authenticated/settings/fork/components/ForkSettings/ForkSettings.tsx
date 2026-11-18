@@ -4,6 +4,7 @@ import { Switch } from "@superset/ui/switch";
 import { ForkAgentCliUpdatesSettings } from "renderer/components/ForkAgentCliUpdates";
 import { ForkCliOptionsSetting } from "renderer/components/ForkCliOptionsSetting";
 import { ForkIntegrations } from "renderer/components/ForkIntegrations";
+import { ForkWorktreeCleanup } from "renderer/components/ForkWorktreeCleanup";
 import { useForkCliOptionsStore } from "renderer/stores/fork-cli-options";
 import { useForkHomeAppearance } from "renderer/stores/fork-home-appearance";
 import { useSettingsSearchQuery } from "renderer/stores/settings-state";
@@ -118,11 +119,18 @@ export function ForkSettings() {
 				</SettingsSection>
 			)}
 			{matches.some(
-				(item) => item.id === SETTING_ITEM_ID.FORK_ATTACHMENT_RETENTION,
+				(item) =>
+					item.id === SETTING_ITEM_ID.FORK_ATTACHMENT_RETENTION ||
+					item.id === SETTING_ITEM_ID.FORK_WORKTREE_CLEANUP,
 			) && (
 				<SettingsSection title={t({ message: "Storage" })}>
-					<div className="rounded-lg border">
-						<ForkAttachmentRetention />
+					<div className="rounded-lg border divide-y">
+						{matches.some(
+							(item) => item.id === SETTING_ITEM_ID.FORK_ATTACHMENT_RETENTION,
+						) && <ForkAttachmentRetention />}
+						{matches.some(
+							(item) => item.id === SETTING_ITEM_ID.FORK_WORKTREE_CLEANUP,
+						) && <ForkWorktreeCleanup />}
 					</div>
 				</SettingsSection>
 			)}

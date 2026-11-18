@@ -2042,6 +2042,9 @@ msgstr "K vytvoření API klíče je potřeba aktivní organizace"
 msgid "Active sessions"
 msgstr "Aktivní relace"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "Chráněné aktivní pracovní prostory: {activeCount}"
+
 msgid "Activities"
 msgstr "Aktivity"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropic tento token odmítl."
 msgid "any account"
 msgstr "libovolný účet"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "Každou relaci agenta lze otevřít v chatu nebo v terminálu. Nastavení chatu nyní určuje jen to, jak začínají nové relace."
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "Jakýkoli agent, kterého máte v Paradevu nastaveného, například Claude Code nebo Codex."
 
@@ -3623,6 +3623,9 @@ msgstr "Na pozadí · {count}"
 msgid "Background chats"
 msgstr "Chaty na pozadí"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "Chaty na pozadí se v aktivitě workspace zobrazují před historií podagentů."
+
 msgid "Background processes"
 msgstr "Procesy na pozadí"
 
@@ -3634,6 +3637,10 @@ msgstr "Paměť terminálů na pozadí"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "Zálohy: {0}"
 
 msgid "Badge"
 msgstr "Odznak"
@@ -4408,12 +4415,6 @@ msgstr "Plochy chatu: zprávy, uvažování, návrhy"
 msgid "Chats"
 msgstr "Chaty"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "Chaty ukazují, proč Claude žádá o schválení, a pro každého agenta si pamatují model, úsilí, režim a rychlý režim."
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "Chaty spuštěné z CLI nebo z jiného zařízení se otevírají jako karty a cloudový workspace ukazuje své chaty, zatímco se probouzí."
-
 msgid "Check again"
 msgstr "Zkontrolovat znovu"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code, Codex, Cursor, OpenCode a další."
 msgid "Claude is now running in workspace component-showcase."
 msgstr "Claude teď běží v pracovním prostoru component-showcase."
 
+msgid "Clean up deleted workspaces"
+msgstr "Vyčistit smazané pracovní prostory"
+
 msgid "Clean up stale TODOs…"
 msgstr "Ukliď zastaralé TODO…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "Čištění se nezdařilo. Znovu prohledejte zbývající složky."
 
 msgid "Clear"
 msgstr "Čirý"
@@ -7377,6 +7384,9 @@ msgstr "Smazat rutinu"
 msgid "Delete script"
 msgstr "Smazat skript"
 
+msgid "Delete selected folders"
+msgstr "Smazat vybrané složky"
+
 msgid "Delete selected workspaces"
 msgstr "Smazat vybrané pracovní prostory"
 
@@ -7480,6 +7490,9 @@ msgstr "Smazané projekty lze obnovit po dobu 30 dnů, spolu s pracovními prost
 
 msgid "Deleted user"
 msgstr "Smazaný uživatel"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "Zkontrolované smazané pracovní prostory: {archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "Pracovní prostory byly smazány, ale postranní panel se nepodařilo dokončit aktualizovat"
@@ -8456,6 +8469,9 @@ msgstr "esc zavře"
 msgid "esc to exit"
 msgstr "esc pro ukončení"
 
+msgid "Estimated space: {size}"
+msgstr "Odhadované místo: {size}"
+
 msgid "Event"
 msgstr "Událost"
 
@@ -9412,6 +9428,9 @@ msgstr "Najít tým…"
 
 msgid "Find and fix a small bug"
 msgstr "Najít a opravit malou chybu"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "Najděte a odstraňte složky zbylé po smazaných pracovních prostorech. Aktivní prostory a jejich další složky jsou chráněny."
 
 msgid "Find another reaction"
 msgstr "Najít jinou reakci"
@@ -10968,6 +10987,9 @@ msgstr "Nainstalujte."
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "Nainstalováno"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "Náhled nainstalované aplikace. Mazání je zakázáno."
 
 msgid "Installed by your organization"
 msgstr "Nainstalováno vaší organizací"
@@ -14151,6 +14173,9 @@ msgstr "Za posledních 30 dní zatím nebylo nic publikováno. Vaše pozice se o
 msgid "Nothing to check."
 msgstr "Není co kontrolovat."
 
+msgid "Nothing to clean up."
+msgstr "Není co čistit."
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "Zatím není co otevřít. Nejdřív pošlete zprávu."
 
@@ -14386,6 +14411,9 @@ msgstr "Dostupné jen na macOS."
 msgid "Only channel admins can do that"
 msgstr "To mohou udělat jen správci kanálu"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "Zobrazují se pouze složky smazaných pracovních prostorů. Aktivní prostory a větve Git zůstanou zachovány. Místní změny se před smazáním zálohují."
+
 msgid "Only host owners can change membership"
 msgstr "Členství mohou měnit jen vlastníci hosta"
 
@@ -14448,6 +14476,9 @@ msgstr "Komentář může upravit jen jeho autor"
 
 msgid "Only the author can edit a comment"
 msgstr "Komentář může upravit jen jeho autor"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "Zobrazuje se pouze pět naposledy dokončených podagentů. Rozbalte seznam a zobrazte starší."
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Cloudovým pracovním prostorům může přístup povolit jen vlastník hosta"
@@ -15020,6 +15051,9 @@ msgstr "Otevírá se {appName}…"
 msgid "Opening {what}"
 msgstr "Otevírám {what}"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "Otevřením dokončeného podagenta se znovu otevře jeho chat na pozadí, pokud je dostupný."
+
 msgid "Opening files"
 msgstr "Otevírání souborů"
 
@@ -15508,9 +15542,6 @@ msgstr "Mobilní aplikace Paradev mi umožňuje udržovat agenty v chodu a odblo
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ hledá nové verze jednou denně a zobrazí vyskakovací okno. Nikdy nic neaktualizuje sám."
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ se už po hodinách běhu nezpomaluje: animace se pozastaví, když je jeho okno na pozadí."
 
 msgid "Paragraph"
 msgstr "Odstavec"
@@ -17741,6 +17772,9 @@ msgstr "Kontrola práce agenta ve Stránkách"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Fronty revizí a CI spolykají zisky, které agenti vytvoří."
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "V nastavení forku zkontrolujte a vyčistěte složky zbylé po smazaných pracovních prostorech."
+
 msgid "Review becomes the bottleneck"
 msgstr "Úzkým hrdlem se stává revize"
 
@@ -18191,6 +18225,9 @@ msgstr "Naskenujte a stáhněte Paradev pro iPhone"
 
 msgid "Scanning transcript logs…"
 msgstr "Procházím logy přepisů…"
+
+msgid "Scanning…"
+msgstr "Prohledávání…"
 
 msgid "Schedule"
 msgstr "Plán"
@@ -19620,6 +19657,9 @@ msgstr "Některé soubory nemají povolený typ a nebyly přidány."
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "Některé soubory překračují maximální velikost a nebyly přidány."
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "Některé složky byly zachovány, protože nebylo možné ověřit jejich příslušnost."
 
 msgid "Some models were priced with a fallback rate"
 msgstr "U některých modelů byla použita náhradní sazba"
@@ -21773,6 +21813,9 @@ msgstr "Tento subagent se teď nedá přesunout na pozadí"
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "Tento subagent už není hostitelem sledován. Jeho přepis zůstává na disku v adresáři relace agenta."
 
+msgid "This subagent's chat is no longer available"
+msgstr "Chat tohoto podagenta již není dostupný"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "Tento terminál zatím nemá žádný výstup k předání."
 
@@ -21974,9 +22017,6 @@ msgstr "Dnes"
 
 msgid "TODAY"
 msgstr "DNES"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "Dnes skryje pull requesty, které jste už schválili nebo u kterých jste požádali o změny."
 
 msgid "Todo"
 msgstr "K řešení"
@@ -22677,6 +22717,9 @@ msgstr "Aktualizujte Paradev na daném zařízení. Aktualizace z aplikace vyža
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Pro úpravu konfigurace pracovního prostoru aktualizujte Paradev na tomto hostiteli."
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "Aktualizujte Paradev++, abyste mohli čistit pracovní stromy."
 
 msgid "Update payment method"
 msgstr "Aktualizovat způsob platby"

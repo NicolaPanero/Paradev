@@ -7,6 +7,7 @@ import type { HostServiceContext } from "../types.ts";
 import { getHostWorkerPool } from "../workers/host-worker-pool.ts";
 import { gitAddFolderWorktreeTask } from "../workers/tasks/folder-worktrees.ts";
 import { gitWorktreeRemoveTask } from "../workers/tasks/git.ts";
+import { finishForkFolderWorktreeRemoval } from "./fork-folder-worktree-cleanup";
 import { isGitRepoPath } from "./project-folders.ts";
 
 type FolderWorktreeContext = Pick<HostServiceContext, "db" | "credentials">;
@@ -164,9 +165,7 @@ export async function removeFolderWorktrees(
 				worktreePath: row.worktreePath,
 				gitEnv: await createGitEnvResolver(ctx.credentials)(row.folderPath),
 			});
-			if (result.stillRegistered || result.removeError) {
-				throw new Error(result.removeError ?? "worktree is still registered");
-			}
+			await finishForkFolderWorktreeRemoval(ctx, workspaceId, row, result);
 			ctx.db
 				.delete(workspaceFolderWorktrees)
 				.where(

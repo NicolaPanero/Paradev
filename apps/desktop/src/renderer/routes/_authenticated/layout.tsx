@@ -17,6 +17,7 @@ import { useEffect, useRef, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HiOutlineWifi } from "react-icons/hi2";
 import { ForkAgentCliUpdateNotice } from "renderer/components/ForkAgentCliUpdates";
+import { ForkWorktreeCleanupStartup } from "renderer/components/ForkWorktreeCleanup";
 import { Paywall } from "renderer/components/Paywall";
 import { Redirect } from "renderer/components/Redirect";
 import { env } from "renderer/env.renderer";
@@ -383,6 +384,7 @@ function AuthenticatedLayout() {
 									<ChannelsRealtime />
 									<DaemonAutoUpdateFailureDialog />
 									<ForkAgentCliUpdateNotice />
+									<ForkWorktreeCleanupStartup />
 									<InterruptedChatsDialog />
 									<Outlet />
 									<V1ImportModal />

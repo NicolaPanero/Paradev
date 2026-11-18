@@ -2042,6 +2042,9 @@ msgstr "创建API密钥需要有活动组织"
 msgid "Active sessions"
 msgstr "活动会话"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "受保护的使用中工作区：{activeCount}"
+
 msgid "Activities"
 msgstr "活动"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropic拒绝了此令牌。"
 msgid "any account"
 msgstr "任意账号"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "任何智能体会话都可以在聊天或终端中打开。聊天设置现在只决定新会话的启动方式。"
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "你在 Paradev 中设置的任何智能体，例如 Claude Code 或 Codex。"
 
@@ -3623,6 +3623,9 @@ msgstr "后台 · {count}"
 msgid "Background chats"
 msgstr "后台聊天"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "在工作区活动中，后台聊天显示在子代理历史记录之前。"
+
 msgid "Background processes"
 msgstr "后台进程"
 
@@ -3634,6 +3637,10 @@ msgstr "后台终端内存"
 
 msgid "Backlog"
 msgstr "待规划"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "备份：{0}"
 
 msgid "Badge"
 msgstr "徽章"
@@ -4408,12 +4415,6 @@ msgstr "聊天界面：消息、推理、建议"
 msgid "Chats"
 msgstr "聊天"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "聊天会显示 Claude 请求批准的原因，并为每个智能体记住模型、投入程度、模式和快速模式。"
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "从 CLI 或其他设备启动的聊天会以标签页打开，云工作区在唤醒期间也会显示其聊天。"
-
 msgid "Check again"
 msgstr "重新检查"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code、Codex、Cursor、OpenCode等。"
 msgid "Claude is now running in workspace component-showcase."
 msgstr "Claude已在工作区component-showcase中运行。"
 
+msgid "Clean up deleted workspaces"
+msgstr "清理已删除的工作区"
+
 msgid "Clean up stale TODOs…"
 msgstr "清理过期的TODO…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "清理失败。请重新扫描以检查剩余文件夹。"
 
 msgid "Clear"
 msgstr "透明"
@@ -7377,6 +7384,9 @@ msgstr "删除例行任务"
 msgid "Delete script"
 msgstr "删除脚本"
 
+msgid "Delete selected folders"
+msgstr "删除所选文件夹"
+
 msgid "Delete selected workspaces"
 msgstr "删除选中的工作区"
 
@@ -7480,6 +7490,9 @@ msgstr "已删除的项目可在 30 天内恢复，连同一起删除的工作�
 
 msgid "Deleted user"
 msgstr "已删除的用户"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "已检查的已删除工作区：{archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "工作区已删除，但侧边栏没能更新完"
@@ -8456,6 +8469,9 @@ msgstr "按esc关闭"
 msgid "esc to exit"
 msgstr "esc退出"
 
+msgid "Estimated space: {size}"
+msgstr "预计空间：{size}"
+
 msgid "Event"
 msgstr "事件"
 
@@ -9412,6 +9428,9 @@ msgstr "查找团队…"
 
 msgid "Find and fix a small bug"
 msgstr "找一个小bug并修好"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "查找并移除已删除工作区留下的文件夹。使用中的工作区及其附加文件夹受到保护。"
 
 msgid "Find another reaction"
 msgstr "查找其他回应"
@@ -10968,6 +10987,9 @@ msgstr "安装。"
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "已安装"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "已安装应用的数据预览。删除功能已禁用。"
 
 msgid "Installed by your organization"
 msgstr "由你的组织安装"
@@ -14151,6 +14173,9 @@ msgstr "最近30天还没有已公开的数据。待本机用量同步后，你�
 msgid "Nothing to check."
 msgstr "没有需要检查的内容。"
 
+msgid "Nothing to clean up."
+msgstr "没有需要清理的内容。"
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "暂无可打开的内容。请先发送一条消息。"
 
@@ -14386,6 +14411,9 @@ msgstr "仅在macOS上可用。"
 msgid "Only channel admins can do that"
 msgstr "只有频道管理员可以执行此操作"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "仅列出已删除工作区的文件夹。使用中的工作区和 Git 分支会保留。删除前会备份本地更改。"
+
 msgid "Only host owners can change membership"
 msgstr "只有主机所有者才能更改成员关系"
 
@@ -14448,6 +14476,9 @@ msgstr "只有作者可以修改评论"
 
 msgid "Only the author can edit a comment"
 msgstr "只有作者才能编辑评论"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "仅显示最近完成的五个子代理。展开列表可查看更早的记录。"
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "只有主机所有者可以允许云端工作区访问它"
@@ -15020,6 +15051,9 @@ msgstr "正在打开 {appName}…"
 msgid "Opening {what}"
 msgstr "正在打开 {what}"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "打开已完成的子代理时，会重新打开其后台聊天（如果可用）。"
+
 msgid "Opening files"
 msgstr "打开文件"
 
@@ -15508,9 +15542,6 @@ msgstr "Paradev 手机应用让我可以随时随地推动智能体工作、解�
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ 每天检查一次新版本并显示弹窗。它绝不会自行更新任何内容。"
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ 长时间打开后不再变慢：窗口处于后台时动画会暂停。"
 
 msgid "Paragraph"
 msgstr "段落"
@@ -17741,6 +17772,9 @@ msgstr "用页面审查智能体的工作"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "审查和CI排队把智能体带来的收益吃掉了。"
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "在分支版本设置中检查并清理已删除工作区留下的文件夹。"
+
 msgid "Review becomes the bottleneck"
 msgstr "审查成为瓶颈"
 
@@ -18191,6 +18225,9 @@ msgstr "扫码下载 iPhone 版 Paradev"
 
 msgid "Scanning transcript logs…"
 msgstr "正在扫描会话记录日志…"
+
+msgid "Scanning…"
+msgstr "正在扫描…"
 
 msgid "Schedule"
 msgstr "计划"
@@ -19620,6 +19657,9 @@ msgstr "部分文件的类型不被允许，未添加。"
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "部分文件超过大小上限，未添加。"
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "部分文件夹因无法验证所属关系而被保留。"
 
 msgid "Some models were priced with a fallback rate"
 msgstr "部分模型按兜底费率计价"
@@ -21773,6 +21813,9 @@ msgstr "此子智能体现在无法移到后台"
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "主机不再跟踪该子智能体。其记录仍保存在磁盘上的智能体会话目录中。"
 
+msgid "This subagent's chat is no longer available"
+msgstr "此子代理的聊天已不可用"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "该终端还没有可交接的输出。"
 
@@ -21974,9 +22017,6 @@ msgstr "今天"
 
 msgid "TODAY"
 msgstr "今天"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "今天会隐藏你已批准或已请求修改的拉取请求。"
 
 msgid "Todo"
 msgstr "待办"
@@ -22677,6 +22717,9 @@ msgstr "请在该设备上更新 Paradev。应用内更新需要受支持的独�
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "请更新此主机上的 Paradev，以编辑其工作区配置。"
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "请更新 Paradev++ 以使用工作树清理功能。"
 
 msgid "Update payment method"
 msgstr "更新支付方式"

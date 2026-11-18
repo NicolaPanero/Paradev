@@ -2042,6 +2042,9 @@ msgstr "Active organization required to create an API key"
 msgid "Active sessions"
 msgstr "Active sessions"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "Active workspaces protected: {activeCount}"
+
 msgid "Activities"
 msgstr "Activities"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropic rejected this token."
 msgid "any account"
 msgstr "any account"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "Any agent you've set up in Paradev, such as Claude Code or Codex."
 
@@ -3623,6 +3623,9 @@ msgstr "Background · {count}"
 msgid "Background chats"
 msgstr "Background chats"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "Background chats appear before subagent history in Workspace activity."
+
 msgid "Background processes"
 msgstr "Background processes"
 
@@ -3634,6 +3637,10 @@ msgstr "Background terminal memory"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "Backups: {0}"
 
 msgid "Badge"
 msgstr "Badge"
@@ -4408,12 +4415,6 @@ msgstr "Chat surfaces: messages, reasoning, suggestions"
 msgid "Chats"
 msgstr "Chats"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-
 msgid "Check again"
 msgstr "Check again"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code, Codex, Cursor, OpenCode, and more."
 msgid "Claude is now running in workspace component-showcase."
 msgstr "Claude is now running in workspace component-showcase."
 
+msgid "Clean up deleted workspaces"
+msgstr "Clean up deleted workspaces"
+
 msgid "Clean up stale TODOs…"
 msgstr "Clean up stale TODOs…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "Cleanup failed. Scan again to review the remaining folders."
 
 msgid "Clear"
 msgstr "Clear"
@@ -7377,6 +7384,9 @@ msgstr "Delete routine"
 msgid "Delete script"
 msgstr "Delete script"
 
+msgid "Delete selected folders"
+msgstr "Delete selected folders"
+
 msgid "Delete selected workspaces"
 msgstr "Delete selected workspaces"
 
@@ -7480,6 +7490,9 @@ msgstr "Deleted projects can be restored for 30 days, with the workspaces that w
 
 msgid "Deleted user"
 msgstr "Deleted user"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "Deleted workspaces checked: {archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "Deleted workspaces, but couldn’t finish updating the sidebar"
@@ -8456,6 +8469,9 @@ msgstr "esc to dismiss"
 msgid "esc to exit"
 msgstr "esc to exit"
 
+msgid "Estimated space: {size}"
+msgstr "Estimated space: {size}"
+
 msgid "Event"
 msgstr "Event"
 
@@ -9412,6 +9428,9 @@ msgstr "Find a team…"
 
 msgid "Find and fix a small bug"
 msgstr "Find and fix a small bug"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
 
 msgid "Find another reaction"
 msgstr "Find another reaction"
@@ -10968,6 +10987,9 @@ msgstr "Install."
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "Installed"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "Installed app preview. Deletion is disabled."
 
 msgid "Installed by your organization"
 msgstr "Installed by your organization"
@@ -14151,6 +14173,9 @@ msgstr "Nothing published in the last 30 days yet. Your rank appears once usage 
 msgid "Nothing to check."
 msgstr "Nothing to check."
 
+msgid "Nothing to clean up."
+msgstr "Nothing to clean up."
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "Nothing to open yet. Send a message first."
 
@@ -14386,6 +14411,9 @@ msgstr "Only available on macOS."
 msgid "Only channel admins can do that"
 msgstr "Only channel admins can do that"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+
 msgid "Only host owners can change membership"
 msgstr "Only host owners can change membership"
 
@@ -14448,6 +14476,9 @@ msgstr "Only the author can change a comment"
 
 msgid "Only the author can edit a comment"
 msgstr "Only the author can edit a comment"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "Only the five latest completed subagents are shown. Expand the list to see older ones."
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Only the host owner can let cloud workspaces reach it"
@@ -15020,6 +15051,9 @@ msgstr "Opening {appName}…"
 msgid "Opening {what}"
 msgstr "Opening {what}"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "Opening a completed subagent reopens its background chat when available."
+
 msgid "Opening files"
 msgstr "Opening files"
 
@@ -15508,9 +15542,6 @@ msgstr "Paradev's mobile app lets me keep my agents moving and unblock them from
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
 
 msgid "Paragraph"
 msgstr "Paragraph"
@@ -17741,6 +17772,9 @@ msgstr "Review agent work with Pages"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Review and CI queues eat the gains agents create."
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "Review and clean up folders left by deleted workspaces in Fork Settings."
+
 msgid "Review becomes the bottleneck"
 msgstr "Review becomes the bottleneck"
 
@@ -18191,6 +18225,9 @@ msgstr "Scan to download Paradev for iPhone"
 
 msgid "Scanning transcript logs…"
 msgstr "Scanning transcript logs…"
+
+msgid "Scanning…"
+msgstr "Scanning…"
 
 msgid "Schedule"
 msgstr "Schedule"
@@ -19620,6 +19657,9 @@ msgstr "Some files are not an accepted type and were not added."
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "Some files exceed the maximum size and were not added."
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "Some folders were kept because their ownership could not be verified."
 
 msgid "Some models were priced with a fallback rate"
 msgstr "Some models were priced with a fallback rate"
@@ -21773,6 +21813,9 @@ msgstr "This subagent can't move to the background now"
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 
+msgid "This subagent's chat is no longer available"
+msgstr "This subagent's chat is no longer available"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "This terminal has no output to hand over yet."
 
@@ -21974,9 +22017,6 @@ msgstr "Today"
 
 msgid "TODAY"
 msgstr "TODAY"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "Today hides the pull requests you already approved or asked to change."
 
 msgid "Todo"
 msgstr "Todo"
@@ -22677,6 +22717,9 @@ msgstr "Update Paradev on that device. In-app updates require a supported standa
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Update Paradev on this host to edit its workspace config."
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "Update Paradev++ to use worktree cleanup."
 
 msgid "Update payment method"
 msgstr "Update payment method"

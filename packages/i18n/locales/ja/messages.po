@@ -2042,6 +2042,9 @@ msgstr "APIキーの作成にはアクティブな組織が必要です"
 msgid "Active sessions"
 msgstr "アクティブなセッション"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "保護された使用中のワークスペース: {activeCount}"
+
 msgid "Activities"
 msgstr "アクティビティ"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropicがこのトークンを拒否しました。"
 msgid "any account"
 msgstr "すべてのアカウント"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "どのエージェントセッションもチャットまたはターミナルで開けます。チャット設定は、新しいセッションの開始方法だけを選ぶようになりました。"
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "Paradevで設定済みのエージェントなら何でも使えます。例：Claude CodeやCodex。"
 
@@ -3623,6 +3623,9 @@ msgstr "バックグラウンド · {count}"
 msgid "Background chats"
 msgstr "バックグラウンドのチャット"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "ワークスペースのアクティビティでは、サブエージェントの履歴より先にバックグラウンドのチャットが表示されます。"
+
 msgid "Background processes"
 msgstr "バックグラウンドプロセス"
 
@@ -3634,6 +3637,10 @@ msgstr "バックグラウンドターミナルのメモリ"
 
 msgid "Backlog"
 msgstr "バックログ"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "バックアップ: {0}"
 
 msgid "Badge"
 msgstr "Badge"
@@ -4408,12 +4415,6 @@ msgstr "チャットの構成要素: メッセージ、推論、提案"
 msgid "Chats"
 msgstr "チャット"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "チャットに Claude が承認を求める理由が表示され、エージェントごとにモデル、エフォート、モード、高速モードが記憶されます。"
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "CLI や別のデバイスから開始したチャットがタブとして開き、クラウドワークスペースは起動中にもチャットを表示します。"
-
 msgid "Check again"
 msgstr "再確認"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code、Codex、Cursor、OpenCodeなど。"
 msgid "Claude is now running in workspace component-showcase."
 msgstr "ワークスペースcomponent-showcaseでClaudeが実行中です。"
 
+msgid "Clean up deleted workspaces"
+msgstr "削除済みワークスペースをクリーンアップ"
+
 msgid "Clean up stale TODOs…"
 msgstr "古いTODOを整理…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "クリーンアップに失敗しました。再スキャンして残りのフォルダーを確認してください。"
 
 msgid "Clear"
 msgstr "クリア"
@@ -7377,6 +7384,9 @@ msgstr "ルーティンを削除"
 msgid "Delete script"
 msgstr "スクリプトを削除"
 
+msgid "Delete selected folders"
+msgstr "選択したフォルダーを削除"
+
 msgid "Delete selected workspaces"
 msgstr "選択したワークスペースを削除"
 
@@ -7480,6 +7490,9 @@ msgstr "削除したプロジェクトは、一緒に削除されたワークス
 
 msgid "Deleted user"
 msgstr "削除されたユーザー"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "確認済みの削除済みワークスペース: {archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "ワークスペースは削除しましたが、サイドバーの更新を完了できませんでした"
@@ -8456,6 +8469,9 @@ msgstr "escで閉じる"
 msgid "esc to exit"
 msgstr "escで終了"
 
+msgid "Estimated space: {size}"
+msgstr "推定容量: {size}"
+
 msgid "Event"
 msgstr "イベント"
 
@@ -9412,6 +9428,9 @@ msgstr "チームを検索…"
 
 msgid "Find and fix a small bug"
 msgstr "小さなバグを見つけて修正"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "削除済みワークスペースに残ったフォルダーを検索して削除します。使用中のワークスペースと追加フォルダーは保護されます。"
 
 msgid "Find another reaction"
 msgstr "他のリアクションを探す"
@@ -10968,6 +10987,9 @@ msgstr "インストール。"
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "インストール済み"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "インストール済みアプリのプレビューです。削除は無効になっています。"
 
 msgid "Installed by your organization"
 msgstr "組織がインストール済み"
@@ -14151,6 +14173,9 @@ msgstr "直近30日に公開された実績はまだありません。このマ�
 msgid "Nothing to check."
 msgstr "確認するものはありません。"
 
+msgid "Nothing to clean up."
+msgstr "クリーンアップするものはありません。"
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "まだ開く内容がありません。先にメッセージを送信してください。"
 
@@ -14386,6 +14411,9 @@ msgstr "macOSでのみ利用できます。"
 msgid "Only channel admins can do that"
 msgstr "チャンネル管理者のみが実行できます"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "削除済みワークスペースのフォルダーのみ表示されます。使用中のワークスペースとGitブランチは保持されます。ローカルの変更は削除前にバックアップされます。"
+
 msgid "Only host owners can change membership"
 msgstr "メンバーシップを変更できるのはホストのオーナーのみです"
 
@@ -14448,6 +14476,9 @@ msgstr "コメントを変更できるのは作成者だけです"
 
 msgid "Only the author can edit a comment"
 msgstr "コメントを編集できるのは投稿者のみです"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "完了したサブエージェントは最新の5件だけが表示されます。古い項目を見るにはリストを展開してください。"
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "クラウドワークスペースからのアクセスを許可できるのはホストのオーナーだけです"
@@ -15020,6 +15051,9 @@ msgstr "{appName} を開いています…"
 msgid "Opening {what}"
 msgstr "{what} を開いています"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "完了したサブエージェントを開くと、利用可能な場合はバックグラウンドのチャットが再び開きます。"
+
 msgid "Opening files"
 msgstr "ファイルを開く"
 
@@ -15508,9 +15542,6 @@ msgstr "Paradevのモバイルアプリなら、コンピューターから遠�
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ は1日に1回新しいバージョンを確認し、ポップアップを表示します。自動で更新することはありません。"
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ は長時間開いたままでも遅くならなくなりました。ウィンドウがバックグラウンドにある間はアニメーションが一時停止します。"
 
 msgid "Paragraph"
 msgstr "段落"
@@ -17741,6 +17772,9 @@ msgstr "ページでエージェントの作業をレビュー"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "レビューとCIの待ち行列が、エージェントの生んだ余力を食い潰しています。"
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "フォーク設定で削除済みワークスペースに残ったフォルダーを確認してクリーンアップできます。"
+
 msgid "Review becomes the bottleneck"
 msgstr "レビューがボトルネックになる"
 
@@ -18191,6 +18225,9 @@ msgstr "スキャンして iPhone 用 Paradev をダウンロード"
 
 msgid "Scanning transcript logs…"
 msgstr "トランスクリプトログをスキャン中…"
+
+msgid "Scanning…"
+msgstr "スキャン中…"
 
 msgid "Schedule"
 msgstr "スケジュール"
@@ -19620,6 +19657,9 @@ msgstr "一部のファイルは対応していない形式のため追加され
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "一部のファイルは最大サイズを超えているため追加されませんでした。"
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "所属を確認できないフォルダーは保持されました。"
 
 msgid "Some models were priced with a fallback rate"
 msgstr "一部のモデルはフォールバックのレートで計算しています"
@@ -21773,6 +21813,9 @@ msgstr "このサブエージェントは今はバックグラウンドに移動
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "このサブエージェントはホストで追跡されなくなりました。トランスクリプトはエージェントのセッションディレクトリにディスク上で残ります。"
 
+msgid "This subagent's chat is no longer available"
+msgstr "このサブエージェントのチャットは利用できなくなりました"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "このターミナルには引き継げる出力がまだありません。"
 
@@ -21974,9 +22017,6 @@ msgstr "今日"
 
 msgid "TODAY"
 msgstr "現在"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "今日には、すでに承認したプルリクエストや変更をリクエストしたプルリクエストが表示されなくなりました。"
 
 msgid "Todo"
 msgstr "未着手"
@@ -22677,6 +22717,9 @@ msgstr "そのデバイスで Paradev を更新してください。アプリ内
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "ワークスペースの設定を編集するには、このホストの Paradev を更新してください。"
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "ワークツリーをクリーンアップするにはParadev++を更新してください。"
 
 msgid "Update payment method"
 msgstr "支払い方法を更新"

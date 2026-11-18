@@ -181,9 +181,16 @@ export function mountForkHomeScene(canvas: HTMLCanvasElement) {
 		const origin = host?.getBoundingClientRect();
 		const rect = brand.getBoundingClientRect();
 		const unit = rect.width / LOGO_WIDTH;
+		const [cellWidth = 1, cellHeight = 1] = cellSize;
+		const centerX = rect.left - (origin?.left ?? 0) + rect.width / 2;
+		const centerY = rect.top - (origin?.top ?? 0) + rect.height / 2;
 		return [
-			rect.left - (origin?.left ?? 0) - unit * LOGO_MARGIN,
-			rect.top - (origin?.top ?? 0) - unit * LOGO_MARGIN,
+			Math.round(centerX / cellWidth) * cellWidth -
+				rect.width / 2 -
+				unit * LOGO_MARGIN,
+			Math.round(centerY / cellHeight) * cellHeight -
+				rect.height / 2 -
+				unit * LOGO_MARGIN,
 			rect.width + unit * LOGO_MARGIN * 2,
 			rect.height + unit * LOGO_MARGIN * 2,
 		] as const;

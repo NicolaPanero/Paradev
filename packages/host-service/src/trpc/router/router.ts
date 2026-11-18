@@ -14,6 +14,7 @@ import {
 	forkTasksRouter,
 } from "./fork-integrations/fork-integrations";
 import { forkMcpRouter } from "./fork-mcp";
+import { forkWorktreeCleanupRouter } from "./fork-worktree-cleanup/fork-worktree-cleanup";
 import { gitRouter } from "./git";
 import { githubRouter } from "./github";
 import { healthRouter } from "./health";
@@ -48,6 +49,7 @@ export const appRouter = router({
 	forkAttachments: forkAttachmentsRouter,
 	forkConnections: forkConnectionsRouter,
 	forkMcp: forkMcpRouter,
+	forkWorktreeCleanup: forkWorktreeCleanupRouter,
 	forkScm: forkScmRouter,
 	forkTasks: forkTasksRouter,
 	agents: agentsRouter,

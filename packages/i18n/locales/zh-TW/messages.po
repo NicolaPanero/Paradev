@@ -2042,6 +2042,9 @@ msgstr "建立API金鑰需要有活動組織"
 msgid "Active sessions"
 msgstr "活動會話"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "受保護的使用中工作區：{activeCount}"
+
 msgid "Activities"
 msgstr "活動"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropic拒絕了此權杖。"
 msgid "any account"
 msgstr "任一帳號"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "任何代理程式工作階段都可以在聊天或終端機中開啟。聊天設定現在只決定新工作階段的啟動方式。"
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "你在 Paradev 中設定的任何代理程式，例如 Claude Code 或 Codex。"
 
@@ -3623,6 +3623,9 @@ msgstr "背景 · {count}"
 msgid "Background chats"
 msgstr "背景聊天"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "在工作區活動中，背景聊天會顯示在子代理歷程記錄之前。"
+
 msgid "Background processes"
 msgstr "背景處理程序"
 
@@ -3634,6 +3637,10 @@ msgstr "背景終端記憶體"
 
 msgid "Backlog"
 msgstr "待規劃"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "備份：{0}"
 
 msgid "Badge"
 msgstr "徽章"
@@ -4408,12 +4415,6 @@ msgstr "聊天介面：訊息、推理、建議"
 msgid "Chats"
 msgstr "聊天"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "聊天會顯示 Claude 要求核准的原因，並為每個代理程式記住模型、投入程度、模式和快速模式。"
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "從 CLI 或其他裝置啟動的聊天會以分頁開啟，雲端工作區在喚醒期間也會顯示其聊天。"
-
 msgid "Check again"
 msgstr "重新檢查"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code、Codex、Cursor、OpenCode等。"
 msgid "Claude is now running in workspace component-showcase."
 msgstr "Claude已在工作區component-showcase中執行。"
 
+msgid "Clean up deleted workspaces"
+msgstr "清理已刪除的工作區"
+
 msgid "Clean up stale TODOs…"
 msgstr "清理過期的TODO…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "清理失敗。請重新掃描以檢查剩餘資料夾。"
 
 msgid "Clear"
 msgstr "透明"
@@ -7377,6 +7384,9 @@ msgstr "刪除例行任務"
 msgid "Delete script"
 msgstr "刪除指令碼"
 
+msgid "Delete selected folders"
+msgstr "刪除所選資料夾"
+
 msgid "Delete selected workspaces"
 msgstr "刪除選中的工作區"
 
@@ -7480,6 +7490,9 @@ msgstr "已刪除的專案可在 30 天內還原，連同一起刪除的工作�
 
 msgid "Deleted user"
 msgstr "已刪除的使用者"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "已檢查的已刪除工作區：{archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "工作區已刪除，但側邊欄沒能更新完"
@@ -8456,6 +8469,9 @@ msgstr "按esc關閉"
 msgid "esc to exit"
 msgstr "esc退出"
 
+msgid "Estimated space: {size}"
+msgstr "預估空間：{size}"
+
 msgid "Event"
 msgstr "事件"
 
@@ -9412,6 +9428,9 @@ msgstr "尋找團隊…"
 
 msgid "Find and fix a small bug"
 msgstr "找一個小bug並修好"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "尋找並移除已刪除工作區留下的資料夾。使用中的工作區及其附加資料夾受到保護。"
 
 msgid "Find another reaction"
 msgstr "尋找其他回應"
@@ -10968,6 +10987,9 @@ msgstr "安裝。"
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "已安裝"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "已安裝應用程式的資料預覽。刪除功能已停用。"
 
 msgid "Installed by your organization"
 msgstr "由你的組織安裝"
@@ -14151,6 +14173,9 @@ msgstr "最近 30 天尚未發佈任何資料。這台機器的用量同步後�
 msgid "Nothing to check."
 msgstr "沒有需要檢查的內容。"
 
+msgid "Nothing to clean up."
+msgstr "沒有需要清理的內容。"
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "目前沒有可開啟的內容。請先傳送一則訊息。"
 
@@ -14386,6 +14411,9 @@ msgstr "僅在macOS上可用。"
 msgid "Only channel admins can do that"
 msgstr "只有頻道管理員可以執行此操作"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "僅列出已刪除工作區的資料夾。使用中的工作區和 Git 分支會保留。刪除前會備份本機變更。"
+
 msgid "Only host owners can change membership"
 msgstr "只有主機擁有者才能更改成員關係"
 
@@ -14448,6 +14476,9 @@ msgstr "只有作者可以修改留言"
 
 msgid "Only the author can edit a comment"
 msgstr "只有作者才能編輯評論"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "僅顯示最近完成的五個子代理。展開清單可查看更早的記錄。"
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "只有主機擁有者可以允許雲端工作區存取它"
@@ -15020,6 +15051,9 @@ msgstr "正在開啟 {appName}…"
 msgid "Opening {what}"
 msgstr "正在開啟 {what}"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "開啟已完成的子代理時，會重新開啟其背景聊天（若仍可用）。"
+
 msgid "Opening files"
 msgstr "開啟檔案"
 
@@ -15508,9 +15542,6 @@ msgstr "Paradev 手機應用程式讓我可以隨時隨地推動代理程式工�
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ 每天檢查一次新版本並顯示彈出視窗。它絕不會自行更新任何內容。"
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ 長時間開啟後不再變慢：視窗處於背景時動畫會暫停。"
 
 msgid "Paragraph"
 msgstr "段落"
@@ -17741,6 +17772,9 @@ msgstr "用頁面審查代理程式的工作"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "審查和CI排隊把代理程式帶來的收益吃掉了。"
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "在分支版本設定中檢查並清理已刪除工作區留下的資料夾。"
+
 msgid "Review becomes the bottleneck"
 msgstr "審查成為瓶頸"
 
@@ -18191,6 +18225,9 @@ msgstr "掃碼下載 iPhone 版 Paradev"
 
 msgid "Scanning transcript logs…"
 msgstr "正在掃描會話記錄日誌…"
+
+msgid "Scanning…"
+msgstr "正在掃描…"
 
 msgid "Schedule"
 msgstr "計劃"
@@ -19620,6 +19657,9 @@ msgstr "部分檔案的型別不被允許，未新增。"
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "部分檔案超過大小上限，未新增。"
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "部分資料夾因無法驗證所屬關係而被保留。"
 
 msgid "Some models were priced with a fallback rate"
 msgstr "部分模型按備用費率計價"
@@ -21773,6 +21813,9 @@ msgstr "此子代理程式目前無法移到背景"
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "主機已不再追蹤此子代理程式。其逐字稿仍保留在磁碟上的代理程式工作階段目錄中。"
 
+msgid "This subagent's chat is no longer available"
+msgstr "此子代理的聊天已無法使用"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "這個終端還沒有可交接的輸出。"
 
@@ -21974,9 +22017,6 @@ msgstr "今天"
 
 msgid "TODAY"
 msgstr "今天"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "今天會隱藏你已核准或已要求修改的拉取請求。"
 
 msgid "Todo"
 msgstr "待辦"
@@ -22677,6 +22717,9 @@ msgstr "請在該裝置上更新 Paradev。應用程式內更新需要受支援�
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "請更新此主機上的 Paradev，以編輯其工作區設定。"
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "請更新 Paradev++ 以使用工作樹清理功能。"
 
 msgid "Update payment method"
 msgstr "更新支付方式"

@@ -163,6 +163,14 @@ resume the Cursor chat to negotiate this capability; an already connected
 process keeps its original initialization. Old Task entries alone are not
 treated as running subagents.
 
+Workspace activity places background chats above subagent history. Running
+subagents remain visible; completed history initially shows its five newest
+entries. Show older expands the retained history (up to twenty entries), and
+Show less collapses it again. Opening a completed ACP subagent focuses its owning
+chat or reopens that same parked chat before selecting the subagent transcript.
+A different session on the same terminal is never selected. An unavailable chat
+shows an error instead of silently ignoring the click.
+
 The chat mode menu is ordered by increasing permissions: Ask (read-only Q&A),
 Plan, Ask for approval, Approve for me, and Full access, using only modes offered
 by the agent. New chats use Full access when no explicit or saved per-agent mode

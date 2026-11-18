@@ -39,6 +39,7 @@ import { createDb, type HostDb } from "./db";
 import { EventBus, GitWatcher, registerEventBusRoute } from "./events";
 import { startAttachmentRetention } from "./fork-attachments/fork-attachment-retention";
 import { syncForkMcpLaunchFiles } from "./fork-mcp";
+import { startForkWorktreeMaintenance } from "./fork-worktree-maintenance/fork-worktree-maintenance";
 import { agentIsBusy, PageWatchManager } from "./page-watch/index.ts";
 import { registerForwardMuxRoute } from "./ports/forward-mux-route";
 import { portManager } from "./ports/port-manager";
@@ -481,6 +482,7 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 		});
 		// Finish any delete the previous process crashed out of (archived row
 		// whose worktree still exists).
+		startForkWorktreeMaintenance({ db, organizationId: config.organizationId });
 		await runArchivedWorkspaceReconcile({
 			git,
 			credentials: providers.credentials,

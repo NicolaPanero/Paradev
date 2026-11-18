@@ -2042,6 +2042,9 @@ msgstr "Une organisation active est requise pour créer une clé API"
 msgid "Active sessions"
 msgstr "Sessions actives"
 
+msgid "Active workspaces protected: {activeCount}"
+msgstr "Espaces de travail actifs protégés : {activeCount}"
+
 msgid "Activities"
 msgstr "Activités"
 
@@ -2918,9 +2921,6 @@ msgstr "Anthropic a rejeté ce jeton."
 msgid "any account"
 msgstr "n'importe quel compte"
 
-msgid "Any agent session opens in chat or in the terminal. The chat setting now only picks how new sessions start."
-msgstr "Toute session d'agent s'ouvre dans le chat ou dans le terminal. Le réglage du chat choisit désormais seulement comment démarrent les nouvelles sessions."
-
 msgid "Any agent you've set up in Paradev, such as Claude Code or Codex."
 msgstr "Tout agent configuré dans Paradev, comme Claude Code ou Codex."
 
@@ -3623,6 +3623,9 @@ msgstr "En arrière-plan · {count}"
 msgid "Background chats"
 msgstr "Chats en arrière-plan"
 
+msgid "Background chats appear before subagent history in Workspace activity."
+msgstr "Les discussions en arrière-plan apparaissent avant l'historique des sous-agents dans l'activité du workspace."
+
 msgid "Background processes"
 msgstr "Processus en arrière-plan"
 
@@ -3634,6 +3637,10 @@ msgstr "Mémoire des terminaux en arrière-plan"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+#. placeholder {0}: result.backup
+msgid "Backups: {0}"
+msgstr "Sauvegardes : {0}"
 
 msgid "Badge"
 msgstr "Badge"
@@ -4408,12 +4415,6 @@ msgstr "Surfaces de chat : messages, raisonnement, suggestions"
 msgid "Chats"
 msgstr "Discussions"
 
-msgid "Chats show why Claude asks for approval and remember model, effort, mode and fast mode for each agent."
-msgstr "Les chats indiquent pourquoi Claude demande une approbation et retiennent le modèle, l'effort, le mode et le mode rapide de chaque agent."
-
-msgid "Chats started from the CLI or another device open as tabs, and a cloud workspace shows its chats while it wakes up."
-msgstr "Les chats lancés depuis la CLI ou un autre appareil s'ouvrent en onglets, et un workspace cloud affiche ses chats pendant son réveil."
-
 msgid "Check again"
 msgstr "Vérifier à nouveau"
 
@@ -4673,8 +4674,14 @@ msgstr "Claude Code, Codex, Cursor, OpenCode, et plus encore."
 msgid "Claude is now running in workspace component-showcase."
 msgstr "Claude s'exécute désormais dans l'espace de travail component-showcase."
 
+msgid "Clean up deleted workspaces"
+msgstr "Nettoyer les espaces de travail supprimés"
+
 msgid "Clean up stale TODOs…"
 msgstr "Nettoie les TODO obsolètes…"
+
+msgid "Cleanup failed. Scan again to review the remaining folders."
+msgstr "Échec du nettoyage. Relancez l’analyse pour examiner les dossiers restants."
 
 msgid "Clear"
 msgstr "Transparent"
@@ -7377,6 +7384,9 @@ msgstr "Supprimer la routine"
 msgid "Delete script"
 msgstr "Supprimer le script"
 
+msgid "Delete selected folders"
+msgstr "Supprimer les dossiers sélectionnés"
+
 msgid "Delete selected workspaces"
 msgstr "Supprimer les espaces de travail sélectionnés"
 
@@ -7480,6 +7490,9 @@ msgstr "Les projets supprimés peuvent être restaurés pendant 30 jours, avec l
 
 msgid "Deleted user"
 msgstr "Utilisateur supprimé"
+
+msgid "Deleted workspaces checked: {archivedCount}"
+msgstr "Espaces de travail supprimés vérifiés : {archivedCount}"
 
 msgid "Deleted workspaces, but couldn’t finish updating the sidebar"
 msgstr "Espaces de travail supprimés, mais impossible de terminer la mise à jour de la barre latérale"
@@ -8456,6 +8469,9 @@ msgstr "esc pour fermer"
 msgid "esc to exit"
 msgstr "esc pour quitter"
 
+msgid "Estimated space: {size}"
+msgstr "Espace estimé : {size}"
+
 msgid "Event"
 msgstr "Événement"
 
@@ -9412,6 +9428,9 @@ msgstr "Rechercher une équipe…"
 
 msgid "Find and fix a small bug"
 msgstr "Trouver et corriger un petit bug"
+
+msgid "Find and remove folders left by deleted workspaces. Active workspaces and their extra folders are protected."
+msgstr "Rechercher et supprimer les dossiers laissés par les espaces de travail supprimés. Les espaces actifs et leurs dossiers supplémentaires sont protégés."
 
 msgid "Find another reaction"
 msgstr "Trouver une autre réaction"
@@ -10968,6 +10987,9 @@ msgstr "Installez."
 msgctxt "plugin access"
 msgid "Installed"
 msgstr "Installé"
+
+msgid "Installed app preview. Deletion is disabled."
+msgstr "Aperçu des données de l’application installée. La suppression est désactivée."
 
 msgid "Installed by your organization"
 msgstr "Installé par votre organisation"
@@ -14151,6 +14173,9 @@ msgstr "Rien de publié sur les 30 derniers jours pour l'instant. Votre rang app
 msgid "Nothing to check."
 msgstr "Rien à vérifier."
 
+msgid "Nothing to clean up."
+msgstr "Rien à nettoyer."
+
 msgid "Nothing to open yet. Send a message first."
 msgstr "Rien à ouvrir pour l’instant. Envoyez d’abord un message."
 
@@ -14386,6 +14411,9 @@ msgstr "Disponible uniquement sur macOS."
 msgid "Only channel admins can do that"
 msgstr "Seuls les administrateurs du canal peuvent faire cela"
 
+msgid "Only folders of deleted workspaces are listed. Active workspaces and Git branches are kept. Local changes are backed up before deletion."
+msgstr "Seuls les dossiers des espaces de travail supprimés sont affichés. Les espaces actifs et les branches Git sont conservés. Les modifications locales sont sauvegardées avant la suppression."
+
 msgid "Only host owners can change membership"
 msgstr "Seuls les propriétaires de l'hôte peuvent modifier les accès"
 
@@ -14448,6 +14476,9 @@ msgstr "Seul l’auteur peut modifier un commentaire"
 
 msgid "Only the author can edit a comment"
 msgstr "Seul l'auteur peut modifier un commentaire"
+
+msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
+msgstr "Seuls les cinq derniers sous-agents terminés sont affichés. Développez la liste pour voir les plus anciens."
 
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Seul le propriétaire de l'hôte peut autoriser les espaces de travail cloud à y accéder"
@@ -15020,6 +15051,9 @@ msgstr "Ouverture de {appName}…"
 msgid "Opening {what}"
 msgstr "Ouverture de {what}"
 
+msgid "Opening a completed subagent reopens its background chat when available."
+msgstr "Ouvrir un sous-agent terminé rouvre sa discussion en arrière-plan lorsqu'elle est disponible."
+
 msgid "Opening files"
 msgstr "Ouverture des fichiers"
 
@@ -15508,9 +15542,6 @@ msgstr "L’application mobile Paradev me permet de faire avancer mes agents et 
 
 msgid "Paradev++ looks for new versions once a day and shows a popup. It never updates anything by itself."
 msgstr "Paradev++ recherche de nouvelles versions une fois par jour et affiche une fenêtre contextuelle. Il ne met jamais rien à jour tout seul."
-
-msgid "Paradev++ no longer slows down after hours open: animations pause while its window is in the background."
-msgstr "Paradev++ ne ralentit plus après des heures d’ouverture : les animations se mettent en pause quand sa fenêtre est en arrière-plan."
 
 msgid "Paragraph"
 msgstr "Paragraphe"
@@ -17741,6 +17772,9 @@ msgstr "Relire le travail d'un agent avec Pages"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Les files d'attente de revue et de CI absorbent les gains créés par les agents."
 
+msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
+msgstr "Examiner et nettoyer les dossiers laissés par les espaces de travail supprimés dans les paramètres du fork."
+
 msgid "Review becomes the bottleneck"
 msgstr "La revue devient le goulot d'étranglement"
 
@@ -18191,6 +18225,9 @@ msgstr "Scannez pour télécharger Paradev pour iPhone"
 
 msgid "Scanning transcript logs…"
 msgstr "Analyse des journaux de transcription…"
+
+msgid "Scanning…"
+msgstr "Analyse…"
 
 msgid "Schedule"
 msgstr "Planification"
@@ -19620,6 +19657,9 @@ msgstr "Certains fichiers ne sont pas d'un type accepté et n'ont pas été ajou
 
 msgid "Some files exceed the maximum size and were not added."
 msgstr "Certains fichiers dépassent la taille maximale et n'ont pas été ajoutés."
+
+msgid "Some folders were kept because their ownership could not be verified."
+msgstr "Certains dossiers ont été conservés, car leur appartenance n’a pas pu être vérifiée."
 
 msgid "Some models were priced with a fallback rate"
 msgstr "Certains modèles ont été valorisés à un tarif de repli"
@@ -21773,6 +21813,9 @@ msgstr "Ce sous-agent ne peut pas passer en arrière-plan pour le moment"
 msgid "This subagent is no longer tracked by the host. Its transcript stays on disk under the agent's session directory."
 msgstr "Cet sous-agent n'est plus suivi par l'hôte. Sa transcription reste sur le disque dans le répertoire de session de l'agent."
 
+msgid "This subagent's chat is no longer available"
+msgstr "La discussion de ce sous-agent n'est plus disponible"
+
 msgid "This terminal has no output to hand over yet."
 msgstr "Ce terminal n'a encore aucune sortie à transmettre."
 
@@ -21974,9 +22017,6 @@ msgstr "Aujourd'hui"
 
 msgid "TODAY"
 msgstr "AUJOURD'HUI"
-
-msgid "Today hides the pull requests you already approved or asked to change."
-msgstr "Aujourd’hui masque les pull requests que vous avez déjà approuvées ou pour lesquelles vous avez demandé des modifications."
 
 msgid "Todo"
 msgstr "À faire"
@@ -22677,6 +22717,9 @@ msgstr "Mettez à jour Paradev sur cet appareil. Les mises à jour depuis l’ap
 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Mettez à jour Paradev sur cet hôte pour modifier la configuration de l'espace de travail."
+
+msgid "Update Paradev++ to use worktree cleanup."
+msgstr "Mettez Paradev++ à jour pour nettoyer les worktrees."
 
 msgid "Update payment method"
 msgstr "Mettre à jour le moyen de paiement"
