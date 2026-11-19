@@ -2251,6 +2251,9 @@ msgstr "폴더 추가"
 msgid "Add folder…"
 msgstr "폴더 추가…"
 
+msgid "Add folders"
+msgstr "폴더 추가"
+
 msgid "Add GitHub organization"
 msgstr "GitHub 조직 추가"
 
@@ -4042,6 +4045,9 @@ msgstr "v1 프로젝트를 옮기는 중"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "커뮤니티가 공유한 스킬, MCP 서버, 에이전트 설정을 둘러보고 설치하세요."
 
+msgid "Browse folders"
+msgstr "폴더 찾아보기"
+
 msgid "Browse for directory"
 msgstr "디렉터리 찾아보기"
 
@@ -4753,6 +4759,12 @@ msgstr "파이터 선택"
 msgid "Choose a folder"
 msgstr "폴더 선택"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "기본 폴더로 Git 저장소를 선택하세요."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "저장소를 재사용하는 프로젝트에는 새 workspace 브랜치를 선택하세요."
+
 msgid "Choose a parent directory"
 msgstr "상위 디렉터리 선택"
 
@@ -4779,6 +4791,9 @@ msgstr "에이전트 선택"
 
 msgid "Choose an account"
 msgstr "계정 선택"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "절대 경로로 기존 폴더를 선택하세요."
 
 msgid "Choose an existing repo folder"
 msgstr "기존 리포지토리 폴더 선택"
@@ -4809,6 +4824,9 @@ msgstr "이 메시지에 사용할 MCP 서버 선택"
 
 msgid "Choose one"
 msgstr "선택하세요"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "프로젝트에서 각 Git 저장소의 체크아웃을 하나만 선택하세요."
 
 msgid "Choose the model"
 msgstr "모델 선택"
@@ -5811,6 +5829,9 @@ msgstr "연결하면 에이전트가 사용자를 대신해 {name}에서 읽고 
 
 msgid "Connecting to {deviceName}…"
 msgstr "{deviceName}에 연결하는 중…"
+
+msgid "Connecting to host…"
+msgstr "호스트에 연결 중…"
 
 msgid "Connecting to the desktop…"
 msgstr "데스크톱에 연결하는 중…"
@@ -7065,6 +7086,9 @@ msgstr "\"{newName}\" 프로젝트 만들기"
 
 msgid "Create project…"
 msgstr "프로젝트 만들기…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "다른 프로젝트에서 이미 사용하는 저장소와 폴더로 프로젝트를 만드세요."
 
 msgid "Create pull request"
 msgstr "풀 리퀘스트 만들기"
@@ -8373,6 +8397,9 @@ msgstr "예: plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "첨부 파일은 각각 최대 {0} MB입니다."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "그룹화된 worktree를 만들기 전에 각 Git 저장소에 커밋이 있어야 합니다."
+
 msgid "Each in its own new tab"
 msgstr "각각 새 탭에서"
 
@@ -8961,6 +8988,9 @@ msgstr "${limit} 중 추가 ${used}"
 
 msgid "Extra folders"
 msgstr "추가 폴더"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "추가 폴더에 reftable 저장소와 worktree의 올바른 브랜치가 표시됩니다."
 
 msgid "Extra GB-hours"
 msgstr "추가 GB 시간"
@@ -10315,9 +10345,6 @@ msgstr "GitHub 이슈"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "차례가 되고 검사를 통과하면 GitHub가 머지합니다."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "GitHub 풀 리퀘스트에서 스택 병합, 병합 대기열, 검토자 필터를 지원합니다."
 
 msgid "GitHub rate limit reached"
 msgstr "GitHub 요청 한도에 도달했습니다"
@@ -13867,6 +13894,9 @@ msgstr "아직 환경이 없습니다. 하나를 만들어 클라우드 워크�
 msgid "No events yet"
 msgstr "아직 이벤트가 없습니다"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "기존 폴더를 찾지 못했습니다. 찾아보기로 추가하세요."
+
 msgid "No extended thinking"
 msgstr "확장 사고 없음"
 
@@ -16670,6 +16700,9 @@ msgstr "프로젝트를 만들었습니다."
 msgid "Project folder is not on this machine"
 msgstr "프로젝트 폴더가 이 컴퓨터에 없습니다"
 
+msgid "Project from existing folders"
+msgstr "기존 폴더로 프로젝트 만들기"
+
 msgid "Project icon"
 msgstr "프로젝트 아이콘"
 
@@ -17802,6 +17835,9 @@ msgstr "연결된 GitHub 계정을 통해 접근할 수 있는 저장소입니�
 msgid "Repositories and pull requests"
 msgstr "저장소 및 풀 리퀘스트"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "복제하지 않고 저장소를 여러 프로젝트에서 사용할 수 있습니다."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "{accountLogin}의 저장소는 더 이상 동기화되지 않습니다. 연결된 다른 GitHub 계정에는 영향이 없습니다. GitHub App은 {accountLogin}에 계속 설치되어 있으며 언제든지 다시 연결할 수 있습니다."
 
@@ -18211,6 +18247,9 @@ msgstr "에이전트가 자동으로 가져다 쓰는 재사용 가능한 지침
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "재사용 가능한 터미널 실행입니다. 스크립트를 클릭하면 편집하고, 끌어서 순서를 바꿉니다. 프로젝트 설정, 실행, 정리 명령은 라이프사이클 스크립트입니다."
+
+msgid "Reuse existing folders"
+msgstr "기존 폴더 재사용"
 
 msgid "Reusing {keptName}"
 msgstr "{keptName} 재사용 중"
@@ -18876,6 +18915,9 @@ msgstr "파일 검색..."
 msgid "Search files…"
 msgstr "파일 검색…"
 
+msgid "Search folders or projects"
+msgstr "폴더 또는 프로젝트 검색"
+
 msgid "Search fonts..."
 msgstr "글꼴 검색..."
 
@@ -19115,6 +19157,9 @@ msgstr "{0} 선택"
 
 msgid "Select a file to view it here"
 msgstr "파일을 선택하면 여기에 표시됩니다"
+
+msgid "Select a Git repository"
+msgstr "Git 저장소 선택"
 
 msgid "Select a Jira board to use its columns."
 msgstr "열을 사용하려면 Jira 보드를 선택하세요."
@@ -23357,6 +23402,9 @@ msgstr "해당 기기에서 Paradev를 업데이트하세요. 앱 내 업데이�
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "워크스페이스 설정을 편집하려면 이 호스트의 Paradev을 업데이트하세요."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "프로젝트 폴더를 재사용하려면 이 호스트의 Paradev++를 업데이트하세요."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "작업 트리를 정리하려면 Paradev++를 업데이트하세요."
 
@@ -23421,9 +23469,6 @@ msgstr "업데이트"
 
 msgid "Updates are available for your agent tools."
 msgstr "에이전트 도구에 사용 가능한 업데이트가 있습니다."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "업데이트는 중단된 다운로드를 이어받으며, 수동으로 다시 시도해도 이어서 다운로드합니다."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "worktree"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "worktree는 디스크에서 제거되며, 프로젝트 체크아웃에 있는 워크스페이스는 닫히기만 합니다. 체크아웃의 파일은 그대로 유지됩니다."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktree는 저장소마다 새 브랜치를 사용하며, 로컬 workspace는 원본 파일을 공유합니다."
 
 msgid "Would start"
 msgstr "시작 예정"

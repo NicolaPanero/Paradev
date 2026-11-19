@@ -19,6 +19,7 @@ import {
 	trackWorkspaceDeleted,
 	unarchiveLocalWorkspace,
 } from "../workspaces/local-workspace-store";
+import { forkProjectPathConflict } from "./fork-project-groups";
 import {
 	emitProjectChanged,
 	getLiveProjectAtPath,
@@ -156,7 +157,11 @@ export function restoreProject(
 	const project = getProjectIncludingDeleted(ctx.db, projectId);
 	if (!project) return null;
 	if (project.deletedAt == null) return { restoredWorkspaceCount: 0 };
-	if (getLiveProjectAtPath(ctx.db, project.repoPath)) throw repoTakenError();
+	if (
+		getLiveProjectAtPath(ctx.db, project.repoPath) &&
+		forkProjectPathConflict(ctx.db, project)
+	)
+		throw repoTakenError();
 	const restorable = workspacesDeletedWith(ctx, {
 		id: project.id,
 		deletedAt: project.deletedAt,

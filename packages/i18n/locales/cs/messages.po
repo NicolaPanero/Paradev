@@ -2251,6 +2251,9 @@ msgstr "Přidat složku"
 msgid "Add folder…"
 msgstr "Přidat složku…"
 
+msgid "Add folders"
+msgstr "Přidat složky"
+
 msgid "Add GitHub organization"
 msgstr "Přidat organizaci GitHub"
 
@@ -4042,6 +4045,9 @@ msgstr "Přenášíme vaše projekty z v1"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "Procházejte a instalujte skills, MCP servery a konfigurace agentů sdílené komunitou."
 
+msgid "Browse folders"
+msgstr "Procházet složky"
+
 msgid "Browse for directory"
 msgstr "Procházet adresáře"
 
@@ -4753,6 +4759,12 @@ msgstr "Vyberte bojovníka"
 msgid "Choose a folder"
 msgstr "Vyberte složku"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "Vyberte repozitář Git jako hlavní složku."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "Vyberte novou větev workspace pro projekt, který znovu používá repozitáře."
+
 msgid "Choose a parent directory"
 msgstr "Vyberte nadřazený adresář"
 
@@ -4779,6 +4791,9 @@ msgstr "Vyberte agenta"
 
 msgid "Choose an account"
 msgstr "Vyberte účet"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "Vyberte existující složku s absolutní cestou."
 
 msgid "Choose an existing repo folder"
 msgstr "Vyberte složku s existujícím repozitářem"
@@ -4809,6 +4824,9 @@ msgstr "Vyberte MCP servery pro tuto zprávu"
 
 msgid "Choose one"
 msgstr "Vyberte"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "V projektu vyberte pouze jeden checkout každého repozitáře Git."
 
 msgid "Choose the model"
 msgstr "Vybrat model"
@@ -5811,6 +5829,9 @@ msgstr "Připojením umožníte svým agentům číst a jednat v {name} vaším 
 
 msgid "Connecting to {deviceName}…"
 msgstr "Připojování k {deviceName}…"
+
+msgid "Connecting to host…"
+msgstr "Připojování k hostiteli…"
 
 msgid "Connecting to the desktop…"
 msgstr "Připojování k ploše…"
@@ -7065,6 +7086,9 @@ msgstr "Vytvořit projekt „{newName}“"
 
 msgid "Create project…"
 msgstr "Vytvořit projekt…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "Vytvářejte projekty z repozitářů a složek, které se již používají v jiných projektech."
 
 msgid "Create pull request"
 msgstr "Vytvořit pull request"
@@ -8373,6 +8397,9 @@ msgstr "např. plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "Každá příloha může mít nejvýše {0} MB."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "Každý repozitář Git musí před vytvořením seskupených worktrees obsahovat commit."
+
 msgid "Each in its own new tab"
 msgstr "Každý ve vlastní nové kartě"
 
@@ -8961,6 +8988,9 @@ msgstr "navíc {used} $ z {limit} $"
 
 msgid "Extra folders"
 msgstr "Další složky"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "Další složky zobrazují správnou větev v repozitářích a worktrees s reftable."
 
 msgid "Extra GB-hours"
 msgstr "Další GB-hodiny"
@@ -10315,9 +10345,6 @@ msgstr "GitHub issues"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "GitHub ho sloučí, až přijde na řadu a projde kontrolami."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "Pull requesty GitHub podporují slučování zásobníků PR, fronty sloučení a filtry podle recenzenta."
 
 msgid "GitHub rate limit reached"
 msgstr "Dosažen limit požadavků GitHubu"
@@ -13867,6 +13894,9 @@ msgstr "Zatím žádná prostředí. Vytvořte jedno a spusťte z něj cloudový
 msgid "No events yet"
 msgstr "Zatím žádné události"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "Nebyly nalezeny žádné existující složky. Procházením přidejte složku."
+
 msgid "No extended thinking"
 msgstr "Bez rozšířeného přemýšlení"
 
@@ -16670,6 +16700,9 @@ msgstr "Projekt vytvořen."
 msgid "Project folder is not on this machine"
 msgstr "Složka projektu na tomto počítači není"
 
+msgid "Project from existing folders"
+msgstr "Projekt z existujících složek"
+
 msgid "Project icon"
 msgstr "Ikona projektu"
 
@@ -17802,6 +17835,9 @@ msgstr "Repozitáře dostupné přes vaše připojené účty GitHub."
 msgid "Repositories and pull requests"
 msgstr "Repozitáře a pull requesty"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "Repozitáře mohou patřit do několika projektů bez klonování."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "Repozitáře z {accountLogin} se přestanou synchronizovat. Ostatní připojené účty GitHub to neovlivní. Aplikace GitHub zůstane nainstalovaná na {accountLogin} a kdykoli ji můžete znovu připojit."
 
@@ -18211,6 +18247,9 @@ msgstr "Znovupoužitelné instrukce, které si agenti automaticky načtou"
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "Znovupoužitelná spuštění terminálu. Kliknutím skript upravíte, přetažením změníte pořadí. Příkazy pro setup, spuštění a teardown projektu jsou lifecycle skripty."
+
+msgid "Reuse existing folders"
+msgstr "Znovu použít existující složky"
 
 msgid "Reusing {keptName}"
 msgstr "Znovu použito: {keptName}"
@@ -18876,6 +18915,9 @@ msgstr "Hledat soubory..."
 msgid "Search files…"
 msgstr "Hledat soubory…"
 
+msgid "Search folders or projects"
+msgstr "Hledat složky nebo projekty"
+
 msgid "Search fonts..."
 msgstr "Hledat fonty..."
 
@@ -19115,6 +19157,9 @@ msgstr "Vybrat {0}"
 
 msgid "Select a file to view it here"
 msgstr "Vyberte soubor a zobrazí se zde"
+
+msgid "Select a Git repository"
+msgstr "Vyberte repozitář Git"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Vyberte nástěnku Jira a použijte její sloupce."
@@ -23357,6 +23402,9 @@ msgstr "Aktualizujte Paradev na daném zařízení. Aktualizace z aplikace vyža
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Pro úpravu konfigurace pracovního prostoru aktualizujte Paradev na tomto hostiteli."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "Aktualizujte Paradev++ na tomto hostiteli pro opětovné použití složek projektů."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "Aktualizujte Paradev++, abyste mohli čistit pracovní stromy."
 
@@ -23421,9 +23469,6 @@ msgstr "Aktualizace"
 
 msgid "Updates are available for your agent tools."
 msgstr "Pro tvé agentní nástroje jsou k dispozici aktualizace."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "Aktualizace obnovují přerušené stahování, a to i po opakovaném ručním pokusu."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "Worktrees"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Worktree se odstraní z disku; pracovní prostory na checkoutu projektu se pouze zavřou. Soubory v checkoutu zůstanou beze změny."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktrees používají nové větve pro každý repozitář; místní workspaces sdílejí původní soubory."
 
 msgid "Would start"
 msgstr "Spustilo by se"

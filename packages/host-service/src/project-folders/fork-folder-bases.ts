@@ -11,6 +11,7 @@ import {
 import type { HostServiceContext } from "../types";
 import { provisionFolderWorktrees } from "./folder-worktrees";
 import { forkFolderBaseError } from "./fork-folder-base-error";
+import { prepareForkGroupFolderBases } from "./fork-group-folder-bases";
 import { fetchForkOriginBranch } from "./fork-origin-git";
 import { listProjectFolders } from "./project-folders";
 
@@ -39,7 +40,7 @@ export async function prepareForkFolderBases(
 	input: Input,
 ): Promise<ForkPreparedFolderBases> {
 	const choices = Object.entries(input.folderBaseBranches ?? {});
-	if (!choices.length) return [];
+	if (!choices.length) return prepareForkGroupFolderBases(ctx, input, []);
 	if (input.checkout === "local" || input.pr || input.worktreePath)
 		throw forkFolderBaseError("BAD_REQUEST", "invalid");
 	const project = ctx.db
@@ -81,7 +82,7 @@ export async function prepareForkFolderBases(
 			);
 		}
 	}
-	return prepared;
+	return prepareForkGroupFolderBases(ctx, input, prepared);
 }
 
 export function applyForkFolderBranchPlan(

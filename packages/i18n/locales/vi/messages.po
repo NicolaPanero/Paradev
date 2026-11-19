@@ -2251,6 +2251,9 @@ msgstr "Thêm thư mục"
 msgid "Add folder…"
 msgstr "Thêm thư mục…"
 
+msgid "Add folders"
+msgstr "Thêm thư mục"
+
 msgid "Add GitHub organization"
 msgstr "Thêm tổ chức GitHub"
 
@@ -4042,6 +4045,9 @@ msgstr "Đang chuyển các dự án v1 của bạn"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "Duyệt và cài skill, server MCP và cấu hình agent do cộng đồng chia sẻ."
 
+msgid "Browse folders"
+msgstr "Duyệt thư mục"
+
 msgid "Browse for directory"
 msgstr "Duyệt thư mục"
 
@@ -4753,6 +4759,12 @@ msgstr "Chọn một đấu sĩ"
 msgid "Choose a folder"
 msgstr "Chọn thư mục"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "Chọn kho Git làm thư mục chính."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "Chọn nhánh workspace mới cho dự án sử dụng lại kho mã."
+
 msgid "Choose a parent directory"
 msgstr "Chọn một thư mục cha"
 
@@ -4779,6 +4791,9 @@ msgstr "Chọn agent"
 
 msgid "Choose an account"
 msgstr "Chọn tài khoản"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "Chọn thư mục hiện có bằng đường dẫn tuyệt đối."
 
 msgid "Choose an existing repo folder"
 msgstr "Chọn một thư mục repo có sẵn"
@@ -4809,6 +4824,9 @@ msgstr "Chọn server MCP cho tin nhắn này"
 
 msgid "Choose one"
 msgstr "Chọn một"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "Chỉ chọn một bản checkout của mỗi kho Git trong một dự án."
 
 msgid "Choose the model"
 msgstr "Chọn mô hình"
@@ -5811,6 +5829,9 @@ msgstr "Kết nối cho phép các tác nhân của bạn đọc và thao tác t
 
 msgid "Connecting to {deviceName}…"
 msgstr "Đang kết nối với {deviceName}…"
+
+msgid "Connecting to host…"
+msgstr "Đang kết nối với máy chủ…"
 
 msgid "Connecting to the desktop…"
 msgstr "Đang kết nối tới màn hình nền…"
@@ -7065,6 +7086,9 @@ msgstr "Tạo dự án \"{newName}\""
 
 msgid "Create project…"
 msgstr "Tạo dự án…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "Tạo dự án từ các kho mã và thư mục đã được dùng trong dự án khác."
 
 msgid "Create pull request"
 msgstr "Tạo pull request"
@@ -8373,6 +8397,9 @@ msgstr "vd: plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "Mỗi tệp đính kèm tối đa {0} MB."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "Mỗi kho Git phải có commit trước khi tạo các worktree được nhóm."
+
 msgid "Each in its own new tab"
 msgstr "Mỗi lệnh một tab mới"
 
@@ -8961,6 +8988,9 @@ msgstr "dùng thêm ${used} trên ${limit}"
 
 msgid "Extra folders"
 msgstr "Thư mục bổ sung"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "Thư mục bổ sung hiển thị đúng nhánh trong kho mã và worktree dùng reftable."
 
 msgid "Extra GB-hours"
 msgstr "GB-giờ bổ sung"
@@ -10315,9 +10345,6 @@ msgstr "Issue GitHub"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "GitHub sẽ merge khi đến lượt và các kiểm tra đều qua."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "Pull request GitHub hỗ trợ hợp nhất các PR xếp chồng, hàng đợi hợp nhất và bộ lọc theo người đánh giá."
 
 msgid "GitHub rate limit reached"
 msgstr "Đã đạt giới hạn yêu cầu GitHub"
@@ -13867,6 +13894,9 @@ msgstr "Chưa có environment nào. Tạo một cái để khởi động worksp
 msgid "No events yet"
 msgstr "Chưa có sự kiện nào"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "Không tìm thấy thư mục hiện có. Hãy duyệt để thêm thư mục."
+
 msgid "No extended thinking"
 msgstr "Không suy nghĩ mở rộng"
 
@@ -16670,6 +16700,9 @@ msgstr "Đã tạo dự án."
 msgid "Project folder is not on this machine"
 msgstr "Thư mục dự án không có trên máy này"
 
+msgid "Project from existing folders"
+msgstr "Dự án từ thư mục hiện có"
+
 msgid "Project icon"
 msgstr "Biểu tượng dự án"
 
@@ -17802,6 +17835,9 @@ msgstr "Các kho mã truy cập được qua các tài khoản GitHub đã kết
 msgid "Repositories and pull requests"
 msgstr "Kho lưu trữ và pull request"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "Kho mã có thể thuộc nhiều dự án mà không cần sao chép."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "Các kho mã của {accountLogin} sẽ ngừng đồng bộ. Các tài khoản GitHub đã kết nối khác không bị ảnh hưởng. GitHub App vẫn được cài trên {accountLogin} và bạn có thể kết nối lại bất cứ lúc nào."
 
@@ -18211,6 +18247,9 @@ msgstr "Hướng dẫn tái sử dụng mà agent của bạn tự nhận"
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "Các lệnh terminal dùng lại được. Nhấp vào một script để sửa hoặc kéo để sắp xếp lại. Lệnh thiết lập, chạy và dọn dẹp của dự án là script vòng đời."
+
+msgid "Reuse existing folders"
+msgstr "Sử dụng lại thư mục hiện có"
 
 msgid "Reusing {keptName}"
 msgstr "Đang dùng lại {keptName}"
@@ -18876,6 +18915,9 @@ msgstr "Tìm tệp..."
 msgid "Search files…"
 msgstr "Tìm tệp…"
 
+msgid "Search folders or projects"
+msgstr "Tìm thư mục hoặc dự án"
+
 msgid "Search fonts..."
 msgstr "Tìm font..."
 
@@ -19115,6 +19157,9 @@ msgstr "Chọn {0}"
 
 msgid "Select a file to view it here"
 msgstr "Chọn một tệp để xem tại đây"
+
+msgid "Select a Git repository"
+msgstr "Chọn kho Git"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Chọn bảng Jira để sử dụng các cột của bảng."
@@ -23357,6 +23402,9 @@ msgstr "Cập nhật Paradev trên thiết bị đó. Cập nhật từ ứng d�
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Hãy cập nhật Paradev trên máy chủ này để chỉnh sửa cấu hình workspace."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "Cập nhật Paradev++ trên máy chủ này để sử dụng lại thư mục dự án."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "Cập nhật Paradev++ để sử dụng tính năng dọn dẹp cây làm việc."
 
@@ -23421,9 +23469,6 @@ msgstr "Cập nhật"
 
 msgid "Updates are available for your agent tools."
 msgstr "Có bản cập nhật cho các công cụ agent của bạn."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "Các bản cập nhật tiếp tục tải xuống từ chỗ bị gián đoạn, kể cả sau khi thử lại thủ công."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "Worktree"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Các worktree bị xóa khỏi ổ đĩa; các workspace trên checkout của dự án chỉ được đóng. Tệp trong checkout vẫn giữ nguyên."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktree dùng nhánh mới cho mỗi kho mã; workspace cục bộ chia sẻ các tệp gốc."
 
 msgid "Would start"
 msgstr "Sẽ bắt đầu"

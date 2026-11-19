@@ -12,6 +12,7 @@ import {
 	listProjectFolders,
 	listWorkspaceFolders,
 } from "../../../project-folders";
+import { resolveForkFolderBranches } from "../../../project-folders/fork-git-head";
 import { protectedProcedure, router } from "../../index";
 import { forkOriginBranchesProcedures } from "./fork-origin-branches";
 
@@ -46,13 +47,17 @@ export const projectFoldersRouter = router({
 	listForWorkspace: protectedProcedure
 		.input(z.object({ workspaceId: z.string() }))
 		.query(({ ctx, input }) =>
-			listWorkspaceFolders(ctx.db, input.workspaceId).map((folder) => ({
-				...folder,
-				workspaceKey: folderWorkspaceId({
-					workspaceId: input.workspaceId,
-					folderId: folder.id,
-				}),
-			})),
+			resolveForkFolderBranches(
+				listWorkspaceFolders(ctx.db, input.workspaceId),
+			).then((folders) =>
+				folders.map((folder) => ({
+					...folder,
+					workspaceKey: folderWorkspaceId({
+						workspaceId: input.workspaceId,
+						folderId: folder.id,
+					}),
+				})),
+			),
 		),
 
 	add: protectedProcedure

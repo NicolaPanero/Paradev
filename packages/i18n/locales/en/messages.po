@@ -2251,6 +2251,9 @@ msgstr "Add folder"
 msgid "Add folder…"
 msgstr "Add folder…"
 
+msgid "Add folders"
+msgstr "Add folders"
+
 msgid "Add GitHub organization"
 msgstr "Add GitHub organization"
 
@@ -4042,6 +4045,9 @@ msgstr "Bringing over your v1 projects"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "Browse and install skills, MCP servers, and agent configs shared by the community."
 
+msgid "Browse folders"
+msgstr "Browse folders"
+
 msgid "Browse for directory"
 msgstr "Browse for directory"
 
@@ -4753,6 +4759,12 @@ msgstr "Choose a fighter"
 msgid "Choose a folder"
 msgstr "Choose a folder"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "Choose a Git repository as the main folder."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "Choose a new workspace branch for a project that reuses repositories."
+
 msgid "Choose a parent directory"
 msgstr "Choose a parent directory"
 
@@ -4779,6 +4791,9 @@ msgstr "Choose agent"
 
 msgid "Choose an account"
 msgstr "Choose an account"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "Choose an existing folder with an absolute path."
 
 msgid "Choose an existing repo folder"
 msgstr "Choose an existing repo folder"
@@ -4809,6 +4824,9 @@ msgstr "Choose MCP servers for this message"
 
 msgid "Choose one"
 msgstr "Choose one"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "Choose only one checkout of each Git repository in a project."
 
 msgid "Choose the model"
 msgstr "Choose the model"
@@ -5811,6 +5829,9 @@ msgstr "Connecting lets your agents read and act in {name} on your behalf. Revie
 
 msgid "Connecting to {deviceName}…"
 msgstr "Connecting to {deviceName}…"
+
+msgid "Connecting to host…"
+msgstr "Connecting to host…"
 
 msgid "Connecting to the desktop…"
 msgstr "Connecting to the desktop…"
@@ -7065,6 +7086,9 @@ msgstr "Create project \"{newName}\""
 
 msgid "Create project…"
 msgstr "Create project…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "Create projects from repositories and folders already used in other projects."
 
 msgid "Create pull request"
 msgstr "Create pull request"
@@ -8373,6 +8397,9 @@ msgstr "e.g. plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "Each attachment is at most {0} MB."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "Each Git repository must have a commit before creating grouped worktrees."
+
 msgid "Each in its own new tab"
 msgstr "Each in its own new tab"
 
@@ -8961,6 +8988,9 @@ msgstr "extra ${used} of ${limit}"
 
 msgid "Extra folders"
 msgstr "Extra folders"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "Extra folders show the correct branch in reftable repositories and worktrees."
 
 msgid "Extra GB-hours"
 msgstr "Extra GB-hours"
@@ -10315,9 +10345,6 @@ msgstr "GitHub issues"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "GitHub merges it when its turn comes and its checks pass."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
 
 msgid "GitHub rate limit reached"
 msgstr "GitHub rate limit reached"
@@ -13867,6 +13894,9 @@ msgstr "No environments yet."
 msgid "No events yet"
 msgstr "No events yet"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "No existing folders found. Browse to add one."
+
 msgid "No extended thinking"
 msgstr "No extended thinking"
 
@@ -16670,6 +16700,9 @@ msgstr "Project created."
 msgid "Project folder is not on this machine"
 msgstr "Project folder is not on this machine"
 
+msgid "Project from existing folders"
+msgstr "Project from existing folders"
+
 msgid "Project icon"
 msgstr "Project icon"
 
@@ -17802,6 +17835,9 @@ msgstr "Repositories accessible through your connected GitHub accounts."
 msgid "Repositories and pull requests"
 msgstr "Repositories and pull requests"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "Repositories can belong to several projects without cloning them."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 
@@ -18211,6 +18247,9 @@ msgstr "Reusable instructions your agents pick up automatically"
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
+
+msgid "Reuse existing folders"
+msgstr "Reuse existing folders"
 
 msgid "Reusing {keptName}"
 msgstr "Reusing {keptName}"
@@ -18876,6 +18915,9 @@ msgstr "Search files..."
 msgid "Search files…"
 msgstr "Search files…"
 
+msgid "Search folders or projects"
+msgstr "Search folders or projects"
+
 msgid "Search fonts..."
 msgstr "Search fonts..."
 
@@ -19115,6 +19157,9 @@ msgstr "Select {0}"
 
 msgid "Select a file to view it here"
 msgstr "Select a file to view it here"
+
+msgid "Select a Git repository"
+msgstr "Select a Git repository"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Select a Jira board to use its columns."
@@ -23357,6 +23402,9 @@ msgstr "Update Paradev on that device. In-app updates require a supported standa
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Update Paradev on this host to edit its workspace config."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "Update Paradev++ on this host to reuse project folders."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "Update Paradev++ to use worktree cleanup."
 
@@ -23421,9 +23469,6 @@ msgstr "Updates"
 
 msgid "Updates are available for your agent tools."
 msgstr "Updates are available for your agent tools."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "Updates resume interrupted downloads, including after a manual retry."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "Worktrees"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktrees use new branches for each repository; local workspaces share the original files."
 
 msgid "Would start"
 msgstr "Would start"

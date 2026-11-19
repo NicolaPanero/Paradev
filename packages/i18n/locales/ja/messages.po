@@ -2251,6 +2251,9 @@ msgstr "フォルダを追加"
 msgid "Add folder…"
 msgstr "フォルダを追加…"
 
+msgid "Add folders"
+msgstr "フォルダーを追加"
+
 msgid "Add GitHub organization"
 msgstr "GitHub 組織を追加"
 
@@ -4042,6 +4045,9 @@ msgstr "v1 のプロジェクトを移行しています"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "コミュニティが共有したスキル、MCPサーバー、エージェント設定を閲覧してインストールできます。"
 
+msgid "Browse folders"
+msgstr "フォルダーを参照"
+
 msgid "Browse for directory"
 msgstr "ディレクトリを参照"
 
@@ -4753,6 +4759,12 @@ msgstr "ファイターを選ぶ"
 msgid "Choose a folder"
 msgstr "フォルダを選択"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "メインフォルダーとしてGitリポジトリを選択してください。"
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "リポジトリを再利用するプロジェクトには、新しいworkspaceブランチを選択してください。"
+
 msgid "Choose a parent directory"
 msgstr "親ディレクトリを選択"
 
@@ -4779,6 +4791,9 @@ msgstr "エージェントを選択"
 
 msgid "Choose an account"
 msgstr "アカウントを選択"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "絶対パスで既存のフォルダーを選択してください。"
 
 msgid "Choose an existing repo folder"
 msgstr "既存のリポジトリフォルダを選択"
@@ -4809,6 +4824,9 @@ msgstr "このメッセージで使うMCPサーバーを選択"
 
 msgid "Choose one"
 msgstr "選択してください"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "プロジェクト内では各Gitリポジトリにつき1つのチェックアウトのみを選択してください。"
 
 msgid "Choose the model"
 msgstr "モデルを選択"
@@ -5811,6 +5829,9 @@ msgstr "接続すると、エージェントがあなたに代わって {name} �
 
 msgid "Connecting to {deviceName}…"
 msgstr "{deviceName} に接続中…"
+
+msgid "Connecting to host…"
+msgstr "ホストに接続中…"
 
 msgid "Connecting to the desktop…"
 msgstr "デスクトップに接続しています…"
@@ -7065,6 +7086,9 @@ msgstr "プロジェクト「{newName}」を作成"
 
 msgid "Create project…"
 msgstr "プロジェクトを作成…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "他のプロジェクトで使用しているリポジトリやフォルダーからプロジェクトを作成できます。"
 
 msgid "Create pull request"
 msgstr "プルリクエストを作成"
@@ -8373,6 +8397,9 @@ msgstr "例: plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "添付ファイルは1件あたり最大{0} MBです。"
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "グループ化したworktreeを作成する前に、各Gitリポジトリにコミットが必要です。"
+
 msgid "Each in its own new tab"
 msgstr "それぞれ新しいタブで"
 
@@ -8961,6 +8988,9 @@ msgstr "追加分 ${limit}中${used}"
 
 msgid "Extra folders"
 msgstr "追加フォルダ"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "追加フォルダーで、reftableを使用するリポジトリとworktreeの正しいブランチを表示します。"
 
 msgid "Extra GB-hours"
 msgstr "追加の GB 時間"
@@ -10315,9 +10345,6 @@ msgstr "GitHub issue"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "順番が来てチェックが通ると GitHub がマージします。"
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "GitHubのプルリクエストで、スタックのマージ、マージキュー、レビュアーによる絞り込みが利用できます。"
 
 msgid "GitHub rate limit reached"
 msgstr "GitHub のレート制限に達しました"
@@ -13867,6 +13894,9 @@ msgstr "環境はまだありません。作成すると、そこからクラウ
 msgid "No events yet"
 msgstr "イベントはまだありません"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "既存のフォルダーが見つかりません。参照して追加してください。"
+
 msgid "No extended thinking"
 msgstr "拡張思考なし"
 
@@ -16670,6 +16700,9 @@ msgstr "プロジェクトを作成しました。"
 msgid "Project folder is not on this machine"
 msgstr "プロジェクトフォルダはこのマシンにありません"
 
+msgid "Project from existing folders"
+msgstr "既存のフォルダーからプロジェクトを作成"
+
 msgid "Project icon"
 msgstr "プロジェクトアイコン"
 
@@ -17802,6 +17835,9 @@ msgstr "接続済みの GitHub アカウントからアクセスできるリポ�
 msgid "Repositories and pull requests"
 msgstr "リポジトリとプルリクエスト"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "クローンせずにリポジトリを複数のプロジェクトで使用できます。"
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "{accountLogin} のリポジトリは同期されなくなります。接続済みのほかの GitHub アカウントには影響しません。GitHub App は {accountLogin} にインストールされたままで、いつでも再接続できます。"
 
@@ -18211,6 +18247,9 @@ msgstr "エージェントが自動的に取り込む再利用可能な指示"
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "再利用可能なターミナル起動。クリックで編集、ドラッグで並べ替え。プロジェクトのセットアップ・実行・ティアダウンコマンドはライフサイクルスクリプトです。"
+
+msgid "Reuse existing folders"
+msgstr "既存のフォルダーを再利用"
 
 msgid "Reusing {keptName}"
 msgstr "{keptName} を再利用中"
@@ -18876,6 +18915,9 @@ msgstr "ファイルを検索..."
 msgid "Search files…"
 msgstr "ファイルを検索…"
 
+msgid "Search folders or projects"
+msgstr "フォルダーやプロジェクトを検索"
+
 msgid "Search fonts..."
 msgstr "フォントを検索..."
 
@@ -19115,6 +19157,9 @@ msgstr "{0} を選択"
 
 msgid "Select a file to view it here"
 msgstr "ファイルを選択するとここに表示されます"
+
+msgid "Select a Git repository"
+msgstr "Gitリポジトリを選択"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Jiraボードを選択すると、その列を使用できます。"
@@ -23357,6 +23402,9 @@ msgstr "そのデバイスで Paradev を更新してください。アプリ内
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "ワークスペースの設定を編集するには、このホストの Paradev を更新してください。"
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "プロジェクトのフォルダーを再利用するには、このホストのParadev++を更新してください。"
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "ワークツリーをクリーンアップするにはParadev++を更新してください。"
 
@@ -23421,9 +23469,6 @@ msgstr "アップデート"
 
 msgid "Updates are available for your agent tools."
 msgstr "エージェントツールのアップデートがあります。"
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "更新時に中断されたダウンロードを再開できます。手動で再試行した場合も続きから再開します。"
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "ワークツリー"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "ワークツリーはディスクから削除され、プロジェクトのチェックアウト上のワークスペースは閉じるだけです。チェックアウト内のファイルはそのまま残ります。"
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktreeは各リポジトリに新しいブランチを使用し、ローカルworkspaceは元のファイルを共有します。"
 
 msgid "Would start"
 msgstr "開始予定"

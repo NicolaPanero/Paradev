@@ -2245,6 +2245,9 @@ msgstr "Додати папку"
 msgid "Add folder…"
 msgstr "Додати папку…"
 
+msgid "Add folders"
+msgstr "Додати папки"
+
 msgid "Add GitHub organization"
 msgstr "Додати організацію GitHub"
 
@@ -4036,6 +4039,9 @@ msgstr "Перенесення ваших проєктів з v1"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "Переглядайте та встановлюйте навички, MCP-сервери й конфігурації агентів від спільноти."
 
+msgid "Browse folders"
+msgstr "Огляд папок"
+
 msgid "Browse for directory"
 msgstr "Вибрати папку"
 
@@ -4747,6 +4753,12 @@ msgstr "Виберіть бійця"
 msgid "Choose a folder"
 msgstr "Виберіть папку"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "Виберіть репозиторій Git як основну папку."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "Виберіть нову гілку workspace для проєкту, що повторно використовує репозиторії."
+
 msgid "Choose a parent directory"
 msgstr "Виберіть батьківську папку"
 
@@ -4773,6 +4785,9 @@ msgstr "Вибрати агента"
 
 msgid "Choose an account"
 msgstr "Виберіть обліковий запис"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "Виберіть наявну папку з абсолютним шляхом."
 
 msgid "Choose an existing repo folder"
 msgstr "Виберіть наявну папку репозиторію"
@@ -4803,6 +4818,9 @@ msgstr "Виберіть MCP-сервери для цього повідомле
 
 msgid "Choose one"
 msgstr "Виберіть варіант"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "Виберіть лише один checkout кожного репозиторію Git у проєкті."
 
 msgid "Choose the model"
 msgstr "Виберіть модель"
@@ -5805,6 +5823,9 @@ msgstr "Після підключення ваші агенти зможуть �
 
 msgid "Connecting to {deviceName}…"
 msgstr "Підключення до {deviceName}…"
+
+msgid "Connecting to host…"
+msgstr "Підключення до хоста…"
 
 msgid "Connecting to the desktop…"
 msgstr "Підключення до десктопного застосунку…"
@@ -7059,6 +7080,9 @@ msgstr "Створити проєкт «{newName}»"
 
 msgid "Create project…"
 msgstr "Створити проєкт…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "Створюйте проєкти з репозиторіїв і папок, які вже використовуються в інших проєктах."
 
 msgid "Create pull request"
 msgstr "Створити пул-реквест"
@@ -8367,6 +8391,9 @@ msgstr "наприклад, plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "Розмір кожного вкладення не перевищує {0} МБ."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "Перед створенням згрупованих worktrees кожен репозиторій Git повинен мати commit."
+
 msgid "Each in its own new tab"
 msgstr "Кожне у власній новій вкладці"
 
@@ -8955,6 +8982,9 @@ msgstr "додатково ${used} з ${limit}"
 
 msgid "Extra folders"
 msgstr "Додаткові папки"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "Додаткові папки показують правильну гілку в репозиторіях і worktrees з reftable."
 
 msgid "Extra GB-hours"
 msgstr "Додаткові ГБ-години"
@@ -10309,9 +10339,6 @@ msgstr "GitHub issues"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "GitHub зіллє його, коли настане його черга і пройдуть перевірки."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "Pull request у GitHub підтримують злиття стеків, черги злиття та фільтри за рецензентами."
 
 msgid "GitHub rate limit reached"
 msgstr "Досягнуто ліміту запитів GitHub"
@@ -13861,6 +13888,9 @@ msgstr "Середовищ ще немає."
 msgid "No events yet"
 msgstr "Подій ще немає"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "Наявних папок не знайдено. Відкрийте огляд, щоб додати папку."
+
 msgid "No extended thinking"
 msgstr "Без розширеного мислення"
 
@@ -16664,6 +16694,9 @@ msgstr "Проєкт створено."
 msgid "Project folder is not on this machine"
 msgstr "Папки проєкту немає на цьому комп'ютері"
 
+msgid "Project from existing folders"
+msgstr "Проєкт із наявних папок"
+
 msgid "Project icon"
 msgstr "Значок проєкту"
 
@@ -17796,6 +17829,9 @@ msgstr "Репозиторії, доступні через під’єднан�
 msgid "Repositories and pull requests"
 msgstr "Репозиторії та пул-реквести"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "Репозиторії можуть належати кільком проєктам без клонування."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "Репозиторії {accountLogin} більше не синхронізуватимуться. Інші під’єднані облікові записи GitHub це не зачепить. GitHub App залишиться встановленим у {accountLogin}, і його можна під’єднати знову будь-коли."
 
@@ -18205,6 +18241,9 @@ msgstr "Багаторазові інструкції, які ваші аген�
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "Багаторазові запуски термінала. Натисніть скрипт, щоб змінити його, або перетягніть, щоб змінити порядок. Команди налаштування, запуску й очищення проєкту — це скрипти життєвого циклу."
+
+msgid "Reuse existing folders"
+msgstr "Повторно використати наявні папки"
 
 msgid "Reusing {keptName}"
 msgstr "Використовується {keptName}"
@@ -18870,6 +18909,9 @@ msgstr "Пошук файлів..."
 msgid "Search files…"
 msgstr "Пошук файлів…"
 
+msgid "Search folders or projects"
+msgstr "Пошук папок або проєктів"
+
 msgid "Search fonts..."
 msgstr "Пошук шрифтів..."
 
@@ -19109,6 +19151,9 @@ msgstr "Вибрати {0}"
 
 msgid "Select a file to view it here"
 msgstr "Виберіть файл, щоб переглянути його тут"
+
+msgid "Select a Git repository"
+msgstr "Виберіть репозиторій Git"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Виберіть дошку Jira, щоб використовувати її стовпці."
@@ -23351,6 +23396,9 @@ msgstr "Оновіть Paradev на тому пристрої. Оновленн�
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Оновіть Paradev на цьому хості, щоб редагувати конфігурацію його робочих просторів."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "Оновіть Paradev++ на цьому хості для повторного використання папок проєктів."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "Оновіть Paradev++, щоб очищувати робочі дерева."
 
@@ -23415,9 +23463,6 @@ msgstr "Оновлення"
 
 msgid "Updates are available for your agent tools."
 msgstr "Доступні оновлення для ваших інструментів агентів."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "Оновлення продовжують перервані завантаження, зокрема після повторної спроби вручну."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24526,6 +24571,9 @@ msgstr "Worktrees"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Worktrees видаляються з диска; робочі простори в робочій копії проєкту лише закриваються. Файли в робочій копії залишаються без змін."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktrees використовують нові гілки для кожного репозиторію; локальні workspaces спільно використовують початкові файли."
 
 msgid "Would start"
 msgstr "Було б запущено"

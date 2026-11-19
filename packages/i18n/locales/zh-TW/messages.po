@@ -2251,6 +2251,9 @@ msgstr "新增資料夾"
 msgid "Add folder…"
 msgstr "新增資料夾…"
 
+msgid "Add folders"
+msgstr "新增資料夾"
+
 msgid "Add GitHub organization"
 msgstr "新增 GitHub 組織"
 
@@ -4042,6 +4045,9 @@ msgstr "正在移轉你的 v1 專案"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "瀏覽並安裝社群共享的技能、MCP伺服器和代理程式配置。"
 
+msgid "Browse folders"
+msgstr "瀏覽資料夾"
+
 msgid "Browse for directory"
 msgstr "瀏覽目錄"
 
@@ -4753,6 +4759,12 @@ msgstr "選擇一名鬥士"
 msgid "Choose a folder"
 msgstr "選擇資料夾"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "請選擇一個 Git 儲存庫作為主要資料夾。"
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "請為重複使用儲存庫的專案選擇新的 workspace 分支。"
+
 msgid "Choose a parent directory"
 msgstr "選擇父目錄"
 
@@ -4779,6 +4791,9 @@ msgstr "選擇代理程式"
 
 msgid "Choose an account"
 msgstr "選擇帳號"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "請選擇具有絕對路徑的現有資料夾。"
 
 msgid "Choose an existing repo folder"
 msgstr "選擇已有的儲存庫資料夾"
@@ -4809,6 +4824,9 @@ msgstr "為這則訊息選擇MCP伺服器"
 
 msgid "Choose one"
 msgstr "請選擇"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "在一個專案中，每個 Git 儲存庫只能選擇一個簽出副本。"
 
 msgid "Choose the model"
 msgstr "選擇模型"
@@ -5811,6 +5829,9 @@ msgstr "連線後，你的代理可代表你在 {name} 中讀取和操作。繼�
 
 msgid "Connecting to {deviceName}…"
 msgstr "正在連線至 {deviceName}…"
+
+msgid "Connecting to host…"
+msgstr "正在連線至主機…"
 
 msgid "Connecting to the desktop…"
 msgstr "正在連線至桌面…"
@@ -7065,6 +7086,9 @@ msgstr "建立專案「{newName}」"
 
 msgid "Create project…"
 msgstr "建立專案…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "使用其他專案中已有的儲存庫和資料夾建立專案。"
 
 msgid "Create pull request"
 msgstr "建立拉取請求"
@@ -8373,6 +8397,9 @@ msgstr "例如 plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "每個附件最大為{0} MB。"
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "建立分組 worktree 之前，每個 Git 儲存庫必須至少有一個提交。"
+
 msgid "Each in its own new tab"
 msgstr "每條各佔一個新分頁"
 
@@ -8961,6 +8988,9 @@ msgstr "額外用量${used}/${limit}"
 
 msgid "Extra folders"
 msgstr "額外資料夾"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "額外資料夾可正確顯示 reftable 儲存庫與 worktree 的目前分支。"
 
 msgid "Extra GB-hours"
 msgstr "額外 GB 小時"
@@ -10315,9 +10345,6 @@ msgstr "GitHub議題"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "輪到它且檢查通過時，GitHub 會合併它。"
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "GitHub 提取要求支援堆疊合併、合併佇列及審閱者篩選。"
 
 msgid "GitHub rate limit reached"
 msgstr "已達到 GitHub 速率限制"
@@ -13867,6 +13894,9 @@ msgstr "尚無環境。建立一個，即可從中啟動雲端工作區。"
 msgid "No events yet"
 msgstr "尚無事件"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "找不到現有資料夾。請瀏覽並新增資料夾。"
+
 msgid "No extended thinking"
 msgstr "不使用擴充套件思考"
 
@@ -16670,6 +16700,9 @@ msgstr "專案已建立。"
 msgid "Project folder is not on this machine"
 msgstr "專案資料夾不在此裝置上"
 
+msgid "Project from existing folders"
+msgstr "從現有資料夾建立專案"
+
 msgid "Project icon"
 msgstr "專案圖示"
 
@@ -17802,6 +17835,9 @@ msgstr "可透過已連接的 GitHub 帳號存取的儲存庫。"
 msgid "Repositories and pull requests"
 msgstr "儲存庫和提取要求"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "儲存庫不需複製即可屬於多個專案。"
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "{accountLogin} 的儲存庫將停止同步。其他已連接的 GitHub 帳號不受影響。GitHub App 仍安裝在 {accountLogin} 上，你可以隨時重新連接。"
 
@@ -18211,6 +18247,9 @@ msgstr "代理程式會自動讀取的可複用說明"
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "可複用的終端啟動項。點選指令碼可編輯，拖曳可重新排序。專案的初始化、執行和清理命令屬於生命週期指令碼。"
+
+msgid "Reuse existing folders"
+msgstr "重複使用現有資料夾"
 
 msgid "Reusing {keptName}"
 msgstr "正在重複使用 {keptName}"
@@ -18876,6 +18915,9 @@ msgstr "搜尋檔案..."
 msgid "Search files…"
 msgstr "搜尋檔案…"
 
+msgid "Search folders or projects"
+msgstr "搜尋資料夾或專案"
+
 msgid "Search fonts..."
 msgstr "搜尋字型..."
 
@@ -19115,6 +19157,9 @@ msgstr "選取 {0}"
 
 msgid "Select a file to view it here"
 msgstr "選取檔案以在此處檢視"
+
+msgid "Select a Git repository"
+msgstr "選擇 Git 儲存庫"
 
 msgid "Select a Jira board to use its columns."
 msgstr "選擇 Jira 看板以使用其欄位。"
@@ -23357,6 +23402,9 @@ msgstr "請在該裝置上更新 Paradev。應用程式內更新需要受支援�
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "請更新此主機上的 Paradev，以編輯其工作區設定。"
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "請更新此主機上的 Paradev++，以重複使用專案資料夾。"
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "請更新 Paradev++ 以使用工作樹清理功能。"
 
@@ -23421,9 +23469,6 @@ msgstr "更新"
 
 msgid "Updates are available for your agent tools."
 msgstr "你的代理程式工具有可用更新。"
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "更新會繼續中斷的下載，手動重試後也可續傳。"
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "Worktree"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "worktree 會從磁碟中移除；位於專案簽出上的工作區僅會關閉。簽出中的檔案保持不變。"
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktree 為每個儲存庫使用新分支；本機 workspace 共用原始檔案。"
 
 msgid "Would start"
 msgstr "將會啟動"

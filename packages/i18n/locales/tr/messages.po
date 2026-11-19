@@ -2251,6 +2251,9 @@ msgstr "Klasör ekle"
 msgid "Add folder…"
 msgstr "Klasör ekle…"
 
+msgid "Add folders"
+msgstr "Klasör ekle"
+
 msgid "Add GitHub organization"
 msgstr "GitHub organizasyonu ekle"
 
@@ -4042,6 +4045,9 @@ msgstr "v1 projeleriniz aktarılıyor"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "Toplulukça paylaşılan becerilere, MCP sunucularına ve ajan yapılandırmalarına göz atın ve kurun."
 
+msgid "Browse folders"
+msgstr "Klasörlere göz at"
+
 msgid "Browse for directory"
 msgstr "Dizine gözat"
 
@@ -4753,6 +4759,12 @@ msgstr "Bir dövüşçü seç"
 msgid "Choose a folder"
 msgstr "Bir klasör seçin"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "Ana klasör olarak bir Git deposu seçin."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "Depoları yeniden kullanan bir proje için yeni bir workspace dalı seçin."
+
 msgid "Choose a parent directory"
 msgstr "Bir üst dizin seçin"
 
@@ -4779,6 +4791,9 @@ msgstr "Ajan seçin"
 
 msgid "Choose an account"
 msgstr "Bir hesap seçin"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "Mutlak yolu olan mevcut bir klasör seçin."
 
 msgid "Choose an existing repo folder"
 msgstr "Mevcut bir depo klasörü seçin"
@@ -4809,6 +4824,9 @@ msgstr "Bu ileti için MCP sunucularını seçin"
 
 msgid "Choose one"
 msgstr "Birini seçin"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "Bir projede her Git deposunun yalnızca bir checkout’unu seçin."
 
 msgid "Choose the model"
 msgstr "Modeli seç"
@@ -5811,6 +5829,9 @@ msgstr "Bağlanmak, aracılarınızın {name} içinde sizin adınıza okuma ve i
 
 msgid "Connecting to {deviceName}…"
 msgstr "{deviceName} cihazına bağlanılıyor…"
+
+msgid "Connecting to host…"
+msgstr "Ana makineye bağlanılıyor…"
 
 msgid "Connecting to the desktop…"
 msgstr "Masaüstüne bağlanılıyor…"
@@ -7065,6 +7086,9 @@ msgstr "\"{newName}\" projesini oluştur"
 
 msgid "Create project…"
 msgstr "Proje oluştur…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "Diğer projelerde kullanılan depolardan ve klasörlerden projeler oluşturun."
 
 msgid "Create pull request"
 msgstr "Pull request oluştur"
@@ -8373,6 +8397,9 @@ msgstr "ör. plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "Her ek en fazla {0} MB olabilir."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "Gruplandırılmış worktree’ler oluşturmadan önce her Git deposunda bir commit bulunmalıdır."
+
 msgid "Each in its own new tab"
 msgstr "Her biri kendi yeni sekmesinde"
 
@@ -8961,6 +8988,9 @@ msgstr "ek ${used}/${limit}"
 
 msgid "Extra folders"
 msgstr "Ek klasörler"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "Ek klasörler, reftable kullanan depolarda ve worktree’lerde doğru dalı gösterir."
 
 msgid "Extra GB-hours"
 msgstr "Ek GB-saat"
@@ -10315,9 +10345,6 @@ msgstr "GitHub issue'ları"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "Sırası geldiğinde ve kontrolleri geçtiğinde GitHub onu birleştirir."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "GitHub pull request’leri yığın birleştirmelerini, birleştirme kuyruklarını ve inceleyen filtrelerini destekler."
 
 msgid "GitHub rate limit reached"
 msgstr "GitHub istek sınırına ulaşıldı"
@@ -13867,6 +13894,9 @@ msgstr "Henüz ortam yok. Bir bulut çalışma alanını üzerinden başlatmak i
 msgid "No events yet"
 msgstr "Henüz olay yok"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "Mevcut klasör bulunamadı. Eklemek için göz atın."
+
 msgid "No extended thinking"
 msgstr "Genişletilmiş düşünme yok"
 
@@ -16670,6 +16700,9 @@ msgstr "Proje oluşturuldu."
 msgid "Project folder is not on this machine"
 msgstr "Proje klasörü bu makinede değil"
 
+msgid "Project from existing folders"
+msgstr "Mevcut klasörlerden proje"
+
 msgid "Project icon"
 msgstr "Proje simgesi"
 
@@ -17802,6 +17835,9 @@ msgstr "Bağlı GitHub hesaplarınız üzerinden erişilebilen depolar."
 msgid "Repositories and pull requests"
 msgstr "Depolar ve pull request’ler"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "Depolar klonlanmadan birden fazla projeye ait olabilir."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "{accountLogin} depoları artık senkronize edilmeyecek. Bağlı diğer GitHub hesapları etkilenmez. GitHub App {accountLogin} üzerinde yüklü kalır ve istediğiniz zaman yeniden bağlayabilirsiniz."
 
@@ -18211,6 +18247,9 @@ msgstr "Ajanlarınızın otomatik olarak aldığı yeniden kullanılabilir yöne
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "Yeniden kullanılabilir terminal başlatmaları. Düzenlemek için bir betiğe tıklayın veya sıralamak için sürükleyin. Proje kurulum, çalıştırma ve kapatma komutları yaşam döngüsü betikleridir."
+
+msgid "Reuse existing folders"
+msgstr "Mevcut klasörleri yeniden kullan"
 
 msgid "Reusing {keptName}"
 msgstr "{keptName} yeniden kullanılıyor"
@@ -18876,6 +18915,9 @@ msgstr "Dosya ara..."
 msgid "Search files…"
 msgstr "Dosya ara…"
 
+msgid "Search folders or projects"
+msgstr "Klasör veya proje ara"
+
 msgid "Search fonts..."
 msgstr "Yazı tipi ara..."
 
@@ -19115,6 +19157,9 @@ msgstr "{0} öğesini seç"
 
 msgid "Select a file to view it here"
 msgstr "Burada görüntülemek için bir dosya seçin"
+
+msgid "Select a Git repository"
+msgstr "Bir Git deposu seçin"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Sütunlarını kullanmak için bir Jira panosu seçin."
@@ -23357,6 +23402,9 @@ msgstr "Paradev’i o cihazda güncelleyin. Uygulama içinden güncelleme için 
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Çalışma alanı yapılandırmasını düzenlemek için bu ana bilgisayardaki Paradev'i güncelleyin."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "Proje klasörlerini yeniden kullanmak için bu ana makinedeki Paradev++ uygulamasını güncelleyin."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "Çalışma ağaçlarını temizlemek için Paradev++ uygulamasını güncelleyin."
 
@@ -23421,9 +23469,6 @@ msgstr "Güncellemeler"
 
 msgid "Updates are available for your agent tools."
 msgstr "Ajan araçlarınız için güncellemeler var."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "Güncellemeler, elle yeniden denemeden sonra da kesilen indirmeleri kaldığı yerden sürdürür."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "Worktree'ler"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Worktree'ler diskten kaldırılır; projenin checkout'undaki çalışma alanları yalnızca kapanır. Checkout'taki dosyalar olduğu gibi kalır."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktree’ler her depo için yeni dallar kullanır; yerel workspace’ler orijinal dosyaları paylaşır."
 
 msgid "Would start"
 msgstr "Başlardı"

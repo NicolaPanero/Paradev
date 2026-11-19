@@ -2251,6 +2251,9 @@ msgstr "Tambah folder"
 msgid "Add folder…"
 msgstr "Tambah folder…"
 
+msgid "Add folders"
+msgstr "Tambahkan folder"
+
 msgid "Add GitHub organization"
 msgstr "Tambahkan organisasi GitHub"
 
@@ -4042,6 +4045,9 @@ msgstr "Memindahkan proyek v1 Anda"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "Jelajahi dan pasang skill, server MCP, dan konfigurasi agen yang dibagikan komunitas."
 
+msgid "Browse folders"
+msgstr "Telusuri folder"
+
 msgid "Browse for directory"
 msgstr "Telusuri direktori"
 
@@ -4753,6 +4759,12 @@ msgstr "Pilih petarung"
 msgid "Choose a folder"
 msgstr "Pilih folder"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "Pilih repositori Git sebagai folder utama."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "Pilih cabang workspace baru untuk proyek yang menggunakan ulang repositori."
+
 msgid "Choose a parent directory"
 msgstr "Pilih direktori induk"
 
@@ -4779,6 +4791,9 @@ msgstr "Pilih agen"
 
 msgid "Choose an account"
 msgstr "Pilih akun"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "Pilih folder yang ada dengan jalur absolut."
 
 msgid "Choose an existing repo folder"
 msgstr "Pilih folder repo yang sudah ada"
@@ -4809,6 +4824,9 @@ msgstr "Pilih server MCP untuk pesan ini"
 
 msgid "Choose one"
 msgstr "Pilih salah satu"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "Pilih hanya satu checkout dari setiap repositori Git dalam satu proyek."
 
 msgid "Choose the model"
 msgstr "Pilih model"
@@ -5811,6 +5829,9 @@ msgstr "Menghubungkan memungkinkan agen Anda membaca dan bertindak di {name} ata
 
 msgid "Connecting to {deviceName}…"
 msgstr "Menghubungkan ke {deviceName}…"
+
+msgid "Connecting to host…"
+msgstr "Menghubungkan ke host…"
 
 msgid "Connecting to the desktop…"
 msgstr "Menghubungkan ke desktop…"
@@ -7065,6 +7086,9 @@ msgstr "Buat proyek \"{newName}\""
 
 msgid "Create project…"
 msgstr "Buat proyek…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "Buat proyek dari repositori dan folder yang sudah digunakan di proyek lain."
 
 msgid "Create pull request"
 msgstr "Buat pull request"
@@ -8373,6 +8397,9 @@ msgstr "mis. plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "Setiap lampiran maksimal {0} MB."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "Setiap repositori Git harus memiliki commit sebelum membuat worktree yang dikelompokkan."
+
 msgid "Each in its own new tab"
 msgstr "Masing-masing di tab barunya sendiri"
 
@@ -8961,6 +8988,9 @@ msgstr "tambahan ${used} dari ${limit}"
 
 msgid "Extra folders"
 msgstr "Folder tambahan"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "Folder tambahan menampilkan cabang yang benar pada repositori dan worktree dengan reftable."
 
 msgid "Extra GB-hours"
 msgstr "GB-jam tambahan"
@@ -10315,9 +10345,6 @@ msgstr "Issue GitHub"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "GitHub me-merge-nya saat gilirannya tiba dan check-nya lulus."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "Pull request GitHub mendukung penggabungan PR bertumpuk, antrean penggabungan, dan filter peninjau."
 
 msgid "GitHub rate limit reached"
 msgstr "Batas laju GitHub tercapai"
@@ -13867,6 +13894,9 @@ msgstr "Belum ada environment. Buat satu untuk memulai workspace cloud darinya."
 msgid "No events yet"
 msgstr "Belum ada peristiwa"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "Tidak ada folder yang ditemukan. Telusuri untuk menambahkannya."
+
 msgid "No extended thinking"
 msgstr "Tanpa extended thinking"
 
@@ -16670,6 +16700,9 @@ msgstr "Proyek dibuat."
 msgid "Project folder is not on this machine"
 msgstr "Folder proyek tidak ada di mesin ini"
 
+msgid "Project from existing folders"
+msgstr "Proyek dari folder yang ada"
+
 msgid "Project icon"
 msgstr "Ikon proyek"
 
@@ -17802,6 +17835,9 @@ msgstr "Repositori yang dapat diakses melalui akun GitHub yang terhubung."
 msgid "Repositories and pull requests"
 msgstr "Repositori dan pull request"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "Repositori dapat menjadi bagian dari beberapa proyek tanpa dikloning."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "Repositori dari {accountLogin} tidak akan disinkronkan lagi. Akun GitHub lain yang terhubung tidak terpengaruh. GitHub App tetap terpasang di {accountLogin}, dan Anda dapat menghubungkannya kembali kapan saja."
 
@@ -18211,6 +18247,9 @@ msgstr "Instruksi pakai ulang yang otomatis diambil agen Anda"
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "Peluncuran terminal pakai ulang. Klik sebuah skrip untuk mengedit atau seret untuk mengurutkan ulang. Perintah setup, run, dan teardown proyek adalah skrip lifecycle."
+
+msgid "Reuse existing folders"
+msgstr "Gunakan ulang folder yang ada"
 
 msgid "Reusing {keptName}"
 msgstr "Memakai ulang {keptName}"
@@ -18876,6 +18915,9 @@ msgstr "Cari file..."
 msgid "Search files…"
 msgstr "Cari file…"
 
+msgid "Search folders or projects"
+msgstr "Cari folder atau proyek"
+
 msgid "Search fonts..."
 msgstr "Cari font..."
 
@@ -19115,6 +19157,9 @@ msgstr "Pilih {0}"
 
 msgid "Select a file to view it here"
 msgstr "Pilih file untuk melihatnya di sini"
+
+msgid "Select a Git repository"
+msgstr "Pilih repositori Git"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Pilih papan Jira untuk menggunakan kolomnya."
@@ -23357,6 +23402,9 @@ msgstr "Perbarui Paradev di perangkat tersebut. Pembaruan dari aplikasi memerluk
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Perbarui Paradev di host ini untuk mengedit konfigurasi workspace-nya."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "Perbarui Paradev++ di host ini untuk menggunakan ulang folder proyek."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "Perbarui Paradev++ untuk membersihkan pohon kerja."
 
@@ -23421,9 +23469,6 @@ msgstr "Pembaruan"
 
 msgid "Updates are available for your agent tools."
 msgstr "Pembaruan tersedia untuk alat agen Anda."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "Pembaruan melanjutkan unduhan yang terputus, termasuk setelah percobaan ulang manual."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "Worktree"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Worktree dihapus dari disk; workspace di checkout proyek hanya ditutup. File di checkout tetap seperti semula."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktree menggunakan cabang baru untuk setiap repositori; workspace lokal berbagi file asli."
 
 msgid "Would start"
 msgstr "Akan dimulai"

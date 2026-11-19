@@ -1,5 +1,6 @@
 import { createUserSimpleGit } from "../../runtime/git/simple-git.ts";
 import { defineWorkerTask } from "../define-worker-task.ts";
+import { forkReadGitBranchTask } from "./fork-git-head";
 
 export const gitAddFolderWorktreeTask = defineWorkerTask<
 	{
@@ -23,4 +24,7 @@ export const gitAddFolderWorktreeTask = defineWorkerTask<
 	},
 });
 
-export const folderWorktreeTasks = [gitAddFolderWorktreeTask];
+export const folderWorktreeTasks = [
+	gitAddFolderWorktreeTask,
+	forkReadGitBranchTask,
+];

@@ -2,6 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { projects } from "../../../db/schema";
+import { resolveForkGitBranch } from "../../../project-folders/fork-git-head";
 import {
 	isGitRepoPath,
 	listProjectFolders,
@@ -51,7 +52,10 @@ export const forkOriginBranchesProcedures = {
 						id: folder.id,
 						name: folder.name,
 						path: folder.path,
-						currentBranch: readGitBranch(folder.path),
+						currentBranch: await resolveForkGitBranch(
+							folder.path,
+							readGitBranch(folder.path),
+						),
 						branches: raw
 							.split("\n")
 							.filter(

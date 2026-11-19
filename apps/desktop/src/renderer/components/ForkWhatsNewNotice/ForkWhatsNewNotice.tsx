@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-209-portable-backup-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-209-shared-projects-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -41,11 +41,11 @@ export function ForkWhatsNewNotice() {
 		}),
 		t({
 			message:
-				"Updates resume interrupted downloads, including after a manual retry.",
+				"Create projects from repositories and folders already used in other projects.",
 		}),
 		t({
 			message:
-				"GitHub pull requests support stacked merges, merge queues, and reviewer filters.",
+				"Extra folders show the correct branch in reftable repositories and worktrees.",
 		}),
 		t({
 			message:

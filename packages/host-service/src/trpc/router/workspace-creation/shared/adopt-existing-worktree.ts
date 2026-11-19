@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
 import { and, eq, isNull, ne, or } from "drizzle-orm";
 import { workspaces } from "../../../../db/schema";
+import { assertForkGroupAdoption } from "../../../../projects/fork-project-groups";
 import type { HostServiceContext } from "../../../../types";
 import {
 	type CloudShapedWorkspace,
@@ -78,6 +79,7 @@ export async function adoptExistingWorktree(
 		tags,
 	} = args;
 	const project = requireLocalProject(ctx, projectId);
+	await assertForkGroupAdoption(ctx, projectId, worktreePath);
 	requireIndependentWorktree(project.repoPath, worktreePath);
 	if (existingWorkspaceId) {
 		const existing = getLocalWorkspace(ctx.db, existingWorkspaceId);

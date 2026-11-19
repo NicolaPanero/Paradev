@@ -2251,6 +2251,9 @@ msgstr "Map toevoegen"
 msgid "Add folder…"
 msgstr "Map toevoegen…"
 
+msgid "Add folders"
+msgstr "Mappen toevoegen"
+
 msgid "Add GitHub organization"
 msgstr "GitHub-organisatie toevoegen"
 
@@ -4042,6 +4045,9 @@ msgstr "Je v1-projecten worden overgezet"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "Blader door skills, MCP-servers en agentconfiguraties die de community deelt, en installeer ze."
 
+msgid "Browse folders"
+msgstr "Mappen doorzoeken"
+
 msgid "Browse for directory"
 msgstr "Map kiezen"
 
@@ -4753,6 +4759,12 @@ msgstr "Kies een vechter"
 msgid "Choose a folder"
 msgstr "Kies een map"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "Kies een Git-repository als hoofdmap."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "Kies een nieuwe workspace-branch voor een project dat repository’s hergebruikt."
+
 msgid "Choose a parent directory"
 msgstr "Kies een bovenliggende map"
 
@@ -4779,6 +4791,9 @@ msgstr "Kies agent"
 
 msgid "Choose an account"
 msgstr "Kies een account"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "Kies een bestaande map met een absoluut pad."
 
 msgid "Choose an existing repo folder"
 msgstr "Kies een bestaande repo-map"
@@ -4809,6 +4824,9 @@ msgstr "Kies MCP-servers voor dit bericht"
 
 msgid "Choose one"
 msgstr "Kies er een"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "Kies per project slechts één checkout van elke Git-repository."
 
 msgid "Choose the model"
 msgstr "Model kiezen"
@@ -5811,6 +5829,9 @@ msgstr "Verbinden laat je agents in {name} lezen en handelen namens jou. Control
 
 msgid "Connecting to {deviceName}…"
 msgstr "Verbinden met {deviceName}…"
+
+msgid "Connecting to host…"
+msgstr "Verbinden met host…"
 
 msgid "Connecting to the desktop…"
 msgstr "Verbinden met het bureaublad…"
@@ -7065,6 +7086,9 @@ msgstr "Project \"{newName}\" maken"
 
 msgid "Create project…"
 msgstr "Project maken…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "Maak projecten met repository’s en mappen die al in andere projecten worden gebruikt."
 
 msgid "Create pull request"
 msgstr "Pull request aanmaken"
@@ -8373,6 +8397,9 @@ msgstr "bijv. plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "Elke bijlage is maximaal {0} MB."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "Elke Git-repository moet een commit bevatten voordat gegroepeerde worktrees worden gemaakt."
+
 msgid "Each in its own new tab"
 msgstr "Elk in een eigen nieuw tabblad"
 
@@ -8961,6 +8988,9 @@ msgstr "extra ${used} van ${limit}"
 
 msgid "Extra folders"
 msgstr "Extra mappen"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "Extra mappen tonen de juiste branch in repository’s en worktrees met reftable."
 
 msgid "Extra GB-hours"
 msgstr "Extra GB-uren"
@@ -10315,9 +10345,6 @@ msgstr "GitHub-issues"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "GitHub merget hem als hij aan de beurt is en zijn checks slagen."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "GitHub-pull-requests ondersteunen het samenvoegen van gestapelde PR’s, samenvoegwachtrijen en filters op beoordelaar."
 
 msgid "GitHub rate limit reached"
 msgstr "GitHub-limiet bereikt"
@@ -13867,6 +13894,9 @@ msgstr "Nog geen omgevingen. Maak er een aan om er een cloudwerkruimte vanaf te 
 msgid "No events yet"
 msgstr "Nog geen gebeurtenissen"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "Geen bestaande mappen gevonden. Blader om er een toe te voegen."
+
 msgid "No extended thinking"
 msgstr "Geen uitgebreid nadenken"
 
@@ -16670,6 +16700,9 @@ msgstr "Project aangemaakt."
 msgid "Project folder is not on this machine"
 msgstr "De projectmap staat niet op deze machine"
 
+msgid "Project from existing folders"
+msgstr "Project met bestaande mappen"
+
 msgid "Project icon"
 msgstr "Projectpictogram"
 
@@ -17802,6 +17835,9 @@ msgstr "Repositories die bereikbaar zijn via je gekoppelde GitHub-accounts."
 msgid "Repositories and pull requests"
 msgstr "Repository’s en pull requests"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "Repository’s kunnen zonder klonen bij meerdere projecten horen."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "Repositories van {accountLogin} worden niet meer gesynchroniseerd. Andere gekoppelde GitHub-accounts blijven ongewijzigd. De GitHub-app blijft geïnstalleerd op {accountLogin} en je kunt op elk moment opnieuw koppelen."
 
@@ -18211,6 +18247,9 @@ msgstr "Herbruikbare instructies die je agents automatisch oppikken"
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "Herbruikbare terminalstarts. Klik op een script om het te bewerken of sleep om te herordenen. Setup-, run- en teardown-commando's van projecten zijn lifecycle-scripts."
+
+msgid "Reuse existing folders"
+msgstr "Bestaande mappen hergebruiken"
 
 msgid "Reusing {keptName}"
 msgstr "Hergebruikt {keptName}"
@@ -18876,6 +18915,9 @@ msgstr "Bestanden zoeken..."
 msgid "Search files…"
 msgstr "Bestanden zoeken…"
 
+msgid "Search folders or projects"
+msgstr "Mappen of projecten zoeken"
+
 msgid "Search fonts..."
 msgstr "Lettertypen zoeken..."
 
@@ -19115,6 +19157,9 @@ msgstr "{0} selecteren"
 
 msgid "Select a file to view it here"
 msgstr "Selecteer een bestand om het hier te bekijken"
+
+msgid "Select a Git repository"
+msgstr "Selecteer een Git-repository"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Selecteer een Jira-bord om de kolommen ervan te gebruiken."
@@ -23357,6 +23402,9 @@ msgstr "Werk Paradev bij op dat apparaat. Updates vanuit de app vereisen een ond
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Werk Paradev op deze host bij om de werkruimteconfiguratie te bewerken."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "Werk Paradev++ op deze host bij om projectmappen te hergebruiken."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "Werk Paradev++ bij om worktrees op te ruimen."
 
@@ -23421,9 +23469,6 @@ msgstr "Updates"
 
 msgid "Updates are available for your agent tools."
 msgstr "Er zijn updates beschikbaar voor uw agent-tools."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "Updates hervatten onderbroken downloads, ook na een handmatige nieuwe poging."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "Worktrees"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Worktrees worden van de schijf verwijderd; werkruimtes op de checkout van het project worden alleen gesloten. Bestanden in de checkout blijven ongewijzigd."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktrees gebruiken nieuwe branches voor elke repository; lokale workspaces delen de oorspronkelijke bestanden."
 
 msgid "Would start"
 msgstr "Zou starten"

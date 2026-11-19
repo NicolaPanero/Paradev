@@ -5,6 +5,7 @@ import { toast } from "@superset/ui/sonner";
 import { Switch } from "@superset/ui/switch";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { LuFolderPlus, LuGitBranch, LuX } from "react-icons/lu";
+import { ForkReuseProjectFolders } from "renderer/components/ForkProjectComposer/components/ForkReuseProjectFolders";
 import { addProjectFolders } from "renderer/lib/addProjectFolders";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
@@ -130,6 +131,7 @@ export function ProjectFoldersSection({
 				<LuFolderPlus className="size-3.5" />
 				<Trans>Add folder</Trans>
 			</Button>
+			<ForkReuseProjectFolders projectId={projectId} hostUrl={hostUrl} />
 		</div>
 	);
 }

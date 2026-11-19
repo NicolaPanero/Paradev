@@ -2251,6 +2251,9 @@ msgstr "Dodaj folder"
 msgid "Add folder…"
 msgstr "Dodaj folder…"
 
+msgid "Add folders"
+msgstr "Dodaj foldery"
+
 msgid "Add GitHub organization"
 msgstr "Dodaj organizację GitHub"
 
@@ -4042,6 +4045,9 @@ msgstr "Przenoszenie Twoich projektów z v1"
 msgid "Browse and install skills, MCP servers, and agent configs shared by the community."
 msgstr "Przeglądaj i instaluj umiejętności, serwery MCP i konfiguracje agentów udostępnione przez społeczność."
 
+msgid "Browse folders"
+msgstr "Przeglądaj foldery"
+
 msgid "Browse for directory"
 msgstr "Przeglądaj katalogi"
 
@@ -4753,6 +4759,12 @@ msgstr "Wybierz wojownika"
 msgid "Choose a folder"
 msgstr "Wybierz folder"
 
+msgid "Choose a Git repository as the main folder."
+msgstr "Wybierz repozytorium Git jako folder główny."
+
+msgid "Choose a new workspace branch for a project that reuses repositories."
+msgstr "Wybierz nową gałąź workspace dla projektu, który ponownie używa repozytoriów."
+
 msgid "Choose a parent directory"
 msgstr "Wybierz katalog nadrzędny"
 
@@ -4779,6 +4791,9 @@ msgstr "Wybierz agenta"
 
 msgid "Choose an account"
 msgstr "Wybierz konto"
+
+msgid "Choose an existing folder with an absolute path."
+msgstr "Wybierz istniejący folder ze ścieżką bezwzględną."
 
 msgid "Choose an existing repo folder"
 msgstr "Wybierz folder istniejącego repozytorium"
@@ -4809,6 +4824,9 @@ msgstr "Wybierz serwery MCP dla tej wiadomości"
 
 msgid "Choose one"
 msgstr "Wybierz"
+
+msgid "Choose only one checkout of each Git repository in a project."
+msgstr "Wybierz tylko jeden checkout każdego repozytorium Git w projekcie."
 
 msgid "Choose the model"
 msgstr "Wybierz model"
@@ -5811,6 +5829,9 @@ msgstr "Połączenie pozwoli Twoim agentom czytać i działać w {name} w Twoim 
 
 msgid "Connecting to {deviceName}…"
 msgstr "Łączenie z {deviceName}…"
+
+msgid "Connecting to host…"
+msgstr "Łączenie z hostem…"
 
 msgid "Connecting to the desktop…"
 msgstr "Łączenie z pulpitem…"
@@ -7065,6 +7086,9 @@ msgstr "Utwórz projekt „{newName}”"
 
 msgid "Create project…"
 msgstr "Utwórz projekt…"
+
+msgid "Create projects from repositories and folders already used in other projects."
+msgstr "Twórz projekty z repozytoriów i folderów używanych już w innych projektach."
 
 msgid "Create pull request"
 msgstr "Utwórz pull request"
@@ -8373,6 +8397,9 @@ msgstr "np. plan-budget"
 msgid "Each attachment is at most {0} MB."
 msgstr "Każdy załącznik może mieć maksymalnie {0} MB."
 
+msgid "Each Git repository must have a commit before creating grouped worktrees."
+msgstr "Każde repozytorium Git musi zawierać commit przed utworzeniem grupowanych worktrees."
+
 msgid "Each in its own new tab"
 msgstr "Każde we własnej nowej karcie"
 
@@ -8961,6 +8988,9 @@ msgstr "dodatkowo ${used} z ${limit}"
 
 msgid "Extra folders"
 msgstr "Dodatkowe foldery"
+
+msgid "Extra folders show the correct branch in reftable repositories and worktrees."
+msgstr "Dodatkowe foldery pokazują właściwą gałąź w repozytoriach i worktrees z reftable."
 
 msgid "Extra GB-hours"
 msgstr "Dodatkowe GB-godziny"
@@ -10315,9 +10345,6 @@ msgstr "Zgłoszenia GitHub"
 
 msgid "GitHub merges it when its turn comes and its checks pass."
 msgstr "GitHub scali go, gdy nadejdzie jego kolej i przejdzie sprawdzenia."
-
-msgid "GitHub pull requests support stacked merges, merge queues, and reviewer filters."
-msgstr "Pull requesty GitHub obsługują scalanie stosów PR, kolejki scalania i filtry według recenzenta."
 
 msgid "GitHub rate limit reached"
 msgstr "Osiągnięto limit żądań GitHub"
@@ -13867,6 +13894,9 @@ msgstr "Brak środowisk. Utwórz jedno, aby uruchamiać z niego obszar roboczy w
 msgid "No events yet"
 msgstr "Brak zdarzeń"
 
+msgid "No existing folders found. Browse to add one."
+msgstr "Nie znaleziono istniejących folderów. Przeglądaj, aby dodać folder."
+
 msgid "No extended thinking"
 msgstr "Bez rozszerzonego myślenia"
 
@@ -16670,6 +16700,9 @@ msgstr "Projekt utworzony."
 msgid "Project folder is not on this machine"
 msgstr "Folder projektu nie znajduje się na tej maszynie"
 
+msgid "Project from existing folders"
+msgstr "Projekt z istniejących folderów"
+
 msgid "Project icon"
 msgstr "Ikona projektu"
 
@@ -17802,6 +17835,9 @@ msgstr "Repozytoria dostępne przez połączone konta GitHub."
 msgid "Repositories and pull requests"
 msgstr "Repozytoria i pull requesty"
 
+msgid "Repositories can belong to several projects without cloning them."
+msgstr "Repozytoria mogą należeć do kilku projektów bez ich klonowania."
+
 msgid "Repositories from {accountLogin} will stop syncing. Other connected GitHub accounts are not affected. The GitHub App stays installed on {accountLogin}, and you can reconnect at any time."
 msgstr "Repozytoria z {accountLogin} przestaną się synchronizować. Nie wpłynie to na inne połączone konta GitHub. Aplikacja GitHub pozostanie zainstalowana na {accountLogin} i możesz ją połączyć ponownie w dowolnym momencie."
 
@@ -18211,6 +18247,9 @@ msgstr "Instrukcje wielokrotnego użytku, które agenci podchwytują automatyczn
 
 msgid "Reusable terminal launches. Click a script to edit or drag to reorder. Project setup, run, and teardown commands are lifecycle scripts."
 msgstr "Uruchomienia terminala wielokrotnego użytku. Kliknij skrypt, aby go edytować, lub przeciągnij, aby zmienić kolejność. Polecenia konfiguracji, uruchamiania i sprzątania projektu to skrypty cyklu życia."
+
+msgid "Reuse existing folders"
+msgstr "Użyj ponownie istniejących folderów"
 
 msgid "Reusing {keptName}"
 msgstr "Używa ponownie: {keptName}"
@@ -18876,6 +18915,9 @@ msgstr "Szukaj plików..."
 msgid "Search files…"
 msgstr "Szukaj plików…"
 
+msgid "Search folders or projects"
+msgstr "Szukaj folderów lub projektów"
+
 msgid "Search fonts..."
 msgstr "Szukaj czcionek..."
 
@@ -19115,6 +19157,9 @@ msgstr "Wybierz {0}"
 
 msgid "Select a file to view it here"
 msgstr "Wybierz plik, aby go tutaj wyświetlić"
+
+msgid "Select a Git repository"
+msgstr "Wybierz repozytorium Git"
 
 msgid "Select a Jira board to use its columns."
 msgstr "Wybierz tablicę Jira, aby użyć jej kolumn."
@@ -23357,6 +23402,9 @@ msgstr "Zaktualizuj Paradev na tym urządzeniu. Aktualizacje z poziomu aplikacji
 msgid "Update Paradev on this host to edit its workspace config."
 msgstr "Zaktualizuj Paradev na tym hoście, aby edytować konfigurację obszaru roboczego."
 
+msgid "Update Paradev++ on this host to reuse project folders."
+msgstr "Zaktualizuj Paradev++ na tym hoście, aby ponownie używać folderów projektów."
+
 msgid "Update Paradev++ to use worktree cleanup."
 msgstr "Zaktualizuj Paradev++, aby czyścić drzewa robocze."
 
@@ -23421,9 +23469,6 @@ msgstr "Aktualizacje"
 
 msgid "Updates are available for your agent tools."
 msgstr "Dostępne są aktualizacje narzędzi agentów."
-
-msgid "Updates resume interrupted downloads, including after a manual retry."
-msgstr "Aktualizacje wznawiają przerwane pobieranie, także po ponownej próbie ręcznej."
 
 #. placeholder {0}: update.progress.target
 msgid "Updating to {0}"
@@ -24532,6 +24577,9 @@ msgstr "Worktrees"
 
 msgid "Worktrees are removed from disk; workspaces on the project's checkout only close. Files in the checkout stay as they are."
 msgstr "Worktree są usuwane z dysku; obszary robocze na checkoucie projektu są tylko zamykane. Pliki w checkoucie pozostają bez zmian."
+
+msgid "Worktrees use new branches for each repository; local workspaces share the original files."
+msgstr "Worktrees używają nowych gałęzi dla każdego repozytorium; lokalne workspaces współdzielą oryginalne pliki."
 
 msgid "Would start"
 msgstr "Zostałoby uruchomione"

@@ -470,6 +470,32 @@ ripetuti; il tentativo manuale rimane disponibile.
 
 ## Branch di partenza per progetti con più repository
 
+**Add project → Project from existing folders** crea un progetto composto da
+repository e cartelle già usati da altri progetti. Si sceglie un repository
+principale e si aggiungono le altre cartelle, dall’elenco o con **Browse folders**.
+Non servono un repository contenitore fittizio o un secondo clone. In **Project
+Settings → Extra folders → Reuse existing folders** si possono aggiungere le
+cartelle registrate anche a un progetto esistente.
+
+I progetti composti usano un prefisso di branch distinto per progetto. Creando un
+workspace **Worktree**, ciascun repository isolato riceve un checkout separato:
+file e index sono indipendenti, mentre oggetti e cronologia Git restano condivisi
+con il clone sorgente. Un conflitto interrompe la creazione senza aprire i file
+del clone al suo posto. Per questi progetti si creano nuovi branch; l’adozione
+di worktree esterni e la creazione da PR non sono disponibili. Un workspace
+**Local** usa invece i file originali: le modifiche sono condivise con chi lavora
+sullo stesso checkout. Le normali cartelle senza Git rimangono condivise.
+
+Le cartelle aggiunte a un progetto valgono anche per i workspace già presenti,
+ma il checkout isolato viene creato nei nuovi workspace worktree. Non vengono
+convertiti o spostati automaticamente progetti o cartelle esistenti.
+
+Le cartelle Git aggiuntive e i loro worktree riconoscono anche il formato
+**reftable**: il branch corrente viene risolto tramite Git invece di mostrare
+il segnaposto `.invalid` presente nel file `HEAD`. Non cambia il formato dei
+repository e non duplica la cronologia. Le nuove funzioni richiedono l’host
+aggiornato; su un host precedente l’interfaccia invita ad aggiornarlo.
+
 Nella creazione di un nuovo **Worktree**, **Origin branches** permette di
 scegliere il branch remoto per il repository principale e per ogni cartella Git
 isolata. **Use the same origin branch for all folders** applica un branch presente

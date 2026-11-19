@@ -1,5 +1,6 @@
 import { msg } from "@lingui/core/macro";
 import { forkFolderBaseErrors } from "./fork-folder-base-errors";
+import { forkProjectGroupErrors } from "./fork-project-group-errors";
 import { formatNumber } from "./format";
 import { i18n } from "./index";
 
@@ -16,6 +17,7 @@ export const serverErrorMessages: Record<
 	(params?: Record<string, unknown>) => string
 > = {
 	...forkFolderBaseErrors,
+	...forkProjectGroupErrors,
 	"serverError.forkAccounts.reconnect": () =>
 		i18n._(msg({ message: "Reconnect account" })),
 	"serverError.agentCredential.anthropicRejectedKey": () =>
