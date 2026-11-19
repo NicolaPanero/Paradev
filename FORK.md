@@ -632,6 +632,12 @@ Chiudere la finestra di avanzamento annulla la preparazione. Il riavvio ha un
 limite di attesa; un fallimento conserva il bundle precedente e permette di
 riprovare. L’installer usa la release mostrata, non una nuova release arrivata
 nel frattempo. Gli errori sono registrati in `~/Library/Logs/Superset++/fork-update.log`.
+Se il trasferimento si interrompe, riprende dal file parziale con un massimo
+di quattro tentativi entro 15 minuti. Anche un successivo **Install and restart**
+riprende il download della stessa release. La cache conserva al massimo un
+archivio, associato al checksum previsto; viene sostituito quando cambia la
+release ed eliminato dopo l’installazione. Un checksum errato elimina il file
+senza modificare l’app installata.
 L’aggiornamento ufficiale è disabilitato nel fork.
 
 Quando una release introduce un gruppo importante di funzionalità, al primo
