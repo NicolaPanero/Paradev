@@ -2,6 +2,7 @@ import { spawn } from "node:child_process";
 import { readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
+import { formatNumber } from "@superset/i18n/format";
 import { app, BrowserWindow, dialog } from "electron";
 import { writeArchive } from "./fork-archive";
 import { inventory } from "./fork-inventory";
@@ -16,6 +17,7 @@ import type {
 
 export const HELPER_FLAG = "--fork-portable-backup-helper";
 export interface PortableJob {
+	locale?: string;
 	action: "backup" | "restore";
 	archive: string;
 	password: string;
@@ -194,7 +196,7 @@ export async function runHelper(profile: string) {
 			bytes: number;
 		}) => {
 			show(
-				`${job.labels[value.phase]} · ${value.files} · ${Math.round(value.bytes / 1048576)} MB`,
+				`${job.labels[value.phase]} · ${formatNumber(value.files, undefined, job.locale)} · ${formatNumber(Math.round(value.bytes / 1048576), undefined, job.locale)} MB`,
 			);
 			window.setProgressBar(-1);
 		};

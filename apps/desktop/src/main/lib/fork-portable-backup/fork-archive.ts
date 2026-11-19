@@ -27,6 +27,30 @@ import type { BackupManifest, Progress } from "./fork-types";
 
 const MAGIC = Buffer.from("PDVBK001");
 const MAX_JSON = 16 * 1024 * 1024;
+export async function writeBytes(
+	file: {
+		write(
+			buffer: Uint8Array,
+			offset: number,
+			length: number,
+			position: number | null,
+		): Promise<{ bytesWritten: number }>;
+	},
+	buffer: Buffer,
+	position: number | null = null,
+) {
+	let offset = 0;
+	while (offset < buffer.length) {
+		const { bytesWritten } = await file.write(
+			buffer,
+			offset,
+			buffer.length - offset,
+			position === null ? null : position + offset,
+		);
+		if (bytesWritten <= 0) throw new Error("backup_write_failed");
+		offset += bytesWritten;
+	}
+}
 const rootSchema = z.object({
 	id: z.string().regex(/^r\d+$/),
 	path: z.string().min(1),
@@ -311,7 +335,7 @@ export async function writeArchive(
 	try {
 		const stat = await file.stat();
 		await onPartial?.({ path: partial, ino: stat.ino, dev: stat.dev });
-		await file.write(prefix);
+		await writeBytes(file, prefix);
 		await pipeline(
 			Readable.from(contents()),
 			createGzip({ level: 1 }),
@@ -323,7 +347,7 @@ export async function writeArchive(
 			}),
 			{ signal },
 		);
-		await file.write(payload.getAuthTag(), 0, 16, (await file.stat()).size);
+		await writeBytes(file, payload.getAuthTag(), (await file.stat()).size);
 		await file.sync();
 		await file.close();
 		const { link, unlink } = await import("node:fs/promises");
@@ -414,7 +438,7 @@ export async function extractArchive(
 					while (remaining) {
 						const chunk = await reader.read(Math.min(remaining, 65536));
 						hash.update(chunk);
-						await handle.write(chunk);
+						await writeBytes(handle, chunk);
 						remaining -= chunk.length;
 						bytes += chunk.length;
 					}

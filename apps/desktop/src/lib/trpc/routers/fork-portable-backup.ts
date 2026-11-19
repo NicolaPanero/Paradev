@@ -234,6 +234,7 @@ export function createForkPortableBackupRouter(
 					}
 					await guardPortableOperation(journalPath);
 					await launchJob({
+						locale: i18n.locale || "en",
 						action: selected.action,
 						archive: selected.archive,
 						password: input.password,

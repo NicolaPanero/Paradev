@@ -144,7 +144,7 @@ export function remapDatabase(
 										sourceMachine,
 										targetMachine,
 									).toString("base64")
-								: mapJson(value, map);
+								: mapJson(value, map, col.name);
 						if (next !== value) changed.push([col.name, next]);
 					}
 					if (!changed.length) continue;

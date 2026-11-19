@@ -22,7 +22,7 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { claudeProjectDirName } from "@superset/agent-setup/claude-project-links";
-import { inspectArchive, writeArchive } from "./fork-archive";
+import { inspectArchive, writeArchive, writeBytes } from "./fork-archive";
 import { inventory, suggestedTargets } from "./fork-inventory";
 import { pathMapper, validateTargets } from "./fork-paths";
 import {
@@ -39,6 +39,24 @@ afterEach(async () => {
 		await rm(path, { recursive: true, force: true });
 });
 const password = "portable-test-password";
+test("archive IO retries short writes instead of accepting truncated files", async () => {
+	const bytes: Buffer[] = [];
+	const positions: (number | null)[] = [];
+	await writeBytes(
+		{
+			write: async (buffer, offset, length, position) => {
+				const size = Math.min(3, length);
+				bytes.push(Buffer.from(buffer.subarray(offset, offset + size)));
+				positions.push(position);
+				return { bytesWritten: size };
+			},
+		},
+		Buffer.from("complete"),
+		10,
+	);
+	expect(Buffer.concat(bytes).toString()).toBe("complete");
+	expect(positions).toEqual([10, 13, 16]);
+});
 async function fixture() {
 	const base = await mkdtemp(
 		join(await realpath(tmpdir()), "paradev-portable-test-"),
@@ -137,7 +155,7 @@ test("portable restore keeps dirty Git worktrees, provider history, credentials 
 	await mkdir(claude, { recursive: true });
 	await writeFile(
 		join(claude, "session.jsonl"),
-		`${JSON.stringify({ cwd: worktree, message: { content: "conversation" } })}\n`,
+		`${JSON.stringify({ cwd: worktree, message: { content: `conversation at ${worktree}` } })}\n`,
 	);
 	const cursor = join(
 		env.home,
@@ -228,6 +246,19 @@ test("portable restore keeps dirty Git worktrees, provider history, credentials 
 			"utf8",
 		),
 	).toContain(map(worktree));
+	const conversation = JSON.parse(
+		await readFile(
+			join(
+				target.home,
+				".claude",
+				"projects",
+				claudeProjectDirName(map(worktree)),
+				"session.jsonl",
+			),
+			"utf8",
+		),
+	) as { message: { content: string } };
+	expect(conversation.message.content).toBe(`conversation at ${worktree}`);
 	expect(
 		await readFile(
 			join(

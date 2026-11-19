@@ -137,6 +137,7 @@ export function remapKeychain(
 		...item,
 		service: services.get(item.service) ?? item.service,
 		account:
+			item.service.startsWith("Claude Code-credentials") &&
 			item.account === basename(manifest.home)
 				? basename(targetHome)
 				: item.account,

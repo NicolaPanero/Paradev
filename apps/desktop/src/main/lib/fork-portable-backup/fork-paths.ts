@@ -75,20 +75,28 @@ export function pathMapper(
 export function mapJson(
 	value: unknown,
 	map: (value: string) => string,
+	key = "",
 ): unknown {
 	if (typeof value === "string") {
+		if (
+			/(text|body|content|message|output|prompt|reasoning|thinking|signature|instructions|arguments|description|title|summary|stdout|stderr|code)$/i.test(
+				key,
+			)
+		)
+			return value;
 		try {
 			if (value.startsWith("{") || value.startsWith("["))
-				return JSON.stringify(mapJson(JSON.parse(value), map));
+				return JSON.stringify(mapJson(JSON.parse(value), map, key));
 		} catch {}
 		return map(value);
 	}
-	if (Array.isArray(value)) return value.map((entry) => mapJson(entry, map));
+	if (Array.isArray(value))
+		return value.map((entry) => mapJson(entry, map, key));
 	if (value && typeof value === "object")
 		return Object.fromEntries(
 			Object.entries(value).map(([key, entry]) => [
 				map(key),
-				mapJson(entry, map),
+				mapJson(entry, map, key),
 			]),
 		);
 	return value;
