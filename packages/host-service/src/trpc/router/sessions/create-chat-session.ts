@@ -4,6 +4,7 @@ import type {
 	ChatSessionResult,
 	CreateChatSessionInput,
 } from "./session-service";
+import { sessionsClientId } from "./utils/sessionsClientId";
 
 type ChatTarget = {
 	harness: string;
@@ -37,6 +38,7 @@ export function createChatSession(
 		terminalId,
 		...fork,
 		...(input.model ? { modelId: input.model } : {}),
+		...(input.effort ? { effortId: input.effort } : {}),
 		...(input.mode ? { modeId: input.mode } : {}),
 		...(input.resumeSessionId
 			? { resume: { harnessSessionId: input.resumeSessionId } }
@@ -55,7 +57,7 @@ export function createChatSession(
 		chat.commands.prompt({
 			commandId,
 			sessionId: created.sessionId,
-			clientId: "superset-sessions",
+			clientId: sessionsClientId(commandId),
 			content,
 		});
 	return {

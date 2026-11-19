@@ -10,7 +10,7 @@ import { useState } from "react";
 import { ForkAccountResets } from "renderer/components/ForkAccountResets";
 import { ForkUsageSummary } from "renderer/components/ForkUsageSummary";
 import { useAccountUsage } from "../../hooks/useAccountUsage";
-import { UsageProgressRing } from "./components/UsageProgressRing";
+import { UsageProgressRing } from "./components/UsageProgressRing/UsageProgressRing";
 
 interface AccountUsageProps {
 	workspaceId: string;

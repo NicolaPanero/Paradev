@@ -9,7 +9,7 @@ import type { UserContent, UserMessage } from "@superset/chat/protocol";
 import type { ChatSession } from "@superset/chat/react";
 import { useState } from "react";
 import { act, renderHook } from "renderer/test-utils/fork-ui";
-import { pageLinkFinder } from "../../../../utils/pageLinks";
+import { pageLinkFinder } from "../../../../../../utils/pageLinks";
 import { transcriptRows } from "../../../Transcript/utils/transcriptRows";
 import { useForkPromptQueue } from "./useForkPromptQueue";
 

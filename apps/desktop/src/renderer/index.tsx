@@ -1,5 +1,5 @@
 import "./globals.css";
-import "./styles/bundled-fonts.css";
+import "./styles/bundled-fonts";
 import "./styles/fork-terminal-fonts/fork-terminal-fonts.css";
 import "./styles/fork-window-activity.css";
 import { initSentry } from "./lib/sentry";
@@ -18,6 +18,7 @@ import {
 } from "./lib/boot-errors";
 import { installForkImageContextMenu } from "./lib/fork-image-context-menu";
 import { installForkWindowActivity } from "./lib/fork-window-activity";
+import { trackOpenOverlays } from "./lib/overlayOpenClass";
 import { parseDeepLinkPath } from "./lib/parseDeepLinkPath";
 import { sweepDeadPersistedKeys } from "./lib/persisted-keys";
 import { persistentHistory } from "./lib/persistent-hash-history";
@@ -35,6 +36,7 @@ initBootErrorHandling(rootElement);
 pruneExpiredTerminalState();
 // Keys from removed features otherwise live on user profiles forever.
 sweepDeadPersistedKeys();
+trackOpenOverlays();
 installForkImageContextMenu();
 installForkWindowActivity();
 

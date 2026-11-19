@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-origin-folder-bases-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-209-origin-branches-updates-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -38,7 +38,15 @@ export function ForkWhatsNewNotice() {
 		t({ message: "Apply one remote branch to all project folders." }),
 		t({
 			message:
-				"Selected remote branches are fetched before any worktree is created.",
+				"Updates resume interrupted downloads, including after a manual retry.",
+		}),
+		t({
+			message:
+				"GitHub pull requests support stacked merges, merge queues, and reviewer filters.",
+		}),
+		t({
+			message:
+				"Paradev 2.0.9 improves chat responsiveness and workspace switching.",
 		}),
 	];
 	const notice: DesktopNotice = {

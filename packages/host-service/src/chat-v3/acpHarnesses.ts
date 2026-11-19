@@ -154,6 +154,7 @@ export function acpHarnessFactory(
 							args: [adapterEntry, ...(entry.args ?? [])],
 							env: {
 								...env,
+								...entry.adapterEnv,
 								ELECTRON_RUN_AS_NODE: "1",
 								[entry.executableEnv]: cli.command,
 							},
