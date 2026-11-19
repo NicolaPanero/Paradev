@@ -261,7 +261,7 @@ export async function runHelper(profile: string) {
 		await rm(`${job.journalPath}.lock`, { force: true });
 		finished = true;
 		window.destroy();
-		await rm(profile, { recursive: true, force: true });
+		await rm(profile, { recursive: true, force: true }).catch(() => {});
 		if (!alive(job.parentPid)) {
 			const child = spawn(process.execPath, job.relaunchArgs, {
 				detached: true,

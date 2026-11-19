@@ -28,7 +28,7 @@ void startForkApp({
 		);
 		await guardPortableOperation(journal);
 		await recoverRestore(journal);
-		await rm(profile, { recursive: true, force: true });
+		await rm(profile, { recursive: true, force: true }).catch(() => {});
 	},
 	relaunch: () => {
 		app.relaunch({ args: process.argv.slice(1) });
