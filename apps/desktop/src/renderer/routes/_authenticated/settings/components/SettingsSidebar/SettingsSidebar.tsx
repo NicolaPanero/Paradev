@@ -39,8 +39,6 @@ export function SettingsSidebar() {
 	const showProFeatures = useForkProFeatures();
 	const { data: platform } = electronTrpc.window.getPlatform.useQuery();
 	const isMac = platform === undefined || platform === "darwin";
-	const mobileEnabled =
-		useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_LAUNCH) === true;
 	const cloudWorkspacesEnabled =
 		useFeatureFlagEnabled(FEATURE_FLAGS.CLOUD_WORKSPACES) === true;
 	const pluginsVisible = usePluginsSettingsVisible();
@@ -51,7 +49,7 @@ export function SettingsSidebar() {
 				normalizedSearchQuery,
 				isV2CloudEnabled,
 				cloudWorkspacesEnabled,
-				mobileEnabled,
+				true,
 				pluginsVisible,
 				acpChatFlag,
 				!showProFeatures,

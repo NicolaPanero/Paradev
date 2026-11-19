@@ -2,7 +2,7 @@
 
 Paradev++ è il nuovo nome di Superset++. Fork personale di
 [ParadevAI/Paradev](https://github.com/ParadevAI/Paradev) (già Superset),
-basato sul tag desktop **2.0.0**. Il logo, i dati e gli aggiornamenti restano
+basato sul tag desktop **2.0.9**. Il logo, i dati e gli aggiornamenti restano
 gli stessi: per compatibilità alcuni nomi tecnici sono invariati, come descritto
 in [Identità e nomi tecnici](#identità-e-nomi-tecnici). Usa i servizi ufficiali per
 login e sincronizzazione; le estensioni del fork girano sull’host locale.

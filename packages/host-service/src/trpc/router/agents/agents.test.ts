@@ -1,5 +1,5 @@
 import { Database } from "bun:sqlite";
-import { afterEach, beforeEach, describe, expect, it, mock } from "bun:test";
+import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import { mkdirSync, mkdtempSync, realpathSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -11,6 +11,7 @@ import { migrate } from "drizzle-orm/bun-sqlite/migrator";
 import type { HostDb } from "../../../db";
 import * as schema from "../../../db/schema";
 import { TerminalAgentStore } from "../../../terminal-agents";
+import type { HostServiceContext } from "../../../types";
 import { importCloudAttachments } from "../attachments/attachments";
 import {
 	type AttachmentMetadata,
@@ -25,7 +26,7 @@ import {
 	chatContinuationTarget,
 	chatLaunchTarget,
 	continuationTarget,
-	launchChatAgent,
+	continueAgent,
 	validateAgentEffortSelection,
 	validateAgentForkSelection,
 	validateAgentLaunchOptions,
@@ -71,7 +72,7 @@ describe("buildAgentCommandString", () => {
 			buildAgentCommandString(argvConfig, "do the thing", [], {
 				randomId: RANDOM_ID,
 			}),
-		).toBe("'claude' '--dangerously-skip-permissions' 'do the thing'");
+		).toBe("claude --dangerously-skip-permissions 'do the thing'");
 	});
 
 	it("inserts model args between base args and the prompt (argv transport)", () => {
@@ -85,7 +86,7 @@ describe("buildAgentCommandString", () => {
 				},
 			),
 		).toBe(
-			"'claude' '--dangerously-skip-permissions' '--model' 'sonnet' 'do the thing'",
+			"claude --dangerously-skip-permissions --model sonnet 'do the thing'",
 		);
 	});
 
@@ -99,9 +100,7 @@ describe("buildAgentCommandString", () => {
 					randomId: RANDOM_ID,
 				},
 			),
-		).toBe(
-			`'amp' '--model' 'sonnet' <<'${DELIMITER}'\ndo the thing\n${DELIMITER}`,
-		);
+		).toBe(`amp --model sonnet <<'${DELIMITER}'\ndo the thing\n${DELIMITER}`);
 	});
 
 	it("shell-quotes hostile model and prompt values", () => {
@@ -115,7 +114,7 @@ describe("buildAgentCommandString", () => {
 				},
 			),
 		).toBe(
-			"'claude' '--dangerously-skip-permissions' '--model' 'x'\\''; rm -rf /' 'p'\\''; rm -rf /'",
+			"claude --dangerously-skip-permissions --model 'x'\\''; rm -rf /' 'p'\\''; rm -rf /'",
 		);
 	});
 
@@ -123,17 +122,17 @@ describe("buildAgentCommandString", () => {
 		const config = { ...argvConfig, promptArgs: ["-p"] };
 		expect(
 			buildAgentCommandString(config, "p", [], { randomId: RANDOM_ID }),
-		).toBe("'claude' '--dangerously-skip-permissions' '-p' 'p'");
+		).toBe("claude --dangerously-skip-permissions -p p");
 	});
 
 	it("drops promptArgs and the prompt payload when the prompt sanitizes to empty", () => {
 		const config = { ...argvConfig, promptArgs: ["-p"] };
 		expect(
 			buildAgentCommandString(config, "\x1b\x07", [], { randomId: RANDOM_ID }),
-		).toBe("'claude' '--dangerously-skip-permissions'");
+		).toBe("claude --dangerously-skip-permissions");
 		expect(
 			buildAgentCommandString(stdinConfig, "", [], { randomId: RANDOM_ID }),
-		).toBe("'amp'");
+		).toBe("amp");
 	});
 
 	it("splices resumeArgs and the session id after the base args (promptless resume)", () => {
@@ -142,7 +141,7 @@ describe("buildAgentCommandString", () => {
 				resumeSessionId: "abc-123",
 				randomId: RANDOM_ID,
 			}),
-		).toBe("'claude' '--dangerously-skip-permissions' '--resume' 'abc-123'");
+		).toBe("claude --dangerously-skip-permissions --resume abc-123");
 	});
 
 	it("keeps the prompt after the resume args (argv transport)", () => {
@@ -152,7 +151,7 @@ describe("buildAgentCommandString", () => {
 				randomId: RANDOM_ID,
 			}),
 		).toBe(
-			"'claude' '--dangerously-skip-permissions' '--model' 'sonnet' '--resume' 'abc-123' 'keep going'",
+			"claude --dangerously-skip-permissions --model sonnet --resume abc-123 'keep going'",
 		);
 	});
 
@@ -163,7 +162,7 @@ describe("buildAgentCommandString", () => {
 				randomId: RANDOM_ID,
 			}),
 		).toBe(
-			`'amp' 'threads' 'continue' 'T-42' <<'${DELIMITER}'\nkeep going\n${DELIMITER}`,
+			`amp threads continue T-42 <<'${DELIMITER}'\nkeep going\n${DELIMITER}`,
 		);
 	});
 
@@ -173,9 +172,7 @@ describe("buildAgentCommandString", () => {
 				resumeSessionId: "x'; rm -rf /\x1b",
 				randomId: RANDOM_ID,
 			}),
-		).toBe(
-			"'claude' '--dangerously-skip-permissions' '--resume' 'x'\\''; rm -rf /'",
-		);
+		).toBe("claude --dangerously-skip-permissions --resume 'x'\\''; rm -rf /'");
 	});
 
 	it("uses placeholder-based native fork args", () => {
@@ -185,7 +182,7 @@ describe("buildAgentCommandString", () => {
 				randomId: RANDOM_ID,
 			}),
 		).toBe(
-			"'claude' '--dangerously-skip-permissions' '--resume' 'abc-123' '--fork-session'",
+			"claude --dangerously-skip-permissions --resume abc-123 --fork-session",
 		);
 	});
 
@@ -196,9 +193,25 @@ describe("buildAgentCommandString", () => {
 				forkSessionId: "thread-42",
 				randomId: RANDOM_ID,
 			}),
-		).toBe(
-			"'codex' '--dangerously-skip-permissions' 'fork' 'thread-42' 'continue'",
-		);
+		).toBe("codex --dangerously-skip-permissions fork thread-42 continue");
+	});
+
+	it("runs a command stored as shell code as written", () => {
+		const config = {
+			...argvConfig,
+			command: "ccr code | tee log",
+			args: [],
+		};
+		expect(
+			buildAgentCommandString(config, "do it", [], { randomId: RANDOM_ID }),
+		).toBe("ccr code | tee log 'do it'");
+		expect(
+			buildAgentCommandString(
+				{ ...config, command: "/opt/My Agent/claude" },
+				"",
+				[],
+			),
+		).toBe("'/opt/My Agent/claude'");
 	});
 });
 
@@ -306,7 +319,7 @@ describe("buildTerminalAgentLaunch", () => {
 		});
 		expect(launch.label).toBe("Claude");
 		expect(launch.fullCommand).toBe(
-			"FOO='bar' 'claude' '--dangerously-skip-permissions' 'do the thing'",
+			"FOO='bar' claude --dangerously-skip-permissions 'do the thing'",
 		);
 	});
 
@@ -320,7 +333,7 @@ describe("buildTerminalAgentLaunch", () => {
 			resumeSessionId: "abc-123",
 		});
 		expect(launch.fullCommand).toBe(
-			"FOO='bar' 'claude' '--dangerously-skip-permissions' '--resume' 'abc-123'",
+			"FOO='bar' claude --dangerously-skip-permissions --resume abc-123",
 		);
 	});
 
@@ -334,7 +347,7 @@ describe("buildTerminalAgentLaunch", () => {
 			forkSessionId: "session-source",
 		});
 		expect(launch.fullCommand).toContain(
-			"'--resume' 'session-source' '--fork-session'",
+			"--resume session-source --fork-session",
 		);
 	});
 
@@ -499,7 +512,7 @@ describe("buildTerminalAgentLaunch", () => {
 		});
 
 		expect(launch.fullCommand).toBe(
-			"'omp' '--model' '@plan' '--thinking' 'high' '--plan-yolo' 'do the thing'",
+			"omp --model @plan --thinking high --plan-yolo 'do the thing'",
 		);
 	});
 
@@ -594,29 +607,7 @@ describe("buildTerminalAgentLaunch default account env", () => {
 			prompt: "hi",
 		});
 		expect(launch.fullCommand).toBe(
-			`CLAUDE_CONFIG_DIR='${existingDir}' SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR='${existingDir}' 'claude' 'hi'`,
-		);
-	});
-
-	it("keeps the native transfer launch on its saved profile after the default and config change", () => {
-		const db = createTestDb();
-		seedClaude(db, { CLAUDE_CONFIG_DIR: "/changed/config-profile" });
-		setDefaultAccountSelection(db, "claude", existingDir);
-		const launch = buildTerminalAgentLaunch(db, {
-			workspaceId: "11111111-1111-1111-1111-111111111111",
-			agent: "claude",
-			prompt: "",
-			resumeSessionId: "native-id",
-			launchSnapshot: {
-				config: { ...argvConfig, args: [] },
-				env: {
-					CLAUDE_CONFIG_DIR: "/saved/profile",
-					SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR: "",
-				},
-			},
-		});
-		expect(launch.fullCommand).toBe(
-			"CLAUDE_CONFIG_DIR='/saved/profile' SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR='' 'claude' '--resume' 'native-id'",
+			`CLAUDE_CONFIG_DIR='${existingDir}' SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR='${existingDir}' claude hi`,
 		);
 	});
 
@@ -633,11 +624,11 @@ describe("buildTerminalAgentLaunch default account env", () => {
 		// twin still carries the host default so the wrapper can re-resolve a
 		// later account switch without overriding the user-pinned value.
 		expect(launch.fullCommand).toBe(
-			`CLAUDE_CONFIG_DIR='/pinned/profile' SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR='${existingDir}' 'claude' 'hi'`,
+			`CLAUDE_CONFIG_DIR='/pinned/profile' SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR='${existingDir}' claude hi`,
 		);
 	});
 
-	it("keeps a missing selected profile pinned instead of falling back to the CLI login", () => {
+	it("skips injection when the selected profile dir no longer exists", () => {
 		const db = createTestDb();
 		seedClaude(db);
 		setDefaultAccountSelection(db, "claude", "/no/such/profile-dir");
@@ -646,9 +637,7 @@ describe("buildTerminalAgentLaunch default account env", () => {
 			agent: "claude",
 			prompt: "hi",
 		});
-		expect(launch.fullCommand).toBe(
-			"CLAUDE_CONFIG_DIR='/no/such/profile-dir' SUPERSET_DEFAULT_CLAUDE_CONFIG_DIR='/no/such/profile-dir' 'claude' 'hi'",
-		);
+		expect(launch.fullCommand).toBe("claude hi");
 	});
 
 	it("does not leak provider account env into other presets", () => {
@@ -673,7 +662,7 @@ describe("buildTerminalAgentLaunch default account env", () => {
 			agent: "amp",
 			prompt: "hi",
 		});
-		expect(launch.fullCommand).toBe("'amp' 'hi'");
+		expect(launch.fullCommand).toBe("amp hi");
 	});
 
 	it("clearing the default (null) restores the system login", () => {
@@ -686,7 +675,7 @@ describe("buildTerminalAgentLaunch default account env", () => {
 			agent: "claude",
 			prompt: "hi",
 		});
-		expect(launch.fullCommand).toBe("'claude' 'hi'");
+		expect(launch.fullCommand).toBe("claude hi");
 	});
 });
 
@@ -1105,6 +1094,30 @@ describe("continuationTarget", () => {
 		});
 	});
 
+	it("continues a terminal agent without opening the chat runtime", async () => {
+		const db = createTestDb();
+		seedClaude(db);
+		let chatOpened = false;
+		const continued = await continueAgent(
+			{
+				db,
+				eventBus: {} as HostServiceContext["eventBus"],
+				terminalAgentStore: boundStore(),
+				runtime: {
+					chat: () => {
+						chatOpened = true;
+						throw new Error("chat runtime opened");
+					},
+				} as unknown as HostServiceContext["runtime"],
+			},
+			run,
+		);
+		expect({ continued, chatOpened }).toEqual({
+			continued: null,
+			chatOpened: false,
+		});
+	});
+
 	it("declines when the caller named no terminal", () => {
 		const db = createTestDb();
 		seedClaude(db);
@@ -1183,61 +1196,24 @@ describe("continuationTarget", () => {
 		expect(chatContinuationTarget(db, store, live("dead"), run)).toBeNull();
 	});
 
-	it("pins the chosen account and config before delivering the first chat prompt", () => {
-		const db = createTestDb();
-		seedClaude(db);
-		const createSession = mock((_input: unknown) => ({
-			sessionId: "selected-session",
-		}));
-		const prompt = mock((_input: unknown) => {});
-		const ctx = {
-			db,
-			runtime: {
-				chat: () => ({
-					live: { supports: () => true, get: () => undefined },
-					commands: { createSession, prompt },
-				}),
-			},
-		} as unknown as Parameters<typeof launchChatAgent>[0];
-		launchChatAgent(
-			ctx,
-			{
-				workspaceId,
-				agent: "claude",
-				surface: "chat",
-				prompt: "First prompt",
-				accountSelection: "/profiles/chosen",
-			},
-			"/temporary-repo",
-		);
-		expect(createSession.mock.calls[0]?.[0]).toMatchObject({
-			agentConfigId: "00000000-0000-0000-0000-00000000000a",
-			accountSelection: "/profiles/chosen",
-			scopeId: workspaceId,
-		});
-		expect(prompt.mock.calls[0]?.[0]).toMatchObject({
-			sessionId: "selected-session",
-			content: [{ type: "text", text: "First prompt" }],
-		});
-	});
-
 	it("launches a chat only when asked for one with an ACP harness", () => {
 		const db = createTestDb();
 		seedClaude(db);
 		const launch = { workspaceId, agent: "claude", prompt: "go" };
-
-		expect(
-			chatLaunchTarget(db, { ...launch, surface: "chat", mode: "plan" }),
-		).toEqual({
+		const claudeChat = {
 			harness: "claude-acp",
 			label: "Claude",
 			agentConfigId: "00000000-0000-0000-0000-00000000000a",
 			attachments: [],
-		});
-		expect(chatLaunchTarget(db, launch)).toBeNull();
+		};
+
+		expect(
+			chatLaunchTarget(db, { ...launch, surface: "chat", mode: "plan" }),
+		).toEqual(claudeChat);
 		expect(
 			chatLaunchTarget(db, { ...launch, surface: "chat", effort: "high" }),
-		).toBeNull();
+		).toEqual(claudeChat);
+		expect(chatLaunchTarget(db, launch)).toBeNull();
 	});
 
 	it("chats as a custom agent that runs the claude or codex CLI", () => {
@@ -1318,63 +1294,6 @@ describe("continuationTarget", () => {
 		expect(
 			continuationTarget(db, boundStore(), { ...run, agent: "custom:team" }),
 		).toEqual({ terminalId, label: "Team Claude" });
-	});
-});
-
-describe("fork new workspace chat routing", () => {
-	it.each([
-		"grok",
-		"cursor-agent",
-	])("%s honors the chat surface before any terminal starts", (presetId) => {
-		const workspaceId = crypto.randomUUID();
-		const db = createTestDb();
-		const configId = crypto.randomUUID();
-		db.insert(schema.hostAgentConfigs)
-			.values({
-				id: configId,
-				presetId,
-				label: presetId,
-				command: presetId,
-				argsJson: "[]",
-				promptTransport: "argv",
-				promptArgsJson: "[]",
-				resumeArgsJson: "[]",
-				forkArgsJson: "[]",
-				envJson: "{}",
-				displayOrder: 0,
-			})
-			.run();
-		const input = {
-			workspaceId,
-			agent: configId,
-			surface: "chat" as const,
-			prompt: "first prompt",
-		};
-		const harness = presetId === "grok" ? "grok-acp" : "cursor-acp";
-		expect(chatLaunchTarget(db, input)?.harness).toBe(harness);
-		const createSession = mock((_input: unknown) => ({
-			sessionId: "chat-session",
-		}));
-		const prompt = mock((_input: unknown) => {});
-		const ctx = {
-			db,
-			runtime: {
-				chat: () => ({
-					live: { supports: () => true, get: () => undefined },
-					commands: { createSession, prompt },
-				}),
-			},
-		} as unknown as Parameters<typeof launchChatAgent>[0];
-		expect(launchChatAgent(ctx, input, "/fixture")?.chatSessionId).toBe(
-			"chat-session",
-		);
-		expect(createSession.mock.calls[0]?.[0]).toMatchObject({
-			harness,
-			agentConfigId: configId,
-		});
-		expect(prompt.mock.calls[0]?.[0]).toMatchObject({
-			content: [{ type: "text", text: "first prompt" }],
-		});
 	});
 });
 

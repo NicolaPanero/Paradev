@@ -35,6 +35,7 @@ export function usePullRequestsList({
 	projectTargets,
 	searchQuery,
 	authorFilter,
+	reviewerFilter,
 	reviewFilter,
 	includeClosed,
 	mergedOnly,
@@ -42,6 +43,7 @@ export function usePullRequestsList({
 	projectTargets: ProjectQueryTarget[];
 	searchQuery: string;
 	authorFilter: string | null;
+	reviewerFilter: string | null;
 	reviewFilter: PullRequestReviewFilter | null;
 	includeClosed: boolean;
 	mergedOnly: boolean;
@@ -80,13 +82,14 @@ export function usePullRequestsList({
 
 	const list = useWorkItemsList({
 		projectTargets,
-		resetKey: `${query}\0${authorFilter ?? ""}\0${reviewFilter ?? ""}\0${includeClosed}\0${mergedOnly}`,
+		resetKey: `${query}\0${authorFilter ?? ""}\0${reviewerFilter ?? ""}\0${reviewFilter ?? ""}\0${includeClosed}\0${mergedOnly}`,
 		getQueryOptions: ({ target, page }) => ({
 			queryKey: [
 				...PULL_REQUESTS_SEARCH_QUERY_KEY,
 				target.key,
 				query,
 				authorFilter,
+				reviewerFilter,
 				reviewFilter,
 				includeClosed,
 				mergedOnly,
@@ -104,6 +107,7 @@ export function usePullRequestsList({
 					projectIds: target.projects.map((project) => project.projectId),
 					query: query || undefined,
 					author: authorFilter ?? undefined,
+					reviewer: reviewerFilter ?? undefined,
 					review: reviewFilter ?? undefined,
 					limit: PAGE_SIZE,
 					includeClosed,
