@@ -460,6 +460,20 @@ ripresa della conversazione fallisce per account o sessione non caricabile,
 la schermata di recupero mostra un’indicazione e interrompe i tentativi automatici
 ripetuti; il tentativo manuale rimane disponibile.
 
+## Branch di partenza per progetti con più repository
+
+Nella creazione di un nuovo **Worktree**, **Origin branches** permette di
+scegliere il branch remoto per il repository principale e per ogni cartella Git
+isolata. **Use the same origin branch for all folders** applica un branch presente
+in tutti i repository. Le cartelle non selezionate conservano il comportamento
+precedente; i checkout originali non cambiano branch.
+
+Prima di creare i worktree vengono recuperati i commit dei branch selezionati da
+`origin`. Un branch mancante o un errore di fetch blocca la creazione, senza
+ripiegare sul `HEAD` locale. Anche un branch di destinazione già esistente viene
+segnalato, senza modificarlo. La selezione vale per la creazione corrente e
+richiede un host aggiornato. I workspace esistenti non vengono riallineati.
+
 ## Eliminazione workspace
 
 La preferenza globale **Elimina branch** rimane ricordata. La casella compare

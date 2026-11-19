@@ -13,6 +13,7 @@ import {
 	listWorkspaceFolders,
 } from "../../../project-folders";
 import { protectedProcedure, router } from "../../index";
+import { forkOriginBranchesProcedures } from "./fork-origin-branches";
 
 function normalizeFolderPath(input: string): string {
 	if (!isAbsolute(input)) {
@@ -36,6 +37,7 @@ function normalizeFolderPath(input: string): string {
 }
 
 export const projectFoldersRouter = router({
+	...forkOriginBranchesProcedures,
 	list: protectedProcedure
 		.input(z.object({ projectId: z.string() }))
 		.query(({ ctx, input }) => listProjectFolders(ctx.db, input.projectId)),

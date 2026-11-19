@@ -1912,6 +1912,9 @@ msgstr "Utas di #{0}"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "Pengenal unik untuk organisasi Anda (dibuat otomatis dari nama)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "Folder worktree atau branch sudah ada. Pilih branch baru untuk workspace."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Lamar"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "Terapkan satu branch remote ke semua folder proyek."
+
 msgid "Apply recommended settings"
 msgstr "Terapkan pengaturan yang disarankan"
 
@@ -3622,9 +3628,6 @@ msgstr "Latar belakang · {count}"
 
 msgid "Background chats"
 msgstr "Chat di latar belakang"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "Chat latar belakang muncul sebelum riwayat subagen di aktivitas workspace."
 
 msgid "Background processes"
 msgstr "Proses latar belakang"
@@ -4205,6 +4208,9 @@ msgstr "Tidak bisa {action}: layanan host lokal tidak tersedia untuk {organizati
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "Tidak bisa menurunkan pemilik terakhir. Promosikan orang lain dulu."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "Tidak dapat mengambil {branch} untuk {folder}"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "Tidak bisa mengundang pengguna sebagai {roleName}"
 
@@ -4560,6 +4566,12 @@ msgstr "Pilih akun {pluginLabel}"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "Pilih branch dasar untuk membandingkan perubahan dalam commit. Sebelum memilih, hanya perubahan lokal yang ditampilkan."
 
+msgid "Choose a branch"
+msgstr "Pilih branch"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "Pilih branch untuk setiap repositori. Branch yang dipilih diambil dari origin sebelum pembuatan."
+
 msgid "Choose a device"
 msgstr "Pilih perangkat"
 
@@ -4604,6 +4616,9 @@ msgstr "Pilih folder repo yang sudah ada"
 
 msgid "Choose an MCP server"
 msgstr "Pilih server MCP"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "Pilih branch origin untuk setiap repositori saat membuat worktree."
 
 msgid "Choose app"
 msgstr "Pilih aplikasi"
@@ -6115,6 +6130,9 @@ msgstr "Tidak bisa membuat proyek. Coba nama lain atau periksa log."
 msgid "Could not create the project. Please try again."
 msgstr "Tidak dapat membuat proyek. Silakan coba lagi."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "Tidak dapat membuat worktree untuk folder yang dipilih"
+
 msgid "Could not delete"
 msgstr "Tidak dapat menghapus"
 
@@ -6172,6 +6190,9 @@ msgstr "Gambar tidak dapat dimuat"
 
 msgid "Could not load Jira board settings."
 msgstr "Tidak dapat memuat pengaturan papan Jira."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "Tidak dapat memuat branch origin. Periksa koneksi dan versi host."
 
 msgid "Could not load plans."
 msgstr "Tidak dapat memuat paket."
@@ -7046,6 +7067,9 @@ msgstr "Akses saat ini"
 
 msgid "current checkout"
 msgstr "checkout saat ini"
+
+msgid "Current checkout"
+msgstr "Checkout saat ini"
 
 msgid "Current level"
 msgstr "Level saat ini"
@@ -9567,6 +9591,9 @@ msgstr "Fokus ke kolom pencarian di tampilan tugas"
 msgid "Folder"
 msgstr "Folder"
 
+msgid "Folder base branches require a new worktree"
+msgstr "Branch dasar folder memerlukan worktree baru"
+
 msgid "Folder is missing"
 msgstr "Folder hilang"
 
@@ -11994,6 +12021,9 @@ msgstr "Memuat pengaturan agen..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "Indikator pemuatan dan aktivitas yang sedang berjalan"
+
+msgid "Loading branches…"
+msgstr "Memuat branch…"
 
 msgid "Loading breakdown…"
 msgstr "Memuat rincian…"
@@ -14477,9 +14507,6 @@ msgstr "Hanya penulis yang bisa mengubah komentar"
 msgid "Only the author can edit a comment"
 msgstr "Hanya penulis yang bisa mengedit komentar"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "Hanya lima subagen yang terakhir selesai yang ditampilkan. Perluas daftar untuk melihat yang lebih lama."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Hanya pemilik host yang bisa mengizinkan workspace cloud menjangkaunya"
 
@@ -15051,9 +15078,6 @@ msgstr "Membuka {appName}…"
 msgid "Opening {what}"
 msgstr "Membuka {what}"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "Membuka subagen yang sudah selesai akan membuka kembali chat latar belakangnya jika tersedia."
-
 msgid "Opening files"
 msgstr "Membuka file"
 
@@ -15165,6 +15189,9 @@ msgstr "Organisasi: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "Atur pekerjaan Anda ke dalam tim. Tugas dan integrasi bisa disinkronkan per tim."
+
+msgid "Origin branches"
+msgstr "Branch origin"
 
 msgid "Originals"
 msgstr "Orisinal"
@@ -17772,9 +17799,6 @@ msgstr "Tinjau pekerjaan agen dengan Halaman"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Antrean review dan CI memakan keuntungan yang dihasilkan agen."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "Periksa dan bersihkan folder yang tertinggal dari ruang kerja yang dihapus di Pengaturan Fork."
-
 msgid "Review becomes the bottleneck"
 msgstr "Review menjadi hambatan utama"
 
@@ -18749,6 +18773,9 @@ msgstr "Otomatisasi terpilih"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "Issue yang dipilih tersebar di beberapa repositori. Pilih issue dari satu repositori untuk menjalankannya."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "Branch remote yang dipilih diambil sebelum worktree dibuat."
 
 msgid "Selected workspace actions"
 msgstr "Aksi workspace terpilih"
@@ -22930,6 +22957,9 @@ msgstr "Pakai aplikasi desktop untuk mulai menjalankan agen coding paralel."
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Pakai menu tray Paradev > Host Service > Restart, lalu coba lagi."
 
+msgid "Use the same origin branch for all folders"
+msgstr "Gunakan branch origin yang sama untuk semua folder"
+
 msgid "Use this account"
 msgstr "Gunakan akun ini"
 
@@ -23811,6 +23841,9 @@ msgstr "Worktree"
 
 msgid "Worktree · its own folder"
 msgstr "Worktree · folder sendiri"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "Pembuatan worktree gagal; folder yang diubah dipertahankan: {paths}"
 
 msgid "Worktree location"
 msgstr "Lokasi worktree"

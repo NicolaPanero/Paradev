@@ -1912,6 +1912,9 @@ msgstr "#{0} 中的一個討論串"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "組織的唯一識別符號（根據名稱自動生成）"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "worktree 資料夾或分支已存在。請為 workspace 選擇新分支。"
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "應徵"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "將同一個遠端分支套用至所有專案資料夾。"
+
 msgid "Apply recommended settings"
 msgstr "套用建議設定"
 
@@ -3622,9 +3628,6 @@ msgstr "背景 · {count}"
 
 msgid "Background chats"
 msgstr "背景聊天"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "在工作區活動中，背景聊天會顯示在子代理歷程記錄之前。"
 
 msgid "Background processes"
 msgstr "背景處理程序"
@@ -4205,6 +4208,9 @@ msgstr "無法{action}：{device}上{organization}的本地主機服務不可用
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "無法降級最後一位擁有者。請先提升其他人。"
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "無法為 {folder} 取得 {branch}"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "無法以{roleName}身份邀請使用者"
 
@@ -4560,6 +4566,12 @@ msgstr "選擇 {pluginLabel} 帳戶"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "請選擇基準分支來比較已提交的變更。選擇前僅顯示本機變更。"
 
+msgid "Choose a branch"
+msgstr "選擇分支"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "為每個儲存庫選擇分支。所選分支會在建立前從 origin 取得。"
+
 msgid "Choose a device"
 msgstr "選擇裝置"
 
@@ -4604,6 +4616,9 @@ msgstr "選擇已有的儲存庫資料夾"
 
 msgid "Choose an MCP server"
 msgstr "選擇一個MCP伺服器"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "建立 worktree 時，為每個儲存庫選擇 origin 分支。"
 
 msgid "Choose app"
 msgstr "選擇應用"
@@ -6115,6 +6130,9 @@ msgstr "無法建立專案。請換一個名稱，或檢視日誌。"
 msgid "Could not create the project. Please try again."
 msgstr "無法建立專案。請再試一次。"
 
+msgid "Could not create the selected folder worktrees"
+msgstr "無法為所選資料夾建立 worktree"
+
 msgid "Could not delete"
 msgstr "無法刪除"
 
@@ -6172,6 +6190,9 @@ msgstr "無法載入圖片"
 
 msgid "Could not load Jira board settings."
 msgstr "無法載入 Jira 看板設定。"
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "無法載入 origin 分支。請檢查連線及主機版本。"
 
 msgid "Could not load plans."
 msgstr "無法載入方案。"
@@ -7046,6 +7067,9 @@ msgstr "目前的存取權限"
 
 msgid "current checkout"
 msgstr "目前的簽出"
+
+msgid "Current checkout"
+msgstr "目前簽出"
 
 msgid "Current level"
 msgstr "目前等級"
@@ -9567,6 +9591,9 @@ msgstr "聚焦任務檢視中的搜尋框"
 msgid "Folder"
 msgstr "資料夾"
 
+msgid "Folder base branches require a new worktree"
+msgstr "資料夾的基準分支需要新的 worktree"
+
 msgid "Folder is missing"
 msgstr "資料夾不存在"
 
@@ -11994,6 +12021,9 @@ msgstr "正在載入代理程式設定..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "載入狀態與進行中活動的指示器"
+
+msgid "Loading branches…"
+msgstr "正在載入分支…"
 
 msgid "Loading breakdown…"
 msgstr "正在載入細分…"
@@ -14477,9 +14507,6 @@ msgstr "只有作者可以修改留言"
 msgid "Only the author can edit a comment"
 msgstr "只有作者才能編輯評論"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "僅顯示最近完成的五個子代理。展開清單可查看更早的記錄。"
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "只有主機擁有者可以允許雲端工作區存取它"
 
@@ -15051,9 +15078,6 @@ msgstr "正在開啟 {appName}…"
 msgid "Opening {what}"
 msgstr "正在開啟 {what}"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "開啟已完成的子代理時，會重新開啟其背景聊天（若仍可用）。"
-
 msgid "Opening files"
 msgstr "開啟檔案"
 
@@ -15165,6 +15189,9 @@ msgstr "組織：<0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "把工作組織到團隊中。任務和整合可以按團隊同步。"
+
+msgid "Origin branches"
+msgstr "origin 分支"
 
 msgid "Originals"
 msgstr "原創元件"
@@ -17772,9 +17799,6 @@ msgstr "用頁面審查代理程式的工作"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "審查和CI排隊把代理程式帶來的收益吃掉了。"
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "在分支版本設定中檢查並清理已刪除工作區留下的資料夾。"
-
 msgid "Review becomes the bottleneck"
 msgstr "審查成為瓶頸"
 
@@ -18749,6 +18773,9 @@ msgstr "已選取的自動化"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "所選議題跨越多個儲存庫。請選擇同一儲存庫中的議題後再執行。"
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "建立任何 worktree 前，都會先取得所選遠端分支。"
 
 msgid "Selected workspace actions"
 msgstr "選中工作區的操作"
@@ -22930,6 +22957,9 @@ msgstr "使用桌面應用程式開始並行執行編碼代理程式。"
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "請使用Paradev托盤選單 > 主機服務 > 重啟，然後重試。"
 
+msgid "Use the same origin branch for all folders"
+msgstr "所有資料夾使用相同的 origin 分支"
+
 msgid "Use this account"
 msgstr "使用此帳戶"
 
@@ -23811,6 +23841,9 @@ msgstr "worktree"
 
 msgid "Worktree · its own folder"
 msgstr "worktree · 專用資料夾"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "worktree 建立失敗；已保留修改過的資料夾：{paths}"
 
 msgid "Worktree location"
 msgstr "worktree位置"

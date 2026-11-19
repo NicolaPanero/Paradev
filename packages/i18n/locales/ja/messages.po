@@ -1912,6 +1912,9 @@ msgstr "#{0} のスレッド"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "組織の一意の識別子(名前から自動生成)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "worktree のフォルダーまたはブランチが既に存在します。workspace に新しいブランチを選択してください。"
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "応募"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "1つのリモートブランチをプロジェクト内のすべてのフォルダーに適用します。"
+
 msgid "Apply recommended settings"
 msgstr "推奨設定を適用"
 
@@ -3622,9 +3628,6 @@ msgstr "バックグラウンド · {count}"
 
 msgid "Background chats"
 msgstr "バックグラウンドのチャット"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "ワークスペースのアクティビティでは、サブエージェントの履歴より先にバックグラウンドのチャットが表示されます。"
 
 msgid "Background processes"
 msgstr "バックグラウンドプロセス"
@@ -4205,6 +4208,9 @@ msgstr "{action}ことができません: {device}の{organization}でローカ�
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "最後のオーナーは降格できません。先に他のユーザーを昇格してください。"
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "{folder} の {branch} を取得できません"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "{roleName}としてユーザーを招待することはできません"
 
@@ -4560,6 +4566,12 @@ msgstr "{pluginLabel} アカウントを選択"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "コミット済みの変更を比較するベースブランチを選択してください。選択するまではローカルの変更のみが表示されます。"
 
+msgid "Choose a branch"
+msgstr "ブランチを選択"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "リポジトリごとにブランチを選択してください。選択したブランチは作成前に origin から取得されます。"
+
 msgid "Choose a device"
 msgstr "デバイスを選択"
 
@@ -4604,6 +4616,9 @@ msgstr "既存のリポジトリフォルダを選択"
 
 msgid "Choose an MCP server"
 msgstr "MCPサーバーを選択"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "worktree の作成時に、リポジトリごとに origin のブランチを選択できます。"
 
 msgid "Choose app"
 msgstr "アプリを選択"
@@ -6115,6 +6130,9 @@ msgstr "プロジェクトを作成できませんでした。別の名前を試
 msgid "Could not create the project. Please try again."
 msgstr "プロジェクトを作成できませんでした。もう一度お試しください。"
 
+msgid "Could not create the selected folder worktrees"
+msgstr "選択したフォルダーの worktree を作成できませんでした"
+
 msgid "Could not delete"
 msgstr "削除できませんでした"
 
@@ -6172,6 +6190,9 @@ msgstr "画像を読み込めませんでした"
 
 msgid "Could not load Jira board settings."
 msgstr "Jiraボードの設定を読み込めませんでした。"
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "origin のブランチを読み込めませんでした。接続とホストのバージョンを確認してください。"
 
 msgid "Could not load plans."
 msgstr "プランを読み込めませんでした。"
@@ -7045,6 +7066,9 @@ msgid "Current access"
 msgstr "現在のアクセス"
 
 msgid "current checkout"
+msgstr "現在のチェックアウト"
+
+msgid "Current checkout"
 msgstr "現在のチェックアウト"
 
 msgid "Current level"
@@ -9567,6 +9591,9 @@ msgstr "タスクビューの検索入力にフォーカスする"
 msgid "Folder"
 msgstr "フォルダ"
 
+msgid "Folder base branches require a new worktree"
+msgstr "フォルダーのベースブランチを指定するには、新しい worktree が必要です"
+
 msgid "Folder is missing"
 msgstr "フォルダが見つかりません"
 
@@ -11994,6 +12021,9 @@ msgstr "エージェント設定を読み込み中..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "読み込みと実行中の活動を示すインジケーター"
+
+msgid "Loading branches…"
+msgstr "ブランチを読み込み中…"
 
 msgid "Loading breakdown…"
 msgstr "内訳を読み込み中…"
@@ -14477,9 +14507,6 @@ msgstr "コメントを変更できるのは作成者だけです"
 msgid "Only the author can edit a comment"
 msgstr "コメントを編集できるのは投稿者のみです"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "完了したサブエージェントは最新の5件だけが表示されます。古い項目を見るにはリストを展開してください。"
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "クラウドワークスペースからのアクセスを許可できるのはホストのオーナーだけです"
 
@@ -15051,9 +15078,6 @@ msgstr "{appName} を開いています…"
 msgid "Opening {what}"
 msgstr "{what} を開いています"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "完了したサブエージェントを開くと、利用可能な場合はバックグラウンドのチャットが再び開きます。"
-
 msgid "Opening files"
 msgstr "ファイルを開く"
 
@@ -15165,6 +15189,9 @@ msgstr "組織: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "作業をチームに整理します。タスクと連携はチームごとに同期できます。"
+
+msgid "Origin branches"
+msgstr "origin のブランチ"
 
 msgid "Originals"
 msgstr "独自コンポーネント"
@@ -17772,9 +17799,6 @@ msgstr "ページでエージェントの作業をレビュー"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "レビューとCIの待ち行列が、エージェントの生んだ余力を食い潰しています。"
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "フォーク設定で削除済みワークスペースに残ったフォルダーを確認してクリーンアップできます。"
-
 msgid "Review becomes the bottleneck"
 msgstr "レビューがボトルネックになる"
 
@@ -18749,6 +18773,9 @@ msgstr "選択したオートメーション"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "選択したissueが複数のリポジトリにまたがっています。実行するには単一のリポジトリのissueを選択してください。"
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "選択したリモートブランチは、worktree を作成する前に取得されます。"
 
 msgid "Selected workspace actions"
 msgstr "選択したワークスペースの操作"
@@ -22930,6 +22957,9 @@ msgstr "デスクトップアプリで並列コーディングエージェント
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Paradevのトレイメニューから「ホストサービス」>「再起動」を実行してから、再試行してください。"
 
+msgid "Use the same origin branch for all folders"
+msgstr "すべてのフォルダーで同じ origin ブランチを使用"
+
 msgid "Use this account"
 msgstr "このアカウントを使用"
 
@@ -23811,6 +23841,9 @@ msgstr "ワークツリー"
 
 msgid "Worktree · its own folder"
 msgstr "ワークツリー · 専用フォルダ"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "worktree の作成に失敗しました。変更されたフォルダーは保持されています: {paths}"
 
 msgid "Worktree location"
 msgstr "ワークツリーの場所"

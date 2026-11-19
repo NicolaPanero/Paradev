@@ -1912,6 +1912,9 @@ msgstr "Een thread in #{0}"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "Een unieke identifier voor je organisatie (automatisch afgeleid van de naam)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "Er bestaat al een worktreemap of branch. Kies een nieuwe branch voor de workspace."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Solliciteer"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "Pas één externe branch toe op alle projectmappen."
+
 msgid "Apply recommended settings"
 msgstr "Aanbevolen instellingen toepassen"
 
@@ -3622,9 +3628,6 @@ msgstr "Op de achtergrond · {count}"
 
 msgid "Background chats"
 msgstr "Chats op de achtergrond"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "Achtergrondchats verschijnen vóór de geschiedenis van subagenten in de workspace-activiteit."
 
 msgid "Background processes"
 msgstr "Achtergrondprocessen"
@@ -4205,6 +4208,9 @@ msgstr "Kan {action} niet: de lokale hostservice is niet beschikbaar voor {organ
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "Kan de laatste eigenaar niet degraderen. Promoveer eerst iemand anders."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "Kan {branch} niet ophalen voor {folder}"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "Kan gebruikers niet uitnodigen als {roleName}"
 
@@ -4560,6 +4566,12 @@ msgstr "Kies een {pluginLabel}-account"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "Kies een basisbranch om wijzigingen in commits te vergelijken. Tot die tijd worden alleen lokale wijzigingen getoond."
 
+msgid "Choose a branch"
+msgstr "Kies een branch"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "Kies voor elke repository een branch. De geselecteerde branches worden vóór het aanmaken opgehaald van origin."
+
 msgid "Choose a device"
 msgstr "Kies een apparaat"
 
@@ -4604,6 +4616,9 @@ msgstr "Kies een bestaande repo-map"
 
 msgid "Choose an MCP server"
 msgstr "Kies een MCP-server"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "Kies bij het aanmaken van een worktree voor elke repository een branch van origin."
 
 msgid "Choose app"
 msgstr "Kies app"
@@ -6115,6 +6130,9 @@ msgstr "Kan project niet aanmaken. Probeer een andere naam of bekijk de logs."
 msgid "Could not create the project. Please try again."
 msgstr "Kan het project niet maken. Probeer het opnieuw."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "De worktrees voor de geselecteerde mappen konden niet worden aangemaakt"
+
 msgid "Could not delete"
 msgstr "Kan niet verwijderen"
 
@@ -6172,6 +6190,9 @@ msgstr "Afbeelding kon niet worden geladen"
 
 msgid "Could not load Jira board settings."
 msgstr "De instellingen van het Jira-bord konden niet worden geladen."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "Branches van origin konden niet worden geladen. Controleer de verbinding en de hostversie."
 
 msgid "Could not load plans."
 msgstr "Abonnementen konden niet worden geladen."
@@ -7046,6 +7067,9 @@ msgstr "Huidige toegang"
 
 msgid "current checkout"
 msgstr "huidige checkout"
+
+msgid "Current checkout"
+msgstr "Huidige checkout"
 
 msgid "Current level"
 msgstr "Huidig niveau"
@@ -9567,6 +9591,9 @@ msgstr "Het zoekveld in de takenweergave focussen"
 msgid "Folder"
 msgstr "Map"
 
+msgid "Folder base branches require a new worktree"
+msgstr "Basisbranches voor mappen vereisen een nieuwe worktree"
+
 msgid "Folder is missing"
 msgstr "Map ontbreekt"
 
@@ -11994,6 +12021,9 @@ msgstr "Agentinstellingen laden..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "Laad- en activiteitsindicatoren"
+
+msgid "Loading branches…"
+msgstr "Branches laden…"
 
 msgid "Loading breakdown…"
 msgstr "Uitsplitsing laden…"
@@ -14477,9 +14507,6 @@ msgstr "Alleen de auteur kan een reactie wijzigen"
 msgid "Only the author can edit a comment"
 msgstr "Alleen de auteur kan een opmerking bewerken"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "Alleen de vijf laatst voltooide subagenten worden getoond. Vouw de lijst uit om oudere te zien."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Alleen de eigenaar van de host kan cloudwerkruimtes er toegang toe geven"
 
@@ -15051,9 +15078,6 @@ msgstr "{appName} wordt geopend…"
 msgid "Opening {what}"
 msgstr "{what} openen"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "Als je een voltooide subagent opent, wordt de achtergrondchat opnieuw geopend als die beschikbaar is."
-
 msgid "Opening files"
 msgstr "Bestanden openen"
 
@@ -15165,6 +15189,9 @@ msgstr "Organisatie: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "Organiseer je werk in teams. Taken en integraties kunnen per team synchroniseren."
+
+msgid "Origin branches"
+msgstr "Branches van origin"
 
 msgid "Originals"
 msgstr "Originelen"
@@ -17772,9 +17799,6 @@ msgstr "Werk van agents reviewen met Pagina's"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Review- en CI-wachtrijen eten de winst op die agents opleveren."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "Bekijk en verwijder achtergebleven mappen van verwijderde werkruimten in de forkinstellingen."
-
 msgid "Review becomes the bottleneck"
 msgstr "Review wordt het knelpunt"
 
@@ -18749,6 +18773,9 @@ msgstr "Geselecteerde automatiseringen"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "De geselecteerde issues komen uit meerdere repository's. Kies issues uit één repository om ze uit te voeren."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "De geselecteerde externe branches worden opgehaald voordat een worktree wordt aangemaakt."
 
 msgid "Selected workspace actions"
 msgstr "Acties voor geselecteerde werkruimtes"
@@ -22930,6 +22957,9 @@ msgstr "Gebruik de desktop-app om parallelle coding agents te draaien."
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Gebruik het Paradev-menu in de menubalk > Hostservice > Opnieuw starten en probeer het opnieuw."
 
+msgid "Use the same origin branch for all folders"
+msgstr "Dezelfde branch van origin voor alle mappen gebruiken"
+
 msgid "Use this account"
 msgstr "Dit account gebruiken"
 
@@ -23811,6 +23841,9 @@ msgstr "Worktree"
 
 msgid "Worktree · its own folder"
 msgstr "Worktree · eigen map"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "Aanmaken van worktree mislukt; gewijzigde mappen behouden: {paths}"
 
 msgid "Worktree location"
 msgstr "Worktree-locatie"

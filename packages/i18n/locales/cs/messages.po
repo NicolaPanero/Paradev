@@ -1912,6 +1912,9 @@ msgstr "Vlákno v #{0}"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "Jedinečný identifikátor vaší organizace (vygenerovaný z názvu)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "Složka worktree nebo větev již existuje. Vyberte novou větev pro workspace."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Přihlásit se"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "Použít jednu vzdálenou větev pro všechny složky projektu."
+
 msgid "Apply recommended settings"
 msgstr "Použít doporučená nastavení"
 
@@ -3622,9 +3628,6 @@ msgstr "Na pozadí · {count}"
 
 msgid "Background chats"
 msgstr "Chaty na pozadí"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "Chaty na pozadí se v aktivitě workspace zobrazují před historií podagentů."
 
 msgid "Background processes"
 msgstr "Procesy na pozadí"
@@ -4205,6 +4208,9 @@ msgstr "Nelze {action}: místní host service není dostupná pro {organization}
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "Posledního vlastníka nelze degradovat. Nejprve povyšte někoho jiného."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "Nelze stáhnout {branch} pro {folder}"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "Uživatele nelze pozvat v roli {roleName}"
 
@@ -4560,6 +4566,12 @@ msgstr "Vyberte účet {pluginLabel}"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "Vyberte základní větev pro porovnání změn v commitech. Do té doby se zobrazují pouze místní změny."
 
+msgid "Choose a branch"
+msgstr "Vybrat větev"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "Vyberte větev pro každý repozitář. Vybrané větve se před vytvořením stáhnou z origin."
+
 msgid "Choose a device"
 msgstr "Vyberte zařízení"
 
@@ -4604,6 +4616,9 @@ msgstr "Vyberte složku s existujícím repozitářem"
 
 msgid "Choose an MCP server"
 msgstr "Vyberte MCP server"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "Při vytváření worktree vyberte pro každý repozitář větev z origin."
 
 msgid "Choose app"
 msgstr "Vyberte aplikaci"
@@ -6115,6 +6130,9 @@ msgstr "Projekt se nepodařilo vytvořit. Zkuste jiný název nebo se podívejte
 msgid "Could not create the project. Please try again."
 msgstr "Projekt se nepodařilo vytvořit. Zkuste to znovu."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "Nepodařilo se vytvořit worktree vybraných složek"
+
 msgid "Could not delete"
 msgstr "Smazání se nezdařilo"
 
@@ -6172,6 +6190,9 @@ msgstr "Obrázek se nepodařilo načíst"
 
 msgid "Could not load Jira board settings."
 msgstr "Nastavení nástěnky Jira se nepodařilo načíst."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "Nepodařilo se načíst větve z origin. Zkontrolujte připojení a verzi hostitele."
 
 msgid "Could not load plans."
 msgstr "Plány se nepodařilo načíst."
@@ -7046,6 +7067,9 @@ msgstr "Aktuální přístup"
 
 msgid "current checkout"
 msgstr "aktuální checkout"
+
+msgid "Current checkout"
+msgstr "Aktuální checkout"
 
 msgid "Current level"
 msgstr "Aktuální úroveň"
@@ -9567,6 +9591,9 @@ msgstr "Zaměřit vyhledávací pole v zobrazení úkolů"
 msgid "Folder"
 msgstr "Složka"
 
+msgid "Folder base branches require a new worktree"
+msgstr "Základní větve složek vyžadují nový worktree"
+
 msgid "Folder is missing"
 msgstr "Složka chybí"
 
@@ -11994,6 +12021,9 @@ msgstr "Načítám nastavení agenta..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "Indikátory načítání a probíhající aktivity"
+
+msgid "Loading branches…"
+msgstr "Načítání větví…"
 
 msgid "Loading breakdown…"
 msgstr "Načítání rozpisu…"
@@ -14477,9 +14507,6 @@ msgstr "Komentář může upravit jen jeho autor"
 msgid "Only the author can edit a comment"
 msgstr "Komentář může upravit jen jeho autor"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "Zobrazuje se pouze pět naposledy dokončených podagentů. Rozbalte seznam a zobrazte starší."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Cloudovým pracovním prostorům může přístup povolit jen vlastník hosta"
 
@@ -15051,9 +15078,6 @@ msgstr "Otevírá se {appName}…"
 msgid "Opening {what}"
 msgstr "Otevírám {what}"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "Otevřením dokončeného podagenta se znovu otevře jeho chat na pozadí, pokud je dostupný."
-
 msgid "Opening files"
 msgstr "Otevírání souborů"
 
@@ -15165,6 +15189,9 @@ msgstr "Organizace: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "Rozdělte práci do týmů. Úkoly a integrace se mohou synchronizovat po týmech."
+
+msgid "Origin branches"
+msgstr "Větve z origin"
 
 msgid "Originals"
 msgstr "Originály"
@@ -17772,9 +17799,6 @@ msgstr "Kontrola práce agenta ve Stránkách"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Fronty revizí a CI spolykají zisky, které agenti vytvoří."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "V nastavení forku zkontrolujte a vyčistěte složky zbylé po smazaných pracovních prostorech."
-
 msgid "Review becomes the bottleneck"
 msgstr "Úzkým hrdlem se stává revize"
 
@@ -18749,6 +18773,9 @@ msgstr "Vybrané automatizace"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "Vybrané issues patří do více repozitářů. Vyberte issues z jednoho repozitáře."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "Vybrané vzdálené větve se stáhnou před vytvořením jakéhokoli worktree."
 
 msgid "Selected workspace actions"
 msgstr "Akce pro vybrané pracovní prostory"
@@ -22930,6 +22957,9 @@ msgstr "Pro spouštění paralelních kódovacích agentů použijte desktopovou
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Použijte nabídku Paradev na liště > Host Service > Restart a zkuste to znovu."
 
+msgid "Use the same origin branch for all folders"
+msgstr "Použít stejnou větev z origin pro všechny složky"
+
 msgid "Use this account"
 msgstr "Použít tento účet"
 
@@ -23811,6 +23841,9 @@ msgstr "Worktree"
 
 msgid "Worktree · its own folder"
 msgstr "Worktree · vlastní složka"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "Vytvoření worktree selhalo; změněné složky byly zachovány: {paths}"
 
 msgid "Worktree location"
 msgstr "Umístění worktree"

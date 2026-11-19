@@ -1906,6 +1906,9 @@ msgstr "Тред у #{0}"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "Унікальний ідентифікатор вашої організації (створюється автоматично з назви)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "Папка worktree або гілка вже існує. Виберіть нову гілку для workspace."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3114,6 +3117,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Подати заявку"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "Застосуйте одну віддалену гілку до всіх папок проєкту."
+
 msgid "Apply recommended settings"
 msgstr "Застосувати рекомендовані налаштування"
 
@@ -3616,9 +3622,6 @@ msgstr "У фоні · {count}"
 
 msgid "Background chats"
 msgstr "Фонові чати"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "В активності робочого простору фонові чати відображаються перед історією субагентів."
 
 msgid "Background processes"
 msgstr "Фонові процеси"
@@ -4199,6 +4202,9 @@ msgstr "Не вдається {action}: локальна служба хоста
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "Не можна понизити останнього власника. Спочатку підвищте когось іншого."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "Не вдалося завантажити {branch} для {folder}"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "Не можна запрошувати користувачів із роллю {roleName}"
 
@@ -4554,6 +4560,12 @@ msgstr "Виберіть обліковий запис {pluginLabel}"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "Виберіть базову гілку, щоб порівняти зміни в комітах. До вибору показано лише локальні зміни."
 
+msgid "Choose a branch"
+msgstr "Виберіть гілку"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "Виберіть гілку для кожного репозиторію. Вибрані гілки завантажуються з origin перед створенням."
+
 msgid "Choose a device"
 msgstr "Виберіть пристрій"
 
@@ -4598,6 +4610,9 @@ msgstr "Виберіть наявну папку репозиторію"
 
 msgid "Choose an MCP server"
 msgstr "Виберіть MCP-сервер"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "Виберіть гілку origin для кожного репозиторію під час створення worktree."
 
 msgid "Choose app"
 msgstr "Вибрати застосунок"
@@ -6109,6 +6124,9 @@ msgstr "Не вдалося створити проєкт. Спробуйте і
 msgid "Could not create the project. Please try again."
 msgstr "Не вдалося створити проєкт. Спробуйте ще раз."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "Не вдалося створити worktree для вибраних папок"
+
 msgid "Could not delete"
 msgstr "Не вдалося видалити"
 
@@ -6166,6 +6184,9 @@ msgstr "Не вдалося завантажити зображення"
 
 msgid "Could not load Jira board settings."
 msgstr "Не вдалося завантажити налаштування дошки Jira."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "Не вдалося завантажити гілки origin. Перевірте з’єднання та версію хоста."
 
 msgid "Could not load plans."
 msgstr "Не вдалося завантажити тарифи."
@@ -7040,6 +7061,9 @@ msgstr "Поточний доступ"
 
 msgid "current checkout"
 msgstr "поточний checkout"
+
+msgid "Current checkout"
+msgstr "Поточний checkout"
 
 msgid "Current level"
 msgstr "Поточний рівень"
@@ -9561,6 +9585,9 @@ msgstr "Перевести фокус на поле пошуку в розділ
 msgid "Folder"
 msgstr "Папка"
 
+msgid "Folder base branches require a new worktree"
+msgstr "Базові гілки папок потребують створення нового worktree"
+
 msgid "Folder is missing"
 msgstr "Папка відсутня"
 
@@ -11988,6 +12015,9 @@ msgstr "Завантаження налаштувань агента..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "Індикатори завантаження й поточної активності"
+
+msgid "Loading branches…"
+msgstr "Завантаження гілок…"
 
 msgid "Loading breakdown…"
 msgstr "Завантаження розбивки…"
@@ -14471,9 +14501,6 @@ msgstr "Лише автор може змінити коментар"
 msgid "Only the author can edit a comment"
 msgstr "Лише автор може редагувати коментар"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "Показано лише п'ять останніх завершених субагентів. Розгорніть список, щоб побачити старіші записи."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Дозволити хмарним робочим просторам доступ до хоста може лише його власник"
 
@@ -15045,9 +15072,6 @@ msgstr "Відкриття {appName}…"
 msgid "Opening {what}"
 msgstr "Відкриття {what}"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "Під час відкриття завершеного субагента його фоновий чат відкривається знову, якщо він доступний."
-
 msgid "Opening files"
 msgstr "Відкриття файлів"
 
@@ -15159,6 +15183,9 @@ msgstr "Організація: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "Організуйте роботу за командами. Завдання й інтеграції можуть синхронізуватися окремо для кожної команди."
+
+msgid "Origin branches"
+msgstr "Гілки origin"
 
 msgid "Originals"
 msgstr "Оригінали"
@@ -17766,9 +17793,6 @@ msgstr "Перевірка роботи агента за допомогою Pag
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Черги рев'ю та CI з'їдають виграш, який дають агенти."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "Перевірте й очистьте папки видалених робочих просторів у налаштуваннях форка."
-
 msgid "Review becomes the bottleneck"
 msgstr "Рев'ю стає вузьким місцем"
 
@@ -18743,6 +18767,9 @@ msgstr "Вибрані автоматизації"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "Вибрані issues належать до різних репозиторіїв. Щоб запустити їх, виберіть issues з одного репозиторію."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "Вибрані віддалені гілки завантажуються до створення будь-якого worktree."
 
 msgid "Selected workspace actions"
 msgstr "Дії з вибраними робочими просторами"
@@ -22924,6 +22951,9 @@ msgstr "Використовуйте десктопний застосунок, 
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Виберіть у меню Paradev у системному треї «Служба хоста» > «Перезапустити», а потім повторіть спробу."
 
+msgid "Use the same origin branch for all folders"
+msgstr "Використовувати одну гілку origin для всіх папок"
+
 msgid "Use this account"
 msgstr "Використати цей обліковий запис"
 
@@ -23805,6 +23835,9 @@ msgstr "Worktree"
 
 msgid "Worktree · its own folder"
 msgstr "Worktree · власна папка"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "Не вдалося створити worktree; змінені папки збережено: {paths}"
 
 msgid "Worktree location"
 msgstr "Розташування worktree"

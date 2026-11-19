@@ -1912,6 +1912,9 @@ msgstr "Uma thread em #{0}"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "Um identificador único para sua organização (gerado a partir do nome)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "Uma pasta worktree ou branch já existe. Escolha uma nova branch para o workspace."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Candidatar-se"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "Aplique uma branch remota a todas as pastas do projeto."
+
 msgid "Apply recommended settings"
 msgstr "Aplicar configurações recomendadas"
 
@@ -3622,9 +3628,6 @@ msgstr "Em segundo plano · {count}"
 
 msgid "Background chats"
 msgstr "Chats em segundo plano"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "Os chats em segundo plano aparecem antes do histórico de subagentes na atividade do workspace."
 
 msgid "Background processes"
 msgstr "Processos em segundo plano"
@@ -4205,6 +4208,9 @@ msgstr "Não é possível {action}: o serviço do host local está indisponível
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "Não dá para rebaixar o último proprietário. Promova outra pessoa primeiro."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "Não é possível obter {branch} para {folder}"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "Não dá para convidar pessoas como {roleName}"
 
@@ -4560,6 +4566,12 @@ msgstr "Escolha uma conta do {pluginLabel}"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "Escolha um branch base para comparar as alterações dos commits. Até lá, apenas as alterações locais serão exibidas."
 
+msgid "Choose a branch"
+msgstr "Escolher uma branch"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "Escolha uma branch para cada repositório. As branches selecionadas são obtidas de origin antes da criação."
+
 msgid "Choose a device"
 msgstr "Escolha um dispositivo"
 
@@ -4604,6 +4616,9 @@ msgstr "Escolha uma pasta de repositório existente"
 
 msgid "Choose an MCP server"
 msgstr "Escolha um servidor MCP"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "Escolha uma branch de origin para cada repositório ao criar um worktree."
 
 msgid "Choose app"
 msgstr "Escolher app"
@@ -6115,6 +6130,9 @@ msgstr "Não foi possível criar o projeto. Tente outro nome ou verifique os log
 msgid "Could not create the project. Please try again."
 msgstr "Não foi possível criar o projeto. Tente novamente."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "Não foi possível criar os worktrees das pastas selecionadas"
+
 msgid "Could not delete"
 msgstr "Não foi possível excluir"
 
@@ -6172,6 +6190,9 @@ msgstr "Não foi possível carregar a imagem"
 
 msgid "Could not load Jira board settings."
 msgstr "Não foi possível carregar as configurações do quadro Jira."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "Não foi possível carregar as branches de origin. Verifique a conexão e a versão do host."
 
 msgid "Could not load plans."
 msgstr "Não foi possível carregar os planos."
@@ -7046,6 +7067,9 @@ msgstr "Acesso atual"
 
 msgid "current checkout"
 msgstr "checkout atual"
+
+msgid "Current checkout"
+msgstr "Checkout atual"
 
 msgid "Current level"
 msgstr "Nível atual"
@@ -9567,6 +9591,9 @@ msgstr "Focar o campo de busca na visualização de tarefas"
 msgid "Folder"
 msgstr "Pasta"
 
+msgid "Folder base branches require a new worktree"
+msgstr "As branches de base das pastas exigem um novo worktree"
+
 msgid "Folder is missing"
 msgstr "A pasta não existe"
 
@@ -11994,6 +12021,9 @@ msgstr "Carregando as configurações do agente..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "Indicadores de carregamento e de atividade em andamento"
+
+msgid "Loading branches…"
+msgstr "Carregando branches…"
 
 msgid "Loading breakdown…"
 msgstr "Carregando detalhamento…"
@@ -14477,9 +14507,6 @@ msgstr "Somente o autor pode alterar um comentário"
 msgid "Only the author can edit a comment"
 msgstr "Só a pessoa autora pode editar um comentário"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "Apenas os cinco últimos subagentes concluídos são exibidos. Expanda a lista para ver os anteriores."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Só o dono do host pode permitir que áreas de trabalho na nuvem o acessem"
 
@@ -15051,9 +15078,6 @@ msgstr "Abrindo o {appName}…"
 msgid "Opening {what}"
 msgstr "Abrindo {what}"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "Abrir um subagente concluído reabre seu chat em segundo plano, quando disponível."
-
 msgid "Opening files"
 msgstr "Abertura de arquivos"
 
@@ -15165,6 +15189,9 @@ msgstr "Organização: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "Organize seu trabalho em equipes. Tarefas e integrações podem sincronizar por equipe."
+
+msgid "Origin branches"
+msgstr "Branches de origin"
 
 msgid "Originals"
 msgstr "Originais"
@@ -17772,9 +17799,6 @@ msgstr "Revise o trabalho do agente com Páginas"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "As filas de revisão e de CI comem o ganho que os agentes criam."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "Revise e limpe pastas deixadas por espaços de trabalho excluídos nas configurações do fork."
-
 msgid "Review becomes the bottleneck"
 msgstr "A revisão vira o gargalo"
 
@@ -18749,6 +18773,9 @@ msgstr "Automações selecionadas"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "As issues selecionadas estão em vários repositórios. Selecione issues de um único repositório para executá-las."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "As branches remotas selecionadas são obtidas antes de criar qualquer worktree."
 
 msgid "Selected workspace actions"
 msgstr "Ações das áreas de trabalho selecionadas"
@@ -22930,6 +22957,9 @@ msgstr "Use o app de desktop para rodar agentes de código em paralelo."
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Use o menu da bandeja do Paradev > Serviço do host > Reiniciar e tente de novo."
 
+msgid "Use the same origin branch for all folders"
+msgstr "Usar a mesma branch de origin para todas as pastas"
+
 msgid "Use this account"
 msgstr "Usar esta conta"
 
@@ -23811,6 +23841,9 @@ msgstr "Worktree"
 
 msgid "Worktree · its own folder"
 msgstr "Worktree · pasta própria"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "Falha ao criar o worktree; pastas modificadas preservadas: {paths}"
 
 msgid "Worktree location"
 msgstr "Local das worktrees"

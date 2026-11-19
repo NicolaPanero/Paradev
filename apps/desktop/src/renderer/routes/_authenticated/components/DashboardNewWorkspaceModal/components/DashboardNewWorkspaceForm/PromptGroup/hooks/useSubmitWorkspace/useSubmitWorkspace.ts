@@ -49,6 +49,8 @@ export function useSubmitWorkspace(
 		selection?: string | null;
 		confirm: () => Promise<boolean>;
 	},
+	folderBaseBranches?: Record<string, string>,
+	confirmFolderBases?: () => Promise<boolean>,
 ) {
 	const { t } = useLingui();
 	const navigate = useNavigate();
@@ -115,6 +117,12 @@ export function useSubmitWorkspace(
 			return;
 		}
 
+		if (
+			Object.keys(folderBaseBranches ?? {}).length &&
+			confirmFolderBases &&
+			!(await confirmFolderBases())
+		)
+			return;
 		const { readyIds: attachmentIds, errors } =
 			await uploadAttachments.awaitUploads();
 		if (errors.length > 0) {
@@ -360,6 +368,9 @@ export function useSubmitWorkspace(
 								: undefined,
 						pr: isPrCheckout ? linkedPR?.prNumber : undefined,
 						baseBranch: draft.baseBranch ?? undefined,
+						...(Object.keys(folderBaseBranches ?? {}).length
+							? { folderBaseBranches }
+							: {}),
 						taskId: linkedTaskId,
 						agents,
 						namingPrompt: isPrCheckout ? undefined : namingPrompt,
@@ -413,6 +424,8 @@ export function useSubmitWorkspace(
 		activeOrganizationId,
 		forkAfterSubmit,
 		accountLaunch,
+		folderBaseBranches,
+		confirmFolderBases,
 		resolveAcpChatEnabled,
 		selectedPresetId,
 		closeAndResetDraft,

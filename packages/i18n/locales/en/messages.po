@@ -1912,6 +1912,9 @@ msgstr "A thread in #{0}"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "A unique identifier for your organization (auto-generated from name)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "A worktree folder or branch already exists. Choose a new workspace branch."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Apply"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "Apply one remote branch to all project folders."
+
 msgid "Apply recommended settings"
 msgstr "Apply recommended settings"
 
@@ -3622,9 +3628,6 @@ msgstr "Background · {count}"
 
 msgid "Background chats"
 msgstr "Background chats"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "Background chats appear before subagent history in Workspace activity."
 
 msgid "Background processes"
 msgstr "Background processes"
@@ -4205,6 +4208,9 @@ msgstr "Cannot {action}: the local host service is unavailable for {organization
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "Cannot demote the last owner. Promote someone else first."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "Cannot fetch {branch} for {folder}"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "Cannot invite users as {roleName}"
 
@@ -4560,6 +4566,12 @@ msgstr "Choose a {pluginLabel} account"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 
+msgid "Choose a branch"
+msgstr "Choose a branch"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+
 msgid "Choose a device"
 msgstr "Choose a device"
 
@@ -4604,6 +4616,9 @@ msgstr "Choose an existing repo folder"
 
 msgid "Choose an MCP server"
 msgstr "Choose an MCP server"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "Choose an origin branch for each repository when creating a worktree."
 
 msgid "Choose app"
 msgstr "Choose app"
@@ -6115,6 +6130,9 @@ msgstr "Could not create project. Please try a different name or check the logs.
 msgid "Could not create the project. Please try again."
 msgstr "Could not create the project. Please try again."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "Could not create the selected folder worktrees"
+
 msgid "Could not delete"
 msgstr "Could not delete"
 
@@ -6172,6 +6190,9 @@ msgstr "Could not load image"
 
 msgid "Could not load Jira board settings."
 msgstr "Could not load Jira board settings."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "Could not load origin branches. Check the connection and host version."
 
 msgid "Could not load plans."
 msgstr "Could not load plans."
@@ -7046,6 +7067,9 @@ msgstr "Current access"
 
 msgid "current checkout"
 msgstr "current checkout"
+
+msgid "Current checkout"
+msgstr "Current checkout"
 
 msgid "Current level"
 msgstr "Current level"
@@ -9567,6 +9591,9 @@ msgstr "Focus the search input in the tasks view"
 msgid "Folder"
 msgstr "Folder"
 
+msgid "Folder base branches require a new worktree"
+msgstr "Folder base branches require a new worktree"
+
 msgid "Folder is missing"
 msgstr "Folder is missing"
 
@@ -11994,6 +12021,9 @@ msgstr "Loading agent settings..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "Loading and in-flight activity indicators"
+
+msgid "Loading branches…"
+msgstr "Loading branches…"
 
 msgid "Loading breakdown…"
 msgstr "Loading breakdown…"
@@ -14477,9 +14507,6 @@ msgstr "Only the author can change a comment"
 msgid "Only the author can edit a comment"
 msgstr "Only the author can edit a comment"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "Only the five latest completed subagents are shown. Expand the list to see older ones."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Only the host owner can let cloud workspaces reach it"
 
@@ -15051,9 +15078,6 @@ msgstr "Opening {appName}…"
 msgid "Opening {what}"
 msgstr "Opening {what}"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "Opening a completed subagent reopens its background chat when available."
-
 msgid "Opening files"
 msgstr "Opening files"
 
@@ -15165,6 +15189,9 @@ msgstr "Organization: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "Organize your work into teams. Tasks and integrations can sync per-team."
+
+msgid "Origin branches"
+msgstr "Origin branches"
 
 msgid "Originals"
 msgstr "Originals"
@@ -17772,9 +17799,6 @@ msgstr "Review agent work with Pages"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Review and CI queues eat the gains agents create."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "Review and clean up folders left by deleted workspaces in Fork Settings."
-
 msgid "Review becomes the bottleneck"
 msgstr "Review becomes the bottleneck"
 
@@ -18749,6 +18773,9 @@ msgstr "Selected automations"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "Selected issues span multiple repositories. Select issues from a single repository to run them."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "Selected remote branches are fetched before any worktree is created."
 
 msgid "Selected workspace actions"
 msgstr "Selected workspace actions"
@@ -22930,6 +22957,9 @@ msgstr "Use the desktop app to start running parallel coding agents."
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Use the Paradev tray menu > Host Service > Restart, then retry."
 
+msgid "Use the same origin branch for all folders"
+msgstr "Use the same origin branch for all folders"
+
 msgid "Use this account"
 msgstr "Use this account"
 
@@ -23811,6 +23841,9 @@ msgstr "Worktree"
 
 msgid "Worktree · its own folder"
 msgstr "Worktree · its own folder"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "Worktree creation failed; kept modified folders: {paths}"
 
 msgid "Worktree location"
 msgstr "Worktree location"

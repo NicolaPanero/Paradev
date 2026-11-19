@@ -88,12 +88,14 @@ import {
 import { SymmetricResizeHandles } from "../SymmetricResizeHandles";
 import { ForkCreateWorkspaceButton } from "./components/ForkCreateWorkspaceButton";
 import { ForkCreationModelPicker } from "./components/ForkCreationModelPicker";
+import { ForkFolderBasePicker } from "./components/ForkFolderBasePicker";
 import { ForkImportFromHome } from "./components/ForkImportFromHome/ForkImportFromHome";
 import { SamplePrompts } from "./components/SamplePrompts";
 import { PROMPT_PLACEHOLDERS } from "./components/SamplePrompts/constants";
 import { SupersetIcon } from "./components/SupersetIcon";
 import { useConsumeHostIntent } from "./hooks/useConsumeHostIntent";
 import { useForkCreationSelections } from "./hooks/useForkCreationSelections";
+import { useForkFolderBases } from "./hooks/useForkFolderBases";
 import { useGitHubRepositoryProjects } from "./hooks/useGitHubRepositoryProjects";
 import { useLinkedIssueNaming } from "./hooks/useLinkedIssueNaming";
 import { useSamplePromptSelection } from "./hooks/useSamplePromptSelection";
@@ -708,6 +710,16 @@ export function NewWorkspaceScreen({
 		linkedPR,
 		linkedIssues,
 	});
+	const forkFolderBases = useForkFolderBases(
+		launchHostUrl,
+		projectId,
+		isOpen &&
+			!isCloudHost &&
+			!isSession &&
+			!linkedPR &&
+			draft.checkout === "worktree",
+		resetKey,
+	);
 	const { submitWorkspace: createWorkspace, isCreating } = useSubmitWorkspace(
 		projectId,
 		selectedAgent,
@@ -722,6 +734,8 @@ export function NewWorkspaceScreen({
 		hostId,
 		isSession,
 		forkAccount,
+		forkFolderBases.selection,
+		forkFolderBases.confirm,
 	);
 
 	const submitBlocker = useMemo<string | null>(() => {
@@ -965,11 +979,15 @@ export function NewWorkspaceScreen({
 						}}
 					/>
 					{draft.checkout === "worktree" && (
-						<CompareBaseBranchPicker
-							{...pickerProps}
-							onChangeProjectLocation={handleGoToSetup}
-						/>
+						<ForkFolderBasePicker bases={forkFolderBases} />
 					)}
+					{draft.checkout === "worktree" &&
+						Object.keys(forkFolderBases.selection).length === 0 && (
+							<CompareBaseBranchPicker
+								{...pickerProps}
+								onChangeProjectLocation={handleGoToSetup}
+							/>
+						)}
 				</>
 			)}
 		</>

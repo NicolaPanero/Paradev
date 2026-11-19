@@ -1912,6 +1912,9 @@ msgstr "#{0} içinde bir ileti dizisi"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "Kuruluşunuz için benzersiz bir tanımlayıcı (addan otomatik oluşturulur)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "Bir worktree klasörü veya dalı zaten var. Workspace için yeni bir dal seçin."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Başvur"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "Tüm proje klasörlerine tek bir uzak dal uygulayın."
+
 msgid "Apply recommended settings"
 msgstr "Önerilen ayarları uygula"
 
@@ -3622,9 +3628,6 @@ msgstr "Arka planda · {count}"
 
 msgid "Background chats"
 msgstr "Arka plandaki sohbetler"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "Workspace etkinliğinde arka plan sohbetleri, alt ajan geçmişinden önce görünür."
 
 msgid "Background processes"
 msgstr "Arka plan işlemleri"
@@ -4205,6 +4208,9 @@ msgstr "{action} işlemi yapılamıyor: {device} üzerinde {organization} için 
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "Son sahibin yetkisi düşürülemez. Önce başka birini yükseltin."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "{folder} için {branch} alınamıyor"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "Kullanıcılar {roleName} rolüyle davet edilemez"
 
@@ -4560,6 +4566,12 @@ msgstr "Bir {pluginLabel} hesabı seçin"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "Commit değişikliklerini karşılaştırmak için bir temel dal seçin. Seçene kadar yalnızca yerel değişiklikler gösterilir."
 
+msgid "Choose a branch"
+msgstr "Bir dal seçin"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "Her depo için bir dal seçin. Seçilen dallar oluşturmadan önce origin üzerinden alınır."
+
 msgid "Choose a device"
 msgstr "Cihaz seçin"
 
@@ -4604,6 +4616,9 @@ msgstr "Mevcut bir depo klasörü seçin"
 
 msgid "Choose an MCP server"
 msgstr "Bir MCP sunucusu seçin"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "Worktree oluştururken her depo için origin üzerinden bir dal seçin."
 
 msgid "Choose app"
 msgstr "Uygulama seç"
@@ -6115,6 +6130,9 @@ msgstr "Proje oluşturulamadı. Lütfen farklı bir ad deneyin veya günlükleri
 msgid "Could not create the project. Please try again."
 msgstr "Proje oluşturulamadı. Lütfen tekrar deneyin."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "Seçilen klasörlerin worktree’leri oluşturulamadı"
+
 msgid "Could not delete"
 msgstr "Silinemedi"
 
@@ -6172,6 +6190,9 @@ msgstr "Görsel yüklenemedi"
 
 msgid "Could not load Jira board settings."
 msgstr "Jira pano ayarları yüklenemedi."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "origin dalları yüklenemedi. Bağlantıyı ve ana makine sürümünü kontrol edin."
 
 msgid "Could not load plans."
 msgstr "Planlar yüklenemedi."
@@ -7046,6 +7067,9 @@ msgstr "Mevcut erişim"
 
 msgid "current checkout"
 msgstr "mevcut checkout"
+
+msgid "Current checkout"
+msgstr "Geçerli checkout"
 
 msgid "Current level"
 msgstr "Mevcut düzey"
@@ -9567,6 +9591,9 @@ msgstr "Görevler görünümündeki arama girişine odaklan"
 msgid "Folder"
 msgstr "Klasör"
 
+msgid "Folder base branches require a new worktree"
+msgstr "Klasör temel dalları yeni bir worktree gerektirir"
+
 msgid "Folder is missing"
 msgstr "Klasör eksik"
 
@@ -11994,6 +12021,9 @@ msgstr "Ajan ayarları yükleniyor..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "Yükleme ve devam eden etkinlik göstergeleri"
+
+msgid "Loading branches…"
+msgstr "Dallar yükleniyor…"
 
 msgid "Loading breakdown…"
 msgstr "Döküm yükleniyor…"
@@ -14477,9 +14507,6 @@ msgstr "Yorumu yalnızca yazarı değiştirebilir"
 msgid "Only the author can edit a comment"
 msgstr "Bir yorumu yalnızca yazarı düzenleyebilir"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "Yalnızca en son tamamlanan beş alt ajan gösterilir. Daha eskileri görmek için listeyi genişletin."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Bulut çalışma alanlarının erişimine yalnızca host'un sahibi izin verebilir"
 
@@ -15051,9 +15078,6 @@ msgstr "{appName} açılıyor…"
 msgid "Opening {what}"
 msgstr "{what} açılıyor"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "Tamamlanan bir alt ajanı açmak, kullanılabilir durumdaysa arka plan sohbetini yeniden açar."
-
 msgid "Opening files"
 msgstr "Dosyaları açma"
 
@@ -15165,6 +15189,9 @@ msgstr "Kuruluş: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "İşinizi takımlar hâlinde düzenleyin. Görevler ve entegrasyonlar takım bazında eşitlenebilir."
+
+msgid "Origin branches"
+msgstr "origin dalları"
 
 msgid "Originals"
 msgstr "Özgünler"
@@ -17772,9 +17799,6 @@ msgstr "Ajan çalışmasını Sayfalar ile inceleyin"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "İnceleme ve CI kuyrukları, ajanların yarattığı kazancı yiyor."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "Fork Ayarları’nda silinen çalışma alanlarından kalan klasörleri inceleyin ve temizleyin."
-
 msgid "Review becomes the bottleneck"
 msgstr "İnceleme darboğaz hâline gelir"
 
@@ -18749,6 +18773,9 @@ msgstr "Seçili otomasyonlar"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "Seçili issue'lar birden fazla depoya yayılıyor. Çalıştırmak için tek bir depodan issue seçin."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "Seçilen uzak dallar herhangi bir worktree oluşturulmadan önce alınır."
 
 msgid "Selected workspace actions"
 msgstr "Seçili çalışma alanı eylemleri"
@@ -22930,6 +22957,9 @@ msgstr "Paralel kodlama ajanları çalıştırmaya başlamak için masaüstü uy
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Paradev tepsi menüsünde Host hizmeti > Yeniden başlat yolunu kullanın, sonra yeniden deneyin."
 
+msgid "Use the same origin branch for all folders"
+msgstr "Tüm klasörler için aynı origin dalını kullan"
+
 msgid "Use this account"
 msgstr "Bu hesabı kullan"
 
@@ -23811,6 +23841,9 @@ msgstr "Worktree"
 
 msgid "Worktree · its own folder"
 msgstr "Worktree · kendi klasörü"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "Worktree oluşturulamadı; değiştirilen klasörler korundu: {paths}"
 
 msgid "Worktree location"
 msgstr "Worktree konumu"

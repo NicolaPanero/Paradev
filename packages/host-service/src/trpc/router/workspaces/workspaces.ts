@@ -16,7 +16,13 @@ import {
 	forkLinkPreparedPrWorkspace,
 	forkPreparePrWorkspace,
 } from "../../../fork-integrations/fork-prepare-pr-workspace";
-import { provisionFolderWorktrees } from "../../../project-folders";
+import {
+	addForkBranchWorktree,
+	applyForkFolderBranchPlan,
+	forkFolderBaseInputs,
+	prepareForkFolderBases,
+	provisionForkFolderBases,
+} from "../../../project-folders/fork-folder-bases";
 import { getProjectIncludingDeleted } from "../../../projects/local-project-store";
 import { createGitEnvResolver } from "../../../runtime/git";
 import { getGitAuthorName } from "../../../runtime/git/identity";
@@ -59,10 +65,7 @@ import { getHostWorktreeBaseDir } from "../settings/worktree-location";
 import { claimWorkspaceRestore } from "../workspace-cleanup";
 import { recordCreatedBranch } from "../workspace-cleanup/fork-branch-ownership";
 import { createSession } from "../workspace-creation/procedures/create-session";
-import {
-	addBranchWorktree,
-	type BranchSourcePlan,
-} from "../workspace-creation/shared/add-branch-worktree";
+import type { BranchSourcePlan } from "../workspace-creation/shared/add-branch-worktree";
 import { adoptExistingWorktree } from "../workspace-creation/shared/adopt-existing-worktree";
 import {
 	getWorktreeBranchAtPath,
@@ -114,6 +117,7 @@ import { scheduleWorkspaceNaming } from "../workspace-creation/utils/workspace-n
 
 const createInputSchema = z
 	.object({
+		...forkFolderBaseInputs,
 		projectId: z.string(),
 		// "worktree" (default) checks out `branch` in its own worktree.
 		// "local" registers a new workspace on the project's primary checkout
@@ -730,6 +734,7 @@ export const workspacesRouter = router({
 				}
 			}
 
+			const forkFolderBases = await prepareForkFolderBases(ctx, input);
 			const composerPrompt =
 				input.agents?.[0]?.prompt?.trim() || input.namingPrompt?.trim() || "";
 			const wantAi =
@@ -1156,6 +1161,7 @@ export const workspacesRouter = router({
 					};
 				}
 
+				plan = applyForkFolderBranchPlan(plan, forkFolderBases);
 				const existing = findExistingWorkspaceByBranch(
 					ctx,
 					input.projectId,
@@ -1223,12 +1229,16 @@ export const workspacesRouter = router({
 
 						let adoptedRow: CloudWorkspace | undefined;
 						try {
-							await addBranchWorktree({
-								git,
-								plan,
-								worktreePath,
-								sparsePaths,
-							});
+							await addForkBranchWorktree(
+								{
+									git,
+									plan,
+									worktreePath,
+									sparsePaths,
+								},
+								ctx,
+								forkFolderBases,
+							);
 						} catch (err) {
 							// Branch is already claimed by another worktree that the
 							// pre-check missed (auto-gen path, or a race). Adopt at
@@ -1379,7 +1389,12 @@ export const workspacesRouter = router({
 			}
 
 			if (!alreadyExists) {
-				const failures = await provisionFolderWorktrees(ctx, workspaceRow.id);
+				const failures = await provisionForkFolderBases(
+					ctx,
+					workspaceRow.id,
+					forkFolderBases,
+					workspaceRow.branch,
+				);
 				for (const failure of failures) {
 					console.warn(
 						`[workspaces.create] extra folder stays shared: ${failure}`,

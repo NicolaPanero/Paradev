@@ -1912,6 +1912,9 @@ msgstr "Một chuỗi trong #{0}"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "Định danh duy nhất cho tổ chức của bạn (tự tạo từ tên)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "Thư mục worktree hoặc nhánh đã tồn tại. Hãy chọn nhánh mới cho workspace."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Ứng tuyển"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "Áp dụng một nhánh từ xa cho tất cả thư mục dự án."
+
 msgid "Apply recommended settings"
 msgstr "Áp dụng thiết lập đề xuất"
 
@@ -3622,9 +3628,6 @@ msgstr "Chạy nền · {count}"
 
 msgid "Background chats"
 msgstr "Cuộc trò chuyện chạy nền"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "Các cuộc trò chuyện nền xuất hiện trước lịch sử tác nhân phụ trong hoạt động workspace."
 
 msgid "Background processes"
 msgstr "Tiến trình nền"
@@ -4205,6 +4208,9 @@ msgstr "Không thể {action}: dịch vụ host cục bộ không khả dụng c
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "Không thể hạ quyền chủ sở hữu cuối cùng. Hãy nâng quyền người khác trước."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "Không thể lấy {branch} cho {folder}"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "Không thể mời người dùng với vai trò {roleName}"
 
@@ -4560,6 +4566,12 @@ msgstr "Chọn một tài khoản {pluginLabel}"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "Chọn nhánh cơ sở để so sánh các thay đổi trong commit. Trước khi chọn, chỉ các thay đổi cục bộ được hiển thị."
 
+msgid "Choose a branch"
+msgstr "Chọn nhánh"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "Chọn nhánh cho từng kho mã. Các nhánh đã chọn được lấy từ origin trước khi tạo."
+
 msgid "Choose a device"
 msgstr "Chọn thiết bị"
 
@@ -4604,6 +4616,9 @@ msgstr "Chọn một thư mục repo có sẵn"
 
 msgid "Choose an MCP server"
 msgstr "Chọn một server MCP"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "Chọn nhánh origin cho từng kho mã khi tạo worktree."
 
 msgid "Choose app"
 msgstr "Chọn ứng dụng"
@@ -6115,6 +6130,9 @@ msgstr "Không thể tạo dự án. Hãy thử tên khác hoặc xem log."
 msgid "Could not create the project. Please try again."
 msgstr "Không thể tạo dự án. Vui lòng thử lại."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "Không thể tạo worktree cho các thư mục đã chọn"
+
 msgid "Could not delete"
 msgstr "Không thể xóa"
 
@@ -6172,6 +6190,9 @@ msgstr "Không thể tải ảnh"
 
 msgid "Could not load Jira board settings."
 msgstr "Không thể tải cài đặt bảng Jira."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "Không thể tải các nhánh origin. Hãy kiểm tra kết nối và phiên bản máy chủ."
 
 msgid "Could not load plans."
 msgstr "Không thể tải các gói."
@@ -7046,6 +7067,9 @@ msgstr "Quyền truy cập hiện tại"
 
 msgid "current checkout"
 msgstr "checkout hiện tại"
+
+msgid "Current checkout"
+msgstr "Checkout hiện tại"
 
 msgid "Current level"
 msgstr "Mức hiện tại"
@@ -9567,6 +9591,9 @@ msgstr "Chuyển focus tới ô tìm kiếm trong màn hình tác vụ"
 msgid "Folder"
 msgstr "Thư mục"
 
+msgid "Folder base branches require a new worktree"
+msgstr "Nhánh gốc của thư mục yêu cầu worktree mới"
+
 msgid "Folder is missing"
 msgstr "Thiếu thư mục"
 
@@ -11994,6 +12021,9 @@ msgstr "Đang tải cài đặt agent..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "Chỉ báo đang tải và hoạt động đang diễn ra"
+
+msgid "Loading branches…"
+msgstr "Đang tải nhánh…"
 
 msgid "Loading breakdown…"
 msgstr "Đang tải phân tích…"
@@ -14477,9 +14507,6 @@ msgstr "Chỉ tác giả mới có thể sửa bình luận"
 msgid "Only the author can edit a comment"
 msgstr "Chỉ tác giả mới sửa được bình luận"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "Chỉ hiển thị năm tác nhân phụ hoàn thành gần nhất. Mở rộng danh sách để xem các mục cũ hơn."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "Chỉ chủ sở hữu host mới có thể cho phép workspace cloud truy cập"
 
@@ -15051,9 +15078,6 @@ msgstr "Đang mở {appName}…"
 msgid "Opening {what}"
 msgstr "Đang mở {what}"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "Mở một tác nhân phụ đã hoàn thành sẽ mở lại cuộc trò chuyện nền của nó nếu còn khả dụng."
-
 msgid "Opening files"
 msgstr "Mở tệp"
 
@@ -15165,6 +15189,9 @@ msgstr "Tổ chức: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "Sắp xếp công việc theo nhóm. Tác vụ và tích hợp có thể đồng bộ riêng cho từng nhóm."
+
+msgid "Origin branches"
+msgstr "Nhánh origin"
 
 msgid "Originals"
 msgstr "Riêng của Superset"
@@ -17772,9 +17799,6 @@ msgstr "Duyệt công việc của agent bằng Trang"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "Hàng đợi review và CI ăn mất phần lợi mà agent tạo ra."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "Kiểm tra và dọn dẹp các thư mục còn lại từ không gian làm việc đã xóa trong Cài đặt bản phân nhánh."
-
 msgid "Review becomes the bottleneck"
 msgstr "Review trở thành nút thắt"
 
@@ -18749,6 +18773,9 @@ msgstr "Tự động hóa đã chọn"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "Các issue đã chọn thuộc nhiều repository. Hãy chọn issue trong cùng một repository để chạy."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "Các nhánh từ xa đã chọn được lấy trước khi tạo bất kỳ worktree nào."
 
 msgid "Selected workspace actions"
 msgstr "Hành động cho workspace đã chọn"
@@ -22930,6 +22957,9 @@ msgstr "Dùng ứng dụng máy tính để chạy song song nhiều agent lập
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Dùng menu khay Paradev > Host Service > Restart, rồi thử lại."
 
+msgid "Use the same origin branch for all folders"
+msgstr "Dùng cùng một nhánh origin cho tất cả thư mục"
+
 msgid "Use this account"
 msgstr "Dùng tài khoản này"
 
@@ -23811,6 +23841,9 @@ msgstr "Worktree"
 
 msgid "Worktree · its own folder"
 msgstr "Worktree · thư mục riêng"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "Không thể tạo worktree; đã giữ lại các thư mục đã sửa: {paths}"
 
 msgid "Worktree location"
 msgstr "Vị trí worktree"

@@ -1912,6 +1912,9 @@ msgstr "#{0}의 스레드"
 msgid "A unique identifier for your organization (auto-generated from name)"
 msgstr "조직의 고유 식별자 (이름에서 자동 생성)"
 
+msgid "A worktree folder or branch already exists. Choose a new workspace branch."
+msgstr "worktree 폴더 또는 브랜치가 이미 있습니다. workspace에 새 브랜치를 선택하세요."
+
 msgid "Aa"
 msgstr "Aa"
 
@@ -3120,6 +3123,9 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "지원"
 
+msgid "Apply one remote branch to all project folders."
+msgstr "하나의 원격 브랜치를 모든 프로젝트 폴더에 적용합니다."
+
 msgid "Apply recommended settings"
 msgstr "권장 설정 적용"
 
@@ -3622,9 +3628,6 @@ msgstr "백그라운드 · {count}"
 
 msgid "Background chats"
 msgstr "백그라운드 채팅"
-
-msgid "Background chats appear before subagent history in Workspace activity."
-msgstr "워크스페이스 활동에서 백그라운드 채팅이 하위 에이전트 기록보다 먼저 표시됩니다."
 
 msgid "Background processes"
 msgstr "백그라운드 프로세스"
@@ -4205,6 +4208,9 @@ msgstr "{action} 수 없습니다: {device}의 {organization}에 대해 로컬 �
 msgid "Cannot demote the last owner. Promote someone else first."
 msgstr "마지막 소유자를 강등할 수 없습니다. 먼저 다른 사람을 승격하세요."
 
+msgid "Cannot fetch {branch} for {folder}"
+msgstr "{folder}의 {branch}를 가져올 수 없습니다"
+
 msgid "Cannot invite users as {roleName}"
 msgstr "사용자를 {roleName}(으)로 초대할 수 없습니다"
 
@@ -4560,6 +4566,12 @@ msgstr "{pluginLabel} 계정 선택"
 msgid "Choose a base branch to compare committed changes. Only local changes are shown until you choose."
 msgstr "커밋된 변경 사항을 비교할 기준 브랜치를 선택하세요. 선택하기 전까지는 로컬 변경 사항만 표시됩니다."
 
+msgid "Choose a branch"
+msgstr "브랜치 선택"
+
+msgid "Choose a branch for each repository. Selected branches are fetched from origin before creation."
+msgstr "각 저장소의 브랜치를 선택하세요. 선택한 브랜치는 생성 전에 origin에서 가져옵니다."
+
 msgid "Choose a device"
 msgstr "기기 선택"
 
@@ -4604,6 +4616,9 @@ msgstr "기존 리포지토리 폴더 선택"
 
 msgid "Choose an MCP server"
 msgstr "MCP 서버 선택"
+
+msgid "Choose an origin branch for each repository when creating a worktree."
+msgstr "worktree를 만들 때 각 저장소의 origin 브랜치를 선택하세요."
 
 msgid "Choose app"
 msgstr "앱 선택"
@@ -6115,6 +6130,9 @@ msgstr "프로젝트를 만들 수 없습니다. 다른 이름을 사용하거�
 msgid "Could not create the project. Please try again."
 msgstr "프로젝트를 만들 수 없습니다. 다시 시도하세요."
 
+msgid "Could not create the selected folder worktrees"
+msgstr "선택한 폴더의 worktree를 만들 수 없습니다"
+
 msgid "Could not delete"
 msgstr "삭제할 수 없습니다"
 
@@ -6172,6 +6190,9 @@ msgstr "이미지를 불러올 수 없음"
 
 msgid "Could not load Jira board settings."
 msgstr "Jira 보드 설정을 불러올 수 없습니다."
+
+msgid "Could not load origin branches. Check the connection and host version."
+msgstr "origin 브랜치를 불러올 수 없습니다. 연결과 호스트 버전을 확인하세요."
 
 msgid "Could not load plans."
 msgstr "플랜을 불러올 수 없습니다."
@@ -7045,6 +7066,9 @@ msgid "Current access"
 msgstr "현재 접근 권한"
 
 msgid "current checkout"
+msgstr "현재 체크아웃"
+
+msgid "Current checkout"
 msgstr "현재 체크아웃"
 
 msgid "Current level"
@@ -9567,6 +9591,9 @@ msgstr "작업 보기의 검색 입력창에 포커스합니다"
 msgid "Folder"
 msgstr "폴더"
 
+msgid "Folder base branches require a new worktree"
+msgstr "폴더의 기준 브랜치를 지정하려면 새 worktree가 필요합니다"
+
 msgid "Folder is missing"
 msgstr "폴더가 없습니다"
 
@@ -11994,6 +12021,9 @@ msgstr "에이전트 설정을 불러오는 중..."
 
 msgid "Loading and in-flight activity indicators"
 msgstr "로딩 및 진행 중 활동 표시기"
+
+msgid "Loading branches…"
+msgstr "브랜치 불러오는 중…"
 
 msgid "Loading breakdown…"
 msgstr "분석 불러오는 중…"
@@ -14477,9 +14507,6 @@ msgstr "작성자만 댓글을 변경할 수 있습니다"
 msgid "Only the author can edit a comment"
 msgstr "작성자만 코멘트를 수정할 수 있습니다"
 
-msgid "Only the five latest completed subagents are shown. Expand the list to see older ones."
-msgstr "최근 완료된 하위 에이전트 다섯 개만 표시됩니다. 이전 항목을 보려면 목록을 펼치세요."
-
 msgid "Only the host owner can let cloud workspaces reach it"
 msgstr "호스트 소유자만 클라우드 워크스페이스의 접근을 허용할 수 있습니다"
 
@@ -15051,9 +15078,6 @@ msgstr "{appName}을(를) 여는 중…"
 msgid "Opening {what}"
 msgstr "{what} 여는 중"
 
-msgid "Opening a completed subagent reopens its background chat when available."
-msgstr "완료된 하위 에이전트를 열면 사용 가능한 경우 백그라운드 채팅이 다시 열립니다."
-
 msgid "Opening files"
 msgstr "파일 열기"
 
@@ -15165,6 +15189,9 @@ msgstr "조직: <0>{0}</0>"
 
 msgid "Organize your work into teams. Tasks and integrations can sync per-team."
 msgstr "작업을 팀 단위로 정리하세요. 작업과 연동은 팀별로 동기화할 수 있습니다."
+
+msgid "Origin branches"
+msgstr "origin 브랜치"
 
 msgid "Originals"
 msgstr "오리지널"
@@ -17772,9 +17799,6 @@ msgstr "페이지로 에이전트 작업 검토하기"
 msgid "Review and CI queues eat the gains agents create."
 msgstr "리뷰와 CI 대기열이 에이전트가 만든 이득을 깎아먹습니다."
 
-msgid "Review and clean up folders left by deleted workspaces in Fork Settings."
-msgstr "포크 설정에서 삭제된 작업 공간의 남은 폴더를 확인하고 정리하세요."
-
 msgid "Review becomes the bottleneck"
 msgstr "리뷰가 병목이 됩니다"
 
@@ -18749,6 +18773,9 @@ msgstr "선택한 자동화"
 
 msgid "Selected issues span multiple repositories. Select issues from a single repository to run them."
 msgstr "선택한 이슈가 여러 리포지토리에 걸쳐 있습니다. 실행하려면 단일 리포지토리의 이슈만 선택하세요."
+
+msgid "Selected remote branches are fetched before any worktree is created."
+msgstr "선택한 원격 브랜치는 worktree를 만들기 전에 가져옵니다."
 
 msgid "Selected workspace actions"
 msgstr "선택한 워크스페이스 작업"
@@ -22930,6 +22957,9 @@ msgstr "데스크톱 앱에서 병렬 코딩 에이전트를 실행하세요."
 msgid "Use the Paradev tray menu > Host Service > Restart, then retry."
 msgstr "Paradev 트레이 메뉴 > Host Service > Restart를 사용한 뒤 다시 시도하세요."
 
+msgid "Use the same origin branch for all folders"
+msgstr "모든 폴더에 동일한 origin 브랜치 사용"
+
 msgid "Use this account"
 msgstr "이 계정 사용"
 
@@ -23811,6 +23841,9 @@ msgstr "worktree"
 
 msgid "Worktree · its own folder"
 msgstr "worktree · 전용 폴더"
+
+msgid "Worktree creation failed; kept modified folders: {paths}"
+msgstr "worktree를 만들 수 없습니다. 수정된 폴더는 보존되었습니다: {paths}"
 
 msgid "Worktree location"
 msgstr "worktree 위치"
