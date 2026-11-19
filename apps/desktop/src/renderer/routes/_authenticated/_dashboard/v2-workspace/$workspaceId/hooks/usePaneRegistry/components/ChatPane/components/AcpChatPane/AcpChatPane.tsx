@@ -23,11 +23,11 @@ import { useChatTurnSnapshotsEnabled } from "renderer/stores/chat-turn-snapshots
 import { StoredChatTranscript } from "../../../../../../components/StoredChatTranscript";
 import type { OpenFile } from "../../../../../../types";
 import {
-	ignoreChatTerminal,
 	isChatSessionClosed,
 	isChatSessionReopened,
 } from "../../../../../../utils/closedChatSessions";
 import { saveLastChatAgent } from "../../../../../../utils/lastChatAgent";
+import { useForkChatSession } from "../../../../hooks/useForkChatSession";
 import {
 	forgetSavedChatMode,
 	freshStartMode,
@@ -161,6 +161,7 @@ export function AcpChatPane({
 	const { t } = useLingui();
 	const snapshotWorktree = useChatTurnSnapshotsEnabled();
 	const { client, wiring } = useSessionClient(sessionId);
+	const forkChatSession = useForkChatSession(workspaceId);
 	const storedSnapshot = useStoredChatSnapshot(sessionId);
 	const { forkToWorktree, canForkToWorktree } = useForkChat();
 	const { hostUrl } = useWorkspaceClient();
@@ -324,38 +325,18 @@ export function AcpChatPane({
 	const forkHere = useCallback(
 		(fromItemId?: string) => {
 			if (!sessionId) return;
-			const terminalId = crypto.randomUUID();
-			ignoreChatTerminal(terminalId);
-			void wiring.transport
-				.forkSession({
-					commandId: crypto.randomUUID(),
-					sessionId,
-					workspaceId,
-					terminalId,
-					...(fromItemId ? { fromItemId } : {}),
-				})
-				.then((forked) => {
-					if (forked) {
-						if (!mounted.current || !onOpenForkedChat) {
-							void wiring.transport
-								.closeSession({ sessionId: forked.sessionId })
-								.catch(() => undefined);
-							return;
-						}
-						onOpenForkedChat({ sessionId: forked.sessionId, terminalId });
-						return;
-					}
-					// The adapter declines rather than sending a `session/fork` an
-					// agent would reject, and a button that does nothing is worse
-					// than one that says why.
-					toast.error(t({ message: "This agent can't branch a conversation" }));
-				})
-				.catch((error: unknown) => {
-					console.error("[acp-chat] fork failed", error);
-					toast.error(t({ message: "Couldn't branch the conversation" }));
-				});
+			void forkChatSession(sessionId, fromItemId).then((forked) => {
+				if (!forked) return;
+				if (!mounted.current || !onOpenForkedChat) {
+					void wiring.transport
+						.closeSession({ sessionId: forked.sessionId })
+						.catch(() => undefined);
+					return;
+				}
+				onOpenForkedChat(forked);
+			});
 		},
-		[wiring.transport, sessionId, workspaceId, onOpenForkedChat, t],
+		[forkChatSession, wiring.transport, sessionId, onOpenForkedChat],
 	);
 
 	const fork = useCallback(

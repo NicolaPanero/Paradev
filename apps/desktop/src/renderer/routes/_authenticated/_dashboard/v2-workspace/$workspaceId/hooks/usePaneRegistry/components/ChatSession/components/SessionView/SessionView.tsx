@@ -26,6 +26,7 @@ import { MessageScroller } from "@superset/chat-ui/MessageScroller";
 import type { ComposerDraft } from "@superset/chat-ui/PromptInput";
 import { ChatHistorySidebarScroller } from "@superset/ui/chat-history-sidebar";
 import { toast } from "@superset/ui/sonner";
+import { workspaceTrpc } from "@superset/workspace-client";
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { env } from "renderer/env.renderer";
@@ -53,6 +54,8 @@ import { editableMessageIds, rewindTranscript } from "../../utils/messageEdit";
 import { modelDisplayName } from "../../utils/modelDisplayName";
 import { promptHistory } from "../../utils/promptHistory";
 import { railMessages } from "../../utils/railMessages";
+import { splitOutbox } from "../../utils/splitOutbox";
+import { unrunPrompt } from "../../utils/unrunPrompt";
 import {
 	type AgentChoice,
 	type AgentSwitcher,
@@ -79,20 +82,21 @@ import {
 	type SwitchableAgent,
 	UsageLimitNotice,
 } from "./components/UsageLimitNotice";
+import { useAgentSignIn } from "./hooks/useAgentSignIn";
 import { useFailureRecovery } from "./hooks/useFailureRecovery";
 import { useForkPromptQueue } from "./hooks/useForkPromptQueue";
 import { useLaunchPromptDelivered } from "./hooks/useLaunchPromptDelivered";
 import { useMainSend } from "./hooks/useMainSend";
-import { useManualSignIn } from "./hooks/useManualSignIn";
 import { useMoveToBackground } from "./hooks/useMoveToBackground";
 import { usePendingPrompts } from "./hooks/usePendingPrompts";
 import { useRestoreUnsentPrompts } from "./hooks/useRestoreUnsentPrompts";
+import { useStoredHistory } from "./hooks/useStoredHistory";
 import { useSubagentNavigation } from "./hooks/useSubagentNavigation";
 import { useSubagentTarget } from "./hooks/useSubagentTarget";
 import { escapeBack } from "./utils/escapeBack";
 import { settledToolCalls } from "./utils/settledToolCalls";
 import { setupEnvironmentId } from "./utils/setupEnvironmentLink";
-import { withStoredHistory } from "./utils/withStoredHistory";
+import { subagentsInTurn } from "./utils/subagentsInTurn";
 
 const RESUME_FOLLOW_PX = 24;
 const NO_COMMANDS: AvailableCommand[] = [];
@@ -262,19 +266,18 @@ export function SessionView({
 		}
 	}, [outbox]);
 	useRestoreUnsentPrompts(draftKey, outbox, draftOf);
+	const mergedStoredSnapshot = useStoredHistory(
+		storedSnapshot,
+		session.snapshot,
+	);
 	const earlier = useEarlierMessages(
 		workspaceId,
 		session.snapshot.session?.harnessSessionId,
 	);
 	const { withEarlier } = earlier;
 	const shownSnapshot = useMemo(
-		() =>
-			withEarlier(
-				storedSnapshot
-					? withStoredHistory(storedSnapshot, session.snapshot)
-					: session.snapshot,
-			),
-		[withEarlier, storedSnapshot, session.snapshot],
+		() => withEarlier(mergedStoredSnapshot),
+		[withEarlier, mergedStoredSnapshot],
 	);
 	const timeline = useTimeline(shownSnapshot, { nestChildItems: true });
 	const rail = useStableList(
@@ -310,12 +313,17 @@ export function SessionView({
 		() => findRunningTurnId(session.snapshot.turns),
 		[session.snapshot.turns],
 	);
-	const liveRefreshKey = useMemo(
-		() =>
-			settledToolCalls(
-				timeline.find((group) => group.turnId === runningTurnId),
-			),
+	const runningGroup = useMemo(
+		() => timeline.find((group) => group.turnId === runningTurnId),
 		[timeline, runningTurnId],
+	);
+	const liveRefreshKey = useMemo(
+		() => settledToolCalls(runningGroup),
+		[runningGroup],
+	);
+	const runningTurnSubagents = useMemo(
+		() => subagentsInTurn(runningGroup),
+		[runningGroup],
 	);
 	const turnChanges = useMemo<TurnChangesSource>(
 		() => ({
@@ -337,6 +345,9 @@ export function SessionView({
 		}),
 		[client, workspaceId],
 	);
+	const worktreePath = workspaceTrpc.workspace.get.useQuery({
+		id: workspaceId,
+	}).data?.worktreePath;
 	const sessionUsage = useMemo(
 		() => latestSessionUsage(session.snapshot.turns),
 		[session.snapshot.turns],
@@ -480,10 +491,13 @@ export function SessionView({
 		},
 		[onModeChange, setMode],
 	);
-	const editableIds = useMemo(
-		() => editableMessageIds(timeline, harness),
-		[timeline, harness],
+	const editableIdList = useStableList(
+		useMemo(
+			() => [...editableMessageIds(timeline, harness)],
+			[timeline, harness],
+		),
 	);
+	const editableIds = useMemo(() => new Set(editableIdList), [editableIdList]);
 	const editable = onEditMessage !== undefined && held === undefined;
 	const editMessage = useMemo(
 		() =>
@@ -640,9 +654,22 @@ export function SessionView({
 				: null,
 		[loaded, runningTurnId, awaitingBackground, cancelTurn, held],
 	);
+	const sentOutbox = useMemo(
+		() => splitOutbox(session.outbox, runningTurnId !== null),
+		[session.outbox, runningTurnId],
+	);
+	const sendingPrompts = useMemo(
+		() =>
+			sentOutbox.queue.filter(
+				(sending) =>
+					!queuedPrompts.some((prompt) => prompt.clientId === sending.clientId),
+			),
+		[sentOutbox.queue, queuedPrompts],
+	);
 	const promptQueue = useMemo(
 		() => ({
 			prompts: queuedPrompts,
+			sending: sendingPrompts,
 			paused: sessionState?.queuePaused === true,
 			pausedByLimit:
 				sessionState?.usageLimit !== undefined ||
@@ -656,6 +683,7 @@ export function SessionView({
 		}),
 		[
 			queuedPrompts,
+			sendingPrompts,
 			sessionState?.queuePaused,
 			sessionState?.usageLimit,
 			sessionState?.queuePausedByLimit,
@@ -719,7 +747,8 @@ export function SessionView({
 		() => composerRef.current?.openModelPicker(),
 		[],
 	);
-	const { manualSignIn, openAgentSettings } = useManualSignIn(presetId);
+	const { manualSignIn, openAgentSettings, agentSignIn } =
+		useAgentSignIn(presetId);
 	const { failureActions, onSetConfigOption, onModelPickerOpenChange } =
 		useFailureRecovery({
 			blocked:
@@ -732,6 +761,8 @@ export function SessionView({
 			configOptions,
 			manualSignIn,
 			openAgentSettings,
+			agentSignIn,
+			lastPrompt: unrunPrompt(timeline),
 			onRestartAndContinue,
 			onStartNewChat,
 			openModelPicker,
@@ -754,6 +785,7 @@ export function SessionView({
 			openLink={openLink}
 			getOpenFilePaths={getOpenFilePaths}
 			workspaceId={workspaceId}
+			worktreePath={worktreePath}
 		>
 			<ComposerDropZone
 				className="flex h-full min-h-0 w-full min-w-0 flex-col"
@@ -838,6 +870,9 @@ export function SessionView({
 				{!focusedSubagentId && (
 					<ComposerChips
 						backgroundTasks={sessionState?.backgroundTasks}
+						hiddenSubagents={
+							awaitingBackground ? undefined : runningTurnSubagents
+						}
 						liveRefreshKey={liveRefreshKey}
 						onMoveToBackground={onBackgroundSubagent}
 						onOpenSubagent={openSubagent}

@@ -1,0 +1,95 @@
+diff --git a/dist/superset-context-usage.js b/dist/superset-context-usage.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..8245e48be2cff7d79b8d4ac29da3621d051e926f
+--- /dev/null
++++ b/dist/superset-context-usage.js
+@@ -0,0 +1,35 @@
++import { RequestError } from "@agentclientprotocol/sdk/unstable";
++
++export const SUPERSET_CONTEXT_USAGE_METHOD = "_superset/context_usage";
++
++export function parseSupersetContextUsageRequest(value) {
++    const sessionId = value && typeof value === "object" && typeof value.sessionId === "string"
++        ? value.sessionId.trim()
++        : "";
++    if (!sessionId) {
++        throw RequestError.invalidParams(undefined, "context usage params require a non-empty sessionId");
++    }
++    return { sessionId };
++}
++
++export async function readSupersetContextUsage(query, timeoutMs = 5000) {
++    if (!query || typeof query.getContextUsage !== "function")
++        return { usage: null };
++    let timer;
++    const timeout = new Promise((resolve) => {
++        timer = setTimeout(() => resolve(null), timeoutMs);
++    });
++    try {
++        const usage = await Promise.race([
++            query.getContextUsage({ detail: "summary" }),
++            timeout,
++        ]);
++        return { usage: usage ?? null };
++    }
++    catch {
++        return { usage: null };
++    }
++    finally {
++        clearTimeout(timer);
++    }
++}
+diff --git a/dist/v1/acp-agent.js b/dist/v1/acp-agent.js
+index eb1c8998e3c796083c028eb14b691f3889ac3175..d76e3691cd5d33fb7f6561685436773537912a05 100644
+--- a/dist/v1/acp-agent.js
++++ b/dist/v1/acp-agent.js
+@@ -1,3 +1,4 @@
++import { SUPERSET_CONTEXT_USAGE_METHOD, parseSupersetContextUsageRequest, readSupersetContextUsage } from "../superset-context-usage.js";
+ import { agent as acpAgent, methods, RequestError, } from "@agentclientprotocol/sdk/unstable";
+ import { getSessionMessages, listSessions, query, } from "@anthropic-ai/claude-agent-sdk";
+ import { GOAL_ACTIONS, GOAL_CONTROL_METHOD, GOAL_EXTENSION_VERSION, goalUpdateFromPrompt, parseGoalRequest, toGoalSnapshot, } from "./goal-extension.js";
+@@ -5182,6 +5183,9 @@ export class ClaudeAcpAgent {
+             }
+         }
+     }
++    async supersetContextUsage(params) {
++        return readSupersetContextUsage(this.sessions[params.sessionId]?.query);
++    }
+     async cancel(params) {
+         if (!this.sessions[params.sessionId] && (await this.cancelChildSession(params.sessionId))) {
+             return;
+@@ -8379,6 +8383,7 @@ export function v1AgentApp(logger, onAgent) {
+         agent = new ClaudeAcpAgent(new ClientConnection(connection.client), logger);
+         onAgent(agent);
+     })
++        .onRequest(SUPERSET_CONTEXT_USAGE_METHOD, { parse: parseSupersetContextUsageRequest }, (ctx) => agent.supersetContextUsage(ctx.params))
+         .onRequest(methods.agent.initialize, (ctx) => agent.initialize(ctx.params))
+         .onRequest(methods.agent.session.new, (ctx) => agent.newSession(ctx.params))
+         .onRequest(methods.agent.session.load, (ctx) => agent.loadSession(ctx.params))
+diff --git a/dist/v2/agent.js b/dist/v2/agent.js
+index 3dbb854f146027f4861543a2b498916e6956a417..71a89ae8741dd95b46fd6e0591129078656dcdf8 100644
+--- a/dist/v2/agent.js
++++ b/dist/v2/agent.js
+@@ -1,3 +1,4 @@
++import { SUPERSET_CONTEXT_USAGE_METHOD, parseSupersetContextUsageRequest, readSupersetContextUsage } from "../superset-context-usage.js";
+ /**
+  * The ACP v2 core: serves ACP v2 straight from Claude Code, without
+  * `ClaudeAcpAgent`.
+@@ -63,6 +64,7 @@ export function v2AgentApp(logger, onAgent) {
+         agent = new V2Agent(connection.client, logger ?? console);
+         onAgent(agent);
+     })
++        .onRequest(SUPERSET_CONTEXT_USAGE_METHOD, { parse: parseSupersetContextUsageRequest }, (ctx) => agent.supersetContextUsage(ctx.params))
+         .onRequest(v2.methods.agent.initialize, ({ params }) => agent.initialize(params))
+         .onRequest(v2.methods.agent.auth.login, ({ params }) => agent.auth.login(params))
+         .onRequest(v2.methods.agent.auth.logout, () => agent.auth.logout())
+@@ -571,6 +573,9 @@ class V2Agent {
+             ? RequestError.internalError({ sessionId }, stopped)
+             : RequestError.sessionNotFound(sessionId);
+     }
++    async supersetContextUsage(params) {
++        return readSupersetContextUsage(this.sessions.get(params.sessionId)?.query);
++    }
+     async cancel(sessionId) {
+         this.restarts.cancelled(sessionId);
+         const session = this.sessions.get(sessionId);

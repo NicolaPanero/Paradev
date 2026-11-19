@@ -10,6 +10,7 @@ import { alert } from "@superset/ui/atoms/Alert";
 import { toast } from "@superset/ui/sonner";
 import { cn } from "@superset/ui/utils";
 import { workspaceTrpc } from "@superset/workspace-client";
+import { useQueryClient } from "@tanstack/react-query";
 import {
 	Circle,
 	Files,
@@ -30,11 +31,16 @@ import {
 	LuBot,
 	LuClipboard,
 	LuClipboardCopy,
+	LuCopy,
 	LuEraser,
 	LuExternalLink,
 	LuLink,
 	LuPower,
 } from "react-icons/lu";
+import {
+	getTerminalAgentBindingsQueryKey,
+	type TerminalAgentBinding,
+} from "renderer/hooks/host-service/useTerminalAgentBindings";
 import { useWorkspaceHostTarget } from "renderer/hooks/host-service/useWorkspaceHostUrl";
 import { useHotkeyDisplay } from "renderer/hotkeys";
 import { FileIcon } from "renderer/lib/fileIcons";
@@ -88,6 +94,7 @@ import {
 } from "../../utils/forkChatCloseIntent/forkChatCloseIntent";
 import { FORK_TASK_PANE_KIND } from "../../utils/forkTaskPane";
 import { openPagePaneInStore } from "../../utils/openPagePaneInStore";
+import { openPullRequestPaneInStore } from "../../utils/openPullRequestPaneInStore";
 import { replaceNewTabPane } from "../../utils/replaceNewTabPane";
 import { useAgentSessionLauncher } from "../useAgentSessionLauncher";
 import { useForkBackgroundChats } from "../useForkBackgroundChats";
@@ -102,8 +109,6 @@ import {
 import { BrowserPane, BrowserPaneToolbar } from "./components/BrowserPane";
 import { ChangesListPane } from "./components/ChangesListPane";
 import { ChatPane } from "./components/ChatPane";
-import { ChatHistoryPicker } from "./components/ChatPane/components/ChatHistoryPicker";
-import { ChatModeMenu } from "./components/ChatPane/components/ChatModeMenu";
 import { ChatPaneTitle } from "./components/ChatPaneTitle";
 import { CommentPane } from "./components/CommentPane";
 import { CommentPaneHeaderExtras } from "./components/CommentPane/components/CommentPaneHeaderExtras";
@@ -234,6 +239,7 @@ export function usePaneRegistry({
 	const clearShortcut = useHotkeyDisplay("CLEAR_TERMINAL").text;
 	const scrollToBottomShortcut = useHotkeyDisplay("SCROLL_TO_BOTTOM").text;
 	const workspaceTrpcUtils = workspaceTrpc.useUtils();
+	const queryClient = useQueryClient();
 	const { mutate: killTerminalSession, isPending: isKillingTerminalSession } =
 		workspaceTrpc.terminal.killSession.useMutation({
 			onSuccess: () => {
@@ -474,6 +480,7 @@ export function usePaneRegistry({
 						const pane = (
 							<DiffPane
 								context={ctx}
+								mainStore={store}
 								workspaceId={repoKey ?? workspaceId}
 								onOpenFile={onOpenFile}
 								onCreateNewAgentSession={createNewAgentSession}
@@ -612,6 +619,10 @@ export function usePaneRegistry({
 								context={ctx}
 								launcher={launcher}
 								workspaceId={workspaceId}
+								onCreateNewAgentSession={createNewAgentSession}
+								onForkIntoOtherSurface={(source) =>
+									void forkIntoOtherSurface(ctx, source)
+								}
 							/>
 							<V2NotificationStatusIndicator
 								sources={getV2NotificationSourcesForPane(ctx.pane)}
@@ -634,10 +645,6 @@ export function usePaneRegistry({
 									}}
 									terminalInstanceId={ctx.pane.id}
 									onNewShell={() => startNewShell(ctx)}
-									onCreateNewAgentSession={createNewAgentSession}
-									onForkIntoOtherSurface={(source) =>
-										void forkIntoOtherSurface(ctx, source)
-									}
 									onOpenSubagent={onOpenSubagent}
 								/>
 							</div>
@@ -660,6 +667,23 @@ export function usePaneRegistry({
 						</ForkChatExtras>
 					),
 					contextMenuActions: (_ctx, defaults) => {
+						const copyText = (text: string) => {
+							navigator.clipboard
+								.writeText(text)
+								.then(() => toast.success(t({ message: "Copied" })))
+								.catch(() => {
+									toast.error(t({ message: "Copy failed" }));
+								});
+						};
+						const agentSessionIdOf = (ctx: RendererContext<PaneViewerData>) => {
+							const { terminalId } = ctx.pane.data as TerminalPaneData;
+							return queryClient
+								.getQueryData<TerminalAgentBinding[]>(
+									getTerminalAgentBindingsQueryKey(workspaceId),
+								)
+								?.find((binding) => binding.terminalId === terminalId)
+								?.agentSessionId;
+						};
 						const terminalActions: ContextMenuActionConfig<PaneViewerData>[] = [
 							{
 								key: "copy",
@@ -744,6 +768,24 @@ export function usePaneRegistry({
 										terminalId,
 										ctx.pane.id,
 									);
+								},
+							},
+							{ key: "sep-terminal-ids", type: "separator" },
+							{
+								key: "copy-terminal-id",
+								label: t({ message: "Copy terminal ID" }),
+								icon: <LuCopy />,
+								onSelect: (ctx) =>
+									copyText((ctx.pane.data as TerminalPaneData).terminalId),
+							},
+							{
+								key: "copy-agent-session-id",
+								label: t({ message: "Copy agent session ID" }),
+								icon: <LuCopy />,
+								hidden: (ctx) => !agentSessionIdOf(ctx),
+								onSelect: (ctx) => {
+									const id = agentSessionIdOf(ctx);
+									if (id) copyText(id);
 								},
 							},
 							{ key: "sep-terminal-defaults", type: "separator" },
@@ -932,6 +974,9 @@ export function usePaneRegistry({
 								page={page}
 								pageUiId={pagesListPageUiId(ctx.pane.id, page)}
 								onBack={() => ctx.actions.updateData({ kind: "pages-list" })}
+								onOpenPage={(next) =>
+									ctx.actions.updateData({ kind: "pages-list", page: next })
+								}
 							/>
 						);
 					},
@@ -1024,37 +1069,27 @@ export function usePaneRegistry({
 						closeChatWithUndo(pane);
 					},
 					insetsAside: true,
-					renderTitle: (ctx: RendererContext<PaneViewerData>) => {
-						const data = ctx.pane.data as ChatPaneData;
-						return (
-							<ChatPaneTitle
-								chatKey={data.terminalId}
-								icon={chatPaneIcon(data)}
-								isActive={ctx.isActive}
-								title={ctx.pane.titleOverride ?? t({ message: "Chat" })}
-							/>
-						);
-					},
+					renderTitle: (ctx: RendererContext<PaneViewerData>) => (
+						<ChatPaneTitle
+							context={ctx}
+							workspaceId={workspaceId}
+							linkedStores={linkedStores}
+							icon={chatPaneIcon(ctx.pane.data as ChatPaneData)}
+							onForkIntoOtherSurface={(source) =>
+								void forkIntoOtherSurface(ctx, source)
+							}
+						/>
+					),
 					renderHeaderExtras: (ctx: RendererContext<PaneViewerData>) => {
 						const data = ctx.pane.data as ChatPaneData;
 						return (
 							<div className="flex items-center gap-1">
 								<ForkChatOrigin ctx={ctx} workspaceId={workspaceId} />
-								<ChatHistoryPicker
-									context={ctx}
-									workspaceId={workspaceId}
-									linkedStores={linkedStores}
-								/>
 								<AgentSurfaceToggle
 									pane={{ kind: "chat", data }}
 									onChange={(surface, agent) =>
 										void agentSurface.switchSurface(ctx, surface, agent)
 									}
-									workspaceId={workspaceId}
-								/>
-								<ChatModeMenu
-									data={data}
-									onFork={(source) => void forkIntoOtherSurface(ctx, source)}
 									workspaceId={workspaceId}
 								/>
 							</div>
@@ -1153,6 +1188,9 @@ export function usePaneRegistry({
 							data={ctx.pane.data as PullRequestPaneData}
 							onOpenDiff={onOpenDiff}
 							onOpenPage={(page) => openPagePaneInStore(ctx.store, page)}
+							onOpenPullRequest={(ref) =>
+								openPullRequestPaneInStore(ctx.store, ref)
+							}
 						/>
 					),
 					renderHeaderExtras: (ctx: RendererContext<PaneViewerData>) => (
@@ -1201,6 +1239,7 @@ export function usePaneRegistry({
 							data={ctx.pane.data as PagePaneData}
 							paneId={ctx.pane.id}
 							onClose={() => ctx.actions.close()}
+							onOpenPage={(page) => openPagePaneInStore(ctx.store, page, "tab")}
 						/>
 					),
 					renderHeaderExtras: (ctx: RendererContext<PaneViewerData>) => (
@@ -1220,6 +1259,7 @@ export function usePaneRegistry({
 								ctx.actions.updateData(data as PaneViewerData)
 							}
 							onFocus={ctx.actions.focus}
+							isActive={ctx.isActive}
 						/>
 					),
 					contextMenuActions: (_ctx, defaults) =>
@@ -1274,6 +1314,7 @@ export function usePaneRegistry({
 			openAgentChat,
 			focusAgentTerminal,
 			workspaceTrpcUtils,
+			queryClient,
 			t,
 			desktopUrl,
 			chatPaneIcon,

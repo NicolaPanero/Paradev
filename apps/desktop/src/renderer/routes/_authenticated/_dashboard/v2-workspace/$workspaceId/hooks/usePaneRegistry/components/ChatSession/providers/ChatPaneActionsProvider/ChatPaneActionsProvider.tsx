@@ -38,7 +38,10 @@ export type ChatPaneActions = {
 	/** Absent where the chat has no workspace to show diffs in. */
 	openDiff?: OpenDiff | undefined;
 	turnChanges?: TurnChangesSource | undefined;
+	/** Absent where no workspace host is mounted to read from, such as a cloud chat shown while its box wakes. */
 	workspaceId?: string | undefined;
+	/** Absent where the chat has no worktree on disk to resolve paths against. */
+	worktreePath?: string | undefined;
 	/** Absent where the chat has no workspace to open pages into. */
 	openPage?: OpenPage | undefined;
 	openLink?: OpenLink | undefined;
@@ -62,6 +65,7 @@ export function ChatPaneActionsProvider({
 	openDiff,
 	turnChanges,
 	workspaceId,
+	worktreePath,
 	openPage,
 	openLink,
 	getOpenFilePaths,
@@ -74,6 +78,7 @@ export function ChatPaneActionsProvider({
 			openDiff,
 			turnChanges,
 			workspaceId,
+			worktreePath,
 			openPage,
 			openLink,
 			getOpenFilePaths,
@@ -85,6 +90,7 @@ export function ChatPaneActionsProvider({
 			openDiff,
 			turnChanges,
 			workspaceId,
+			worktreePath,
 			openPage,
 			openLink,
 			getOpenFilePaths,

@@ -13,8 +13,8 @@ import {
 	parseAttachedTerminalIdsKey,
 } from "../../utils/backgroundTerminals";
 import { isTerminalReplacementCancelled } from "../../utils/cancelledTerminalReplacements";
-import { focusOrAddTerminalPane } from "../../utils/focusTerminalPane";
 import { backgroundForkSetupTabs } from "./backgroundForkSetupTabs";
+import { forkAdoptBackgroundTerminals } from "./fork-adopt-background-terminals";
 
 interface UseAutoAdoptBackgroundSessionsArgs {
 	store: StoreApi<WorkspaceStore<PaneViewerData>>;
@@ -87,24 +87,7 @@ export function useAutoAdoptBackgroundSessions({
 		);
 		if (toAdopt.length === 0) return;
 
-		// Oldest→newest so tabs read chronologically; restore the active tab so
-		// adoption never steals focus.
-		const restoreActiveTabId = state.tabs.length > 0 ? state.activeTabId : null;
-		for (const session of toAdopt.reverse()) {
-			const setup = isForkSetupTerminal(session);
-			focusOrAddTerminalPane(store, session.terminalId, { focus: setup });
-			if (setup) {
-				const location = store.getState().getActivePane();
-				if (location)
-					store.getState().setTabTitleOverride({
-						tabId: location.tabId,
-						titleOverride: "Workspace Setup",
-					});
-			}
-		}
-		if (restoreActiveTabId) {
-			store.getState().setActiveTab(restoreActiveTabId);
-		}
+		forkAdoptBackgroundTerminals(store, toAdopt.reverse());
 		logStressEvent("background-terminals.auto-adopt", {
 			count: toAdopt.length,
 			workspaceId,
