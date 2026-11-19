@@ -39,7 +39,7 @@ fails the backup rather than silently dropping available credentials.
 2. Review the authenticated manifest. App data and the desktop profile use the
    destination installation's locations. Agent configuration defaults to the
    new user's home. Repositories and other external folders default to
-   `~/Paradev Restored`; edit each destination as needed.
+   `~/ParadevRestored`; edit each destination as needed.
 3. Confirm the destinations and close the app to restore. The helper checks
    free space per volume, stages the data beside each destination and verifies
    every file and the archive authentication tag before replacing anything.
@@ -81,7 +81,9 @@ Keychain data are passed to helpers through pipes, not command arguments or
 plaintext job files.
 
 The main entry wrapper selects the offline helper before normal app imports.
-Main chunks stay beside `index.js` so existing worker/preload paths that use
+Normal startup starts immediately, before Electron becomes ready. A pending
+recovery runs in a temporary profile and relaunches a fresh process after rollback;
+it never imports normal startup after asynchronous recovery. Main chunks stay beside `index.js` so existing worker/preload paths that use
 `__dirname` continue to resolve after splitting normal startup into a chunk.
 The renderer consumes an existing-storage seed once, before its stores load;
 the seed is removed after successful application. No new persistent localStorage
