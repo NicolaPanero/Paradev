@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-209-origin-branches-updates-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-209-portable-backup-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -35,7 +35,10 @@ export function ForkWhatsNewNotice() {
 			message:
 				"Choose an origin branch for each repository when creating a worktree.",
 		}),
-		t({ message: "Apply one remote branch to all project folders." }),
+		t({
+			message:
+				"Move your entire local setup to another Mac with an encrypted backup.",
+		}),
 		t({
 			message:
 				"Updates resume interrupted downloads, including after a manual retry.",

@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Přihlásit se"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "Použít jednu vzdálenou větev pro všechny složky projektu."
-
 msgid "Apply recommended settings"
 msgstr "Použít doporučená nastavení"
 
@@ -3739,6 +3736,9 @@ msgstr "Zpět na stránky"
 msgid "Back to the leaderboard"
 msgstr "Zpět na žebříček"
 
+msgid "Back up everything"
+msgstr "Zálohovat vše"
+
 msgid "Backed by"
 msgstr "Podporují nás"
 
@@ -3762,6 +3762,18 @@ msgstr "Paměť terminálů na pozadí"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "Operace dokončena. Paradev++ se znovu otevře."
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "Zálohování selhalo. Pro obnovení znovu otevřete Paradev++."
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "Zálohování selhalo. Zkontrolujte podrobnosti a zkuste to znovu."
+
+msgid "Backup password (at least 12 characters)"
+msgstr "Heslo zálohy (alespoň 12 znaků)"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "Zavřít všechny porty pro {0}"
 msgid "Close all ports in this workspace"
 msgstr "Zavřít všechny porty v tomto pracovním prostoru"
 
+msgid "Close and create backup"
+msgstr "Zavřít a vytvořit zálohu"
+
+msgid "Close and restore"
+msgstr "Zavřít a obnovit"
+
 msgid "Close Browser"
 msgstr "Zavřít prohlížeč"
 
@@ -5586,6 +5604,9 @@ msgstr "Potvrdit odstranění"
 
 msgid "Confirm merge"
 msgstr "Potvrdit sloučení"
+
+msgid "Confirm password"
+msgstr "Potvrdit heslo"
 
 msgid "Confirm switch"
 msgstr "Potvrdit změnu"
@@ -7170,6 +7191,9 @@ msgstr "Vytváří se úkol"
 msgid "Creating a workspace"
 msgstr "Vytváří se pracovní prostor"
 
+msgid "Creating encrypted backup…"
+msgstr "Vytváření šifrované zálohy…"
+
 msgid "Creating PR..."
 msgstr "Vytváření PR…"
 
@@ -7796,6 +7820,9 @@ msgstr "Desktopová aplikace"
 
 msgid "Desktop renderer"
 msgstr "Desktopový renderer"
+
+msgid "Destination folder"
+msgstr "Cílová složka"
 
 msgid "Destructive"
 msgstr "Destructive"
@@ -9574,6 +9601,9 @@ msgstr "Soubor byl na disku smazán."
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "Soubor byl na disku smazán. Pořád máte neuložené změny."
 
+msgid "files"
+msgstr "souborů"
+
 msgid "Files"
 msgstr "Soubory"
 
@@ -10857,6 +10887,9 @@ msgstr "Také se mi moc líbí, že můžu přímo z telefonu spustit na svém M
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "Můžu sedět v kavárně s kávou, zatímco práce pokračuje dál."
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "Zkontroloval jsem náhled. Zavřete Paradev++ a pozastavte ostatní nástroje zapisující tyto soubory, po dokončení aplikaci znovu otevřete."
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "Ranní procházky začínám s nápadem a končím s pull requestem."
 
@@ -11133,6 +11166,9 @@ msgstr "Zahrnuto v Enterprise"
 
 msgid "Included with Team and Ultra."
 msgstr "Součástí plánů Team a Ultra."
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "Zahrnuje ignorované a nesledované soubory, závislosti, historii Git a místní přihlašovací údaje."
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "Obsahuje variantu box specifickou pro Paradev"
@@ -13164,6 +13200,9 @@ msgstr "Přesuňte práci z cloudu"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "Přesunout fokus mezi hlavními kartami a pravým postranním panelem a otevřít panel, pokud je zavřený"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "Přeneste nastavení, projekty, worktree, historii chatů, profily agentů a soubory na jiný Mac."
+
 msgid "Move task to"
 msgstr "Přesunout úkol do"
 
@@ -13202,6 +13241,9 @@ msgstr "Přesunout na kartu"
 
 msgid "Move your agents."
 msgstr "Přesuňte své agenty."
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "Přeneste celé místní prostředí na jiný Mac pomocí šifrované zálohy."
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "Přesuňte své worktree a agenty do {companyName} během pár minut. Zdarma a open source."
@@ -16336,6 +16378,9 @@ msgstr "Oblíbené"
 msgid "Popular models"
 msgstr "Oblíbené modely"
 
+msgid "Portable backup"
+msgstr "Přenosná záloha"
+
 msgid "Ports"
 msgstr "Porty"
 
@@ -18029,6 +18074,9 @@ msgstr "Obnovit u {0} výchozí nastavení?"
 msgid "Restore automation"
 msgstr "Obnovit automatizaci"
 
+msgid "Restore backup"
+msgstr "Obnovit zálohu"
+
 msgid "Restore default"
 msgstr "Obnovit výchozí"
 
@@ -18200,6 +18248,9 @@ msgstr "Revize zamítnuta"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "Než se rozhodnete pokračovat, projděte si každé selhání."
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "Zkontrolujte každý cíl. Před nahrazením se stávající složky přesunou do sousedních bezpečnostních kopií."
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "Filtry kontroly platí pro repozitáře GitHub."
@@ -18488,6 +18539,9 @@ msgstr "Spouštím „{name}“"
 
 msgid "Running agents on this profile lose access."
 msgstr "Běžící agenti na tomto profilu ztratí přístup."
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "Spuštění agenti se zastaví. Na cílový Mac nainstalujte potřebné nástroje. Někteří poskytovatelé mohou vyžadovat opětovné přihlášení."
 
 msgid "Running bun test…"
 msgstr "Spouštím bun test…"
@@ -21480,6 +21534,9 @@ msgstr "Aplikace je ve verzi {appVersion}, ale připojená ke službě hostitele
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "Aplikace se restartuje, jakmile bude aktualizace připravena. Nastavení a data zůstanou zachována."
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "Archiv je šifrován vaším heslem. Uschovejte ho: nelze ho obnovit."
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "Automatizace a její historie spuštění budou odstraněny. Tuto akci nelze vrátit zpět."
 
@@ -21957,6 +22014,9 @@ msgstr "Tyto složky stále obsahují vaše soubory, ale do nového Paradevu se 
 
 msgid "These ports are still in use"
 msgstr "Tyto porty se stále používají"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "Tyto odkazované cesty již chybí a nelze je zahrnout:"
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "Běží na předplatných a klíčích, které už máte."
@@ -23629,6 +23689,9 @@ msgstr "Ověř to"
 msgid "Verify your identity"
 msgstr "ověřit vaši totožnost"
 
+msgid "Verifying and extracting backup…"
+msgstr "Ověřování a rozbalování zálohy…"
+
 msgid "Version"
 msgstr "Verze"
 
@@ -23834,6 +23897,9 @@ msgstr "Čeká na kontroly"
 
 msgid "Waiting for it to connect…"
 msgstr "Čeká se na připojení…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "Čekání na ukončení Paradev++…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "Čekání na kvótu. Zastavení zruší automatické pokračování."

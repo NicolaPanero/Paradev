@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Lamar"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "Terapkan satu branch remote ke semua folder proyek."
-
 msgid "Apply recommended settings"
 msgstr "Terapkan pengaturan yang disarankan"
 
@@ -3739,6 +3736,9 @@ msgstr "Kembali ke halaman"
 msgid "Back to the leaderboard"
 msgstr "Kembali ke papan peringkat"
 
+msgid "Back up everything"
+msgstr "Cadangkan semuanya"
+
 msgid "Backed by"
 msgstr "Didukung oleh"
 
@@ -3762,6 +3762,18 @@ msgstr "Memori terminal latar belakang"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "Operasi selesai. Paradev++ akan dibuka kembali."
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "Pencadangan gagal. Buka kembali Paradev++ untuk memulihkan data."
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "Pencadangan gagal. Periksa detail lalu coba lagi."
+
+msgid "Backup password (at least 12 characters)"
+msgstr "Kata sandi cadangan (minimal 12 karakter)"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "Tutup semua port untuk {0}"
 msgid "Close all ports in this workspace"
 msgstr "Tutup semua port di workspace ini"
 
+msgid "Close and create backup"
+msgstr "Tutup dan buat cadangan"
+
+msgid "Close and restore"
+msgstr "Tutup dan pulihkan"
+
 msgid "Close Browser"
 msgstr "Tutup Browser"
 
@@ -5586,6 +5604,9 @@ msgstr "Konfirmasi penghapusan"
 
 msgid "Confirm merge"
 msgstr "Konfirmasi penggabungan"
+
+msgid "Confirm password"
+msgstr "Konfirmasi kata sandi"
 
 msgid "Confirm switch"
 msgstr "Konfirmasi perpindahan"
@@ -7170,6 +7191,9 @@ msgstr "Membuat tugas"
 msgid "Creating a workspace"
 msgstr "Membuat workspace"
 
+msgid "Creating encrypted backup…"
+msgstr "Membuat cadangan terenkripsi…"
+
 msgid "Creating PR..."
 msgstr "Membuat PR…"
 
@@ -7796,6 +7820,9 @@ msgstr "Aplikasi desktop"
 
 msgid "Desktop renderer"
 msgstr "Renderer desktop"
+
+msgid "Destination folder"
+msgstr "Folder tujuan"
 
 msgid "Destructive"
 msgstr "Destructive"
@@ -9574,6 +9601,9 @@ msgstr "File dihapus di disk."
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "File dihapus di disk. Anda masih punya perubahan yang belum disimpan."
 
+msgid "files"
+msgstr "file"
+
 msgid "Files"
 msgstr "File"
 
@@ -10857,6 +10887,9 @@ msgstr "Saya juga senang bisa menjalankan lingkungan pohon kerja lokal di Mac la
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "Saya bisa duduk di kafe sambil minum kopi sementara pekerjaan terus berjalan."
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "Saya telah memeriksa pratinjau. Tutup Paradev++ dan jeda alat lain yang menulis file ini, lalu buka kembali setelah selesai."
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "Saya memulai jalan pagi dengan sebuah ide dan mengakhirinya dengan sebuah pull request."
 
@@ -11133,6 +11166,9 @@ msgstr "Termasuk di Enterprise"
 
 msgid "Included with Team and Ultra."
 msgstr "Termasuk dalam Team dan Ultra."
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "Mencakup file yang diabaikan dan tidak dilacak, dependensi, riwayat Git, serta kredensial lokal."
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "Termasuk varian box khusus Paradev"
@@ -13164,6 +13200,9 @@ msgstr "Pindahkan pekerjaan cloud"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "Pindahkan fokus antara tab utama dan sidebar kanan, lalu buka sidebar jika tertutup"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "Pindahkan pengaturan, proyek, worktree, riwayat chat, profil agen, dan file ke Mac lain."
+
 msgid "Move task to"
 msgstr "Pindahkan tugas ke"
 
@@ -13202,6 +13241,9 @@ msgstr "Pindahkan ke Tab"
 
 msgid "Move your agents."
 msgstr "Pindahkan agen Anda."
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "Pindahkan seluruh lingkungan lokal ke Mac lain dengan cadangan terenkripsi."
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "Pindahkan worktree dan agen Anda ke {companyName} dalam beberapa menit. Gratis dan open source."
@@ -16336,6 +16378,9 @@ msgstr "Populer"
 msgid "Popular models"
 msgstr "Model populer"
 
+msgid "Portable backup"
+msgstr "Cadangan portabel"
+
 msgid "Ports"
 msgstr "Port"
 
@@ -18029,6 +18074,9 @@ msgstr "Pulihkan {0} ke setelan bawaan?"
 msgid "Restore automation"
 msgstr "Pulihkan otomatisasi"
 
+msgid "Restore backup"
+msgstr "Pulihkan cadangan"
+
 msgid "Restore default"
 msgstr "Pulihkan setelan bawaan"
 
@@ -18200,6 +18248,9 @@ msgstr "Review Diabaikan"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "Tinjau tiap kegagalan sebelum memutuskan untuk melanjutkan."
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "Periksa setiap tujuan. Folder yang ada dipindahkan ke salinan pengaman di sebelahnya sebelum diganti."
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "Filter tinjauan berlaku untuk repositori GitHub."
@@ -18488,6 +18539,9 @@ msgstr "Menjalankan \"{name}\" sekarang"
 
 msgid "Running agents on this profile lose access."
 msgstr "Agen yang berjalan di profil ini kehilangan akses."
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "Agen yang berjalan akan berhenti. Instal alat yang diperlukan di Mac tujuan. Beberapa penyedia mungkin meminta login ulang."
 
 msgid "Running bun test…"
 msgstr "Menjalankan bun test…"
@@ -21480,6 +21534,9 @@ msgstr "Aplikasi berada di {appVersion} tetapi terhubung ke layanan host yang di
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "Aplikasi akan dimulai ulang saat pembaruan siap. Pengaturan dan data tetap tersimpan."
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "Arsip dienkripsi dengan kata sandi Anda. Simpan dengan aman: kata sandi tidak dapat dipulihkan."
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "Otomatisasi dan riwayat jalannya dihapus. Tindakan ini tidak dapat dibatalkan."
 
@@ -21957,6 +22014,9 @@ msgstr "Folder ini masih berisi file Anda, tetapi tidak otomatis dipindahkan ke 
 
 msgid "These ports are still in use"
 msgstr "Port ini masih dipakai"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "Jalur rujukan berikut sudah tidak ada dan tidak dapat disertakan:"
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "Agen berjalan dengan langganan dan kunci yang sudah Anda miliki."
@@ -23629,6 +23689,9 @@ msgstr "Verifikasi ini"
 msgid "Verify your identity"
 msgstr "Memverifikasi identitas Anda"
 
+msgid "Verifying and extracting backup…"
+msgstr "Memverifikasi dan mengekstrak cadangan…"
+
 msgid "Version"
 msgstr "Versi"
 
@@ -23834,6 +23897,9 @@ msgstr "Menunggu Check"
 
 msgid "Waiting for it to connect…"
 msgstr "Menunggu terhubung…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "Menunggu Paradev++ ditutup…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "Menunggu kuota. Berhenti membatalkan kelanjutan otomatis."

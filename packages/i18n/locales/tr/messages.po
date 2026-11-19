@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Başvur"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "Tüm proje klasörlerine tek bir uzak dal uygulayın."
-
 msgid "Apply recommended settings"
 msgstr "Önerilen ayarları uygula"
 
@@ -3739,6 +3736,9 @@ msgstr "Sayfalara dön"
 msgid "Back to the leaderboard"
 msgstr "Lider tablosuna dön"
 
+msgid "Back up everything"
+msgstr "Her şeyi yedekle"
+
 msgid "Backed by"
 msgstr "Destekçilerimiz"
 
@@ -3762,6 +3762,18 @@ msgstr "Arka plan terminal belleği"
 
 msgid "Backlog"
 msgstr "Bekleyen işler"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "İşlem tamamlandı. Paradev++ yeniden açılacak."
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "Yedekleme başarısız oldu. Kurtarma için Paradev++ uygulamasını yeniden açın."
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "Yedekleme başarısız oldu. Ayrıntıları inceleyip yeniden deneyin."
+
+msgid "Backup password (at least 12 characters)"
+msgstr "Yedek parolası (en az 12 karakter)"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "{0} için tüm portları kapat"
 msgid "Close all ports in this workspace"
 msgstr "Bu çalışma alanındaki tüm portları kapat"
 
+msgid "Close and create backup"
+msgstr "Kapat ve yedek oluştur"
+
+msgid "Close and restore"
+msgstr "Kapat ve geri yükle"
+
 msgid "Close Browser"
 msgstr "Tarayıcıyı kapat"
 
@@ -5586,6 +5604,9 @@ msgstr "Silmeyi onayla"
 
 msgid "Confirm merge"
 msgstr "Birleştirmeyi onayla"
+
+msgid "Confirm password"
+msgstr "Parolayı doğrula"
 
 msgid "Confirm switch"
 msgstr "Geçişi onayla"
@@ -7170,6 +7191,9 @@ msgstr "Görev oluşturuluyor"
 msgid "Creating a workspace"
 msgstr "Çalışma alanı oluşturuluyor"
 
+msgid "Creating encrypted backup…"
+msgstr "Şifreli yedek oluşturuluyor…"
+
 msgid "Creating PR..."
 msgstr "PR oluşturuluyor…"
 
@@ -7796,6 +7820,9 @@ msgstr "Masaüstü uygulaması"
 
 msgid "Desktop renderer"
 msgstr "Masaüstü renderer"
+
+msgid "Destination folder"
+msgstr "Hedef klasör"
 
 msgid "Destructive"
 msgstr "Yıkıcı"
@@ -9574,6 +9601,9 @@ msgstr "Dosya diskten silindi."
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "Dosya diskten silindi. Hâlâ kaydedilmemiş değişiklikleriniz var."
 
+msgid "files"
+msgstr "dosya"
+
 msgid "Files"
 msgstr "Dosyalar"
 
@@ -10857,6 +10887,9 @@ msgstr "Doğrudan telefonumdan Mac’imde yerel bir çalışma ağacı ortamı b
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "Ben kafede kahvemi içerken iş ilerlemeye devam edebiliyor."
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "Önizlemeyi inceledim. Paradev++ uygulamasını kapatın ve bu dosyalara yazan diğer araçları duraklatın, işlem bitince yeniden açın."
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "Sabah yürüyüşlerime bir fikirle başlıyor, bir pull request ile bitiriyorum."
 
@@ -11133,6 +11166,9 @@ msgstr "Enterprise'a dahil"
 
 msgid "Included with Team and Ultra."
 msgstr "Team ve Ultra'ya dahildir."
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "Yok sayılan ve izlenmeyen dosyaları, bağımlılıkları, Git geçmişini ve yerel kimlik bilgilerini içerir."
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "Paradev'e özgü kutu varyantını içerir"
@@ -13164,6 +13200,9 @@ msgstr "Bulut işinizi taşıyın"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "Odağı ana sekmeler ile sağ kenar çubuğu arasında taşı ve kapalıysa kenar çubuğunu aç"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "Ayarları, projeleri, worktree öğelerini, sohbet geçmişini, ajan profillerini ve dosyaları başka bir Mac’e taşıyın."
+
 msgid "Move task to"
 msgstr "Görevi şuraya taşı"
 
@@ -13202,6 +13241,9 @@ msgstr "Sekmeye taşı"
 
 msgid "Move your agents."
 msgstr "Ajanlarınızı taşıyın."
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "Şifreli yedekle tüm yerel ortamınızı başka bir Mac’e taşıyın."
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "Worktree'lerinizi ve ajanlarınızı birkaç dakikada {companyName}'e taşıyın. Ücretsiz ve açık kaynak."
@@ -16336,6 +16378,9 @@ msgstr "Popüler"
 msgid "Popular models"
 msgstr "Popüler modeller"
 
+msgid "Portable backup"
+msgstr "Taşınabilir yedek"
+
 msgid "Ports"
 msgstr "Portlar"
 
@@ -18029,6 +18074,9 @@ msgstr "{0} varsayılanlara geri yüklensin mi?"
 msgid "Restore automation"
 msgstr "Otomasyonu geri yükle"
 
+msgid "Restore backup"
+msgstr "Yedeği geri yükle"
+
 msgid "Restore default"
 msgstr "Varsayılanı geri yükle"
 
@@ -18200,6 +18248,9 @@ msgstr "İnceleme yok sayıldı"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "Devam edip etmemeye karar vermeden önce her hatayı inceleyin."
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "Her hedefi inceleyin. Mevcut klasörler değiştirilmeden önce yanlarında güvenlik kopyalarına taşınır."
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "İnceleme filtreleri GitHub depolarına uygulanır."
@@ -18488,6 +18539,9 @@ msgstr "\"{name}\" şimdi çalıştırılıyor"
 
 msgid "Running agents on this profile lose access."
 msgstr "Bu profildeki çalışan ajanlar erişimini kaybeder."
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "Çalışan ajanlar durur. Gerekli araçları hedef Mac’e yükleyin. Bazı sağlayıcılar yeniden oturum açmanızı isteyebilir."
 
 msgid "Running bun test…"
 msgstr "bun test çalışıyor…"
@@ -21480,6 +21534,9 @@ msgstr "Uygulama {appVersion} sürümünde, ancak başka bir şeyin (muhtemelen 
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "Güncelleme hazır olduğunda uygulama yeniden başlayacak. Ayarlar ve veriler korunur."
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "Arşiv parolanızla şifrelenir. Parolayı saklayın: geri alınamaz."
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "Otomasyon ve çalıştırma geçmişi kaldırılır. Bu işlem geri alınamaz."
 
@@ -21957,6 +22014,9 @@ msgstr "Bu klasörlerde hâlâ dosyalarınız var, ancak yeni Paradev'e kendili�
 
 msgid "These ports are still in use"
 msgstr "Bu portlar hâlâ kullanımda"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "Başvurulan bu yollar zaten eksik ve dahil edilemiyor:"
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "Zaten sahip olduğunuz abonelikler ve anahtarlarla çalışırlar."
@@ -23629,6 +23689,9 @@ msgstr "Bunu doğrula"
 msgid "Verify your identity"
 msgstr "Kimliğinizi doğrulama"
 
+msgid "Verifying and extracting backup…"
+msgstr "Yedek doğrulanıyor ve çıkarılıyor…"
+
 msgid "Version"
 msgstr "Sürüm"
 
@@ -23834,6 +23897,9 @@ msgstr "Kontroller bekleniyor"
 
 msgid "Waiting for it to connect…"
 msgstr "Bağlanması bekleniyor…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "Paradev++ uygulamasının kapanması bekleniyor…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "Kota bekleniyor. Durdurmak otomatik devamı iptal eder."

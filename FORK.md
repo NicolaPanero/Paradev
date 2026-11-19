@@ -15,6 +15,14 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
 
 ## Uso quotidiano
 
+- **Settings → Fork → Storage → Portable backup** crea un archivio completo e
+  cifrato per trasferire dati locali, impostazioni, chat, profili agenti,
+  repository e worktree su un altro Mac. Mostra l’anteprima e i percorsi mancanti;
+  il ripristino rimappa i percorsi e conserva copie di sicurezza dei dati già
+  presenti. Include file ignorati, dipendenze e credenziali locali. Gli agenti
+  vengono fermati durante l’operazione. Guida e limiti:
+  [docs/fork-portable-backup.md](docs/fork-portable-backup.md).
+
 - **Settings → Fork → Connections** configura GitHub, Bitbucket Cloud e Jira Cloud.
   Le stesse schede sono disponibili nell'onboarding. Jira e Bitbucket accettano
   token personali oppure un servizio OAuth compatibile; un broker può collegarli

@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Postuler"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "Appliquez une branche distante à tous les dossiers du projet."
-
 msgid "Apply recommended settings"
 msgstr "Appliquer les réglages recommandés"
 
@@ -3739,6 +3736,9 @@ msgstr "Retour aux pages"
 msgid "Back to the leaderboard"
 msgstr "Retour au classement"
 
+msgid "Back up everything"
+msgstr "Tout sauvegarder"
+
 msgid "Backed by"
 msgstr "Ils nous soutiennent"
 
@@ -3762,6 +3762,18 @@ msgstr "Mémoire des terminaux en arrière-plan"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "Opération terminée. Paradev++ va se rouvrir."
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "Échec de la sauvegarde. Rouvrez Paradev++ pour récupérer les données."
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "Échec de la sauvegarde. Vérifiez les détails et réessayez."
+
+msgid "Backup password (at least 12 characters)"
+msgstr "Mot de passe de sauvegarde (12 caractères minimum)"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "Fermer tous les ports de {0}"
 msgid "Close all ports in this workspace"
 msgstr "Fermer tous les ports de cet espace de travail"
 
+msgid "Close and create backup"
+msgstr "Fermer et créer la sauvegarde"
+
+msgid "Close and restore"
+msgstr "Fermer et restaurer"
+
 msgid "Close Browser"
 msgstr "Fermer le navigateur"
 
@@ -5586,6 +5604,9 @@ msgstr "Confirmer la suppression"
 
 msgid "Confirm merge"
 msgstr "Confirmer la fusion"
+
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
 
 msgid "Confirm switch"
 msgstr "Confirmer le changement"
@@ -7170,6 +7191,9 @@ msgstr "Création d’une tâche"
 msgid "Creating a workspace"
 msgstr "Création d’un espace de travail"
 
+msgid "Creating encrypted backup…"
+msgstr "Création de la sauvegarde chiffrée…"
+
 msgid "Creating PR..."
 msgstr "Création de la PR…"
 
@@ -7796,6 +7820,9 @@ msgstr "Application de bureau"
 
 msgid "Desktop renderer"
 msgstr "Renderer desktop"
+
+msgid "Destination folder"
+msgstr "Dossier de destination"
 
 msgid "Destructive"
 msgstr "Destructif"
@@ -9574,6 +9601,9 @@ msgstr "Le fichier a été supprimé sur le disque."
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "Le fichier a été supprimé sur le disque. Vous avez encore des modifications non enregistrées."
 
+msgid "files"
+msgstr "fichiers"
+
 msgid "Files"
 msgstr "Fichiers"
 
@@ -10857,6 +10887,9 @@ msgstr "J’adore aussi pouvoir lancer un environnement local avec un arbre de t
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "Je peux être dans un café avec mon café pendant que le travail continue d’avancer."
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "J’ai vérifié l’aperçu. Fermez Paradev++ et suspendez les autres outils qui écrivent ces fichiers, puis rouvrez à la fin."
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "Je commence mes promenades matinales avec une idée et les termine avec une pull request."
 
@@ -11133,6 +11166,9 @@ msgstr "Inclus dans Enterprise"
 
 msgid "Included with Team and Ultra."
 msgstr "Inclus dans Team et Ultra."
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "Inclut les fichiers ignorés et non suivis, les dépendances, l’historique Git et les identifiants locaux."
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "Inclut la variante box spécifique à Paradev"
@@ -13164,6 +13200,9 @@ msgstr "Transférer le travail cloud"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "Déplacer le focus entre les onglets principaux et la barre latérale droite, et ouvrir la barre latérale si elle est fermée"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "Transférez paramètres, projets, worktrees, historique des chats, profils d’agents et fichiers vers un autre Mac."
+
 msgid "Move task to"
 msgstr "Déplacer la tâche vers"
 
@@ -13202,6 +13241,9 @@ msgstr "Déplacer vers un onglet"
 
 msgid "Move your agents."
 msgstr "Transférez vos agents."
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "Transférez toute votre configuration locale vers un autre Mac avec une sauvegarde chiffrée."
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "Transférez vos worktrees et vos agents vers {companyName} en quelques minutes. Gratuit et open source."
@@ -16336,6 +16378,9 @@ msgstr "Populaire"
 msgid "Popular models"
 msgstr "Modèles populaires"
 
+msgid "Portable backup"
+msgstr "Sauvegarde portable"
+
 msgid "Ports"
 msgstr "Ports"
 
@@ -18029,6 +18074,9 @@ msgstr "Restaurer les valeurs par défaut de {0} ?"
 msgid "Restore automation"
 msgstr "Restaurer l'automatisation"
 
+msgid "Restore backup"
+msgstr "Restaurer une sauvegarde"
+
 msgid "Restore default"
 msgstr "Restaurer les valeurs par défaut"
 
@@ -18200,6 +18248,9 @@ msgstr "Revue rejetée"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "Examinez chaque échec avant de décider de continuer."
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "Vérifiez chaque destination. Les dossiers existants sont déplacés vers des copies de sécurité voisines avant remplacement."
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "Les filtres de revue s’appliquent aux dépôts GitHub."
@@ -18488,6 +18539,9 @@ msgstr "Exécution de « {name} » en cours"
 
 msgid "Running agents on this profile lose access."
 msgstr "Les agents en cours sur ce profil perdent l'accès."
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "Les agents en cours s’arrêtent. Installez les outils nécessaires sur le Mac de destination. Certains fournisseurs peuvent demander une nouvelle connexion."
 
 msgid "Running bun test…"
 msgstr "Exécution de bun test…"
@@ -21480,6 +21534,9 @@ msgstr "L'application est en {appVersion} mais reliée à un service d'hôte lan
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "L’application redémarrera lorsque la mise à jour sera prête. Les paramètres et les données sont conservés."
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "L’archive est chiffrée avec votre mot de passe. Conservez-le : il ne peut pas être récupéré."
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "L'automatisation et son historique d'exécutions sont supprimés. Cette action est irréversible."
 
@@ -21957,6 +22014,9 @@ msgstr "Ces dossiers contiennent toujours vos fichiers, mais ils n’ont pas ét
 
 msgid "These ports are still in use"
 msgstr "Ces ports sont toujours utilisés"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "Ces chemins référencés sont déjà absents et ne peuvent pas être inclus :"
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "Ils fonctionnent avec les abonnements et clés que vous avez déjà."
@@ -23629,6 +23689,9 @@ msgstr "Vérifier ceci"
 msgid "Verify your identity"
 msgstr "Vérifier votre identité"
 
+msgid "Verifying and extracting backup…"
+msgstr "Vérification et extraction de la sauvegarde…"
+
 msgid "Version"
 msgstr "Version"
 
@@ -23834,6 +23897,9 @@ msgstr "En attente des vérifications"
 
 msgid "Waiting for it to connect…"
 msgstr "En attente de la connexion…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "En attente de la fermeture de Paradev++…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "En attente de quota. Arrêter annule la reprise automatique."

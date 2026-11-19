@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Solliciteer"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "Pas één externe branch toe op alle projectmappen."
-
 msgid "Apply recommended settings"
 msgstr "Aanbevolen instellingen toepassen"
 
@@ -3739,6 +3736,9 @@ msgstr "Terug naar pagina's"
 msgid "Back to the leaderboard"
 msgstr "Terug naar de ranglijst"
 
+msgid "Back up everything"
+msgstr "Alles back-uppen"
+
 msgid "Backed by"
 msgstr "Gesteund door"
 
@@ -3762,6 +3762,18 @@ msgstr "Geheugen voor terminals op de achtergrond"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "Bewerking voltooid. Paradev++ wordt opnieuw geopend."
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "Back-up mislukt. Open Paradev++ opnieuw om te herstellen."
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "Back-up mislukt. Bekijk de details en probeer het opnieuw."
+
+msgid "Backup password (at least 12 characters)"
+msgstr "Back-upwachtwoord (minstens 12 tekens)"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "Alle poorten voor {0} sluiten"
 msgid "Close all ports in this workspace"
 msgstr "Alle poorten in deze werkruimte sluiten"
 
+msgid "Close and create backup"
+msgstr "Sluiten en back-up maken"
+
+msgid "Close and restore"
+msgstr "Sluiten en herstellen"
+
 msgid "Close Browser"
 msgstr "Browser sluiten"
 
@@ -5586,6 +5604,9 @@ msgstr "Verwijderen bevestigen"
 
 msgid "Confirm merge"
 msgstr "Samenvoegen bevestigen"
+
+msgid "Confirm password"
+msgstr "Wachtwoord bevestigen"
 
 msgid "Confirm switch"
 msgstr "Wissel bevestigen"
@@ -7170,6 +7191,9 @@ msgstr "Taak wordt aangemaakt"
 msgid "Creating a workspace"
 msgstr "Werkruimte wordt aangemaakt"
 
+msgid "Creating encrypted backup…"
+msgstr "Versleutelde back-up maken…"
+
 msgid "Creating PR..."
 msgstr "PR wordt aangemaakt…"
 
@@ -7796,6 +7820,9 @@ msgstr "Desktop-app"
 
 msgid "Desktop renderer"
 msgstr "Desktop-renderer"
+
+msgid "Destination folder"
+msgstr "Doelmap"
 
 msgid "Destructive"
 msgstr "Destructief"
@@ -9574,6 +9601,9 @@ msgstr "Het bestand is op schijf verwijderd."
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "Het bestand is op schijf verwijderd. Je hebt nog niet-opgeslagen wijzigingen."
 
+msgid "files"
+msgstr "bestanden"
+
 msgid "Files"
 msgstr "Bestanden"
 
@@ -10857,6 +10887,9 @@ msgstr "Ik vind het ook geweldig dat ik rechtstreeks vanaf mijn telefoon een lok
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "Ik kan in een café zitten met mijn koffie terwijl het werk gewoon doorgaat."
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "Ik heb het voorbeeld gecontroleerd. Sluit Paradev++ en pauzeer andere hulpmiddelen die deze bestanden schrijven. Open het daarna opnieuw."
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "Ik begin mijn ochtendwandelingen met een idee en eindig met een pull request."
 
@@ -11133,6 +11166,9 @@ msgstr "Inbegrepen bij Enterprise"
 
 msgid "Included with Team and Ultra."
 msgstr "Inbegrepen bij Team en Ultra."
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "Bevat genegeerde en niet-gevolgde bestanden, afhankelijkheden, Git-geschiedenis en lokale inloggegevens."
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "Inclusief de Paradev-specifieke box-variant"
@@ -13164,6 +13200,9 @@ msgstr "Cloudwerk verhuizen"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "De focus verplaatsen tussen de hoofdtabbladen en de rechterzijbalk, en de zijbalk openen als die gesloten is"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "Verplaats instellingen, projecten, worktrees, chatgeschiedenis, agentprofielen en bestanden naar een andere Mac."
+
 msgid "Move task to"
 msgstr "Taak verplaatsen naar"
 
@@ -13202,6 +13241,9 @@ msgstr "Verplaatsen naar tabblad"
 
 msgid "Move your agents."
 msgstr "Verhuis je agents."
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "Verplaats je volledige lokale omgeving naar een andere Mac met een versleutelde back-up."
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "Verhuis je worktrees en agents in een paar minuten naar {companyName}. Gratis en open source."
@@ -16336,6 +16378,9 @@ msgstr "Populair"
 msgid "Popular models"
 msgstr "Populaire modellen"
 
+msgid "Portable backup"
+msgstr "Overdraagbare back-up"
+
 msgid "Ports"
 msgstr "Poorten"
 
@@ -18029,6 +18074,9 @@ msgstr "{0} terugzetten naar standaardwaarden?"
 msgid "Restore automation"
 msgstr "Automatisering herstellen"
 
+msgid "Restore backup"
+msgstr "Back-up herstellen"
+
 msgid "Restore default"
 msgstr "Standaard herstellen"
 
@@ -18200,6 +18248,9 @@ msgstr "Review afgewezen"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "Bekijk elke fout voordat je besluit door te gaan."
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "Controleer elke bestemming. Bestaande mappen worden vóór vervanging naar aangrenzende veiligheidskopieën verplaatst."
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "Reviewfilters gelden voor GitHub-repositories."
@@ -18488,6 +18539,9 @@ msgstr "\"{name}\" wordt nu uitgevoerd"
 
 msgid "Running agents on this profile lose access."
 msgstr "Draaiende agents op dit profiel verliezen toegang."
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "Actieve agents stoppen. Installeer de benodigde hulpmiddelen op de doel-Mac. Sommige aanbieders vragen mogelijk opnieuw om aanmelding."
 
 msgid "Running bun test…"
 msgstr "bun test uitvoeren…"
@@ -21480,6 +21534,9 @@ msgstr "De app is op {appVersion}, maar gekoppeld aan een hostservice die door i
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "De app start opnieuw zodra de update klaar is. Instellingen en gegevens blijven behouden."
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "Het archief is versleuteld met je wachtwoord. Bewaar het goed: het kan niet worden hersteld."
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "De automatisering en haar uitvoergeschiedenis worden verwijderd. Dit kan niet ongedaan worden gemaakt."
 
@@ -21957,6 +22014,9 @@ msgstr "Deze mappen bevatten nog je bestanden, maar zijn niet vanzelf naar het n
 
 msgid "These ports are still in use"
 msgstr "Deze poorten zijn nog in gebruik"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "Deze verwijzingen ontbreken al en kunnen niet worden opgenomen:"
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "Ze draaien op de abonnementen en sleutels die je al hebt."
@@ -23629,6 +23689,9 @@ msgstr "Controleer dit"
 msgid "Verify your identity"
 msgstr "Je identiteit verifiëren"
 
+msgid "Verifying and extracting backup…"
+msgstr "Back-up controleren en uitpakken…"
+
 msgid "Version"
 msgstr "Versie"
 
@@ -23834,6 +23897,9 @@ msgstr "Wachten op checks"
 
 msgid "Waiting for it to connect…"
 msgstr "Wachten op verbinding…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "Wachten tot Paradev++ is gesloten…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "Wachten op quotum. Stoppen annuleert het automatisch doorgaan."

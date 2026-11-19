@@ -1,3 +1,4 @@
+import "./fork-backup-storage";
 import "@sentry/electron/preload";
 
 import { contextBridge, ipcRenderer, webUtils } from "electron";

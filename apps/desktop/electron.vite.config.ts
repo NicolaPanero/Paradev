@@ -141,7 +141,7 @@ export default defineConfig({
 			externalizeDeps: false,
 			rollupOptions: {
 				input: {
-					index: resolve("src/main/index.ts"),
+					index: resolve("src/main/fork-entry.ts"),
 					// Terminal host daemon process - runs separately for terminal persistence
 					"terminal-host": resolve("src/main/terminal-host/index.ts"),
 					// PTY subprocess - spawned by terminal-host for each terminal
@@ -159,6 +159,7 @@ export default defineConfig({
 				},
 				output: {
 					dir: resolve(devPath, "main"),
+					chunkFileNames: "[name]-[hash].js",
 				},
 				external: ["electron", ...mainExternalizedDependencies],
 				plugins: [sentryPlugin, hostServiceSentryPlugin].filter(Boolean),

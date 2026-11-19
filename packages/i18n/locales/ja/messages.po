@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "応募"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "1つのリモートブランチをプロジェクト内のすべてのフォルダーに適用します。"
-
 msgid "Apply recommended settings"
 msgstr "推奨設定を適用"
 
@@ -3739,6 +3736,9 @@ msgstr "ページ"
 msgid "Back to the leaderboard"
 msgstr "リーダーボードに戻る"
 
+msgid "Back up everything"
+msgstr "すべてをバックアップ"
+
 msgid "Backed by"
 msgstr "支援者"
 
@@ -3762,6 +3762,18 @@ msgstr "バックグラウンドターミナルのメモリ"
 
 msgid "Backlog"
 msgstr "バックログ"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "操作が完了しました。Paradev++ を再起動します。"
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "バックアップに失敗しました。Paradev++ を開き直して復旧してください。"
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "バックアップに失敗しました。詳細を確認して再試行してください。"
+
+msgid "Backup password (at least 12 characters)"
+msgstr "バックアップのパスワード（12文字以上）"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "{0}のすべてのポートを閉じる"
 msgid "Close all ports in this workspace"
 msgstr "このワークスペースのすべてのポートを閉じる"
 
+msgid "Close and create backup"
+msgstr "終了してバックアップを作成"
+
+msgid "Close and restore"
+msgstr "終了して復元"
+
 msgid "Close Browser"
 msgstr "ブラウザを閉じる"
 
@@ -5586,6 +5604,9 @@ msgstr "削除を確認"
 
 msgid "Confirm merge"
 msgstr "マージを確認"
+
+msgid "Confirm password"
+msgstr "パスワードを確認"
 
 msgid "Confirm switch"
 msgstr "変更を確定"
@@ -7170,6 +7191,9 @@ msgstr "タスクを作成中"
 msgid "Creating a workspace"
 msgstr "ワークスペースを作成中"
 
+msgid "Creating encrypted backup…"
+msgstr "暗号化バックアップを作成中…"
+
 msgid "Creating PR..."
 msgstr "PRを作成中…"
 
@@ -7796,6 +7820,9 @@ msgstr "デスクトップアプリ"
 
 msgid "Desktop renderer"
 msgstr "デスクトップレンダラー"
+
+msgid "Destination folder"
+msgstr "復元先フォルダー"
 
 msgid "Destructive"
 msgstr "Destructive"
@@ -9574,6 +9601,9 @@ msgstr "ファイルはディスク上で削除されました。"
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "ファイルはディスク上で削除されました。未保存の変更が残っています。"
 
+msgid "files"
+msgstr "ファイル"
+
 msgid "Files"
 msgstr "ファイル"
 
@@ -10857,6 +10887,9 @@ msgstr "スマートフォンから直接、自分のMacにローカルのワー
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "カフェでコーヒーを飲んでいる間も、作業は進み続けます。"
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "プレビューを確認しました。Paradev++ を終了し、これらのファイルを書き込む他のツールを一時停止して、完了後に再起動します。"
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "朝の散歩をアイデアとともに始め、プルリクエストとともに終えます。"
 
@@ -11133,6 +11166,9 @@ msgstr "Enterpriseに含まれます"
 
 msgid "Included with Team and Ultra."
 msgstr "Team と Ultra に含まれています。"
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "無視対象・未追跡のファイル、依存関係、Git 履歴、ローカル認証情報を含みます。"
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "Paradev独自のboxバリアントを含みます"
@@ -13164,6 +13200,9 @@ msgstr "クラウドの作業を移行"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "メインのタブと右サイドバーの間でフォーカスを移動し、サイドバーが閉じている場合は開きます"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "設定、プロジェクト、worktree、チャット履歴、エージェントのプロファイル、ファイルを別の Mac に移行します。"
+
 msgid "Move task to"
 msgstr "タスクの移動先"
 
@@ -13202,6 +13241,9 @@ msgstr "タブに移動"
 
 msgid "Move your agents."
 msgstr "エージェントを移行しましょう。"
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "暗号化バックアップでローカル環境全体を別の Mac に移行できます。"
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "ワークツリーとエージェントを数分で {companyName} に移行できます。無料のオープンソースです。"
@@ -16336,6 +16378,9 @@ msgstr "人気"
 msgid "Popular models"
 msgstr "人気のモデル"
 
+msgid "Portable backup"
+msgstr "移行用バックアップ"
+
 msgid "Ports"
 msgstr "ポート"
 
@@ -18029,6 +18074,9 @@ msgstr "{0}をデフォルトに戻しますか?"
 msgid "Restore automation"
 msgstr "オートメーションを復元"
 
+msgid "Restore backup"
+msgstr "バックアップを復元"
+
 msgid "Restore default"
 msgstr "デフォルトを復元"
 
@@ -18200,6 +18248,9 @@ msgstr "レビューが却下されました"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "続行するか判断する前に、各失敗を確認してください。"
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "すべての復元先を確認してください。既存フォルダーは置き換え前に隣接する安全コピーへ移動します。"
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "レビューフィルターは GitHub リポジトリに適用されます。"
@@ -18488,6 +18539,9 @@ msgstr "「{name}」を今すぐ実行します"
 
 msgid "Running agents on this profile lose access."
 msgstr "このプロファイルで実行中のエージェントはアクセスを失います。"
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "実行中のエージェントは停止します。移行先の Mac に必要なツールをインストールしてください。一部のプロバイダーでは再ログインが必要です。"
 
 msgid "Running bun test…"
 msgstr "bun testを実行中…"
@@ -21480,6 +21534,9 @@ msgstr "アプリは{appVersion}ですが、別のもの（古いCLIや別のPar
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "更新の準備ができるとアプリが再起動します。設定とデータは保持されます。"
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "アーカイブはパスワードで暗号化されます。パスワードは復元できないため、安全に保管してください。"
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "オートメーションとその実行履歴が削除されます。この操作は元に戻せません。"
 
@@ -21957,6 +22014,9 @@ msgstr "これらのフォルダにはファイルが残っていますが、新
 
 msgid "These ports are still in use"
 msgstr "これらのポートはまだ使用中です"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "次の参照先はすでに存在せず、バックアップに含められません："
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "お持ちのサブスクリプションとキーでそのまま動きます。"
@@ -23629,6 +23689,9 @@ msgstr "これを確認して"
 msgid "Verify your identity"
 msgstr "本人確認"
 
+msgid "Verifying and extracting backup…"
+msgstr "バックアップを検証・展開中…"
+
 msgid "Version"
 msgstr "バージョン"
 
@@ -23834,6 +23897,9 @@ msgstr "チェックを待機中"
 
 msgid "Waiting for it to connect…"
 msgstr "接続を待っています…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "Paradev++ の終了を待っています…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "使用枠を待機中。停止すると自動再開をキャンセルします。"

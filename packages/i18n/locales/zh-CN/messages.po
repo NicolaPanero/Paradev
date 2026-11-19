@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "申请"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "将同一个远程分支应用于所有项目文件夹。"
-
 msgid "Apply recommended settings"
 msgstr "应用推荐设置"
 
@@ -3739,6 +3736,9 @@ msgstr "返回页面"
 msgid "Back to the leaderboard"
 msgstr "返回排行榜"
 
+msgid "Back up everything"
+msgstr "备份全部内容"
+
 msgid "Backed by"
 msgstr "投资方"
 
@@ -3762,6 +3762,18 @@ msgstr "后台终端内存"
 
 msgid "Backlog"
 msgstr "待规划"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "操作已完成。Paradev++ 将重新打开。"
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "备份操作失败。请重新打开 Paradev++ 以恢复数据。"
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "备份操作失败。请查看详情后重试。"
+
+msgid "Backup password (at least 12 characters)"
+msgstr "备份密码（至少 12 个字符）"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "关闭{0}的全部端口"
 msgid "Close all ports in this workspace"
 msgstr "关闭此工作区中的全部端口"
 
+msgid "Close and create backup"
+msgstr "关闭并创建备份"
+
+msgid "Close and restore"
+msgstr "关闭并恢复"
+
 msgid "Close Browser"
 msgstr "关闭浏览器"
 
@@ -5586,6 +5604,9 @@ msgstr "确认删除"
 
 msgid "Confirm merge"
 msgstr "确认合并"
+
+msgid "Confirm password"
+msgstr "确认密码"
 
 msgid "Confirm switch"
 msgstr "确认切换"
@@ -7170,6 +7191,9 @@ msgstr "正在创建任务"
 msgid "Creating a workspace"
 msgstr "正在创建工作区"
 
+msgid "Creating encrypted backup…"
+msgstr "正在创建加密备份…"
+
 msgid "Creating PR..."
 msgstr "正在创建PR…"
 
@@ -7796,6 +7820,9 @@ msgstr "桌面应用"
 
 msgid "Desktop renderer"
 msgstr "桌面端渲染进程"
+
+msgid "Destination folder"
+msgstr "目标文件夹"
 
 msgid "Destructive"
 msgstr "危险"
@@ -9574,6 +9601,9 @@ msgstr "文件已在磁盘上被删除。"
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "文件已在磁盘上被删除。你仍有未保存的更改。"
 
+msgid "files"
+msgstr "个文件"
+
 msgid "Files"
 msgstr "文件"
 
@@ -10857,6 +10887,9 @@ msgstr "我也很喜欢能直接用手机在 Mac 上启动本地工作树环境�
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "我可以在咖啡馆喝咖啡，工作也一直在推进。"
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "我已检查预览。请关闭 Paradev++，暂停其他会写入这些文件的工具，完成后重新打开。"
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "我带着一个想法开始晨间散步，结束时就有了一个拉取请求。"
 
@@ -11133,6 +11166,9 @@ msgstr "企业版包含"
 
 msgid "Included with Team and Ultra."
 msgstr "包含在 Team 和 Ultra 中。"
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "包含被忽略和未跟踪的文件、依赖项、Git 历史及本地凭据。"
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "包含Paradev特有的box变体"
@@ -13164,6 +13200,9 @@ msgstr "迁移云端工作"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "在主标签页和右侧边栏之间移动焦点，如果侧边栏已关闭则将其打开"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "将设置、项目、worktree、聊天历史、代理配置和文件迁移到另一台 Mac。"
+
 msgid "Move task to"
 msgstr "将任务移至"
 
@@ -13202,6 +13241,9 @@ msgstr "移动到标签页"
 
 msgid "Move your agents."
 msgstr "迁移你的智能体。"
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "使用加密备份将完整的本地环境迁移到另一台 Mac。"
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "几分钟即可把你的 worktree 和智能体迁移到 {companyName}。免费且开源。"
@@ -16336,6 +16378,9 @@ msgstr "热门"
 msgid "Popular models"
 msgstr "热门模型"
 
+msgid "Portable backup"
+msgstr "可迁移备份"
+
 msgid "Ports"
 msgstr "端口"
 
@@ -18029,6 +18074,9 @@ msgstr "将{0}恢复为默认值？"
 msgid "Restore automation"
 msgstr "恢复自动化"
 
+msgid "Restore backup"
+msgstr "恢复备份"
+
 msgid "Restore default"
 msgstr "恢复默认值"
 
@@ -18200,6 +18248,9 @@ msgstr "审查已忽略"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "在决定是否继续之前，请逐个查看失败原因。"
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "请检查每个目标位置。替换前，现有文件夹将移至相邻的安全副本。"
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "审查筛选器适用于 GitHub 仓库。"
@@ -18488,6 +18539,9 @@ msgstr "正在立即运行“{name}”"
 
 msgid "Running agents on this profile lose access."
 msgstr "使用此配置文件运行中的智能体将失去访问权限。"
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "运行中的代理将停止。请在目标 Mac 上安装所需工具。部分提供商可能要求重新登录。"
 
 msgid "Running bun test…"
 msgstr "正在运行bun test…"
@@ -21480,6 +21534,9 @@ msgstr "应用版本为 {appVersion}，但连接的是由其他程序（可能�
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "更新准备就绪后，应用将重新启动。设置和数据会保留。"
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "归档使用你的密码加密。请妥善保管密码：密码无法找回。"
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "此自动化及其运行历史将被删除。此操作无法撤销。"
 
@@ -21957,6 +22014,9 @@ msgstr "这些文件夹中仍有你的文件，但没有自动迁移到新版 Pa
 
 msgid "These ports are still in use"
 msgstr "这些端口仍在使用中"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "以下引用路径已不存在，无法包含在备份中："
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "它们使用你已有的订阅和密钥运行。"
@@ -23629,6 +23689,9 @@ msgstr "核实这里"
 msgid "Verify your identity"
 msgstr "验证你的身份"
 
+msgid "Verifying and extracting backup…"
+msgstr "正在验证并解压备份…"
+
 msgid "Version"
 msgstr "版本"
 
@@ -23834,6 +23897,9 @@ msgstr "等待检查"
 
 msgid "Waiting for it to connect…"
 msgstr "正在等待连接…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "正在等待 Paradev++ 关闭…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "正在等待配额。停止将取消自动继续。"

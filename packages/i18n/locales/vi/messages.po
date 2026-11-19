@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "Ứng tuyển"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "Áp dụng một nhánh từ xa cho tất cả thư mục dự án."
-
 msgid "Apply recommended settings"
 msgstr "Áp dụng thiết lập đề xuất"
 
@@ -3739,6 +3736,9 @@ msgstr "Quay lại danh sách trang"
 msgid "Back to the leaderboard"
 msgstr "Quay lại bảng xếp hạng"
 
+msgid "Back up everything"
+msgstr "Sao lưu toàn bộ"
+
 msgid "Backed by"
 msgstr "Được hậu thuẫn bởi"
 
@@ -3762,6 +3762,18 @@ msgstr "Bộ nhớ terminal chạy nền"
 
 msgid "Backlog"
 msgstr "Backlog"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "Thao tác hoàn tất. Paradev++ sẽ mở lại."
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "Sao lưu thất bại. Mở lại Paradev++ để khôi phục dữ liệu."
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "Sao lưu thất bại. Kiểm tra chi tiết rồi thử lại."
+
+msgid "Backup password (at least 12 characters)"
+msgstr "Mật khẩu bản sao lưu (ít nhất 12 ký tự)"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "Đóng tất cả cổng của {0}"
 msgid "Close all ports in this workspace"
 msgstr "Đóng tất cả cổng trong workspace này"
 
+msgid "Close and create backup"
+msgstr "Đóng và tạo bản sao lưu"
+
+msgid "Close and restore"
+msgstr "Đóng và khôi phục"
+
 msgid "Close Browser"
 msgstr "Đóng trình duyệt"
 
@@ -5586,6 +5604,9 @@ msgstr "Xác nhận xóa"
 
 msgid "Confirm merge"
 msgstr "Xác nhận hợp nhất"
+
+msgid "Confirm password"
+msgstr "Xác nhận mật khẩu"
 
 msgid "Confirm switch"
 msgstr "Xác nhận chuyển"
@@ -7170,6 +7191,9 @@ msgstr "Đang tạo nhiệm vụ"
 msgid "Creating a workspace"
 msgstr "Đang tạo workspace"
 
+msgid "Creating encrypted backup…"
+msgstr "Đang tạo bản sao lưu được mã hóa…"
+
 msgid "Creating PR..."
 msgstr "Đang tạo PR…"
 
@@ -7796,6 +7820,9 @@ msgstr "Ứng dụng máy tính"
 
 msgid "Desktop renderer"
 msgstr "Renderer của ứng dụng máy tính"
+
+msgid "Destination folder"
+msgstr "Thư mục đích"
 
 msgid "Destructive"
 msgstr "Destructive"
@@ -9574,6 +9601,9 @@ msgstr "Tệp đã bị xóa trên đĩa."
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "Tệp đã bị xóa trên đĩa. Bạn vẫn còn thay đổi chưa lưu."
 
+msgid "files"
+msgstr "tệp"
+
 msgid "Files"
 msgstr "Tệp"
 
@@ -10857,6 +10887,9 @@ msgstr "Tôi cũng rất thích việc có thể khởi tạo môi trường câ
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "Tôi có thể ngồi trong quán cà phê thưởng thức cà phê trong khi công việc vẫn tiếp tục tiến triển."
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "Tôi đã kiểm tra bản xem trước. Đóng Paradev++ và tạm dừng các công cụ khác đang ghi vào những tệp này, rồi mở lại khi hoàn tất."
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "Tôi bắt đầu buổi đi bộ sáng với một ý tưởng và kết thúc với một pull request."
 
@@ -11133,6 +11166,9 @@ msgstr "Có trong Enterprise"
 
 msgid "Included with Team and Ultra."
 msgstr "Có trong gói Team và Ultra."
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "Bao gồm tệp bị bỏ qua và chưa được theo dõi, thành phần phụ thuộc, lịch sử Git và thông tin đăng nhập cục bộ."
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "Bao gồm biến thể box riêng của Paradev"
@@ -13164,6 +13200,9 @@ msgstr "Chuyển công việc trên cloud"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "Di chuyển tiêu điểm giữa các tab chính và thanh bên phải, và mở thanh bên nếu đang đóng"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "Chuyển cài đặt, dự án, worktree, lịch sử trò chuyện, hồ sơ tác nhân và tệp sang máy Mac khác."
+
 msgid "Move task to"
 msgstr "Chuyển tác vụ sang"
 
@@ -13202,6 +13241,9 @@ msgstr "Chuyển sang tab"
 
 msgid "Move your agents."
 msgstr "Hãy chuyển agent của bạn."
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "Chuyển toàn bộ môi trường cục bộ sang máy Mac khác bằng bản sao lưu được mã hóa."
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "Chuyển worktree và agent của bạn sang {companyName} trong vài phút. Miễn phí và mã nguồn mở."
@@ -16336,6 +16378,9 @@ msgstr "Phổ biến"
 msgid "Popular models"
 msgstr "Mô hình phổ biến"
 
+msgid "Portable backup"
+msgstr "Bản sao lưu di chuyển"
+
 msgid "Ports"
 msgstr "Cổng"
 
@@ -18029,6 +18074,9 @@ msgstr "Khôi phục {0} về mặc định?"
 msgid "Restore automation"
 msgstr "Khôi phục tự động hóa"
 
+msgid "Restore backup"
+msgstr "Khôi phục bản sao lưu"
+
 msgid "Restore default"
 msgstr "Khôi phục mặc định"
 
@@ -18200,6 +18248,9 @@ msgstr "Review đã bị bỏ qua"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "Xem lại từng lỗi trước khi quyết định có tiếp tục hay không."
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "Kiểm tra mọi đích đến. Các thư mục hiện có sẽ được chuyển thành bản sao an toàn bên cạnh trước khi thay thế."
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "Bộ lọc đánh giá áp dụng cho kho mã GitHub."
@@ -18488,6 +18539,9 @@ msgstr "Đang chạy \"{name}\""
 
 msgid "Running agents on this profile lose access."
 msgstr "Các agent đang chạy trên hồ sơ này sẽ mất quyền truy cập."
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "Các tác nhân đang chạy sẽ dừng. Cài đặt công cụ cần thiết trên máy Mac đích. Một số nhà cung cấp có thể yêu cầu đăng nhập lại."
 
 msgid "Running bun test…"
 msgstr "Đang chạy bun test…"
@@ -21480,6 +21534,9 @@ msgstr "Ứng dụng đang ở {appVersion} nhưng kết nối với dịch vụ
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "Ứng dụng sẽ khởi động lại khi bản cập nhật sẵn sàng. Cài đặt và dữ liệu được giữ lại."
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "Tệp lưu trữ được mã hóa bằng mật khẩu của bạn. Hãy giữ mật khẩu an toàn vì không thể khôi phục."
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "Tự động hóa và lịch sử chạy của nó sẽ bị xóa. Không thể hoàn tác thao tác này."
 
@@ -21957,6 +22014,9 @@ msgstr "Các thư mục này vẫn còn tệp của bạn, nhưng chưa tự chu
 
 msgid "These ports are still in use"
 msgstr "Các cổng này vẫn đang được dùng"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "Các đường dẫn được tham chiếu sau đã không còn tồn tại và không thể được đưa vào:"
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "Chúng chạy bằng gói đăng ký và khóa bạn đã có."
@@ -23629,6 +23689,9 @@ msgstr "Xác minh điều này"
 msgid "Verify your identity"
 msgstr "Xác minh danh tính của bạn"
 
+msgid "Verifying and extracting backup…"
+msgstr "Đang xác minh và giải nén bản sao lưu…"
+
 msgid "Version"
 msgstr "Phiên bản"
 
@@ -23834,6 +23897,9 @@ msgstr "Đang chờ check"
 
 msgid "Waiting for it to connect…"
 msgstr "Đang chờ kết nối…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "Đang chờ Paradev++ đóng…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "Đang chờ hạn mức. Dừng sẽ hủy việc tiếp tục tự động."

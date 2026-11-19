@@ -3242,9 +3242,6 @@ msgctxt "job application"
 msgid "Apply"
 msgstr "지원"
 
-msgid "Apply one remote branch to all project folders."
-msgstr "하나의 원격 브랜치를 모든 프로젝트 폴더에 적용합니다."
-
 msgid "Apply recommended settings"
 msgstr "권장 설정 적용"
 
@@ -3739,6 +3736,9 @@ msgstr "페이지로 돌아가기"
 msgid "Back to the leaderboard"
 msgstr "리더보드로 돌아가기"
 
+msgid "Back up everything"
+msgstr "모두 백업"
+
 msgid "Backed by"
 msgstr "투자자"
 
@@ -3762,6 +3762,18 @@ msgstr "백그라운드 터미널 메모리"
 
 msgid "Backlog"
 msgstr "백로그"
+
+msgid "Backup operation completed. Paradev++ will reopen."
+msgstr "작업이 완료되었습니다. Paradev++가 다시 열립니다."
+
+msgid "Backup operation failed. Reopen Paradev++ to recover."
+msgstr "백업 작업에 실패했습니다. 복구하려면 Paradev++를 다시 여세요."
+
+msgid "Backup operation failed. Review the details and try again."
+msgstr "백업 작업에 실패했습니다. 세부 정보를 확인한 후 다시 시도하세요."
+
+msgid "Backup password (at least 12 characters)"
+msgstr "백업 비밀번호(12자 이상)"
 
 #. placeholder {0}: result.backup
 msgid "Backups: {0}"
@@ -5052,6 +5064,12 @@ msgstr "{0}의 모든 포트 닫기"
 msgid "Close all ports in this workspace"
 msgstr "이 워크스페이스의 모든 포트 닫기"
 
+msgid "Close and create backup"
+msgstr "종료하고 백업 만들기"
+
+msgid "Close and restore"
+msgstr "종료하고 복원"
+
 msgid "Close Browser"
 msgstr "브라우저 닫기"
 
@@ -5586,6 +5604,9 @@ msgstr "삭제 확인"
 
 msgid "Confirm merge"
 msgstr "병합 확인"
+
+msgid "Confirm password"
+msgstr "비밀번호 확인"
 
 msgid "Confirm switch"
 msgstr "변경 확인"
@@ -7170,6 +7191,9 @@ msgstr "작업 생성 중"
 msgid "Creating a workspace"
 msgstr "워크스페이스 생성 중"
 
+msgid "Creating encrypted backup…"
+msgstr "암호화된 백업 생성 중…"
+
 msgid "Creating PR..."
 msgstr "PR 생성 중…"
 
@@ -7796,6 +7820,9 @@ msgstr "데스크톱 앱"
 
 msgid "Desktop renderer"
 msgstr "데스크톱 렌더러"
+
+msgid "Destination folder"
+msgstr "대상 폴더"
 
 msgid "Destructive"
 msgstr "위험"
@@ -9574,6 +9601,9 @@ msgstr "디스크에서 파일이 삭제되었습니다."
 msgid "File was deleted on disk. You still have unsaved changes."
 msgstr "디스크에서 파일이 삭제되었습니다. 저장하지 않은 변경 사항이 남아 있습니다."
 
+msgid "files"
+msgstr "파일"
+
 msgid "Files"
 msgstr "파일"
 
@@ -10857,6 +10887,9 @@ msgstr "휴대폰에서 바로 Mac에 로컬 작업 트리 환경을 띄울 수 
 msgid "I can be in a café with my coffee while the work keeps moving forward."
 msgstr "카페에서 커피를 마시는 동안에도 작업은 계속 진행됩니다."
 
+msgid "I reviewed the preview. Close Paradev++ and pause other tools that write these files, then reopen when finished."
+msgstr "미리 보기를 확인했습니다. Paradev++를 종료하고 이 파일에 쓰는 다른 도구를 일시 중지한 뒤 완료되면 다시 엽니다."
+
 msgid "I start my morning walks with an idea, and end with a pull request."
 msgstr "아이디어 하나로 아침 산책을 시작하고, 풀 리퀘스트 하나로 마무리합니다."
 
@@ -11133,6 +11166,9 @@ msgstr "엔터프라이즈에 포함"
 
 msgid "Included with Team and Ultra."
 msgstr "Team 및 Ultra에 포함되어 있습니다."
+
+msgid "Includes ignored and untracked files, dependencies, Git history and local credentials."
+msgstr "무시된 파일과 추적되지 않는 파일, 종속 항목, Git 기록 및 로컬 자격 증명을 포함합니다."
 
 msgid "Includes the Paradev-specific box variant"
 msgstr "Paradev 전용 box 변형 포함"
@@ -13164,6 +13200,9 @@ msgstr "클라우드 작업 옮기기"
 msgid "Move focus between the main tabs and the right sidebar, and open the sidebar if it is closed"
 msgstr "메인 탭과 오른쪽 사이드바 사이에서 포커스를 옮기고, 사이드바가 닫혀 있으면 엽니다"
 
+msgid "Move settings, projects, worktrees, chat history, agent profiles and files to another Mac."
+msgstr "설정, 프로젝트, worktree, 채팅 기록, 에이전트 프로필과 파일을 다른 Mac으로 옮깁니다."
+
 msgid "Move task to"
 msgstr "작업 이동 대상"
 
@@ -13202,6 +13241,9 @@ msgstr "탭으로 이동"
 
 msgid "Move your agents."
 msgstr "에이전트를 옮기세요."
+
+msgid "Move your entire local setup to another Mac with an encrypted backup."
+msgstr "암호화된 백업으로 전체 로컬 환경을 다른 Mac으로 옮깁니다."
 
 msgid "Move your worktrees and agents to {companyName} in a few minutes. Free and open source."
 msgstr "몇 분 만에 worktree와 에이전트를 {companyName}(으)로 옮기세요. 무료 오픈 소스입니다."
@@ -16336,6 +16378,9 @@ msgstr "인기"
 msgid "Popular models"
 msgstr "인기 모델"
 
+msgid "Portable backup"
+msgstr "이동용 백업"
+
 msgid "Ports"
 msgstr "포트"
 
@@ -18029,6 +18074,9 @@ msgstr "{0}을(를) 기본값으로 복원할까요?"
 msgid "Restore automation"
 msgstr "자동화 복원"
 
+msgid "Restore backup"
+msgstr "백업 복원"
+
 msgid "Restore default"
 msgstr "기본값 복원"
 
@@ -18200,6 +18248,9 @@ msgstr "리뷰 무시됨"
 
 msgid "Review each failure before deciding whether to continue."
 msgstr "계속할지 결정하기 전에 각 실패를 확인하세요."
+
+msgid "Review every destination. Existing folders are moved to sibling safety copies before replacement."
+msgstr "모든 대상을 확인하세요. 교체 전에 기존 폴더를 인접한 안전 사본으로 옮깁니다."
 
 msgid "Review filters apply to GitHub repositories."
 msgstr "리뷰 필터는 GitHub 저장소에 적용됩니다."
@@ -18488,6 +18539,9 @@ msgstr "\"{name}\"을(를) 지금 실행 중"
 
 msgid "Running agents on this profile lose access."
 msgstr "이 프로필에서 실행 중인 에이전트는 접근 권한을 잃습니다."
+
+msgid "Running agents stop. Install required tools on the destination Mac. Some providers may require sign-in again."
+msgstr "실행 중인 에이전트가 중지됩니다. 대상 Mac에 필요한 도구를 설치하세요. 일부 제공업체는 다시 로그인을 요구할 수 있습니다."
 
 msgid "Running bun test…"
 msgstr "bun test 실행 중…"
@@ -21480,6 +21534,9 @@ msgstr "앱은 {appVersion}이지만 다른 것(오래된 CLI나 다른 Paradev 
 msgid "The app will restart when the update is ready. Settings and data are kept."
 msgstr "업데이트가 준비되면 앱이 다시 시작됩니다. 설정과 데이터는 유지됩니다."
 
+msgid "The archive is encrypted with your password. Keep it safe: it cannot be recovered."
+msgstr "보관 파일은 비밀번호로 암호화됩니다. 비밀번호는 복구할 수 없으므로 안전하게 보관하세요."
+
 msgid "The automation and its run history are removed. This can't be undone."
 msgstr "자동화와 실행 기록이 삭제됩니다. 이 작업은 되돌릴 수 없습니다."
 
@@ -21957,6 +22014,9 @@ msgstr "이 폴더들에는 아직 파일이 있지만 새 Paradev로 자동으�
 
 msgid "These ports are still in use"
 msgstr "이 포트들은 아직 사용 중입니다"
+
+msgid "These referenced paths are already missing and cannot be included:"
+msgstr "다음 참조 경로는 이미 없어 백업에 포함할 수 없습니다:"
 
 msgid "They run on the subscriptions and keys you already have."
 msgstr "이미 가지고 있는 구독과 키로 실행됩니다."
@@ -23629,6 +23689,9 @@ msgstr "이것을 확인해 주세요"
 msgid "Verify your identity"
 msgstr "신원 확인"
 
+msgid "Verifying and extracting backup…"
+msgstr "백업 확인 및 압축 해제 중…"
+
 msgid "Version"
 msgstr "버전"
 
@@ -23834,6 +23897,9 @@ msgstr "검사 대기 중"
 
 msgid "Waiting for it to connect…"
 msgstr "연결을 기다리는 중…"
+
+msgid "Waiting for Paradev++ to close…"
+msgstr "Paradev++가 종료되기를 기다리는 중…"
 
 msgid "Waiting for quota. Stop cancels automatic continuation."
 msgstr "한도 대기 중입니다. 중지하면 자동 계속이 취소됩니다."
