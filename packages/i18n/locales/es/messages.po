@@ -6148,9 +6148,6 @@ msgstr "No se pudo olvidar {domain}"
 msgid "Could not import from browser"
 msgstr "No se pudo importar desde el navegador"
 
-msgid "Could not install the update. Paradev++ is still open. Try again from Check for Updates."
-msgstr "No se pudo instalar la actualización. Paradev++ sigue abierto. Vuelve a intentarlo desde Buscar actualizaciones."
-
 msgid "Could not leave the queue"
 msgstr "No se pudo salir de la cola"
 
@@ -6223,6 +6220,9 @@ msgstr "No se pudo abrir el enlace"
 
 msgid "Could not open Photos"
 msgstr "No se pudo abrir Fotos"
+
+msgid "Could not prepare the update. Your current installation is unchanged. Try again from Check for Updates."
+msgstr "No se pudo preparar la actualización. Tu instalación actual no ha cambiado. Vuelve a intentarlo desde Buscar actualizaciones."
 
 #. placeholder {0}: params?.remote
 #. placeholder {1}: params?.branch
