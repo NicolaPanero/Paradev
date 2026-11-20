@@ -51,6 +51,7 @@ import {
 } from "../workspace-creation/shared/sparse-checkout";
 import { normalizeWorktreePath } from "../workspace-creation/shared/worktree-list";
 import { normalizeWorktreeBaseDir } from "../workspace-creation/shared/worktree-paths";
+import { forkProjectGroupProcedures } from "./fork-project-group-procedures";
 import {
 	createFromClone,
 	createFromEmpty,
@@ -92,6 +93,7 @@ export interface FindByPathCandidate {
 }
 
 export const projectRouter = router({
+	...forkProjectGroupProcedures,
 	listGitHubRepositories: machineOnlyProcedure.query(({ ctx }) =>
 		listGitHubRepositories(ctx.execGh),
 	),

@@ -285,8 +285,18 @@ export async function unregisterMaintenanceWorktree(
 			const pointer = (await readFile(join(admin, "gitdir"), "utf8")).trim();
 			if (forkCanonicalPath(resolve(admin, pointer)) !== join(path, ".git"))
 				continue;
-			const head = (await readFile(join(admin, "HEAD"), "utf8")).trim();
-			if (head !== `ref: refs/heads/${branch}`)
+			const head = (
+				await maintenanceCommand("git", [
+					"--git-dir",
+					admin,
+					"--work-tree",
+					path,
+					"symbolic-ref",
+					"--quiet",
+					"HEAD",
+				])
+			).trim();
+			if (head !== `refs/heads/${branch}`)
 				throw new Error("Worktree branch changed during cleanup");
 			await copyEntry(admin, join(backup, "git-admin"));
 			const patch = await maintenanceCommand("git", [

@@ -100,7 +100,7 @@ function installAndRestart(tag: string): Promise<boolean> {
 					message: i18n._(
 						msg({
 							message:
-								"Could not install the update. Paradev++ is still open. Try again from Check for Updates.",
+								"Could not prepare the update. Your current installation is unchanged. Try again from Check for Updates.",
 						}),
 					),
 					detail: logPath,

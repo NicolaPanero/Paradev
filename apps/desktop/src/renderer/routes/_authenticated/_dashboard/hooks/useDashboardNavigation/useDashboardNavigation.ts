@@ -1,7 +1,8 @@
-import { useMatchRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useForkConnections } from "renderer/components/ForkIntegrations/hooks/useForkConnections";
 import { GATED_FEATURES, usePaywall } from "renderer/components/Paywall";
 import { useActiveOrganizationId } from "renderer/hooks/useActiveOrganizationId";
+import { useMatchRoute } from "renderer/hooks/useMatchRoute";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
 import { useIsChatSection } from "renderer/routes/_authenticated/_dashboard/hooks/useIsChatSection";
 import {
@@ -108,6 +109,7 @@ export function useDashboardNavigation() {
 					search: pullRequestsFilters.search,
 					projectFilters: pullRequestsFilters.projectFilters,
 					authorFilter: pullRequestsFilters.authorFilter,
+					reviewerFilter: pullRequestsFilters.reviewerFilter,
 					reviewFilter: pullRequestsFilters.reviewFilter,
 					includeClosed: pullRequestsFilters.includeClosed,
 					mergedOnly: pullRequestsFilters.mergedOnly,

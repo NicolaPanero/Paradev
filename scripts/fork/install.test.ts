@@ -52,12 +52,34 @@ function fixture(
 			mode: 0o755,
 		});
 	command("uname", 'if [ "$1" = -s ]; then echo Darwin; else echo arm64; fi');
+	const downloads = quote(join(root, "downloads"));
+	const downloadScenarios: Record<string, string> = {
+		download: "printf 404; exit 22",
+		unavailable: "exit 56",
+		interrupted: `if [ ! -f "$output" ]; then printf syntheti > "$output"; exit 56; fi
+			[ "$resume" = true ]; [ "$(cat "$output")" = syntheti ]
+			printf 'c archive' >> "$output"`,
+		"resume-next-install": `if [ ! -f "$output" ]; then printf syntheti > "$output"; fi
+			if [ "$(wc -l < ${downloads})" -le 4 ]; then exit 56; fi
+			[ "$resume" = true ]; [ "$(cat "$output")" = syntheti ]
+			printf 'c archive' >> "$output"`,
+		"temporary-http": `if [ "$(wc -l < ${downloads})" -eq 1 ]; then printf 503; exit 22; fi
+			/bin/cp ${quote(payload)} "$output"`,
+	};
 	command(
 		"curl",
-		mode === "download"
-			? "exit 22"
-			: `while [ $# -gt 0 ]; do if [ "$1" = -o ]; then /bin/cp ${quote(payload)} "$2"; exit; fi; shift; done; exit 1`,
+		`printf 'attempt\\n' >> ${downloads}
+		resume=false
+		while [ $# -gt 0 ]; do
+			case "$1" in
+				-o) output="$2"; shift 2 ;;
+				--continue-at) [ "$2" = - ]; resume=true; shift 2 ;;
+				*) shift ;;
+			esac
+		done
+		${downloadScenarios[mode] ?? `/bin/cp ${quote(payload)} "$output"`}`,
 	);
+	command("sleep", "exit 0");
 	command(
 		"ditto",
 		`mkdir -p "$4/${archiveApp}/Contents/MacOS"; printf '%s' ${quote(mode === "bundle" ? "com.superset.desktop" : "com.superset.desktop.fork")} > "$4/${archiveApp}/Contents/Info.plist"; printf 'new app' > "$4/${archiveApp}/Contents/MacOS/${archiveExecutable}"; chmod +x "$4/${archiveApp}/Contents/MacOS/${archiveExecutable}"`,
@@ -92,29 +114,30 @@ function fixture(
 	];
 	const script = resolve(import.meta.dir, "install.sh");
 	const stuck = mode === "quit";
-	const result = spawnSync(
-		"/bin/sh",
-		stuck
-			? [
-					"-c",
-					'script=$1; shift; kill() { return 0; }; sleep() { :; }; . "$script"',
-					"fixture",
-					script,
-					...args,
-					"--wait-pid",
-					"999999",
-				]
-			: [script, ...args],
-		{
-			env: {
-				...process.env,
-				HOME: home,
-				PATH: `${bin}:${process.env.PATH ?? ""}`,
+	const run = () =>
+		spawnSync(
+			"/bin/sh",
+			stuck
+				? [
+						"-c",
+						'script=$1; shift; kill() { return 0; }; sleep() { :; }; . "$script"',
+						"fixture",
+						script,
+						...args,
+						"--wait-pid",
+						"999999",
+					]
+				: [script, ...args],
+			{
+				env: {
+					...process.env,
+					HOME: home,
+					PATH: `${bin}:${process.env.PATH ?? ""}`,
+				},
+				encoding: "utf8",
 			},
-			encoding: "utf8",
-		},
-	);
-	return { root, app, status, opened, destination, trash, result };
+		);
+	return { root, app, status, opened, destination, trash, result: run(), run };
 }
 test("successful installation replaces only the chosen fork bundle and relaunches its exact path", () => {
 	const f = fixture();
@@ -125,6 +148,82 @@ test("successful installation replaces only the chosen fork bundle and relaunche
 	);
 	expect(readFileSync(f.opened, "utf8")).toBe(f.app);
 	expect(readdirSync(f.destination)).toEqual(["Superset++.app"]);
+});
+test("a reset connection resumes the partial archive before checking its checksum", () => {
+	const f = fixture("interrupted");
+	expect(f.result.status).toBe(0);
+	expect(
+		readFileSync(join(f.root, "downloads"), "utf8").trim().split("\n"),
+	).toHaveLength(2);
+	expect(readFileSync(f.status, "utf8").trim()).toBe("installed");
+	expect(readFileSync(f.opened, "utf8")).toBe(f.app);
+});
+test("persistent connection failures stop after four attempts and preserve the app", () => {
+	const f = fixture("unavailable");
+	expect(f.result.status).toBe(56);
+	expect(
+		readFileSync(join(f.root, "downloads"), "utf8").trim().split("\n"),
+	).toHaveLength(4);
+	expect(readFileSync(f.status, "utf8").trim()).toBe("failed");
+	expect(readFileSync(join(f.app, "Contents/MacOS/Superset++"), "utf8")).toBe(
+		"old app",
+	);
+	expect(readdirSync(f.root)).not.toContain("opened");
+});
+test("a temporary HTTP failure retries the release download", () => {
+	const f = fixture("temporary-http");
+	expect(f.result.status).toBe(0);
+	expect(
+		readFileSync(join(f.root, "downloads"), "utf8").trim().split("\n"),
+	).toHaveLength(2);
+});
+test("a missing release is not retried", () => {
+	const f = fixture("download");
+	expect(f.result.status).toBe(22);
+	expect(
+		readFileSync(join(f.root, "downloads"), "utf8").trim().split("\n"),
+	).toHaveLength(1);
+});
+test("a later install resumes the pinned partial archive instead of downloading it again", () => {
+	const f = fixture("resume-next-install");
+	expect(f.result.status).toBe(56);
+	expect(readFileSync(join(f.root, "download/archive.zip"), "utf8")).toBe(
+		"syntheti",
+	);
+	expect(f.run().status).toBe(0);
+	expect(
+		readFileSync(join(f.root, "downloads"), "utf8").trim().split("\n"),
+	).toHaveLength(5);
+	expect(readFileSync(f.status, "utf8").trim()).toBe("installed");
+	expect(readdirSync(join(f.root, "download"))).not.toContain("archive.zip");
+});
+test("a verified archive survives a cancelled restart and is reused without another transfer", () => {
+	const f = fixture("quit");
+	expect(f.result.status).not.toBe(0);
+	expect(f.run().status).not.toBe(0);
+	expect(
+		readFileSync(join(f.root, "downloads"), "utf8").trim().split("\n"),
+	).toHaveLength(1);
+	expect(readFileSync(join(f.root, "download/archive.zip"), "utf8")).toBe(
+		"synthetic archive",
+	);
+});
+test("an invalid cached archive is removed after checksum verification fails", () => {
+	const f = fixture("checksum");
+	expect(f.result.status).not.toBe(0);
+	expect(readdirSync(join(f.root, "download"))).not.toContain("archive.zip");
+});
+test("a cache pinned to another release is replaced before downloading", () => {
+	const f = fixture("quit");
+	writeFileSync(join(f.root, "download/sha256"), "a".repeat(64));
+	writeFileSync(join(f.root, "download/archive.zip"), "another release");
+	expect(f.run().status).not.toBe(0);
+	expect(
+		readFileSync(join(f.root, "downloads"), "utf8").trim().split("\n"),
+	).toHaveLength(2);
+	expect(readFileSync(join(f.root, "download/archive.zip"), "utf8")).toBe(
+		"synthetic archive",
+	);
 });
 test.each([
 	"download",

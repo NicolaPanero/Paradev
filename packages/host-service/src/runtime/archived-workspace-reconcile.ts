@@ -2,6 +2,10 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import { isAbsolute, join, resolve } from "node:path";
 import { and, eq, isNotNull, isNull } from "drizzle-orm";
 import { projects, workspaces } from "../db/schema";
+import {
+	readForkGitHead,
+	resolveForkGitBranch,
+} from "../project-folders/fork-git-head";
 import { destroyWorkspace } from "../trpc/router/workspace-cleanup";
 import type { HostServiceContext } from "../types";
 import { canReconcileForkWorktree } from "./fork-partial-worktree-cleanup";
@@ -45,7 +49,7 @@ export async function runArchivedWorkspaceReconcile(
 
 	let resumed = 0;
 	for (const row of stranded) {
-		if (!canReconcileForkWorktree(ctx, row, isSameWorktree(row))) {
+		if (!canReconcileForkWorktree(ctx, row, await isSameWorktree(row))) {
 			console.warn(
 				"[archived-workspace-reconcile] left a reused or unreadable folder alone",
 				{ workspaceId: row.id, worktreePath: row.worktreePath },
@@ -89,15 +93,20 @@ export async function runArchivedWorkspaceReconcile(
 	}
 }
 
-function isSameWorktree(row: {
+async function isSameWorktree(row: {
 	worktreePath: string;
 	branch: string;
 	archivedAt: number | null;
-}): boolean {
+}): Promise<boolean> {
 	try {
 		const createdAt = statSync(row.worktreePath).birthtimeMs;
 		if (row.archivedAt !== null && createdAt > row.archivedAt) return false;
-		return readCheckedOutBranch(row.worktreePath) === row.branch;
+		return (
+			(await resolveForkGitBranch(
+				row.worktreePath,
+				readCheckedOutBranch(row.worktreePath),
+			)) === row.branch
+		);
 	} catch {
 		return false;
 	}
@@ -113,9 +122,7 @@ export function readCheckedOutBranch(worktreePath: string): string | null {
 		gitDir = isAbsolute(pointer) ? pointer : resolve(worktreePath, pointer);
 	}
 	const head = readFileSync(join(gitDir, "HEAD"), "utf8").trim();
-	return head.startsWith("ref: refs/heads/")
-		? head.slice("ref: refs/heads/".length)
-		: null;
+	return readForkGitHead(head);
 }
 
 /**

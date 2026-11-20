@@ -32,7 +32,7 @@ afterAll(() => {
 	rmSync(root, { recursive: true, force: true });
 });
 
-function fixture() {
+function fixture(refFormat: "files" | "reftable" = "files") {
 	const home = mkdtempSync(join(root, "case-"));
 	const repo = join(home, "repo");
 	mkdirSync(repo);
@@ -50,7 +50,7 @@ function fixture() {
 			],
 			{ encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] },
 		);
-	git("init", "-b", "main");
+	git("init", "-b", "main", `--ref-format=${refFormat}`);
 	git("config", "user.name", "Test Runner");
 	git("config", "user.email", "test@example.invalid");
 	writeFileSync(join(repo, "README.md"), "initial\n");
@@ -280,8 +280,11 @@ test("an active workspace extra folder is protected even when an archived worksp
 	expect(existsSync(f.path)).toBe(true);
 });
 
-test("a partially deleted checkout without a git pointer is backed up and unregistered through its project repository", async () => {
-	const f = fixture();
+test.each([
+	"files",
+	"reftable",
+] as const)("a partially deleted %s checkout without a git pointer is backed up and unregistered through its project repository", async (format) => {
+	const f = fixture(format);
 	rmSync(join(f.path, ".git"));
 	writeFileSync(join(f.path, "notes.txt"), "recover me\n");
 	const service = new ForkWorktreeMaintenance(f.ctx, f.options);

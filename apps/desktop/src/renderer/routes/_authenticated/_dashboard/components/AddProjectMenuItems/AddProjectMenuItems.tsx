@@ -8,6 +8,7 @@ import {
 	VscLayout,
 	VscNewFolder,
 } from "react-icons/vsc";
+import { ForkProjectGroupMenuItem } from "renderer/components/ForkProjectComposer/components/ForkProjectGroupMenuItem";
 import { useOpenNewWorkspaceForLocalProject } from "renderer/hooks/useOpenNewWorkspace";
 import { useFolderFirstImport } from "renderer/routes/_authenticated/_dashboard/components/AddRepositoryModals/hooks/useFolderFirstImport";
 import {
@@ -59,6 +60,7 @@ export function AddProjectMenuItems() {
 				<VscGithubAlt className="size-4" />
 				<Trans>Clone from URL</Trans>
 			</DropdownMenuItem>
+			<ForkProjectGroupMenuItem />
 			<DropdownMenuItem onSelect={() => openEmptyProject()}>
 				<VscNewFolder className="size-4" />
 				<Trans>Create new project</Trans>

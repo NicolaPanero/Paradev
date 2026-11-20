@@ -4,6 +4,7 @@ import { Switch } from "@superset/ui/switch";
 import { ForkAgentCliUpdatesSettings } from "renderer/components/ForkAgentCliUpdates";
 import { ForkCliOptionsSetting } from "renderer/components/ForkCliOptionsSetting";
 import { ForkIntegrations } from "renderer/components/ForkIntegrations";
+import { ForkPortableBackup } from "renderer/components/ForkPortableBackup";
 import { ForkWorktreeCleanup } from "renderer/components/ForkWorktreeCleanup";
 import { useForkCliOptionsStore } from "renderer/stores/fork-cli-options";
 import { useForkHomeAppearance } from "renderer/stores/fork-home-appearance";
@@ -121,10 +122,14 @@ export function ForkSettings() {
 			{matches.some(
 				(item) =>
 					item.id === SETTING_ITEM_ID.FORK_ATTACHMENT_RETENTION ||
+					item.id === SETTING_ITEM_ID.FORK_PORTABLE_BACKUP ||
 					item.id === SETTING_ITEM_ID.FORK_WORKTREE_CLEANUP,
 			) && (
 				<SettingsSection title={t({ message: "Storage" })}>
 					<div className="rounded-lg border divide-y">
+						{matches.some(
+							(item) => item.id === SETTING_ITEM_ID.FORK_PORTABLE_BACKUP,
+						) && <ForkPortableBackup />}
 						{matches.some(
 							(item) => item.id === SETTING_ITEM_ID.FORK_ATTACHMENT_RETENTION,
 						) && <ForkAttachmentRetention />}

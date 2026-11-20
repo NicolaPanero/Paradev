@@ -12,7 +12,9 @@ import {
 	listProjectFolders,
 	listWorkspaceFolders,
 } from "../../../project-folders";
+import { resolveForkFolderBranches } from "../../../project-folders/fork-git-head";
 import { protectedProcedure, router } from "../../index";
+import { forkOriginBranchesProcedures } from "./fork-origin-branches";
 
 function normalizeFolderPath(input: string): string {
 	if (!isAbsolute(input)) {
@@ -36,6 +38,7 @@ function normalizeFolderPath(input: string): string {
 }
 
 export const projectFoldersRouter = router({
+	...forkOriginBranchesProcedures,
 	list: protectedProcedure
 		.input(z.object({ projectId: z.string() }))
 		.query(({ ctx, input }) => listProjectFolders(ctx.db, input.projectId)),
@@ -44,13 +47,17 @@ export const projectFoldersRouter = router({
 	listForWorkspace: protectedProcedure
 		.input(z.object({ workspaceId: z.string() }))
 		.query(({ ctx, input }) =>
-			listWorkspaceFolders(ctx.db, input.workspaceId).map((folder) => ({
-				...folder,
-				workspaceKey: folderWorkspaceId({
-					workspaceId: input.workspaceId,
-					folderId: folder.id,
-				}),
-			})),
+			resolveForkFolderBranches(
+				listWorkspaceFolders(ctx.db, input.workspaceId),
+			).then((folders) =>
+				folders.map((folder) => ({
+					...folder,
+					workspaceKey: folderWorkspaceId({
+						workspaceId: input.workspaceId,
+						folderId: folder.id,
+					}),
+				})),
+			),
 		),
 
 	add: protectedProcedure

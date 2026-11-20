@@ -5,6 +5,7 @@ import { projectFolders, workspaceFolderWorktrees } from "../db/fork-schema.ts";
 import type { HostDb } from "../db/index.ts";
 import { workspaces } from "../db/schema.ts";
 import { parseFolderWorkspaceId } from "./folder-workspace-id.ts";
+import { readForkGitHead } from "./fork-git-head";
 
 export interface ProjectFolderInfo {
 	id: string;
@@ -21,9 +22,7 @@ export function isGitRepoPath(path: string): boolean {
 	return existsSync(join(path, ".git"));
 }
 
-const HEAD_REF = "ref: refs/heads/";
-
-/** Reads `.git/HEAD` without spawning git; null when detached or not a repository. */
+/** Reads ordinary HEAD files; reftable refs are resolved by the async caller. */
 export function readGitBranch(path: string): string | null {
 	try {
 		let gitDir = join(path, ".git");
@@ -33,7 +32,7 @@ export function readGitBranch(path: string): string | null {
 			gitDir = resolve(path, pointer[1].trim());
 		}
 		const head = readFileSync(join(gitDir, "HEAD"), "utf8").trim();
-		return head.startsWith(HEAD_REF) ? head.slice(HEAD_REF.length) : null;
+		return readForkGitHead(head);
 	} catch {
 		return null;
 	}

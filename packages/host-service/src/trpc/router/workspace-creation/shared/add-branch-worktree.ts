@@ -9,12 +9,15 @@ export interface BranchSourcePlan {
 	usedExistingBranch: boolean;
 }
 
-export async function addBranchWorktree(args: {
-	git: GitClient;
-	plan: BranchSourcePlan;
-	worktreePath: string;
-	sparsePaths: string[];
-}): Promise<void> {
+export async function addBranchWorktree(
+	args: {
+		git: GitClient;
+		plan: BranchSourcePlan;
+		worktreePath: string;
+		sparsePaths: string[];
+	},
+	forkStartPoint?: string,
+): Promise<void> {
 	const { git, plan, worktreePath, sparsePaths } = args;
 
 	// Post-checkout hooks run after the checkout itself, so a hook that exits
@@ -73,11 +76,12 @@ export async function addBranchWorktree(args: {
 	// ahead/behind counts pointing at the branch's own upstream once
 	// push.autoSetupRemote sets it on first push.
 	const startPointArg =
-		plan.startPoint.kind === "head"
+		forkStartPoint ??
+		(plan.startPoint.kind === "head"
 			? "HEAD"
 			: plan.startPoint.kind === "remote-tracking"
 				? plan.startPoint.remoteShortName
-				: plan.startPoint.shortName;
+				: plan.startPoint.shortName);
 	await addWorktreeWithSparseCheckout({
 		git,
 		worktreeArgs: [

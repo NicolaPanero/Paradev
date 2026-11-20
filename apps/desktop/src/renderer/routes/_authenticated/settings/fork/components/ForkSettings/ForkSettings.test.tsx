@@ -1,5 +1,6 @@
 import { afterEach, expect, test } from "bun:test";
 import { ForkProFeature } from "renderer/components/ForkProFeature";
+import { electronTrpc } from "renderer/lib/electron-trpc";
 import { useForkCliOptionsStore } from "renderer/stores/fork-cli-options";
 import { useForkHomeAppearance } from "renderer/stores/fork-home-appearance";
 import { useSettingsStore } from "renderer/stores/settings-state";
@@ -22,14 +23,16 @@ afterEach(() => {
 });
 
 test("Fork Settings restores Pro UI and persists independent hide preferences", () => {
+	const query = queryFixture();
+	const ipc = electronTrpc.createClient({ links: [] });
 	const view = render(
-		<>
+		<electronTrpc.Provider client={ipc} queryClient={query.client}>
 			<ForkSettings />
 			<ForkProFeature>
 				<span>Paid action</span>
 			</ForkProFeature>
-		</>,
-		{ wrapper: queryFixture().wrapper },
+		</electronTrpc.Provider>,
+		{ wrapper: query.wrapper },
 	);
 	const cli = view.getByRole("switch", { name: "Hide CLI options" });
 	const pro = view.getByRole("switch", { name: "Hide Pro features" });
@@ -61,7 +64,7 @@ test("settings search offers Fork Settings and omits hidden Pro sections", () =>
 		true,
 		true,
 	);
-	expect(hidden.fork).toBe(9);
+	expect(hidden.fork).toBe(10);
 	expect(hidden.billing).toBeUndefined();
 	expect(hidden.teams).toBeUndefined();
 	expect(hidden.mobile).toBeUndefined();

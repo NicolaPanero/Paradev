@@ -15,6 +15,7 @@ import {
 	resolveAgentLaunchPresetId,
 } from "@superset/shared/agent-models";
 import {
+	agentCommandText,
 	buildArgvCommand,
 	buildPromptCommandString,
 	envOverlayPrefix,
@@ -30,10 +31,7 @@ import { z } from "zod";
 import { acpHarnessForPreset } from "../../../chat-v3/acpCatalogue";
 import type { HostDb } from "../../../db";
 import { workspaces } from "../../../db/schema";
-import {
-	createTerminalSessionInternal,
-	sendAgentMessage,
-} from "../../../terminal/terminal";
+import { createTerminalSessionInternal } from "../../../terminal/terminal";
 import type {
 	TerminalAgentBinding,
 	TerminalAgentStore,
@@ -44,6 +42,7 @@ import {
 	resolveHostAgentConfig,
 } from "../../../terminal-agents/agent-config";
 import { hasHarnessSession } from "../../../terminal-agents/harness-sessions";
+import { sendToAgent } from "../../../terminal-agents/send-to-agent";
 import type { HostServiceContext } from "../../../types";
 import { protectedProcedure, router } from "../../index";
 import {
@@ -90,26 +89,24 @@ export function buildAgentCommandString(
 	const forkArgv = options.forkSessionId
 		? buildForkArgv(config.forkArgs, options.forkSessionId)
 		: [];
-	const baseArgv = [
-		config.command,
-		...config.args,
-		...modelArgs,
-		...resumeArgv,
-		...forkArgv,
-	];
+	const baseArgv = [...modelArgs, ...resumeArgv, ...forkArgv];
+	const withCommand = (argv: string[]) =>
+		[agentCommandText(config.command, config.args), buildArgvCommand(argv)]
+			.filter(Boolean)
+			.join(" ");
 
 	if (prompt === "") {
-		return buildArgvCommand(baseArgv);
+		return withCommand(baseArgv);
 	}
 
 	if (config.promptTransport === "argv") {
 		// Plain quoted positional, not the shared "$(cat <<…)" form: the command
 		// is typed into the user's configured shell, and fish has no heredocs.
-		return buildArgvCommand([...baseArgv, ...config.promptArgs, prompt]);
+		return withCommand([...baseArgv, ...config.promptArgs, prompt]);
 	}
 
 	return buildPromptCommandString({
-		command: buildArgvCommand([...baseArgv, ...config.promptArgs]),
+		command: withCommand([...baseArgv, ...config.promptArgs]),
 		transport: "stdin",
 		prompt,
 		randomId,
@@ -699,7 +696,6 @@ export function chatLaunchTarget(
 } | null {
 	if (
 		input.surface !== "chat" ||
-		(input.effort && input.modelCatalog !== "agent") ||
 		input.resumeSessionId ||
 		input.forkSessionId
 	) {
@@ -778,41 +774,6 @@ export function storedChatConfig(
 	return { stored, keeps };
 }
 
-function continueChatAgent(
-	ctx: Pick<HostServiceContext, "db" | "runtime" | "terminalAgentStore">,
-	input: AgentRunInput,
-): AgentRunResult | null {
-	const terminalId = input.continueTerminalId;
-	if (!terminalId || !ctx.terminalAgentStore.getChat(terminalId)) return null;
-	const chat = ctx.runtime.chat?.();
-	if (!chat) return null;
-	const target = chatContinuationTarget(
-		ctx.db,
-		ctx.terminalAgentStore,
-		chat.live,
-		input,
-	);
-	if (!target) return null;
-
-	try {
-		chat.commands.prompt({
-			commandId: crypto.randomUUID(),
-			sessionId: target.chatSessionId,
-			clientId: crypto.randomUUID(),
-			content: [{ type: "text", text: input.prompt }],
-		});
-	} catch {
-		return null;
-	}
-
-	return {
-		kind: "terminal",
-		sessionId: target.terminalId,
-		label: target.label,
-		chatSessionId: target.chatSessionId,
-	};
-}
-
 export function launchChatAgent(
 	ctx: Pick<HostServiceContext, "db" | "runtime">,
 	input: AgentRunInput,
@@ -853,18 +814,32 @@ export function launchChatAgent(
  * Every rejection falls through to a launch rather than failing: the caller's
  * candidate is a hint, and a stale one must cost nothing.
  */
-async function continueTerminalAgent(
-	ctx: Pick<HostServiceContext, "db" | "eventBus" | "terminalAgentStore">,
+export async function continueAgent(
+	ctx: Pick<
+		HostServiceContext,
+		"db" | "eventBus" | "runtime" | "terminalAgentStore"
+	>,
 	input: AgentRunInput,
 ): Promise<AgentRunResult | null> {
-	const target = continuationTarget(ctx.db, ctx.terminalAgentStore, input);
+	const terminalId = input.continueTerminalId;
+	if (!terminalId) return null;
+	// `runtime.chat()` opens chat.db on first use, so only a chat asks for it.
+	const chat = ctx.terminalAgentStore.hasChat(terminalId)
+		? ctx.runtime.chat?.()
+		: undefined;
+	const chatTarget = chat
+		? chatContinuationTarget(ctx.db, ctx.terminalAgentStore, chat.live, input)
+		: null;
+	const target =
+		chatTarget ?? continuationTarget(ctx.db, ctx.terminalAgentStore, input);
 	if (!target) return null;
 
-	const sent = await sendAgentMessage({
+	const sent = await sendToAgent({
 		terminalId: target.terminalId,
 		workspaceId: input.workspaceId,
 		text: input.prompt,
 		terminalAgentStore: ctx.terminalAgentStore,
+		chatRuntime: () => chat,
 		submit: true,
 		db: ctx.db,
 		eventBus: ctx.eventBus,
@@ -878,6 +853,7 @@ async function continueTerminalAgent(
 		kind: "terminal",
 		sessionId: target.terminalId,
 		label: target.label,
+		...(chatTarget ? { chatSessionId: chatTarget.chatSessionId } : {}),
 	};
 }
 
@@ -909,8 +885,7 @@ export async function runAgentInWorkspace(
 	}
 	input = await applyForkLaunchChoices(ctx.db, input);
 	// Ahead of the launch path: continuing costs no pty and no trust seeding.
-	const continued =
-		continueChatAgent(ctx, input) ?? (await continueTerminalAgent(ctx, input));
+	const continued = await continueAgent(ctx, input);
 	if (continued) return continued;
 
 	// Session workspaces are standalone repos the host itself scaffolded, so

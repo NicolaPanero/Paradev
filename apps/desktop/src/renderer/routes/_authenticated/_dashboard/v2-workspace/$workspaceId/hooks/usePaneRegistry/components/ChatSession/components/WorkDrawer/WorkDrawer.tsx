@@ -59,7 +59,9 @@ export function WorkDrawer({
 	const previousKeysRef = useRef<string[]>([]);
 	const queueActions = useQueueActions(queue);
 	const [editingId, setEditingId] = useState<string | null>(null);
-	const prompts = queue?.prompts ?? [];
+	const queued = queue?.prompts ?? [];
+	const sending = queue?.sending ?? [];
+	const prompts = sending.length > 0 ? [...queued, ...sending] : queued;
 	const actionableQueue = queue?.actionable === true;
 	const paneThird = usePaneThird(paneRef);
 
@@ -78,7 +80,9 @@ export function WorkDrawer({
 	const tabbableKey =
 		activeKey !== null && entries.has(activeKey) ? activeKey : lastKey;
 	const keySignature = keys.join("\n");
-	const hasActionableEntry = actionableQueue && prompts.length > 0;
+	const hasActionableEntry = actionableQueue && queued.length > 0;
+	const canActOn = (prompt: UserMessage) =>
+		actionableQueue && !sending.includes(prompt);
 
 	const exit = (mode: DrawerExit) => {
 		lastFocusRef.current = null;
@@ -147,7 +151,7 @@ export function WorkDrawer({
 				toggle();
 				return true;
 			case "queued":
-				if (!actionableQueue || forkPending(entry.prompt)) return false;
+				if (!canActOn(entry.prompt) || forkPending(entry.prompt)) return false;
 				queueActions.onSteer(entry.prompt.id);
 				exit("composer");
 				return true;
@@ -157,7 +161,7 @@ export function WorkDrawer({
 	const remove = (entry: Entry) => {
 		if (
 			entry.kind === "header" ||
-			!actionableQueue ||
+			!canActOn(entry.prompt) ||
 			forkPending(entry.prompt)
 		)
 			return false;
@@ -204,7 +208,7 @@ export function WorkDrawer({
 			case "e":
 				handled =
 					entry?.kind === "queued" &&
-					actionableQueue &&
+					canActOn(entry.prompt) &&
 					!forkPending(entry.prompt);
 				if (handled && entry?.kind === "queued") setEditingId(entry.prompt.id);
 				break;
@@ -286,7 +290,7 @@ export function WorkDrawer({
 						>
 							{prompts.map((prompt) => (
 								<QueuedPromptRow
-									actionable={actionableQueue}
+									actionable={canActOn(prompt)}
 									pending={forkPending(prompt)}
 									key={prompt.clientId ?? prompt.id}
 									editing={editingId === prompt.id}

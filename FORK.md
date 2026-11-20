@@ -2,7 +2,7 @@
 
 Paradev++ è il nuovo nome di Superset++. Fork personale di
 [ParadevAI/Paradev](https://github.com/ParadevAI/Paradev) (già Superset),
-basato sul tag desktop **2.0.0**. Il logo, i dati e gli aggiornamenti restano
+basato sul tag desktop **2.0.9**. Il logo, i dati e gli aggiornamenti restano
 gli stessi: per compatibilità alcuni nomi tecnici sono invariati, come descritto
 in [Identità e nomi tecnici](#identità-e-nomi-tecnici). Usa i servizi ufficiali per
 login e sincronizzazione; le estensioni del fork girano sull’host locale.
@@ -14,6 +14,14 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
 [Protezione dei branch](#eliminazione-workspace)
 
 ## Uso quotidiano
+
+- **Settings → Fork → Storage → Portable backup** crea un archivio completo e
+  cifrato per trasferire dati locali, impostazioni, chat, profili agenti,
+  repository e worktree su un altro Mac. Mostra l’anteprima e i percorsi mancanti;
+  il ripristino rimappa i percorsi e conserva copie di sicurezza dei dati già
+  presenti. Include file ignorati, dipendenze e credenziali locali. Gli agenti
+  vengono fermati durante l’operazione. Guida e limiti:
+  [docs/fork-portable-backup.md](docs/fork-portable-backup.md).
 
 - **Settings → Fork → Connections** configura GitHub, Bitbucket Cloud e Jira Cloud.
   Le stesse schede sono disponibili nell'onboarding. Jira e Bitbucket accettano
@@ -460,6 +468,46 @@ ripresa della conversazione fallisce per account o sessione non caricabile,
 la schermata di recupero mostra un’indicazione e interrompe i tentativi automatici
 ripetuti; il tentativo manuale rimane disponibile.
 
+## Branch di partenza per progetti con più repository
+
+**Add project → Project from existing folders** crea un progetto composto da
+repository e cartelle già usati da altri progetti. Si sceglie un repository
+principale e si aggiungono le altre cartelle, dall’elenco o con **Browse folders**.
+Non servono un repository contenitore fittizio o un secondo clone. In **Project
+Settings → Extra folders → Reuse existing folders** si possono aggiungere le
+cartelle registrate anche a un progetto esistente.
+
+I progetti composti usano un prefisso di branch distinto per progetto. Creando un
+workspace **Worktree**, ciascun repository isolato riceve un checkout separato:
+file e index sono indipendenti, mentre oggetti e cronologia Git restano condivisi
+con il clone sorgente. Un conflitto interrompe la creazione senza aprire i file
+del clone al suo posto. Per questi progetti si creano nuovi branch; l’adozione
+di worktree esterni e la creazione da PR non sono disponibili. Un workspace
+**Local** usa invece i file originali: le modifiche sono condivise con chi lavora
+sullo stesso checkout. Le normali cartelle senza Git rimangono condivise.
+
+Le cartelle aggiunte a un progetto valgono anche per i workspace già presenti,
+ma il checkout isolato viene creato nei nuovi workspace worktree. Non vengono
+convertiti o spostati automaticamente progetti o cartelle esistenti.
+
+Le cartelle Git aggiuntive e i loro worktree riconoscono anche il formato
+**reftable**: il branch corrente viene risolto tramite Git invece di mostrare
+il segnaposto `.invalid` presente nel file `HEAD`. Non cambia il formato dei
+repository e non duplica la cronologia. Le nuove funzioni richiedono l’host
+aggiornato; su un host precedente l’interfaccia invita ad aggiornarlo.
+
+Nella creazione di un nuovo **Worktree**, **Origin branches** permette di
+scegliere il branch remoto per il repository principale e per ogni cartella Git
+isolata. **Use the same origin branch for all folders** applica un branch presente
+in tutti i repository. Le cartelle non selezionate conservano il comportamento
+precedente; i checkout originali non cambiano branch.
+
+Prima di creare i worktree vengono recuperati i commit dei branch selezionati da
+`origin`. Un branch mancante o un errore di fetch blocca la creazione, senza
+ripiegare sul `HEAD` locale. Anche un branch di destinazione già esistente viene
+segnalato, senza modificarlo. La selezione vale per la creazione corrente e
+richiede un host aggiornato. I workspace esistenti non vengono riallineati.
+
 ## Eliminazione workspace
 
 La preferenza globale **Elimina branch** rimane ricordata. La casella compare
@@ -632,6 +680,12 @@ Chiudere la finestra di avanzamento annulla la preparazione. Il riavvio ha un
 limite di attesa; un fallimento conserva il bundle precedente e permette di
 riprovare. L’installer usa la release mostrata, non una nuova release arrivata
 nel frattempo. Gli errori sono registrati in `~/Library/Logs/Superset++/fork-update.log`.
+Se il trasferimento si interrompe, riprende dal file parziale con un massimo
+di quattro tentativi entro 15 minuti. Anche un successivo **Install and restart**
+riprende il download della stessa release. La cache conserva al massimo un
+archivio, associato al checksum previsto; viene sostituito quando cambia la
+release ed eliminato dopo l’installazione. Un checksum errato elimina il file
+senza modificare l’app installata.
 L’aggiornamento ufficiale è disabilitato nel fork.
 
 Quando una release introduce un gruppo importante di funzionalità, al primo

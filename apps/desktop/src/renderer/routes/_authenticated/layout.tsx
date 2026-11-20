@@ -17,6 +17,7 @@ import { useEffect, useRef, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HiOutlineWifi } from "react-icons/hi2";
 import { ForkAgentCliUpdateNotice } from "renderer/components/ForkAgentCliUpdates";
+import { ForkProjectComposer } from "renderer/components/ForkProjectComposer";
 import { ForkWorktreeCleanupStartup } from "renderer/components/ForkWorktreeCleanup";
 import { Paywall } from "renderer/components/Paywall";
 import { Redirect } from "renderer/components/Redirect";
@@ -77,6 +78,7 @@ import { GitInitConfirmDialog } from "./components/GitInitConfirmDialog";
 import { GlobalBrowserLifecycle } from "./components/GlobalBrowserLifecycle";
 import { GlobalPaneLayoutRequests } from "./components/GlobalPaneLayoutRequests";
 import { InviteMemberDialog } from "./components/InviteMemberDialog";
+import { ResizeMachineConfirmDialog } from "./components/ResizeMachineConfirmDialog";
 import { TeardownLogsDialog } from "./components/TeardownLogsDialog";
 import { V2NotificationController } from "./components/V2NotificationController";
 import { WindowTitle } from "./components/WindowTitle";
@@ -385,6 +387,7 @@ function AuthenticatedLayout() {
 									<DaemonAutoUpdateFailureDialog />
 									<ForkAgentCliUpdateNotice />
 									<ForkWorktreeCleanupStartup />
+									<ForkProjectComposer />
 									<InterruptedChatsDialog />
 									<Outlet />
 									<V1ImportModal />
@@ -409,6 +412,7 @@ function AuthenticatedLayout() {
 									<TeardownLogsDialog />
 									<Paywall />
 									<InviteMemberDialog />
+									<ResizeMachineConfirmDialog />
 								</WorkerPoolContextProvider>
 							</TagFolderWorkspacesProvider>
 						</HostWorkspacesProvider>

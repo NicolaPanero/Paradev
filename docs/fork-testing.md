@@ -43,6 +43,13 @@ in `scripts/fork/test.ts`. I nomi/percorso contenenti `fork` sono inclusi senza
 dover riscrivere il workflow. Se una suite ufficiale richiesta scompare,
 il comando fallisce invece di ometterla. I test vanno collocati accanto al codice.
 
+La suite mantiene invariati i test upstream. Esclude soltanto il caso
+`skips injection when the selected profile dir no longer exists`: il fork
+conserva il profilo selezionato anche se la cartella manca, per evitare di
+usare il login CLI di un altro account. Il comportamento sostitutivo è
+verificato in `fork-agents-launch.test.ts`, insieme alla configurazione
+salvata dei trasferimenti e alla selezione dell’account prima del primo prompt.
+
 ## Cosa viene verificato
 
 | Area | Test unitari / componenti | Integrazioni |

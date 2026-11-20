@@ -13,6 +13,7 @@ import { createDictationRouter } from "./dictation";
 import { createDownloadsRouter } from "./downloads";
 import { createExternalRouter } from "./external";
 import { createFilesystemRouter } from "./filesystem";
+import { createForkPortableBackupRouter } from "./fork-portable-backup";
 import { createGithubStarRouter } from "./github-star";
 import { createHostServiceCoordinatorRouter } from "./host-service-coordinator";
 import { createKeyboardLayoutRouter } from "./keyboardLayout";
@@ -38,6 +39,7 @@ import { createWorkspacesRouter } from "./workspaces";
 
 export const createAppRouter = (getWindow: () => BrowserWindow | null) => {
 	return router({
+		forkPortableBackup: createForkPortableBackupRouter(getWindow),
 		analytics: createAnalyticsRouter(),
 		attachments: createAttachmentsRouter(),
 		browser: createBrowserRouter(),

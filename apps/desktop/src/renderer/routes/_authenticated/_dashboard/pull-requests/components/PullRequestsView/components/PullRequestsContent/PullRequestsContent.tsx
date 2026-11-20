@@ -29,6 +29,7 @@ interface PullRequestsContentProps {
 	hasProjects: boolean;
 	searchQuery: string;
 	authorFilter: string | null;
+	reviewerFilter: string | null;
 	reviewFilter: PullRequestReviewFilter | null;
 	includeClosed: boolean;
 	mergedOnly: boolean;
@@ -57,6 +58,7 @@ export function PullRequestsContent({
 	hasProjects,
 	searchQuery,
 	authorFilter,
+	reviewerFilter,
 	reviewFilter,
 	includeClosed,
 	mergedOnly,
@@ -150,6 +152,7 @@ export function PullRequestsContent({
 				repo: pullRequestRefFromUrl(pr.url)?.repoFullName,
 				projects: serializeProjectFilters(projectFilters),
 				author: authorFilter ?? undefined,
+				reviewer: reviewerFilter ?? undefined,
 				review: reviewFilter ?? undefined,
 				state: mergedOnly ? "merged" : includeClosed ? "all" : undefined,
 			},

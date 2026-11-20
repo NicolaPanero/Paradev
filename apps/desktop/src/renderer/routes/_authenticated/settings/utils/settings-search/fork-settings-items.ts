@@ -1,6 +1,7 @@
 import type { SettingsItem, SettingVariant } from "./settings-search";
 
 export const FORK_SETTING_ITEM_ID = {
+	FORK_PORTABLE_BACKUP: "fork-portable-backup",
 	FORK_TODAY: "fork-today",
 	FORK_HIDE_CLI: "fork-hide-cli",
 	FORK_HIDE_PRO: "fork-hide-pro",
@@ -18,6 +19,7 @@ export const FORK_SETTING_ITEM_VARIANT: Record<
 	(typeof FORK_SETTING_ITEM_ID)[keyof typeof FORK_SETTING_ITEM_ID],
 	SettingVariant
 > = {
+	[FORK_SETTING_ITEM_ID.FORK_PORTABLE_BACKUP]: "shared",
 	[FORK_SETTING_ITEM_ID.LOCAL_AGENT_ACCOUNTS]: "v2",
 	[FORK_SETTING_ITEM_ID.FORK_TODAY]: "shared",
 	[FORK_SETTING_ITEM_ID.FORK_HIDE_CLI]: "shared",
@@ -32,6 +34,22 @@ export const FORK_SETTING_ITEM_VARIANT: Record<
 };
 
 export const FORK_SETTINGS_ITEMS: SettingsItem[] = [
+	{
+		id: FORK_SETTING_ITEM_ID.FORK_PORTABLE_BACKUP,
+		section: "fork",
+		title: "Portable backup",
+		description:
+			"Move settings, projects, worktrees, chat history, agent profiles and files to another Mac.",
+		keywords: [
+			"backup",
+			"restore",
+			"migration",
+			"transfer",
+			"ripristino",
+			"trasferimento",
+			"computer",
+		],
+	},
 	{
 		id: FORK_SETTING_ITEM_ID.FORK_WORKTREE_CLEANUP,
 		section: "fork",

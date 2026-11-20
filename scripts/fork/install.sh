@@ -2,6 +2,7 @@
 # Install the latest Paradev++ release on Apple Silicon. Data stays outside the bundle.
 # The archive may hold Superset++.app or Paradev++.app; the old name is replaced.
 set -eu
+umask 077
 repo="NicolaPanero/Paradev"
 app_asset="Superset-fork-arm64.zip"
 current_path=""
@@ -104,13 +105,63 @@ case "$app_url" in
     "https://github.com/$repo/releases/download/"*"/$app_asset") ;;
     *) echo "No trusted $app_asset release URL." >&2; exit 1 ;;
 esac
-curl --connect-timeout 15 --max-time 900 -fL --progress-bar "$app_url" -o "$work/$app_asset"
 if [ -n "$sha256" ]; then
     case "$sha256" in *[!a-f0-9]*|"") echo "Invalid checksum" >&2; exit 1 ;; esac
     [ ${#sha256} -eq 64 ] || exit 1
-    printf '%s  %s\n' "$sha256" "$work/$app_asset" | shasum -a 256 -c -
 fi
-ditto -x -k "$work/$app_asset" "$work/app"
+archive_file="$work/$app_asset"
+if [ -n "$status_file" ] && [ -n "$sha256" ]; then
+    download_cache="$(dirname "$status_file")/download"
+    [ ! -L "$download_cache" ] || { echo "Invalid update cache." >&2; exit 1; }
+    mkdir -p "$download_cache"
+    archive_file="$download_cache/archive.zip"
+    for cached_file in "$archive_file" "$download_cache/sha256"; do
+        [ ! -L "$cached_file" ] || { echo "Invalid update cache." >&2; exit 1; }
+    done
+    cached_sha256=$(cat "$download_cache/sha256" 2>/dev/null || true)
+    if [ "$cached_sha256" != "$sha256" ]; then
+        rm -f "$archive_file"
+        printf '%s\n' "$sha256" > "$download_cache/sha256"
+    fi
+fi
+archive_verified() {
+    [ -n "$sha256" ] && [ -f "$archive_file" ] &&
+        printf '%s  %s\n' "$sha256" "$archive_file" | shasum -a 256 -c - >/dev/null 2>&1
+}
+download_archive() {
+    download_started=$(date +%s)
+    download_attempt=1
+    while :; do
+        download_remaining=$((900 - $(date +%s) + download_started))
+        [ "$download_remaining" -gt 0 ] || return 28
+        echo "Downloading update (attempt $download_attempt of 4)." >&2
+        if download_http=$(curl --connect-timeout 15 --max-time "$download_remaining" -fsSL --continue-at - --write-out '%{http_code}' "$app_url" -o "$archive_file"); then
+            return 0
+        else
+            download_exit=$?
+        fi
+        case "$download_exit" in
+            5|6|7|18|28|35|52|55|56|92|95) ;;
+            22)
+                case "$download_http" in
+                    408|429|500|502|503|504) ;;
+                    *) return "$download_exit" ;;
+                esac ;;
+            33) rm -f "$archive_file" ;;
+            *) return "$download_exit" ;;
+        esac
+        [ "$download_attempt" -lt 4 ] || return "$download_exit"
+        download_attempt=$((download_attempt + 1))
+        sleep 2
+    done
+}
+if ! archive_verified; then download_archive; fi
+if [ -n "$sha256" ] && ! archive_verified; then
+    rm -f "$archive_file"
+    echo "Update archive checksum mismatch." >&2
+    exit 1
+fi
+ditto -x -k "$archive_file" "$work/app"
 app_name=""
 for candidate in "Paradev++.app" "Superset++.app"; do
     if [ -d "$work/app/$candidate" ]; then app_name="$candidate"; break; fi
@@ -160,6 +211,7 @@ if [ -d "$app_path" ]; then
 fi
 mv "$staging/$app_name" "$app_path"
 committed=true
+rm -f "$archive_file" || true
 echo "Installed $app_path"
 if [ "$current_path" != "$app_path" ] && [ -d "$current_path" ]; then
     mv "$current_path" "$HOME/.Trash/$(basename "$current_path" .app) (replaced) $(date +%Y%m%d-%H%M%S).app" 2>/dev/null ||

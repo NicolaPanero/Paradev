@@ -1,4 +1,8 @@
 const FORK_TABLES_SQL = `
+CREATE TABLE IF NOT EXISTS fork_project_groups (
+ project_id text PRIMARY KEY NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+ created_at integer NOT NULL
+);
 CREATE TABLE IF NOT EXISTS project_folders (
  id text PRIMARY KEY NOT NULL,
  project_id text NOT NULL REFERENCES projects(id) ON DELETE CASCADE,

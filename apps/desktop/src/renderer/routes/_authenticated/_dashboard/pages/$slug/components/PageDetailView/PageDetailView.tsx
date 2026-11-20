@@ -38,6 +38,7 @@ export function PageDetailView({
 		onRename,
 		onRefresh,
 		onDelete,
+		onDuplicate,
 		sharing,
 		canComment,
 	} = usePageHeaderData({ slug, version: previewVersion });
@@ -102,6 +103,15 @@ export function PageDetailView({
 							await onDelete();
 							goBack();
 						}}
+						onDuplicate={async (title) => {
+							const copy = await onDuplicate(title);
+							if (copy) {
+								await navigate({
+									to: "/pages/$slug",
+									params: { slug: copy.slug },
+								});
+							}
+						}}
 					/>
 				</PageHeader>
 			) : (
@@ -125,6 +135,7 @@ export function PageDetailView({
 					onCommentsEnabledChange={setCommentsEnabled}
 					initialThreadId={initialThreadId}
 					initialPanelOpen={initialPanelOpen}
+					findActive
 				/>
 			</div>
 		</div>

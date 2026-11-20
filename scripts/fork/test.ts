@@ -112,6 +112,8 @@ if (process.argv.includes("--list")) {
 		const command = [
 			process.execPath,
 			"test",
+			"--test-name-pattern",
+			"^(?!.*skips injection when the selected profile dir no longer exists)",
 			"--preload",
 			resolve(root, "packages/host-service/test/setup-env.ts"),
 			...(group.name === "desktop"
