@@ -15,6 +15,7 @@ import {
 	RAIL_ICON_STROKE_WIDTH,
 	railButtonClass,
 } from "renderer/routes/_authenticated/_dashboard/components/RailButton";
+import { useForkProFeatures } from "renderer/stores/fork-cli-options";
 import { useSettings } from "renderer/stores/settings";
 import { DevicesIcon } from "./components/DevicesIcon";
 import { ParadevAnywherePanel } from "./components/ParadevAnywherePanel";
@@ -36,6 +37,7 @@ export function ParadevAnywhereButton({
 }: ParadevAnywhereButtonProps) {
 	const { t } = useLingui();
 	const [isOpen, setIsOpen] = useState(false);
+	const showProFeatures = useForkProFeatures();
 	const isShown = useSettings((s) => s.showParadevAnywhereButton);
 	const updateSetting = useSettings((s) => s.update);
 	const label = t({ message: "Use Paradev anywhere" });
@@ -58,7 +60,7 @@ export function ParadevAnywhereButton({
 		});
 	};
 
-	if (!isShown) return null;
+	if (!isShown || !showProFeatures) return null;
 
 	return (
 		<Popover open={isOpen} onOpenChange={handleOpenChange}>
@@ -97,7 +99,7 @@ export function ParadevAnywhereButton({
 				sideOffset={8}
 				collisionPadding={8}
 				onCloseAutoFocus={(event) => event.preventDefault()}
-				className="w-[332px] rounded-xl p-3.5 shadow-lg"
+				className="@container max-h-[var(--radix-popover-content-available-height)] w-[332px] max-w-[calc(100vw-1rem)] overflow-y-auto rounded-xl p-3.5 shadow-lg"
 			>
 				<ParadevAnywherePanel onClose={() => setIsOpen(false)} onHide={hide} />
 			</PopoverContent>

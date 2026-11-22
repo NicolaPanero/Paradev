@@ -18,7 +18,7 @@ import { chatPortTerminalIds, portManager } from "../ports/port-manager";
 import { fanOutAgentLifecycle } from "../trpc/router/notifications/fan-out-agent-lifecycle";
 import type { SessionAccount } from "../trpc/router/usage/session-account/session-account";
 import type { HostServiceContext } from "../types";
-import { ACP_HARNESSES } from "./acpCatalogue";
+import { ACP_HARNESSES, harnessBinary } from "./acpCatalogue";
 import { chatSessionAccount } from "./forkChatAccount";
 import type { ClosedChat } from "./resumeAfterUpdate";
 
@@ -83,10 +83,7 @@ export type ChatAgentBridge = LiveSessionObserver & {
 export function agentIdForHarness(
 	harness: string,
 ): AgentIdentityId | undefined {
-	const binary =
-		ACP_HARNESSES[harness]?.presetId ??
-		ACP_HARNESSES[harness]?.binary ??
-		(harness === "claude-code" ? "claude" : harness);
+	const binary = ACP_HARNESSES[harness]?.presetId ?? harnessBinary(harness);
 	return (AGENT_IDENTITY_IDS as readonly string[]).includes(binary)
 		? (binary as AgentIdentityId)
 		: undefined;

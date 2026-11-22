@@ -87,7 +87,7 @@ export function ForkPullRequests({
 			}),
 		onSuccess: (r) =>
 			void navigate({
-				to: "/v2-workspace/$workspaceId",
+				to: "/workspace/$workspaceId",
 				params: { workspaceId: r.workspaceId },
 			}),
 	});

@@ -4,6 +4,7 @@ const PRO_ROUTES = [
 	"/pages",
 	"/cloud-workspaces",
 	"/settings/billing",
+	"/settings/cloud-usage",
 	"/settings/mobile",
 	"/settings/security",
 	"/settings/teams",
@@ -38,6 +39,12 @@ export function isForkProSetting(item: {
 	section: string;
 	id: string;
 }): boolean {
-	const path = `/settings/${item.section === "agentAccounts" ? "agent-accounts" : item.section}`;
+	const section =
+		item.section === "agentAccounts"
+			? "agent-accounts"
+			: item.section === "cloudUsage"
+				? "cloud-usage"
+				: item.section;
+	const path = `/settings/${section}`;
 	return isForkProRoute(path) || PRO_SETTING_ITEMS.has(item.id);
 }

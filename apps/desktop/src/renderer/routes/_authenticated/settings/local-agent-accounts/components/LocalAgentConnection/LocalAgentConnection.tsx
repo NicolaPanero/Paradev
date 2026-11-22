@@ -1,7 +1,7 @@
 import type { HostAgentConfig } from "@superset/host-service/settings";
 import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import { V2_AGENT_CONFIGS_QUERY_KEY } from "renderer/hooks/useV2AgentConfigs";
+import { V2_AGENT_CONFIGS_QUERY_KEY } from "renderer/hooks/useAgentConfigs";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getForkAgentSnapshotCommand } from "renderer/lib/fork-agent-snapshot";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
@@ -38,12 +38,12 @@ export function LocalAgentConnection({
 				void queryClient.invalidateQueries({ queryKey });
 				if (hostUrl !== activeHostUrl) return;
 				const command = getForkAgentSnapshotCommand(updated);
-				for (const preset of collections.v2TerminalPresets.values())
+				for (const preset of collections.terminalPresets.values())
 					if (
 						preset.agentId === updated.id ||
 						preset.agentId === updated.presetId
 					)
-						collections.v2TerminalPresets.update(preset.id, (draft) => {
+						collections.terminalPresets.update(preset.id, (draft) => {
 							draft.commands = [command];
 						});
 				if (hostUrl === activeHostUrl)

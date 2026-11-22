@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
 import { createWorkspaceStore } from "@superset/panes";
-import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
-import { openPullRequestPaneInStore } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/utils/openPullRequestPaneInStore";
+import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/types";
+import { openPullRequestPaneInStore } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/utils/openPullRequestPaneInStore";
 import { usePullRequestPaneIntent } from "renderer/stores/pull-request-pane-intent";
 import { forkPullRequestIdentity } from "./fork-pull-request-ref";
 import { forkReviewCommentUrl } from "./fork-review-comment-link";

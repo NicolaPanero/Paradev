@@ -1,4 +1,4 @@
-import type { SettingsItem, SettingVariant } from "./settings-search";
+import type { SettingsItem } from "./settings-search";
 
 export const FORK_SETTING_ITEM_ID = {
 	FORK_PORTABLE_BACKUP: "fork-portable-backup",
@@ -14,24 +14,6 @@ export const FORK_SETTING_ITEM_ID = {
 	LOCAL_AGENT_ACCOUNTS: "local-agent-accounts",
 	EXPERIMENTAL_ACP_CHAT: "experimental-acp-chat",
 } as const;
-
-export const FORK_SETTING_ITEM_VARIANT: Record<
-	(typeof FORK_SETTING_ITEM_ID)[keyof typeof FORK_SETTING_ITEM_ID],
-	SettingVariant
-> = {
-	[FORK_SETTING_ITEM_ID.FORK_PORTABLE_BACKUP]: "shared",
-	[FORK_SETTING_ITEM_ID.LOCAL_AGENT_ACCOUNTS]: "v2",
-	[FORK_SETTING_ITEM_ID.FORK_TODAY]: "shared",
-	[FORK_SETTING_ITEM_ID.FORK_HIDE_CLI]: "shared",
-	[FORK_SETTING_ITEM_ID.FORK_HIDE_PRO]: "shared",
-	[FORK_SETTING_ITEM_ID.FORK_HOME_BACKGROUND]: "v2",
-	[FORK_SETTING_ITEM_ID.FORK_CONNECTIONS]: "shared",
-	[FORK_SETTING_ITEM_ID.FORK_MCP_SERVERS]: "shared",
-	[FORK_SETTING_ITEM_ID.FORK_ATTACHMENT_RETENTION]: "shared",
-	[FORK_SETTING_ITEM_ID.FORK_WORKTREE_CLEANUP]: "shared",
-	[FORK_SETTING_ITEM_ID.FORK_AGENT_CLI_UPDATES]: "shared",
-	[FORK_SETTING_ITEM_ID.EXPERIMENTAL_ACP_CHAT]: "v2",
-};
 
 export const FORK_SETTINGS_ITEMS: SettingsItem[] = [
 	{

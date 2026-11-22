@@ -24,7 +24,7 @@ export function ForkTaskWorkspaceRow({
 				title={workspace.name || workspace.id}
 				onClick={() =>
 					void navigate({
-						to: "/v2-workspace/$workspaceId",
+						to: "/workspace/$workspaceId",
 						params: { workspaceId: workspace.id },
 					})
 				}

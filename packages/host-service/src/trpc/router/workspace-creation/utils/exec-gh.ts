@@ -1,5 +1,6 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+import { resolveCommand } from "@superset/shared/resolve-command";
 import { forkScopedExecGh } from "../../../../fork-integrations/fork-request-scope";
 import { getToolEnvironment } from "../../../../terminal/clean-shell-env";
 
@@ -29,7 +30,7 @@ export const execGh: ExecGh = async (args, options) => {
 	const scoped = forkScopedExecGh(args, options);
 	if (scoped) return scoped;
 	const env = await getToolEnvironment();
-	const child = execFileAsync("gh", args, {
+	const child = execFileAsync(resolveCommand("gh", { env }), args, {
 		encoding: "utf8",
 		timeout: options?.timeout ?? 10_000,
 		// Node's 1MB default dies on large REST payloads (open-PR sweeps of

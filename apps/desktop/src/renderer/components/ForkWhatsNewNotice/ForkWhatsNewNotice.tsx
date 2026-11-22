@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-209-shared-projects-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-2011-upstream-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -32,24 +32,17 @@ export function ForkWhatsNewNotice() {
 	if (seen) return null;
 	const highlights = [
 		t({
-			message:
-				"Choose an origin branch for each repository when creating a worktree.",
+			message: "Chat stays responsive while background agents work.",
+		}),
+		t({
+			message: "Queued prompts remain visible while the agent is working.",
+		}),
+		t({
+			message: "Return to the main chat directly from a subagent conversation.",
 		}),
 		t({
 			message:
-				"Move your entire local setup to another Mac with an encrypted backup.",
-		}),
-		t({
-			message:
-				"Create projects from repositories and folders already used in other projects.",
-		}),
-		t({
-			message:
-				"Extra folders show the correct branch in reftable repositories and worktrees.",
-		}),
-		t({
-			message:
-				"Paradev 2.0.9 improves chat responsiveness and workspace switching.",
+				"Workspace tabs and controls stay accessible at higher zoom levels.",
 		}),
 	];
 	const notice: DesktopNotice = {

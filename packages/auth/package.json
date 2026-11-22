@@ -20,6 +20,10 @@
 			"types": "./src/autumn.ts",
 			"default": "./src/autumn.ts"
 		},
+		"./billing/cloud-usage": {
+			"types": "./src/lib/billing/autumn/cloud-usage.ts",
+			"default": "./src/lib/billing/autumn/cloud-usage.ts"
+		},
 		"./billing": {
 			"types": "./src/lib/billing/index.ts",
 			"default": "./src/lib/billing/index.ts"
@@ -59,6 +63,7 @@
 	"devDependencies": {
 		"@superset/typescript": "workspace:*",
 		"@types/node": "24.12.0",
+		"bun-types": "1.4.3",
 		"typescript": "7.0.2"
 	}
 }

@@ -5,7 +5,12 @@ import { useRelayUrl } from "renderer/hooks/useRelayUrl";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
 import type { LinkedIssue } from "renderer/stores/new-workspace-draft";
-import type { SubmitOutcome } from "renderer/stores/workspace-creates/useWorkspaceCreates";
+import type { useWorkspaceCreates } from "renderer/stores/workspace-creates";
+
+type SubmitOutcome = Awaited<
+	ReturnType<ReturnType<typeof useWorkspaceCreates>["submit"]>["completed"]
+>;
+
 import { forkStartJiraWork } from "../utils/forkJiraWorkspace";
 
 /** Work the fork does once a workspace from the new-workspace screen exists. */

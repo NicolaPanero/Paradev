@@ -146,10 +146,10 @@ modifica soltanto documentazione.
 
 ## Riferimenti principali
 
-- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/useWorkspaceFolders/useWorkspaceFolders.ts`
-- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/components/ChangesControl/ChangesControl.tsx`
-- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePRFlowState/usePRFlowState.ts`
-- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/useShipActions/useShipActions.tsx`
+- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/useWorkspaceFolders/useWorkspaceFolders.ts`
+- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/components/ChangesControl/ChangesControl.tsx`
+- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/usePRFlowState/usePRFlowState.ts`
+- `apps/desktop/src/renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/useShipActions/useShipActions.tsx`
 - `apps/desktop/src/renderer/routes/_authenticated/_dashboard/hooks/useProjectQueryTargets/useProjectQueryTargets.ts`
 - `apps/desktop/src/renderer/routes/_authenticated/_dashboard/pull-requests/components/PullRequestsView/components/PullRequestsContent/PullRequestsContent.tsx`
 - `apps/desktop/src/renderer/components/ForkIntegrations/components/ForkPullRequests/ForkPullRequests.tsx`

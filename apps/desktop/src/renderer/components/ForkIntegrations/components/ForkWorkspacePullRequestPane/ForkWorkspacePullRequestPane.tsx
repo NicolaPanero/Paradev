@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { PullRequestPane } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PullRequestPane/PullRequestPane";
+import { PullRequestPane } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/usePaneRegistry/components/PullRequestPane/PullRequestPane";
 import { ForkPullRequests } from "../ForkPullRequests/ForkPullRequests";
 import { useForkPullRequestPaneTarget } from "./useForkPullRequestPaneTarget";
 

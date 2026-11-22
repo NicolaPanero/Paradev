@@ -1,17 +1,21 @@
 import { expect, test } from "bun:test";
-import { getVisibleMatchCountBySection } from "./settings-search";
+import {
+	getOfferedSections,
+	getVisibleMatchCountBySection,
+} from "./settings-search";
 
 test.each([
-	{ acp: false, hidePro: false },
-	{ acp: false, hidePro: true },
-	{ acp: true, hidePro: false },
-	{ acp: true, hidePro: true },
-])("the chat setting shows whatever the flags, and hidden Pro settings stay independent: %j", ({
-	acp,
-	hidePro,
-}) => {
+	false,
+	true,
+])("the chat setting stays visible when hide Pro is %j", (hidePro) => {
 	const counts = (query: string) =>
-		getVisibleMatchCountBySection(query, true, true, true, false, acp, hidePro);
+		getVisibleMatchCountBySection(query, {
+			isMac: true,
+			isAdmin: true,
+			pluginsEnabled: false,
+			cloudUsageEnabled: false,
+			allowedSections: getOfferedSections(true, hidePro),
+		});
 	expect(counts("acp").behavior).toBe(1);
 	if (hidePro) expect(counts("billing").billing).toBeUndefined();
 	else expect(counts("billing").billing).toBeGreaterThan(0);

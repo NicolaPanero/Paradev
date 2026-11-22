@@ -1,28 +1,28 @@
 import { afterEach, expect, test } from "bun:test";
-import { useForkWorkspacesDeviceFilter } from "renderer/routes/_authenticated/_dashboard/v2-workspaces/hooks/useForkWorkspacesDeviceFilter";
+import { useForkWorkspacesDeviceFilter } from "renderer/routes/_authenticated/_dashboard/workspaces/hooks/useForkWorkspacesDeviceFilter";
 import {
-	useV2WorkspacesFilterStore,
+	useWorkspacesFilterStore,
 	WHERE_FILTER_ANYWHERE,
 	WHERE_FILTER_THIS_DEVICE,
-} from "renderer/routes/_authenticated/_dashboard/v2-workspaces/stores/v2WorkspacesFilterStore";
+} from "renderer/routes/_authenticated/_dashboard/workspaces/stores/workspacesFilterStore";
 import { HostSelect } from "renderer/routes/_authenticated/settings/components/HostSelect";
 import { useForkCliOptionsStore } from "renderer/stores/fork-cli-options";
 import { act, render, renderHook } from "renderer/test-utils/fork-ui";
 import { useForkHostId } from "./fork-host-visibility";
 
 const originalFlags = useForkCliOptionsStore.getState();
-const originalFilter = useV2WorkspacesFilterStore.getState().whereFilter;
+const originalFilter = useWorkspacesFilterStore.getState().whereFilter;
 
 afterEach(() => {
 	act(() => {
 		useForkCliOptionsStore.setState(originalFlags);
-		useV2WorkspacesFilterStore.setState({ whereFilter: originalFilter });
+		useWorkspacesFilterStore.setState({ whereFilter: originalFilter });
 	});
 });
 
 test("hidden device controls use local targets even with remembered remote or all-device filters", () => {
 	useForkCliOptionsStore.setState({ hideProFeatures: true });
-	useV2WorkspacesFilterStore.setState({ whereFilter: "remote-host" });
+	useWorkspacesFilterStore.setState({ whereFilter: "remote-host" });
 	const { result } = renderHook(() => ({
 		hostId: useForkHostId("remote-host"),
 		deviceFilter: useForkWorkspacesDeviceFilter(),
@@ -32,7 +32,7 @@ test("hidden device controls use local targets even with remembered remote or al
 		deviceFilter: WHERE_FILTER_THIS_DEVICE,
 	});
 	act(() =>
-		useV2WorkspacesFilterStore.setState({
+		useWorkspacesFilterStore.setState({
 			whereFilter: WHERE_FILTER_ANYWHERE,
 		}),
 	);

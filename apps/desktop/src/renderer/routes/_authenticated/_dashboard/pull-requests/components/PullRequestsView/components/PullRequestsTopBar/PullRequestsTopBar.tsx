@@ -207,9 +207,9 @@ export function PullRequestsTopBar({
 							)}
 						</Button>
 					</PopoverTrigger>
-					<PopoverContent align="end" className="w-80 space-y-1">
+					<PopoverContent align="end" className="w-80 p-2">
 						<div className="flex items-center justify-between gap-2">
-							<span className="text-xs text-muted-foreground">
+							<span className="pl-1 text-xs text-muted-foreground">
 								<Trans>Repository</Trans>
 							</span>
 							<ProjectFilter
@@ -219,7 +219,7 @@ export function PullRequestsTopBar({
 							/>
 						</div>
 						<div className="flex items-center justify-between gap-2">
-							<span className="text-xs text-muted-foreground">
+							<span className="pl-1 text-xs text-muted-foreground">
 								<Trans>Author</Trans>
 							</span>
 							<AuthorFilter
@@ -229,7 +229,7 @@ export function PullRequestsTopBar({
 							/>
 						</div>
 						<div className="flex items-center justify-between gap-2">
-							<span className="text-xs text-muted-foreground">
+							<span className="pl-1 text-xs text-muted-foreground">
 								<Trans>Reviewer</Trans>
 							</span>
 							<ReviewerFilter
@@ -239,7 +239,7 @@ export function PullRequestsTopBar({
 							/>
 						</div>
 						<div className="flex items-center justify-between gap-2">
-							<span className="text-xs text-muted-foreground">
+							<span className="pl-1 text-xs text-muted-foreground">
 								<Trans>Reviews</Trans>
 							</span>
 							<ReviewFilter

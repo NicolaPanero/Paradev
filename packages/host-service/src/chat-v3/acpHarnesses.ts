@@ -65,6 +65,9 @@ export function acpHarnessFactory(
 					get authMethodId() {
 						return authMethodId;
 					},
+					...(entry.protocolVersion
+						? { protocolVersion: entry.protocolVersion }
+						: {}),
 					wholeUserMessageReplay: entry.wholeUserMessageReplay,
 					cwd: options.cwd,
 					resolveAttachment,

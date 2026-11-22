@@ -11,13 +11,13 @@ import { useNavigate } from "@tanstack/react-router";
 import { Import } from "lucide-react";
 import { useState } from "react";
 import { useForkExternalSessions } from "renderer/hooks/host-service/useForkExternalSessions";
-import { useV2AgentConfigs } from "renderer/hooks/useV2AgentConfigs";
+import { useAgentConfigs } from "renderer/hooks/useAgentConfigs";
 import {
 	getHostServiceHeaders,
 	getHostServiceWsToken,
 } from "renderer/lib/host-service-auth";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
-import { navigateToV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
+import { navigateToWorkspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
 import {
 	type ExternalSession,
 	ForkChatSearchDialog,
@@ -91,7 +91,7 @@ function HomeChatSearch({
 }) {
 	const { t } = useLingui();
 	const navigate = useNavigate();
-	const { data: configs = [] } = useV2AgentConfigs(hostUrl);
+	const { data: configs = [] } = useAgentConfigs(hostUrl);
 	const [busy, setBusy] = useState<string | null>(null);
 	const listing = useForkExternalSessions({ projectId });
 	const { data: capabilities } =
@@ -112,7 +112,7 @@ function HomeChatSearch({
 			const workspaceId =
 				session.workspaceId ??
 				(await importWorkspace(getHostServiceClientByUrl(hostUrl), projectId));
-			await navigateToV2Workspace(workspaceId, navigate, {
+			await navigateToWorkspace(workspaceId, navigate, {
 				search: { resumeChat: JSON.stringify({ key, configId }) },
 			});
 			onClose();

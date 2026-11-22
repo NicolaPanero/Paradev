@@ -26,7 +26,7 @@ import {
 	type PullRequestTarget,
 } from "renderer/routes/_authenticated/_dashboard/pull-requests/utils/pullRequestClient";
 import { parsePositiveIntegerParam } from "renderer/routes/_authenticated/_dashboard/utils/parsePositiveIntegerParam";
-import { navigateToV2Workspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
+import { navigateToWorkspace } from "renderer/routes/_authenticated/_dashboard/utils/workspace-navigation";
 import { Route as PullRequestsLayoutRoute } from "../layout";
 
 export const Route = createFileRoute(
@@ -121,7 +121,7 @@ function PullRequestDetailPage() {
 									prNumber: layer.number,
 								}).then((workspaceId) => {
 									if (workspaceId) {
-										void navigateToV2Workspace(workspaceId, navigate);
+										void navigateToWorkspace(workspaceId, navigate);
 									} else {
 										openPullRequestInApp(layer.url);
 									}
