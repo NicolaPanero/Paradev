@@ -1,5 +1,6 @@
 export * from "./commands";
 export * from "./cursor";
 export * from "./envelope";
+export * from "./errors";
 export * from "./items";
 export * from "./plan";

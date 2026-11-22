@@ -6,10 +6,10 @@ import {
 	ForkAccountPicker,
 	ForkAccountSubmenu,
 } from "renderer/components/ForkAccountPicker";
+import { useAgentChoices } from "renderer/hooks/useAgentChoices";
+import { useAgentConfigs } from "renderer/hooks/useAgentConfigs";
 import { useForkModelCatalog } from "renderer/hooks/useForkModelCatalog";
-import { useV2AgentChoices } from "renderer/hooks/useV2AgentChoices";
-import { useV2AgentConfigs } from "renderer/hooks/useV2AgentConfigs";
-import { useForkNewAgentAccount } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/components/ForkNewAgentDialog/hooks/useForkNewAgentAccount";
+import { useForkNewAgentAccount } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/components/ForkNewAgentDialog/hooks/useForkNewAgentAccount";
 import { ForkCreationModelPicker } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/ForkCreationModelPicker";
 import { useForkConnections } from "../../../../hooks/useForkConnections";
 import { required } from "../../../../utils/required";
@@ -35,7 +35,7 @@ export function ForkJiraAutomationAgent({
 }) {
 	const { t } = useLingui();
 	const { client, hostUrl } = useForkConnections();
-	const agents = useV2AgentConfigs(hostUrl);
+	const agents = useAgentConfigs(hostUrl);
 	const config = agents.data?.find((a) => a.id === value.agent);
 	const preset = config
 		? resolveAgentLaunchPresetId(config.presetId, config.command)
@@ -51,7 +51,7 @@ export function ForkJiraAutomationAgent({
 		enabled: supported && hasAccounts && !!client,
 		retry: false,
 	});
-	const { agents: choices } = useV2AgentChoices(hostUrl);
+	const { agents: choices } = useAgentChoices(hostUrl);
 	const catalog = useForkModelCatalog({
 		hostUrl,
 		agent: value.agent,

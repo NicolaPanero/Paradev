@@ -3,7 +3,7 @@ import { toast } from "@superset/ui/sonner";
 import { workspaceTrpc } from "@superset/workspace-client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { forkPullRequestRefFromUrl } from "renderer/lib/fork-pull-request-ref";
-import { useWorkspace } from "renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider";
+import { useWorkspace } from "renderer/routes/_authenticated/_dashboard/workspace/providers/WorkspaceProvider";
 import { forkBitbucketMergeMethod } from "../utils/fork-bitbucket-merge-method";
 import { required } from "../utils/required";
 import { useForkConnections } from "./useForkConnections";

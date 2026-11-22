@@ -394,6 +394,7 @@ function startAdapter(
 		| "startupTimeoutMs"
 		| "forkGrokContextUsage"
 		| "startOptionsGraceMs"
+		| "protocolVersion"
 	> = {},
 ): { adapter: AcpAdapter; events: AdapterEvent[] } {
 	let counter = 0;
@@ -702,17 +703,30 @@ describe("AcpAdapter fork extensions", () => {
 		await adapter.dispose();
 	});
 
-	it("negotiates full plan documents and archives removed plans without losing their text", async () => {
+	it.each([
+		1, 2,
+	])("ACP %s retains full plan documents and archives removed plans", async (protocolVersion) => {
 		const agent = new FakeAcpAgent();
-		const { adapter, events } = startAdapter(agent);
+		agent.protocolVersion = protocolVersion;
+		const { adapter, events } = startAdapter(
+			agent,
+			undefined,
+			{},
+			{ protocolVersion },
+		);
 		await flush();
 		const initialize = agent.sent.find(
 			(frame) => frame.method === "initialize",
 		);
-		expect(initialize?.params).toMatchObject({
-			clientCapabilities: { plan: {} },
-			capabilities: { plan: {} },
-		});
+		if (protocolVersion === 1) {
+			expect(initialize?.params).toMatchObject({
+				clientCapabilities: { plan: {} },
+				capabilities: { plan: {} },
+			});
+		} else {
+			expect(initialize?.params).not.toHaveProperty("capabilities.plan");
+			expect(initialize?.params).not.toHaveProperty("clientCapabilities.plan");
+		}
 		agent.notify("sess-1", {
 			sessionUpdate: "plan_update",
 			plan: { type: "markdown", planId: "p1", content: "# Complete plan" },

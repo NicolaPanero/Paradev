@@ -1,1 +1,1 @@
-export { UsageView } from "./UsageView";
+export { ForkUsageView as UsageView } from "../ForkUsageView";

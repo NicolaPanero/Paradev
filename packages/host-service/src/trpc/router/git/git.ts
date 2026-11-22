@@ -368,7 +368,7 @@ export const gitRouter = router({
 	// One request per host for list/board surfaces — totals only, so a
 	// 30-workspace page never fans out 30 getStatus calls from the client.
 	// The batch is bounded so one RPC can't queue unbounded background work;
-	// callers slice to this cap (see useAccessibleV2Workspaces).
+	// callers slice to this cap (see useAccessibleWorkspaces).
 	getDiffStatsByWorkspaces: queryProcedure
 		.meta({ timeoutMs: 60_000 })
 		.input(

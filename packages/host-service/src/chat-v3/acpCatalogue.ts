@@ -22,6 +22,7 @@ export type AcpHarness = {
 	wholeUserMessageReplay?: boolean;
 	/** Forks a session up to a given message (JetBrains AIR fork point), so a rewind keeps the agent's own history. */
 	forkAtMessage?: boolean;
+	protocolVersion?: number;
 	note: string;
 } & AcpTranslator;
 
@@ -38,6 +39,7 @@ export const ACP_HARNESSES: Record<string, AcpHarness> = {
 		// The adapter serves ACP v2 since 0.95, where steering is not yet
 		// supported and turns end differently. Chat is built and tested on v1.
 		adapterEnv: { CLAUDE_AGENT_ACP_PROTOCOL: "v1" },
+		protocolVersion: 1,
 		upgrade: "npm i -g @anthropic-ai/claude-code@latest",
 		fullAccessModeId: "bypassPermissions",
 		forkAtMessage: true,
@@ -148,4 +150,11 @@ const ACP_HARNESS_BY_PRESET: Record<string, string> = {
 
 export function acpHarnessForPreset(presetId: string): string | undefined {
 	return ACP_HARNESS_BY_PRESET[presetId];
+}
+
+export function harnessBinary(harness: string): string {
+	return (
+		ACP_HARNESSES[harness]?.binary ??
+		(harness === "claude-code" ? "claude" : harness)
+	);
 }

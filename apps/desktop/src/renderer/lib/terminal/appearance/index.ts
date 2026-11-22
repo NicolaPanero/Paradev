@@ -24,7 +24,7 @@ export interface TerminalAppearance {
 	cursorBlink: boolean;
 }
 
-export interface TerminalFontSettings {
+interface TerminalFontSettings {
 	terminalFontFamily?: string | null;
 	terminalFontSize?: number | null;
 	terminalLineHeight?: number | null;
@@ -36,8 +36,7 @@ export interface TerminalFontSettings {
 	terminalCursorBlink?: boolean | null;
 }
 
-export const TERMINAL_FONT_FAMILY_CSS_VARIABLE =
-	"--superset-terminal-font-family";
+const TERMINAL_FONT_FAMILY_CSS_VARIABLE = "--superset-terminal-font-family";
 
 export function applyTerminalFontFamilyCssVariable(
 	element: HTMLElement,

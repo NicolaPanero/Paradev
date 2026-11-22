@@ -1,21 +1,13 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
 import {
 	createFileRoute,
 	Outlet,
 	useLocation,
 	useNavigate,
 } from "@tanstack/react-router";
-import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useEffect, useMemo } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { CheckResourcesHotkeyMount } from "renderer/commandPalette";
-import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";
-import { usePluginsSettingsVisible } from "renderer/hooks/usePluginsSettingsVisible";
 import { useHistoryNavigationShortcuts } from "renderer/routes/_authenticated/_dashboard/hooks/useHistoryNavigationShortcuts";
-import {
-	useForkCliOptions,
-	useForkProFeatures,
-} from "renderer/stores/fork-cli-options";
 import {
 	type SettingsSection,
 	useSetSettingsSearchQuery,
@@ -25,12 +17,11 @@ import {
 import { WindowControlsInset } from "../_dashboard/components/WindowControlsInset";
 import { ContentBoundary } from "../components/ContentBoundary";
 import { SearchResultsBanner } from "./components/SearchResultsBanner";
-import {
-	FULL_WIDTH_SECTION_PATHS,
-	SettingsSidebar,
-} from "./components/SettingsSidebar";
+import { SettingsSidebar } from "./components/SettingsSidebar";
 import { useScrollReset } from "./hooks/useScrollReset";
+import { useSettingsSectionVisibility } from "./hooks/useSettingsSectionVisibility";
 import { getVisibleMatchCountBySection } from "./utils/settings-search";
+import { FULL_WIDTH_SECTION_PATHS } from "./utils/settingsSections";
 
 export const Route = createFileRoute("/_authenticated/settings")({
 	component: SettingsLayout,
@@ -59,6 +50,7 @@ const SECTION_ORDER: SettingsSection[] = [
 	"integrations",
 	"plugins",
 	"billing",
+	"cloudUsage",
 	"apikeys",
 	"security",
 	"permissions",
@@ -93,6 +85,7 @@ const SECTION_PATHS: Partial<Record<SettingsSection, string>> = {
 	integrations: "/settings/integrations",
 	plugins: "/settings/plugins",
 	billing: "/settings/billing",
+	cloudUsage: "/settings/cloud-usage",
 	apikeys: "/settings/api-keys",
 	security: "/settings/security",
 	permissions: "/settings/permissions",
@@ -122,12 +115,7 @@ const NON_ROUTABLE_ESCAPE_PARENTS = new Set([
 ]);
 
 function SettingsLayout() {
-	const isV2CloudEnabled = useIsV2CloudEnabled();
-	const showProFeatures = useForkProFeatures();
-	const cloudWorkspacesEnabled =
-		useFeatureFlagEnabled(FEATURE_FLAGS.CLOUD_WORKSPACES) === true;
-	const pluginsVisible = usePluginsSettingsVisible();
-	const acpChatFlag = useForkCliOptions();
+	const visibility = useSettingsSectionVisibility();
 	const searchQuery = useSettingsSearchQuery();
 	const setSearchQuery = useSetSettingsSearchQuery();
 	const originRoute = useSettingsOriginRoute();
@@ -138,30 +126,14 @@ function SettingsLayout() {
 	const contentRef = useScrollReset<HTMLDivElement>(location.pathname);
 	const normalizedSearchQuery = searchQuery.trim();
 	const isSearchActive = normalizedSearchQuery.length > 0;
-	// Variant-filtered like the sidebar's per-section counts, so hidden
-	// v1-/v2-only items are never reported as matches.
+	// Filtered like the sidebar's per-section counts, so hidden items are
+	// never reported as matches.
 	const matchCounts = useMemo(
 		() =>
 			isSearchActive
-				? getVisibleMatchCountBySection(
-						normalizedSearchQuery,
-						isV2CloudEnabled,
-						cloudWorkspacesEnabled,
-						true,
-						pluginsVisible,
-						acpChatFlag,
-						!showProFeatures,
-					)
+				? getVisibleMatchCountBySection(normalizedSearchQuery, visibility)
 				: {},
-		[
-			isSearchActive,
-			normalizedSearchQuery,
-			isV2CloudEnabled,
-			cloudWorkspacesEnabled,
-			pluginsVisible,
-			acpChatFlag,
-			showProFeatures,
-		],
+		[isSearchActive, normalizedSearchQuery, visibility],
 	);
 	const totalMatches = Object.values(matchCounts).reduce(
 		(sum, count) => sum + count,
@@ -193,7 +165,11 @@ function SettingsLayout() {
 	useHotkeys(
 		"escape",
 		(event) => {
-			if (document.querySelector('[data-state="open"]')) return;
+			if (
+				event.defaultPrevented ||
+				document.querySelector('[data-state="open"]')
+			)
+				return;
 			const segments = location.pathname.split("/").filter(Boolean);
 			event.preventDefault();
 			if (segments.length <= 2) {

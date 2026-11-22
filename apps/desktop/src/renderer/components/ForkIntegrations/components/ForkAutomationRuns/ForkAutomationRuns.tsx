@@ -146,7 +146,7 @@ export function ForkAutomationRuns({
 									variant="ghost"
 									onClick={() =>
 										void navigate({
-											to: "/v2-workspace/$workspaceId",
+											to: "/workspace/$workspaceId",
 											params: {
 												workspaceId: required(attempt.workspaceId),
 											},

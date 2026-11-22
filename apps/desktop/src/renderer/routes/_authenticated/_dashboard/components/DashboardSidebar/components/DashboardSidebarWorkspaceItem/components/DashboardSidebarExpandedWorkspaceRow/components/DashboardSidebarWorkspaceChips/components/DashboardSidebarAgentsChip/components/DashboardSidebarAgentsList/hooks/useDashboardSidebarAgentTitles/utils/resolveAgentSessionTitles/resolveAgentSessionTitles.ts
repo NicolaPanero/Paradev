@@ -2,7 +2,7 @@ import type { WorkspaceState } from "@superset/panes";
 import type {
 	ChatPaneData,
 	TerminalPaneData,
-} from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
+} from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/types";
 
 export function resolveAgentSessionTitles({
 	layouts,

@@ -13,7 +13,7 @@ import {
 import { ForkExternalAccount } from "renderer/components/ForkExternalAccount";
 import type { UsageAccount } from "renderer/hooks/host-service/useHostUsageQuota";
 import { useHostUsageQuota } from "renderer/hooks/host-service/useHostUsageQuota";
-import { useV2AgentConfigs } from "renderer/hooks/useV2AgentConfigs";
+import { useAgentConfigs } from "renderer/hooks/useAgentConfigs";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
 import { useAccountRename } from "renderer/routes/_authenticated/settings/usage/components/UsageView/components/AccountRenameDialog";
 import type { SwitchSignInTarget } from "renderer/routes/_authenticated/settings/usage/components/UsageView/components/AddAccountDialog";
@@ -47,7 +47,7 @@ export function LocalAgentAccountsView({
 	const { t } = useLingui();
 	const queryClient = useQueryClient();
 	const quotaQuery = useHostUsageQuota(hostUrl);
-	const configsQuery = useV2AgentConfigs(hostUrl);
+	const configsQuery = useAgentConfigs(hostUrl);
 	const { activeHostUrl } = useLocalHostService();
 	const rename = useAccountRename(hostUrl);
 	const setDefault = useSetDefaultUsageAccount(hostUrl);

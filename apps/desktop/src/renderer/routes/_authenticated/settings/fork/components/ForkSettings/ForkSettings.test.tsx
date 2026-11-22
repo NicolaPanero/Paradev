@@ -11,7 +11,10 @@ import {
 	queryFixture,
 	render,
 } from "renderer/test-utils/fork-ui";
-import { getVisibleMatchCountBySection } from "../../../utils/settings-search";
+import {
+	getOfferedSections,
+	getVisibleMatchCountBySection,
+} from "../../../utils/settings-search";
 import { ForkSettings } from "./ForkSettings";
 
 afterEach(() => {
@@ -55,29 +58,26 @@ test("Fork Settings restores Pro UI and persists independent hide preferences", 
 });
 
 test("settings search offers Fork Settings and omits hidden Pro sections", () => {
-	const hidden = getVisibleMatchCountBySection(
-		"",
-		true,
-		true,
-		true,
-		false,
-		true,
-		true,
-	);
+	const hidden = getVisibleMatchCountBySection("", {
+		isMac: true,
+		isAdmin: true,
+		pluginsEnabled: false,
+		cloudUsageEnabled: false,
+		allowedSections: getOfferedSections(true, true),
+	});
 	expect(hidden.fork).toBe(10);
 	expect(hidden.billing).toBeUndefined();
+	expect(hidden.cloudUsage).toBeUndefined();
 	expect(hidden.teams).toBeUndefined();
 	expect(hidden.mobile).toBeUndefined();
 	expect(hidden.localAgentAccounts).toBeGreaterThan(0);
-	const visible = getVisibleMatchCountBySection(
-		"",
-		true,
-		true,
-		true,
-		false,
-		false,
-		false,
-	);
+	const visible = getVisibleMatchCountBySection("", {
+		isMac: true,
+		isAdmin: true,
+		pluginsEnabled: false,
+		cloudUsageEnabled: false,
+		allowedSections: getOfferedSections(true, false),
+	});
 	expect(visible.billing).toBeGreaterThan(0);
 });
 

@@ -1,5 +1,5 @@
 import type { WorkspaceState } from "@superset/panes";
-import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
+import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/types";
 import type {
 	AppCollections,
 	WorkspaceCreateMutationMetadata,
@@ -16,7 +16,7 @@ type HostWorkspacesCreateResult = NonNullable<
 >;
 
 /**
- * Insert or update the `v2WorkspaceLocalState` row for a workspace and fold any
+ * Insert or update the `workspaceLocalState` row for a workspace and fold any
  * launched terminals/agents into its pane layout. Called once up-front (with no
  * launches) so the workspace shows in the sidebar while it syncs, then again
  * with the host-service result once the create resolves.
@@ -28,7 +28,7 @@ export function writeWorkspacePaneLayout(
 	terminals: HostWorkspacesCreateResult["terminals"],
 	agents: HostWorkspacesCreateResult["agents"],
 ): void {
-	const existing = collections.v2WorkspaceLocalState.get(workspace.id);
+	const existing = collections.workspaceLocalState.get(workspace.id);
 	const paneLayout = appendLaunchesToPaneLayout({
 		existing: existing?.paneLayout as
 			| WorkspaceState<PaneViewerData>
@@ -39,7 +39,7 @@ export function writeWorkspacePaneLayout(
 	});
 
 	if (existing) {
-		collections.v2WorkspaceLocalState.update(workspace.id, (draft) => {
+		collections.workspaceLocalState.update(workspace.id, (draft) => {
 			draft.paneLayout = paneLayout;
 		});
 		return;
@@ -47,7 +47,7 @@ export function writeWorkspacePaneLayout(
 
 	const projectId = workspace.projectId;
 	const topLevelItems = [
-		...Array.from(collections.v2WorkspaceLocalState.state.values())
+		...Array.from(collections.workspaceLocalState.state.values())
 			.filter(
 				(item) =>
 					item.sidebarState.projectId === projectId &&
@@ -55,11 +55,11 @@ export function writeWorkspacePaneLayout(
 					isSidebarWorkspaceVisible(item),
 			)
 			.map((item) => ({ tabOrder: item.sidebarState.tabOrder })),
-		...Array.from(collections.v2SidebarSections.state.values())
+		...Array.from(collections.sidebarSections.state.values())
 			.filter((item) => item.projectId === projectId)
 			.map((item) => ({ tabOrder: item.tabOrder })),
 	];
-	collections.v2WorkspaceLocalState.insert({
+	collections.workspaceLocalState.insert({
 		workspaceId: workspace.id,
 		createdAt: new Date(),
 		sidebarState: {

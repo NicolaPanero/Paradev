@@ -19,7 +19,7 @@ import {
 	LuSettings,
 	LuTrash2,
 } from "react-icons/lu";
-import { useV2UserPreferences } from "renderer/hooks/useV2UserPreferences";
+import { useUserPreferences } from "renderer/hooks/useUserPreferences";
 import type { DashboardSidebarProject } from "../../../../types";
 import { AddFolderMenuItem } from "./components/AddFolderMenuItem";
 
@@ -50,7 +50,7 @@ export function DashboardSidebarProjectContextMenu({
 	onRename,
 	children,
 }: DashboardSidebarProjectContextMenuProps) {
-	const { preferences, setTagFolderHidden } = useV2UserPreferences();
+	const { preferences, setTagFolderHidden } = useUserPreferences();
 	const hiddenTags = preferences.hiddenTagFolders[projectId] ?? [];
 	const hasCheckout = kind !== "cloud-repo";
 	return (

@@ -5,7 +5,7 @@ import type {
 } from "renderer/stores/new-workspace-draft";
 import { useNewWorkspacePromptContextStore } from "./store";
 
-export interface BuildSubmitPromptArgs {
+interface BuildSubmitPromptArgs {
 	userPrompt: string;
 	linkedPR: LinkedPR | null;
 	linkedIssues: LinkedIssue[];

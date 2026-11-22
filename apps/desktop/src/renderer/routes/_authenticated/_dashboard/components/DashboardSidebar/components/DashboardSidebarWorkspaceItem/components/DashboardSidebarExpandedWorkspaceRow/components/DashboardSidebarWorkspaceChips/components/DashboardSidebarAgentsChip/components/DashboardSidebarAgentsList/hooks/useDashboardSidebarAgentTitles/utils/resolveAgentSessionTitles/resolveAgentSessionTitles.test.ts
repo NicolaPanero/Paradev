@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
 import { createWorkspaceStore } from "@superset/panes";
-import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
+import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/types";
 import { resolveAgentSessionTitles } from "./resolveAgentSessionTitles";
 
 test("sessions from the same agent keep separate titles, including background chats and terminals", () => {

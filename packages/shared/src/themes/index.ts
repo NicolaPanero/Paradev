@@ -14,7 +14,11 @@ export {
 } from "./built-in";
 export { getEditorTheme } from "./editor-theme";
 export { isForkVSCodeEditorTheme } from "./fork-vscode-editor";
-export { parseThemeConfigFile, type ThemeConfigParseResult } from "./import";
+export {
+	MAX_THEME_CSS_LENGTH,
+	parseThemeConfigFile,
+	type ThemeConfigParseResult,
+} from "./import";
 export type {
 	EditorColors,
 	EditorSyntaxColors,

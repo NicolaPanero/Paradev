@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { useWorkspace } from "renderer/routes/_authenticated/_dashboard/v2-workspace/providers/WorkspaceProvider";
+import { useWorkspace } from "renderer/routes/_authenticated/_dashboard/workspace/providers/WorkspaceProvider";
 import { required } from "../utils/required";
 import { useForkConnections } from "./useForkConnections";
 

@@ -14,7 +14,6 @@ import {
 	DropdownMenuTrigger,
 } from "@superset/ui/dropdown-menu";
 import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { FiUsers } from "react-icons/fi";
@@ -29,7 +28,6 @@ import {
 } from "react-icons/hi2";
 import { ForkProFeature } from "renderer/components/ForkProFeature";
 import { useCurrentPlan } from "renderer/hooks/useCurrentPlan";
-import { useOnlineStatus } from "renderer/hooks/useOnlineStatus";
 import { useSignOut } from "renderer/hooks/useSignOut";
 import { useHotkeyDisplay } from "renderer/hotkeys";
 import { authClient } from "renderer/lib/auth-client";
@@ -48,7 +46,6 @@ export function OrganizationDropdown({
 }) {
 	const { t } = useLingui();
 	const { data: session } = authClient.useSession();
-	const isOnline = useOnlineStatus();
 	const settingsShortcut = useHotkeyDisplay("OPEN_SETTINGS").text;
 	const collections = useCollections();
 	const signOut = useSignOut();
@@ -106,10 +103,7 @@ export function OrganizationDropdown({
 		variant === "rail" ? (
 			<button
 				type="button"
-				className={cn(
-					"flex size-[30px] items-center justify-center rounded-full ring-2 transition-colors hover:bg-fill-hover",
-					isOnline ? "ring-emerald-500/70" : "ring-border",
-				)}
+				className="flex size-[30px] items-center justify-center rounded-full transition-colors hover:bg-fill-hover"
 				aria-label={t({
 					message: "Organization menu",
 				})}

@@ -9,7 +9,7 @@ import { forkPullRequestIdentity } from "renderer/lib/fork-pull-request-ref";
 import { getPullRequestTarget } from "renderer/lib/github/getPullRequestTarget";
 import { parseSupersetPageUrl } from "renderer/lib/parseSupersetPageUrl";
 import { usePullRequestsSplitViewStore } from "renderer/routes/_authenticated/_dashboard/pull-requests/stores/pullRequestsSplitViewStore";
-import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
+import type { PaneViewerData } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/types";
 
 export function OpenBrowserPageInAppButton({
 	currentUrl,

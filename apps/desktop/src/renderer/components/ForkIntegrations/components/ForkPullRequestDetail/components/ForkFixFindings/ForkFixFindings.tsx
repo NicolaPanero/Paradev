@@ -6,7 +6,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { LuSparkles } from "react-icons/lu";
-import { useV2AgentConfigs } from "renderer/hooks/useV2AgentConfigs";
+import { useAgentConfigs } from "renderer/hooks/useAgentConfigs";
 import type { PullRequestInfoVariant } from "renderer/routes/_authenticated/_dashboard/pull-requests/components/PullRequestInfo";
 import { useForkConnections } from "../../../../hooks/useForkConnections";
 import { required } from "../../../../utils/required";
@@ -23,7 +23,7 @@ export function ForkFixFindings({
 }) {
 	const { t } = useLingui();
 	const { client, data } = useForkConnections(hostUrl);
-	const { data: agents = [] } = useV2AgentConfigs(hostUrl);
+	const { data: agents = [] } = useAgentConfigs(hostUrl);
 	const [agentId, setAgentId] = useState("");
 	const navigate = useNavigate();
 	const projects = useQuery({
@@ -49,7 +49,7 @@ export function ForkFixFindings({
 			}),
 		onSuccess: (result) =>
 			void navigate({
-				to: "/v2-workspace/$workspaceId",
+				to: "/workspace/$workspaceId",
 				params: { workspaceId: result.workspaceId },
 			}),
 	});

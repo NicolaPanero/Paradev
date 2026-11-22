@@ -5,8 +5,8 @@ import { LuCheck, LuCopy, LuMaximize2 } from "react-icons/lu";
 import { useCopyToClipboard } from "renderer/hooks/useCopyToClipboard";
 import { forkPullRequestUrl } from "renderer/lib/fork-pull-request-ref";
 import { usePullRequestsSplitViewStore } from "renderer/routes/_authenticated/_dashboard/pull-requests/stores/pullRequestsSplitViewStore";
-import { PullRequestPaneHeaderExtras } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/hooks/usePaneRegistry/components/PullRequestPane/components/PullRequestPaneHeaderExtras/PullRequestPaneHeaderExtras";
-import type { PullRequestPaneData } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/types";
+import { PullRequestPaneHeaderExtras } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/usePaneRegistry/components/PullRequestPane/components/PullRequestPaneHeaderExtras/PullRequestPaneHeaderExtras";
+import type { PullRequestPaneData } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/types";
 import { useForkPullRequestPaneTarget } from "./useForkPullRequestPaneTarget";
 
 export function ForkWorkspacePullRequestHeader({

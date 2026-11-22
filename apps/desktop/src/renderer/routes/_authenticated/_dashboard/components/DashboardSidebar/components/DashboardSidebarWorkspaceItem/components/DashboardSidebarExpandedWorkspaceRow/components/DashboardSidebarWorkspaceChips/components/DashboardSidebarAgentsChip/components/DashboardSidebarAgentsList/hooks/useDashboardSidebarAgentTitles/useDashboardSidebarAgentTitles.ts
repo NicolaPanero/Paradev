@@ -19,7 +19,7 @@ export function useDashboardSidebarAgentTitles(
 	const { data: rows = [] } = useLiveQuery(
 		(query) =>
 			query
-				.from({ workspace: collections.v2WorkspaceLocalState })
+				.from({ workspace: collections.workspaceLocalState })
 				.where(({ workspace }) => eq(workspace.workspaceId, workspaceId)),
 		[collections, workspaceId],
 	);
