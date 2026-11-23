@@ -47,11 +47,7 @@ export function ForkAccountSubmenu({
 		</>
 	);
 	return (
-		<DropdownMenuSub
-			onOpenChange={(open) => {
-				if (open) void account.quota.refresh().catch(() => {});
-			}}
-		>
+		<DropdownMenuSub>
 			<DropdownMenuSubTrigger
 				className={className}
 				disabled={!account.available || account.forcedApi}

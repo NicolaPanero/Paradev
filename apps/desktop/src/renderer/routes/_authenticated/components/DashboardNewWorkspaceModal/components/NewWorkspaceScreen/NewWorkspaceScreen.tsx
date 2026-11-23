@@ -96,6 +96,7 @@ import {
 import { ForkCreateWorkspaceButton } from "./components/ForkCreateWorkspaceButton";
 import { ForkCreationModelPicker } from "./components/ForkCreationModelPicker";
 import { ForkFolderBasePicker } from "./components/ForkFolderBasePicker";
+import { ForkHomeLayout } from "./components/ForkHomeLayout";
 import { ForkImportFromHome } from "./components/ForkImportFromHome/ForkImportFromHome";
 import { ForkSymmetricResizeHandles as SymmetricResizeHandles } from "./components/ForkSymmetricResizeHandles";
 import { SamplePrompts } from "./components/SamplePrompts";
@@ -212,7 +213,7 @@ export function NewWorkspaceScreen({
 		(state) => state.setCloudChoice,
 	);
 	const samplePromptsDismissed = useWorkspaceCreateDefaultsStore(
-		(state) => state.samplePromptsDismissed,
+		(state) => isNewPage || state.samplePromptsDismissed,
 	);
 	const setSamplePromptsDismissed = useWorkspaceCreateDefaultsStore(
 		(state) => state.setSamplePromptsDismissed,
@@ -1229,15 +1230,11 @@ export function NewWorkspaceScreen({
 						}
 					/>
 				)}
-				<div className="flex flex-1 flex-col items-center justify-center px-6 py-10">
+				<ForkHomeLayout active={isOpen}>
 					<h1 className="sr-only">
 						<Trans>What should we build next?</Trans>
 					</h1>
-					<GitHubStarPill
-						surface="new_workspace"
-						className="mb-6"
-						reserveSpace
-					/>
+					<GitHubStarPill surface="new_workspace" className="mb-6" />
 					<div
 						className="relative flex w-full flex-col gap-2.5"
 						style={{
@@ -1245,10 +1242,8 @@ export function NewWorkspaceScreen({
 						}}
 					>
 						{resizeHandles}
-						{/* Out of flow, below the block: the composer is centred on
-						the screen and must not move when the suggestions go. */}
+						{setUpEnvironmentButton}
 						<div className="absolute inset-x-0 top-full mt-3 flex flex-col items-start gap-2">
-							{setUpEnvironmentButton}
 							<AnimatePresence initial={false}>
 								{isPromptEmpty &&
 									!samplePromptsPending &&
@@ -1277,7 +1272,9 @@ export function NewWorkspaceScreen({
 							{devicePicker}
 						</div>
 						<AgentComposer
-							layout="inline"
+							layout="stacked"
+							toolbar={modePicker}
+							toolbarEnd={forkLaunchPickers}
 							allowEmptySubmit
 							autoFocus
 							draft={{
@@ -1300,17 +1297,9 @@ export function NewWorkspaceScreen({
 							pending={isStarting}
 							placeholder={t({ message: "Do anything in Paradev" })}
 						/>
-						<div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 px-1">
-							<div className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
-								{modePicker}
-							</div>
-							<div className="flex shrink-0 items-center gap-1.5">
-								{setupButton}
-								{forkLaunchPickers}
-							</div>
-						</div>
+						{setupButton}
 					</div>
-				</div>
+				</ForkHomeLayout>
 			</ComposerDropZone>
 		);
 	}

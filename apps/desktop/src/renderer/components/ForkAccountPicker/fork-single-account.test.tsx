@@ -27,6 +27,7 @@ test.each([
 	"compact",
 	"submenu",
 ] as const)("the %s picker opens usage with one Codex account and offers no Add account", async (surface) => {
+	const quotaReads: unknown[] = [];
 	const usage: UsageAccount = {
 		agent: "codex",
 		selection: "/work",
@@ -57,7 +58,12 @@ test.each([
 			},
 		},
 		usage: {
-			quota: { query: async () => [usage] },
+			quota: {
+				query: async (input: unknown) => {
+					quotaReads.push(input);
+					return [usage];
+				},
+			},
 			launchAccount: {
 				query: async () => ({
 					isolationVersion: 1,
@@ -120,4 +126,8 @@ test.each([
 	expect(view.getByRole("progressbar").getAttribute("aria-valuenow")).toBe(
 		"25",
 	);
+	expect(quotaReads).toEqual([{ isolated: true }]);
+	fireEvent.click(view.getByRole("menuitem", { name: /Refresh/ }));
+	await flush();
+	expect(quotaReads.at(-1)).toEqual({ forceRefresh: true, isolated: true });
 });

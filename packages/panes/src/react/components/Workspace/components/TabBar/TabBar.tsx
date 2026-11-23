@@ -69,6 +69,7 @@ interface TabBarProps<TData> {
 	onMovePaneToNewTab: (paneId: string, toIndex: number) => void;
 	renderTabIcon?: (tab: Tab<TData>) => ReactNode;
 	renderAddTabMenu?: (actions: AddTabMenuActions) => ReactNode;
+	renderAddTabAccessory?: () => ReactNode;
 	onAddTab?: () => void;
 	renderTabBarLeading?: () => ReactNode;
 	renderTabBarTrailing?: () => ReactNode;
@@ -152,6 +153,7 @@ export function TabBar<TData>({
 	onMovePaneToNewTab,
 	renderTabIcon,
 	renderAddTabMenu,
+	renderAddTabAccessory,
 	onAddTab,
 	renderTabBarLeading,
 	renderTabBarTrailing,
@@ -406,7 +408,8 @@ export function TabBar<TData>({
 					{!hasHorizontalOverflow && (
 						<div
 							className={cn(
-								"flex h-full w-10 shrink-0 items-center justify-center",
+								"flex h-full shrink-0 items-center justify-center",
+								renderAddTabAccessory ? "gap-0.5 px-1" : "w-10",
 								!isCards && "pt-1",
 							)}
 						>
@@ -414,6 +417,7 @@ export function TabBar<TData>({
 								renderAddTabMenu={renderAddTabMenu}
 								onAddTab={onAddTab}
 							/>
+							{renderAddTabAccessory?.()}
 						</div>
 					)}
 					{/* Empty space to the right of the tabs (collapses to 0 when the
@@ -429,7 +433,8 @@ export function TabBar<TData>({
 			{hasHorizontalOverflow && (
 				<div
 					className={cn(
-						"no-drag flex h-full w-10 shrink-0 items-center justify-center",
+						"no-drag flex h-full shrink-0 items-center justify-center",
+						renderAddTabAccessory ? "gap-0.5 px-1" : "w-10",
 						!isCards && "pt-1",
 					)}
 				>
@@ -437,6 +442,7 @@ export function TabBar<TData>({
 						renderAddTabMenu={renderAddTabMenu}
 						onAddTab={onAddTab}
 					/>
+					{renderAddTabAccessory?.()}
 				</div>
 			)}
 			{renderTabBarTrailing && (
