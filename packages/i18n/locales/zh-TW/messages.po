@@ -4540,9 +4540,6 @@ msgstr "未找到聊天會話"
 msgid "Chat session ready"
 msgstr "聊天工作階段已就緒"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "背景代理程式工作時，聊天仍保持流暢。"
-
 msgid "Chat support is checked when you open a chat."
 msgstr "開啟聊天時會檢查聊天支援情況。"
 
@@ -9631,6 +9628,9 @@ msgstr "尋找"
 msgid "Find a chat"
 msgstr "尋找聊天"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "在工作區中，「尋找聊天」按鈕位於新增分頁按鈕旁。"
+
 msgid "Find a person…"
 msgstr "尋找成員…"
 
@@ -10588,6 +10588,9 @@ msgstr "主目錄"
 msgctxt "directory"
 msgid "Home"
 msgstr "主目錄"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "首頁的輸入區與已開啟的聊天採用相同配置。"
 
 msgid "host"
 msgstr "主機"
@@ -16871,9 +16874,6 @@ msgstr "排隊中 · {position}"
 msgid "Queued messages"
 msgstr "佇列中的訊息"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "代理程式工作時，佇列中的提示詞仍然可見。"
-
 msgid "Queued to Merge"
 msgstr "排隊等待合併"
 
@@ -18096,9 +18096,6 @@ msgstr "正在重試…"
 msgid "Return to dashboard"
 msgstr "返回主頁"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "從子代理程式對話直接返回主要聊天。"
-
 msgid "Returns"
 msgstr "返回值"
 
@@ -18722,6 +18719,9 @@ msgstr "搜尋所有聊天…"
 
 msgid "Search all emoji"
 msgstr "搜尋所有表情符號"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "為每個儲存庫搜尋並選擇工作樹的基礎分支。"
 
 msgid "Search and open files in the current workspace"
 msgstr "在目前工作區中搜尋並開啟檔案"
@@ -21809,6 +21809,9 @@ msgstr "找不到伺服器"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "服務暫時無法使用。Superset 將自動重試。你的帳戶設定並未變更。"
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "側邊欄與帳號選單共用快取的用量資料。"
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "登入連結不完整。請重試。"
 
@@ -24379,9 +24382,6 @@ msgstr "工作區設定"
 
 msgid "Workspace Setup"
 msgstr "工作區設定"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "放大介面後，仍可存取工作區分頁和控制項。"
 
 msgid "Workspace views"
 msgstr "工作區檢視"

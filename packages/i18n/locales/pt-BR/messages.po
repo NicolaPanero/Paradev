@@ -4540,9 +4540,6 @@ msgstr "Sessão de chat não encontrada"
 msgid "Chat session ready"
 msgstr "Sessão de chat pronta"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "O chat continua respondendo enquanto os agentes trabalham em segundo plano."
-
 msgid "Chat support is checked when you open a chat."
 msgstr "O suporte ao chat é verificado quando você abre um chat."
 
@@ -9631,6 +9628,9 @@ msgstr "Localizar"
 msgid "Find a chat"
 msgstr "Encontrar uma conversa"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "Nos espaços de trabalho, «Encontrar uma conversa» fica ao lado do botão de adicionar abas."
+
 msgid "Find a person…"
 msgstr "Buscar uma pessoa…"
 
@@ -10588,6 +10588,9 @@ msgstr "Início"
 msgctxt "directory"
 msgid "Home"
 msgstr "Início"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "A área de escrita da tela inicial tem o mesmo layout de uma conversa aberta."
 
 msgid "host"
 msgstr "Host"
@@ -16871,9 +16874,6 @@ msgstr "Na fila · {position}"
 msgid "Queued messages"
 msgstr "Mensagens na fila"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "Os prompts na fila permanecem visíveis enquanto o agente trabalha."
-
 msgid "Queued to Merge"
 msgstr "Na fila para merge"
 
@@ -18096,9 +18096,6 @@ msgstr "Tentando de novo…"
 msgid "Return to dashboard"
 msgstr "Voltar ao painel"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "Volte diretamente ao chat principal a partir de uma conversa com um subagente."
-
 msgid "Returns"
 msgstr "Retorna"
 
@@ -18722,6 +18719,9 @@ msgstr "Buscar em todos os chats…"
 
 msgid "Search all emoji"
 msgstr "Pesquisar todos os emojis"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "Busque e escolha a branch base da worktree para cada repositório."
 
 msgid "Search and open files in the current workspace"
 msgstr "Buscar e abrir arquivos na área de trabalho atual"
@@ -21809,6 +21809,9 @@ msgstr "Não foi possível encontrar o servidor"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "O serviço está temporariamente indisponível. O Superset tentará novamente de forma automática. As configurações da sua conta não foram alteradas."
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "A barra lateral e os menus de conta compartilham os dados de uso em cache."
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "O link de login estava incompleto. Tente novamente."
 
@@ -24379,9 +24382,6 @@ msgstr "Configurações da área de trabalho"
 
 msgid "Workspace Setup"
 msgstr "Configuração do espaço de trabalho"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "As abas e os controles do espaço de trabalho continuam acessíveis com níveis maiores de zoom."
 
 msgid "Workspace views"
 msgstr "Visualizações de áreas de trabalho"

@@ -4540,9 +4540,6 @@ msgstr "Chat session not found"
 msgid "Chat session ready"
 msgstr "Chat session ready"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "Chat stays responsive while background agents work."
-
 msgid "Chat support is checked when you open a chat."
 msgstr "Chat support is checked when you open a chat."
 
@@ -9631,6 +9628,9 @@ msgstr "Find"
 msgid "Find a chat"
 msgstr "Find a chat"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "Find a chat sits next to the add-tab button in workspaces."
+
 msgid "Find a person…"
 msgstr "Find a person…"
 
@@ -10588,6 +10588,9 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "Home uses the same composer layout as an open chat."
 
 msgid "host"
 msgstr "host"
@@ -16871,9 +16874,6 @@ msgstr "Queued · {position}"
 msgid "Queued messages"
 msgstr "Queued messages"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "Queued prompts remain visible while the agent is working."
-
 msgid "Queued to Merge"
 msgstr "Queued to Merge"
 
@@ -18096,9 +18096,6 @@ msgstr "Retrying…"
 msgid "Return to dashboard"
 msgstr "Return to dashboard"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "Return to the main chat directly from a subagent conversation."
-
 msgid "Returns"
 msgstr "Returns"
 
@@ -18722,6 +18719,9 @@ msgstr "Search all chats…"
 
 msgid "Search all emoji"
 msgstr "Search all emoji"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "Search and choose a worktree base branch for each repository."
 
 msgid "Search and open files in the current workspace"
 msgstr "Search and open files in the current workspace"
@@ -21809,6 +21809,9 @@ msgstr "The server could not be found"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "The sidebar and account menus share cached usage readings."
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "The sign-in link was incomplete. Please try again."
 
@@ -24379,9 +24382,6 @@ msgstr "Workspace settings"
 
 msgid "Workspace Setup"
 msgstr "Workspace Setup"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "Workspace tabs and controls stay accessible at higher zoom levels."
 
 msgid "Workspace views"
 msgstr "Workspace views"

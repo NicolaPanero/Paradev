@@ -4540,9 +4540,6 @@ msgstr "Sohbet oturumu bulunamadı"
 msgid "Chat session ready"
 msgstr "Sohbet oturumu hazır"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "Arka plan ajanları çalışırken sohbet hızlı yanıt vermeye devam eder."
-
 msgid "Chat support is checked when you open a chat."
 msgstr "Sohbet desteği bir sohbet açtığınızda kontrol edilir."
 
@@ -9631,6 +9628,9 @@ msgstr "Bul"
 msgid "Find a chat"
 msgstr "Sohbet bul"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "Çalışma alanlarında ‘Sohbet bul’, sekme ekleme düğmesinin yanında yer alır."
+
 msgid "Find a person…"
 msgstr "Kişi bul…"
 
@@ -10588,6 +10588,9 @@ msgstr "Ana dizin"
 msgctxt "directory"
 msgid "Home"
 msgstr "Ana dizin"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "Ana sayfadaki yazma alanı, açık sohbetle aynı düzene sahip."
 
 msgid "host"
 msgstr "Host"
@@ -16871,9 +16874,6 @@ msgstr "Sırada · {position}"
 msgid "Queued messages"
 msgstr "Kuyruktaki mesajlar"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "Ajan çalışırken kuyruktaki istemler görünür kalır."
-
 msgid "Queued to Merge"
 msgstr "Birleştirme kuyruğunda"
 
@@ -18096,9 +18096,6 @@ msgstr "Yeniden deneniyor…"
 msgid "Return to dashboard"
 msgstr "Panoya dön"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "Bir alt ajan görüşmesinden doğrudan ana sohbete dönün."
-
 msgid "Returns"
 msgstr "Döndürür"
 
@@ -18722,6 +18719,9 @@ msgstr "Tüm sohbetlerde ara…"
 
 msgid "Search all emoji"
 msgstr "Tüm emojilerde ara"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "Her depo için çalışma ağacının temel dalını arayıp seçin."
 
 msgid "Search and open files in the current workspace"
 msgstr "Geçerli çalışma alanında dosya ara ve aç"
@@ -21809,6 +21809,9 @@ msgstr "Sunucu bulunamadı"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Hizmet geçici olarak kullanılamıyor. Superset otomatik olarak yeniden deneyecek. Hesap ayarlarınız değişmedi."
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "Kenar çubuğu ve hesap menüleri önbellekteki kullanım verilerini paylaşır."
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Oturum açma bağlantısı eksikti. Lütfen yeniden deneyin."
 
@@ -24379,9 +24382,6 @@ msgstr "Çalışma alanı ayarları"
 
 msgid "Workspace Setup"
 msgstr "Çalışma alanı kurulumu"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "Çalışma alanı sekmeleri ve kontrolleri daha yüksek yakınlaştırma düzeylerinde de erişilebilir kalır."
 
 msgid "Workspace views"
 msgstr "Çalışma alanı görünümleri"
