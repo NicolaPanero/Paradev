@@ -4540,9 +4540,6 @@ msgstr "チャットセッションが見つかりません"
 msgid "Chat session ready"
 msgstr "チャットセッションの準備完了"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "バックグラウンドでエージェントが動作している間も、チャットは快適に応答します。"
-
 msgid "Chat support is checked when you open a chat."
 msgstr "チャットを開くときにチャット対応を確認します。"
 
@@ -9631,6 +9628,9 @@ msgstr "検索"
 msgid "Find a chat"
 msgstr "チャットを探す"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "ワークスペースでは「チャットを探す」がタブ追加ボタンの隣にあります。"
+
 msgid "Find a person…"
 msgstr "メンバーを検索…"
 
@@ -10588,6 +10588,9 @@ msgstr "ホーム"
 msgctxt "directory"
 msgid "Home"
 msgstr "ホーム"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "ホームの入力欄は、開いているチャットと同じレイアウトになりました。"
 
 msgid "host"
 msgstr "ホスト"
@@ -16871,9 +16874,6 @@ msgstr "待機中 · {position}"
 msgid "Queued messages"
 msgstr "キュー内のメッセージ"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "エージェントの作業中も、キュー内のプロンプトが表示されたままになります。"
-
 msgid "Queued to Merge"
 msgstr "マージ待ちのキューに追加"
 
@@ -18096,9 +18096,6 @@ msgstr "再試行中…"
 msgid "Return to dashboard"
 msgstr "ダッシュボードに戻る"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "サブエージェントとの会話からメインのチャットに直接戻れます。"
-
 msgid "Returns"
 msgstr "戻り値"
 
@@ -18722,6 +18719,9 @@ msgstr "すべてのチャットを検索…"
 
 msgid "Search all emoji"
 msgstr "すべての絵文字を検索"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "リポジトリごとに、ワークツリーのベースとなるブランチを検索して選べます。"
 
 msgid "Search and open files in the current workspace"
 msgstr "現在のワークスペース内のファイルを検索して開く"
@@ -21809,6 +21809,9 @@ msgstr "サーバーが見つかりませんでした"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "サービスは一時的に利用できません。Supersetが自動的に再試行します。アカウント設定は変更されていません。"
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "サイドバーとアカウントメニューは、キャッシュされた利用状況を共有します。"
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "サインインリンクが不完全でした。もう一度お試しください。"
 
@@ -24379,9 +24382,6 @@ msgstr "ワークスペース設定"
 
 msgid "Workspace Setup"
 msgstr "ワークスペースのセットアップ"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "ズームを拡大しても、ワークスペースのタブや操作ボタンにアクセスできます。"
 
 msgid "Workspace views"
 msgstr "ワークスペースのビュー"

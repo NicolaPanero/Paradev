@@ -50,7 +50,6 @@ export function ForkAccountPicker({
 				open={account.pickerOpen}
 				onOpenChange={(open) => {
 					account.setPickerOpen(open);
-					if (open) void account.quota.refresh().catch(() => {});
 				}}
 			>
 				{compact ? (

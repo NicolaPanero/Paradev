@@ -4540,9 +4540,6 @@ msgstr "Сессия чата не найдена"
 msgid "Chat session ready"
 msgstr "Сессия чата готова"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "Чат остаётся отзывчивым, пока агенты работают в фоне."
-
 msgid "Chat support is checked when you open a chat."
 msgstr "Поддержка чата проверяется при открытии чата."
 
@@ -9631,6 +9628,9 @@ msgstr "Найти"
 msgid "Find a chat"
 msgstr "Найти чат"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "В рабочих пространствах кнопка «Найти чат» находится рядом с кнопкой добавления вкладок."
+
 msgid "Find a person…"
 msgstr "Найти человека…"
 
@@ -10588,6 +10588,9 @@ msgstr "Домашняя"
 msgctxt "directory"
 msgid "Home"
 msgstr "Домашняя"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "Поле ввода на главной странице устроено так же, как в открытом чате."
 
 msgid "host"
 msgstr "Хост"
@@ -16871,9 +16874,6 @@ msgstr "В очереди · {position}"
 msgid "Queued messages"
 msgstr "Сообщения в очереди"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "Запросы в очереди остаются видимыми, пока агент работает."
-
 msgid "Queued to Merge"
 msgstr "В очереди на слияние"
 
@@ -18096,9 +18096,6 @@ msgstr "Повтор…"
 msgid "Return to dashboard"
 msgstr "Вернуться на панель"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "Возвращайтесь в основной чат прямо из разговора с субагентом."
-
 msgid "Returns"
 msgstr "Возвращает"
 
@@ -18722,6 +18719,9 @@ msgstr "Искать во всех чатах…"
 
 msgid "Search all emoji"
 msgstr "Искать все эмодзи"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "Найдите и выберите базовую ветку рабочего дерева для каждого репозитория."
 
 msgid "Search and open files in the current workspace"
 msgstr "Найти и открыть файлы в текущей рабочей области"
@@ -21809,6 +21809,9 @@ msgstr "Не удалось найти сервер"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Сервис временно недоступен. Superset автоматически повторит попытку. Настройки вашей учётной записи не изменены."
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "Боковая панель и меню аккаунтов используют общие данные об использовании из кеша."
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Ссылка для входа была неполной. Попробуйте ещё раз."
 
@@ -24379,9 +24382,6 @@ msgstr "Настройки рабочей области"
 
 msgid "Workspace Setup"
 msgstr "Настройка рабочего пространства"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "Вкладки и элементы управления рабочей областью остаются доступными при увеличении масштаба."
 
 msgid "Workspace views"
 msgstr "Виды рабочих областей"

@@ -4540,9 +4540,6 @@ msgstr "Sessione di chat non trovata"
 msgid "Chat session ready"
 msgstr "Sessione di chat pronta"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "La chat resta reattiva mentre gli agenti lavorano in background."
-
 msgid "Chat support is checked when you open a chat."
 msgstr "Il supporto chat viene verificato quando apri una chat."
 
@@ -9631,6 +9628,9 @@ msgstr "Trova"
 msgid "Find a chat"
 msgstr "Trova una chat"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "Nei workspace, «Trova una chat» è accanto al pulsante per aggiungere schede."
+
 msgid "Find a person…"
 msgstr "Cerca una persona…"
 
@@ -10588,6 +10588,9 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "Il campo di scrittura della Home ha lo stesso layout di una chat aperta."
 
 msgid "host"
 msgstr "Host"
@@ -16871,9 +16874,6 @@ msgstr "In coda · {position}"
 msgid "Queued messages"
 msgstr "Messaggi in coda"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "I prompt in coda restano visibili mentre l’agente lavora."
-
 msgid "Queued to Merge"
 msgstr "In coda per il merge"
 
@@ -18096,9 +18096,6 @@ msgstr "Nuovo tentativo…"
 msgid "Return to dashboard"
 msgstr "Torna alla dashboard"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "Torna direttamente alla chat principale da una conversazione con un sottoagente."
-
 msgid "Returns"
 msgstr "Restituisce"
 
@@ -18722,6 +18719,9 @@ msgstr "Cerca in tutte le chat…"
 
 msgid "Search all emoji"
 msgstr "Cerca tutte le emoji"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "Cerca e scegli il branch di partenza del worktree per ogni repository."
 
 msgid "Search and open files in the current workspace"
 msgstr "Cerca e apri file nel workspace corrente"
@@ -21809,6 +21809,9 @@ msgstr "Impossibile trovare il server"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Il servizio è temporaneamente non disponibile. Superset riproverà automaticamente. Le impostazioni del tuo account restano invariate."
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "La barra laterale e i menu degli account condividono i dati di utilizzo in cache."
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Il link di accesso era incompleto. Riprova."
 
@@ -24379,9 +24382,6 @@ msgstr "Impostazioni del workspace"
 
 msgid "Workspace Setup"
 msgstr "Configurazione workspace"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "Le schede e i controlli del workspace restano accessibili anche con uno zoom maggiore."
 
 msgid "Workspace views"
 msgstr "Viste dei workspace"

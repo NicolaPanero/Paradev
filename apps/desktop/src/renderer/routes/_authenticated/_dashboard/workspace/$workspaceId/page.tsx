@@ -41,6 +41,7 @@ import { AddTabMenu } from "./components/AddTabMenu";
 import { ChangesControl } from "./components/ChangesControl";
 import { CloudWorkspaceTabBarControls } from "./components/CloudWorkspaceTabBarControls";
 import { ForkWorkspaceAgentActions } from "./components/ForkWorkspaceAgentActions";
+import { useForkWorkspaceChatActions } from "./components/ForkWorkspaceAgentActions/hooks/useForkWorkspaceChatActions";
 import { HostConnectionPill } from "./components/HostConnectionPill";
 import { NotificationStatusIndicator } from "./components/NotificationStatusIndicator";
 import { PresetsBar } from "./components/PresetsBar";
@@ -314,6 +315,7 @@ function WorkspaceContent() {
 	});
 	const launcher = useTerminalLauncher();
 	const [forkLaunchOpen, setForkLaunchOpen] = useState(false);
+	const forkChatActions = useForkWorkspaceChatActions(workspaceId);
 	const { createNewAgentSession, openAgentChat, focusAgentTerminal } =
 		useAgentSessionLauncher({ workspaceId, store });
 	const addChatTab = useCallback(() => {
@@ -718,6 +720,8 @@ function WorkspaceContent() {
 		<FileDocumentStoreProvider stores={fileDocumentStores}>
 			<WorkspaceAgentEffects store={store} rightStore={rightStore} />
 			<ForkWorkspaceAgentActions
+				importOpen={forkChatActions.importOpen}
+				onImportOpenChange={forkChatActions.setImportOpen}
 				resumeChat={resumeChat}
 				onResumeConsumed={() => consumeSearch(["resumeChat"])}
 				importRequested={importChat}
@@ -829,6 +833,9 @@ function WorkspaceContent() {
 													onToggleShowPresetsBar={setShowPresetsBar}
 												/>
 											) : null
+										}
+										renderAddTabAccessory={
+											forkChatActions.renderAddTabAccessory
 										}
 										renderAddTabMenu={({ runAfterClose }) => (
 											<AddTabMenu

@@ -4540,9 +4540,6 @@ msgstr "Sesi chat tidak ditemukan"
 msgid "Chat session ready"
 msgstr "Sesi chat siap"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "Chat tetap responsif saat agen bekerja di latar belakang."
-
 msgid "Chat support is checked when you open a chat."
 msgstr "Dukungan chat diperiksa saat Anda membuka chat."
 
@@ -9631,6 +9628,9 @@ msgstr "Cari"
 msgid "Find a chat"
 msgstr "Cari percakapan"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "Di ruang kerja, Cari percakapan berada di sebelah tombol tambah tab."
+
 msgid "Find a person…"
 msgstr "Cari orang…"
 
@@ -10588,6 +10588,9 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "Kolom penulisan di Beranda memakai tata letak yang sama seperti percakapan yang terbuka."
 
 msgid "host"
 msgstr "Host"
@@ -16871,9 +16874,6 @@ msgstr "Antre · {position}"
 msgid "Queued messages"
 msgstr "Pesan dalam antrean"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "Prompt dalam antrean tetap terlihat saat agen sedang bekerja."
-
 msgid "Queued to Merge"
 msgstr "Diantrekan untuk Merge"
 
@@ -18096,9 +18096,6 @@ msgstr "Mencoba lagi…"
 msgid "Return to dashboard"
 msgstr "Kembali ke dasbor"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "Kembali langsung ke chat utama dari percakapan dengan subagen."
-
 msgid "Returns"
 msgstr "Mengembalikan"
 
@@ -18722,6 +18719,9 @@ msgstr "Cari semua obrolan…"
 
 msgid "Search all emoji"
 msgstr "Cari semua emoji"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "Cari dan pilih branch dasar worktree untuk setiap repositori."
 
 msgid "Search and open files in the current workspace"
 msgstr "Cari dan buka file di workspace saat ini"
@@ -21809,6 +21809,9 @@ msgstr "Servernya tidak ditemukan"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Layanan sementara tidak tersedia. Superset akan mencoba lagi secara otomatis. Pengaturan akun Anda tidak berubah."
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "Bilah samping dan menu akun berbagi data penggunaan yang tersimpan di cache."
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Tautan masuk tidak lengkap. Silakan coba lagi."
 
@@ -24379,9 +24382,6 @@ msgstr "Pengaturan workspace"
 
 msgid "Workspace Setup"
 msgstr "Penyiapan ruang kerja"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "Tab dan kontrol ruang kerja tetap dapat diakses pada tingkat zoom yang lebih tinggi."
 
 msgid "Workspace views"
 msgstr "Tampilan workspace"

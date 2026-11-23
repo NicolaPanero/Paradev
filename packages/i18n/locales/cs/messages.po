@@ -4540,9 +4540,6 @@ msgstr "Relace chatu nenalezena"
 msgid "Chat session ready"
 msgstr "Chatovací relace připravena"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "Chat zůstává rychlý i při práci agentů na pozadí."
-
 msgid "Chat support is checked when you open a chat."
 msgstr "Podpora chatu se ověřuje při otevření chatu."
 
@@ -9631,6 +9628,9 @@ msgstr "Najít"
 msgid "Find a chat"
 msgstr "Najít chat"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "V pracovních prostorech je tlačítko „Najít chat“ vedle tlačítka pro přidání karty."
+
 msgid "Find a person…"
 msgstr "Najít osobu…"
 
@@ -10588,6 +10588,9 @@ msgstr "Domů"
 msgctxt "directory"
 msgid "Home"
 msgstr "Domů"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "Pole pro psaní na domovské obrazovce má stejné rozložení jako v otevřeném chatu."
 
 msgid "host"
 msgstr "Host"
@@ -16871,9 +16874,6 @@ msgstr "Ve frontě · {position}"
 msgid "Queued messages"
 msgstr "Zprávy ve frontě"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "Prompty ve frontě zůstávají viditelné, zatímco agent pracuje."
-
 msgid "Queued to Merge"
 msgstr "Ve frontě na sloučení"
 
@@ -18096,9 +18096,6 @@ msgstr "Zkouším znovu…"
 msgid "Return to dashboard"
 msgstr "Zpět na dashboard"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "Vraťte se přímo do hlavního chatu z konverzace s dílčím agentem."
-
 msgid "Returns"
 msgstr "Vrací"
 
@@ -18722,6 +18719,9 @@ msgstr "Hledat ve všech chatech…"
 
 msgid "Search all emoji"
 msgstr "Hledat všechny emoji"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "Pro každý repozitář můžete vyhledat a vybrat výchozí větev pracovního stromu."
 
 msgid "Search and open files in the current workspace"
 msgstr "Hledat a otevírat soubory v aktuálním pracovním prostoru"
@@ -21809,6 +21809,9 @@ msgstr "Server se nepodařilo najít"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Služba je dočasně nedostupná. Superset to automaticky zkusí znovu. Nastavení vašeho účtu se nemění."
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "Postranní panel a nabídky účtů sdílejí údaje o využití z mezipaměti."
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Přihlašovací odkaz byl neúplný. Zkuste to prosím znovu."
 
@@ -24379,9 +24382,6 @@ msgstr "Nastavení pracovního prostoru"
 
 msgid "Workspace Setup"
 msgstr "Nastavení pracovního prostoru"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "Karty a ovládací prvky pracovního prostoru zůstávají přístupné i při větším přiblížení."
 
 msgid "Workspace views"
 msgstr "Pohledy pracovních prostorů"

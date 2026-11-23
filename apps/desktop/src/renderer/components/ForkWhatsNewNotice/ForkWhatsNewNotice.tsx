@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-2011-upstream-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-home-worktree-branches-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -32,17 +32,16 @@ export function ForkWhatsNewNotice() {
 	if (seen) return null;
 	const highlights = [
 		t({
-			message: "Chat stays responsive while background agents work.",
+			message: "Search and choose a worktree base branch for each repository.",
 		}),
 		t({
-			message: "Queued prompts remain visible while the agent is working.",
+			message: "Home uses the same composer layout as an open chat.",
 		}),
 		t({
-			message: "Return to the main chat directly from a subagent conversation.",
+			message: "Find a chat sits next to the add-tab button in workspaces.",
 		}),
 		t({
-			message:
-				"Workspace tabs and controls stay accessible at higher zoom levels.",
+			message: "The sidebar and account menus share cached usage readings.",
 		}),
 	];
 	const notice: DesktopNotice = {

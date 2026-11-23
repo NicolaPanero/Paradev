@@ -4540,9 +4540,6 @@ msgstr "未找到聊天会话"
 msgid "Chat session ready"
 msgstr "聊天会话已就绪"
 
-msgid "Chat stays responsive while background agents work."
-msgstr "后台智能体工作时，聊天仍保持流畅。"
-
 msgid "Chat support is checked when you open a chat."
 msgstr "打开聊天时会检查聊天支持情况。"
 
@@ -9631,6 +9628,9 @@ msgstr "查找"
 msgid "Find a chat"
 msgstr "查找聊天"
 
+msgid "Find a chat sits next to the add-tab button in workspaces."
+msgstr "在工作区中，“查找聊天”按钮位于添加标签页按钮旁。"
+
 msgid "Find a person…"
 msgstr "查找成员…"
 
@@ -10588,6 +10588,9 @@ msgstr "主目录"
 msgctxt "directory"
 msgid "Home"
 msgstr "主目录"
+
+msgid "Home uses the same composer layout as an open chat."
+msgstr "主页的输入区与已打开的聊天采用相同布局。"
 
 msgid "host"
 msgstr "主机"
@@ -16871,9 +16874,6 @@ msgstr "排队中 · {position}"
 msgid "Queued messages"
 msgstr "排队中的消息"
 
-msgid "Queued prompts remain visible while the agent is working."
-msgstr "智能体工作时，队列中的提示词仍然可见。"
-
 msgid "Queued to Merge"
 msgstr "排队等待合并"
 
@@ -18096,9 +18096,6 @@ msgstr "正在重试…"
 msgid "Return to dashboard"
 msgstr "返回主页"
 
-msgid "Return to the main chat directly from a subagent conversation."
-msgstr "从子智能体对话直接返回主聊天。"
-
 msgid "Returns"
 msgstr "返回值"
 
@@ -18722,6 +18719,9 @@ msgstr "搜索所有聊天…"
 
 msgid "Search all emoji"
 msgstr "搜索所有表情"
+
+msgid "Search and choose a worktree base branch for each repository."
+msgstr "为每个仓库搜索并选择工作树的基础分支。"
 
 msgid "Search and open files in the current workspace"
 msgstr "在当前工作区中搜索并打开文件"
@@ -21809,6 +21809,9 @@ msgstr "找不到服务器"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "服务暂时不可用。Superset 将自动重试。你的账户设置未发生变化。"
 
+msgid "The sidebar and account menus share cached usage readings."
+msgstr "侧栏和账号菜单共享缓存的用量数据。"
+
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "登录链接不完整。请重试。"
 
@@ -24379,9 +24382,6 @@ msgstr "工作区设置"
 
 msgid "Workspace Setup"
 msgstr "工作区设置"
-
-msgid "Workspace tabs and controls stay accessible at higher zoom levels."
-msgstr "放大界面后，仍可访问工作区标签页和控件。"
 
 msgid "Workspace views"
 msgstr "工作区视图"

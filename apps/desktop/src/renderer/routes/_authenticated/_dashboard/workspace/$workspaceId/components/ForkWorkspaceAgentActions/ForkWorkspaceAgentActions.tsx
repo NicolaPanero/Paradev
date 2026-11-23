@@ -1,10 +1,5 @@
-import { Trans, useLingui } from "@lingui/react/macro";
 import type { WorkspaceStore } from "@superset/panes";
-import { Button } from "@superset/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { workspaceTrpc } from "@superset/workspace-client";
-import { Import } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { StoreApi } from "zustand/vanilla";
 import type { CreateNewAgentSession } from "../../hooks/useAgentSessionLauncher";
 import type { PaneViewerData } from "../../types";
@@ -33,6 +28,8 @@ export function ForkWorkspaceAgentActions({
 	launchOpen,
 	onLaunchOpenChange,
 	onCreateNewAgentSession,
+	importOpen,
+	onImportOpenChange,
 	importRequested = false,
 	resumeChat,
 	onResumeConsumed,
@@ -42,6 +39,8 @@ export function ForkWorkspaceAgentActions({
 	workspaceId: string;
 	workspaceName: string;
 	launchOpen: boolean;
+	importOpen: boolean;
+	onImportOpenChange: (open: boolean) => void;
 	importRequested?: boolean;
 	resumeChat?: string;
 	onResumeConsumed?: () => void;
@@ -49,39 +48,14 @@ export function ForkWorkspaceAgentActions({
 	onLaunchOpenChange: (open: boolean) => void;
 	onCreateNewAgentSession: CreateNewAgentSession;
 }) {
-	const { t } = useLingui();
-	const [importOpen, setImportOpen] = useState(false);
-	const utils = workspaceTrpc.useUtils();
-	const warmChats = () =>
-		void utils.sessionTransfer.externalSessions
-			.prefetch({ workspaceId, preview: false }, { staleTime: 30_000 })
-			.catch(() => undefined);
 	useEffect(() => {
 		if (!importRequested) return;
-		setImportOpen(true);
+		onImportOpenChange(true);
 		onImportRequestConsumed?.();
-	}, [importRequested, onImportRequestConsumed]);
+	}, [importRequested, onImportRequestConsumed, onImportOpenChange]);
 	const resume = parseResume(resumeChat);
 	return (
 		<>
-			<Tooltip>
-				<TooltipTrigger asChild>
-					<Button
-						variant="ghost"
-						size="icon"
-						className="size-7"
-						aria-label={t({ message: "Find a chat" })}
-						onPointerEnter={warmChats}
-						onFocus={warmChats}
-						onClick={() => setImportOpen(true)}
-					>
-						<Import className="size-4" />
-					</Button>
-				</TooltipTrigger>
-				<TooltipContent>
-					<Trans>Find a chat</Trans>
-				</TooltipContent>
-			</Tooltip>
 			{launchOpen && (
 				<ForkNewAgentDialog
 					open
@@ -93,8 +67,8 @@ export function ForkWorkspaceAgentActions({
 			)}
 			<ForkImportChatDialog
 				open={importOpen}
-				onOpenChange={setImportOpen}
-				onImported={() => setImportOpen(false)}
+				onOpenChange={onImportOpenChange}
+				onImported={() => onImportOpenChange(false)}
 				store={store}
 				workspaceId={workspaceId}
 				resume={resume}
