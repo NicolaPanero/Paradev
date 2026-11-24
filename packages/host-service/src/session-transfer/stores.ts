@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import type { HarnessEnv } from "../terminal-agents/harness-sessions/types";
@@ -48,4 +49,17 @@ export function peerSessionReference(
 		(value) => `%${value.charCodeAt(0).toString(16).toUpperCase()}`,
 	);
 	return join(root, encoded, sessionId);
+}
+
+export function locatePeerSessionReference(
+	agent: "cursor-agent" | "grok" | "opencode",
+	root: string,
+	sessionId: string,
+	cwd: string,
+	workspacePath: string,
+) {
+	const reference = peerSessionReference(agent, root, sessionId, cwd);
+	if (agent === "opencode" || cwd === workspacePath || existsSync(reference))
+		return reference;
+	return peerSessionReference(agent, root, sessionId, workspacePath);
 }
