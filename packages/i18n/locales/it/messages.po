@@ -3198,6 +3198,9 @@ msgstr "Menu dell'applicazione"
 msgid "Applications"
 msgstr "Applicazioni"
 
+msgid "Applies at the next agent launch."
+msgstr "Si applica al prossimo avvio dell’agente."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Applica ogni notte gli aggiornamenti sicuri delle dipendenze ed elenca il resto."
 
@@ -3547,6 +3550,9 @@ msgstr "Salvataggio automatico"
 
 msgid "Auto top-up"
 msgstr "Ricarica automatica"
+
+msgid "Auto-compact"
+msgstr "Compattazione automatica"
 
 msgid "Auto-run on new tab"
 msgstr "Avvio automatico in una nuova scheda"
@@ -4784,6 +4790,9 @@ msgstr "Scegli"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Scegli un solo checkout di ogni repository Git nel progetto."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Scegli una finestra di contesto tra quelle offerte dal tuo modello Cursor."
 
 msgid "Choose the model"
 msgstr "Scegli il modello"
@@ -6467,6 +6476,9 @@ msgstr "Impossibile riprendere"
 
 msgid "Could not resume the chat"
 msgstr "Impossibile riprendere la chat"
+
+msgid "Could not save auto-compact."
+msgstr "Impossibile salvare la compattazione automatica."
 
 msgid "Could not save the change."
 msgstr "Impossibile salvare la modifica."
@@ -9628,9 +9640,6 @@ msgstr "Trova"
 msgid "Find a chat"
 msgstr "Trova una chat"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "Nei workspace, «Trova una chat» è accanto al pulsante per aggiungere schede."
-
 msgid "Find a person…"
 msgstr "Cerca una persona…"
 
@@ -10588,9 +10597,6 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Il campo di scrittura della Home ha lo stesso layout di una chat aperta."
 
 msgid "host"
 msgstr "Host"
@@ -17782,6 +17788,9 @@ msgstr "Riservata dal sistema"
 msgid "Reserved by terminal"
 msgstr "Riservata dal terminale"
 
+msgid "Reserved tokens"
+msgstr "Token di riserva"
+
 msgid "Reset"
 msgstr "Reimposta"
 
@@ -17984,6 +17993,9 @@ msgstr "Ripristina il piano"
 
 msgid "restore the agent defaults"
 msgstr "ripristinare i valori predefiniti degli agenti"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Ripristina con un clic la compattazione automatica configurata nell’agente."
 
 msgid "Restore this automation to run it"
 msgstr "Ripristina questa automazione per eseguirla"
@@ -18720,9 +18732,6 @@ msgstr "Cerca in tutte le chat…"
 msgid "Search all emoji"
 msgstr "Cerca tutte le emoji"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Cerca e scegli il branch di partenza del worktree per ogni repository."
-
 msgid "Search and open files in the current workspace"
 msgstr "Cerca e apri file nel workspace corrente"
 
@@ -19372,6 +19381,9 @@ msgstr "Imposta progetto…"
 
 msgid "Set Run"
 msgstr "Imposta l'esecuzione"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Imposta la soglia di compattazione automatica dal selettore unico degli agenti."
 
 msgid "Set this project"
 msgstr "Imposta questo progetto"
@@ -21809,9 +21821,6 @@ msgstr "Impossibile trovare il server"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Il servizio è temporaneamente non disponibile. Superset riproverà automaticamente. Le impostazioni del tuo account restano invariate."
 
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "La barra laterale e i menu degli account condividono i dati di utilizzo in cache."
-
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Il link di accesso era incompleto. Riprova."
 
@@ -22465,6 +22474,12 @@ msgstr "Tre passaggi · tocca packages/ui e apps/desktop"
 
 msgid "Threshold"
 msgstr "Soglia"
+
+msgid "Threshold (%)"
+msgstr "Soglia (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Soglia (token)"
 
 msgid "Thu"
 msgstr "Gio"

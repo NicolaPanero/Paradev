@@ -3198,6 +3198,9 @@ msgstr "애플리케이션 메뉴"
 msgid "Applications"
 msgstr "응용 프로그램"
 
+msgid "Applies at the next agent launch."
+msgstr "다음 에이전트 시작 시 적용됩니다."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "매일 밤 안전한 의존성 업데이트를 적용하고 나머지는 정리합니다."
 
@@ -3547,6 +3550,9 @@ msgstr "자동 저장"
 
 msgid "Auto top-up"
 msgstr "자동 충전"
+
+msgid "Auto-compact"
+msgstr "자동 압축"
 
 msgid "Auto-run on new tab"
 msgstr "새 탭에서 자동 실행"
@@ -4784,6 +4790,9 @@ msgstr "선택하세요"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "프로젝트에서 각 Git 저장소의 체크아웃을 하나만 선택하세요."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "사용 중인 Cursor 모델에서 제공하는 컨텍스트 창을 선택하세요."
 
 msgid "Choose the model"
 msgstr "모델 선택"
@@ -6467,6 +6476,9 @@ msgstr "재개할 수 없습니다"
 
 msgid "Could not resume the chat"
 msgstr "채팅을 재개할 수 없습니다"
+
+msgid "Could not save auto-compact."
+msgstr "자동 압축 설정을 저장하지 못했습니다."
 
 msgid "Could not save the change."
 msgstr "변경 사항을 저장할 수 없습니다."
@@ -9628,9 +9640,6 @@ msgstr "찾기"
 msgid "Find a chat"
 msgstr "채팅 찾기"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "워크스페이스에서 ‘채팅 찾기’는 탭 추가 버튼 옆에 있습니다."
-
 msgid "Find a person…"
 msgstr "사람 찾기…"
 
@@ -10588,9 +10597,6 @@ msgstr "홈"
 msgctxt "directory"
 msgid "Home"
 msgstr "홈"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "홈의 입력창은 열려 있는 채팅과 같은 레이아웃을 사용합니다."
 
 msgid "host"
 msgstr "호스트"
@@ -17782,6 +17788,9 @@ msgstr "OS에서 예약됨"
 msgid "Reserved by terminal"
 msgstr "터미널에서 예약됨"
 
+msgid "Reserved tokens"
+msgstr "예약 토큰"
+
 msgid "Reset"
 msgstr "초기화"
 
@@ -17984,6 +17993,9 @@ msgstr "플랜 복원"
 
 msgid "restore the agent defaults"
 msgstr "에이전트 기본값을 복원할"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "한 번의 클릭으로 에이전트에 설정된 자동 압축 설정을 복원하세요."
 
 msgid "Restore this automation to run it"
 msgstr "실행하려면 이 자동화를 복원하세요"
@@ -18720,9 +18732,6 @@ msgstr "모든 채팅 검색…"
 msgid "Search all emoji"
 msgstr "모든 이모지 검색"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "저장소마다 작업 트리의 기준 브랜치를 검색하고 선택할 수 있습니다."
-
 msgid "Search and open files in the current workspace"
 msgstr "현재 워크스페이스에서 파일을 검색해 엽니다"
 
@@ -19372,6 +19381,9 @@ msgstr "프로젝트 설정…"
 
 msgid "Set Run"
 msgstr "실행 설정"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "통합 에이전트 선택기에서 자동 압축 임계값을 설정하세요."
 
 msgid "Set this project"
 msgstr "이 프로젝트로 설정"
@@ -21809,9 +21821,6 @@ msgstr "서버를 찾을 수 없습니다"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "서비스를 일시적으로 사용할 수 없습니다. Superset이 자동으로 다시 시도합니다. 계정 설정은 변경되지 않았습니다."
 
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "사이드바와 계정 메뉴는 캐시에 저장된 사용량 데이터를 공유합니다."
-
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "로그인 링크가 완전하지 않습니다. 다시 시도해 주세요."
 
@@ -22465,6 +22474,12 @@ msgstr "3단계 · packages/ui와 apps/desktop을 수정"
 
 msgid "Threshold"
 msgstr "기준값"
+
+msgid "Threshold (%)"
+msgstr "임계값(%)"
+
+msgid "Threshold (tokens)"
+msgstr "임계값(토큰)"
 
 msgid "Thu"
 msgstr "목"

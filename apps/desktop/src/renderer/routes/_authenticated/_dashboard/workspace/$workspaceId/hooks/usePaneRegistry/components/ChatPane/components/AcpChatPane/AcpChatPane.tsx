@@ -959,7 +959,7 @@ export function AcpChatPane({
 			onSessionState={(state, promptTitle) => {
 				if (state?.status === "dead") setRuntimeDead(true);
 				if (!mounted.current) return;
-				const info = sessionInfoFromState(state, agent?.sessionId);
+				const info = sessionInfoFromState(state, agent?.sessionId, agent?.id);
 				onSessionInfo(
 					!info.title && promptTitle ? { ...info, title: promptTitle } : info,
 				);

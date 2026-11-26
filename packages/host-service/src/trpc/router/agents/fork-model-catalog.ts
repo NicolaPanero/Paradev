@@ -1,5 +1,8 @@
 import { z } from "zod";
-import { getForkModelCatalog } from "../../../chat-v3/forkModelCatalog";
+import {
+	type ForkModelCatalog,
+	getForkModelCatalog,
+} from "../../../chat-v3/forkModelCatalog";
 import { protectedProcedure } from "../../index";
 
 export const forkModelCatalogProcedures = {
@@ -14,5 +17,10 @@ export const forkModelCatalogProcedures = {
 				refresh: z.boolean().optional(),
 			}),
 		)
-		.query(({ ctx, input }) => getForkModelCatalog(ctx.db, input)),
+		.query(
+			async ({ ctx, input }): Promise<ForkModelCatalog> => ({
+				...(await getForkModelCatalog(ctx.db, input)),
+				supportsCursorContext: true,
+			}),
+		),
 };

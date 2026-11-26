@@ -3198,6 +3198,9 @@ msgstr "Menu ứng dụng"
 msgid "Applications"
 msgstr "Ứng dụng"
 
+msgid "Applies at the next agent launch."
+msgstr "Áp dụng vào lần khởi chạy tác tử tiếp theo."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Áp dụng các bản cập nhật dependency an toàn mỗi đêm và liệt kê phần còn lại."
 
@@ -3547,6 +3550,9 @@ msgstr "Tự động lưu"
 
 msgid "Auto top-up"
 msgstr "Tự động nạp thêm"
+
+msgid "Auto-compact"
+msgstr "Tự động nén"
 
 msgid "Auto-run on new tab"
 msgstr "Tự chạy khi mở tab mới"
@@ -4784,6 +4790,9 @@ msgstr "Chọn một"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Chỉ chọn một bản checkout của mỗi kho Git trong một dự án."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Chọn cửa sổ ngữ cảnh trong các tùy chọn của mô hình Cursor."
 
 msgid "Choose the model"
 msgstr "Chọn mô hình"
@@ -6467,6 +6476,9 @@ msgstr "Không thể tiếp tục"
 
 msgid "Could not resume the chat"
 msgstr "Không thể tiếp tục cuộc trò chuyện"
+
+msgid "Could not save auto-compact."
+msgstr "Không thể lưu cài đặt tự động nén."
 
 msgid "Could not save the change."
 msgstr "Không thể lưu thay đổi."
@@ -9628,9 +9640,6 @@ msgstr "Tìm"
 msgid "Find a chat"
 msgstr "Tìm cuộc trò chuyện"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "Trong không gian làm việc, nút «Tìm cuộc trò chuyện» nằm cạnh nút thêm thẻ."
-
 msgid "Find a person…"
 msgstr "Tìm người…"
 
@@ -10588,9 +10597,6 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Ô soạn thảo ở Trang chủ có cùng bố cục với một cuộc trò chuyện đang mở."
 
 msgid "host"
 msgstr "Host"
@@ -17782,6 +17788,9 @@ msgstr "Hệ điều hành đã dùng"
 msgid "Reserved by terminal"
 msgstr "Terminal đã dùng"
 
+msgid "Reserved tokens"
+msgstr "Token dự phòng"
+
 msgid "Reset"
 msgstr "Đặt lại"
 
@@ -17984,6 +17993,9 @@ msgstr "Khôi phục gói"
 
 msgid "restore the agent defaults"
 msgstr "khôi phục mặc định của agent"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Khôi phục cài đặt tự động nén đã cấu hình của tác tử bằng một lần nhấp."
 
 msgid "Restore this automation to run it"
 msgstr "Khôi phục tự động hóa này để chạy nó"
@@ -18720,9 +18732,6 @@ msgstr "Tìm tất cả cuộc trò chuyện…"
 msgid "Search all emoji"
 msgstr "Tìm tất cả emoji"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Tìm và chọn nhánh cơ sở của worktree cho từng kho lưu trữ."
-
 msgid "Search and open files in the current workspace"
 msgstr "Tìm và mở tệp trong workspace hiện tại"
 
@@ -19372,6 +19381,9 @@ msgstr "Đặt dự án…"
 
 msgid "Set Run"
 msgstr "Đặt lệnh chạy"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Đặt ngưỡng tự động nén trong bộ chọn tác tử chung."
 
 msgid "Set this project"
 msgstr "Đặt dự án này"
@@ -21809,9 +21821,6 @@ msgstr "Không tìm thấy server"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Dịch vụ tạm thời không khả dụng. Superset sẽ tự động thử lại. Cài đặt tài khoản của bạn không thay đổi."
 
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Thanh bên và các menu tài khoản dùng chung dữ liệu sử dụng trong bộ nhớ đệm."
-
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Liên kết đăng nhập không đầy đủ. Vui lòng thử lại."
 
@@ -22465,6 +22474,12 @@ msgstr "Ba bước · động tới packages/ui và apps/desktop"
 
 msgid "Threshold"
 msgstr "Ngưỡng"
+
+msgid "Threshold (%)"
+msgstr "Ngưỡng (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Ngưỡng (token)"
 
 msgid "Thu"
 msgstr "T5"

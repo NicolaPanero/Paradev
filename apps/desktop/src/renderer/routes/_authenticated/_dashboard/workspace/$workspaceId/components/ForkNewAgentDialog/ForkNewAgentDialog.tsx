@@ -1,4 +1,5 @@
 import { Trans } from "@lingui/react/macro";
+import { splitCursorContext } from "@superset/shared/fork-cursor-context";
 import { Button } from "@superset/ui/button";
 import {
 	Dialog,
@@ -15,6 +16,7 @@ import {
 import { useWorkspaceHostUrl } from "renderer/hooks/host-service/useWorkspaceHostUrl";
 import { useAgentConfigs } from "renderer/hooks/useAgentConfigs";
 import { useForkModelCatalog } from "renderer/hooks/useForkModelCatalog";
+import { catalogModelSelection } from "renderer/lib/fork-model-options";
 import { ForkCreationModelPicker } from "renderer/routes/_authenticated/components/DashboardNewWorkspaceModal/components/NewWorkspaceScreen/components/ForkCreationModelPicker";
 import { useForkCliOptions } from "renderer/stores/fork-cli-options";
 import type { CreateNewAgentSession } from "../../hooks/useAgentSessionLauncher";
@@ -61,7 +63,7 @@ export function ForkNewAgentDialog({
 		model,
 		enabled: open && (!managed || account.available),
 	});
-	const models = catalog.models;
+	const launchModel = catalogModelSelection(catalog, model);
 	const accountMissing =
 		managed &&
 		!showCliOptions &&
@@ -85,9 +87,7 @@ export function ForkNewAgentDialog({
 					modelCatalog: "agent",
 					placement: "new-tab",
 					prompt: "",
-					...(model && models.some((o) => o.id === model)
-						? { modelId: model }
-						: {}),
+					...(launchModel ? { modelId: launchModel } : {}),
 					...(managed && !account.forcedApi && account.selection !== undefined
 						? { accountSelection: account.selection }
 						: {}),
@@ -115,6 +115,7 @@ export function ForkNewAgentDialog({
 				</DialogHeader>
 				<fieldset disabled={busy} className="min-w-0">
 					<ForkCreationModelPicker
+						autoCompact={{ hostUrl, accountSelection: account.selection }}
 						fullWidth
 						agents={peers.map((config) => ({
 							id: config.id,
@@ -128,7 +129,11 @@ export function ForkNewAgentDialog({
 						selectedModel={model}
 						onModelChange={(value) => {
 							setModel(value);
-							setEffort(null);
+							if (
+								splitCursorContext(model ?? "").model !==
+								splitCursorContext(value ?? "").model
+							)
+								setEffort(null);
 						}}
 						efforts={catalog.efforts}
 						selectedEffort={effort}

@@ -3,12 +3,60 @@ import {
 	type AgentModelOption,
 	getAgentModelSupport,
 } from "@superset/shared/agent-models";
+import {
+	CURSOR_CONTEXT_ID,
+	splitCursorContext,
+} from "@superset/shared/fork-cursor-context";
 import { getPresetIcon } from "renderer/assets/app-icons/preset-icons";
 import type { AgentSelectAgent } from "renderer/components/AgentSelect";
 
 export const DEFAULT_OPTION_ID = "__default__";
 export const MODEL_CONFIG_ID = "model";
 export const EFFORT_CONFIG_ID = "effort";
+
+function contextForModel(options: SessionConfigOption[], model: string) {
+	return options.find((option) => option.category === "model")?.currentValue ===
+		model
+		? options.find((option) => option.id === CURSOR_CONTEXT_ID)
+		: undefined;
+}
+
+export function cursorContextOption(
+	options: SessionConfigOption[],
+	model: string | null,
+	label: string,
+): SessionConfigOption | undefined {
+	if (!model) return undefined;
+	const selected = splitCursorContext(model);
+	const option = contextForModel(options, selected.model);
+	if (!option?.options.length) return undefined;
+	const currentValue = option.options.some(
+		(entry) => entry.id === selected.context,
+	)
+		? selected.context
+		: option.currentValue;
+	return { ...option, label, currentValue };
+}
+
+export function catalogModelSelection(
+	catalog: {
+		models: AgentModelOption[];
+		configOptions: SessionConfigOption[];
+		supportsCursorContext?: boolean;
+	},
+	selected: string | null,
+) {
+	if (!selected) return null;
+	const { model, context } = splitCursorContext(selected);
+	if (!catalog.models.some((option) => option.id === model)) return null;
+	return context &&
+		catalog.supportsCursorContext &&
+		contextForModel(catalog.configOptions, model)?.options.some(
+			(option) => option.id === context,
+		)
+		? selected
+		: model;
+}
 
 export function agentLaunchPreset(agent: AgentSelectAgent) {
 	return agent.launchPresetId ?? agent.presetId ?? agent.iconId ?? null;

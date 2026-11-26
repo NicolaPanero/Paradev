@@ -191,6 +191,7 @@ export function ForkSessionControls({
 		<>
 			<ForkSessionModelPicker
 				hostUrl={hostUrl}
+				accountSelection={account.selection}
 				workspaceId={workspaceId}
 				configs={configs}
 				data={data}

@@ -1,4 +1,5 @@
 import type { SessionConfigOption } from "@superset/chat/protocol";
+import { splitCursorContext } from "@superset/shared/fork-cursor-context";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo, useRef } from "react";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
@@ -18,7 +19,15 @@ export function useForkModelCatalog(
 	input: Input,
 	clientForHost = getHostServiceClientByUrl,
 ) {
-	const { hostUrl, enabled = true, model, ...selection } = input;
+	const {
+		hostUrl,
+		enabled = true,
+		model: requestedModel,
+		...selection
+	} = input;
+	const model = requestedModel
+		? splitCursorContext(requestedModel).model
+		: undefined;
 	const active =
 		enabled && !!hostUrl && !!selection.agent && selection.agent !== "none";
 	const queryClient = useQueryClient();
@@ -31,6 +40,7 @@ export function useForkModelCatalog(
 			return {
 				configOptions: [] as SessionConfigOption[],
 				modelConfigOptions: undefined,
+				supportsCursorContext: undefined,
 			};
 		const agent = selection.agent;
 		const query = (refresh: boolean) =>
@@ -102,6 +112,9 @@ export function useForkModelCatalog(
 		models,
 		efforts,
 		configOptions,
+		...(base.data?.supportsCursorContext
+			? { supportsCursorContext: true }
+			: {}),
 		isFetching:
 			base.isFetching || (!!requested && !nativeTraits && traits.isFetching),
 		isError: base.isError || (!!requested && !nativeTraits && traits.isError),

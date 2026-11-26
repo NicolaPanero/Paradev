@@ -3198,6 +3198,9 @@ msgstr "应用程序菜单"
 msgid "Applications"
 msgstr "应用程序"
 
+msgid "Applies at the next agent launch."
+msgstr "在代理下次启动时生效。"
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "每晚应用安全的依赖更新，并列出其余的。"
 
@@ -3547,6 +3550,9 @@ msgstr "自动保存"
 
 msgid "Auto top-up"
 msgstr "自动充值"
+
+msgid "Auto-compact"
+msgstr "自动压缩"
 
 msgid "Auto-run on new tab"
 msgstr "新建标签页时自动运行"
@@ -4784,6 +4790,9 @@ msgstr "请选择"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "在一个项目中，每个 Git 仓库只能选择一个检出副本。"
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "选择当前 Cursor 模型提供的上下文窗口。"
 
 msgid "Choose the model"
 msgstr "选择模型"
@@ -6467,6 +6476,9 @@ msgstr "无法继续"
 
 msgid "Could not resume the chat"
 msgstr "无法继续聊天"
+
+msgid "Could not save auto-compact."
+msgstr "无法保存自动压缩设置。"
 
 msgid "Could not save the change."
 msgstr "无法保存更改。"
@@ -9628,9 +9640,6 @@ msgstr "查找"
 msgid "Find a chat"
 msgstr "查找聊天"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "在工作区中，“查找聊天”按钮位于添加标签页按钮旁。"
-
 msgid "Find a person…"
 msgstr "查找成员…"
 
@@ -10588,9 +10597,6 @@ msgstr "主目录"
 msgctxt "directory"
 msgid "Home"
 msgstr "主目录"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "主页的输入区与已打开的聊天采用相同布局。"
 
 msgid "host"
 msgstr "主机"
@@ -17782,6 +17788,9 @@ msgstr "已被系统占用"
 msgid "Reserved by terminal"
 msgstr "已被终端占用"
 
+msgid "Reserved tokens"
+msgstr "预留令牌"
+
 msgid "Reset"
 msgstr "重置"
 
@@ -17984,6 +17993,9 @@ msgstr "恢复方案"
 
 msgid "restore the agent defaults"
 msgstr "恢复智能体默认设置"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "一键恢复代理中已配置的自动压缩设置。"
 
 msgid "Restore this automation to run it"
 msgstr "恢复此自动化后才能运行"
@@ -18720,9 +18732,6 @@ msgstr "搜索所有聊天…"
 msgid "Search all emoji"
 msgstr "搜索所有表情"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "为每个仓库搜索并选择工作树的基础分支。"
-
 msgid "Search and open files in the current workspace"
 msgstr "在当前工作区中搜索并打开文件"
 
@@ -19372,6 +19381,9 @@ msgstr "设置项目…"
 
 msgid "Set Run"
 msgstr "设置运行命令"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "在统一代理选择器中设置自动压缩阈值。"
 
 msgid "Set this project"
 msgstr "设为此项目"
@@ -21809,9 +21821,6 @@ msgstr "找不到服务器"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "服务暂时不可用。Superset 将自动重试。你的账户设置未发生变化。"
 
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "侧栏和账号菜单共享缓存的用量数据。"
-
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "登录链接不完整。请重试。"
 
@@ -22465,6 +22474,12 @@ msgstr "三个步骤 · 涉及packages/ui和apps/desktop"
 
 msgid "Threshold"
 msgstr "阈值"
+
+msgid "Threshold (%)"
+msgstr "阈值（%）"
+
+msgid "Threshold (tokens)"
+msgstr "阈值（令牌）"
 
 msgid "Thu"
 msgstr "周四"

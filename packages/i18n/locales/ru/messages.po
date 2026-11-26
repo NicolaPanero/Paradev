@@ -3198,6 +3198,9 @@ msgstr "Меню приложения"
 msgid "Applications"
 msgstr "Программы"
 
+msgid "Applies at the next agent launch."
+msgstr "Применится при следующем запуске агента."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Каждую ночь применяет безопасные обновления зависимостей и перечисляет остальное."
 
@@ -3547,6 +3550,9 @@ msgstr "Автосохранение"
 
 msgid "Auto top-up"
 msgstr "Автопополнение"
+
+msgid "Auto-compact"
+msgstr "Автосжатие"
 
 msgid "Auto-run on new tab"
 msgstr "Автозапуск в новой вкладке"
@@ -4784,6 +4790,9 @@ msgstr "Выберите"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Выберите только один checkout каждого репозитория Git в проекте."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Выберите окно контекста из вариантов, доступных для вашей модели Cursor."
 
 msgid "Choose the model"
 msgstr "Выбрать модель"
@@ -6467,6 +6476,9 @@ msgstr "Не удалось возобновить"
 
 msgid "Could not resume the chat"
 msgstr "Не удалось продолжить чат"
+
+msgid "Could not save auto-compact."
+msgstr "Не удалось сохранить настройку автосжатия."
 
 msgid "Could not save the change."
 msgstr "Не удалось сохранить изменение."
@@ -9628,9 +9640,6 @@ msgstr "Найти"
 msgid "Find a chat"
 msgstr "Найти чат"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "В рабочих пространствах кнопка «Найти чат» находится рядом с кнопкой добавления вкладок."
-
 msgid "Find a person…"
 msgstr "Найти человека…"
 
@@ -10588,9 +10597,6 @@ msgstr "Домашняя"
 msgctxt "directory"
 msgid "Home"
 msgstr "Домашняя"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Поле ввода на главной странице устроено так же, как в открытом чате."
 
 msgid "host"
 msgstr "Хост"
@@ -17782,6 +17788,9 @@ msgstr "Занято ОС"
 msgid "Reserved by terminal"
 msgstr "Занято терминалом"
 
+msgid "Reserved tokens"
+msgstr "Резерв токенов"
+
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -17984,6 +17993,9 @@ msgstr "Восстановить тариф"
 
 msgid "restore the agent defaults"
 msgstr "восстановить настройки агента по умолчанию"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Верните заданную в агенте настройку автосжатия одним нажатием."
 
 msgid "Restore this automation to run it"
 msgstr "Восстановите эту автоматизацию, чтобы запустить её"
@@ -18720,9 +18732,6 @@ msgstr "Искать во всех чатах…"
 msgid "Search all emoji"
 msgstr "Искать все эмодзи"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Найдите и выберите базовую ветку рабочего дерева для каждого репозитория."
-
 msgid "Search and open files in the current workspace"
 msgstr "Найти и открыть файлы в текущей рабочей области"
 
@@ -19372,6 +19381,9 @@ msgstr "Назначить проект…"
 
 msgid "Set Run"
 msgstr "Задать запуск"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Настройте порог автосжатия в едином меню выбора агента."
 
 msgid "Set this project"
 msgstr "Назначить этот проект"
@@ -21809,9 +21821,6 @@ msgstr "Не удалось найти сервер"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Сервис временно недоступен. Superset автоматически повторит попытку. Настройки вашей учётной записи не изменены."
 
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Боковая панель и меню аккаунтов используют общие данные об использовании из кеша."
-
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Ссылка для входа была неполной. Попробуйте ещё раз."
 
@@ -22465,6 +22474,12 @@ msgstr "Три шага · затрагивает packages/ui и apps/desktop"
 
 msgid "Threshold"
 msgstr "Порог"
+
+msgid "Threshold (%)"
+msgstr "Порог (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Порог (токены)"
 
 msgid "Thu"
 msgstr "Чт"

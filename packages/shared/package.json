@@ -389,6 +389,7 @@
 			"types": "./src/agent-models.ts",
 			"default": "./src/agent-models.ts"
 		},
+		"./fork-cursor-context": "./src/fork-cursor-context.ts",
 		"./billing": {
 			"types": "./src/billing.ts",
 			"default": "./src/billing.ts"

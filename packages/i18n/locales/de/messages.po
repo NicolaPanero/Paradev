@@ -3198,6 +3198,9 @@ msgstr "Anwendungsmenü"
 msgid "Applications"
 msgstr "Programme"
 
+msgid "Applies at the next agent launch."
+msgstr "Wird beim nächsten Start des Agenten angewendet."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Spielt jede Nacht die sicheren Abhängigkeits-Updates ein und listet den Rest auf."
 
@@ -3547,6 +3550,9 @@ msgstr "Automatisches Speichern"
 
 msgid "Auto top-up"
 msgstr "Automatisch nachkaufen"
+
+msgid "Auto-compact"
+msgstr "Automatische Komprimierung"
 
 msgid "Auto-run on new tab"
 msgstr "Automatisch bei neuem Tab starten"
@@ -4784,6 +4790,9 @@ msgstr "Auswählen"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Wähle pro Projekt nur einen Checkout jedes Git-Repositorys."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Wählen Sie ein Kontextfenster aus den Optionen Ihres Cursor-Modells."
 
 msgid "Choose the model"
 msgstr "Modell auswählen"
@@ -6467,6 +6476,9 @@ msgstr "Fortsetzen nicht möglich"
 
 msgid "Could not resume the chat"
 msgstr "Der Chat konnte nicht fortgesetzt werden"
+
+msgid "Could not save auto-compact."
+msgstr "Die Einstellung für die automatische Komprimierung konnte nicht gespeichert werden."
 
 msgid "Could not save the change."
 msgstr "Die Änderung konnte nicht gespeichert werden."
@@ -9628,9 +9640,6 @@ msgstr "Suchen"
 msgid "Find a chat"
 msgstr "Chat finden"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "In Arbeitsbereichen findest du „Chat finden“ neben der Schaltfläche zum Hinzufügen eines Tabs."
-
 msgid "Find a person…"
 msgstr "Person suchen…"
 
@@ -10588,9 +10597,6 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Das Eingabefeld auf der Startseite ist genauso aufgebaut wie in einem geöffneten Chat."
 
 msgid "host"
 msgstr "Host"
@@ -17782,6 +17788,9 @@ msgstr "Vom Betriebssystem belegt"
 msgid "Reserved by terminal"
 msgstr "Vom Terminal belegt"
 
+msgid "Reserved tokens"
+msgstr "Reservierte Tokens"
+
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -17984,6 +17993,9 @@ msgstr "Tarif wiederherstellen"
 
 msgid "restore the agent defaults"
 msgstr "die Agenten-Standardwerte wiederherstellen"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Stellen Sie mit einem Klick die konfigurierte Einstellung des Agenten für die automatische Komprimierung wieder her."
 
 msgid "Restore this automation to run it"
 msgstr "Stelle diese Automatisierung wieder her, um sie auszuführen"
@@ -18720,9 +18732,6 @@ msgstr "Alle Chats durchsuchen…"
 msgid "Search all emoji"
 msgstr "Alle Emojis durchsuchen"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Suche und wähle für jedes Repository einen Basisbranch für den Worktree."
-
 msgid "Search and open files in the current workspace"
 msgstr "Dateien im aktuellen Arbeitsbereich suchen und öffnen"
 
@@ -19372,6 +19381,9 @@ msgstr "Projekt festlegen…"
 
 msgid "Set Run"
 msgstr "Run festlegen"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Legen Sie den Schwellenwert für die automatische Komprimierung in der gemeinsamen Agentenauswahl fest."
 
 msgid "Set this project"
 msgstr "Dieses Projekt festlegen"
@@ -21809,9 +21821,6 @@ msgstr "Der Server wurde nicht gefunden"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Der Dienst ist vorübergehend nicht verfügbar. Superset versucht es automatisch erneut. Deine Kontoeinstellungen bleiben unverändert."
 
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Die Seitenleiste und die Kontomenüs nutzen dieselben zwischengespeicherten Nutzungsdaten."
-
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Der Anmeldelink war unvollständig. Bitte versuche es erneut."
 
@@ -22465,6 +22474,12 @@ msgstr "Drei Schritte · betrifft packages/ui und apps/desktop"
 
 msgid "Threshold"
 msgstr "Schwellenwert"
+
+msgid "Threshold (%)"
+msgstr "Schwellenwert (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Schwellenwert (Tokens)"
 
 msgid "Thu"
 msgstr "Do"

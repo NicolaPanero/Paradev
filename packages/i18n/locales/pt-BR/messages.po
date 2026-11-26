@@ -3198,6 +3198,9 @@ msgstr "Menu do aplicativo"
 msgid "Applications"
 msgstr "Aplicativos"
 
+msgid "Applies at the next agent launch."
+msgstr "Entra em vigor na próxima inicialização do agente."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Aplica toda noite as atualizações seguras de dependências e lista o resto."
 
@@ -3547,6 +3550,9 @@ msgstr "Salvamento automático"
 
 msgid "Auto top-up"
 msgstr "Recarga automática"
+
+msgid "Auto-compact"
+msgstr "Compactação automática"
 
 msgid "Auto-run on new tab"
 msgstr "Executar automaticamente em nova aba"
@@ -4784,6 +4790,9 @@ msgstr "Escolha uma"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Escolha apenas um checkout de cada repositório Git em um projeto."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Escolha uma janela de contexto entre as opções do seu modelo do Cursor."
 
 msgid "Choose the model"
 msgstr "Escolher o modelo"
@@ -6467,6 +6476,9 @@ msgstr "Não foi possível retomar"
 
 msgid "Could not resume the chat"
 msgstr "Não foi possível retomar o chat"
+
+msgid "Could not save auto-compact."
+msgstr "Não foi possível salvar a configuração de compactação automática."
 
 msgid "Could not save the change."
 msgstr "Não foi possível salvar a alteração."
@@ -9628,9 +9640,6 @@ msgstr "Localizar"
 msgid "Find a chat"
 msgstr "Encontrar uma conversa"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "Nos espaços de trabalho, «Encontrar uma conversa» fica ao lado do botão de adicionar abas."
-
 msgid "Find a person…"
 msgstr "Buscar uma pessoa…"
 
@@ -10588,9 +10597,6 @@ msgstr "Início"
 msgctxt "directory"
 msgid "Home"
 msgstr "Início"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "A área de escrita da tela inicial tem o mesmo layout de uma conversa aberta."
 
 msgid "host"
 msgstr "Host"
@@ -17782,6 +17788,9 @@ msgstr "Reservado pelo sistema"
 msgid "Reserved by terminal"
 msgstr "Reservado pelo terminal"
 
+msgid "Reserved tokens"
+msgstr "Tokens reservados"
+
 msgid "Reset"
 msgstr "Redefinir"
 
@@ -17984,6 +17993,9 @@ msgstr "Restaurar plano"
 
 msgid "restore the agent defaults"
 msgstr "restaurar os padrões do agente"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Restaure com um clique a compactação automática configurada no agente."
 
 msgid "Restore this automation to run it"
 msgstr "Restaure esta automação para executá-la"
@@ -18720,9 +18732,6 @@ msgstr "Buscar em todos os chats…"
 msgid "Search all emoji"
 msgstr "Pesquisar todos os emojis"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Busque e escolha a branch base da worktree para cada repositório."
-
 msgid "Search and open files in the current workspace"
 msgstr "Buscar e abrir arquivos na área de trabalho atual"
 
@@ -19372,6 +19381,9 @@ msgstr "Definir projeto…"
 
 msgid "Set Run"
 msgstr "Definir execução"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Ajuste o limite de compactação automática no seletor unificado de agentes."
 
 msgid "Set this project"
 msgstr "Definir este projeto"
@@ -21809,9 +21821,6 @@ msgstr "Não foi possível encontrar o servidor"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "O serviço está temporariamente indisponível. O Superset tentará novamente de forma automática. As configurações da sua conta não foram alteradas."
 
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "A barra lateral e os menus de conta compartilham os dados de uso em cache."
-
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "O link de login estava incompleto. Tente novamente."
 
@@ -22465,6 +22474,12 @@ msgstr "Três passos · mexe em packages/ui e apps/desktop"
 
 msgid "Threshold"
 msgstr "Limite"
+
+msgid "Threshold (%)"
+msgstr "Limite (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Limite (tokens)"
 
 msgid "Thu"
 msgstr "Qui"

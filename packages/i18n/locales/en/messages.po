@@ -3198,6 +3198,9 @@ msgstr "Application menu"
 msgid "Applications"
 msgstr "Applications"
 
+msgid "Applies at the next agent launch."
+msgstr "Applies at the next agent launch."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Applies safe dependency updates every night and lists the rest."
 
@@ -3547,6 +3550,9 @@ msgstr "Auto Save"
 
 msgid "Auto top-up"
 msgstr "Auto top-up"
+
+msgid "Auto-compact"
+msgstr "Auto-compact"
 
 msgid "Auto-run on new tab"
 msgstr "Auto-run on new tab"
@@ -4784,6 +4790,9 @@ msgstr "Choose one"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Choose only one checkout of each Git repository in a project."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Choose the context window offered by your Cursor model."
 
 msgid "Choose the model"
 msgstr "Choose the model"
@@ -6467,6 +6476,9 @@ msgstr "Could not resume"
 
 msgid "Could not resume the chat"
 msgstr "Could not resume the chat"
+
+msgid "Could not save auto-compact."
+msgstr "Could not save auto-compact."
 
 msgid "Could not save the change."
 msgstr "Could not save the change."
@@ -9628,9 +9640,6 @@ msgstr "Find"
 msgid "Find a chat"
 msgstr "Find a chat"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "Find a chat sits next to the add-tab button in workspaces."
-
 msgid "Find a person…"
 msgstr "Find a person…"
 
@@ -10588,9 +10597,6 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Home uses the same composer layout as an open chat."
 
 msgid "host"
 msgstr "host"
@@ -17782,6 +17788,9 @@ msgstr "Reserved by OS"
 msgid "Reserved by terminal"
 msgstr "Reserved by terminal"
 
+msgid "Reserved tokens"
+msgstr "Reserved tokens"
+
 msgid "Reset"
 msgstr "Reset"
 
@@ -17984,6 +17993,9 @@ msgstr "Restore plan"
 
 msgid "restore the agent defaults"
 msgstr "restore the agent defaults"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Restore the agent's configured auto-compact setting in one click."
 
 msgid "Restore this automation to run it"
 msgstr "Restore this automation to run it"
@@ -18720,9 +18732,6 @@ msgstr "Search all chats…"
 msgid "Search all emoji"
 msgstr "Search all emoji"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Search and choose a worktree base branch for each repository."
-
 msgid "Search and open files in the current workspace"
 msgstr "Search and open files in the current workspace"
 
@@ -19372,6 +19381,9 @@ msgstr "Set project…"
 
 msgid "Set Run"
 msgstr "Set Run"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Set the auto-compact threshold from the unified agent picker."
 
 msgid "Set this project"
 msgstr "Set this project"
@@ -21809,9 +21821,6 @@ msgstr "The server could not be found"
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "The sidebar and account menus share cached usage readings."
-
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "The sign-in link was incomplete. Please try again."
 
@@ -22465,6 +22474,12 @@ msgstr "Three steps · touches packages/ui and apps/desktop"
 
 msgid "Threshold"
 msgstr "Threshold"
+
+msgid "Threshold (%)"
+msgstr "Threshold (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Threshold (tokens)"
 
 msgid "Thu"
 msgstr "Thu"
