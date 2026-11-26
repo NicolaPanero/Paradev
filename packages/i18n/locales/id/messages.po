@@ -804,6 +804,9 @@ msgstr "{actor} melepas tautan workspace {workspace}"
 msgid "{actual} so far · ~{projected} projected"
 msgstr "{actual} sejauh ini · ~{projected} diperkirakan"
 
+msgid "{agent} account usage ({count})"
+msgstr "Penggunaan akun {agent} ({count} akun)"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} tidak mengizinkan Anda mengirim pesan ke subagennya."
 
@@ -9628,9 +9631,6 @@ msgstr "Cari"
 msgid "Find a chat"
 msgstr "Cari percakapan"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "Di ruang kerja, Cari percakapan berada di sebelah tombol tambah tab."
-
 msgid "Find a person…"
 msgstr "Cari orang…"
 
@@ -10588,9 +10588,6 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Kolom penulisan di Beranda memakai tata letak yang sama seperti percakapan yang terbuka."
 
 msgid "host"
 msgstr "Host"
@@ -11648,6 +11645,9 @@ msgstr "Bergabung…"
 
 msgid "Jump"
 msgstr "Lompat"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "Buka pengaturan akun yang dipilih langsung dari bilah samping."
 
 msgid "Jump to a specific date"
 msgstr "Lompat ke tanggal tertentu"
@@ -14916,6 +14916,9 @@ msgstr "Buka sebuah pull request untuk melihat status review, check, dan komenta
 
 msgid "Open a task to log time manually."
 msgstr "Buka tugas untuk mencatat waktu secara manual."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "Lihat penggunaan akun dari ikon agen di bilah samping."
 
 msgid "Open actions menu"
 msgstr "Buka menu aksi"
@@ -18720,9 +18723,6 @@ msgstr "Cari semua obrolan…"
 msgid "Search all emoji"
 msgstr "Cari semua emoji"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Cari dan pilih branch dasar worktree untuk setiap repositori."
-
 msgid "Search and open files in the current workspace"
 msgstr "Cari dan buka file di workspace saat ini"
 
@@ -18999,6 +18999,9 @@ msgstr "Lihat lowongan yang ada, atau coba Paradev dulu."
 
 msgid "See this gate on the scorecard"
 msgstr "Lihat gerbang ini di kartu skor"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "Lihat penggunaan dan waktu reset untuk setiap akun berlangganan."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Lihat apa yang berubah, beri masukan, dan merge pekerjaannya saat siap."
@@ -21808,9 +21811,6 @@ msgstr "Servernya tidak ditemukan"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Layanan sementara tidak tersedia. Superset akan mencoba lagi secara otomatis. Pengaturan akun Anda tidak berubah."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Bilah samping dan menu akun berbagi data penggunaan yang tersimpan di cache."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Tautan masuk tidak lengkap. Silakan coba lagi."

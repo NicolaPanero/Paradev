@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-home-worktree-branches-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-sidebar-account-usage-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -32,16 +32,13 @@ export function ForkWhatsNewNotice() {
 	if (seen) return null;
 	const highlights = [
 		t({
-			message: "Search and choose a worktree base branch for each repository.",
+			message: "Open account usage from the agent icon in the sidebar.",
 		}),
 		t({
-			message: "Home uses the same composer layout as an open chat.",
+			message: "See usage and reset times for each subscription account.",
 		}),
 		t({
-			message: "Find a chat sits next to the add-tab button in workspaces.",
-		}),
-		t({
-			message: "The sidebar and account menus share cached usage readings.",
+			message: "Jump from the sidebar to a specific account’s settings.",
 		}),
 	];
 	const notice: DesktopNotice = {

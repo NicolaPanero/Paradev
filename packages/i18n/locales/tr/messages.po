@@ -804,6 +804,9 @@ msgstr "{actor} {workspace} çalışma alanının bağlantısını kaldırdı"
 msgid "{actual} so far · ~{projected} projected"
 msgstr "şu ana kadar {actual} · ~{projected} öngörülüyor"
 
+msgid "{agent} account usage ({count})"
+msgstr "{agent} hesap kullanımı ({count} hesap)"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel}, alt ajanlarına mesaj göndermenize izin vermiyor."
 
@@ -9628,9 +9631,6 @@ msgstr "Bul"
 msgid "Find a chat"
 msgstr "Sohbet bul"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "Çalışma alanlarında ‘Sohbet bul’, sekme ekleme düğmesinin yanında yer alır."
-
 msgid "Find a person…"
 msgstr "Kişi bul…"
 
@@ -10588,9 +10588,6 @@ msgstr "Ana dizin"
 msgctxt "directory"
 msgid "Home"
 msgstr "Ana dizin"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Ana sayfadaki yazma alanı, açık sohbetle aynı düzene sahip."
 
 msgid "host"
 msgstr "Host"
@@ -11648,6 +11645,9 @@ msgstr "Katılınıyor…"
 
 msgid "Jump"
 msgstr "Git"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "İstediğiniz hesabın ayarlarını doğrudan kenar çubuğundan açın."
 
 msgid "Jump to a specific date"
 msgstr "Belirli bir tarihe git"
@@ -14916,6 +14916,9 @@ msgstr "İnceleme durumunu, kontrolleri ve yorumları görmek için bir pull req
 
 msgid "Open a task to log time manually."
 msgstr "Manuel süre kaydetmek için bir görev açın."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "Hesap kullanımını kenar çubuğundaki ajan simgesinden açın."
 
 msgid "Open actions menu"
 msgstr "Eylemler menüsünü aç"
@@ -18720,9 +18723,6 @@ msgstr "Tüm sohbetlerde ara…"
 msgid "Search all emoji"
 msgstr "Tüm emojilerde ara"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Her depo için çalışma ağacının temel dalını arayıp seçin."
-
 msgid "Search and open files in the current workspace"
 msgstr "Geçerli çalışma alanında dosya ara ve aç"
 
@@ -18999,6 +18999,9 @@ msgstr "Açık pozisyonlara bakın ya da önce Paradev'i deneyin."
 
 msgid "See this gate on the scorecard"
 msgstr "Bu eşiği puan tablosunda gör"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "Aboneliği olan her hesabın kullanımını ve sıfırlanma zamanlarını görün."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Neyin değiştiğini görün, geri bildirim verin ve hazır olduğunda işi birleştirin."
@@ -21808,9 +21811,6 @@ msgstr "Sunucu bulunamadı"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Hizmet geçici olarak kullanılamıyor. Superset otomatik olarak yeniden deneyecek. Hesap ayarlarınız değişmedi."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Kenar çubuğu ve hesap menüleri önbellekteki kullanım verilerini paylaşır."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Oturum açma bağlantısı eksikti. Lütfen yeniden deneyin."

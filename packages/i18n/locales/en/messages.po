@@ -804,6 +804,9 @@ msgstr "{actor} unlinked the workspace {workspace}"
 msgid "{actual} so far · ~{projected} projected"
 msgstr "{actual} so far · ~{projected} projected"
 
+msgid "{agent} account usage ({count})"
+msgstr "{agent} account usage ({count})"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} doesn't let you message its subagents."
 
@@ -9628,9 +9631,6 @@ msgstr "Find"
 msgid "Find a chat"
 msgstr "Find a chat"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "Find a chat sits next to the add-tab button in workspaces."
-
 msgid "Find a person…"
 msgstr "Find a person…"
 
@@ -10588,9 +10588,6 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Home uses the same composer layout as an open chat."
 
 msgid "host"
 msgstr "host"
@@ -11648,6 +11645,9 @@ msgstr "Joining…"
 
 msgid "Jump"
 msgstr "Jump"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "Jump from the sidebar to a specific account’s settings."
 
 msgid "Jump to a specific date"
 msgstr "Jump to a specific date"
@@ -14916,6 +14916,9 @@ msgstr "Open a pull request to view review status, checks, and comments."
 
 msgid "Open a task to log time manually."
 msgstr "Open a task to log time manually."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "Open account usage from the agent icon in the sidebar."
 
 msgid "Open actions menu"
 msgstr "Open actions menu"
@@ -18720,9 +18723,6 @@ msgstr "Search all chats…"
 msgid "Search all emoji"
 msgstr "Search all emoji"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Search and choose a worktree base branch for each repository."
-
 msgid "Search and open files in the current workspace"
 msgstr "Search and open files in the current workspace"
 
@@ -18999,6 +18999,9 @@ msgstr "See the open roles, or try Paradev first."
 
 msgid "See this gate on the scorecard"
 msgstr "See this gate on the scorecard"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "See usage and reset times for each subscription account."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "See what changed, give feedback, and merge the work when it's ready."
@@ -21808,9 +21811,6 @@ msgstr "The server could not be found"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "The sidebar and account menus share cached usage readings."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "The sign-in link was incomplete. Please try again."

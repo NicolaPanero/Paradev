@@ -804,6 +804,9 @@ msgstr "{actor}がワークスペース {workspace} のリンクを解除しま�
 msgid "{actual} so far · ~{projected} projected"
 msgstr "現時点で{actual} · 予測は約{projected}"
 
+msgid "{agent} account usage ({count})"
+msgstr "{agent} のアカウント使用状況（{count} 件）"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} では、サブエージェントにメッセージを送れません。"
 
@@ -9628,9 +9631,6 @@ msgstr "検索"
 msgid "Find a chat"
 msgstr "チャットを探す"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "ワークスペースでは「チャットを探す」がタブ追加ボタンの隣にあります。"
-
 msgid "Find a person…"
 msgstr "メンバーを検索…"
 
@@ -10588,9 +10588,6 @@ msgstr "ホーム"
 msgctxt "directory"
 msgid "Home"
 msgstr "ホーム"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "ホームの入力欄は、開いているチャットと同じレイアウトになりました。"
 
 msgid "host"
 msgstr "ホスト"
@@ -11648,6 +11645,9 @@ msgstr "参加中…"
 
 msgid "Jump"
 msgstr "移動"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "サイドバーから、選んだアカウントの設定を直接開けます。"
 
 msgid "Jump to a specific date"
 msgstr "特定の日付に移動"
@@ -14916,6 +14916,9 @@ msgstr "プルリクエストを開くと、レビュー状態、チェック、
 
 msgid "Open a task to log time manually."
 msgstr "タスクを開いて作業時間を手動で記録します。"
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "サイドバーのエージェントアイコンからアカウントの使用状況を確認できます。"
 
 msgid "Open actions menu"
 msgstr "アクションメニューを開く"
@@ -18720,9 +18723,6 @@ msgstr "すべてのチャットを検索…"
 msgid "Search all emoji"
 msgstr "すべての絵文字を検索"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "リポジトリごとに、ワークツリーのベースとなるブランチを検索して選べます。"
-
 msgid "Search and open files in the current workspace"
 msgstr "現在のワークスペース内のファイルを検索して開く"
 
@@ -18999,6 +18999,9 @@ msgstr "募集中のポジションを見るか、まずはParadevを試して�
 
 msgid "See this gate on the scorecard"
 msgstr "このゲートをスコアカードで見る"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "サブスクリプションを利用している各アカウントの使用量とリセット時刻を確認できます。"
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "変更内容を確認し、フィードバックを送り、準備ができたら成果をマージします。"
@@ -21808,9 +21811,6 @@ msgstr "サーバーが見つかりませんでした"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "サービスは一時的に利用できません。Supersetが自動的に再試行します。アカウント設定は変更されていません。"
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "サイドバーとアカウントメニューは、キャッシュされた利用状況を共有します。"
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "サインインリンクが不完全でした。もう一度お試しください。"

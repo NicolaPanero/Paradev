@@ -804,6 +804,9 @@ msgstr "{actor} 님이 워크스페이스 {workspace}의 연결을 해제했습�
 msgid "{actual} so far · ~{projected} projected"
 msgstr "현재 {actual} · 예상 ~{projected}"
 
+msgid "{agent} account usage ({count})"
+msgstr "{agent} 계정 사용량({count}개 계정)"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel}에서는 서브 에이전트에게 메시지를 보낼 수 없습니다."
 
@@ -9628,9 +9631,6 @@ msgstr "찾기"
 msgid "Find a chat"
 msgstr "채팅 찾기"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "워크스페이스에서 ‘채팅 찾기’는 탭 추가 버튼 옆에 있습니다."
-
 msgid "Find a person…"
 msgstr "사람 찾기…"
 
@@ -10588,9 +10588,6 @@ msgstr "홈"
 msgctxt "directory"
 msgid "Home"
 msgstr "홈"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "홈의 입력창은 열려 있는 채팅과 같은 레이아웃을 사용합니다."
 
 msgid "host"
 msgstr "호스트"
@@ -11648,6 +11645,9 @@ msgstr "참가하는 중…"
 
 msgid "Jump"
 msgstr "이동"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "사이드바에서 원하는 계정의 설정을 바로 열 수 있습니다."
 
 msgid "Jump to a specific date"
 msgstr "특정 날짜로 이동"
@@ -14916,6 +14916,9 @@ msgstr "리뷰 상태, 검사, 코멘트를 보려면 풀 리퀘스트를 여세
 
 msgid "Open a task to log time manually."
 msgstr "작업을 열어 시간을 직접 기록하세요."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "사이드바의 에이전트 아이콘에서 계정 사용량을 확인할 수 있습니다."
 
 msgid "Open actions menu"
 msgstr "작업 메뉴 열기"
@@ -18720,9 +18723,6 @@ msgstr "모든 채팅 검색…"
 msgid "Search all emoji"
 msgstr "모든 이모지 검색"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "저장소마다 작업 트리의 기준 브랜치를 검색하고 선택할 수 있습니다."
-
 msgid "Search and open files in the current workspace"
 msgstr "현재 워크스페이스에서 파일을 검색해 엽니다"
 
@@ -18999,6 +18999,9 @@ msgstr "채용 공고를 확인하거나 먼저 Paradev를 사용해 보세요."
 
 msgid "See this gate on the scorecard"
 msgstr "성적표에서 이 관문 보기"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "각 구독 계정의 사용량과 초기화 시간을 확인할 수 있습니다."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "무엇이 바뀌었는지 보고, 피드백을 주고, 준비되면 머지하세요."
@@ -21808,9 +21811,6 @@ msgstr "서버를 찾을 수 없습니다"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "서비스를 일시적으로 사용할 수 없습니다. Superset이 자동으로 다시 시도합니다. 계정 설정은 변경되지 않았습니다."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "사이드바와 계정 메뉴는 캐시에 저장된 사용량 데이터를 공유합니다."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "로그인 링크가 완전하지 않습니다. 다시 시도해 주세요."

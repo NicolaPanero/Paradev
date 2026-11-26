@@ -804,6 +804,9 @@ msgstr "{actor} отвязал(а) рабочее пространство {work
 msgid "{actual} so far · ~{projected} projected"
 msgstr "{actual} на данный момент · прогноз ~{projected}"
 
+msgid "{agent} account usage ({count})"
+msgstr "Использование аккаунтов {agent} ({count})"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} не позволяет отправлять сообщения своим субагентам."
 
@@ -9628,9 +9631,6 @@ msgstr "Найти"
 msgid "Find a chat"
 msgstr "Найти чат"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "В рабочих пространствах кнопка «Найти чат» находится рядом с кнопкой добавления вкладок."
-
 msgid "Find a person…"
 msgstr "Найти человека…"
 
@@ -10588,9 +10588,6 @@ msgstr "Домашняя"
 msgctxt "directory"
 msgid "Home"
 msgstr "Домашняя"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Поле ввода на главной странице устроено так же, как в открытом чате."
 
 msgid "host"
 msgstr "Хост"
@@ -11648,6 +11645,9 @@ msgstr "Присоединение…"
 
 msgid "Jump"
 msgstr "Перейти"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "Откройте настройки нужного аккаунта прямо с боковой панели."
 
 msgid "Jump to a specific date"
 msgstr "Перейти к определённой дате"
@@ -14916,6 +14916,9 @@ msgstr "Откройте пул-реквест, чтобы видеть стат
 
 msgid "Open a task to log time manually."
 msgstr "Откройте задачу, чтобы вручную учесть время."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "Откройте данные об использовании аккаунтов через значок агента на боковой панели."
 
 msgid "Open actions menu"
 msgstr "Открыть меню действий"
@@ -18720,9 +18723,6 @@ msgstr "Искать во всех чатах…"
 msgid "Search all emoji"
 msgstr "Искать все эмодзи"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Найдите и выберите базовую ветку рабочего дерева для каждого репозитория."
-
 msgid "Search and open files in the current workspace"
 msgstr "Найти и открыть файлы в текущей рабочей области"
 
@@ -18999,6 +18999,9 @@ msgstr "Посмотрите вакансии или сначала попроб
 
 msgid "See this gate on the scorecard"
 msgstr "Посмотреть этот шлюз в таблице"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "Смотрите данные об использовании и время сброса для каждого аккаунта с подпиской."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Посмотрите, что изменилось, дайте обратную связь и объедините работу, когда она готова."
@@ -21808,9 +21811,6 @@ msgstr "Не удалось найти сервер"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Сервис временно недоступен. Superset автоматически повторит попытку. Настройки вашей учётной записи не изменены."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Боковая панель и меню аккаунтов используют общие данные об использовании из кеша."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Ссылка для входа была неполной. Попробуйте ещё раз."

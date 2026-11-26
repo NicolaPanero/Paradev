@@ -804,6 +804,9 @@ msgstr "{actor} đã hủy liên kết không gian làm việc {workspace}"
 msgid "{actual} so far · ~{projected} projected"
 msgstr "{actual} đến hiện tại · dự kiến ~{projected}"
 
+msgid "{agent} account usage ({count})"
+msgstr "Mức sử dụng tài khoản {agent} ({count} tài khoản)"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} không cho phép bạn nhắn tin cho các agent con của nó."
 
@@ -9628,9 +9631,6 @@ msgstr "Tìm"
 msgid "Find a chat"
 msgstr "Tìm cuộc trò chuyện"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "Trong không gian làm việc, nút «Tìm cuộc trò chuyện» nằm cạnh nút thêm thẻ."
-
 msgid "Find a person…"
 msgstr "Tìm người…"
 
@@ -10588,9 +10588,6 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Ô soạn thảo ở Trang chủ có cùng bố cục với một cuộc trò chuyện đang mở."
 
 msgid "host"
 msgstr "Host"
@@ -11648,6 +11645,9 @@ msgstr "Đang tham gia…"
 
 msgid "Jump"
 msgstr "Đi tới"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "Mở ngay phần cài đặt của tài khoản bạn chọn từ thanh bên."
 
 msgid "Jump to a specific date"
 msgstr "Chuyển đến ngày cụ thể"
@@ -14916,6 +14916,9 @@ msgstr "Hãy mở một pull request để xem trạng thái review, check và b
 
 msgid "Open a task to log time manually."
 msgstr "Mở tác vụ để ghi nhận thời gian thủ công."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "Xem mức sử dụng tài khoản từ biểu tượng agent trên thanh bên."
 
 msgid "Open actions menu"
 msgstr "Mở menu hành động"
@@ -18720,9 +18723,6 @@ msgstr "Tìm tất cả cuộc trò chuyện…"
 msgid "Search all emoji"
 msgstr "Tìm tất cả emoji"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Tìm và chọn nhánh cơ sở của worktree cho từng kho lưu trữ."
-
 msgid "Search and open files in the current workspace"
 msgstr "Tìm và mở tệp trong workspace hiện tại"
 
@@ -18999,6 +18999,9 @@ msgstr "Xem các vị trí đang tuyển, hoặc dùng thử Paradev trước."
 
 msgid "See this gate on the scorecard"
 msgstr "Xem cổng này trên bảng điểm"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "Xem mức sử dụng và thời điểm đặt lại của từng tài khoản có gói đăng ký."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Xem những gì đã thay đổi, góp ý, và merge khi đã sẵn sàng."
@@ -21808,9 +21811,6 @@ msgstr "Không tìm thấy server"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Dịch vụ tạm thời không khả dụng. Superset sẽ tự động thử lại. Cài đặt tài khoản của bạn không thay đổi."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Thanh bên và các menu tài khoản dùng chung dữ liệu sử dụng trong bộ nhớ đệm."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Liên kết đăng nhập không đầy đủ. Vui lòng thử lại."

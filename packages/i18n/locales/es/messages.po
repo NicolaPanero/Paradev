@@ -804,6 +804,9 @@ msgstr "{actor} desvinculó el espacio de trabajo {workspace}"
 msgid "{actual} so far · ~{projected} projected"
 msgstr "{actual} hasta ahora · ~{projected} previstas"
 
+msgid "{agent} account usage ({count})"
+msgstr "Uso de las cuentas de {agent} ({count})"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} no te permite enviar mensajes a sus subagentes."
 
@@ -9628,9 +9631,6 @@ msgstr "Buscar"
 msgid "Find a chat"
 msgstr "Buscar un chat"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "En los espacios de trabajo, «Buscar un chat» está junto al botón para añadir pestañas."
-
 msgid "Find a person…"
 msgstr "Buscar una persona…"
 
@@ -10588,9 +10588,6 @@ msgstr "Inicio"
 msgctxt "directory"
 msgid "Home"
 msgstr "Inicio"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "El área de escritura de Inicio tiene el mismo diseño que la de un chat abierto."
 
 msgid "host"
 msgstr "Host"
@@ -11648,6 +11645,9 @@ msgstr "Uniéndose…"
 
 msgid "Jump"
 msgstr "Ir"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "Abre directamente la configuración de la cuenta que elijas desde la barra lateral."
 
 msgid "Jump to a specific date"
 msgstr "Ir a una fecha concreta"
@@ -14916,6 +14916,9 @@ msgstr "Abre una pull request para ver el estado de la revisión, las comprobaci
 
 msgid "Open a task to log time manually."
 msgstr "Abre una tarea para registrar tiempo manualmente."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "Consulta el uso de las cuentas desde el icono del agente en la barra lateral."
 
 msgid "Open actions menu"
 msgstr "Abrir el menú de acciones"
@@ -18720,9 +18723,6 @@ msgstr "Buscar en todos los chats…"
 msgid "Search all emoji"
 msgstr "Buscar todos los emojis"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Busca y elige la rama base del árbol de trabajo para cada repositorio."
-
 msgid "Search and open files in the current workspace"
 msgstr "Buscar y abrir archivos en el espacio de trabajo actual"
 
@@ -18999,6 +18999,9 @@ msgstr "Mira las vacantes o prueba Paradev primero."
 
 msgid "See this gate on the scorecard"
 msgstr "Ver esta meta en el cuadro de resultados"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "Consulta el uso y las horas de restablecimiento de cada cuenta con suscripción."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Mira qué cambió, da tu opinión y fusiona el trabajo cuando esté listo."
@@ -21808,9 +21811,6 @@ msgstr "No se encontró el servidor"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "El servicio no está disponible temporalmente. Superset volverá a intentarlo automáticamente. La configuración de tu cuenta no ha cambiado."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "La barra lateral y los menús de cuenta comparten los datos de uso de la caché."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "El enlace de inicio de sesión estaba incompleto. Inténtalo de nuevo."

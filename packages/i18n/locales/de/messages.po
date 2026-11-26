@@ -804,6 +804,9 @@ msgstr "{actor} hat die Verknüpfung mit dem Arbeitsbereich {workspace} aufgehob
 msgid "{actual} so far · ~{projected} projected"
 msgstr "{actual} bisher · ~{projected} erwartet"
 
+msgid "{agent} account usage ({count})"
+msgstr "Kontonutzung für {agent} ({count})"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} lässt dich seinen Subagents keine Nachrichten senden."
 
@@ -9628,9 +9631,6 @@ msgstr "Suchen"
 msgid "Find a chat"
 msgstr "Chat finden"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "In Arbeitsbereichen findest du „Chat finden“ neben der Schaltfläche zum Hinzufügen eines Tabs."
-
 msgid "Find a person…"
 msgstr "Person suchen…"
 
@@ -10588,9 +10588,6 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Das Eingabefeld auf der Startseite ist genauso aufgebaut wie in einem geöffneten Chat."
 
 msgid "host"
 msgstr "Host"
@@ -11648,6 +11645,9 @@ msgstr "Beitritt läuft…"
 
 msgid "Jump"
 msgstr "Springen"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "Öffne die Einstellungen eines bestimmten Kontos direkt über die Seitenleiste."
 
 msgid "Jump to a specific date"
 msgstr "Zu einem bestimmten Datum springen"
@@ -14916,6 +14916,9 @@ msgstr "Öffne einen Pull Request, um Review-Status, Prüfungen und Kommentare z
 
 msgid "Open a task to log time manually."
 msgstr "Öffne eine Aufgabe, um Zeit manuell zu erfassen."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "Rufe die Kontonutzung über das Agentensymbol in der Seitenleiste auf."
 
 msgid "Open actions menu"
 msgstr "Aktionsmenü öffnen"
@@ -18720,9 +18723,6 @@ msgstr "Alle Chats durchsuchen…"
 msgid "Search all emoji"
 msgstr "Alle Emojis durchsuchen"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Suche und wähle für jedes Repository einen Basisbranch für den Worktree."
-
 msgid "Search and open files in the current workspace"
 msgstr "Dateien im aktuellen Arbeitsbereich suchen und öffnen"
 
@@ -18999,6 +18999,9 @@ msgstr "Sieh dir die offenen Stellen an oder probier zuerst Paradev aus."
 
 msgid "See this gate on the scorecard"
 msgstr "Diese Schwelle im Scorecard ansehen"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "Sieh dir die Nutzungsdaten und Zeitpunkte der Zurücksetzung für jedes Konto mit Abo an."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Sieh, was sich geändert hat, gib Feedback und merge die Arbeit, wenn sie bereit ist."
@@ -21808,9 +21811,6 @@ msgstr "Der Server wurde nicht gefunden"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Der Dienst ist vorübergehend nicht verfügbar. Superset versucht es automatisch erneut. Deine Kontoeinstellungen bleiben unverändert."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Die Seitenleiste und die Kontomenüs nutzen dieselben zwischengespeicherten Nutzungsdaten."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Der Anmeldelink war unvollständig. Bitte versuche es erneut."

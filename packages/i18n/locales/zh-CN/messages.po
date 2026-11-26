@@ -804,6 +804,9 @@ msgstr "{actor} 取消关联工作区 {workspace}"
 msgid "{actual} so far · ~{projected} projected"
 msgstr "目前{actual} · 预计约{projected}"
 
+msgid "{agent} account usage ({count})"
+msgstr "{agent} 账号用量（{count} 个账号）"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} 不允许你向其子智能体发送消息。"
 
@@ -9628,9 +9631,6 @@ msgstr "查找"
 msgid "Find a chat"
 msgstr "查找聊天"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "在工作区中，“查找聊天”按钮位于添加标签页按钮旁。"
-
 msgid "Find a person…"
 msgstr "查找成员…"
 
@@ -10588,9 +10588,6 @@ msgstr "主目录"
 msgctxt "directory"
 msgid "Home"
 msgstr "主目录"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "主页的输入区与已打开的聊天采用相同布局。"
 
 msgid "host"
 msgstr "主机"
@@ -11648,6 +11645,9 @@ msgstr "正在加入…"
 
 msgid "Jump"
 msgstr "跳转"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "从侧栏直接打开所选账号的设置。"
 
 msgid "Jump to a specific date"
 msgstr "跳转到特定日期"
@@ -14916,6 +14916,9 @@ msgstr "创建拉取请求后即可查看评审状态、检查和评论。"
 
 msgid "Open a task to log time manually."
 msgstr "打开任务以手动记录工时。"
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "点击侧栏中的智能体图标即可查看账号用量。"
 
 msgid "Open actions menu"
 msgstr "打开操作菜单"
@@ -18720,9 +18723,6 @@ msgstr "搜索所有聊天…"
 msgid "Search all emoji"
 msgstr "搜索所有表情"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "为每个仓库搜索并选择工作树的基础分支。"
-
 msgid "Search and open files in the current workspace"
 msgstr "在当前工作区中搜索并打开文件"
 
@@ -18999,6 +18999,9 @@ msgstr "查看空缺职位，或先试用 Paradev。"
 
 msgid "See this gate on the scorecard"
 msgstr "在评分表中查看这道关卡"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "查看每个订阅账号的用量和重置时间。"
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "查看改动、给出反馈，就绪后合并成果。"
@@ -21808,9 +21811,6 @@ msgstr "找不到服务器"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "服务暂时不可用。Superset 将自动重试。你的账户设置未发生变化。"
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "侧栏和账号菜单共享缓存的用量数据。"
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "登录链接不完整。请重试。"

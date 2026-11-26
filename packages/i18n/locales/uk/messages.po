@@ -798,6 +798,9 @@ msgstr "{actor} відв'язав(-ла) робочий простір {workspac
 msgid "{actual} so far · ~{projected} projected"
 msgstr "{actual} наразі · прогноз ~{projected}"
 
+msgid "{agent} account usage ({count})"
+msgstr "Використання облікових записів {agent} ({count})"
+
 msgid "{agentLabel} doesn't let you message its subagents."
 msgstr "{agentLabel} не дозволяє надсилати повідомлення своїм субагентам."
 
@@ -9622,9 +9625,6 @@ msgstr "Знайти"
 msgid "Find a chat"
 msgstr "Знайти чат"
 
-msgid "Find a chat sits next to the add-tab button in workspaces."
-msgstr "У робочих просторах кнопка «Знайти чат» розташована поруч із кнопкою додавання вкладок."
-
 msgid "Find a person…"
 msgstr "Знайти людину…"
 
@@ -10582,9 +10582,6 @@ msgstr "Додому"
 msgctxt "directory"
 msgid "Home"
 msgstr "Домашня папка"
-
-msgid "Home uses the same composer layout as an open chat."
-msgstr "Поле введення на головній сторінці має такий самий вигляд, як у відкритому чаті."
 
 msgid "host"
 msgstr "Хост"
@@ -11642,6 +11639,9 @@ msgstr "Приєднання…"
 
 msgid "Jump"
 msgstr "Перейти"
+
+msgid "Jump from the sidebar to a specific account’s settings."
+msgstr "Відкрийте налаштування потрібного облікового запису безпосередньо з бічної панелі."
 
 msgid "Jump to a specific date"
 msgstr "Перейти до певної дати"
@@ -14910,6 +14910,9 @@ msgstr "Відкрийте пул-реквест, щоб побачити ста
 
 msgid "Open a task to log time manually."
 msgstr "Відкрийте завдання, щоб вручну обліковувати час."
+
+msgid "Open account usage from the agent icon in the sidebar."
+msgstr "Перегляньте використання облікових записів із піктограми агента на бічній панелі."
 
 msgid "Open actions menu"
 msgstr "Відкрити меню дій"
@@ -18714,9 +18717,6 @@ msgstr "Шукати в усіх чатах…"
 msgid "Search all emoji"
 msgstr "Шукати серед усіх емодзі"
 
-msgid "Search and choose a worktree base branch for each repository."
-msgstr "Знайдіть і виберіть базову гілку робочого дерева для кожного репозиторію."
-
 msgid "Search and open files in the current workspace"
 msgstr "Знайти й відкрити файли в поточному робочому просторі"
 
@@ -18993,6 +18993,9 @@ msgstr "Перегляньте вакансії або спершу спробу
 
 msgid "See this gate on the scorecard"
 msgstr "Переглянути цей поріг у таблиці оцінок"
+
+msgid "See usage and reset times for each subscription account."
+msgstr "Перегляньте використання й час скидання лімітів для кожного облікового запису з підпискою."
 
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Подивіться, що змінилося, залиште відгук і злийте роботу, коли вона буде готова."
@@ -21802,9 +21805,6 @@ msgstr "Не вдалося знайти сервер"
 
 msgid "The service is temporarily unavailable. Superset will retry automatically. Your account settings are unchanged."
 msgstr "Сервіс тимчасово недоступний. Superset повторить спробу автоматично. Налаштування вашого облікового запису не змінено."
-
-msgid "The sidebar and account menus share cached usage readings."
-msgstr "Бічна панель і меню облікових записів використовують спільні кешовані дані про використання."
 
 msgid "The sign-in link was incomplete. Please try again."
 msgstr "Посилання для входу неповне. Спробуйте ще раз."
