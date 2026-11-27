@@ -504,7 +504,7 @@ export function createApp(options: CreateAppOptions): CreateAppResult {
 		try {
 			syncForkMcpLaunchFiles();
 		} catch (err) {
-			console.warn("[host-service] MCP launch files failed:", err);
+			console.warn("[host-service] MCP launch files failed:", caught(err));
 		}
 	})();
 
