@@ -48,8 +48,9 @@ function fixture() {
 		};
 		return adapter;
 	};
+	const store = { read: () => undefined, write: () => {} };
 	const load: typeof getForkModelCatalog = (db, input) =>
-		getForkModelCatalog(db, input, factory);
+		getForkModelCatalog(db, input, factory, store);
 	const input = {
 		agent: "cursor",
 		model: "argon",
