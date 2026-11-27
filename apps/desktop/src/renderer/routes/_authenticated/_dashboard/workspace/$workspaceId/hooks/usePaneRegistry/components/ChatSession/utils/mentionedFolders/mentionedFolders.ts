@@ -1,4 +1,4 @@
-import { pathFileName } from "../pathText";
+import { pathFileName } from "renderer/lib/pathText";
 
 const PATH_TOKEN = /(?:^|[\s`'"([])((?:~\/|\/)[^\s`'"()<>[\]]+)/g;
 const TRAILING_PUNCTUATION = /[.,;:!?]+$/;

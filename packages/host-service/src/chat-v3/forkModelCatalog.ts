@@ -272,6 +272,7 @@ export async function getForkModelCatalog(
 		db,
 		async () => null,
 		undefined,
+		undefined,
 		(options) =>
 			cursor
 				? new ForkCursorModelCatalogAdapter(options)

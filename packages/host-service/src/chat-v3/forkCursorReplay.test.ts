@@ -17,6 +17,7 @@ test.each([
 		{} as HostDb,
 		async () => null,
 		undefined,
+		undefined,
 		(options) => {
 			launches.push({ ...options });
 			return {} as HarnessAdapter;
@@ -47,4 +48,47 @@ test("every chat preset is recognized by both the renderer and the workspace lau
 		expect(client(preset)).toBe(harness);
 		expect(host(preset)).toBe(harness);
 	}
+});
+
+test("discovery uses its prepared launch without recording a chat launch", async () => {
+	const launch = {
+		command: "/test/cursor-agent",
+		version: "1.0.0",
+		args: ["acp"],
+		env: {},
+		identity: { command: "/test/cursor-agent", version: "1.0.0" },
+		loginCommand: undefined,
+	};
+	let chatLaunched = false;
+	let launchAgent: (() => Promise<unknown>) | undefined;
+	const factory = acpHarnessFactory(
+		"cursor-acp",
+		{} as HostDb,
+		async () => null,
+		{
+			started: () => {},
+			published: () => {},
+			stopped: () => {},
+			spawned: () => {},
+			accountCaptured: () => {},
+			closedMidTurn: () => {},
+			launched: () => {
+				chatLaunched = true;
+			},
+		},
+		{ launch, startupTimeoutMs: 10 },
+		(options) => {
+			expect(options.startupTimeoutMs).toBe(10);
+			launchAgent = options.launch;
+			return {} as HarnessAdapter;
+		},
+	);
+	factory?.({
+		harness: "cursor-acp",
+		scopeId: "workspace",
+		sessionId: "fixture-discovery",
+		cwd: "/work",
+	});
+	expect(await launchAgent?.()).toBe(launch);
+	expect(chatLaunched).toBe(false);
 });

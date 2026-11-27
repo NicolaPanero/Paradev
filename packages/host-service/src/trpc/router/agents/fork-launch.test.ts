@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import { exitedAgentTerminalIds } from "./fork-launch";
 
 describe("exitedAgentTerminalIds", () => {
-	it("lists only open bindings whose live terminal is back at the prompt", () => {
+	it("lists only open bindings whose live terminal is back at the prompt", async () => {
 		const bindings = [
 			{ terminalId: "quit" },
 			{ terminalId: "running" },
@@ -10,10 +10,10 @@ describe("exitedAgentTerminalIds", () => {
 			{ terminalId: "unknown" },
 		];
 		expect(
-			exitedAgentTerminalIds(
+			await exitedAgentTerminalIds(
 				bindings,
 				(id) => id !== "unknown",
-				(id) => id === "running",
+				async (id) => id === "running",
 			),
 		).toEqual(["quit"]);
 	});

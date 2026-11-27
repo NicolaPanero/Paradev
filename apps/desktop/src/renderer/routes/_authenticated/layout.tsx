@@ -24,10 +24,9 @@ import { Paywall } from "renderer/components/Paywall";
 import { Redirect } from "renderer/components/Redirect";
 import { env } from "renderer/env.renderer";
 import { useDelayElapsed } from "renderer/hooks/useDelayElapsed";
-import { useOnlineStatus } from "renderer/hooks/useOnlineStatus";
+import { useSessionRecovery } from "renderer/hooks/useSessionRecovery";
 import { useSettingsExternalChangeListener } from "renderer/hooks/useSettingsExternalChangeListener";
 import { useSignOut } from "renderer/hooks/useSignOut";
-import { authClient, getAuthToken } from "renderer/lib/auth-client";
 import { dragDropManager } from "renderer/lib/dnd";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { isForkProRoute } from "renderer/lib/fork-settings-visibility";
@@ -108,13 +107,14 @@ const PIERRE_HIGHLIGHTER_OPTIONS: WorkerInitializationRenderOptions = {
 
 function AuthenticatedLayout() {
 	const {
-		data: session,
+		session,
+		hasLocalToken,
+		isOnline,
 		isPending,
+		isRecovering,
 		isRefetching,
 		refetch,
-	} = authClient.useSession();
-	const hasLocalToken = !!getAuthToken();
-	const isOnline = useOnlineStatus();
+	} = useSessionRecovery();
 	const navigate = useNavigate();
 	const router = useRouter();
 	const location = useLocation();
@@ -136,7 +136,9 @@ function AuthenticatedLayout() {
 		: session?.session?.activeOrganizationId;
 
 	const isAuthPending =
-		(isPending || (isRefetching && !session?.user && hasLocalToken)) &&
+		(isPending ||
+			isRecovering ||
+			(isRefetching && !session?.user && hasLocalToken)) &&
 		!env.SKIP_ENV_VALIDATION;
 	const authPendingTimedOut = useDelayElapsed(
 		isAuthPending,

@@ -14,7 +14,7 @@ import {
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { useOpenInExternalEditor } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/useOpenInExternalEditor";
-import { useRecentlyViewedFiles } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/useRecentlyViewedFiles";
+import { useWorkspacePathHost } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/usePaneRegistry/hooks/useWorkspacePathHost";
 import { useRevealInFinder } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/useRevealInFinder";
 import { useRightPaneLinkTarget } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/providers/RightPaneLinkTargetProvider";
 import type {
@@ -30,7 +30,7 @@ import {
 } from "../../../../utils/runTerminalLinkAction";
 import type { OpenLink } from "../../../ChatSession/providers/ChatPaneActionsProvider";
 import { folderCandidates } from "../../../ChatSession/utils/mentionedFolders";
-import { type ChatLinkTarget, locateChatLink } from "./utils/locateChatLink";
+import { locateChatLink } from "./utils/locateChatLink";
 import { parseFileHref } from "./utils/parseFileHref";
 import {
 	parseTicketedMediaLink,
@@ -66,7 +66,7 @@ export function useOpenChatLink({
 }): OpenLink {
 	const { t } = useLingui();
 	const filePolicy = useInlineFilePolicy();
-	const folderPolicy = useTerminalFolderPolicy();
+	const folderPolicy = useTerminalFolderPolicy("2-tier");
 	const getUrlAction = useUrlLinkAction("2-tier");
 	const openInExternalEditor = useOpenInExternalEditor(workspaceId);
 	const revealInFinder = useRevealInFinder(workspaceId);
@@ -74,36 +74,10 @@ export function useOpenChatLink({
 	const { data: workspace } = workspaceTrpc.workspace.get.useQuery({
 		id: workspaceId,
 	});
-	const statPath = workspaceTrpc.filesystem.statPath.useMutation();
-	const hostClient = workspaceTrpc.useUtils().client;
-	const { recentFiles } = useRecentlyViewedFiles(workspaceId);
+	const pathHost = useWorkspacePathHost(workspaceId);
 	const hostUrl = useWorkspaceHostUrl(workspaceId);
 	const saveToDownloads = electronTrpc.external.saveToDownloads.useMutation();
 	const openSavedPath = electronTrpc.external.openFolderInFinder.useMutation();
-	const locateRef = useRef<
-		(
-			href: string,
-			path: string,
-			folders?: string[],
-		) => Promise<ChatLinkTarget | null>
-	>(async () => null);
-	locateRef.current = (href, path, folders = []) =>
-		locateChatLink(
-			href,
-			path,
-			{
-				stat: (target) => statPath.mutateAsync({ workspaceId, path: target }),
-				resolveFile: (reference) =>
-					hostClient.filesystem.resolveFileReference.query({
-						workspaceId,
-						reference,
-						preferredRelativePaths: recentFiles.map(
-							(file) => file.relativePath,
-						),
-					}),
-			},
-			folderCandidates(path, folders),
-		);
 
 	const depsRef = useRef<TerminalLinkActionDeps>({
 		store,
@@ -176,7 +150,12 @@ export function useOpenChatLink({
 
 			const file = parseFileHref(href);
 			if (!file) return false;
-			void locateRef.current(href, file.path, context?.folders).then(
+			void locateChatLink(
+				href,
+				file.path,
+				pathHost,
+				folderCandidates(file.path, context?.folders ?? []),
+			).then(
 				(stat) => {
 					if (!stat) {
 						const { path } = file;
@@ -192,15 +171,13 @@ export function useOpenChatLink({
 							? chosen === "external"
 								? "external"
 								: "reveal"
-							: (folderPolicy.map[tierFor(event, "2-tier")] ??
-								(isPlain ? "reveal" : null));
+							: folderPolicy.getIntent(event);
 						if (intent === null) showHint(event.clientX, event.clientY);
 						else
 							runFolderLinkAction(depsRef.current, stat.resolvedPath, intent);
 						return;
 					}
-					const action =
-						chosen ?? filePolicy.getAction(event) ?? (isPlain ? "pane" : null);
+					const action = chosen ?? filePolicy.getAction(event);
 					if (action === null) {
 						showHint(event.clientX, event.clientY);
 						return;
@@ -218,6 +195,14 @@ export function useOpenChatLink({
 			);
 			return true;
 		},
-		[getUrlAction, filePolicy, folderPolicy, showHint, t, openHostAttachment],
+		[
+			getUrlAction,
+			filePolicy,
+			folderPolicy,
+			pathHost,
+			showHint,
+			t,
+			openHostAttachment,
+		],
 	);
 }

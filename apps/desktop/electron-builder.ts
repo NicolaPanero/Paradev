@@ -6,6 +6,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { SUPPORTED_LOCALES } from "@superset/i18n/locales";
+import { ACCEPTED_PROTOCOL_SCHEMES } from "@superset/shared/constants";
 import type { Configuration } from "electron-builder";
 import { forkAppDisplayName } from "./fork-display-name";
 import { forkIdentity } from "./fork-identity";
@@ -15,16 +16,23 @@ import {
 	packagedNodeModuleCopies,
 	packagedNodeModuleExclusions,
 } from "./runtime-dependencies";
+import { builderProductName } from "./scripts/builder-product-name";
 import { localizeMacDisplayName } from "./scripts/localize-display-name";
 
 const currentYear = new Date().getFullYear();
 const identity = forkIdentity(pkg.productName);
 const productName = identity.productName;
+const isFork = identity.scheme === "superset-fork";
 // productName names the bundle; runtimeName names app.name, userData, logs and
 // the keychain entry, so it never changes. The UI shows displayName.
 export const displayName =
 	forkAppDisplayName(productName, identity.scheme === "superset-fork") ??
 	(process.env.DESKTOP_DISPLAY_NAME || productName);
+// Squirrel.Mac renames the installed bundle when the executable name equals
+// the bundle file name, which breaks the terminal handoff of released builds.
+// The executable keeps this name so existing Superset.app installs stay put.
+export const legacyAppName = "Superset";
+const plistDisplayName = isFork ? productName : legacyAppName;
 export const toInstallerFileName = (name: string) =>
 	name.trim().replace(/\s+/g, "-");
 const iconDirectory =
@@ -55,9 +63,11 @@ const macElectronLanguages = SUPPORTED_LOCALES.flatMap((locale) => {
 
 const config: Configuration = {
 	appId: identity.appId,
-	productName,
-	extraMetadata: { productName: identity.runtimeName },
-	afterPack: localizeMacDisplayName(displayName),
+	productName: isFork
+		? productName
+		: builderProductName({ productName, legacyProductName: legacyAppName }),
+	...(isFork ? { extraMetadata: { productName: identity.runtimeName } } : {}),
+	afterPack: localizeMacDisplayName(displayName, plistDisplayName),
 	copyright: `Copyright © ${currentYear} Superset Inc.`,
 	electronVersion: pkg.devDependencies.electron.replace(/^\^/, ""),
 
@@ -174,7 +184,8 @@ const config: Configuration = {
 			// launch when it is not productName. The shown name is localized in
 			// afterPack.
 			CFBundleName: productName,
-			CFBundleDisplayName: productName,
+			CFBundleExecutable: plistDisplayName,
+			CFBundleDisplayName: plistDisplayName,
 			LSHasLocalizedDisplayName: true,
 			// Required for macOS microphone permission prompt
 			NSMicrophoneUsageDescription: `${displayName} needs microphone access for dictation in the chat composer and for voice-enabled tools like Codex transcription.`,
@@ -191,12 +202,18 @@ const config: Configuration = {
 
 	// fpm's default xz takes ~15 minutes on the 2 GB tree; gzip takes about
 	// one and costs roughly a tenth in download size.
-	deb: { compression: "gz" },
+	// The in-app update runs dpkg -i, which must replace the installed package.
+	// The control file's Vendor defaults to the maintainer.
+	deb: {
+		compression: "gz",
+		packageName: "superset",
+		maintainer: "Paradev <support@paradev.com>",
+	},
 
 	// Deep linking protocol
 	protocols: {
 		name: productName,
-		schemes: [identity.scheme],
+		schemes: isFork ? [identity.scheme] : [...ACCEPTED_PROTOCOL_SCHEMES],
 	},
 
 	// Linux
@@ -211,7 +228,7 @@ const config: Configuration = {
 		// no longer install by default; the deb needs nothing extra and installs
 		// the desktop entry and icon that the dock and deep links resolve.
 		target: ["AppImage", "deb"],
-		artifactName: `superset-\${version}-\${arch}.\${ext}`,
+		artifactName: `paradev-\${version}-\${arch}.\${ext}`,
 		// GNOME's app menus only show their heuristic "New Window" item
 		// intermittently for running apps; an explicit desktop action (the
 		// Chrome/VS Code approach) is always shown. The action relaunches with
@@ -226,9 +243,9 @@ const config: Configuration = {
 			entry: {
 				Name: displayName,
 				Actions: "new-window;",
-				// Electron sets the window class from the executable name, so the
-				// default (the product name) never matches and the dock shows a
-				// second, iconless entry for the running app.
+				// Electron sets the window class from package.json's desktopName,
+				// so the default (the product name) never matches and the dock
+				// shows a second, iconless entry for the running app.
 				StartupWMClass: "superset",
 			},
 			desktopActions: {

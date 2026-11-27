@@ -10,6 +10,11 @@ export function useAcpChatEnabled(): boolean {
 	return useForkAcpChatChoice(data?.experimentalChat === true);
 }
 
+/** False while the setting loads, when `useAcpChatEnabled` still reads "off". */
+export function useAcpChatSettled(): boolean {
+	return cloudTrpc.userSettings.get.useQuery().isFetched;
+}
+
 /** For choosing chat or terminal at launch: waits for the setting instead of reading "off" while it loads. */
 export function useResolveAcpChatEnabled(): () => Promise<boolean> {
 	const utils = cloudTrpc.useUtils();

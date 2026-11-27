@@ -149,17 +149,18 @@ export async function applyForkLaunchChoices(
  * Open bindings whose agent has already quit. An agent that exits before its
  * first hook (Claude's folder trust prompt) never reports an end.
  */
-export function exitedAgentTerminalIds(
+export async function exitedAgentTerminalIds(
 	bindings: Array<{ terminalId: string; endedAt?: number }>,
 	isLive: (terminalId: string) => boolean,
-	isRunning: (terminalId: string) => boolean,
-): string[] {
-	return bindings
-		.filter(
-			(binding) =>
-				!binding.endedAt &&
-				isLive(binding.terminalId) &&
-				!isRunning(binding.terminalId),
-		)
-		.map((binding) => binding.terminalId);
+	isRunning: (terminalId: string) => Promise<boolean>,
+): Promise<string[]> {
+	const candidates = bindings.filter(
+		(binding) => !binding.endedAt && isLive(binding.terminalId),
+	);
+	const exited = await Promise.all(
+		candidates.map(async ({ terminalId }) =>
+			(await isRunning(terminalId)) || !isLive(terminalId) ? null : terminalId,
+		),
+	);
+	return exited.filter((terminalId) => terminalId !== null);
 }

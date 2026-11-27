@@ -23,9 +23,10 @@ export function getDiffStatsQueryKey(
 
 export function useDiffStats(
 	workspaceId: string,
-	options?: { enabled?: boolean },
+	options?: { enabled?: boolean; live?: boolean },
 ): DiffStats | null {
 	const enabled = options?.enabled ?? true;
+	const live = options?.live ?? true;
 	const hostUrl = useWorkspaceHostUrl(workspaceId);
 	const queryClient = useQueryClient();
 	const queryKey = useMemo(
@@ -45,21 +46,23 @@ export function useDiffStats(
 				? failureCount < 2
 				: hostServiceQueryRetry(failureCount, error),
 		refetchOnWindowFocus: false,
-		staleTime: Number.POSITIVE_INFINITY,
+		// Not live: nothing tells this read the counts changed, so it reads
+		// again on each mount instead of a host worktree watch.
+		staleTime: live ? Number.POSITIVE_INFINITY : 0,
 	});
 
 	const invalidate = useCallback(() => {
 		void queryClient.invalidateQueries({ queryKey });
 	}, [queryClient, queryKey]);
 
-	// Stays subscribed while disabled: invalidation marks the cached stats
-	// stale so they refetch when the query is re-enabled (staleTime is
-	// Infinity, so a gated subscription would freeze counts).
+	// A live read stays subscribed while disabled: invalidation marks the
+	// cached stats stale so they refetch when the query is re-enabled
+	// (staleTime is Infinity, so a gated subscription would freeze counts).
 	useWorkspaceEvent(
 		"git:changed",
 		workspaceId,
 		invalidate,
-		Boolean(workspaceId) && Boolean(hostUrl),
+		live && Boolean(workspaceId) && Boolean(hostUrl),
 	);
 
 	return stats ?? null;

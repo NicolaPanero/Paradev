@@ -1,54 +1,27 @@
-import { createRequire } from "node:module";
-import { dirname, join } from "node:path";
-import { presetForAcpHarness } from "@superset/chat/core";
 import type { HarnessFactory, ResolveAttachment } from "@superset/chat-runtime";
 import { createAcpAdapter } from "@superset/chat-runtime";
 import type { HostDb } from "../db";
-import { forkAutoCompactLaunch } from "../fork-auto-compact/fork-auto-compact";
-import { resolveHostAgentConfig } from "../terminal-agents/agent-config";
 import { captureSessionAccount } from "../trpc/router/usage/session-account/session-account";
 import { ACP_HARNESSES } from "./acpCatalogue";
-import { resolveAgentCli } from "./agentCli";
-import { buildChatAgentEnv } from "./agentEnv";
+import { type AcpLaunch, resolveAcpLaunch } from "./acpLaunch";
 import { storeAgentImage } from "./agentImages";
-import { agentLoginCommand } from "./agentLogin";
 import type { ChatAgentBridge } from "./chatAgentBridge";
-import {
-	antigravityDistribution,
-	resolveAntigravityRuntime,
-} from "./forkAntigravityRuntime";
 import { chatAccountUsesApiCredentials } from "./forkChatAccount";
-import { forkConfiguredCli } from "./forkConfiguredCli";
 import { startInFullAccess } from "./forkFullAccessStart";
 import { forkGeminiAuthMethod } from "./forkGeminiAuth";
 import { forkGrokAuthMethod } from "./forkGrokAuth";
-import { forkLaunchChoices } from "./forkLaunchChoices";
 import { forkQuotaRecoveryHarness } from "./forkQuotaRecoveryHarness";
-
-function resolveAdapterEntry(packageName: string): string {
-	const moduleRequire = createRequire(import.meta.url);
-	const pkgJson = moduleRequire.resolve(`${packageName}/package.json`);
-	return join(dirname(pkgJson), "dist/index.js");
-}
 
 export function acpHarnessFactory(
 	harness: string,
 	db: HostDb,
 	resolveAttachment: ResolveAttachment,
 	agents?: ChatAgentBridge,
+	discovery?: { launch: AcpLaunch; startupTimeoutMs: number },
 	createAdapter: typeof createAcpAdapter = createAcpAdapter,
 ): HarnessFactory | null {
 	const entry = ACP_HARNESSES[harness];
 	if (!entry) return null;
-
-	let adapterEntry: string | undefined;
-	if (entry.adapter) {
-		try {
-			adapterEntry = resolveAdapterEntry(entry.adapter);
-		} catch {
-			return null;
-		}
-	}
 
 	return (options) =>
 		forkQuotaRecoveryHarness(
@@ -60,6 +33,9 @@ export function acpHarnessFactory(
 				let authMethodId = entry.authMethodId;
 				const adapter = createAdapter({
 					command: entry.binary,
+					...(discovery
+						? { startupTimeoutMs: discovery.startupTimeoutMs }
+						: {}),
 					forkAtMessage: entry.forkAtMessage === true,
 					forkCursorModelSelection: harness === "cursor-acp",
 					forkGrokContextUsage: harness === "grok-acp",
@@ -77,98 +53,42 @@ export function acpHarnessFactory(
 						? { defaultModeId: entry.fullAccessModeId }
 						: {}),
 					...(entry.clientApprovalModes ? { clientApprovalModes: true } : {}),
-					onSpawn: (pid) => agents?.spawned(options.sessionId, pid),
+					onSpawn: (pid) => {
+						if (!discovery) agents?.spawned(options.sessionId, pid);
+					},
 					launch: async () => {
-						if (usable) accountSelection = await usable();
-						const choices = forkLaunchChoices(db, harness, {
-							...options,
-							accountSelection,
-						});
-						const launchConfig = resolveHostAgentConfig(
-							db,
-							choices.agentConfigId ?? entry.presetId ?? entry.binary,
-						);
-						const configured = forkConfiguredCli(
-							choices.agentConfigId ? launchConfig : null,
-						);
-						const cli = await resolveAgentCli({
-							command:
-								entry.managedRuntime === "antigravity"
-									? (configured.command ?? (await resolveAntigravityRuntime()))
-									: configured.command,
-							verifyVersion: entry.managedRuntime !== "antigravity",
-							binary: entry.binary,
-							minVersion: entry.minVersion,
-							upgrade: entry.upgrade,
-							env: () =>
-								buildChatAgentEnv({
-									db,
-									cwd: options.cwd,
-									workspaceId: options.scopeId,
-									...forkLaunchChoices(db, harness, {
-										...options,
-										accountSelection,
-									}),
-									terminalId: options.terminalId,
-									presetId:
-										presetForAcpHarness(options.harness) ?? entry.binary,
-									preserveLegacyAccount: !!options.resume,
-								}),
-						});
-						const { env } = forkAutoCompactLaunch(launchConfig, cli.env, "acp");
+						if (usable && !discovery) accountSelection = await usable();
+						const launch =
+							discovery?.launch ??
+							(await resolveAcpLaunch(db, { ...options, accountSelection }));
+						const env = launch.env;
 						if (harness === "gemini-acp")
 							authMethodId = forkGeminiAuthMethod(env, entry.authMethodId);
 						if (harness === "grok-acp")
 							authMethodId = forkGrokAuthMethod(env, entry.authMethodId);
-						agents?.launched?.(options.sessionId, env);
-						await captureSessionAccount(
-							entry.binary,
-							(entry.binary === "codex"
-								? env.CODEX_HOME
-								: env.CLAUDE_CONFIG_DIR) ?? "",
-							chatAccountUsesApiCredentials(entry.binary, env),
-						)
-							.then((account) => {
-								if (account) {
-									captured(account);
-									agents?.accountCaptured(options.sessionId, account);
-								}
-							})
-							.catch(() => undefined);
-						const loginCommand = agentLoginCommand(entry.binary, env);
-						const login = loginCommand ? { loginCommand } : {};
-						if (!adapterEntry) {
-							return {
-								command: cli.command,
-								args: configured.model
-									? ["--model", configured.model, ...entry.args]
-									: entry.managedRuntime === "antigravity"
-										? antigravityDistribution(process.platform, process.arch)
-												.args
-										: entry.args,
-								env,
-								...login,
-							};
+						if (!discovery) {
+							agents?.launched?.(options.sessionId, env);
+							await captureSessionAccount(
+								entry.binary,
+								(entry.binary === "codex"
+									? env.CODEX_HOME
+									: env.CLAUDE_CONFIG_DIR) ?? "",
+								chatAccountUsesApiCredentials(entry.binary, env),
+							)
+								.then((account) => {
+									if (account) {
+										captured(account);
+										agents?.accountCaptured(options.sessionId, account);
+									}
+								})
+								.catch(() => undefined);
 						}
-						if (!entry.executableEnv) {
-							throw new Error(
-								`${harness} bundles a translator with no way to point it at ${entry.binary}`,
-							);
-						}
-						return {
-							command: process.execPath,
-							args: [adapterEntry, ...(entry.args ?? [])],
-							env: {
-								...env,
-								...entry.adapterEnv,
-								ELECTRON_RUN_AS_NODE: "1",
-								[entry.executableEnv]: cli.command,
-							},
-							...login,
-						};
+						return launch;
 					},
 				});
-				return startInFullAccess(adapter, entry.fullAccessModeId);
+				return discovery
+					? adapter
+					: startInFullAccess(adapter, entry.fullAccessModeId);
 			},
 		);
 }

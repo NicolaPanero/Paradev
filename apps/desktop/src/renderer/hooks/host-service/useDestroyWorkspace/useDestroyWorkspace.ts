@@ -1,18 +1,17 @@
-import type {
-	DeleteInProgressCause,
-	TeardownFailureCause,
-} from "@superset/host-service";
-import { TRPCClientError } from "@trpc/client";
+import type { TeardownFailureCause } from "@superset/host-service";
 import { useCallback } from "react";
 import { useCloudWorkspaces } from "renderer/hooks/useCloudWorkspaces";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";
+import { hasExpiredJwt } from "renderer/lib/auth-client";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
+import { usesRelayJwt } from "renderer/lib/host-service-auth";
 import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
 import {
 	useWorkspaceHostTarget,
 	type WorkspaceHostTarget,
 } from "../useWorkspaceHostUrl";
+import { normalizeDestroyWorkspaceError } from "./utils/normalizeDestroyWorkspaceError";
 
 interface DestroyWorkspaceInput {
 	deleteBranch?: boolean;
@@ -62,6 +61,8 @@ export type DestroyWorkspaceError =
 	| { kind: "in-progress"; message: string }
 	| { kind: "teardown-failed"; cause: TeardownFailureCause }
 	| { kind: "host-unavailable"; reason: WorkspaceHostTarget["status"] }
+	| { kind: "host-offline"; message: string }
+	| { kind: "sign-in-expired"; message: string }
 	| { kind: "unknown"; message: string };
 
 interface UseDestroyWorkspace {
@@ -89,7 +90,7 @@ export async function destroyWorkspaceAtHost(
 			skipTeardown: input.skipTeardown ?? false,
 		});
 	} catch (error) {
-		throw normalizeDestroyWorkspaceError(error);
+		throw normalizeDestroyWorkspaceError(error, relayContext(hostUrl));
 	}
 }
 
@@ -102,7 +103,7 @@ export async function inspectWorkspaceAtHost({
 	try {
 		return await client.workspaceCleanup.inspect.query({ workspaceId });
 	} catch (error) {
-		throw normalizeDestroyWorkspaceError(error);
+		throw normalizeDestroyWorkspaceError(error, relayContext(hostUrl));
 	}
 }
 
@@ -194,6 +195,13 @@ export function useDestroyWorkspace(workspaceId: string): UseDestroyWorkspace {
 	return { hostTarget, destroy, inspect };
 }
 
+function relayContext(hostUrl: string | null) {
+	return {
+		viaRelay: hostUrl !== null && usesRelayJwt(hostUrl),
+		relayTokenExpired: hasExpiredJwt(),
+	};
+}
+
 function getReadyClient(
 	hostUrl: string | null,
 	hostStatus: WorkspaceHostTarget["status"],
@@ -205,41 +213,4 @@ function getReadyClient(
 		} satisfies DestroyWorkspaceError;
 	}
 	return getHostServiceClientByUrl(hostUrl);
-}
-
-function normalizeDestroyWorkspaceError(err: unknown): DestroyWorkspaceError {
-	if (isDestroyWorkspaceError(err)) return err;
-	if (err instanceof TRPCClientError) {
-		const data = err.data as
-			| {
-					code?: string;
-					teardownFailure?: TeardownFailureCause;
-					deleteInProgress?: DeleteInProgressCause;
-			  }
-			| undefined;
-
-		if (data?.teardownFailure) {
-			return { kind: "teardown-failed", cause: data.teardownFailure };
-		}
-		if (data?.deleteInProgress) {
-			return { kind: "in-progress", message: err.message };
-		}
-		if (data?.code === "CONFLICT") {
-			return { kind: "conflict", message: err.message };
-		}
-		return { kind: "unknown", message: err.message };
-	}
-	return {
-		kind: "unknown",
-		message: err instanceof Error ? err.message : String(err),
-	};
-}
-
-function isDestroyWorkspaceError(err: unknown): err is DestroyWorkspaceError {
-	return (
-		!!err &&
-		typeof err === "object" &&
-		"kind" in err &&
-		typeof (err as { kind: unknown }).kind === "string"
-	);
 }

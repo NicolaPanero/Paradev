@@ -31,7 +31,9 @@ export function ForkWhatsNewNotice() {
 	const [seen, setSeen] = useState(() => hasSeenForkWhatsNew(localStorage));
 	if (seen) return null;
 	const highlights = [
-		t({ message: "Set the auto-compact threshold from the unified agent picker." }),
+		t({
+			message: "Set the auto-compact threshold from the unified agent picker.",
+		}),
 		t({ message: "Choose the context window offered by your Cursor model." }),
 		t({ message: "See usage and reset times for each subscription account." }),
 		t({ message: "Resume linked Grok sessions with native handoff." }),
