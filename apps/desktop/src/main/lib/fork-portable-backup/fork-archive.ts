@@ -21,6 +21,7 @@ import { pipeline } from "node:stream/promises";
 import { promisify } from "node:util";
 import { createGunzip, createGzip } from "node:zlib";
 import { z } from "zod";
+import type { BackupFiles } from "./fork-backup-files";
 import { walk } from "./fork-inventory";
 import { canonical, contains } from "./fork-paths";
 import type { BackupManifest, Progress } from "./fork-types";
@@ -205,6 +206,7 @@ export async function writeArchive(
 		ino: number;
 		dev: number;
 	}) => Promise<void>,
+	selection?: BackupFiles,
 ) {
 	path = await canonical(path);
 	if (manifest.roots.some((root) => contains(root.path, path)))
@@ -235,7 +237,7 @@ export async function writeArchive(
 	async function* contents() {
 		const fingerprint = createHash("sha256");
 		for (const root of manifest.roots) {
-			for await (const entry of walk(root.path, root.kind)) {
+			for await (const entry of walk(root.path, root.kind, "", selection)) {
 				signal?.throwIfAborted();
 				fingerprint.update(
 					JSON.stringify([
@@ -263,7 +265,7 @@ export async function writeArchive(
 				});
 				if (type === "file") {
 					const handle = await open(
-						entry.path,
+						entry.source,
 						constants.O_RDONLY | constants.O_NOFOLLOW,
 					);
 					try {
@@ -303,7 +305,7 @@ export async function writeArchive(
 		}
 		const verification = createHash("sha256");
 		for (const root of manifest.roots)
-			for await (const entry of walk(root.path, root.kind)) {
+			for await (const entry of walk(root.path, root.kind, "", selection)) {
 				signal?.throwIfAborted();
 				verification.update(
 					JSON.stringify([

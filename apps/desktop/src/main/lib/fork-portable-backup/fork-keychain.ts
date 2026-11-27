@@ -76,30 +76,38 @@ async function call(input: unknown): Promise<Item[]> {
 	});
 }
 
-export function keychainServices(manifest: BackupManifest) {
-	const services = new Set([
-		"Claude Code-credentials",
-		"cursor-access-token",
-		"gemini",
-		"Superset++ Safe Storage",
-		"Paradev++ Safe Storage",
-		"gh:github.com",
-	]);
-	for (const path of [
-		...manifest.roots.flatMap((root) => [root.path, ...root.aliases]),
-		...Object.keys(manifest.aliases),
-	]) {
+export function claudeKeychainServices(paths: string[], home: string) {
+	const services = new Set<string>();
+	for (const path of paths) {
 		for (const variant of [
 			path,
 			`${path}/`,
-			path.replace(manifest.home, "~"),
-			path.replace(manifest.home, "$HOME"),
+			path.replace(home, "~"),
+			path.replace(home, "$HOME"),
 		])
 			services.add(
 				`Claude Code-credentials-${createHash("sha256").update(variant.normalize("NFC")).digest("hex").slice(0, 8)}`,
 			);
 	}
 	return [...services];
+}
+
+export function keychainServices(manifest: BackupManifest) {
+	return [
+		"Claude Code-credentials",
+		"cursor-access-token",
+		"gemini",
+		"Superset++ Safe Storage",
+		"Paradev++ Safe Storage",
+		"gh:github.com",
+		...claudeKeychainServices(
+			[
+				...manifest.roots.flatMap((root) => [root.path, ...root.aliases]),
+				...Object.keys(manifest.aliases),
+			],
+			manifest.home,
+		),
+	];
 }
 
 export async function readKeychain(services: string[]) {

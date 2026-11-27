@@ -2518,6 +2518,9 @@ msgstr "에이전트를 찾을 수 없습니다"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "모든 세션 생성 흐름에서 쓰는 에이전트 선택기(Claude, Codex, Cursor…)"
 
+msgid "Agent profiles"
+msgstr "에이전트 프로필"
+
 msgid "agent PRs merged"
 msgstr "머지된 에이전트 PR"
 
@@ -3777,9 +3780,6 @@ msgstr "페이지로 돌아가기"
 msgid "Back to the leaderboard"
 msgstr "리더보드로 돌아가기"
 
-msgid "Back up everything"
-msgstr "모두 백업"
-
 msgid "Backed by"
 msgstr "투자자"
 
@@ -4847,9 +4847,6 @@ msgstr "선택하세요"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "프로젝트에서 각 Git 저장소의 체크아웃을 하나만 선택하세요."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "사용 중인 Cursor 모델에서 제공하는 컨텍스트 창을 선택하세요."
-
 msgid "Choose the model"
 msgstr "모델 선택"
 
@@ -4862,14 +4859,20 @@ msgstr "기본 리포지토리 선택"
 msgid "Choose what to clear from the in-app browser."
 msgstr "인앱 브라우저에서 삭제할 항목을 선택하세요."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "포함할 항목을 선택하세요. 공유 기록과 앱 설정은 항상 백업됩니다."
+
 msgid "Choose when Paradev pings you."
 msgstr "Paradev가 언제 알릴지 선택하세요."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "댓글, 디자인 모드 및 Pages에서 시작한 에이전트를 열 위치를 선택하세요."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "폴더가 여러 개인 워크스페이스에서 새 터미널을 시작할 폴더를 선택하세요."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "백업할 에이전트 프로필과 저장된 로그인 정보를 선택하세요."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "백업할 프로젝트와 작업 트리를 선택하세요."
 
 msgid "Choose your default skin tone"
 msgstr "기본 피부색 선택"
@@ -7096,6 +7099,9 @@ msgstr "계정 만들기"
 
 msgid "Create an automation from this prompt"
 msgstr "이 프롬프트로 자동화 만들기"
+
+msgid "Create backup"
+msgstr "백업 만들기"
 
 msgid "Create environment"
 msgstr "환경 만들기"
@@ -16591,6 +16597,9 @@ msgstr "알림 미리보기: 업데이트 전 확인"
 msgid "Preview notice: warning"
 msgstr "알림 미리보기: 경고"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "생성하기 전에 선택한 백업의 크기를 확인하세요."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "터미널 옆에서 개발 서버를 미리 보세요. 에이전트가 직접 클릭해 보고 작업을 확인합니다."
 
@@ -18237,9 +18246,6 @@ msgstr "초기화 시 재개"
 msgid "Resume automation"
 msgstr "자동화 재개"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "네이티브 인계로 연결된 Grok 세션을 이어서 사용하세요."
-
 msgid "Resume notifications"
 msgstr "알림 다시 시작"
 
@@ -19196,9 +19202,6 @@ msgstr "채용 공고를 확인하거나 먼저 Paradev를 사용해 보세요."
 msgid "See this gate on the scorecard"
 msgstr "성적표에서 이 관문 보기"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "각 구독 계정의 사용량과 초기화 시간을 확인할 수 있습니다."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "무엇이 바뀌었는지 보고, 피드백을 주고, 준비되면 머지하세요."
 
@@ -19571,9 +19574,6 @@ msgstr "프로젝트 설정…"
 
 msgid "Set Run"
 msgstr "실행 설정"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "통합 에이전트 선택기에서 자동 압축 임계값을 설정하세요."
 
 msgid "Set this project"
 msgstr "이 프로젝트로 설정"

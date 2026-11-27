@@ -35,11 +35,29 @@ function fixture(restore = false) {
 				({ op }) =>
 					observable((observer) => {
 						calls.push({ path: op.path, input: op.input });
-						const data = op.path.endsWith("chooseArchive")
-							? plan.archive
-							: op.path.endsWith("start")
-								? { started: false }
-								: plan;
+						const data = op.path.endsWith("choices")
+							? {
+									catalogId: "catalog",
+									choices: [
+										{
+											id: "project",
+											kind: "project",
+											name: "Example project",
+											path: "/old/project",
+										},
+										{
+											id: "profile",
+											kind: "profile",
+											name: "Work profile",
+											path: "/old/.codex-work",
+										},
+									],
+								}
+							: op.path.endsWith("chooseArchive")
+								? plan.archive
+								: op.path.endsWith("start")
+									? { started: false }
+									: plan;
 						observer.next({ result: { data } });
 						observer.complete();
 					}),
@@ -54,12 +72,34 @@ function fixture(restore = false) {
 	return { calls, view };
 }
 
-test("backup requires an explicit preview, matching passwords and review before closing the app", async () => {
+test("backup previews the selected projects and profiles, then requires matching passwords and review", async () => {
 	const { calls, view } = fixture();
 	expect(calls).toHaveLength(0);
-	fireEvent.click(view.getByRole("button", { name: "Back up everything" }));
+	fireEvent.click(view.getByRole("button", { name: "Create backup" }));
 	await flush();
+	const project = view.getByRole("checkbox", {
+		name: /Example project/,
+	}) as HTMLInputElement;
+	const profile = view.getByRole("checkbox", {
+		name: /Work profile/,
+	}) as HTMLInputElement;
+	expect(project.checked).toBe(true);
+	expect(profile.checked).toBe(true);
+	fireEvent.click(profile);
+	fireEvent.click(view.getByRole("button", { name: "Preview" }));
+	await flush();
+	expect(calls.at(-1)).toEqual({
+		path: "forkPortableBackup.preview",
+		input: { catalogId: "catalog", omitted: ["profile"] },
+	});
 	expect(view.getByText("/old/project")).toBeTruthy();
+	fireEvent.click(view.getByRole("button", { name: "Back" }));
+	expect(
+		(view.getByRole("checkbox", { name: /Work profile/ }) as HTMLInputElement)
+			.checked,
+	).toBe(false);
+	fireEvent.click(view.getByRole("button", { name: "Preview" }));
+	await flush();
 	const create = view.getByRole("button", {
 		name: "Close and create backup",
 	}) as HTMLButtonElement;

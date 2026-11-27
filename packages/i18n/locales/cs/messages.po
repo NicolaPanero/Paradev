@@ -2518,6 +2518,9 @@ msgstr "Agent nebyl nalezen"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Výběr agenta (Claude, Codex, Cursor…) používaný ve všech tocích vytváření relace"
 
+msgid "Agent profiles"
+msgstr "Profily agentů"
+
 msgid "agent PRs merged"
 msgstr "sloučené PR od agentů"
 
@@ -3777,9 +3780,6 @@ msgstr "Zpět na stránky"
 msgid "Back to the leaderboard"
 msgstr "Zpět na žebříček"
 
-msgid "Back up everything"
-msgstr "Zálohovat vše"
-
 msgid "Backed by"
 msgstr "Podporují nás"
 
@@ -4847,9 +4847,6 @@ msgstr "Vyberte"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "V projektu vyberte pouze jeden checkout každého repozitáře Git."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Vyberte velikost kontextového okna, kterou nabízí váš model Cursor."
-
 msgid "Choose the model"
 msgstr "Vybrat model"
 
@@ -4862,14 +4859,20 @@ msgstr "Vyberte hlavní repozitář"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Vyberte, co se má z vestavěného prohlížeče vymazat."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Vyberte, co chcete zahrnout. Sdílená historie a nastavení aplikace se zálohují vždy."
+
 msgid "Choose when Paradev pings you."
 msgstr "Zvolte, kdy vás Paradev upozorní."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Vyberte, kde se otevřou agenti spuštění z komentářů, režimu návrhu a stránek Pages."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Vyberte, kde se otevřou nové terminály v pracovních prostorech s více složkami."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Vyberte profily agentů a uložené přihlašovací údaje, které chcete zálohovat."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Vyberte projekty a pracovní stromy, které chcete zálohovat."
 
 msgid "Choose your default skin tone"
 msgstr "Vyberte výchozí odstín pleti"
@@ -7096,6 +7099,9 @@ msgstr "Vytvořit účet"
 
 msgid "Create an automation from this prompt"
 msgstr "Vytvořit automatizaci z tohoto promptu"
+
+msgid "Create backup"
+msgstr "Vytvořit zálohu"
 
 msgid "Create environment"
 msgstr "Vytvořit prostředí"
@@ -16591,6 +16597,9 @@ msgstr "Náhled oznámení: potvrzení před aktualizací"
 msgid "Preview notice: warning"
 msgstr "Náhled oznámení: varování"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Před vytvořením zálohy si prohlédněte velikost vybraných dat."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Prohlížejte svůj vývojový server vedle terminálů. Agent jím může sám proklikat a zkontrolovat svou práci."
 
@@ -18237,9 +18246,6 @@ msgstr "Pokračovat po obnovení"
 msgid "Resume automation"
 msgstr "Pokračovat v automatizaci"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Pokračujte v propojených relacích Grok pomocí nativního předání."
-
 msgid "Resume notifications"
 msgstr "Obnovit oznámení"
 
@@ -19196,9 +19202,6 @@ msgstr "Podívejte se na otevřené pozice, nebo si nejdřív vyzkoušejte Parad
 msgid "See this gate on the scorecard"
 msgstr "Zobrazit tuto bránu v hodnoticí tabulce"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Podívejte se na využití a časy resetu u každého účtu s předplatným."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Podívejte se, co se změnilo, dejte zpětnou vazbu a slučte práci, až bude hotová."
 
@@ -19571,9 +19574,6 @@ msgstr "Nastavit projekt…"
 
 msgid "Set Run"
 msgstr "Nastavit spuštění"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Nastavte práh automatické kompakce ve společném výběru agentů."
 
 msgid "Set this project"
 msgstr "Nastavit tento projekt"

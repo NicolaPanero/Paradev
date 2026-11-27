@@ -9,6 +9,7 @@ import { inventory } from "./fork-inventory";
 import { keychainServices, readKeychain } from "./fork-keychain";
 import { contains, validateTargets } from "./fork-paths";
 import { restoreArchive } from "./fork-restore";
+import { type BackupSelection, withBackupSelection } from "./fork-selection";
 import type {
 	BackupEnvironment,
 	BackupManifest,
@@ -23,6 +24,7 @@ export interface PortableJob {
 	password: string;
 	env: BackupEnvironment;
 	manifest: BackupManifest;
+	selection?: BackupSelection;
 	mappings: RootMapping[];
 	journalPath: string;
 	parentPid: number;
@@ -202,27 +204,38 @@ export async function runHelper(profile: string) {
 		};
 		let previous: string[] = [];
 		if (job.action === "backup") {
-			const fresh = await inventory(job.env, progress, abort.signal);
-			if (
-				JSON.stringify(fresh.roots.map((root) => root.path).sort()) !==
-				JSON.stringify(job.manifest.roots.map((root) => root.path).sort())
-			)
-				throw new Error("backup_inventory_changed");
-			if (fresh.roots.some((root) => contains(root.path, job.archive)))
-				throw new Error("backup_archive_inside_source");
-			fresh.storage = job.manifest.storage;
-			fresh.keychain = await readKeychain(keychainServices(fresh));
-			await writeArchive(
-				job.archive,
-				job.password,
-				fresh,
-				progress,
-				abort.signal,
-				async (partial) => {
-					await writeFile(
-						`${job.journalPath}.lock`,
-						JSON.stringify({ pid: process.pid, partial }),
-						{ mode: 0o600 },
+			await withBackupSelection(
+				job.env,
+				job.selection,
+				async (files, excludedServices) => {
+					const fresh = await inventory(job.env, progress, abort.signal, files);
+					if (
+						JSON.stringify(fresh.roots.map((root) => root.path).sort()) !==
+						JSON.stringify(job.manifest.roots.map((root) => root.path).sort())
+					)
+						throw new Error("backup_inventory_changed");
+					if (fresh.roots.some((root) => contains(root.path, job.archive)))
+						throw new Error("backup_archive_inside_source");
+					fresh.storage = job.manifest.storage;
+					fresh.keychain = await readKeychain(
+						keychainServices(fresh).filter(
+							(name) => !excludedServices?.has(name),
+						),
+					);
+					await writeArchive(
+						job.archive,
+						job.password,
+						fresh,
+						progress,
+						abort.signal,
+						async (partial) => {
+							await writeFile(
+								`${job.journalPath}.lock`,
+								JSON.stringify({ pid: process.pid, partial }),
+								{ mode: 0o600 },
+							);
+						},
+						files,
 					);
 				},
 			);

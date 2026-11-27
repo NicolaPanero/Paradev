@@ -2518,6 +2518,9 @@ msgstr "Agent introuvable"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Sélecteur d'agent (Claude, Codex, Cursor…) utilisé par tous les flux de création de session"
 
+msgid "Agent profiles"
+msgstr "Profils d’agents"
+
 msgid "agent PRs merged"
 msgstr "PR d'agents fusionnées"
 
@@ -3777,9 +3780,6 @@ msgstr "Retour aux pages"
 msgid "Back to the leaderboard"
 msgstr "Retour au classement"
 
-msgid "Back up everything"
-msgstr "Tout sauvegarder"
-
 msgid "Backed by"
 msgstr "Ils nous soutiennent"
 
@@ -4847,9 +4847,6 @@ msgstr "Choisir"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Choisissez un seul checkout de chaque dépôt Git dans un projet."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Choisissez une fenêtre de contexte parmi celles proposées par votre modèle Cursor."
-
 msgid "Choose the model"
 msgstr "Choisir le modèle"
 
@@ -4862,14 +4859,20 @@ msgstr "Choisir le dépôt principal"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Choisissez ce qu'il faut effacer du navigateur intégré."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Choisissez les éléments à inclure. L’historique partagé et les paramètres de l’application sont toujours sauvegardés."
+
 msgid "Choose when Paradev pings you."
 msgstr "Choisissez quand Paradev vous notifie."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Choisissez où ouvrir les agents lancés depuis les commentaires, le mode design et Pages."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Choisissez le dossier de démarrage des nouveaux terminaux dans les espaces à plusieurs dossiers."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Choisissez les profils d’agents et les identifiants enregistrés à sauvegarder."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Choisissez les projets et les worktrees à sauvegarder."
 
 msgid "Choose your default skin tone"
 msgstr "Choisissez votre teinte de peau par défaut"
@@ -7096,6 +7099,9 @@ msgstr "Créer un compte"
 
 msgid "Create an automation from this prompt"
 msgstr "Créer une automatisation à partir de ce prompt"
+
+msgid "Create backup"
+msgstr "Créer une sauvegarde"
 
 msgid "Create environment"
 msgstr "Créer un environnement"
@@ -16591,6 +16597,9 @@ msgstr "Aperçu de notification : confirmation pré-mise à jour"
 msgid "Preview notice: warning"
 msgstr "Aperçu de notification : avertissement"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Consultez la taille de la sauvegarde sélectionnée avant de la créer."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Prévisualisez votre serveur de dev à côté de vos terminaux. Votre agent peut le parcourir et vérifier son propre travail."
 
@@ -18237,9 +18246,6 @@ msgstr "Reprendre à la réinitialisation"
 msgid "Resume automation"
 msgstr "Reprendre l'automatisation"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Reprenez les sessions Grok associées avec le transfert natif."
-
 msgid "Resume notifications"
 msgstr "Reprendre les notifications"
 
@@ -19196,9 +19202,6 @@ msgstr "Consultez les postes ouverts, ou essayez d'abord Paradev."
 msgid "See this gate on the scorecard"
 msgstr "Voir cette porte dans le bilan"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Consultez l’utilisation et les heures de réinitialisation de chaque compte avec abonnement."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Voyez ce qui a changé, donnez votre retour et fusionnez le travail quand il est prêt."
 
@@ -19571,9 +19574,6 @@ msgstr "Définir le projet…"
 
 msgid "Set Run"
 msgstr "Définir l'exécution"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Réglez le seuil de compactage automatique dans le sélecteur d’agents unifié."
 
 msgid "Set this project"
 msgstr "Définir ce projet"

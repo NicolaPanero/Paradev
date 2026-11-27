@@ -19,7 +19,13 @@ import {
 	contains,
 	validateTargets,
 } from "main/lib/fork-portable-backup/fork-paths";
+import { profileEnvironment } from "main/lib/fork-portable-backup/fork-profile-sources";
 import { guardPortableOperation } from "main/lib/fork-portable-backup/fork-restore";
+import {
+	type BackupSelection,
+	backupChoices,
+	withBackupSelection,
+} from "main/lib/fork-portable-backup/fork-selection";
 import { registerBackupStorage } from "main/lib/fork-portable-backup/fork-storage";
 import type {
 	BackupManifest,
@@ -35,21 +41,17 @@ let plan: {
 	action: "backup" | "restore";
 	archive: string;
 	manifest: BackupManifest;
+	selection?: BackupSelection;
 	expires: number;
 } | null = null;
 let busy = false;
 
 async function environment() {
 	return {
-		agentHomes: [
-			"CLAUDE_CONFIG_DIR",
-			"CODEX_HOME",
-			"CURSOR_CONFIG_DIR",
-			"GEMINI_CLI_HOME",
-			"GROK_CONFIG_DIR",
-		].flatMap((key) =>
-			process.env[key]?.trim() ? [process.env[key]?.trim() as string] : [],
-		),
+		agentHomes: profileEnvironment.flatMap((key) => {
+			const path = process.env[key]?.trim();
+			return path ? [path] : [];
+		}),
 		home: homedir(),
 		appHome: await canonical(SUPERSET_HOME_DIR),
 		userData: await canonical(app.getPath("userData")),
@@ -104,23 +106,37 @@ export function createForkPortableBackupRouter(
 	};
 	return router({
 		chooseArchive: expected.mutation(showOpen),
-		preview: expected.mutation(async () => {
-			if (busy) throw new TRPCError({ code: "CONFLICT" });
-			busy = true;
-			try {
-				const manifest = await inventory(await environment());
-				plan = {
-					id: randomUUID(),
-					action: "backup",
-					archive: "",
-					manifest,
-					expires: Date.now() + 30 * 60_000,
-				};
-				return publicPlan(plan);
-			} finally {
-				busy = false;
-			}
-		}),
+		choices: expected.mutation(async () => backupChoices(await environment())),
+		preview: expected
+			.input(
+				z
+					.object({
+						catalogId: z.string(),
+						omitted: z.array(z.string()).max(4096),
+					})
+					.optional(),
+			)
+			.mutation(async ({ input }) => {
+				if (busy) throw new TRPCError({ code: "CONFLICT" });
+				busy = true;
+				try {
+					const env = await environment();
+					const manifest = await withBackupSelection(env, input, (files) =>
+						inventory(env, undefined, undefined, files),
+					);
+					plan = {
+						id: randomUUID(),
+						action: "backup",
+						archive: "",
+						manifest,
+						selection: input,
+						expires: Date.now() + 30 * 60_000,
+					};
+					return publicPlan(plan);
+				} finally {
+					busy = false;
+				}
+			}),
 		inspect: expected
 			.input(z.object({ archive: z.string(), password }))
 			.mutation(async ({ input }) => {
@@ -239,6 +255,7 @@ export function createForkPortableBackupRouter(
 						archive: selected.archive,
 						password: input.password,
 						manifest: selected.manifest,
+						selection: selected.selection,
 						env,
 						mappings: input.mappings,
 						journalPath,

@@ -2518,6 +2518,9 @@ msgstr "エージェントが見つかりません"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "すべてのセッション作成フローで使うエージェントピッカー(Claude、Codex、Cursor…)"
 
+msgid "Agent profiles"
+msgstr "エージェントプロファイル"
+
 msgid "agent PRs merged"
 msgstr "マージされたエージェントのPR"
 
@@ -3777,9 +3780,6 @@ msgstr "ページ"
 msgid "Back to the leaderboard"
 msgstr "リーダーボードに戻る"
 
-msgid "Back up everything"
-msgstr "すべてをバックアップ"
-
 msgid "Backed by"
 msgstr "支援者"
 
@@ -4847,9 +4847,6 @@ msgstr "選択してください"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "プロジェクト内では各Gitリポジトリにつき1つのチェックアウトのみを選択してください。"
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Cursor モデルが提供するコンテキストウィンドウを選択できます。"
-
 msgid "Choose the model"
 msgstr "モデルを選択"
 
@@ -4862,14 +4859,20 @@ msgstr "メインのリポジトリを選択"
 msgid "Choose what to clear from the in-app browser."
 msgstr "アプリ内ブラウザから消去する項目を選択してください。"
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "バックアップに含める項目を選択してください。共有履歴とアプリの設定は常に保存されます。"
+
 msgid "Choose when Paradev pings you."
 msgstr "Paradevから通知するタイミングを選びます。"
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "コメント、デザインモード、Pages から起動したエージェントを開く場所を選択します。"
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "複数のフォルダーがあるワークスペースで、新しいターミナルの開始場所を選べます。"
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "バックアップするエージェントプロファイルと保存済みのログイン情報を選択できます。"
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "バックアップするプロジェクトとワークツリーを選択できます。"
 
 msgid "Choose your default skin tone"
 msgstr "デフォルトの肌の色を選択"
@@ -7096,6 +7099,9 @@ msgstr "アカウントを作成"
 
 msgid "Create an automation from this prompt"
 msgstr "このプロンプトからオートメーションを作成"
+
+msgid "Create backup"
+msgstr "バックアップを作成"
 
 msgid "Create environment"
 msgstr "環境を作成"
@@ -16591,6 +16597,9 @@ msgstr "通知プレビュー: アップデート前の確認"
 msgid "Preview notice: warning"
 msgstr "通知プレビュー: 警告"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "作成前に、選択した項目のバックアップサイズを確認できます。"
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "開発サーバーをターミナルの隣でプレビューできます。エージェントがクリックして操作し、自分の作業を確認します。"
 
@@ -18237,9 +18246,6 @@ msgstr "リセット時に再開"
 msgid "Resume automation"
 msgstr "オートメーションを再開"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "リンク済みの Grok セッションをネイティブ引き継ぎで再開できます。"
-
 msgid "Resume notifications"
 msgstr "通知を再開"
 
@@ -19196,9 +19202,6 @@ msgstr "募集中のポジションを見るか、まずはParadevを試して�
 msgid "See this gate on the scorecard"
 msgstr "このゲートをスコアカードで見る"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "サブスクリプションを利用している各アカウントの使用量とリセット時刻を確認できます。"
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "変更内容を確認し、フィードバックを送り、準備ができたら成果をマージします。"
 
@@ -19571,9 +19574,6 @@ msgstr "プロジェクトを設定…"
 
 msgid "Set Run"
 msgstr "実行を設定"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "統合エージェントセレクターで自動圧縮のしきい値を設定できます。"
 
 msgid "Set this project"
 msgstr "このプロジェクトに設定"

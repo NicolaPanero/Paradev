@@ -16,17 +16,26 @@ import {
 	type ElectronRouterOutputs,
 	electronTrpc,
 } from "renderer/lib/electron-trpc";
+import { ForkBackupChoices } from "./components/ForkBackupChoices";
 
 type Plan = ElectronRouterOutputs["forkPortableBackup"]["preview"];
 
 export function ForkPortableBackup() {
 	const { t } = useLingui();
+	const [omitted, setOmitted] = useState(new Set<string>());
 	const [plan, setPlan] = useState<Plan | null>(null);
 	const [archive, setArchive] = useState<string | null>(null);
 	const [password, setPassword] = useState("");
 	const [confirmation, setConfirmation] = useState("");
 	const [acknowledged, setAcknowledged] = useState(false);
 	const [mappings, setMappings] = useState<Record<string, string>>({});
+	const choices = electronTrpc.forkPortableBackup.choices.useMutation({
+		onSuccess: () => {
+			setPlan(null);
+			setArchive(null);
+			setOmitted(new Set());
+		},
+	});
 	const preview = electronTrpc.forkPortableBackup.preview.useMutation({
 		onSuccess: (result) => {
 			setPlan(result);
@@ -39,6 +48,7 @@ export function ForkPortableBackup() {
 	const choose = electronTrpc.forkPortableBackup.chooseArchive.useMutation({
 		onSuccess: (path) => {
 			if (path) {
+				choices.reset();
 				setArchive(path);
 				setPlan(null);
 				setPassword("");
@@ -58,11 +68,27 @@ export function ForkPortableBackup() {
 	});
 	const start = electronTrpc.forkPortableBackup.start.useMutation();
 	const pending =
+		choices.isPending ||
 		preview.isPending ||
 		choose.isPending ||
 		inspect.isPending ||
 		start.isPending;
-	const error = preview.error || choose.error || inspect.error || start.error;
+	const error =
+		choices.error ||
+		preview.error ||
+		choose.error ||
+		inspect.error ||
+		start.error;
+	const selecting = !!choices.data && !plan && !archive;
+	const changeChoices = (ids: string[], include: boolean) =>
+		setOmitted((previous) => {
+			const next = new Set(previous);
+			for (const id of ids) {
+				if (include) next.delete(id);
+				else next.add(id);
+			}
+			return next;
+		});
 	const close = () => {
 		if (pending) return;
 		setPlan(null);
@@ -70,6 +96,7 @@ export function ForkPortableBackup() {
 		setPassword("");
 		setConfirmation("");
 		setAcknowledged(false);
+		choices.reset();
 		preview.reset();
 		choose.reset();
 		inspect.reset();
@@ -93,12 +120,12 @@ export function ForkPortableBackup() {
 					size="sm"
 					variant="outline"
 					disabled={pending}
-					onClick={() => preview.mutate()}
+					onClick={() => choices.mutate()}
 				>
-					{preview.isPending ? (
+					{choices.isPending ? (
 						<Trans>Scanning…</Trans>
 					) : (
-						<Trans>Back up everything</Trans>
+						<Trans>Create backup</Trans>
 					)}
 				</Button>
 				<Button
@@ -110,7 +137,7 @@ export function ForkPortableBackup() {
 					<Trans>Restore backup</Trans>
 				</Button>
 			</div>
-			{error && !plan && !archive && (
+			{error && !selecting && !plan && !archive && (
 				<p role="alert" className="text-xs text-destructive">
 					<Trans>
 						Backup operation failed. Review the details and try again.
@@ -119,7 +146,7 @@ export function ForkPortableBackup() {
 				</p>
 			)}
 			<Dialog
-				open={!!plan || !!archive}
+				open={selecting || !!plan || !!archive}
 				onOpenChange={(open) => {
 					if (!open) close();
 				}}
@@ -130,160 +157,220 @@ export function ForkPortableBackup() {
 							{archive ? (
 								<Trans>Restore backup</Trans>
 							) : (
-								<Trans>Back up everything</Trans>
+								<Trans>Create backup</Trans>
 							)}
 						</DialogTitle>
 						<DialogDescription>
-							<Trans>
-								The archive is encrypted with your password. Keep it safe: it
-								cannot be recovered.
-							</Trans>
+							{selecting ? (
+								<Trans>
+									Choose what to include. Shared history and app settings stay
+									in the backup.
+								</Trans>
+							) : (
+								<Trans>
+									The archive is encrypted with your password. Keep it safe: it
+									cannot be recovered.
+								</Trans>
+							)}
 						</DialogDescription>
 					</DialogHeader>
-					<div className="space-y-4 overflow-y-auto pr-2">
-						{archive && <p className="text-xs break-all">{archive}</p>}
-						<div className="space-y-2">
-							<Label htmlFor="fork-backup-password">
-								<Trans>Backup password (at least 12 characters)</Trans>
-							</Label>
-							<Input
-								id="fork-backup-password"
-								type="password"
-								autoComplete={archive ? "current-password" : "new-password"}
-								value={password}
-								disabled={pending || (!!archive && !!plan)}
-								onChange={(event) => setPassword(event.target.value)}
-							/>
-						</div>
-						{!archive && (
+					{selecting && choices.data ? (
+						<ForkBackupChoices
+							choices={choices.data.choices}
+							omitted={omitted}
+							onChange={changeChoices}
+							disabled={pending}
+						/>
+					) : (
+						<div className="space-y-4 overflow-y-auto pr-2">
+							{archive && <p className="text-xs break-all">{archive}</p>}
 							<div className="space-y-2">
-								<Label htmlFor="fork-backup-confirm">
-									<Trans>Confirm password</Trans>
+								<Label htmlFor="fork-backup-password">
+									<Trans>Backup password (at least 12 characters)</Trans>
 								</Label>
 								<Input
-									id="fork-backup-confirm"
+									id="fork-backup-password"
 									type="password"
-									autoComplete="new-password"
-									value={confirmation}
-									disabled={pending}
-									onChange={(event) => setConfirmation(event.target.value)}
+									autoComplete={archive ? "current-password" : "new-password"}
+									value={password}
+									disabled={pending || (!!archive && !!plan)}
+									onChange={(event) => setPassword(event.target.value)}
 								/>
 							</div>
-						)}
-						{plan && (
-							<>
-								<p className="text-sm">
-									<Trans>
-										Includes ignored and untracked files, dependencies, Git
-										history and local credentials.
-									</Trans>
-								</p>
-								<p className="text-sm font-medium">
-									{formatNumber(
-										plan.roots.reduce((sum, root) => sum + root.bytes, 0) /
-											1073741824,
-										{ maximumFractionDigits: 2 },
-									)}{" "}
-									GB ·{" "}
-									{formatNumber(
-										plan.roots.reduce((sum, root) => sum + root.files, 0),
-									)}{" "}
-									<Trans>files</Trans>
-								</p>
-								<div className="space-y-3 rounded border p-3">
-									{plan.roots.map((root) => (
-										<div key={root.id} className="space-y-1">
-											<p className="text-xs break-all font-mono">{root.path}</p>
-											<p className="text-xs text-muted-foreground">
-												{formatNumber(root.bytes / 1048576, {
-													maximumFractionDigits: 1,
-												})}{" "}
-												MB
-											</p>
-											{archive && (
-												<Input
-													aria-label={t({ message: "Destination folder" })}
-													value={mappings[root.id] ?? root.target}
-													disabled={
-														pending ||
-														root.kind === "app" ||
-														root.kind === "desktop"
-													}
-													onChange={(event) => {
-														setAcknowledged(false);
-														setMappings((previous) => ({
-															...previous,
-															[root.id]: event.target.value,
-														}));
-													}}
-												/>
-											)}
-										</div>
-									))}
+							{!archive && (
+								<div className="space-y-2">
+									<Label htmlFor="fork-backup-confirm">
+										<Trans>Confirm password</Trans>
+									</Label>
+									<Input
+										id="fork-backup-confirm"
+										type="password"
+										autoComplete="new-password"
+										value={confirmation}
+										disabled={pending}
+										onChange={(event) => setConfirmation(event.target.value)}
+									/>
 								</div>
-								{plan.missing.length > 0 && (
-									<div
-										role="alert"
-										className="rounded border border-amber-500 p-3 text-xs space-y-2"
-									>
-										<p>
-											<Trans>
-												These referenced paths are already missing and cannot be
-												included:
-											</Trans>
-										</p>
-										{plan.missing.map((path) => (
-											<p key={path} className="break-all font-mono">
-												{path}
-											</p>
-										))}
-									</div>
-								)}
-								<p className="text-xs text-muted-foreground">
-									<Trans>
-										Running agents stop. Install required tools on the
-										destination Mac. Some providers may require sign-in again.
-									</Trans>
-								</p>
-								{archive && (
+							)}
+							{plan && (
+								<>
 									<p className="text-sm">
 										<Trans>
-											Review every destination. Existing folders are moved to
-											sibling safety copies before replacement.
+											Includes ignored and untracked files, dependencies, Git
+											history and local credentials.
 										</Trans>
 									</p>
-								)}
-								<label className="flex items-start gap-2 text-sm">
-									<input
-										type="checkbox"
-										className="mt-1"
-										checked={acknowledged}
-										disabled={pending}
-										onChange={(event) => setAcknowledged(event.target.checked)}
-									/>
-									<span>
+									<p className="text-sm font-medium">
+										{formatNumber(
+											plan.roots.reduce((sum, root) => sum + root.bytes, 0) /
+												1073741824,
+											{ maximumFractionDigits: 2 },
+										)}{" "}
+										GB ·{" "}
+										{formatNumber(
+											plan.roots.reduce((sum, root) => sum + root.files, 0),
+										)}{" "}
+										<Trans>files</Trans>
+									</p>
+									<div className="space-y-3 rounded border p-3">
+										{plan.roots.map((root) => (
+											<div key={root.id} className="space-y-1">
+												<p className="text-xs break-all font-mono">
+													{root.path}
+												</p>
+												<p className="text-xs text-muted-foreground">
+													{formatNumber(root.bytes / 1048576, {
+														maximumFractionDigits: 1,
+													})}{" "}
+													MB
+												</p>
+												{archive && (
+													<Input
+														aria-label={t({ message: "Destination folder" })}
+														value={mappings[root.id] ?? root.target}
+														disabled={
+															pending ||
+															root.kind === "app" ||
+															root.kind === "desktop"
+														}
+														onChange={(event) => {
+															setAcknowledged(false);
+															setMappings((previous) => ({
+																...previous,
+																[root.id]: event.target.value,
+															}));
+														}}
+													/>
+												)}
+											</div>
+										))}
+									</div>
+									{plan.missing.length > 0 && (
+										<div
+											role="alert"
+											className="rounded border border-amber-500 p-3 text-xs space-y-2"
+										>
+											<p>
+												<Trans>
+													These referenced paths are already missing and cannot
+													be included:
+												</Trans>
+											</p>
+											{plan.missing.map((path) => (
+												<p key={path} className="break-all font-mono">
+													{path}
+												</p>
+											))}
+										</div>
+									)}
+									<p className="text-xs text-muted-foreground">
 										<Trans>
-											I reviewed the preview. Close Paradev++ and pause other
-											tools that write these files, then reopen when finished.
+											Running agents stop. Install required tools on the
+											destination Mac. Some providers may require sign-in again.
 										</Trans>
-									</span>
-								</label>
-							</>
-						)}
-						{error && (
-							<p role="alert" className="text-xs text-destructive">
-								<Trans>
-									Backup operation failed. Review the details and try again.
-								</Trans>{" "}
-								{error.message}
-							</p>
-						)}
-					</div>
+									</p>
+									{archive && (
+										<p className="text-sm">
+											<Trans>
+												Review every destination. Existing folders are moved to
+												sibling safety copies before replacement.
+											</Trans>
+										</p>
+									)}
+									<label className="flex items-start gap-2 text-sm">
+										<input
+											type="checkbox"
+											className="mt-1"
+											checked={acknowledged}
+											disabled={pending}
+											onChange={(event) =>
+												setAcknowledged(event.target.checked)
+											}
+										/>
+										<span>
+											<Trans>
+												I reviewed the preview. Close Paradev++ and pause other
+												tools that write these files, then reopen when finished.
+											</Trans>
+										</span>
+									</label>
+								</>
+							)}
+							{error && (
+								<p role="alert" className="text-xs text-destructive">
+									<Trans>
+										Backup operation failed. Review the details and try again.
+									</Trans>{" "}
+									{error.message}
+								</p>
+							)}
+						</div>
+					)}
+					{selecting && error && (
+						<p role="alert" className="text-xs text-destructive">
+							<Trans>
+								Backup operation failed. Review the details and try again.
+							</Trans>{" "}
+							{error.message}
+						</p>
+					)}
 					<DialogFooter>
 						<Button variant="outline" disabled={pending} onClick={close}>
 							<Trans>Cancel</Trans>
 						</Button>
-						{archive && !plan ? (
+						{!archive && plan && (
+							<Button
+								variant="outline"
+								disabled={pending}
+								onClick={() => {
+									setPlan(null);
+									setPassword("");
+									setConfirmation("");
+									setAcknowledged(false);
+									start.reset();
+								}}
+							>
+								<Trans>Back</Trans>
+							</Button>
+						)}
+						{selecting && choices.data ? (
+							<Button
+								disabled={pending}
+								onClick={() => {
+									if (choices.data)
+										preview.mutate({
+											catalogId: choices.data.catalogId,
+											omitted: [...omitted],
+										});
+								}}
+							>
+								{preview.isPending ? (
+									<Trans>Scanning…</Trans>
+								) : (
+									<Trans>Preview</Trans>
+								)}
+							</Button>
+						) : archive && !plan ? (
 							<Button
 								disabled={pending || password.length < 12}
 								onClick={() => inspect.mutate({ archive, password })}

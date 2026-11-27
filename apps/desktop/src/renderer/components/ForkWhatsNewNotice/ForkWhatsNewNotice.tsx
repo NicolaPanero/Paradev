@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-2-0-12-fork-terminal-folders-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-selective-portable-backup-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -31,14 +31,10 @@ export function ForkWhatsNewNotice() {
 	const [seen, setSeen] = useState(() => hasSeenForkWhatsNew(localStorage));
 	if (seen) return null;
 	const highlights = [
+		t({ message: "Choose which projects and worktrees to back up." }),
+		t({ message: "Choose which agent profiles and saved logins to back up." }),
 		t({
-			message: "Set the auto-compact threshold from the unified agent picker.",
-		}),
-		t({ message: "Choose the context window offered by your Cursor model." }),
-		t({ message: "See usage and reset times for each subscription account." }),
-		t({ message: "Resume linked Grok sessions with native handoff." }),
-		t({
-			message: "Choose where new terminals start in multi-folder workspaces.",
+			message: "Preview the size of your selected backup before creating it.",
 		}),
 	];
 	const notice: DesktopNotice = {

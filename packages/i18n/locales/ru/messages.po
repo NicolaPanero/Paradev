@@ -2518,6 +2518,9 @@ msgstr "Агент не найден"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Выбор агента (Claude, Codex, Cursor…), используемый во всех сценариях создания сессий"
 
+msgid "Agent profiles"
+msgstr "Профили агентов"
+
 msgid "agent PRs merged"
 msgstr "смерженных PR от агентов"
 
@@ -3777,9 +3780,6 @@ msgstr "К страницам"
 msgid "Back to the leaderboard"
 msgstr "Вернуться к рейтингу"
 
-msgid "Back up everything"
-msgstr "Создать полную резервную копию"
-
 msgid "Backed by"
 msgstr "Нас поддерживают"
 
@@ -4847,9 +4847,6 @@ msgstr "Выберите"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Выберите только один checkout каждого репозитория Git в проекте."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Выберите окно контекста из вариантов, доступных для вашей модели Cursor."
-
 msgid "Choose the model"
 msgstr "Выбрать модель"
 
@@ -4862,14 +4859,20 @@ msgstr "Выберите основной репозиторий"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Выберите, что очистить во встроенном браузере."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Выберите, что включить. Общая история и настройки приложения всегда сохраняются в резервной копии."
+
 msgid "Choose when Paradev pings you."
 msgstr "Выберите, когда Paradev вас уведомляет."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Выберите, где открывать агентов, запущенных из комментариев, режима дизайна и Pages."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Выбирайте папку запуска новых терминалов в рабочих пространствах с несколькими папками."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Выберите, какие профили агентов и сохранённые данные для входа включить в резервную копию."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Выберите, какие проекты и рабочие деревья включить в резервную копию."
 
 msgid "Choose your default skin tone"
 msgstr "Выберите оттенок кожи по умолчанию"
@@ -7096,6 +7099,9 @@ msgstr "Создать аккаунт"
 
 msgid "Create an automation from this prompt"
 msgstr "Создать автоматизацию из этого промпта"
+
+msgid "Create backup"
+msgstr "Создать резервную копию"
 
 msgid "Create environment"
 msgstr "Создать окружение"
@@ -16591,6 +16597,9 @@ msgstr "Предпросмотр уведомления: подтвержден�
 msgid "Preview notice: warning"
 msgstr "Предпросмотр уведомления: предупреждение"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Проверьте размер выбранной резервной копии перед её созданием."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Открывайте dev-сервер рядом с терминалами. Агент может пройтись по нему сам и проверить свою работу."
 
@@ -18237,9 +18246,6 @@ msgstr "Продолжить после сброса"
 msgid "Resume automation"
 msgstr "Возобновить автоматизацию"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Продолжайте связанные сеансы Grok с помощью нативной передачи."
-
 msgid "Resume notifications"
 msgstr "Возобновить уведомления"
 
@@ -19196,9 +19202,6 @@ msgstr "Посмотрите вакансии или сначала попроб
 msgid "See this gate on the scorecard"
 msgstr "Посмотреть этот шлюз в таблице"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Смотрите данные об использовании и время сброса для каждого аккаунта с подпиской."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Посмотрите, что изменилось, дайте обратную связь и объедините работу, когда она готова."
 
@@ -19571,9 +19574,6 @@ msgstr "Назначить проект…"
 
 msgid "Set Run"
 msgstr "Задать запуск"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Настройте порог автосжатия в едином меню выбора агента."
 
 msgid "Set this project"
 msgstr "Назначить этот проект"

@@ -6,8 +6,10 @@ destination first. Windows/Linux transfers are not supported by this version.
 
 ## Create a backup
 
-1. Select **Back up everything** and review the folders, uncompressed size and
-   missing paths. A large installation can take several minutes to scan.
+1. Select **Create backup**. All projects and agent profiles are selected by
+   default. Clear items you want to leave behind. Choose **Preview** to review
+   the folders, uncompressed size and missing paths. A large selection can take
+   several minutes to scan.
 2. Enter and confirm a password of at least 12 characters. There is no password
    recovery. The archive includes credentials, private keys and `.env` files.
 3. Pause other tools that write these folders, confirm the preview and choose
@@ -28,6 +30,13 @@ changes and uncommitted work are included. Missing paths are reported, never
 silently presented as backed up. Runtime sockets, PID files and process manifests
 are excluded. Files that change during copying cause the operation to fail.
 
+An excluded project leaves out its registered checkouts, extra folders, workspaces
+and local Paradev++ chat records. Paths shared with a selected project stay in the
+backup. An excluded agent profile leaves out its own files and supported Keychain
+entries. Selected profiles keep access to the native history they share with each
+other. App settings, common Git and SSH configuration, and standalone sessions are
+included even when all projects and profiles are cleared.
+
 Supported provider directories include Claude, Codex, Cursor, Grok, Gemini,
 OpenCode, Copilot, Amp, Pi, Factory, Aider and Continue, plus custom Claude/Codex
 profiles recorded in the app. Mac Keychain access may request approval. A denial
@@ -39,7 +48,10 @@ fails the backup rather than silently dropping available credentials.
 2. Review the authenticated manifest. App data and the desktop profile use the
    destination installation's locations. Agent configuration defaults to the
    new user's home. Repositories and other external folders default to
-   `~/ParadevRestored`; edit each destination as needed.
+   `~/ParadevRestored`. Set each repository and worktree destination to its
+   desired absolute path on the new Mac. Choose a new folder to keep the current
+   checkout in place. Restoring into an existing checkout moves it aside and
+   replaces it with the archived checkout.
 3. Confirm the destinations and close the app to restore. The helper checks
    free space per volume, stages the data beside each destination and verifies
    every file and the archive authentication tag before replacing anything.
