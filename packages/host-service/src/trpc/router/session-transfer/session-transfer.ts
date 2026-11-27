@@ -50,7 +50,7 @@ import {
 } from "../../../session-transfer/registry";
 import {
 	defaultNativeStore,
-	peerSessionReference,
+	locatePeerSessionReference,
 } from "../../../session-transfer/stores";
 import { TxcriptTransferProvider } from "../../../session-transfer/txcript";
 import { transcriptSession } from "../../../terminal/terminal";
@@ -193,11 +193,12 @@ async function resolveChatSource(
 		sourceRoot = await realpath(
 			defaultNativeStore(sourceAgent, { ...process.env, ...sourceEnv }),
 		);
-		sourceReference = peerSessionReference(
+		sourceReference = locatePeerSessionReference(
 			sourceAgent,
 			sourceRoot,
 			input.sourceSessionId,
 			cwd,
+			workspace.worktreePath,
 		);
 	}
 	return {
@@ -537,11 +538,12 @@ export const sessionTransferRouter = router({
 									...sourceEnv,
 								}),
 							);
-							sourceReference = peerSessionReference(
+							sourceReference = locatePeerSessionReference(
 								binding.agentId,
 								sourceRoot,
 								binding.agentSessionId,
 								cwd,
+								workspace.worktreePath,
 							);
 						}
 						const { result, lineageNodeId } = await convertNative(lineage, {

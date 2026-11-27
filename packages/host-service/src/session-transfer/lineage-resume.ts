@@ -8,7 +8,7 @@ import { hasHarnessSession } from "../terminal-agents/harness-sessions";
 import type { AgentRunInput } from "../trpc/router/agents/agents";
 import type { LineageNode } from "./lineage";
 import { pinNativeProfile } from "./registry";
-import { defaultNativeStore, peerSessionReference } from "./stores";
+import { defaultNativeStore, locatePeerSessionReference } from "./stores";
 
 export async function lineageResumeLaunch(
 	db: HostDb,
@@ -31,7 +31,13 @@ export async function lineageResumeLaunch(
 	if (node.agent === "cursor-agent" || node.agent === "grok") {
 		if (
 			(await realpath(
-				peerSessionReference(node.agent, root, node.sessionId, cwd),
+				locatePeerSessionReference(
+					node.agent,
+					root,
+					node.sessionId,
+					cwd,
+					workspacePath,
+				),
 			)) !== node.reference
 		)
 			throw new Error("lineage_session_unavailable");
