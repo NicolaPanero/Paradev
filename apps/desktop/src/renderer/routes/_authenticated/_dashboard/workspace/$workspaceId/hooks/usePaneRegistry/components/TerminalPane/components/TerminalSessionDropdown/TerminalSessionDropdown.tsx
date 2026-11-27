@@ -35,9 +35,11 @@ import {
 	useSyncExternalStore,
 } from "react";
 import { useWorkspaceTerminalSessions } from "renderer/hooks/host-service/useWorkspaceTerminalSessions";
+import { useForkMenuDialog } from "renderer/hooks/useForkMenuDialog";
 import { useRenderStressInstrumentation } from "renderer/lib/performance/stress-instrumentation";
 import { markTerminalForBackground } from "renderer/lib/terminal/terminal-background-intents";
 import { terminalRuntimeRegistry } from "renderer/lib/terminal/terminal-runtime-registry";
+import { useForkTerminalFolder } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/components/ForkTerminalFolderProvider";
 import { RenameDialog } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/components/RenameDialog";
 import type { CreateNewAgentSession } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/useAgentSessionLauncher";
 import type { TerminalLauncher } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/hooks/useTerminalLauncher";
@@ -45,6 +47,7 @@ import type {
 	PaneViewerData,
 	TerminalPaneData,
 } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/types";
+import { forkTerminalPaneData } from "renderer/routes/_authenticated/_dashboard/workspace/$workspaceId/utils/fork-terminal-folder-pane";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 import type { SurfaceForkSource } from "../../../../hooks/useSurfaceFork";
 import { useSurfaceForkSource } from "../../../../hooks/useSurfaceForkSource";
@@ -140,6 +143,8 @@ export function TerminalSessionDropdown({
 	const { t } = useLingui();
 	const isCards = usePaneAppearance() === "cards";
 	const [isOpen, setIsOpen] = useState(false);
+	const chooseTerminalFolder = useForkTerminalFolder();
+	const { afterClose, onCloseAutoFocus } = useForkMenuDialog();
 	const collections = useCollections();
 	const { terminalId, cliTitle } = context.pane.data as TerminalPaneData;
 	const terminalInstanceId = context.pane.id;
@@ -361,18 +366,24 @@ export function TerminalSessionDropdown({
 		});
 	};
 
-	const handleNewTerminal = () => {
+	const handleNewTerminal = async (cwd?: string) => {
+		const data = await forkTerminalPaneData(launcher, cwd);
 		const state = context.store.getState();
+		const current = state.getPane(context.pane.id)?.pane;
+		if (
+			current?.kind !== "terminal" ||
+			(current.data as TerminalPaneData | undefined)?.terminalId !== terminalId
+		) {
+			if (cwd) markTerminalForBackground(data.terminalId, workspaceId);
+			return;
+		}
 		const terminalPaneLocations = getTerminalPaneLocations(context);
 		if ((terminalPaneLocations.get(terminalId)?.length ?? 0) === 0) {
 			markTerminalForBackground(terminalId, workspaceId);
 		}
 		state.setPaneData({
 			paneId: context.pane.id,
-			data: {
-				terminalId: launcher.mint(),
-				createOnAttach: true,
-			} as PaneViewerData,
+			data,
 		});
 		state.setPaneTitleOverride({
 			tabId: context.tab.id,
@@ -488,8 +499,18 @@ export function TerminalSessionDropdown({
 					</button>
 				</DropdownMenuTrigger>
 				<StopHeaderEvents>
-					<DropdownMenuContent align="start" className="w-96">
-						<DropdownMenuItem onSelect={handleNewTerminal}>
+					<DropdownMenuContent
+						align="start"
+						className="w-96"
+						onCloseAutoFocus={onCloseAutoFocus}
+					>
+						<DropdownMenuItem
+							onSelect={() =>
+								afterClose(() => {
+									void chooseTerminalFolder(handleNewTerminal);
+								})
+							}
+						>
 							<Plus />
 							<Trans>New terminal</Trans>
 						</DropdownMenuItem>

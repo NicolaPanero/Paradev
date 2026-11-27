@@ -191,9 +191,9 @@ export interface SandboxClaim {
 	hostSecret: string;
 	managedEnv: Record<string, string>;
 	networkPolicy: NetworkPolicy;
-	/** The creator's agent login files; a golden under construction has none. */
+	/** Written before every boot: the creator's agent login files and the environment's config. */
 	files?: SandboxFile[];
-	/** Ports the workspace's repository asks to publish, beside the platform's. */
+	/** Ports the environment's config asks to publish, beside the platform's. */
 	ports?: readonly number[];
 	vcpus: number;
 	/** Mount the bundle's agent-tools drive read-only; absent keeps the image's agents. */
@@ -290,11 +290,12 @@ async function writeIdentity(
 }
 
 /**
- * The agents' login files, on every wake including one that finds the box
- * serving: a sign-in made since the last boot has to reach the next agent
- * started there. They hold placeholders only.
+ * The agents' login files and the environment's config, on every wake
+ * including one that finds the box serving: a sign-in or config saved since
+ * the last boot has to reach the next agent or terminal started there. The
+ * login files hold placeholders only.
  */
-async function writeSignInFiles(
+async function writeClaimFiles(
 	sandbox: Pick<Sandbox, "writeFiles">,
 	files: SandboxFile[] = [],
 ): Promise<void> {
@@ -388,7 +389,7 @@ export async function provisionSandbox(args: {
 		));
 	await Sentry.startSpan({ name: "start boot", op: "sandbox" }, async () => {
 		await writeIdentity(sandbox, args.claim.identity);
-		await writeSignInFiles(sandbox, args.claim.files);
+		await writeClaimFiles(sandbox, args.claim.files);
 		await runBoot(sandbox, args.claim.hostSecret);
 	});
 	return {
@@ -402,6 +403,23 @@ export async function provisionSandbox(args: {
 
 const HOST_READY_TIMEOUT_MS = 60_000;
 const HOST_READY_POLL_MS = 100;
+/** A wake not ready by then is our failure; past it users count the box as broken. */
+export const WAKE_READY_DEADLINE_MS = 30_000;
+
+/** Shown only as the generic message. Not a failed workspace: `failed` starts its deletion. */
+export class CloudWorkspaceNotStartedError extends Error {
+	constructor(cause?: unknown) {
+		super("The cloud workspace could not start", { cause });
+		this.name = "CloudWorkspaceNotStartedError";
+	}
+}
+
+export type WakeClock = { now(): number; sleep(ms: number): Promise<void> };
+
+const systemClock: WakeClock = {
+	now: () => Date.now(),
+	sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
+};
 
 /** The boot's phases only: the lines between the stamps are step output. */
 export class SandboxNotReadyError extends Error {
@@ -430,12 +448,13 @@ async function readBoxBootStamps(name: string): Promise<BootStamp[] | null> {
 	return log ? parseBootStamps(log.toString("utf8")) : null;
 }
 
+/** Null once `deadline` passes without an answer. */
 async function waitForHostService(
 	target: string,
-	providerSandboxId: string,
-): Promise<HostAnswer> {
-	const deadline = Date.now() + HOST_READY_TIMEOUT_MS;
-	while (Date.now() < deadline) {
+	deadline: number,
+	clock: WakeClock,
+): Promise<HostAnswer | null> {
+	while (clock.now() < deadline) {
 		const body: unknown = await fetch(`${target}/trpc/health.check`, {
 			signal: AbortSignal.timeout(HOST_READY_POLL_MS * 6),
 		})
@@ -444,14 +463,11 @@ async function waitForHostService(
 			)
 			.catch(() => null);
 		if (body !== null) {
-			return { stamps: bootStampsFrom(body), answeredAt: Date.now() };
+			return { stamps: bootStampsFrom(body), answeredAt: clock.now() };
 		}
-		await new Promise((resolve) => setTimeout(resolve, HOST_READY_POLL_MS));
+		await clock.sleep(HOST_READY_POLL_MS);
 	}
-	throw new SandboxNotReadyError(
-		providerSandboxId,
-		await readBoxBootStamps(providerSandboxId).catch(() => null),
-	);
+	return null;
 }
 
 /**
@@ -466,8 +482,15 @@ export async function settleSandbox(args: {
 }): Promise<HostAnswer> {
 	const answer = await waitForHostService(
 		args.hostTarget,
-		args.providerSandboxId,
+		Date.now() + HOST_READY_TIMEOUT_MS,
+		systemClock,
 	);
+	if (!answer) {
+		throw new SandboxNotReadyError(
+			args.providerSandboxId,
+			await readBoxBootStamps(args.providerSandboxId).catch(() => null),
+		);
+	}
 	await pushManagedEnv(
 		args.hostTarget,
 		args.claim.hostSecret,
@@ -515,7 +538,7 @@ export async function applyClaimInPlace(args: {
 	if (sandbox?.status !== "running") return "not-running";
 	try {
 		await sandbox.update({ networkPolicy: args.claim.networkPolicy });
-		await writeSignInFiles(sandbox.currentSession(), args.claim.files);
+		await writeClaimFiles(sandbox.currentSession(), args.claim.files);
 		await pushManagedEnv(
 			sandbox.domain(HOST_SERVICE_PORT),
 			args.claim.hostSecret,
@@ -625,6 +648,7 @@ export async function wakeSandbox(args: {
 		vcpus: number;
 		resumedSession?: { sessionId: string | null; expiresAt: Date | null };
 	}) => Promise<void>;
+	clock?: WakeClock;
 }): Promise<{
 	hostTarget: string;
 	/** The session was stopped, so every process on the box started from this claim. */
@@ -635,6 +659,8 @@ export async function wakeSandbox(args: {
 	expiresAt: Date | null;
 	sessionId: string | null;
 } | null> {
+	const clock = args.clock ?? systemClock;
+	const startedAt = clock.now();
 	try {
 		let wasRunning = false;
 		let resumed = null as { vcpus: number; sessionId: string | null } | null;
@@ -721,7 +747,7 @@ export async function wakeSandbox(args: {
 							),
 						),
 					serving ? null : writeIdentity(sandbox, args.claim.identity),
-					writeSignInFiles(sandbox, args.claim.files),
+					writeClaimFiles(sandbox, args.claim.files),
 				]),
 		);
 		if (!serving) {
@@ -741,12 +767,31 @@ export async function wakeSandbox(args: {
 		}
 		const answer = await Sentry.startSpan(
 			{ name: "settle", op: "sandbox" },
-			() =>
-				settleSandbox({
-					providerSandboxId: args.providerSandboxId,
+			async () => {
+				const ready = await waitForHostService(
 					hostTarget,
-					claim: args.claim,
-				}),
+					startedAt + WAKE_READY_DEADLINE_MS,
+					clock,
+				);
+				if (!ready) {
+					Sentry.captureMessage("cloud workspace wake missed its deadline", {
+						level: "error",
+						tags: {
+							"sandbox.box": args.providerSandboxId,
+							"sandbox.region": sandbox.region,
+							"sandbox.vcpus": String(vcpus),
+						},
+						extra: { elapsedMs: clock.now() - startedAt },
+					});
+					throw new CloudWorkspaceNotStartedError();
+				}
+				await pushManagedEnv(
+					hostTarget,
+					args.claim.hostSecret,
+					args.claim.managedEnv,
+				);
+				return ready;
+			},
 		);
 		return {
 			hostTarget,

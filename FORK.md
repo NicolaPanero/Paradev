@@ -151,6 +151,12 @@ login e sincronizzazione; le estensioni del fork girano sull’host locale.
   rimette l’agente sul suo modello predefinito (Auto per Cursor). Grok offre Grok 4.7, 4.6 e 4.5. Grok 4.7 arriva fino a xHigh
   quando il suo override locale dichiara `reasoning_efforts`; Grok 4.5 arriva
   fino a High.
+  Nello stesso selettore, **Auto-compact** salva una soglia manuale per la
+  configurazione dell’agente (percentuale per Claude e Grok, token per Codex,
+  token di riserva per OpenCode). Il valore nativo è predefinito e si può
+  ripristinare con **Reset to default**. La soglia si applica al prossimo
+  avvio dell’agente. Per Cursor, **Context window** mostra le opzioni del
+  modello, ad esempio 300k o 1M quando disponibili.
   Modelli ed effort arrivano dall’ultima lettura salvata dall’host in
   `$SUPERSET_HOME_DIR/fork/model-catalog.json`, condivisa per agente sullo stesso
   host, per tutti gli account e workspace (64 voci, 30 giorni). Il catalogo resta

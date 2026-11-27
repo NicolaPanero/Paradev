@@ -40,6 +40,8 @@ export function DashboardSidebarDeleteDialog({
 		sharesProjectCheckout,
 		canConfirm,
 		blockingReason,
+		isHostOffline,
+		openHostSettings,
 		error,
 		handleOpenChange,
 		run,
@@ -83,6 +85,8 @@ export function DashboardSidebarDeleteDialog({
 			hasUnpushedCommits={hasUnpushedCommits}
 			canConfirm={canConfirm}
 			blockingReason={blockingReason}
+			isHostOffline={isHostOffline}
+			onOpenHostSettings={openHostSettings}
 			onConfirm={() => run({ force: hasWarnings })}
 			confirmLabel={confirmLabel}
 		/>

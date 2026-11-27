@@ -2,8 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { useHostUsageQuota } from "renderer/hooks/host-service/useHostUsageQuota";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider/LocalHostServiceProvider";
 import { useSettings } from "renderer/stores/settings";
-import { RailUsageRing } from "./components/RailUsageRing";
-import { selectRailUsage } from "./utils/selectRailUsage";
+import { ForkRailUsage } from "./components/ForkRailUsage";
 
 export function RailUsage() {
 	const navigate = useNavigate();
@@ -11,21 +10,17 @@ export function RailUsage() {
 	const isShown = useSettings((s) => s.showRailUsage);
 	const quota = useHostUsageQuota(isShown ? activeHostUrl : null);
 	if (!isShown) return null;
-	const entries = selectRailUsage(quota.data ?? []);
 
-	return entries.map((entry) => (
-		<RailUsageRing
-			key={entry.account.accountKey}
-			entry={entry}
-			onOpen={() =>
+	return (
+		<ForkRailUsage
+			accounts={quota.data ?? []}
+			hostUrl={activeHostUrl}
+			onOpen={({ agent, accountKey }) =>
 				navigate({
 					to: "/settings/local-agent-accounts",
-					search: {
-						agent: entry.account.agent,
-						accountKey: entry.account.accountKey,
-					},
+					search: { agent, accountKey },
 				})
 			}
 		/>
-	));
+	);
 }

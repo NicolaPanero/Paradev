@@ -5,6 +5,7 @@ import {
 	HoverCardTrigger,
 } from "@superset/ui/hover-card";
 import { cn } from "@superset/ui/utils";
+import type { ComponentType, ReactNode } from "react";
 import {
 	getPresetIcon,
 	useIsDarkTheme,
@@ -35,9 +36,15 @@ const RING_STROKE_CLASS: Record<QuotaMeterTone, string> = {
 export function RailUsageRing({
 	entry,
 	onOpen,
+	Trigger = HoverCardTrigger,
+	badge,
+	triggerLabel,
 }: {
 	entry: RailUsageEntry;
-	onOpen: () => void;
+	onOpen?: () => void;
+	Trigger?: ComponentType<{ asChild: boolean; children: ReactNode }>;
+	badge?: ReactNode;
+	triggerLabel?: string;
 }) {
 	const { t } = useLingui();
 	const isDark = useIsDarkTheme();
@@ -56,13 +63,20 @@ export function RailUsageRing({
 		.join(", ");
 
 	return (
-		<HoverCard openDelay={0} closeDelay={80}>
-			<HoverCardTrigger asChild>
+		<HoverCard
+			openDelay={0}
+			closeDelay={80}
+			open={Trigger === HoverCardTrigger ? undefined : false}
+		>
+			<Trigger asChild>
 				<button
 					type="button"
-					aria-label={t({
-						message: `${label} quota used: ${summary}. Open usage settings`,
-					})}
+					aria-label={
+						triggerLabel ??
+						t({
+							message: `${label} quota used: ${summary}. Open usage settings`,
+						})
+					}
 					onClick={onOpen}
 					className="group relative flex size-9 items-center justify-center rounded-[10px] text-muted-foreground outline-none focus-visible:ring-1 focus-visible:ring-ring"
 				>
@@ -112,8 +126,9 @@ export function RailUsageRing({
 							className={cn("absolute object-contain", geometry.iconClassName)}
 						/>
 					)}
+					{badge}
 				</button>
-			</HoverCardTrigger>
+			</Trigger>
 			<HoverCardContent
 				side="right"
 				align="end"

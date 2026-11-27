@@ -2,9 +2,15 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import { acpHarnessForPreset } from "@superset/chat/core";
 import type { SessionConfigOption } from "@superset/chat/protocol";
 import { resolveAgentLaunchPresetId } from "@superset/shared/agent-models";
+import {
+	CURSOR_CONTEXT_ID,
+	cursorModelWithContext,
+	splitCursorContext,
+} from "@superset/shared/fork-cursor-context";
 import { DropdownMenuItem } from "@superset/ui/dropdown-menu";
 import { useMemo, useState } from "react";
 import { useIsDarkTheme } from "renderer/assets/app-icons/preset-icons";
+import { ForkAutoCompactMenu } from "renderer/components/ForkAutoCompactMenu";
 import { ForkModelCatalogStatus } from "renderer/components/ForkModelCatalogStatus";
 import { useForkCatalogAccount } from "renderer/hooks/useForkCatalogAccount";
 import { useForkMenuDialog } from "renderer/hooks/useForkMenuDialog";
@@ -12,6 +18,7 @@ import { useForkModelCatalog } from "renderer/hooks/useForkModelCatalog";
 import {
 	agentChoices,
 	creationConfigOptions,
+	cursorContextOption,
 	EFFORT_CONFIG_ID,
 	fromOptionValue,
 	MODEL_CONFIG_ID,
@@ -27,8 +34,11 @@ function picked(
 	options: Array<{ id: string; label: string }>,
 	id: string | null,
 ): { id: string; label: string } | null {
-	const option = options.find((entry) => entry.id === id);
-	return option ? { id: option.id, label: option.label } : null;
+	if (id === null) return null;
+	const option = options.find(
+		(entry) => entry.id === splitCursorContext(id).model,
+	);
+	return option ? { id, label: option.label } : null;
 }
 
 /**
@@ -47,6 +57,7 @@ export interface ForkSessionAgentConfig {
 export function ForkSessionModelPicker({
 	hostUrl = null,
 	workspaceId,
+	accountSelection,
 	configs,
 	data,
 	configOptions,
@@ -55,6 +66,7 @@ export function ForkSessionModelPicker({
 }: {
 	hostUrl?: string | null;
 	workspaceId?: string;
+	accountSelection?: string | null;
 	configs: ForkSessionAgentConfig[];
 	data: TerminalPaneData;
 	configOptions: SessionConfigOption[];
@@ -103,12 +115,20 @@ export function ForkSessionModelPicker({
 	});
 	const models = catalog.models;
 	const efforts = catalog.efforts;
+	const context =
+		viewedConfig?.presetId === "cursor-agent" && catalog.supportsCursorContext
+			? cursorContextOption(
+					catalog.configOptions,
+					draftModel,
+					t({ message: "Context window" }),
+				)
+			: undefined;
 	const draftOptions = useMemo(
 		() =>
 			creationConfigOptions({
 				models,
 				alwaysShowModel: true,
-				selectedModel: draftModel,
+				selectedModel: draftModel ? splitCursorContext(draftModel).model : null,
 				efforts,
 				selectedEffort: draftEffort,
 				labels: {
@@ -191,6 +211,8 @@ export function ForkSessionModelPicker({
 		viewedConfig?.label,
 		picked(models, draftModel)?.label ?? t({ message: "Default model" }),
 		picked(efforts, draftEffort)?.label,
+		context?.options.find((option) => option.id === context.currentValue)
+			?.label,
 	]
 		.filter(Boolean)
 		.join(" · ");
@@ -198,7 +220,13 @@ export function ForkSessionModelPicker({
 	return (
 		<ModelPicker
 			agentSwitcher={agentSwitcher}
-			configOptions={browsing ? draftOptions : configOptions}
+			configOptions={
+				browsing
+					? context
+						? [...draftOptions, context]
+						: draftOptions
+					: configOptions
+			}
 			keepOpenOnPick={browsing}
 			onCloseAutoFocus={menuDialog.onCloseAutoFocus}
 			onOpenChange={(next) => {
@@ -206,6 +234,20 @@ export function ForkSessionModelPicker({
 				if (!next) browse(realId, null);
 			}}
 			open={open}
+			settingsExtra={
+				open && hostUrl && shown ? (
+					<ForkAutoCompactMenu
+						key={shown}
+						target={{
+							hostUrl,
+							agent: shown,
+							accountSelection: browsing
+								? catalogAccount.selection
+								: accountSelection,
+						}}
+					/>
+				) : undefined
+			}
 			onSelect={(configId, value) => {
 				if (!browsing) {
 					onSelect?.(configId, value);
@@ -217,6 +259,8 @@ export function ForkSessionModelPicker({
 				}
 				if (configId === EFFORT_CONFIG_ID)
 					setDraftEffort(fromOptionValue(value));
+				if (configId === CURSOR_CONTEXT_ID && context && draftModel)
+					setDraftModel(cursorModelWithContext(draftModel, value));
 			}}
 			footer={
 				browsing && viewedConfig ? (

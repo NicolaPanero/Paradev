@@ -30,6 +30,7 @@ export interface ForkModelCatalogInput {
 export interface ForkModelCatalog {
 	configOptions: SessionConfigOption[];
 	modelConfigOptions?: Record<string, SessionConfigOption[]>;
+	supportsCursorContext?: boolean;
 	fetchedAt: number;
 }
 type Entry = {
@@ -270,6 +271,7 @@ export async function getForkModelCatalog(
 		harness,
 		db,
 		async () => null,
+		undefined,
 		undefined,
 		(options) =>
 			cursor

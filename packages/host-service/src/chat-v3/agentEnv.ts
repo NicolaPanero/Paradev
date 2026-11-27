@@ -12,10 +12,10 @@ import {
 } from "../terminal/env";
 import {
 	agentLaunchEnv,
+	chatLaunchPresetId,
 	resolveHostAgentConfig,
 } from "../terminal-agents/agent-config";
 import { selectedAccountEnv } from "../trpc/router/agents/account-selection";
-import { chatLaunchPresetId } from "../trpc/router/agents/agents";
 import { resolveDefaultAccountTerminalEnv } from "../trpc/router/usage/default-account";
 import { assertIsolatedAccount } from "../trpc/router/usage/fork-isolated-accounts";
 import { ensureIsolatedDefault } from "../trpc/router/usage/fork-isolated-default";
@@ -23,12 +23,14 @@ import { ensureIsolatedDefault } from "../trpc/router/usage/fork-isolated-defaul
 function workspacePaths(
 	db: HostDb,
 	workspaceId: string,
+	projectId?: string,
 ): { workspacePath: string; rootPath: string } {
 	const workspace = db.query.workspaces
 		.findFirst({ where: eq(workspaces.id, workspaceId) })
 		.sync();
-	const project = workspace?.projectId
-		? getProjectIncludingDeleted(db, workspace.projectId)
+	const resolvedProjectId = workspace?.projectId ?? projectId;
+	const project = resolvedProjectId
+		? getProjectIncludingDeleted(db, resolvedProjectId)
 		: undefined;
 	return {
 		workspacePath: workspace?.worktreePath ?? "",
@@ -70,6 +72,7 @@ export async function buildChatAgentEnv(options: {
 	db: HostDb;
 	cwd: string;
 	workspaceId: string;
+	projectId?: string;
 	agentConfigId?: string;
 	accountSelection?: string | null;
 	terminalId?: string;
@@ -78,7 +81,11 @@ export async function buildChatAgentEnv(options: {
 	presetId?: string;
 }): Promise<Record<string, string>> {
 	await Promise.all([waitForTerminalBaseEnv(), waitForSandboxManagedEnv()]);
-	const paths = workspacePaths(options.db, options.workspaceId);
+	const paths = workspacePaths(
+		options.db,
+		options.workspaceId,
+		options.projectId,
+	);
 	const resolved = options.agentConfigId
 		? resolveHostAgentConfig(options.db, options.agentConfigId)
 		: null;

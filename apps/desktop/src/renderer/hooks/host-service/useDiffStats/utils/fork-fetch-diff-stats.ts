@@ -8,6 +8,10 @@ export interface ForkDiffStats {
 	deletions: number;
 }
 
+function isMissingProcedure(error: unknown): boolean {
+	return error instanceof TRPCClientError && error.data?.code === "NOT_FOUND";
+}
+
 /**
  * Totals only: the full status snapshot of a busy worktree is large, and the
  * sidebar shows two numbers. Hosts without the batch procedure fall back to it.
@@ -24,16 +28,17 @@ export async function forkFetchDiffStats(
 		const row = workspaces.find((entry) => entry.workspaceId === workspaceId);
 		return row ? { additions: row.additions, deletions: row.deletions } : null;
 	} catch (error) {
-		if (!(error instanceof TRPCClientError) || error.data?.code !== "NOT_FOUND")
-			throw error;
+		if (!isMissingProcedure(error)) throw error;
 	}
-	const base = await client.git.getBaseBranch.query({
-		workspaceId,
-		inferOrigin: true,
-	});
+	const base = await client.git.getBaseBranch
+		.query({ workspaceId, inferOrigin: true })
+		.catch((error: unknown) => {
+			if (!isMissingProcedure(error)) throw error;
+			return undefined;
+		});
 	const status = await client.git.getStatus.query({
 		workspaceId,
-		baseBranch: base.needsSelection ? "HEAD" : (base.baseBranch ?? undefined),
+		baseBranch: base?.needsSelection ? "HEAD" : (base?.baseBranch ?? undefined),
 		priority: "background",
 	});
 	const byPath = new Map<

@@ -166,7 +166,7 @@ export function usePresetExecution({
 	const executePreset = useCallback(
 		async (
 			preset: TerminalPresetRow,
-			options?: { target?: "new-tab" | "active-tab" },
+			options?: { target?: "new-tab" | "active-tab"; cwd?: string },
 		) => {
 			if (
 				!isLinkedPresetLaunchable(
@@ -194,7 +194,7 @@ export function usePresetExecution({
 							command === null ? [] : [command],
 						)
 					: commands;
-			const cwd = normalizePresetCwd(preset.cwd);
+			const cwd = options?.cwd ?? normalizePresetCwd(preset.cwd);
 			const createTerminal = (command?: string) =>
 				launcher.create({ command, cwd });
 
@@ -208,6 +208,7 @@ export function usePresetExecution({
 
 			const linkedAgent = findLinkedAgent(agents, preset.agentId);
 			if (
+				(!options?.cwd || options.cwd === workspaceQuery.data?.worktreePath) &&
 				linkedAgent &&
 				acpHarnessForPreset(linkedAgent.presetId) &&
 				(plan === "new-tab-single" || plan === "active-tab-single")

@@ -18,7 +18,6 @@ import { HistoryIcon, Settings2Icon } from "lucide-react";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LuGitPullRequest } from "react-icons/lu";
-import type { AgentSelectAgent } from "renderer/components/AgentSelect";
 import {
 	ForkAccountPicker,
 	ForkAccountSubmenu,
@@ -102,6 +101,7 @@ import { ForkSymmetricResizeHandles as SymmetricResizeHandles } from "./componen
 import { SamplePrompts } from "./components/SamplePrompts";
 import { PROMPT_PLACEHOLDERS } from "./components/SamplePrompts/constants";
 import { SupersetIcon } from "./components/SupersetIcon";
+import { useBaseBranchReset } from "./hooks/useBaseBranchReset";
 import { useConsumeHostIntent } from "./hooks/useConsumeHostIntent";
 import { useCreateProjectEnvironment } from "./hooks/useCreateProjectEnvironment";
 import { useForkCreationSelections } from "./hooks/useForkCreationSelections";
@@ -111,6 +111,7 @@ import { useLinkedIssueNaming } from "./hooks/useLinkedIssueNaming";
 import { useSamplePromptSelection } from "./hooks/useSamplePromptSelection";
 import { useWorkspaceSettingMentionProviders } from "./hooks/useWorkspaceSettingMentionProviders";
 import { AGENT_DEFAULT_OPTION_ID } from "./utils/launchConfigOptions";
+import { launchPresetIdOf } from "./utils/launchPresetIdOf";
 import {
 	type PendingEnvironmentSetup,
 	planEnvironmentSetup,
@@ -139,10 +140,6 @@ interface NewWorkspaceScreenProps {
  * The workspace-creation surface: heading, sample prompts, and a minimal
  * composer, filling the window rather than a dialog.
  */
-function launchPresetIdOf(agent: AgentSelectAgent): string {
-	return agent.launchPresetId ?? agent.presetId ?? agent.iconId ?? agent.id;
-}
-
 export function NewWorkspaceScreen({
 	isOpen,
 	preSelectedProjectId,
@@ -466,41 +463,18 @@ export function NewWorkspaceScreen({
 	);
 	useLinkedIssueNaming(linkedIssues);
 
-	// Reset baseBranch when what it branches from changes, defaulting to the
-	// user's last branch there — the draft store is global, so a stale branch
-	// from another repository would otherwise ride into the create. On the
-	// cloud that is the environment's repository, not the project's.
 	const branchDefaultKey = isCloudHost
 		? resolvedEnvironment
 			? environmentBranchKey(resolvedEnvironment.id)
 			: null
 		: projectId;
-	const persistedBaseBranchDefault = useWorkspaceCreateDefaultsStore((state) =>
-		branchDefaultKey
-			? (state.baseBranchesByProjectId[branchDefaultKey] ?? null)
-			: null,
-	);
+	useBaseBranchReset({ branchDefaultKey, hostId, updateDraft });
 	const setBaseBranchDefault = useWorkspaceCreateDefaultsStore(
 		(state) => state.setBaseBranchDefault,
 	);
 	const clearBaseBranchDefault = useWorkspaceCreateDefaultsStore(
 		(state) => state.clearBaseBranchDefault,
 	);
-	const previousBranchDefaultKeyRef = useRef(branchDefaultKey);
-	const previousHostIdRef = useRef(hostId);
-	useEffect(() => {
-		if (
-			previousBranchDefaultKeyRef.current !== branchDefaultKey ||
-			previousHostIdRef.current !== hostId
-		) {
-			previousBranchDefaultKeyRef.current = branchDefaultKey;
-			previousHostIdRef.current = hostId;
-			updateDraft({
-				baseBranch: persistedBaseBranchDefault?.branchName ?? null,
-				baseBranchSource: persistedBaseBranchDefault?.source ?? null,
-			});
-		}
-	}, [branchDefaultKey, hostId, persistedBaseBranchDefault, updateDraft]);
 
 	// ── Agent / model / effort ───────────────────────────────────────
 	const launchHostUrl = useMemo(() => {
@@ -614,7 +588,13 @@ export function NewWorkspaceScreen({
 		useAgentChoices(launchHostUrl);
 	const cloudAgents = useCloudAgentChoices();
 	// Under Cloud the built-in presets stand in for a host's agent list.
-	const agentConfigs = isCloudHost ? cloudAgents : hostAgents;
+	const agentConfigs = useMemo(
+		() =>
+			(isCloudHost ? cloudAgents : hostAgents).filter(
+				(agent) => launchPresetIdOf(agent) !== "mastracode",
+			),
+		[isCloudHost, cloudAgents, hostAgents],
+	);
 	const agentsFetched = isCloudHost || hostAgentsFetched;
 	const selectableAgentIds = useMemo(
 		() => agentConfigs.map((agent) => agent.id),
@@ -635,20 +615,22 @@ export function NewWorkspaceScreen({
 		);
 		return agent ? launchPresetIdOf(agent) : null;
 	}, [agentConfigs, selectedAgent]);
+	const acpChatEnabled = useAcpChatEnabled();
 	const {
 		selectedModel,
 		setSelectedModel,
 		selectedEffort,
 		setSelectedEffort,
 		effortForLaunch,
-		modelSupport,
-		effortSupport,
 		effortOptions,
 		forkAccount,
 		catalog,
+		catalogs,
+		defaultEffortLabel,
 	} = useForkCreationSelections({
 		hostUrl: isCloudHost ? null : launchHostUrl,
 		agent: selectedAgent,
+		agents: agentConfigs,
 		presetId: selectedPresetId,
 		projectId,
 		resetKey,
@@ -657,7 +639,6 @@ export function NewWorkspaceScreen({
 	const modeSupport = selectedPresetId
 		? getAgentModeSupport(selectedPresetId)
 		: undefined;
-	const acpChatEnabled = useAcpChatEnabled();
 	const startModes = acpChatEnabled
 		? acpStartModes(selectedPresetId)
 		: undefined;
@@ -670,7 +651,7 @@ export function NewWorkspaceScreen({
 							id: AGENT_DEFAULT_OPTION_ID,
 							label: t({ message: "Direct mode" }),
 						},
-						...modeSupport.modes.map(({ id, label }) => ({ id, label })),
+						...modeSupport.modes.map((entry) => ({ ...entry })),
 					]
 				: undefined),
 		[startModes, modeSupport, t],
@@ -746,7 +727,7 @@ export function NewWorkspaceScreen({
 		projectId,
 		selectedAgent,
 		selectedPresetId,
-		modelSupport ? selectedModel : null,
+		selectedModel,
 		effortForLaunch,
 		modeForLaunch,
 		uploadAttachments,
@@ -1168,13 +1149,19 @@ export function NewWorkspaceScreen({
 	const forkLaunchPickers = (
 		<div className="flex items-center gap-2">
 			<ForkCreationModelPicker
+				autoCompact={{
+					hostUrl: isCloudHost ? null : launchHostUrl,
+					accountSelection: forkAccount.selection,
+				}}
 				agents={agentConfigs}
 				catalog={catalog}
+				catalogs={catalogs}
+				defaultEffortLabel={defaultEffortLabel}
 				selectedAgent={selectedAgent}
 				onSelectAgent={setSelectedAgent}
-				selectedModel={modelSupport ? selectedModel : null}
+				selectedModel={selectedModel}
 				onModelChange={setSelectedModel}
-				efforts={effortSupport ? effortOptions : []}
+				efforts={effortOptions}
 				selectedEffort={selectedEffort}
 				onEffortChange={setSelectedEffort}
 				renderAccountItem={(rowClassName, panelClassName) => (

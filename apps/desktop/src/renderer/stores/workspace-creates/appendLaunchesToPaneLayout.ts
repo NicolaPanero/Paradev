@@ -57,11 +57,12 @@ export function appendLaunchesToPaneLayout({
 	agents,
 	hideSetupTerminals = false,
 }: AppendArgs): WorkspaceState<PaneViewerData> {
-	const terminalLabels = new Map(
-		terminals.map((entry) => [entry.terminalId, entry.label]),
+	const visibleTerminals = terminals.filter(
+		(entry) => !hideSetupTerminals || !isForkSetupTerminal(entry),
 	);
-	// A wait-for-setup chained agent reuses the setup terminal, so its result
-	// carries the same session id — it gets one tab with the setup label.
+	const terminalLabels = new Map(
+		visibleTerminals.map((entry) => [entry.terminalId, entry.label]),
+	);
 	const agentLaunches = agents.flatMap((entry): PaneLaunch[] => {
 		if (!entry.ok) return [];
 		if (!entry.chatSessionId) {
@@ -101,9 +102,9 @@ export function appendLaunchesToPaneLayout({
 	);
 	const launches = [
 		...agentLaunches,
-		...terminals
-			.filter((entry) => !hideSetupTerminals || !isForkSetupTerminal(entry))
-			.map((entry) => terminalLaunch(entry.terminalId, entry.label)),
+		...visibleTerminals.map((entry) =>
+			terminalLaunch(entry.terminalId, entry.label),
+		),
 	].filter((launch) => {
 		if (seen.has(launch.sessionId)) return false;
 		seen.add(launch.sessionId);

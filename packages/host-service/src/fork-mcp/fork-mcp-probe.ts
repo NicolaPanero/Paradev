@@ -21,6 +21,7 @@ export type ForkMcpProbe =
 	| {
 			state: "offline";
 			reason: ForkMcpProbeReason;
+			httpStatus?: number;
 			message: string;
 			checkedAt: number;
 	  };
@@ -28,10 +29,12 @@ export type ForkMcpProbe =
 const MAX_TOOL_PAGES = 20;
 const STDERR_LIMIT = 2_000;
 
-function reasonOf(error: unknown, timedOut: boolean): ForkMcpProbeReason {
+function reasonOf(
+	error: unknown,
+	code: unknown,
+	timedOut: boolean,
+): ForkMcpProbeReason {
 	if (timedOut) return "timeout";
-	const cause = (error as { cause?: { code?: unknown } })?.cause;
-	const code = (error as { code?: unknown })?.code ?? cause?.code;
 	if (code === 401 || code === 403) return "auth";
 	if (code === "ENOENT" || code === "EACCES") return "command";
 	if (
@@ -120,11 +123,16 @@ export async function probeForkMcpServer(
 		]);
 		return { state: "online", tools, checkedAt: now() };
 	} catch (error) {
+		const problem = error as { code?: unknown; cause?: { code?: unknown } };
+		const code = problem?.code ?? problem?.cause?.code;
 		const detail = stderr.trim().split("\n").at(-1)?.trim();
 		const message = (error as Error)?.message ?? String(error);
 		return {
 			state: "offline",
-			reason: reasonOf(error, timedOut),
+			reason: reasonOf(error, code, timedOut),
+			...(server.transport !== "stdio" && (code === 401 || code === 403)
+				? { httpStatus: code }
+				: {}),
 			message: (detail && !timedOut ? `${message} — ${detail}` : message).slice(
 				0,
 				300,

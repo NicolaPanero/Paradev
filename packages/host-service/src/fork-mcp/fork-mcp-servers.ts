@@ -250,9 +250,9 @@ export function readForkMcpServers(
 ): ForkMcpServer[] {
 	const servers = loadForkMcpServers(paths, claudeJsonPath);
 	if (servers) return servers;
-	console.warn(
-		`[host-service] ${paths.servers} is not a valid MCP server list; ignoring it`,
-	);
+	console.warn("[host-service] Invalid MCP server list; ignoring it", {
+		path: paths.servers,
+	});
 	return [];
 }
 

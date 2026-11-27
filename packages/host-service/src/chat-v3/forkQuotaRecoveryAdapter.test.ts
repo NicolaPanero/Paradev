@@ -236,7 +236,10 @@ test("quota failure classification rejects transport, login, 429 and model prose
 	])
 		expect(isClaudeQuotaFailure(message)).toBe(false);
 });
-test("official ACP runtime preserves Claude JSON-RPC quota errors for recovery", async () => {
+test.each([
+	false,
+	true,
+])("official ACP runtime preserves Claude quota failures (structured refusal: %s)", async (structured) => {
 	const events: AdapterEvent[] = [];
 	const adapter = createAcpAdapter({
 		command: "fake-claude-acp",
@@ -245,6 +248,29 @@ test("official ACP runtime preserves Claude JSON-RPC quota errors for recovery",
 			send: (line) => {
 				const frame = JSON.parse(line) as { id?: number; method?: string };
 				if (frame.id === undefined || !frame.method) return;
+				if (structured && frame.method === "session/prompt")
+					queueMicrotask(() =>
+						handlers.onLine(
+							JSON.stringify({
+								jsonrpc: "2.0",
+								method: "session/update",
+								params: {
+									sessionId: "native-id",
+									update: {
+										sessionUpdate: "usage_update",
+										used: 100,
+										size: 1000,
+										_meta: {
+											"_claude/rateLimit": {
+												status: "rejected",
+												rateLimitType: "five_hour",
+											},
+										},
+									},
+								},
+							}),
+						),
+					);
 				queueMicrotask(() =>
 					handlers.onLine(
 						JSON.stringify({
@@ -254,8 +280,9 @@ test("official ACP runtime preserves Claude JSON-RPC quota errors for recovery",
 								? {
 										error: {
 											code: -32603,
-											message:
-												"Internal error: You've hit your limit · resets 5pm",
+											message: structured
+												? "error_during_execution"
+												: "Internal error: You've hit your limit · resets 5pm",
 										},
 									}
 								: {
@@ -287,11 +314,13 @@ test("official ACP runtime preserves Claude JSON-RPC quota errors for recovery",
 			(e) => e.kind === "turn" && e.turn.status === "failed",
 		);
 		expect(failure?.kind === "turn" && failure.turn.error?.message).toBe(
-			"Internal error: You've hit your limit · resets 5pm",
+			structured
+				? "error_during_execution"
+				: "Internal error: You've hit your limit · resets 5pm",
 		);
 		expect(
 			failure?.kind === "turn" &&
-				isClaudeQuotaFailure(failure.turn.error?.message ?? ""),
+				isAccountQuotaFailure("claude", failure.turn.error),
 		).toBe(true);
 	} finally {
 		await adapter.dispose();
@@ -599,8 +628,18 @@ test("failed transcript copy restores the original worker without sending a cont
 		await f.close();
 	}
 });
-test("repeated quota hits never cycle back through blocked logins", async () => {
-	const f = fixture();
+test("repeated quota hits never cycle back through aliases of blocked logins", async () => {
+	const f = fixture(undefined, {
+		quota: async () => [
+			quota(null, 100),
+			quota("/a", 80),
+			quota("/b", 15),
+			quota("/b-alias", 20, {
+				email: "/B@example.test",
+				fetchedAt: new Date(NOW + 1),
+			}),
+		],
+	});
 	try {
 		await until(() => f.events.length > 0);
 		f.adapter.prompt([{ type: "text", text: "task" }]);
@@ -614,6 +653,24 @@ test("repeated quota hits never cycle back through blocked logins", async () => 
 		);
 		expect(f.moves).toEqual(["/b", "/a"]);
 		expect(f.workers).toHaveLength(3);
+	} finally {
+		await f.close();
+	}
+});
+test("account rotation excludes duplicate logins when the exhausted account's reading predates the failure", async () => {
+	const f = fixture(undefined, {
+		quota: async () => [
+			quota(null, 100, { fetchedAt: new Date(NOW - 60_000) }),
+			quota("/duplicate", 1, { email: "standard@example.test" }),
+			quota("/other", 20),
+		],
+	});
+	try {
+		await until(() => f.events.length > 0);
+		f.adapter.prompt([{ type: "text", text: "task" }]);
+		f.worker(0).fail();
+		await until(() => f.workers[1]?.prompts.length === 1);
+		expect(f.moves).toEqual(["/other"]);
 	} finally {
 		await f.close();
 	}
@@ -674,7 +731,7 @@ test("model changes cancel a pending continuation", async () => {
 	}
 });
 
-test("the live runtime keeps queued prompts behind the continued turn", async () => {
+test("quota recovery releases the queue after continuing a refused turn without a subscriber", async () => {
 	const { createTestRuntime } = await import(
 		"../../../chat-runtime/src/testing/testRuntime"
 	);
@@ -731,8 +788,25 @@ test("the live runtime keeps queued prompts behind the continued turn", async ()
 		expect(send("next task").queued).toBe(true);
 		const first = workers[0];
 		if (!first) throw new Error("worker missing");
+		const subscription = runtime.subscribe(
+			sessionId,
+			{ deltas: [] },
+			{ send: () => {}, close: () => {} },
+		);
+		first.queue.push({
+			kind: "session",
+			session: { usageLimit: { hitAtMs: NOW, resetsAtMs: NOW + 300_000 } },
+		});
+		await until(
+			() => runtime.live.get(sessionId)?.state.queuePausedByLimit === true,
+		);
+		subscription.unsubscribe();
 		first.fail();
 		await until(() => workers[1]?.prompts.length === 1);
+		await until(
+			() => runtime.live.get(sessionId)?.state.usageLimit === undefined,
+		);
+		expect(runtime.live.get(sessionId)?.state.queuePausedByLimit).toBe(false);
 		expect(runtime.live.get(sessionId)?.queuedCount).toBe(1);
 		const second = workers[1];
 		if (!second) throw new Error("worker missing");
@@ -803,6 +877,7 @@ test("Stop during a replacement worker bootstrap prevents a delayed automatic pr
 		f.adapter.prompt([{ type: "text", text: "task" }]);
 		workers[0]?.fail();
 		await until(() => workers.length === 2);
+		expect(f.statuses.at(-1)?.phase).toBe("switching");
 		f.adapter.cancelTurn();
 		workers[1]?.queue.push({
 			kind: "session",
@@ -1560,6 +1635,49 @@ test("reset continuation renews a stale login on the host without reopening the 
 			type: "text",
 			text: expect.stringContaining("Continue the interrupted task"),
 		});
+	} finally {
+		await f.close();
+	}
+});
+
+test("a throttled backup account does not postpone the current account's reset", async () => {
+	let now = NOW;
+	const waits: number[] = [];
+	const f = fixture(
+		{ switchAccounts: true, resumeAtReset: true },
+		{
+			now: () => now,
+			quota: async () => [
+				quota(null, now === NOW ? 100 : 5, {
+					fetchedAt: new Date(now),
+					windows: [
+						{
+							id: "five_hour",
+							label: "Session",
+							usedPercent: now === NOW ? 100 : 5,
+							resetsAt: new Date(now + 300_000),
+						},
+					],
+				}),
+				quota("/backup", 100, {
+					status: "unavailable",
+					retryAt: new Date(NOW + 25 * 60 * 60_000),
+				}),
+			],
+			wait: async (ms) => {
+				waits.push(ms);
+				now += ms;
+			},
+		},
+	);
+	try {
+		await until(() => f.events.length > 0);
+		f.adapter.prompt([{ type: "text", text: "task" }]);
+		f.worker(0).fail();
+		await until(() => f.workers[1]?.prompts.length === 1);
+		expect(waits).toEqual([300_000]);
+		expect(f.moves).toEqual([]);
+		expect(f.selected).toEqual([null]);
 	} finally {
 		await f.close();
 	}

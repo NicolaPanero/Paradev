@@ -1,13 +1,26 @@
 import { useLingui } from "@lingui/react/macro";
 import type { AgentModelOption } from "@superset/shared/agent-models";
+import {
+	CURSOR_CONTEXT_ID,
+	cursorModelWithContext,
+	splitCursorContext,
+} from "@superset/shared/fork-cursor-context";
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useIsDarkTheme } from "renderer/assets/app-icons/preset-icons";
 import type { AgentSelectAgent } from "renderer/components/AgentSelect";
+import {
+	ForkAutoCompactMenu,
+	type ForkAutoCompactTarget,
+} from "renderer/components/ForkAutoCompactMenu";
 import { ForkModelCatalogStatus } from "renderer/components/ForkModelCatalogStatus";
+import type { useAgentModelCatalog } from "renderer/hooks/useAgentModelCatalog";
 import type { useForkModelCatalog } from "renderer/hooks/useForkModelCatalog";
 import {
 	agentChoices,
+	agentLaunchPreset,
 	creationConfigOptions,
+	cursorContextOption,
+	DEFAULT_OPTION_ID,
 	EFFORT_CONFIG_ID,
 	fromOptionValue,
 	MODEL_CONFIG_ID,
@@ -26,6 +39,8 @@ const NO_AGENT = "none";
 export function ForkCreationModelPicker({
 	agents,
 	catalog,
+	catalogs,
+	defaultEffortLabel,
 	selectedAgent,
 	onSelectAgent,
 	selectedModel,
@@ -35,9 +50,15 @@ export function ForkCreationModelPicker({
 	onEffortChange,
 	renderAccountItem,
 	fullWidth,
+	autoCompact,
 }: {
 	agents: AgentSelectAgent[];
-	catalog: ReturnType<typeof useForkModelCatalog>;
+	catalog: Pick<
+		ReturnType<typeof useForkModelCatalog>,
+		"configOptions" | "supportsCursorContext" | "isFetching" | "isError"
+	> & { models: AgentModelOption[]; refetch?: () => void };
+	catalogs?: ReturnType<typeof useAgentModelCatalog>;
+	defaultEffortLabel?: string;
 	selectedAgent: string;
 	onSelectAgent: (agentId: string) => void;
 	selectedModel: string | null;
@@ -50,6 +71,7 @@ export function ForkCreationModelPicker({
 		panelClassName: string,
 	) => ReactNode;
 	fullWidth?: boolean;
+	autoCompact?: Omit<ForkAutoCompactTarget, "agent">;
 }) {
 	const { t } = useLingui();
 	const isDark = useIsDarkTheme();
@@ -60,16 +82,43 @@ export function ForkCreationModelPicker({
 				agents.filter((agent) => !agent.disabled || agent.id === selectedAgent),
 				isDark,
 				{ [selectedAgent]: catalog.models },
-			),
-		[agents, isDark, selectedAgent, catalog.models],
+			).map((choice) => {
+				const runtime = catalogs?.[choice.presetId];
+				return runtime
+					? {
+							...choice,
+							models:
+								choice.presetId === selectedAgent
+									? choice.models
+									: runtime.models,
+							loading: runtime.loading,
+							onLoad: runtime.load,
+							catalogKey: runtime.key,
+							defaultModelLabel: runtime.defaultModel?.label,
+						}
+					: choice;
+			}),
+		[agents, isDark, selectedAgent, catalog.models, catalogs],
 	);
 	const current = agents.find((agent) => agent.id === selectedAgent);
+	const cursor = current && agentLaunchPreset(current) === "cursor-agent";
+	const context =
+		cursor && catalog.supportsCursorContext
+			? cursorContextOption(
+					catalog.configOptions,
+					selectedModel,
+					t({ message: "Context window" }),
+				)
+			: undefined;
 	const configOptions = useMemo(
 		() =>
 			creationConfigOptions({
 				models: catalog.models,
 				alwaysShowModel: selectedAgent !== NO_AGENT,
-				selectedModel,
+				selectedModel:
+					cursor && selectedModel
+						? splitCursorContext(selectedModel).model
+						: selectedModel,
 				efforts,
 				selectedEffort,
 				labels: {
@@ -78,8 +127,28 @@ export function ForkCreationModelPicker({
 					defaultModel: t({ message: "Default model" }),
 					defaultEffort: t({ message: "Default effort" }),
 				},
-			}),
-		[catalog.models, selectedModel, efforts, selectedEffort, t, selectedAgent],
+			}).map((option) =>
+				option.id === EFFORT_CONFIG_ID && defaultEffortLabel
+					? {
+							...option,
+							options: option.options.map((entry) =>
+								entry.id === DEFAULT_OPTION_ID
+									? { ...entry, description: defaultEffortLabel }
+									: entry,
+							),
+						}
+					: option,
+			),
+		[
+			catalog.models,
+			cursor,
+			selectedModel,
+			efforts,
+			selectedEffort,
+			t,
+			selectedAgent,
+			defaultEffortLabel,
+		],
 	);
 
 	// The model preference is stored per agent, so a model picked from another
@@ -94,6 +163,7 @@ export function ForkCreationModelPicker({
 
 	const agentSwitcher: AgentSwitcher = {
 		currentPresetId: current?.id ?? NO_AGENT,
+		defaultOptionId: DEFAULT_OPTION_ID,
 		agents: choices,
 		onSwitch: (agentId, model) => {
 			pendingModel.current = model ? { agentId, model: model.id } : null;
@@ -110,24 +180,33 @@ export function ForkCreationModelPicker({
 		<ModelPicker
 			fullWidth={fullWidth}
 			agentSwitcher={agentSwitcher}
-			configOptions={configOptions}
+			configOptions={context ? [...configOptions, context] : configOptions}
+			keepOpenOnPick={cursor === true}
 			emptyLabel={t({ message: "No agent" })}
 			open={open}
 			onOpenChange={setOpen}
+			settingsExtra={
+				open && autoCompact?.hostUrl && selectedAgent !== NO_AGENT ? (
+					<ForkAutoCompactMenu
+						key={selectedAgent}
+						target={{ ...autoCompact, agent: selectedAgent }}
+					/>
+				) : undefined
+			}
 			onSelect={(configId, value) => {
+				if (context && selectedModel && configId === CURSOR_CONTEXT_ID)
+					onModelChange(cursorModelWithContext(selectedModel, value));
 				if (configId === MODEL_CONFIG_ID) onModelChange(fromOptionValue(value));
 				if (configId === EFFORT_CONFIG_ID)
 					onEffortChange(fromOptionValue(value));
 			}}
 			footer={
 				<div className="flex flex-col gap-px border-t p-1 empty:hidden">
-					{selectedAgent !== NO_AGENT && (
+					{selectedAgent !== NO_AGENT && catalog.refetch && (
 						<ForkModelCatalogStatus
 							loading={catalog.isFetching}
 							error={catalog.isError}
-							refresh={() => {
-								void catalog.refetch();
-							}}
+							refresh={catalog.refetch}
 						/>
 					)}
 					{renderAccountItem?.(MENU_ROW_CLASS, MENU_PANEL_CLASS)}

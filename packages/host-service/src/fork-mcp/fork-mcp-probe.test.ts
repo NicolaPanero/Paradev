@@ -56,3 +56,22 @@ test("each failure says why: missing command, no answer, sign-in, closed port", 
 	);
 	expect(closed).toMatchObject({ state: "offline", reason: "unreachable" });
 });
+
+test("reports the HTTP status when a gateway refuses access", async () => {
+	const gateway = Bun.serve({
+		hostname: "127.0.0.1",
+		port: 0,
+		fetch: () => new Response("No MCP servers granted", { status: 403 }),
+	});
+	try {
+		await expect(
+			probeForkMcpServer(http(`http://127.0.0.1:${gateway.port}/mcp`)),
+		).resolves.toMatchObject({
+			state: "offline",
+			reason: "auth",
+			httpStatus: 403,
+		});
+	} finally {
+		gateway.stop(true);
+	}
+});

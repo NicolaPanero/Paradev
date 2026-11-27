@@ -4,6 +4,7 @@ import {
 	CONTINUE_PROMPT,
 	sessionSelections,
 	userStopOf,
+	withoutWaitingContinues,
 } from "@superset/chat/core";
 import {
 	type DiscoverSessionsResult,
@@ -261,9 +262,7 @@ export class LiveSession {
 			harnessSessionId,
 			terminalId: this.options.terminalId,
 			...sessionSelections(this.sessionState),
-			interrupted,
-			prompts,
-			pausedPrompts,
+			...withoutWaitingContinues({ interrupted, prompts, pausedPrompts }),
 		};
 	}
 
@@ -579,12 +578,15 @@ export class LiveSession {
 		this.resumeTimer = null;
 	}
 
-	/** The fork's account recovery reopens the limited turn, so the limit no longer holds the queue. */
-	private forkClearRecoveredLimit(turnId: string): void {
-		if (this.limitedTurnId !== turnId || !this.sessionState.usageLimit) return;
+	private forkClearRecoveredLimit(
+		session: Partial<SessionState>,
+	): Partial<SessionState> {
+		if (!Object.hasOwn(session, "usageLimit")) return session;
 		this.limitedTurnId = null;
 		this.clearResumeTimer();
-		this.emitSession({ usageLimit: undefined });
+		if (!this.sessionState.queuePausedByLimit) return session;
+		this.queuePaused = false;
+		return { ...session, queuePaused: false, queuePausedByLimit: false };
 	}
 
 	/** A refused turn stops the queue until someone chooses to go on. */
@@ -783,7 +785,6 @@ export class LiveSession {
 					this.emitSession({ queuePaused: true, queuePausedByLimit: false });
 				}
 				if (event.turn.status === "running") {
-					this.forkClearRecoveredLimit(event.turn.id);
 					this.attributeAwaitingPrompt(event.turn.id);
 					const steered = this.steerTarget;
 					this.steerTarget = null;
@@ -821,7 +822,7 @@ export class LiveSession {
 					this.emitSession(rest);
 					this.limitReached(usageLimit);
 				} else {
-					this.emitSession(event.session);
+					this.emitSession(this.forkClearRecoveredLimit(event.session));
 				}
 				this.releaseCarriedFailure();
 				this.releaseHeldPrompts();

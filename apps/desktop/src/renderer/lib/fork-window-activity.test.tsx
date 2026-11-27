@@ -24,7 +24,7 @@ function fakeIpc() {
 	};
 }
 
-const root = document.documentElement;
+const root = document.createElement("div");
 let uninstall = () => {};
 afterEach(() => {
 	uninstall();

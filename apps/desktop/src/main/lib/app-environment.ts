@@ -2,15 +2,19 @@ import { chmodSync, existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { moveLegacyAppHome } from "@superset/agent-setup/legacy-home-move";
 import { resolveUserHomeDir } from "@superset/agent-setup/paths";
+import { publicEnvPair, readPublicEnv } from "@superset/shared/public-env";
 import { getWorkspaceName } from "shared/env.shared";
 import { pinForkDataHome } from "./fork-data-migration/fork-app-home";
 
 const workspace = getWorkspaceName();
 pinForkDataHome(workspace);
-if (workspace && !process.env.SUPERSET_HOME_DIR?.trim()) {
-	process.env.SUPERSET_HOME_DIR = join(
-		resolveUserHomeDir(),
-		`.paradev-${workspace}`,
+if (workspace && !readPublicEnv("HOME_DIR")?.trim()) {
+	Object.assign(
+		process.env,
+		publicEnvPair(
+			"HOME_DIR",
+			join(resolveUserHomeDir(), `.paradev-${workspace}`),
+		),
 	);
 }
 const appHome = moveLegacyAppHome();
@@ -22,6 +26,8 @@ if (appHome.move === "moved") {
 		appHome.homeDir,
 	);
 }
+
+Object.assign(process.env, publicEnvPair("HOME_DIR", appHome.homeDir));
 
 export const SUPERSET_HOME_DIR = appHome.homeDir;
 

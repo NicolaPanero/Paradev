@@ -12,6 +12,9 @@ import type { UsageAccount } from "../trpc/router/usage/types";
 import {
 	isAccountQuotaFailure,
 	isClaudeQuotaMessage,
+	nextRecoveryCheckAt,
+	recoveryBlockedUntil,
+	recoveryEmailKey,
 	recoveryResetAt,
 	suggestedRecoveryAccount,
 } from "./forkQuotaRecoveryPolicy";
@@ -109,6 +112,11 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 	}
 	private now() {
 		return this.deps.now?.() ?? Date.now();
+	}
+	private continueAfterQuota(child: HarnessAdapter) {
+		child.prompt(CONTINUE);
+		this.queue.push({ kind: "session", session: { usageLimit: undefined } });
+		this.deps.status({ phase: "idle" });
 	}
 	/** The worker started on another login than the one the chat saved. */
 	accountReplaced(selection: string | null, text: string) {
@@ -244,7 +252,7 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 						// prompt() waits for those selection round trips in the official adapter.
 						if (this.pendingContinue) {
 							this.pendingContinue = false;
-							child.prompt(CONTINUE);
+							this.continueAfterQuota(child);
 						}
 						continue;
 					}
@@ -387,11 +395,10 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 					a.selection === this.selection &&
 					a.credentialKind === "subscription",
 			);
-			if (failed)
-				this.blocked.set(
-					failed.accountKey,
-					recoveryResetAt(failed, failureAt, this.model),
-				);
+			const blockedUntil = recoveryResetAt(failed, failureAt, this.model);
+			if (failed) this.blocked.set(failed.accountKey, blockedUntil);
+			const emailKey = recoveryEmailKey(account.email ?? failed?.email);
+			if (emailKey) this.blocked.set(emailKey, blockedUntil);
 			while (!this.disposed && !this.cancelled && this.now() < expires) {
 				const prefs = this.deps.settings(),
 					live = this.deps.account();
@@ -409,7 +416,7 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 					? suggestedRecoveryAccount(
 							rows.filter(
 								(a) =>
-									!this.blocked.has(a.accountKey) ||
+									!recoveryBlockedUntil(a, this.blocked) ||
 									a.fetchedAt.getTime() > this.failureAt,
 							),
 							this.selection ?? null,
@@ -417,6 +424,7 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 							this.blocked,
 							now,
 							this.deps.agent ?? "claude",
+							account.email,
 						)
 					: undefined;
 				const own = rows.find(
@@ -429,7 +437,7 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 					prefs.resumeAtReset &&
 					own &&
 					own.fetchedAt.getTime() > this.failureAt &&
-					(this.blocked.get(own.accountKey) ??
+					(recoveryBlockedUntil(own, this.blocked) ||
 						recoveryResetAt(undefined, failureAt, this.model)) <= now &&
 					accountQuotaState(own, this.model, now).reason === "ready";
 				const target = other ?? (readyOwn ? own : undefined);
@@ -438,8 +446,7 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 					if (!other && this.activeBackground) {
 						if (this.cancelled || !this.deps.settings().resumeAtReset) break;
 						this.attempts++;
-						this.deps.status({ phase: "idle" });
-						this.child.prompt(CONTINUE);
+						this.continueAfterQuota(this.child);
 						return true;
 					}
 					if (this.abort.signal.aborted) this.abort = new AbortController();
@@ -475,10 +482,6 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 						kind: "session",
 						session: { backgroundTasks: [] },
 					});
-					this.deps.status({
-						phase: "idle",
-						accountLabel: target.email ?? target.sourceLabel,
-					});
 					void this.consume(this.child, {
 						...this.startOptions,
 						modeId: this.mode,
@@ -495,24 +498,13 @@ export class ForkQuotaRecoveryAdapter implements HarnessAdapter {
 						a.credentialKind === "subscription" &&
 						(canSwitch || a.selection === this.selection),
 				);
-				const retryAt = Math.max(
-					...candidates.map((a) => a.retryAt?.getTime() ?? 0),
-					0,
+				const nextCheckAt = nextRecoveryCheckAt(
+					candidates,
+					this.blocked,
+					now,
+					this.model,
 				);
-				const earliest = Math.min(
-					...candidates.map(
-						(a) =>
-							this.blocked.get(a.accountKey) ??
-							recoveryResetAt(a, now, this.model),
-					),
-					candidates.length ? expires : now + 5 * 60_000,
-				);
-				const nextCheckAt = Math.max(
-					now + 5 * 60_000,
-					Math.min(earliest, expires),
-					retryAt,
-				);
-				if (nextCheckAt > expires) break;
+				if (nextCheckAt >= expires) break;
 				this.deps.status({ phase: "waiting", nextCheckAt });
 				this.waitingForQuota = true;
 				try {

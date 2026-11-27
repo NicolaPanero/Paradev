@@ -1,4 +1,3 @@
-import { getAgentModelSupport } from "@superset/shared/agent-models";
 import { useCallback, useEffect, useState } from "react";
 
 function readStoredMap(storageKey: string): Record<string, string> {
@@ -22,16 +21,11 @@ function readStoredMap(storageKey: string): Record<string, string> {
 function readStoredModel(
 	storageKey: string,
 	presetId: string | null,
-	dynamic = false,
 ): string | null {
 	if (!presetId) return null;
 	const stored = readStoredMap(storageKey)[presetId];
 	if (!stored) return null;
-	if (dynamic) return stored;
-	// Drop ids that fell out of the curated registry — "Default" beats a
-	// flag value the CLI no longer accepts.
-	const support = getAgentModelSupport(presetId);
-	return support?.models.some((model) => model.id === stored) ? stored : null;
+	return stored;
 }
 
 /**
@@ -43,15 +37,14 @@ function readStoredModel(
 export function useAgentModelPreference(
 	storageKey: string,
 	presetId: string | null,
-	dynamic = false,
 ) {
 	const [selectedModel, setSelectedModelState] = useState<string | null>(() =>
-		readStoredModel(storageKey, presetId, dynamic),
+		readStoredModel(storageKey, presetId),
 	);
 
 	useEffect(() => {
-		setSelectedModelState(readStoredModel(storageKey, presetId, dynamic));
-	}, [storageKey, presetId, dynamic]);
+		setSelectedModelState(readStoredModel(storageKey, presetId));
+	}, [storageKey, presetId]);
 
 	const setSelectedModel = useCallback(
 		(model: string | null) => {

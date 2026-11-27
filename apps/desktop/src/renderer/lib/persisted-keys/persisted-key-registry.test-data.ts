@@ -165,6 +165,7 @@ export const PERSISTED_KEY_REGISTRY: ReadonlyArray<
 	["src/renderer/stores/chat-turn-snapshots.ts", ["chat-turn-snapshots"]],
 	["src/renderer/stores/paradev-shell.ts", ["paradev-shell"]],
 	["src/renderer/stores/new-workspace-page.ts", ["new-workspace-page"]],
+	["src/renderer/stores/new-workspace-width.ts", ["new-workspace-width"]],
 	[
 		"src/renderer/routes/_authenticated/settings/usage/utils/usageLastSection/usageLastSection.ts",
 		["usage-last-section-v1"],

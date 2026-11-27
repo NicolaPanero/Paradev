@@ -137,6 +137,10 @@ import {
  */
 const LATEST_PROTOCOL_VERSION = 2;
 
+const FAST_CONFIG_ID = "fast";
+const TOGGLE_ON = "on";
+const TOGGLE_OFF = "off";
+
 /** Who `initialize` says we are; v2 requires a name and a version. */
 const CLIENT_INFO = { name: "superset", version: "1.0.0" };
 
@@ -537,6 +541,9 @@ export class AcpAdapter implements HarnessAdapter {
 		},
 	);
 	private configOptions: SessionConfigOption[] = [];
+	private booleanConfigIds = new Set<string>();
+	private unavailableStartModel: string | undefined;
+	private modelSetSinceStart = false;
 	private replaying = false;
 	private agentName: string | null = null;
 	private quietReplay = false;
@@ -618,6 +625,22 @@ export class AcpAdapter implements HarnessAdapter {
 				}),
 			options.backgroundDetailIntervalMs,
 		);
+	}
+
+	async discoverModels(cwd: string): Promise<SessionConfigOption[]> {
+		await this.ensureConnected(cwd);
+		if (!this.client) throw new Error("Agent did not connect");
+		// ACP exposes models on session/new; no prompt or mode change is sent.
+		const response = await this.client.request(
+			"session/new",
+			{ cwd, mcpServers: [] },
+			this.options.startupTimeoutMs ?? STARTUP_TIMEOUT_MS,
+		);
+		const session = acpNewSessionResponseSchema.parse(response);
+		this.sessionId = session.sessionId;
+		this.handleConfigOptions(response);
+		if (this.configOptions.length === 0) await this.awaitStartOptions({});
+		return this.configOptions;
 	}
 
 	start(startOptions: HarnessStartOptions): AsyncIterable<AdapterEvent> {
@@ -907,6 +930,9 @@ export class AcpAdapter implements HarnessAdapter {
 		const sessionId = this.sessionId;
 		if (!client || !sessionId) return Promise.resolve(false);
 		const previous = this.configOptions;
+		const changesModel = previous.some(
+			(option) => option.id === configId && option.category === "model",
+		);
 		const previousModeId =
 			configId === this.modeConfigId ? this.modeId : undefined;
 		this.configOptions = previous.map((option) =>
@@ -916,14 +942,19 @@ export class AcpAdapter implements HarnessAdapter {
 			configOptions: this.configOptions,
 			...(configId === this.modeConfigId ? { modeId: value } : {}),
 		});
+		const isBoolean = this.booleanConfigIds.has(configId);
 		const send = () =>
 			client.request(
 				"session/set_config_option",
 				{
 					sessionId,
 					configId,
-					value,
-					...(this.negotiatedVersion >= 2 ? { type: "id" } : {}),
+					...(isBoolean
+						? { type: "boolean", value: value === TOGGLE_ON }
+						: {
+								value,
+								...(this.negotiatedVersion >= 2 ? { type: "id" } : {}),
+							}),
 				},
 				this.requestTimeoutMs(),
 			);
@@ -937,14 +968,7 @@ export class AcpAdapter implements HarnessAdapter {
 			? this.cursorModels
 			: null;
 		const request = cursorModels
-			? cursorModels.select(
-					configId,
-					value,
-					send,
-					previous.some(
-						(option) => option.id === configId && option.category === "model",
-					),
-				)
+			? cursorModels.select(configId, value, send, changesModel)
 			: send();
 		this.trackSelection(request);
 		request
@@ -970,7 +994,13 @@ export class AcpAdapter implements HarnessAdapter {
 				this.emitNotice("error", error.message);
 			});
 		return request.then(
-			() => true,
+			() => {
+				if (changesModel) {
+					this.unavailableStartModel = undefined;
+					this.modelSetSinceStart = true;
+				}
+				return true;
+			},
 			() => false,
 		);
 	}
@@ -1450,6 +1480,13 @@ export class AcpAdapter implements HarnessAdapter {
 			this.heldTurnId = null;
 			const client = this.client;
 			if (!client || !this.sessionId || this.currentTurn?.id !== turnId) return;
+			if (this.unavailableStartModel) {
+				this.failTurn(turnId, {
+					kind: "model_unavailable",
+					message: this.unavailableStartModel,
+				});
+				return;
+			}
 			this.cursorModels?.assertConfirmed();
 			this.forkLaunchEffort.assertConfirmed();
 			if (v2) this.v2Turn = { id: turnId, inserted: false };
@@ -2433,9 +2470,27 @@ export class AcpAdapter implements HarnessAdapter {
 	private handleConfigOptions(raw: unknown): void {
 		const parsed = acpConfigOptionUpdateSchema.safeParse(raw);
 		if (!parsed.success) return;
+		this.booleanConfigIds = new Set();
 		this.configOptions = parsed.data.configOptions.flatMap((option) => {
 			const id = option.configId ?? option.id;
-			if (!id || (option.type && option.type !== "select")) return [];
+			if (!id) return [];
+			if (option.type === "boolean") {
+				if (id !== FAST_CONFIG_ID) return [];
+				this.booleanConfigIds.add(id);
+				return [
+					{
+						id,
+						label: this.optionLabel(option.name),
+						...(option.category ? { category: option.category } : {}),
+						currentValue: option.currentValue === true ? TOGGLE_ON : TOGGLE_OFF,
+						options: [
+							{ id: TOGGLE_ON, label: "On" },
+							{ id: TOGGLE_OFF, label: "Off" },
+						],
+					},
+				];
+			}
+			if (option.type && option.type !== "select") return [];
 			return [
 				{
 					id,
@@ -2590,6 +2645,14 @@ export class AcpAdapter implements HarnessAdapter {
 				: Object.keys(wanted).length > 0
 					? this.awaitStartOptions(wanted)
 					: Promise.resolve({});
+		this.modelSetSinceStart = false;
+		const confirmed = configured.then((taken) => {
+			if (!this.modelSetSinceStart)
+				this.unavailableStartModel =
+					wanted.modelId && !taken.modelId ? wanted.modelId : undefined;
+			return taken;
+		});
+		this.trackSelection(confirmed);
 		let sessionMode: Promise<string | undefined> = Promise.resolve(
 			this.options.clientApprovalModes && modeId && isClientApprovalMode(modeId)
 				? modeId
@@ -2628,7 +2691,7 @@ export class AcpAdapter implements HarnessAdapter {
 				},
 			),
 		);
-		void Promise.all([configured, sessionMode]).then(([taken, takenMode]) => {
+		void Promise.all([confirmed, sessionMode]).then(([taken, takenMode]) => {
 			if (wanted.effortId && !taken.effortId)
 				console.warn(
 					`[acp] the agent did not take reasoning effort "${wanted.effortId}"; it runs at its default`,

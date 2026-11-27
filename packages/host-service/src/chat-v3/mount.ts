@@ -38,6 +38,7 @@ import { buildChatAgentEnv } from "./agentEnv";
 import type { ChatAgentBridge } from "./chatAgentBridge";
 import { type ClosedMidTurnChat, createClosedMidTurn } from "./closedMidTurn";
 import { pruneSessionEventsOnce } from "./forkJournalCleanup";
+import { quotaRecoveryNeedsManualResume } from "./forkQuotaRecoveryStore";
 import { createGitCheckpoints } from "./gitCheckpoints";
 import { createAttachmentResolver } from "./resolveAttachment";
 import { createResolveCwd } from "./resolveCwd";
@@ -287,7 +288,14 @@ export function createChatV3Mount(options: {
 		resumeClosedMidTurn: () => closedChats.resume(),
 		keepClosedMidTurnPaused: () => closedChats.keepPaused(),
 		recordUnfinished: () => {
-			if (!built || !recordUnfinishedChats(built, markerPath)) {
+			if (
+				!built ||
+				!recordUnfinishedChats(
+					built,
+					markerPath,
+					quotaRecoveryNeedsManualResume,
+				)
+			) {
 				const recorded = recordClosed();
 				console.log(
 					`[chat-v3] shutdown: ${recorded} chat(s) to offer on the next launch`,

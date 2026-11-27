@@ -7,8 +7,9 @@ import { cn } from "@superset/ui/utils";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, CircleHelp, Loader2, Zap } from "lucide-react";
 import { useState } from "react";
-import { ForkAccountResets } from "renderer/components/ForkAccountResets";
+import { useForkAccountResetControls } from "renderer/components/ForkAccountResets";
 import { ForkUsageSummary } from "renderer/components/ForkUsageSummary";
+import { useForkMenuDialog } from "renderer/hooks/useForkMenuDialog";
 import { useAccountUsage } from "../../hooks/useAccountUsage";
 import { UsageProgressRing } from "./components/UsageProgressRing/UsageProgressRing";
 
@@ -25,6 +26,12 @@ export function AccountUsage({ workspaceId, terminalId }: AccountUsageProps) {
 	const sessionKey = `${hostUrl}:${terminalId}:${binding?.startedAt}:${binding?.agentSessionId}`;
 	const open = openSession === sessionKey;
 	const setOpen = (value: boolean) => setOpenSession(value ? sessionKey : null);
+	const resetMenu = useForkMenuDialog();
+	const resets = useForkAccountResetControls({
+		hostUrl,
+		account,
+		active: open,
+	});
 	if (!binding) return null;
 	const percent = tightest ? formatPercent(tightest.usedPercent / 100) : "";
 	const usedLabel = t({ message: `${percent} used` });
@@ -82,59 +89,68 @@ export function AccountUsage({ workspaceId, terminalId }: AccountUsageProps) {
 					</p>
 				</TooltipContent>
 			</Tooltip>
-			<PopoverContent
-				side="bottom"
-				align="end"
-				className="w-80 max-w-[calc(100vw-24px)]"
-				aria-label={title}
-			>
-				<h2 className="text-sm font-medium">{title}</h2>
-				<p className="mt-2 truncate text-xs">
-					{account?.email ?? AGENT_IDENTITY_LABELS[binding.agentId]}
-				</p>
-				{account?.plan && (
-					<p className="text-[11px] text-muted-foreground">{account.plan}</p>
-				)}
-				{status && (
-					<p className="mt-3 text-xs text-muted-foreground">{status}</p>
-				)}
-				{account && (
-					<div className="mt-3">
-						<ForkUsageSummary account={account} />
-						<ForkAccountResets hostUrl={hostUrl} account={account} />
-					</div>
-				)}
-				{account?.credentialKind === "subscription" && (
-					<p className="mt-4 border-t pt-3 text-[11px] text-muted-foreground">
-						<Trans>Shared across sessions using this login.</Trans>
+			{open && (
+				<PopoverContent
+					side="bottom"
+					align="end"
+					className="w-80 max-w-[calc(100vw-24px)]"
+					aria-label={title}
+					onCloseAutoFocus={resetMenu.onCloseAutoFocus}
+				>
+					<h2 className="text-sm font-medium">{title}</h2>
+					<p className="mt-2 truncate text-xs">
+						{account?.email ?? AGENT_IDENTITY_LABELS[binding.agentId]}
 					</p>
-				)}
-				<div className="mt-3 flex items-center justify-between gap-3">
-					<span className="text-[10px] text-muted-foreground">
-						{account &&
-							(() => {
-								const date = formatDate(new Date(account.fetchedAt), {
-									hour: "numeric",
-									minute: "2-digit",
-								});
-								return t({ message: `Updated ${date}` });
-							})()}
-					</span>
-					<Link
-						to="/settings/local-agent-accounts"
-						search={{
-							workspaceId,
-							accountKey: account?.accountKey,
-							agent: binding.agentId,
-						}}
-						onClick={() => setOpen(false)}
-						className="inline-flex items-center gap-1 text-xs hover:underline"
-					>
-						<Trans>View usage</Trans>
-						<ArrowUpRight className="size-3" />
-					</Link>
-				</div>
-			</PopoverContent>
+					{account?.plan && (
+						<p className="text-[11px] text-muted-foreground">{account.plan}</p>
+					)}
+					{status && (
+						<p className="mt-3 text-xs text-muted-foreground">{status}</p>
+					)}
+					{account && (
+						<div className="mt-3">
+							<ForkUsageSummary account={account} />
+							{resets.renderControls({
+								afterClose: (action) => {
+									resetMenu.afterClose(action);
+									setOpen(false);
+								},
+							})}
+						</div>
+					)}
+					{account?.credentialKind === "subscription" && (
+						<p className="mt-4 border-t pt-3 text-[11px] text-muted-foreground">
+							<Trans>Shared across sessions using this login.</Trans>
+						</p>
+					)}
+					<div className="mt-3 flex items-center justify-between gap-3">
+						<span className="text-[10px] text-muted-foreground">
+							{account &&
+								(() => {
+									const date = formatDate(new Date(account.fetchedAt), {
+										hour: "numeric",
+										minute: "2-digit",
+									});
+									return t({ message: `Updated ${date}` });
+								})()}
+						</span>
+						<Link
+							to="/settings/local-agent-accounts"
+							search={{
+								workspaceId,
+								accountKey: account?.accountKey,
+								agent: binding.agentId,
+							}}
+							onClick={() => setOpen(false)}
+							className="inline-flex items-center gap-1 text-xs hover:underline"
+						>
+							<Trans>View usage</Trans>
+							<ArrowUpRight className="size-3" />
+						</Link>
+					</div>
+				</PopoverContent>
+			)}
+			{resets.confirmationDialog}
 		</Popover>
 	);
 }

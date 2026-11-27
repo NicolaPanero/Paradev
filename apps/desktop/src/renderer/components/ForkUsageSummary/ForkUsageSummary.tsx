@@ -29,6 +29,7 @@ export function ForkUsageSummary({
 	compact = false,
 	hideStatus = false,
 	hideUsedLabel = false,
+	hideUpdatedAt = false,
 }: {
 	account?: UsageAccount;
 	model?: string;
@@ -37,6 +38,7 @@ export function ForkUsageSummary({
 	hideStatus?: boolean;
 	/** The surrounding text already says the values are used quota. */
 	hideUsedLabel?: boolean;
+	hideUpdatedAt?: boolean;
 }) {
 	const state = accountQuotaState(account, model, undefined, "display");
 	const shown = account && accountQuotaWithResets(account);
@@ -70,14 +72,15 @@ export function ForkUsageSummary({
 			</span>
 		);
 	}
-	const date = account
-		? formatDate(account.fetchedAt, {
-				month: "short",
-				day: "numeric",
-				hour: "numeric",
-				minute: "2-digit",
-			})
-		: null;
+	const date =
+		account && !hideUpdatedAt
+			? formatDate(account.fetchedAt, {
+					month: "short",
+					day: "numeric",
+					hour: "numeric",
+					minute: "2-digit",
+				})
+			: null;
 	return (
 		<div className="space-y-2 text-xs">
 			{!hideStatus && (
@@ -102,7 +105,7 @@ export function ForkUsageSummary({
 					{formatCurrency(account.extraUsage.limitCents / 100)}
 				</div>
 			)}
-			{account && (
+			{date && (
 				<div className="text-[10px] text-muted-foreground">
 					<Trans>Updated {date}</Trans>
 				</div>

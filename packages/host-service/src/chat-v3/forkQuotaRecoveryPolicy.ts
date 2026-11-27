@@ -5,6 +5,24 @@ import {
 } from "@superset/shared/fork-account-usage";
 import type { UsageAccount } from "../trpc/router/usage/types";
 
+const MIN_RECOVERY_POLL_MS = 5 * 60_000;
+
+export function recoveryEmailKey(email: string | null | undefined) {
+	const normalized = email?.trim().toLowerCase();
+	return normalized ? `email:${normalized}` : undefined;
+}
+
+export function recoveryBlockedUntil(
+	account: UsageAccount,
+	blocked: Map<string, number>,
+) {
+	const emailKey = recoveryEmailKey(account.email);
+	return Math.max(
+		blocked.get(account.accountKey) ?? 0,
+		(emailKey && blocked.get(emailKey)) || 0,
+	);
+}
+
 // Claude SDK's synthetic usage-limit prefixes, accepted only on a failed
 // session/prompt round trip, never from model output or a tool's stderr.
 export function isClaudeQuotaFailure(message: string): boolean {
@@ -26,7 +44,11 @@ export function isAccountQuotaFailure(
 	agent: string,
 	error: Turn["error"],
 ): boolean {
-	if (agent === "claude") return isClaudeQuotaFailure(error?.message ?? "");
+	if (agent === "claude")
+		return (
+			error?.kind === "usage_limit" ||
+			isClaudeQuotaFailure(error?.message ?? "")
+		);
 	if (agent !== "codex") return false;
 	if (error?.providerCode !== undefined)
 		return error.providerCode === "usageLimitExceeded";
@@ -42,6 +64,7 @@ export function suggestedRecoveryAccount(
 	blocked: Map<string, number>,
 	now = Date.now(),
 	agent: "claude" | "codex" = "claude",
+	currentEmail?: string,
 ) {
 	const source = accounts.find(
 		(a) =>
@@ -49,6 +72,7 @@ export function suggestedRecoveryAccount(
 			a.selection === current &&
 			a.credentialKind === "subscription",
 	);
+	const sourceEmail = recoveryEmailKey(currentEmail ?? source?.email);
 	return accounts
 		.filter(
 			(a) =>
@@ -56,8 +80,8 @@ export function suggestedRecoveryAccount(
 				a.selection !== null &&
 				a.selection !== current &&
 				a.credentialKind === "subscription" &&
-				(!source?.email || a.email !== source.email) &&
-				(blocked.get(a.accountKey) ?? 0) <= now &&
+				(!sourceEmail || recoveryEmailKey(a.email) !== sourceEmail) &&
+				recoveryBlockedUntil(a, blocked) <= now &&
 				accountQuotaState(a, model, now).reason === "ready",
 		)
 		.sort(
@@ -78,5 +102,25 @@ export function recoveryResetAt(
 				(w) => w.usedPercent >= 100 && w.resetsAt && w.resetsAt.getTime() > now,
 			)
 			.map((w) => w.resetsAt?.getTime() ?? now) ?? [];
-	return resets.length ? Math.max(...resets) : now + 5 * 60_000;
+	return resets.length ? Math.max(...resets) : now + MIN_RECOVERY_POLL_MS;
+}
+
+export function nextRecoveryCheckAt(
+	accounts: UsageAccount[],
+	blocked: Map<string, number>,
+	now: number,
+	model: string | undefined,
+) {
+	const earliest = now + MIN_RECOVERY_POLL_MS;
+	if (!accounts.length) return earliest;
+	return Math.min(
+		...accounts.map((account) =>
+			Math.max(
+				earliest,
+				recoveryBlockedUntil(account, blocked) ||
+					recoveryResetAt(account, now, model),
+				account.retryAt?.getTime() || 0,
+			),
+		),
+	);
 }

@@ -29,6 +29,7 @@ export function useChangeset({
 					workspaceId,
 					commitHash: ref.commitHash,
 					fromHash: ref.fromHash,
+					includeFrom: ref.includeFrom,
 				}
 			: { workspaceId, commitHash: "" },
 		{
@@ -51,6 +52,7 @@ export function useChangeset({
 					kind: "commit",
 					commitHash: ref.commitHash,
 					fromHash: ref.fromHash,
+					includeFrom: ref.includeFrom,
 				},
 			}));
 		}

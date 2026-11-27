@@ -77,7 +77,10 @@ export function ForkMcpServerStatus({
 						className="min-w-0 truncate text-destructive"
 						title={result.message}
 					>
-						{reasons[result.reason]} · {result.message}
+						{result.httpStatus === 403
+							? t({ message: "Access denied" })
+							: reasons[result.reason]}{" "}
+						· {result.message}
 					</span>
 				)}
 				<button

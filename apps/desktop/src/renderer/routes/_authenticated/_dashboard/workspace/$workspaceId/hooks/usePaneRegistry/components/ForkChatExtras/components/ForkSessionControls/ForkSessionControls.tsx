@@ -12,7 +12,7 @@ import { toast } from "@superset/ui/sonner";
 import { useEffect, useRef, useState } from "react";
 import { LuCopy, LuRepeat2 } from "react-icons/lu";
 import { ForkAccountPicker } from "renderer/components/ForkAccountPicker";
-import { ForkAccountResets } from "renderer/components/ForkAccountResets";
+import { useForkAccountResetControls } from "renderer/components/ForkAccountResets";
 import { useWorkspaceHostUrl } from "renderer/hooks/host-service/useWorkspaceHostUrl";
 import { useAgentConfigs } from "renderer/hooks/useAgentConfigs";
 import type { PaneViewerData, TerminalPaneData } from "../../../../../../types";
@@ -108,6 +108,13 @@ export function ForkSessionControls({
 	const usage = account.quota.data?.find(
 		(row) => row.agent === provider && row.selection === account.selection,
 	);
+	const resets = useForkAccountResetControls({
+		hostUrl: account.hostUrl,
+		account: usage,
+		active: account.pickerOpen,
+		hideEmail: true,
+		quiet: true,
+	});
 	// A Claude chat resumed from another agent's transcript (switch, account
 	// change, automatic continuation) reports that agent's model; select Default.
 	const resetTried = useRef(new Set<string>());
@@ -142,7 +149,7 @@ export function ForkSessionControls({
 
 	const sessionId = data.agent?.sessionId;
 	const recovers = provider === "claude" || provider === "codex";
-	const extraItems = (
+	const extraItems = (afterClose: (action: () => void) => void) => (
 		<>
 			{recovers && (
 				<DropdownMenuSub>
@@ -162,16 +169,7 @@ export function ForkSessionControls({
 					</DropdownMenuPortal>
 				</DropdownMenuSub>
 			)}
-			{usage && (
-				<div className="px-2 py-1 text-xs">
-					<ForkAccountResets
-						hostUrl={account.hostUrl}
-						account={usage}
-						hideEmail
-						quiet
-					/>
-				</div>
-			)}
+			{resets.renderControls({ afterClose, menu: true })}
 			{sessionId && (
 				<DropdownMenuItem
 					onSelect={() =>
@@ -191,6 +189,7 @@ export function ForkSessionControls({
 		<>
 			<ForkSessionModelPicker
 				hostUrl={hostUrl}
+				accountSelection={account.selection}
 				workspaceId={workspaceId}
 				configs={configs}
 				data={data}
@@ -206,6 +205,7 @@ export function ForkSessionControls({
 				compact
 				extraItems={extraItems}
 			/>
+			{resets.confirmationDialog}
 			<ForkAccountStopConfirm
 				accountName={stopAccountName}
 				switching={accountSwitcher?.switching === true}

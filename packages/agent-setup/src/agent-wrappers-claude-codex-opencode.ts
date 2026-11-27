@@ -368,7 +368,7 @@ export function createOpenCodePlugin(): void {
 	const notifyPath = getNotifyScriptPath();
 	const content = getOpenCodePluginContent(notifyPath);
 	const changed = writeFileIfChanged(pluginPath, content, 0o644);
-	console.log(
+	(changed ? console.log : console.debug)(
 		`[agent-setup] ${changed ? "Updated" : "Verified"} OpenCode plugin`,
 	);
 }
@@ -381,7 +381,7 @@ export function createOpenCodeTuiPlugin(): void {
 		content,
 		0o644,
 	);
-	console.log(
+	(changed ? console.log : console.debug)(
 		`[agent-setup] ${changed ? "Updated" : "Verified"} OpenCode TUI plugin`,
 	);
 }

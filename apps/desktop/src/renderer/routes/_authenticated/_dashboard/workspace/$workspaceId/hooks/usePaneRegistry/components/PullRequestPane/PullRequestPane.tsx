@@ -25,6 +25,7 @@ import {
 	type PullRequestTarget,
 } from "renderer/routes/_authenticated/_dashboard/pull-requests/utils/pullRequestClient";
 import { useWorkspace } from "renderer/routes/_authenticated/_dashboard/workspace/providers/WorkspaceProvider";
+import { useForkProFeatures } from "renderer/stores/fork-cli-options";
 import { normalizeThreadsToComments } from "../../../../components/CommentsSection/utils/normalizeThreadsToComments";
 import type { PagePaneData, PullRequestPaneData } from "../../../../types";
 import { useOpenStackLayer } from "../../../useOpenStackLayer";
@@ -97,8 +98,9 @@ export function PullRequestPane({
 		? pullRequestRefFromUrl(linkedPR.data.url)
 		: null;
 	const isLinkedPR = linkedRef !== null && isSamePullRequest(linkedRef, data);
+	const showProFeatures = useForkProFeatures();
 	const evidence = usePullRequestEvidence(
-		detail.data?.body,
+		showProFeatures ? detail.data?.body : undefined,
 		activeTab === "summary" && isTabVisible,
 	);
 	const showEvidence =

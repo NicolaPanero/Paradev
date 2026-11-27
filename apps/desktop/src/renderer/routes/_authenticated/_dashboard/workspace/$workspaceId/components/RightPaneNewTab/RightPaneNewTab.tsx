@@ -12,6 +12,8 @@ import { useDefaultBrowserUrl } from "../../hooks/useDefaultBrowserUrl";
 import { useNewTabLists } from "../../hooks/useNewTabLists";
 import { useTerminalLauncher } from "../../hooks/useTerminalLauncher";
 import type { PaneViewerData } from "../../types";
+import { forkTerminalPaneData } from "../../utils/fork-terminal-folder-pane";
+import { useForkTerminalFolder } from "../ForkTerminalFolderProvider";
 import { NewTabPagesSection } from "./components/NewTabPagesSection";
 import { NewTabPullRequestsSection } from "./components/NewTabPullRequestsSection";
 import { createRightPane, getRightPaneOptions } from "./paneOptions";
@@ -27,6 +29,7 @@ export function RightPaneNewTab({ onOpen }: RightPaneNewTabProps) {
 	const isMobilePaneEnabled =
 		useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_PANE) === true;
 	const launcher = useTerminalLauncher();
+	const chooseTerminalFolder = useForkTerminalFolder();
 	const browserUrl = useDefaultBrowserUrl();
 	const { pages, pullRequests } = useNewTabLists(workspace.id);
 	const showPages = useForkProFeatures();
@@ -55,14 +58,23 @@ export function RightPaneNewTab({ onOpen }: RightPaneNewTabProps) {
 									option.hotkeyId ? (hotkeyKeys[option.hotkeyId] ?? []) : []
 								}
 								className="h-auto min-h-9 min-w-0 flex-wrap gap-y-1 bg-muted/40 py-1.5 hover:bg-accent/60 [&>span:first-child]:min-w-0 [&>span:first-child]:max-w-full [&>span:first-child>span:last-child]:whitespace-normal [&>span:first-child>span:last-child]:break-words [&>span:last-child]:ml-auto"
-								onClick={() =>
+								onClick={() => {
+									if (option.kind === "terminal") {
+										void chooseTerminalFolder(async (cwd) =>
+											onOpen({
+												kind: "terminal",
+												data: await forkTerminalPaneData(launcher, cwd),
+											}),
+										);
+										return;
+									}
 									onOpen(
 										createRightPane(option.kind, {
 											mintTerminalId: launcher.mint,
 											browserUrl,
 										}),
-									)
-								}
+									);
+								}}
 							/>
 						))}
 					</div>
