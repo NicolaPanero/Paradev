@@ -4868,6 +4868,9 @@ msgstr "Wybierz, kiedy Paradev ma Cię powiadamiać."
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Wybierz, gdzie otwierać agentów uruchamianych z komentarzy, trybu projektowania i Pages."
 
+msgid "Choose where new terminals start in multi-folder workspaces."
+msgstr "Wybierz folder startowy nowych terminali w obszarach roboczych z wieloma folderami."
+
 msgid "Choose your default skin tone"
 msgstr "Wybierz domyślny odcień skóry"
 
@@ -23570,9 +23573,6 @@ msgstr "Zaktualizowane w ciągu ostatnich {days} dni."
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "Przed chwilą zaktualizowano z {0}."
-
-msgid "Updated to Paradev 2.0.12."
-msgstr "Zaktualizowano do Paradev 2.0.12."
 
 msgid "Updates"
 msgstr "Aktualizacje"

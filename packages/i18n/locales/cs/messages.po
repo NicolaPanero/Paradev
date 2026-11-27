@@ -4868,6 +4868,9 @@ msgstr "Zvolte, kdy vás Paradev upozorní."
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Vyberte, kde se otevřou agenti spuštění z komentářů, režimu návrhu a stránek Pages."
 
+msgid "Choose where new terminals start in multi-folder workspaces."
+msgstr "Vyberte, kde se otevřou nové terminály v pracovních prostorech s více složkami."
+
 msgid "Choose your default skin tone"
 msgstr "Vyberte výchozí odstín pleti"
 
@@ -23570,9 +23573,6 @@ msgstr "Aktualizováno za posledních {days} dní."
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "Právě aktualizováno z {0}."
-
-msgid "Updated to Paradev 2.0.12."
-msgstr "Aktualizováno na Paradev 2.0.12."
 
 msgid "Updates"
 msgstr "Aktualizace"

@@ -4868,6 +4868,9 @@ msgstr "Paradev가 언제 알릴지 선택하세요."
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "댓글, 디자인 모드 및 Pages에서 시작한 에이전트를 열 위치를 선택하세요."
 
+msgid "Choose where new terminals start in multi-folder workspaces."
+msgstr "폴더가 여러 개인 워크스페이스에서 새 터미널을 시작할 폴더를 선택하세요."
+
 msgid "Choose your default skin tone"
 msgstr "기본 피부색 선택"
 
@@ -23570,9 +23573,6 @@ msgstr "최근 {days}일 동안 업데이트됨."
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "방금 {0}에서 업데이트되었습니다."
-
-msgid "Updated to Paradev 2.0.12."
-msgstr "Paradev 2.0.12로 업데이트했습니다."
 
 msgid "Updates"
 msgstr "업데이트"

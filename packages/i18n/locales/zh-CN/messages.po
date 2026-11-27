@@ -4868,6 +4868,9 @@ msgstr "选择Paradev在什么时候通知你。"
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "选择从评论、设计模式和 Pages 启动的智能体的打开位置。"
 
+msgid "Choose where new terminals start in multi-folder workspaces."
+msgstr "在包含多个文件夹的工作区中选择新终端的起始文件夹。"
+
 msgid "Choose your default skin tone"
 msgstr "选择默认肤色"
 
@@ -23570,9 +23573,6 @@ msgstr "最近 {days} 天内更新。"
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "刚刚从 {0} 更新。"
-
-msgid "Updated to Paradev 2.0.12."
-msgstr "已更新至 Paradev 2.0.12。"
 
 msgid "Updates"
 msgstr "更新"

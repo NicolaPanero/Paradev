@@ -4868,6 +4868,9 @@ msgstr "Paradevから通知するタイミングを選びます。"
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "コメント、デザインモード、Pages から起動したエージェントを開く場所を選択します。"
 
+msgid "Choose where new terminals start in multi-folder workspaces."
+msgstr "複数のフォルダーがあるワークスペースで、新しいターミナルの開始場所を選べます。"
+
 msgid "Choose your default skin tone"
 msgstr "デフォルトの肌の色を選択"
 
@@ -23570,9 +23573,6 @@ msgstr "過去{days}日間に更新。"
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "{0}からたった今更新しました。"
-
-msgid "Updated to Paradev 2.0.12."
-msgstr "Paradev 2.0.12 に更新しました。"
 
 msgid "Updates"
 msgstr "アップデート"

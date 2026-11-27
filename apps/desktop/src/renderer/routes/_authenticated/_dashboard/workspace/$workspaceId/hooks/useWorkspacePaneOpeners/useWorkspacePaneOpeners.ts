@@ -7,6 +7,7 @@ import { useCollections } from "renderer/routes/_authenticated/providers/Collect
 import type { TerminalPresetRow } from "renderer/routes/_authenticated/providers/CollectionsProvider/dashboardSidebarLocal";
 import { useSettings } from "renderer/stores/settings";
 import type { StoreApi } from "zustand/vanilla";
+import { useForkTerminalTabOpener } from "../../components/ForkTerminalFolderProvider";
 import type {
 	BrowserPaneData,
 	CommentPaneData,
@@ -16,8 +17,11 @@ import type {
 	PagePaneData,
 	PaneTarget,
 	PaneViewerData,
-	TerminalPaneData,
 } from "../../types";
+import {
+	forkTerminalPaneData,
+	type OpenTerminalTab,
+} from "../../utils/fork-terminal-folder-pane";
 import {
 	closeVisibleChangesPane,
 	openChangesPaneInStore,
@@ -45,7 +49,7 @@ export function useWorkspacePaneOpeners({
 	newTabPresets: TerminalPresetRow[];
 	executePreset: (
 		preset: TerminalPresetRow,
-		options?: { target?: "new-tab" | "active-tab" },
+		options?: { target?: "new-tab" | "active-tab"; cwd?: string },
 	) => void | Promise<void>;
 	setRightSidebarOpen: UserPreferencesApi["setRightSidebarOpen"];
 }): {
@@ -58,7 +62,7 @@ export function useWorkspacePaneOpeners({
 		filter?: DiffPaneFilter,
 		repoKey?: string,
 	) => void;
-	addTerminalTab: () => Promise<void>;
+	addTerminalTab: OpenTerminalTab;
 	addBrowserTab: () => void;
 	openChangesPane: () => void;
 	/** Close the visible Changes pane, or open/focus one when none is showing. */
@@ -144,32 +148,37 @@ export function useWorkspacePaneOpeners({
 		[viewer],
 	);
 
-	const addBlankTerminalTab = useCallback(() => {
-		store.getState().addTab({
-			panes: [
-				{
-					kind: "terminal",
-					data: {
-						terminalId: launcher.mint(),
-						createOnAttach: true,
-					} as TerminalPaneData,
-				},
-			],
-		});
-	}, [store, launcher]);
+	const addBlankTerminalTab = useCallback(
+		async (cwd?: string) => {
+			const data = await forkTerminalPaneData(launcher, cwd);
+			store.getState().addTab({
+				panes: [
+					{
+						kind: "terminal",
+						data,
+					},
+				],
+			});
+		},
+		[store, launcher],
+	);
 
-	const addTerminalTab = useCallback(async () => {
-		if (newTabPresets.length === 0) {
-			addBlankTerminalTab();
-			return;
-		}
+	const openTerminalTab = useCallback(
+		async (cwd?: string) => {
+			if (newTabPresets.length === 0) {
+				await addBlankTerminalTab(cwd);
+				return;
+			}
 
-		// New terminal tabs are the trigger point for applyOnNewTab presets.
-		// Each matching preset owns the tab/pane shape it creates.
-		for (const preset of newTabPresets) {
-			await executePreset(preset, { target: "new-tab" });
-		}
-	}, [addBlankTerminalTab, executePreset, newTabPresets]);
+			// New terminal tabs are the trigger point for applyOnNewTab presets.
+			// Each matching preset owns the tab/pane shape it creates.
+			for (const preset of newTabPresets) {
+				await executePreset(preset, { target: "new-tab", cwd });
+			}
+		},
+		[addBlankTerminalTab, executePreset, newTabPresets],
+	);
+	const addTerminalTab = useForkTerminalTabOpener(openTerminalTab);
 
 	const defaultBrowserUrl = useDefaultBrowserUrl();
 	const addBrowserTab = useCallback(() => {

@@ -4868,6 +4868,9 @@ msgstr "Wähle, wann Paradev dich anstupst."
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Wähle, wo aus Kommentaren, dem Designmodus und Pages gestartete Agenten geöffnet werden."
 
+msgid "Choose where new terminals start in multi-folder workspaces."
+msgstr "Wähle den Startordner für neue Terminals in Arbeitsbereichen mit mehreren Ordnern."
+
 msgid "Choose your default skin tone"
 msgstr "Standard-Hautton wählen"
 
@@ -23570,9 +23573,6 @@ msgstr "In den letzten {days} Tagen aktualisiert."
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "Gerade eben von {0} aktualisiert."
-
-msgid "Updated to Paradev 2.0.12."
-msgstr "Auf Paradev 2.0.12 aktualisiert."
 
 msgid "Updates"
 msgstr "Updates"

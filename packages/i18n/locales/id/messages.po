@@ -4868,6 +4868,9 @@ msgstr "Pilih kapan Paradev memberi tahu Anda."
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Pilih tempat membuka agen yang dimulai dari komentar, mode desain, dan Pages."
 
+msgid "Choose where new terminals start in multi-folder workspaces."
+msgstr "Pilih folder awal terminal baru di ruang kerja dengan beberapa folder."
+
 msgid "Choose your default skin tone"
 msgstr "Pilih warna kulit default"
 
@@ -23570,9 +23573,6 @@ msgstr "Diperbarui dalam {days} hari terakhir."
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "Baru saja diperbarui dari {0}."
-
-msgid "Updated to Paradev 2.0.12."
-msgstr "Diperbarui ke Paradev 2.0.12."
 
 msgid "Updates"
 msgstr "Pembaruan"

@@ -25,6 +25,10 @@ import {
 	type TerminalPaneData,
 } from "../../types";
 import { cycleActiveTab } from "../../utils/cycleActiveTab";
+import {
+	forkTerminalTabReplacement,
+	type OpenTerminalTab,
+} from "../../utils/fork-terminal-folder-pane";
 import { replaceNewTabPane } from "../../utils/replaceNewTabPane";
 import { useDefaultBrowserUrl } from "../useDefaultBrowserUrl";
 import type { TerminalLauncher } from "../useTerminalLauncher";
@@ -46,7 +50,7 @@ export function useWorkspaceHotkeys({
 	viewer: PaneTarget;
 	matchedPresets: TerminalPresetRow[];
 	executePreset: (preset: TerminalPresetRow) => void | Promise<void>;
-	addTerminalTab: () => Promise<void>;
+	addTerminalTab: OpenTerminalTab;
 	openChangesPane: () => void;
 	paneRegistry: PaneRegistry<PaneViewerData>;
 	launcher: TerminalLauncher;
@@ -80,10 +84,11 @@ export function useWorkspaceHotkeys({
 		return true;
 	};
 
-	useHotkey("NEW_GROUP", async () => {
-		if (replaceFocusedNewTab("terminal")) return;
-		await addTerminalTab();
-	});
+	useHotkey("NEW_GROUP", () =>
+		addTerminalTab(
+			forkTerminalTabReplacement(getCloseTarget().store, launcher),
+		),
+	);
 
 	useHotkey("NEW_BROWSER", () => {
 		if (replaceFocusedNewTab("browser")) return;

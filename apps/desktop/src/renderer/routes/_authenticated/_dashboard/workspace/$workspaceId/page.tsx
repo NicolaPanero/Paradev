@@ -40,6 +40,7 @@ import { useWorkspace } from "../providers/WorkspaceProvider";
 import { AddTabMenu } from "./components/AddTabMenu";
 import { ChangesControl } from "./components/ChangesControl";
 import { CloudWorkspaceTabBarControls } from "./components/CloudWorkspaceTabBarControls";
+import { ForkTerminalFolderProvider } from "./components/ForkTerminalFolderProvider";
 import { ForkWorkspaceAgentActions } from "./components/ForkWorkspaceAgentActions";
 import { useForkWorkspaceChatActions } from "./components/ForkWorkspaceAgentActions/hooks/useForkWorkspaceChatActions";
 import { HostConnectionPill } from "./components/HostConnectionPill";
@@ -206,7 +207,11 @@ function WorkspacePage() {
 		);
 	}
 
-	return <WorkspaceContent />;
+	return (
+		<ForkTerminalFolderProvider key={workspace.id}>
+			<WorkspaceContent />
+		</ForkTerminalFolderProvider>
+	);
 }
 
 function WorkspaceContent() {
@@ -910,7 +915,7 @@ function WorkspaceContent() {
 													onOpenChanges={openChanges}
 													onOpenChat={addChatTab}
 													onOpenQuickOpen={handleQuickOpen}
-													onOpenTerminal={addTerminalTab}
+													onOpenTerminal={() => void addTerminalTab()}
 												/>
 											) : (
 												// Not null: Workspace shows "No tabs open" for null.

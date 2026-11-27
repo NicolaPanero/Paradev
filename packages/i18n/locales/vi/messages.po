@@ -4868,6 +4868,9 @@ msgstr "Chọn khi nào Paradev báo cho bạn."
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Chọn nơi mở tác nhân được khởi chạy từ bình luận, chế độ thiết kế và Pages."
 
+msgid "Choose where new terminals start in multi-folder workspaces."
+msgstr "Chọn thư mục bắt đầu cho cửa sổ dòng lệnh mới trong không gian làm việc có nhiều thư mục."
+
 msgid "Choose your default skin tone"
 msgstr "Chọn màu da mặc định"
 
@@ -23570,9 +23573,6 @@ msgstr "Được cập nhật trong {days} ngày qua."
 #. placeholder {0}: previousVersion ?? "?"
 msgid "Updated just now from {0}."
 msgstr "Vừa cập nhật từ {0}."
-
-msgid "Updated to Paradev 2.0.12."
-msgstr "Đã cập nhật lên Paradev 2.0.12."
 
 msgid "Updates"
 msgstr "Cập nhật"

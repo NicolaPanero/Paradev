@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-2-0-12-fork-agent-controls-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-2-0-12-fork-terminal-folders-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -37,7 +37,9 @@ export function ForkWhatsNewNotice() {
 		t({ message: "Choose the context window offered by your Cursor model." }),
 		t({ message: "See usage and reset times for each subscription account." }),
 		t({ message: "Resume linked Grok sessions with native handoff." }),
-		t({ message: "Updated to Paradev 2.0.12." }),
+		t({
+			message: "Choose where new terminals start in multi-folder workspaces.",
+		}),
 	];
 	const notice: DesktopNotice = {
 		id: `fork-whats-new:${FORK_WHATS_NEW_ID}`,
