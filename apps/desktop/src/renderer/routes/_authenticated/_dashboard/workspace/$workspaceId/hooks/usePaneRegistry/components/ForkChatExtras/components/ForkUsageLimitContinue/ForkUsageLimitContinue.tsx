@@ -30,11 +30,13 @@ export function ForkUsageLimitContinue({
 	terminalId,
 	agent,
 	onRespond,
+	allowRuntimeTimer = true,
 }: {
 	workspaceId: string;
 	terminalId: string | undefined;
 	agent: string;
 	onRespond: (action: UsageLimitAction) => void;
+	allowRuntimeTimer?: boolean;
 }) {
 	const { t } = useLingui();
 	const recovery = useForkQuotaRecovery({
@@ -43,11 +45,13 @@ export function ForkUsageLimitContinue({
 		enabled: !!terminalId,
 		agent,
 	});
-	const { mode, offered, state, choices, choose, save } = recovery;
-	if (!terminalId || !offered)
+	const { mode, offered, state, choices, choose, save, query } = recovery;
+	if (!terminalId || !offered) {
+		if (!allowRuntimeTimer) return null;
 		return (
 			<button
 				className={PILL_TRIGGER_CLASS}
+				disabled={query.isLoading}
 				onClick={() => onRespond("resume_at_reset")}
 				title={t({ message: "Continue this chat once the limit resets" })}
 				type="button"
@@ -56,6 +60,7 @@ export function ForkUsageLimitContinue({
 				<Trans>Resume at reset</Trans>
 			</button>
 		);
+	}
 	const label =
 		state?.phase === "switching" ? (
 			<Trans>Continuing on {state.accountLabel}…</Trans>
@@ -65,8 +70,10 @@ export function ForkUsageLimitContinue({
 			<Trans>Switch account</Trans>
 		) : mode === "both" ? (
 			<Trans>Switch, or wait</Trans>
-		) : (
+		) : allowRuntimeTimer ? (
 			<Trans>Resume at reset</Trans>
+		) : (
+			<Trans>Automatic continuation</Trans>
 		);
 	return (
 		<DropdownMenu>

@@ -17,6 +17,18 @@ export const recoveryControllers = new Map<
 >();
 export const recoveryKey = (workspaceId: string, terminalId: string) =>
 	`${workspaceId}:${terminalId}`;
+
+export function quotaRecoveryNeedsManualResume(session: {
+	scopeId: string;
+	terminalId?: string;
+}): boolean {
+	if (!session.terminalId) return false;
+	const phase = recoveryControllers.get(
+		recoveryKey(session.scopeId, session.terminalId),
+	)?.status.phase;
+	return phase === "waiting" || phase === "switching";
+}
+
 export function readRecovery(
 	db: HostDb,
 	workspaceId: string,

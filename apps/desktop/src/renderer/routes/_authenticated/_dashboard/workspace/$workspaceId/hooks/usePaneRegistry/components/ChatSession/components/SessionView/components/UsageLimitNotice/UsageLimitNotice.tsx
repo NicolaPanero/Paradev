@@ -129,6 +129,15 @@ export function UsageLimitNotice({
 	]
 		.filter((part): part is string => Boolean(part))
 		.join(" · ");
+	const forkContinuation = fork && agent && !limit.resumeAtReset && (
+		<ForkUsageLimitContinue
+			agent={agent}
+			allowRuntimeTimer={waiting}
+			onRespond={onRespond}
+			terminalId={fork.terminalId}
+			workspaceId={fork.workspaceId}
+		/>
+	);
 
 	return (
 		<div
@@ -179,13 +188,8 @@ export function UsageLimitNotice({
 						<Play className="size-3.5" />
 						<Trans>Resume</Trans>
 					</button>
-				) : fork && agent ? (
-					<ForkUsageLimitContinue
-						agent={agent}
-						onRespond={onRespond}
-						terminalId={fork.terminalId}
-						workspaceId={fork.workspaceId}
-					/>
+				) : forkContinuation ? (
+					forkContinuation
 				) : limit.resumeAtReset ? (
 					<button
 						className={cn(PILL_TRIGGER_CLASS, ARMED_CLASS)}
@@ -207,6 +211,7 @@ export function UsageLimitNotice({
 						<Trans>Resume at reset</Trans>
 					</button>
 				)}
+				{!waiting && !resuming && forkContinuation}
 				<button
 					aria-label={t({ message: "Dismiss the usage limit notice" })}
 					className={cn(PILL_TRIGGER_CLASS, "px-1.5")}

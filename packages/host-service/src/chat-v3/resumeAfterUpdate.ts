@@ -10,7 +10,7 @@ import {
 	withoutWaitingContinues,
 } from "@superset/chat/core";
 import { userContentSchema } from "@superset/chat/protocol";
-import type { ChatRuntime } from "@superset/chat-runtime";
+import type { ChatRuntime, UnfinishedSession } from "@superset/chat-runtime";
 import { z } from "zod";
 
 export const RESUME_MARKER_MAX_AGE_MS = 30 * 60_000;
@@ -31,20 +31,27 @@ const sessionSchema = z.object({
 const markerSchema = z.object({
 	requestedAt: z.number(),
 	sessions: z.array(z.unknown()).optional(),
+	offerOnlySessionIds: z.array(z.string()).optional(),
 });
 
 export function recordUnfinishedChats(
 	runtime: ChatRuntime,
 	markerPath: string,
+	needsManualResume?: (session: UnfinishedSession) => boolean,
 ): boolean {
 	if (!existsSync(markerPath)) return false;
 	const marker = markerSchema.safeParse(readMarker(markerPath));
 	const pending = `${markerPath}.${process.pid}.tmp`;
+	const sessions = runtime.live.unfinished();
+	const offerOnlySessionIds = needsManualResume
+		? sessions.filter(needsManualResume).map((session) => session.sessionId)
+		: [];
 	writeFileSync(
 		pending,
 		JSON.stringify({
 			requestedAt: marker.success ? marker.data.requestedAt : Date.now(),
-			sessions: runtime.live.unfinished(),
+			sessions,
+			...(offerOnlySessionIds.length ? { offerOnlySessionIds } : {}),
 		}),
 	);
 	renameSync(pending, markerPath);
@@ -83,12 +90,16 @@ export function resumeUnfinishedChats(options: {
 	if (age > RESUME_MARKER_MAX_AGE_MS) return { resumed: 0, offer: sessions };
 
 	const runtime = options.runtime();
+	const offerOnly = new Set(marker.data.offerOnlySessionIds);
 	const offer: ClosedChat[] = [];
 	let resumed = 0;
 	for (const chat of sessions) {
 		const { sessionId: _sessionId, interrupted, prompts, ...session } = chat;
 		if (!runtime.live.supports(session.harness)) continue;
-		if (options.keepsAccount && !options.keepsAccount(chat.sessionId)) {
+		if (
+			offerOnly.has(chat.sessionId) ||
+			(options.keepsAccount && !options.keepsAccount(chat.sessionId))
+		) {
 			offer.push(chat);
 			continue;
 		}
