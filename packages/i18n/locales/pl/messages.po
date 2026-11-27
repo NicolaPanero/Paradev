@@ -3201,6 +3201,9 @@ msgstr "Menu aplikacji"
 msgid "Applications"
 msgstr "Aplikacje"
 
+msgid "Applies at the next agent launch."
+msgstr "Zacznie obowiązywać przy następnym uruchomieniu agenta."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Co noc wprowadza bezpieczne aktualizacje zależności i wypisuje resztę."
 
@@ -3550,6 +3553,9 @@ msgstr "Automatyczne zapisywanie"
 
 msgid "Auto top-up"
 msgstr "Automatyczne doładowanie"
+
+msgid "Auto-compact"
+msgstr "Automatyczna kompakcja"
 
 msgid "Auto-run on new tab"
 msgstr "Uruchamiaj automatycznie w nowej karcie"
@@ -4787,6 +4793,9 @@ msgstr "Wybierz"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Wybierz tylko jeden checkout każdego repozytorium Git w projekcie."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Wybierz rozmiar okna kontekstu spośród opcji swojego modelu Cursor."
 
 msgid "Choose the model"
 msgstr "Wybierz model"
@@ -6470,6 +6479,9 @@ msgstr "Nie udało się wznowić"
 
 msgid "Could not resume the chat"
 msgstr "Nie udało się wznowić czatu"
+
+msgid "Could not save auto-compact."
+msgstr "Nie udało się zapisać ustawienia automatycznej kompakcji."
 
 msgid "Could not save the change."
 msgstr "Nie udało się zapisać zmiany."
@@ -17785,6 +17797,9 @@ msgstr "Zarezerwowany przez system"
 msgid "Reserved by terminal"
 msgstr "Zarezerwowany przez terminal"
 
+msgid "Reserved tokens"
+msgstr "Zarezerwowane tokeny"
+
 msgid "Reset"
 msgstr "Zresetuj"
 
@@ -17987,6 +18002,9 @@ msgstr "Przywróć plan"
 
 msgid "restore the agent defaults"
 msgstr "przywrócić domyślnych ustawień agenta"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Przywróć jednym kliknięciem ustawienie automatycznej kompakcji skonfigurowane w agencie."
 
 msgid "Restore this automation to run it"
 msgstr "Przywróć tę automatyzację, aby ją uruchomić"
@@ -19375,6 +19393,9 @@ msgstr "Ustaw projekt…"
 
 msgid "Set Run"
 msgstr "Ustaw uruchamianie"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Ustaw próg automatycznej kompakcji we wspólnym selektorze agentów."
 
 msgid "Set this project"
 msgstr "Ustaw ten projekt"
@@ -22465,6 +22486,12 @@ msgstr "Trzy kroki · dotyka packages/ui i apps/desktop"
 
 msgid "Threshold"
 msgstr "Próg"
+
+msgid "Threshold (%)"
+msgstr "Próg (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Próg (tokeny)"
 
 msgid "Thu"
 msgstr "Czw"

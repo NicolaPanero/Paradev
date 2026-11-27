@@ -3201,6 +3201,9 @@ msgstr "Toepassingsmenu"
 msgid "Applications"
 msgstr "Programma's"
 
+msgid "Applies at the next agent launch."
+msgstr "Wordt toegepast wanneer de agent opnieuw start."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Voert elke nacht de veilige dependency-updates door en zet de rest op een rij."
 
@@ -3550,6 +3553,9 @@ msgstr "Automatisch opslaan"
 
 msgid "Auto top-up"
 msgstr "Automatisch bijkopen"
+
+msgid "Auto-compact"
+msgstr "Automatisch comprimeren"
 
 msgid "Auto-run on new tab"
 msgstr "Automatisch uitvoeren bij nieuw tabblad"
@@ -4787,6 +4793,9 @@ msgstr "Kies er een"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Kies per project slechts één checkout van elke Git-repository."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Kies een contextvenster uit de opties van je Cursor-model."
 
 msgid "Choose the model"
 msgstr "Model kiezen"
@@ -6470,6 +6479,9 @@ msgstr "Kan niet hervatten"
 
 msgid "Could not resume the chat"
 msgstr "Kan de chat niet hervatten"
+
+msgid "Could not save auto-compact."
+msgstr "De instelling voor automatisch comprimeren kon niet worden opgeslagen."
 
 msgid "Could not save the change."
 msgstr "De wijziging kon niet worden opgeslagen."
@@ -17785,6 +17797,9 @@ msgstr "Gereserveerd door het OS"
 msgid "Reserved by terminal"
 msgstr "Gereserveerd door de terminal"
 
+msgid "Reserved tokens"
+msgstr "Gereserveerde tokens"
+
 msgid "Reset"
 msgstr "Resetten"
 
@@ -17987,6 +18002,9 @@ msgstr "Plan herstellen"
 
 msgid "restore the agent defaults"
 msgstr "de standaardwaarden van de agent herstellen"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Herstel met één klik de ingestelde compressievoorkeur van de agent."
 
 msgid "Restore this automation to run it"
 msgstr "Herstel deze automatisering om haar uit te voeren"
@@ -19375,6 +19393,9 @@ msgstr "Project instellen…"
 
 msgid "Set Run"
 msgstr "Run instellen"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Stel de drempel voor automatisch comprimeren in via de gedeelde agentkiezer."
 
 msgid "Set this project"
 msgstr "Dit project instellen"
@@ -22465,6 +22486,12 @@ msgstr "Drie stappen · raakt packages/ui en apps/desktop"
 
 msgid "Threshold"
 msgstr "Drempel"
+
+msgid "Threshold (%)"
+msgstr "Drempel (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Drempel (tokens)"
 
 msgid "Thu"
 msgstr "Do"

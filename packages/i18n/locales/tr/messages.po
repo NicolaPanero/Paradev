@@ -3201,6 +3201,9 @@ msgstr "Uygulama menüsü"
 msgid "Applications"
 msgstr "Uygulamalar"
 
+msgid "Applies at the next agent launch."
+msgstr "Ajan bir sonraki başlatıldığında uygulanır."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Her gece güvenli bağımlılık güncellemelerini uygular ve kalanını listeler."
 
@@ -3550,6 +3553,9 @@ msgstr "Otomatik Kaydetme"
 
 msgid "Auto top-up"
 msgstr "Otomatik yükleme"
+
+msgid "Auto-compact"
+msgstr "Otomatik sıkıştırma"
 
 msgid "Auto-run on new tab"
 msgstr "Yeni sekmede otomatik çalıştır"
@@ -4787,6 +4793,9 @@ msgstr "Birini seçin"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Bir projede her Git deposunun yalnızca bir checkout’unu seçin."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Cursor modelinizin sunduğu bağlam pencerelerinden birini seçin."
 
 msgid "Choose the model"
 msgstr "Modeli seç"
@@ -6470,6 +6479,9 @@ msgstr "Devam ettirilemedi"
 
 msgid "Could not resume the chat"
 msgstr "Sohbete devam edilemedi"
+
+msgid "Could not save auto-compact."
+msgstr "Otomatik sıkıştırma ayarı kaydedilemedi."
 
 msgid "Could not save the change."
 msgstr "Değişiklik kaydedilemedi."
@@ -17785,6 +17797,9 @@ msgstr "İşletim sistemi tarafından ayrılmış"
 msgid "Reserved by terminal"
 msgstr "Terminal tarafından ayrılmış"
 
+msgid "Reserved tokens"
+msgstr "Ayrılan belirteçler"
+
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -17987,6 +18002,9 @@ msgstr "Planı geri yükle"
 
 msgid "restore the agent defaults"
 msgstr "ajan varsayılanlarını geri yükleme"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Ajanın yapılandırılmış otomatik sıkıştırma ayarını tek tıklamayla geri yükleyin."
 
 msgid "Restore this automation to run it"
 msgstr "Çalıştırmak için bu otomasyonu geri yükleyin"
@@ -19375,6 +19393,9 @@ msgstr "Projeyi ayarla…"
 
 msgid "Set Run"
 msgstr "Çalıştırmayı ayarla"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Otomatik sıkıştırma eşiğini birleşik ajan seçicisinden ayarlayın."
 
 msgid "Set this project"
 msgstr "Bu projeyi ayarla"
@@ -22465,6 +22486,12 @@ msgstr "Üç adım · packages/ui ve apps/desktop dizinlerine dokunur"
 
 msgid "Threshold"
 msgstr "Eşik"
+
+msgid "Threshold (%)"
+msgstr "Eşik (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Eşik (belirteç)"
 
 msgid "Thu"
 msgstr "Per"

@@ -3201,6 +3201,9 @@ msgstr "Anwendungsmenü"
 msgid "Applications"
 msgstr "Programme"
 
+msgid "Applies at the next agent launch."
+msgstr "Wird beim nächsten Start des Agenten angewendet."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Spielt jede Nacht die sicheren Abhängigkeits-Updates ein und listet den Rest auf."
 
@@ -3550,6 +3553,9 @@ msgstr "Automatisches Speichern"
 
 msgid "Auto top-up"
 msgstr "Automatisch nachkaufen"
+
+msgid "Auto-compact"
+msgstr "Automatische Komprimierung"
 
 msgid "Auto-run on new tab"
 msgstr "Automatisch bei neuem Tab starten"
@@ -4787,6 +4793,9 @@ msgstr "Auswählen"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Wähle pro Projekt nur einen Checkout jedes Git-Repositorys."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Wählen Sie ein Kontextfenster aus den Optionen Ihres Cursor-Modells."
 
 msgid "Choose the model"
 msgstr "Modell auswählen"
@@ -6470,6 +6479,9 @@ msgstr "Fortsetzen nicht möglich"
 
 msgid "Could not resume the chat"
 msgstr "Der Chat konnte nicht fortgesetzt werden"
+
+msgid "Could not save auto-compact."
+msgstr "Die Einstellung für die automatische Komprimierung konnte nicht gespeichert werden."
 
 msgid "Could not save the change."
 msgstr "Die Änderung konnte nicht gespeichert werden."
@@ -17785,6 +17797,9 @@ msgstr "Vom Betriebssystem belegt"
 msgid "Reserved by terminal"
 msgstr "Vom Terminal belegt"
 
+msgid "Reserved tokens"
+msgstr "Reservierte Tokens"
+
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -17987,6 +18002,9 @@ msgstr "Tarif wiederherstellen"
 
 msgid "restore the agent defaults"
 msgstr "die Agenten-Standardwerte wiederherstellen"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Stellen Sie mit einem Klick die konfigurierte Einstellung des Agenten für die automatische Komprimierung wieder her."
 
 msgid "Restore this automation to run it"
 msgstr "Stelle diese Automatisierung wieder her, um sie auszuführen"
@@ -19375,6 +19393,9 @@ msgstr "Projekt festlegen…"
 
 msgid "Set Run"
 msgstr "Run festlegen"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Legen Sie den Schwellenwert für die automatische Komprimierung in der gemeinsamen Agentenauswahl fest."
 
 msgid "Set this project"
 msgstr "Dieses Projekt festlegen"
@@ -22465,6 +22486,12 @@ msgstr "Drei Schritte · betrifft packages/ui und apps/desktop"
 
 msgid "Threshold"
 msgstr "Schwellenwert"
+
+msgid "Threshold (%)"
+msgstr "Schwellenwert (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Schwellenwert (Tokens)"
 
 msgid "Thu"
 msgstr "Do"

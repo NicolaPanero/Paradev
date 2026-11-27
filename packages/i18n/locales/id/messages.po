@@ -3201,6 +3201,9 @@ msgstr "Menu aplikasi"
 msgid "Applications"
 msgstr "Aplikasi"
 
+msgid "Applies at the next agent launch."
+msgstr "Berlaku saat agen berikutnya dijalankan."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Menerapkan pembaruan dependensi yang aman setiap malam dan mencatat sisanya."
 
@@ -3550,6 +3553,9 @@ msgstr "Simpan Otomatis"
 
 msgid "Auto top-up"
 msgstr "Isi ulang otomatis"
+
+msgid "Auto-compact"
+msgstr "Pemadatan otomatis"
 
 msgid "Auto-run on new tab"
 msgstr "Jalankan otomatis di tab baru"
@@ -4787,6 +4793,9 @@ msgstr "Pilih salah satu"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Pilih hanya satu checkout dari setiap repositori Git dalam satu proyek."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Pilih jendela konteks yang ditawarkan oleh model Cursor Anda."
 
 msgid "Choose the model"
 msgstr "Pilih model"
@@ -6470,6 +6479,9 @@ msgstr "Tidak dapat melanjutkan"
 
 msgid "Could not resume the chat"
 msgstr "Tidak dapat melanjutkan obrolan"
+
+msgid "Could not save auto-compact."
+msgstr "Pengaturan pemadatan otomatis tidak dapat disimpan."
 
 msgid "Could not save the change."
 msgstr "Tidak dapat menyimpan perubahan."
@@ -17785,6 +17797,9 @@ msgstr "Dipakai OS"
 msgid "Reserved by terminal"
 msgstr "Dipakai terminal"
 
+msgid "Reserved tokens"
+msgstr "Token cadangan"
+
 msgid "Reset"
 msgstr "Reset"
 
@@ -17987,6 +18002,9 @@ msgstr "Pulihkan paket"
 
 msgid "restore the agent defaults"
 msgstr "memulihkan setelan bawaan agen"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Pulihkan pengaturan pemadatan otomatis agen dengan satu klik."
 
 msgid "Restore this automation to run it"
 msgstr "Pulihkan otomatisasi ini untuk menjalankannya"
@@ -19375,6 +19393,9 @@ msgstr "Tetapkan proyek…"
 
 msgid "Set Run"
 msgstr "Setel Run"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Atur ambang pemadatan otomatis dari pemilih agen terpadu."
 
 msgid "Set this project"
 msgstr "Tetapkan proyek ini"
@@ -22465,6 +22486,12 @@ msgstr "Tiga langkah · menyentuh packages/ui dan apps/desktop"
 
 msgid "Threshold"
 msgstr "Ambang batas"
+
+msgid "Threshold (%)"
+msgstr "Ambang (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Ambang (token)"
 
 msgid "Thu"
 msgstr "Kam"

@@ -3201,6 +3201,9 @@ msgstr "Menu de l'application"
 msgid "Applications"
 msgstr "Applications"
 
+msgid "Applies at the next agent launch."
+msgstr "S’applique au prochain démarrage de l’agent."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Applique chaque nuit les mises à jour de dépendances sûres et liste le reste."
 
@@ -3550,6 +3553,9 @@ msgstr "Enregistrement automatique"
 
 msgid "Auto top-up"
 msgstr "Recharge automatique"
+
+msgid "Auto-compact"
+msgstr "Compactage automatique"
 
 msgid "Auto-run on new tab"
 msgstr "Exécution auto. à l'ouverture d'un onglet"
@@ -4787,6 +4793,9 @@ msgstr "Choisir"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Choisissez un seul checkout de chaque dépôt Git dans un projet."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Choisissez une fenêtre de contexte parmi celles proposées par votre modèle Cursor."
 
 msgid "Choose the model"
 msgstr "Choisir le modèle"
@@ -6470,6 +6479,9 @@ msgstr "Impossible de reprendre"
 
 msgid "Could not resume the chat"
 msgstr "Impossible de reprendre la discussion"
+
+msgid "Could not save auto-compact."
+msgstr "Impossible d’enregistrer le réglage du compactage automatique."
 
 msgid "Could not save the change."
 msgstr "Impossible d’enregistrer la modification."
@@ -17785,6 +17797,9 @@ msgstr "Réservé par l'OS"
 msgid "Reserved by terminal"
 msgstr "Réservé par le terminal"
 
+msgid "Reserved tokens"
+msgstr "Jetons réservés"
+
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -17987,6 +18002,9 @@ msgstr "Rétablir le forfait"
 
 msgid "restore the agent defaults"
 msgstr "restaurer les valeurs par défaut de l'agent"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Rétablissez en un clic le réglage de compactage automatique configuré dans l’agent."
 
 msgid "Restore this automation to run it"
 msgstr "Restaurez cette automatisation pour l'exécuter"
@@ -19375,6 +19393,9 @@ msgstr "Définir le projet…"
 
 msgid "Set Run"
 msgstr "Définir l'exécution"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Réglez le seuil de compactage automatique dans le sélecteur d’agents unifié."
 
 msgid "Set this project"
 msgstr "Définir ce projet"
@@ -22465,6 +22486,12 @@ msgstr "Trois étapes · touche packages/ui et apps/desktop"
 
 msgid "Threshold"
 msgstr "Seuil"
+
+msgid "Threshold (%)"
+msgstr "Seuil (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Seuil (jetons)"
 
 msgid "Thu"
 msgstr "jeu."

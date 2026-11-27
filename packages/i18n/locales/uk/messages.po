@@ -3195,6 +3195,9 @@ msgstr "Меню застосунку"
 msgid "Applications"
 msgstr "Програми"
 
+msgid "Applies at the next agent launch."
+msgstr "Застосується під час наступного запуску агента."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Щоночі застосовує безпечні оновлення залежностей і перелічує решту."
 
@@ -3544,6 +3547,9 @@ msgstr "Автозбереження"
 
 msgid "Auto top-up"
 msgstr "Автопоповнення"
+
+msgid "Auto-compact"
+msgstr "Автостиснення"
 
 msgid "Auto-run on new tab"
 msgstr "Автозапуск у новій вкладці"
@@ -4781,6 +4787,9 @@ msgstr "Виберіть варіант"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Виберіть лише один checkout кожного репозиторію Git у проєкті."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Виберіть вікно контексту з варіантів, доступних у вашій моделі Cursor."
 
 msgid "Choose the model"
 msgstr "Виберіть модель"
@@ -6464,6 +6473,9 @@ msgstr "Не вдалося відновити"
 
 msgid "Could not resume the chat"
 msgstr "Не вдалося відновити чат"
+
+msgid "Could not save auto-compact."
+msgstr "Не вдалося зберегти налаштування автостиснення."
 
 msgid "Could not save the change."
 msgstr "Не вдалося зберегти зміну."
@@ -17779,6 +17791,9 @@ msgstr "Зарезервовано ОС"
 msgid "Reserved by terminal"
 msgstr "Зарезервовано терміналом"
 
+msgid "Reserved tokens"
+msgstr "Резерв токенів"
+
 msgid "Reset"
 msgstr "Скинути"
 
@@ -17981,6 +17996,9 @@ msgstr "Відновити тариф"
 
 msgid "restore the agent defaults"
 msgstr "відновити налаштування агента за замовчуванням"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Відновіть задане в агенті налаштування автостиснення одним натисканням."
 
 msgid "Restore this automation to run it"
 msgstr "Відновіть цю автоматизацію, щоб запустити її"
@@ -19369,6 +19387,9 @@ msgstr "Призначити проєкт…"
 
 msgid "Set Run"
 msgstr "Задати запуск"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Установіть поріг автостиснення в єдиному меню вибору агентів."
 
 msgid "Set this project"
 msgstr "Призначити цей проєкт"
@@ -22459,6 +22480,12 @@ msgstr "Три кроки · зачіпає packages/ui і apps/desktop"
 
 msgid "Threshold"
 msgstr "Поріг"
+
+msgid "Threshold (%)"
+msgstr "Поріг (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Поріг (токени)"
 
 msgid "Thu"
 msgstr "Чт"

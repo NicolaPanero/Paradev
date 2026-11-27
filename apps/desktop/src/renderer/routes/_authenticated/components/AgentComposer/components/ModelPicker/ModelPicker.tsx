@@ -110,7 +110,8 @@ export function ModelPicker({
 	const rows = settings.filter(
 		(option) => option !== effort && (effort ? option !== fast : true),
 	);
-	if (!model && settings.length === 0 && !canSwitchAgent) return null;
+	const hasSettings = settings.length > 0 || Boolean(fork.settingsExtra);
+	if (!model && !hasSettings && !canSwitchAgent) return null;
 	const showsModels = Boolean(model) || canSwitchAgent;
 	const currentAgentLabel = currentAgent?.label ?? emptyLabel;
 	const pillLabel =
@@ -125,7 +126,8 @@ export function ModelPicker({
 	]
 		.filter(Boolean)
 		.join(" · ");
-	const pick = (option: SessionConfigOption, value: string) => {
+	const pick = (option: SessionConfigOption, value: string, event?: Event) => {
+		if (keepOpenOnPick) event?.preventDefault();
 		if (value !== option.currentValue) choose(option.id, value);
 		closeAfterPick();
 	};
@@ -140,10 +142,16 @@ export function ModelPicker({
 		);
 	const leavePanel = (direction: 1 | -1) => {
 		const controls = settingsControls();
-		(direction === 1 ? controls[0] : controls.at(-1))?.focus();
+		(
+			(direction === 1 ? controls[0] : controls.at(-1)) ?? searchRef.current
+		)?.focus();
 	};
 	const onSettingsKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-		if (event.key !== "Tab") return;
+		if (
+			event.key !== "Tab" ||
+			!event.currentTarget.contains(event.target as Node)
+		)
+			return;
 		event.preventDefault();
 		event.stopPropagation();
 		const controls = settingsControls();
@@ -227,17 +235,17 @@ export function ModelPicker({
 							}
 						}
 						model={model}
-						onLeave={settings.length > 0 ? leavePanel : undefined}
+						onLeave={hasSettings ? leavePanel : undefined}
 						onPick={(modelId) => {
 							if (model) pick(model, modelId);
 						}}
 						searchRef={searchRef}
 					/>
 				) : null}
-				{settings.length > 0 ? (
+				{hasSettings ? (
 					<div
 						className={cn(
-							"flex flex-col gap-px p-1",
+							"flex flex-col gap-px p-1 empty:hidden",
 							showsModels && "border-t",
 						)}
 						onKeyDownCapture={onSettingsKeyDown}
@@ -265,7 +273,7 @@ export function ModelPicker({
 											<DropdownMenuItem
 												className={MENU_ROW_CLASS}
 												key={entry.id}
-												onSelect={() => pick(option, entry.id)}
+												onSelect={(event) => pick(option, entry.id, event)}
 												title={entry.description}
 											>
 												<span className="min-w-0 flex-1 truncate">
@@ -280,6 +288,7 @@ export function ModelPicker({
 								</DropdownMenuPortal>
 							</DropdownMenuSub>
 						))}
+						{fork.settingsExtra}
 					</div>
 				) : null}
 				{footer}

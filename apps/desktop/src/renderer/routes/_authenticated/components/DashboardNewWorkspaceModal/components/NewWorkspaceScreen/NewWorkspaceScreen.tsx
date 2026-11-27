@@ -1168,6 +1168,10 @@ export function NewWorkspaceScreen({
 	const forkLaunchPickers = (
 		<div className="flex items-center gap-2">
 			<ForkCreationModelPicker
+				autoCompact={{
+					hostUrl: isCloudHost ? null : launchHostUrl,
+					accountSelection: forkAccount.selection,
+				}}
 				agents={agentConfigs}
 				catalog={catalog}
 				selectedAgent={selectedAgent}

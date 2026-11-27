@@ -3,7 +3,7 @@ import type { DesktopNotice } from "@superset/shared/desktop-notices";
 import { useState } from "react";
 import { NoticeDialog } from "renderer/components/DesktopNotices/components/NoticeDialog";
 
-export const FORK_WHATS_NEW_ID = "paradev-sidebar-account-usage-2026-11";
+export const FORK_WHATS_NEW_ID = "paradev-2-0-12-fork-agent-controls-2026-11";
 export const FORK_WHATS_NEW_STORAGE_KEY = "superset-fork-whats-new";
 export const FORK_WHATS_NEW_DISMISSED = "fork-whats-new-dismissed";
 const FORK_GUIDE_URL =
@@ -31,15 +31,11 @@ export function ForkWhatsNewNotice() {
 	const [seen, setSeen] = useState(() => hasSeenForkWhatsNew(localStorage));
 	if (seen) return null;
 	const highlights = [
-		t({
-			message: "Open account usage from the agent icon in the sidebar.",
-		}),
-		t({
-			message: "See usage and reset times for each subscription account.",
-		}),
-		t({
-			message: "Jump from the sidebar to a specific account’s settings.",
-		}),
+		t({ message: "Set the auto-compact threshold from the unified agent picker." }),
+		t({ message: "Choose the context window offered by your Cursor model." }),
+		t({ message: "See usage and reset times for each subscription account." }),
+		t({ message: "Resume linked Grok sessions with native handoff." }),
+		t({ message: "Updated to Paradev 2.0.12." }),
 	];
 	const notice: DesktopNotice = {
 		id: `fork-whats-new:${FORK_WHATS_NEW_ID}`,

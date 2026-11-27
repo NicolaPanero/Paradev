@@ -32,6 +32,7 @@ import { trackAgentLaunched } from "../../../agent-launch-analytics";
 import { acpHarnessForPreset } from "../../../chat-v3/acpCatalogue";
 import type { HostDb } from "../../../db";
 import { workspaces } from "../../../db/schema";
+import { forkAutoCompactLaunch } from "../../../fork-auto-compact/fork-auto-compact";
 import { createTerminalSessionInternal } from "../../../terminal/terminal";
 import type {
 	TerminalAgentBinding,
@@ -490,10 +491,15 @@ export function buildTerminalAgentLaunch(
 		forkCatalogChoices(input)?.effortArgs ??
 		buildAgentEffortArgs(launchPresetId, input.effort, input.model);
 	const modeArgs = buildAgentModeArgs(launchPresetId, input.mode);
+	const compact = forkAutoCompactLaunch(
+		config,
+		input.launchSnapshot?.env ?? agentLaunchEnv(db, config),
+		"terminal",
+	);
 	const command = buildAgentCommandString(
 		config,
 		prompt,
-		[...modelArgs, ...effortArgs, ...modeArgs],
+		[...modelArgs, ...effortArgs, ...modeArgs, ...compact.args],
 		{
 			resumeSessionId: input.resumeSessionId,
 			forkSessionId: input.forkSessionId,
@@ -501,7 +507,7 @@ export function buildTerminalAgentLaunch(
 	);
 	const modelEnv = buildAgentModelEnv(launchPresetId, input.model);
 	return {
-		fullCommand: `${envOverlayPrefix({ ...(input.launchSnapshot?.env ?? agentLaunchEnv(db, config)), ...modelEnv })}${command}`,
+		fullCommand: `${envOverlayPrefix({ ...compact.env, ...modelEnv })}${command}`,
 		label: config.label,
 		config,
 	};

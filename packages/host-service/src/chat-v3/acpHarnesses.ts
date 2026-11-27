@@ -4,6 +4,7 @@ import { presetForAcpHarness } from "@superset/chat/core";
 import type { HarnessFactory, ResolveAttachment } from "@superset/chat-runtime";
 import { createAcpAdapter } from "@superset/chat-runtime";
 import type { HostDb } from "../db";
+import { forkAutoCompactLaunch } from "../fork-auto-compact/fork-auto-compact";
 import { resolveHostAgentConfig } from "../terminal-agents/agent-config";
 import { captureSessionAccount } from "../trpc/router/usage/session-account/session-account";
 import { ACP_HARNESSES } from "./acpCatalogue";
@@ -83,10 +84,12 @@ export function acpHarnessFactory(
 							...options,
 							accountSelection,
 						});
+						const launchConfig = resolveHostAgentConfig(
+							db,
+							choices.agentConfigId ?? entry.presetId ?? entry.binary,
+						);
 						const configured = forkConfiguredCli(
-							choices.agentConfigId
-								? resolveHostAgentConfig(db, choices.agentConfigId)
-								: null,
+							choices.agentConfigId ? launchConfig : null,
 						);
 						const cli = await resolveAgentCli({
 							command:
@@ -112,7 +115,7 @@ export function acpHarnessFactory(
 									preserveLegacyAccount: !!options.resume,
 								}),
 						});
-						const env = cli.env;
+						const { env } = forkAutoCompactLaunch(launchConfig, cli.env, "acp");
 						if (harness === "gemini-acp")
 							authMethodId = forkGeminiAuthMethod(env, entry.authMethodId);
 						if (harness === "grok-acp")

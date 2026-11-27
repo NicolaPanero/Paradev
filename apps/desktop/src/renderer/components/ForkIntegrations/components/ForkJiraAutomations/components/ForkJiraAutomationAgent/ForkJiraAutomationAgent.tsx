@@ -77,6 +77,7 @@ export function ForkJiraAutomationAgent({
 		<div className="grid grid-cols-2 gap-3">
 			<div className="col-span-2 flex flex-wrap items-center gap-2 rounded-lg border bg-muted/20 p-3">
 				<ForkCreationModelPicker
+					autoCompact={{ hostUrl, accountSelection: account.selection }}
 					agents={choices}
 					catalog={catalog}
 					selectedAgent={value.agent}

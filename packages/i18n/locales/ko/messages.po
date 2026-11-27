@@ -3201,6 +3201,9 @@ msgstr "애플리케이션 메뉴"
 msgid "Applications"
 msgstr "응용 프로그램"
 
+msgid "Applies at the next agent launch."
+msgstr "다음 에이전트 시작 시 적용됩니다."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "매일 밤 안전한 의존성 업데이트를 적용하고 나머지는 정리합니다."
 
@@ -3550,6 +3553,9 @@ msgstr "자동 저장"
 
 msgid "Auto top-up"
 msgstr "자동 충전"
+
+msgid "Auto-compact"
+msgstr "자동 압축"
 
 msgid "Auto-run on new tab"
 msgstr "새 탭에서 자동 실행"
@@ -4787,6 +4793,9 @@ msgstr "선택하세요"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "프로젝트에서 각 Git 저장소의 체크아웃을 하나만 선택하세요."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "사용 중인 Cursor 모델에서 제공하는 컨텍스트 창을 선택하세요."
 
 msgid "Choose the model"
 msgstr "모델 선택"
@@ -6470,6 +6479,9 @@ msgstr "재개할 수 없습니다"
 
 msgid "Could not resume the chat"
 msgstr "채팅을 재개할 수 없습니다"
+
+msgid "Could not save auto-compact."
+msgstr "자동 압축 설정을 저장하지 못했습니다."
 
 msgid "Could not save the change."
 msgstr "변경 사항을 저장할 수 없습니다."
@@ -17785,6 +17797,9 @@ msgstr "OS에서 예약됨"
 msgid "Reserved by terminal"
 msgstr "터미널에서 예약됨"
 
+msgid "Reserved tokens"
+msgstr "예약 토큰"
+
 msgid "Reset"
 msgstr "초기화"
 
@@ -17987,6 +18002,9 @@ msgstr "플랜 복원"
 
 msgid "restore the agent defaults"
 msgstr "에이전트 기본값을 복원할"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "한 번의 클릭으로 에이전트에 설정된 자동 압축 설정을 복원하세요."
 
 msgid "Restore this automation to run it"
 msgstr "실행하려면 이 자동화를 복원하세요"
@@ -19375,6 +19393,9 @@ msgstr "프로젝트 설정…"
 
 msgid "Set Run"
 msgstr "실행 설정"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "통합 에이전트 선택기에서 자동 압축 임계값을 설정하세요."
 
 msgid "Set this project"
 msgstr "이 프로젝트로 설정"
@@ -22465,6 +22486,12 @@ msgstr "3단계 · packages/ui와 apps/desktop을 수정"
 
 msgid "Threshold"
 msgstr "기준값"
+
+msgid "Threshold (%)"
+msgstr "임계값(%)"
+
+msgid "Threshold (tokens)"
+msgstr "임계값(토큰)"
 
 msgid "Thu"
 msgstr "목"

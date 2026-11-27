@@ -1,13 +1,24 @@
 import { useLingui } from "@lingui/react/macro";
 import type { AgentModelOption } from "@superset/shared/agent-models";
+import {
+	CURSOR_CONTEXT_ID,
+	cursorModelWithContext,
+	splitCursorContext,
+} from "@superset/shared/fork-cursor-context";
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useIsDarkTheme } from "renderer/assets/app-icons/preset-icons";
 import type { AgentSelectAgent } from "renderer/components/AgentSelect";
+import {
+	ForkAutoCompactMenu,
+	type ForkAutoCompactTarget,
+} from "renderer/components/ForkAutoCompactMenu";
 import { ForkModelCatalogStatus } from "renderer/components/ForkModelCatalogStatus";
 import type { useForkModelCatalog } from "renderer/hooks/useForkModelCatalog";
 import {
 	agentChoices,
+	agentLaunchPreset,
 	creationConfigOptions,
+	cursorContextOption,
 	EFFORT_CONFIG_ID,
 	fromOptionValue,
 	MODEL_CONFIG_ID,
@@ -35,6 +46,7 @@ export function ForkCreationModelPicker({
 	onEffortChange,
 	renderAccountItem,
 	fullWidth,
+	autoCompact,
 }: {
 	agents: AgentSelectAgent[];
 	catalog: ReturnType<typeof useForkModelCatalog>;
@@ -50,6 +62,7 @@ export function ForkCreationModelPicker({
 		panelClassName: string,
 	) => ReactNode;
 	fullWidth?: boolean;
+	autoCompact?: Omit<ForkAutoCompactTarget, "agent">;
 }) {
 	const { t } = useLingui();
 	const isDark = useIsDarkTheme();
@@ -64,12 +77,24 @@ export function ForkCreationModelPicker({
 		[agents, isDark, selectedAgent, catalog.models],
 	);
 	const current = agents.find((agent) => agent.id === selectedAgent);
+	const cursor = current && agentLaunchPreset(current) === "cursor-agent";
+	const context =
+		cursor && catalog.supportsCursorContext
+			? cursorContextOption(
+					catalog.configOptions,
+					selectedModel,
+					t({ message: "Context window" }),
+				)
+			: undefined;
 	const configOptions = useMemo(
 		() =>
 			creationConfigOptions({
 				models: catalog.models,
 				alwaysShowModel: selectedAgent !== NO_AGENT,
-				selectedModel,
+				selectedModel:
+					cursor && selectedModel
+						? splitCursorContext(selectedModel).model
+						: selectedModel,
 				efforts,
 				selectedEffort,
 				labels: {
@@ -79,7 +104,15 @@ export function ForkCreationModelPicker({
 					defaultEffort: t({ message: "Default effort" }),
 				},
 			}),
-		[catalog.models, selectedModel, efforts, selectedEffort, t, selectedAgent],
+		[
+			catalog.models,
+			cursor,
+			selectedModel,
+			efforts,
+			selectedEffort,
+			t,
+			selectedAgent,
+		],
 	);
 
 	// The model preference is stored per agent, so a model picked from another
@@ -110,11 +143,22 @@ export function ForkCreationModelPicker({
 		<ModelPicker
 			fullWidth={fullWidth}
 			agentSwitcher={agentSwitcher}
-			configOptions={configOptions}
+			configOptions={context ? [...configOptions, context] : configOptions}
+			keepOpenOnPick={cursor === true}
 			emptyLabel={t({ message: "No agent" })}
 			open={open}
 			onOpenChange={setOpen}
+			settingsExtra={
+				open && autoCompact?.hostUrl && selectedAgent !== NO_AGENT ? (
+					<ForkAutoCompactMenu
+						key={selectedAgent}
+						target={{ ...autoCompact, agent: selectedAgent }}
+					/>
+				) : undefined
+			}
 			onSelect={(configId, value) => {
+				if (context && selectedModel && configId === CURSOR_CONTEXT_ID)
+					onModelChange(cursorModelWithContext(selectedModel, value));
 				if (configId === MODEL_CONFIG_ID) onModelChange(fromOptionValue(value));
 				if (configId === EFFORT_CONFIG_ID)
 					onEffortChange(fromOptionValue(value));

@@ -3201,6 +3201,9 @@ msgstr "應用程式選單"
 msgid "Applications"
 msgstr "應用程式"
 
+msgid "Applies at the next agent launch."
+msgstr "在代理程式下次啟動時生效。"
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "每晚套用安全的相依套件更新，並列出其餘的。"
 
@@ -3550,6 +3553,9 @@ msgstr "自動儲存"
 
 msgid "Auto top-up"
 msgstr "自動加值"
+
+msgid "Auto-compact"
+msgstr "自動壓縮"
 
 msgid "Auto-run on new tab"
 msgstr "新建分頁時自動執行"
@@ -4787,6 +4793,9 @@ msgstr "請選擇"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "在一個專案中，每個 Git 儲存庫只能選擇一個簽出副本。"
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "選擇目前 Cursor 模型提供的內容視窗。"
 
 msgid "Choose the model"
 msgstr "選擇模型"
@@ -6470,6 +6479,9 @@ msgstr "無法繼續"
 
 msgid "Could not resume the chat"
 msgstr "無法繼續聊天"
+
+msgid "Could not save auto-compact."
+msgstr "無法儲存自動壓縮設定。"
 
 msgid "Could not save the change."
 msgstr "無法儲存變更。"
@@ -17785,6 +17797,9 @@ msgstr "已被系統佔用"
 msgid "Reserved by terminal"
 msgstr "已被終端佔用"
 
+msgid "Reserved tokens"
+msgstr "保留權杖"
+
 msgid "Reset"
 msgstr "重置"
 
@@ -17987,6 +18002,9 @@ msgstr "恢復方案"
 
 msgid "restore the agent defaults"
 msgstr "恢復代理程式預設設定"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "一鍵還原代理程式中已設定的自動壓縮設定。"
 
 msgid "Restore this automation to run it"
 msgstr "恢復此自動化後才能執行"
@@ -19375,6 +19393,9 @@ msgstr "設定專案…"
 
 msgid "Set Run"
 msgstr "設定執行命令"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "在統一代理程式選擇器中設定自動壓縮閾值。"
 
 msgid "Set this project"
 msgstr "設為此專案"
@@ -22465,6 +22486,12 @@ msgstr "三個步驟 · 涉及packages/ui和apps/desktop"
 
 msgid "Threshold"
 msgstr "門檻"
+
+msgid "Threshold (%)"
+msgstr "閾值（%）"
+
+msgid "Threshold (tokens)"
+msgstr "閾值（權杖）"
 
 msgid "Thu"
 msgstr "週四"

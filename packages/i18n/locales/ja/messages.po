@@ -3201,6 +3201,9 @@ msgstr "アプリケーションメニュー"
 msgid "Applications"
 msgstr "アプリケーション"
 
+msgid "Applies at the next agent launch."
+msgstr "次回のエージェント起動時に適用されます。"
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "毎晩、安全な依存関係の更新を適用し、残りを一覧にします。"
 
@@ -3550,6 +3553,9 @@ msgstr "自動保存"
 
 msgid "Auto top-up"
 msgstr "自動チャージ"
+
+msgid "Auto-compact"
+msgstr "自動圧縮"
 
 msgid "Auto-run on new tab"
 msgstr "新しいタブで自動実行"
@@ -4787,6 +4793,9 @@ msgstr "選択してください"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "プロジェクト内では各Gitリポジトリにつき1つのチェックアウトのみを選択してください。"
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Cursor モデルが提供するコンテキストウィンドウを選択できます。"
 
 msgid "Choose the model"
 msgstr "モデルを選択"
@@ -6470,6 +6479,9 @@ msgstr "再開できませんでした"
 
 msgid "Could not resume the chat"
 msgstr "チャットを再開できませんでした"
+
+msgid "Could not save auto-compact."
+msgstr "自動圧縮の設定を保存できませんでした。"
 
 msgid "Could not save the change."
 msgstr "変更を保存できませんでした。"
@@ -17785,6 +17797,9 @@ msgstr "OSが予約済み"
 msgid "Reserved by terminal"
 msgstr "ターミナルが予約済み"
 
+msgid "Reserved tokens"
+msgstr "予約トークン"
+
 msgid "Reset"
 msgstr "リセット"
 
@@ -17987,6 +18002,9 @@ msgstr "プランを復元"
 
 msgid "restore the agent defaults"
 msgstr "エージェントの既定値を復元する"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "エージェントで設定済みの自動圧縮設定にワンクリックで戻せます。"
 
 msgid "Restore this automation to run it"
 msgstr "実行するには、このオートメーションを復元してください"
@@ -19375,6 +19393,9 @@ msgstr "プロジェクトを設定…"
 
 msgid "Set Run"
 msgstr "実行を設定"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "統合エージェントセレクターで自動圧縮のしきい値を設定できます。"
 
 msgid "Set this project"
 msgstr "このプロジェクトに設定"
@@ -22465,6 +22486,12 @@ msgstr "3ステップ · packages/uiとapps/desktopに変更"
 
 msgid "Threshold"
 msgstr "しきい値"
+
+msgid "Threshold (%)"
+msgstr "しきい値（%）"
+
+msgid "Threshold (tokens)"
+msgstr "しきい値（トークン）"
 
 msgid "Thu"
 msgstr "木"

@@ -24,6 +24,7 @@ import { isolatedAccountOptions } from "../usage/fork-isolated-accounts";
 import { ensureIsolatedDefault } from "../usage/fork-isolated-default";
 import { validateSessionAccount } from "../usage/session-account/session-account";
 import { agentAccountOptions } from "./account-selection";
+import { forkAutoCompactProcedures } from "./fork-auto-compact";
 import { forkBackgroundChatProcedures } from "./fork-background-chats";
 import { forkBackgroundOutputProcedures } from "./fork-background-output";
 import { forkChatAccountProcedures } from "./fork-chat-account";
@@ -39,6 +40,7 @@ import { forkSwitchChatAccountProcedures } from "./fork-switch-chat-account";
 
 /** The fork's agent procedures, served under the `agents` router. */
 export const forkAgentProcedures = {
+	...forkAutoCompactProcedures,
 	...forkSwitchChatAccountProcedures,
 	...forkModelCatalogProcedures,
 	prepareCursorSurface: protectedProcedure

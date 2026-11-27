@@ -30,6 +30,7 @@ export interface ForkModelCatalogInput {
 export interface ForkModelCatalog {
 	configOptions: SessionConfigOption[];
 	modelConfigOptions?: Record<string, SessionConfigOption[]>;
+	supportsCursorContext?: boolean;
 	fetchedAt: number;
 }
 type Entry = {

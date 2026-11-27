@@ -3201,6 +3201,9 @@ msgstr "Меню приложения"
 msgid "Applications"
 msgstr "Программы"
 
+msgid "Applies at the next agent launch."
+msgstr "Применится при следующем запуске агента."
+
 msgid "Applies safe dependency updates every night and lists the rest."
 msgstr "Каждую ночь применяет безопасные обновления зависимостей и перечисляет остальное."
 
@@ -3550,6 +3553,9 @@ msgstr "Автосохранение"
 
 msgid "Auto top-up"
 msgstr "Автопополнение"
+
+msgid "Auto-compact"
+msgstr "Автосжатие"
 
 msgid "Auto-run on new tab"
 msgstr "Автозапуск в новой вкладке"
@@ -4787,6 +4793,9 @@ msgstr "Выберите"
 
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Выберите только один checkout каждого репозитория Git в проекте."
+
+msgid "Choose the context window offered by your Cursor model."
+msgstr "Выберите окно контекста из вариантов, доступных для вашей модели Cursor."
 
 msgid "Choose the model"
 msgstr "Выбрать модель"
@@ -6470,6 +6479,9 @@ msgstr "Не удалось возобновить"
 
 msgid "Could not resume the chat"
 msgstr "Не удалось продолжить чат"
+
+msgid "Could not save auto-compact."
+msgstr "Не удалось сохранить настройку автосжатия."
 
 msgid "Could not save the change."
 msgstr "Не удалось сохранить изменение."
@@ -17785,6 +17797,9 @@ msgstr "Занято ОС"
 msgid "Reserved by terminal"
 msgstr "Занято терминалом"
 
+msgid "Reserved tokens"
+msgstr "Резерв токенов"
+
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -17987,6 +18002,9 @@ msgstr "Восстановить тариф"
 
 msgid "restore the agent defaults"
 msgstr "восстановить настройки агента по умолчанию"
+
+msgid "Restore the agent's configured auto-compact setting in one click."
+msgstr "Верните заданную в агенте настройку автосжатия одним нажатием."
 
 msgid "Restore this automation to run it"
 msgstr "Восстановите эту автоматизацию, чтобы запустить её"
@@ -19375,6 +19393,9 @@ msgstr "Назначить проект…"
 
 msgid "Set Run"
 msgstr "Задать запуск"
+
+msgid "Set the auto-compact threshold from the unified agent picker."
+msgstr "Настройте порог автосжатия в едином меню выбора агента."
 
 msgid "Set this project"
 msgstr "Назначить этот проект"
@@ -22465,6 +22486,12 @@ msgstr "Три шага · затрагивает packages/ui и apps/desktop"
 
 msgid "Threshold"
 msgstr "Порог"
+
+msgid "Threshold (%)"
+msgstr "Порог (%)"
+
+msgid "Threshold (tokens)"
+msgstr "Порог (токены)"
 
 msgid "Thu"
 msgstr "Чт"
