@@ -9,7 +9,13 @@ import {
 	relative,
 	resolve,
 } from "node:path";
-import { contains } from "./fork-paths";
+import type { BackupFiles } from "./fork-backup-files";
+import { canonical, contains } from "./fork-paths";
+import {
+	defaultProfileSources,
+	profileEnvironment,
+} from "./fork-profile-sources";
+import { quote } from "./fork-selection-db";
 import { BackupDatabase as Database } from "./fork-sqlite";
 import type {
 	BackupEnvironment,
@@ -33,24 +39,28 @@ export async function* walk(
 	root: string,
 	kind: BackupRoot["kind"],
 	rel = "",
+	files?: BackupFiles,
 ): AsyncGenerator<{
 	path: string;
+	source: string;
 	rel: string;
 	stat: Stats;
 }> {
 	const path = join(root, rel);
-	const stat = await lstat(path);
+	if (files && !files.includes(path, true)) return;
+	const source = files?.replacements.get(path) ?? path;
+	const stat = await lstat(source);
 	if (transient(rel, kind) || stat.isSocket() || stat.isFIFO()) return;
 	if (!(stat.isFile() || stat.isDirectory() || stat.isSymbolicLink()))
 		throw new Error(`backup_special_file: ${path}`);
-	yield { path, rel, stat };
+	if (stat.isSymbolicLink() && files && !(await files.includesLink(path)))
+		return;
+	yield { path, source, rel, stat };
 	if (stat.isDirectory()) {
 		for (const name of (await readdir(path)).sort())
-			yield* walk(root, kind, join(rel, name));
+			yield* walk(root, kind, join(rel, name), files);
 	}
 }
-
-const quote = (name: string) => `"${name.replaceAll('"', '""')}"`;
 
 export function databasePaths(path: string) {
 	const db = new Database(path, { readonly: true, fileMustExist: true });
@@ -69,11 +79,7 @@ export function databasePaths(path: string) {
 		else if (value && typeof value === "object")
 			Object.entries(value)
 				.filter(
-					([key]) =>
-						!environmentColumn ||
-						/^(CLAUDE_CONFIG_DIR|CODEX_HOME|CURSOR_CONFIG_DIR|GEMINI_CLI_HOME|GROK_CONFIG_DIR)$/.test(
-							key,
-						),
+					([key]) => !environmentColumn || profileEnvironment.includes(key),
 				)
 				.forEach(([, entry]) => {
 					visit(entry);
@@ -90,20 +96,24 @@ export function databasePaths(path: string) {
 				db.prepare(`PRAGMA table_info(${quote(name)})`).all() as {
 					name: string;
 				}[]
-			).filter((col) =>
-				/path|directory|config_dir|codex_home|cwd|env_json|folders/i.test(
-					col.name,
-				),
+			).filter(
+				(col) =>
+					/path|directory|config_dir|codex_home|cwd|env_json|folders/i.test(
+						col.name,
+					) ||
+					(name === "agent_account_aliases" && col.name === "selection"),
 			);
 			for (const col of columns) {
 				if (/worktree_base_dir/i.test(col.name)) continue;
 				environmentColumn = col.name === "env_json";
-				role = /config_dir|codex_home|env_json/i.test(col.name)
-					? "agent"
-					: /^(repo_path|main_repo_path|worktree_path)$/.test(col.name) ||
-							(col.name === "path" && /project|folder|worktree/.test(name))
-						? "repository"
-						: "linked";
+				role =
+					/config_dir|codex_home|env_json/i.test(col.name) ||
+					name === "agent_account_aliases"
+						? "agent"
+						: /^(repo_path|main_repo_path|worktree_path)$/.test(col.name) ||
+								(col.name === "path" && /project|folder|worktree/.test(name))
+							? "repository"
+							: "linked";
 				for (const row of db
 					.prepare(`SELECT ${quote(col.name)} AS value FROM ${quote(name)}`)
 					.iterate() as Iterable<{ value: unknown }>)
@@ -120,6 +130,7 @@ export async function inventory(
 	env: BackupEnvironment,
 	progress: Progress = () => {},
 	signal?: AbortSignal,
+	selection?: BackupFiles,
 ): Promise<BackupManifest> {
 	const roots: BackupRoot[] = [];
 	const missing = new Set<string>();
@@ -133,51 +144,25 @@ export async function inventory(
 	enqueue(env.appHome, "app");
 	enqueue(env.userData, "desktop");
 	for (const path of env.agentHomes ?? []) enqueue(path, "agent");
-	const defaults = [
-		".claude",
-		".claude.json",
-		".codex",
-		".cursor",
-		".grok",
-		".gemini",
-		".agents",
-		".config/opencode",
-		".local/share/opencode",
-		".config/gh",
-		".config/git",
-		".gitconfig",
-		".git-credentials",
-		".ssh",
-		".zshrc",
-		".zprofile",
-		".bashrc",
-		".bash_profile",
-		".profile",
-		".npmrc",
-		".bunfig.toml",
-		".config/fish",
-		".config/starship.toml",
-		".opencode",
-		".local/state/opencode",
-		".copilot",
-		".config/grok",
-		".amp",
-		".pi",
-		".factory",
-		".aider.conf.yml",
-		".continue",
-	];
-	for (const name of defaults) enqueue(join(env.home, name), "agent", false);
-	for (const name of await readdir(env.home))
-		if (/^\.(claude|codex)[-_]/.test(name))
-			enqueue(join(env.home, name), "agent", false);
+	const defaults = await defaultProfileSources(env);
+	for (const path of [
+		...defaults.shared,
+		...defaults.builtins.flatMap((profile) => profile.paths),
+		...defaults.homes,
+	])
+		enqueue(path, "agent", false);
 	let bytes = 0;
 	let files = 0;
 	const seen = new Set<string>();
 	while (queue.length) {
 		signal?.throwIfAborted();
 		const next = queue.shift();
-		if (!next || seen.has(next.path)) continue;
+		if (
+			!next ||
+			seen.has(next.path) ||
+			(selection && !selection.includes(next.path))
+		)
+			continue;
 		seen.add(next.path);
 		let path: string;
 		try {
@@ -187,6 +172,7 @@ export async function inventory(
 			if (next.required) missing.add(next.path);
 			continue;
 		}
+		if (selection && !selection.includes(path)) continue;
 		aliases[next.path] = path;
 		if (next.kind === "repository") repositories.add(path);
 		if (path === env.home || path === homedir() || path === "/")
@@ -207,7 +193,7 @@ export async function inventory(
 			bytes: 0,
 		};
 		roots.push(root);
-		for await (const entry of walk(path, root.kind)) {
+		for await (const entry of walk(path, root.kind, "", selection)) {
 			signal?.throwIfAborted();
 			if (entry.stat.isSymbolicLink()) {
 				if (["projects", "chats", "worktrees"].includes(basename(entry.path))) {
@@ -230,7 +216,7 @@ export async function inventory(
 				files++;
 				if (files % 1000 === 0) progress({ phase: "scan", bytes, files });
 				if (root.kind === "app" && /(^|\/)(host|local)\.db$/.test(entry.rel)) {
-					for (const found of databasePaths(entry.path)) {
+					for (const found of databasePaths(entry.source)) {
 						if (found.kind === "repository") cwds.add(found.path);
 						enqueue(found.path, found.kind);
 					}
@@ -261,10 +247,13 @@ export async function inventory(
 							if ((error as NodeJS.ErrnoException).code !== "ENOENT")
 								throw error;
 						}
-						enqueue(
-							basename(common) === ".git" ? dirname(common) : common,
-							"repository",
-						);
+						const repository =
+							basename(common) === ".git" ? dirname(common) : common;
+						if (selection && !selection.includes(await canonical(common)))
+							throw new Error(
+								`backup_worktree_requires_repository: ${repository}`,
+							);
+						enqueue(repository, "repository");
 					}
 				}
 			}

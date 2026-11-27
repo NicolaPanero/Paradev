@@ -2518,6 +2518,9 @@ msgstr "Ajan bulunamadı"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Her oturum oluşturma akışının kullandığı ajan seçici (Claude, Codex, Cursor…)"
 
+msgid "Agent profiles"
+msgstr "Ajan profilleri"
+
 msgid "agent PRs merged"
 msgstr "birleştirilen ajan PR'ları"
 
@@ -3777,9 +3780,6 @@ msgstr "Sayfalara dön"
 msgid "Back to the leaderboard"
 msgstr "Lider tablosuna dön"
 
-msgid "Back up everything"
-msgstr "Her şeyi yedekle"
-
 msgid "Backed by"
 msgstr "Destekçilerimiz"
 
@@ -4847,9 +4847,6 @@ msgstr "Birini seçin"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Bir projede her Git deposunun yalnızca bir checkout’unu seçin."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Cursor modelinizin sunduğu bağlam pencerelerinden birini seçin."
-
 msgid "Choose the model"
 msgstr "Modeli seç"
 
@@ -4862,14 +4859,20 @@ msgstr "Birincil depoyu seçin"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Uygulama içi tarayıcıdan neyin temizleneceğini seçin."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Nelerin dahil edileceğini seçin. Paylaşılan geçmiş ve uygulama ayarları her zaman yedeklenir."
+
 msgid "Choose when Paradev pings you."
 msgstr "Paradev'in sizi ne zaman uyaracağını seçin."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Yorumlardan, tasarım modundan ve Pages üzerinden başlatılan ajanların nerede açılacağını seçin."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Birden fazla klasörü olan çalışma alanlarında yeni terminallerin başlangıç klasörünü seçin."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Hangi ajan profillerinin ve kayıtlı oturum açma bilgilerinin yedekleneceğini seçin."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Hangi projelerin ve çalışma ağaçlarının yedekleneceğini seçin."
 
 msgid "Choose your default skin tone"
 msgstr "Varsayılan ten rengini seç"
@@ -7096,6 +7099,9 @@ msgstr "Hesap oluşturun"
 
 msgid "Create an automation from this prompt"
 msgstr "Bu istemden otomasyon oluştur"
+
+msgid "Create backup"
+msgstr "Yedek oluştur"
 
 msgid "Create environment"
 msgstr "Ortam oluştur"
@@ -16591,6 +16597,9 @@ msgstr "Bildirim önizlemesi: güncelleme öncesi onay"
 msgid "Preview notice: warning"
 msgstr "Bildirim önizlemesi: uyarı"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Oluşturmadan önce seçtiğiniz yedeğin boyutunu kontrol edin."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Geliştirme sunucunuzu terminallerinizin yanında önizleyin. Ajanınız içinde gezinip kendi işini kontrol edebilir."
 
@@ -18237,9 +18246,6 @@ msgstr "Sıfırlanınca devam et"
 msgid "Resume automation"
 msgstr "Otomasyonu sürdür"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Bağlı Grok oturumlarını yerel devretme ile sürdürün."
-
 msgid "Resume notifications"
 msgstr "Bildirimleri sürdür"
 
@@ -19196,9 +19202,6 @@ msgstr "Açık pozisyonlara bakın ya da önce Paradev'i deneyin."
 msgid "See this gate on the scorecard"
 msgstr "Bu eşiği puan tablosunda gör"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Aboneliği olan her hesabın kullanımını ve sıfırlanma zamanlarını görün."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Neyin değiştiğini görün, geri bildirim verin ve hazır olduğunda işi birleştirin."
 
@@ -19571,9 +19574,6 @@ msgstr "Projeyi ayarla…"
 
 msgid "Set Run"
 msgstr "Çalıştırmayı ayarla"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Otomatik sıkıştırma eşiğini birleşik ajan seçicisinden ayarlayın."
 
 msgid "Set this project"
 msgstr "Bu projeyi ayarla"

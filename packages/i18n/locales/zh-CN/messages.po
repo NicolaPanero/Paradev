@@ -2518,6 +2518,9 @@ msgstr "未找到智能体"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "智能体选择器（Claude、Codex、Cursor…），所有创建会话的流程都在用"
 
+msgid "Agent profiles"
+msgstr "代理配置档案"
+
 msgid "agent PRs merged"
 msgstr "已合并的智能体 PR"
 
@@ -3777,9 +3780,6 @@ msgstr "返回页面"
 msgid "Back to the leaderboard"
 msgstr "返回排行榜"
 
-msgid "Back up everything"
-msgstr "备份全部内容"
-
 msgid "Backed by"
 msgstr "投资方"
 
@@ -4847,9 +4847,6 @@ msgstr "请选择"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "在一个项目中，每个 Git 仓库只能选择一个检出副本。"
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "选择当前 Cursor 模型提供的上下文窗口。"
-
 msgid "Choose the model"
 msgstr "选择模型"
 
@@ -4862,14 +4859,20 @@ msgstr "选择主仓库"
 msgid "Choose what to clear from the in-app browser."
 msgstr "选择要从应用内浏览器清除的内容。"
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "选择要备份的内容。共享历史记录和应用设置始终会包含在备份中。"
+
 msgid "Choose when Paradev pings you."
 msgstr "选择Paradev在什么时候通知你。"
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "选择从评论、设计模式和 Pages 启动的智能体的打开位置。"
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "在包含多个文件夹的工作区中选择新终端的起始文件夹。"
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "选择要备份的代理配置档案和已保存的登录信息。"
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "选择要备份的项目和工作树。"
 
 msgid "Choose your default skin tone"
 msgstr "选择默认肤色"
@@ -7096,6 +7099,9 @@ msgstr "创建账户"
 
 msgid "Create an automation from this prompt"
 msgstr "根据此提示词创建自动化"
+
+msgid "Create backup"
+msgstr "创建备份"
 
 msgid "Create environment"
 msgstr "创建环境"
@@ -16591,6 +16597,9 @@ msgstr "通知预览：更新前确认"
 msgid "Preview notice: warning"
 msgstr "通知预览：警告"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "创建前预览所选内容的备份大小。"
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "在终端旁边预览你的开发服务器。智能体可以点击浏览并检查自己的工作。"
 
@@ -18237,9 +18246,6 @@ msgstr "重置后继续"
 msgid "Resume automation"
 msgstr "恢复自动化"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "通过原生交接继续已关联的 Grok 会话。"
-
 msgid "Resume notifications"
 msgstr "恢复通知"
 
@@ -19196,9 +19202,6 @@ msgstr "查看空缺职位，或先试用 Paradev。"
 msgid "See this gate on the scorecard"
 msgstr "在评分表中查看这道关卡"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "查看每个订阅账号的用量和重置时间。"
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "查看改动、给出反馈，就绪后合并成果。"
 
@@ -19571,9 +19574,6 @@ msgstr "设置项目…"
 
 msgid "Set Run"
 msgstr "设置运行命令"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "在统一代理选择器中设置自动压缩阈值。"
 
 msgid "Set this project"
 msgstr "设为此项目"

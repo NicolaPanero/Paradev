@@ -2518,6 +2518,9 @@ msgstr "Không tìm thấy agent"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Bộ chọn agent (Claude, Codex, Cursor…) dùng trong mọi luồng tạo phiên"
 
+msgid "Agent profiles"
+msgstr "Hồ sơ tác nhân"
+
 msgid "agent PRs merged"
 msgstr "PR của agent đã được merge"
 
@@ -3777,9 +3780,6 @@ msgstr "Quay lại danh sách trang"
 msgid "Back to the leaderboard"
 msgstr "Quay lại bảng xếp hạng"
 
-msgid "Back up everything"
-msgstr "Sao lưu toàn bộ"
-
 msgid "Backed by"
 msgstr "Được hậu thuẫn bởi"
 
@@ -4847,9 +4847,6 @@ msgstr "Chọn một"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Chỉ chọn một bản checkout của mỗi kho Git trong một dự án."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Chọn cửa sổ ngữ cảnh trong các tùy chọn của mô hình Cursor."
-
 msgid "Choose the model"
 msgstr "Chọn mô hình"
 
@@ -4862,14 +4859,20 @@ msgstr "Chọn repository chính"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Chọn thứ cần xóa khỏi trình duyệt trong ứng dụng."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Chọn nội dung cần đưa vào. Lịch sử dùng chung và cài đặt ứng dụng luôn được sao lưu."
+
 msgid "Choose when Paradev pings you."
 msgstr "Chọn khi nào Paradev báo cho bạn."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Chọn nơi mở tác nhân được khởi chạy từ bình luận, chế độ thiết kế và Pages."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Chọn thư mục bắt đầu cho cửa sổ dòng lệnh mới trong không gian làm việc có nhiều thư mục."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Chọn hồ sơ tác nhân và thông tin đăng nhập đã lưu để sao lưu."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Chọn dự án và cây làm việc cần sao lưu."
 
 msgid "Choose your default skin tone"
 msgstr "Chọn màu da mặc định"
@@ -7096,6 +7099,9 @@ msgstr "Tạo tài khoản"
 
 msgid "Create an automation from this prompt"
 msgstr "Tạo tự động hóa từ prompt này"
+
+msgid "Create backup"
+msgstr "Tạo bản sao lưu"
 
 msgid "Create environment"
 msgstr "Tạo môi trường"
@@ -16591,6 +16597,9 @@ msgstr "Xem trước thông báo: xác nhận trước cập nhật"
 msgid "Preview notice: warning"
 msgstr "Xem trước thông báo: cảnh báo"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Xem trước dung lượng bản sao lưu đã chọn trước khi tạo."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Xem trước dev server ngay cạnh terminal. Agent có thể tự nhấp qua và kiểm tra công việc của chính nó."
 
@@ -18237,9 +18246,6 @@ msgstr "Tiếp tục khi đặt lại"
 msgid "Resume automation"
 msgstr "Tiếp tục tự động hóa"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Tiếp tục các phiên Grok đã liên kết bằng tính năng chuyển giao gốc."
-
 msgid "Resume notifications"
 msgstr "Tiếp tục thông báo"
 
@@ -19196,9 +19202,6 @@ msgstr "Xem các vị trí đang tuyển, hoặc dùng thử Paradev trước."
 msgid "See this gate on the scorecard"
 msgstr "Xem cổng này trên bảng điểm"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Xem mức sử dụng và thời điểm đặt lại của từng tài khoản có gói đăng ký."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Xem những gì đã thay đổi, góp ý, và merge khi đã sẵn sàng."
 
@@ -19571,9 +19574,6 @@ msgstr "Đặt dự án…"
 
 msgid "Set Run"
 msgstr "Đặt lệnh chạy"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Đặt ngưỡng tự động nén trong bộ chọn tác tử chung."
 
 msgid "Set this project"
 msgstr "Đặt dự án này"

@@ -2518,6 +2518,9 @@ msgstr "Agen tidak ditemukan"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Pemilih agen (Claude, Codex, Cursor…) yang dipakai tiap alur pembuatan sesi"
 
+msgid "Agent profiles"
+msgstr "Profil agen"
+
 msgid "agent PRs merged"
 msgstr "PR agen yang digabungkan"
 
@@ -3777,9 +3780,6 @@ msgstr "Kembali ke halaman"
 msgid "Back to the leaderboard"
 msgstr "Kembali ke papan peringkat"
 
-msgid "Back up everything"
-msgstr "Cadangkan semuanya"
-
 msgid "Backed by"
 msgstr "Didukung oleh"
 
@@ -4847,9 +4847,6 @@ msgstr "Pilih salah satu"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Pilih hanya satu checkout dari setiap repositori Git dalam satu proyek."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Pilih jendela konteks yang ditawarkan oleh model Cursor Anda."
-
 msgid "Choose the model"
 msgstr "Pilih model"
 
@@ -4862,14 +4859,20 @@ msgstr "Pilih repositori utama"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Pilih apa yang ingin dibersihkan dari browser dalam aplikasi."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Pilih yang akan disertakan. Riwayat bersama dan pengaturan aplikasi selalu dicadangkan."
+
 msgid "Choose when Paradev pings you."
 msgstr "Pilih kapan Paradev memberi tahu Anda."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Pilih tempat membuka agen yang dimulai dari komentar, mode desain, dan Pages."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Pilih folder awal terminal baru di ruang kerja dengan beberapa folder."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Pilih profil agen dan kredensial masuk tersimpan yang akan dicadangkan."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Pilih proyek dan worktree yang akan dicadangkan."
 
 msgid "Choose your default skin tone"
 msgstr "Pilih warna kulit default"
@@ -7096,6 +7099,9 @@ msgstr "Buat akun"
 
 msgid "Create an automation from this prompt"
 msgstr "Buat otomatisasi dari prompt ini"
+
+msgid "Create backup"
+msgstr "Buat cadangan"
 
 msgid "Create environment"
 msgstr "Buat lingkungan"
@@ -16591,6 +16597,9 @@ msgstr "Pratinjau pemberitahuan: konfirmasi pra-pembaruan"
 msgid "Preview notice: warning"
 msgstr "Pratinjau pemberitahuan: peringatan"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Lihat perkiraan ukuran cadangan yang dipilih sebelum membuatnya."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Pratinjau server pengembangan di samping terminal Anda. Agen bisa mengklik di dalamnya dan memeriksa pekerjaannya sendiri."
 
@@ -18237,9 +18246,6 @@ msgstr "Lanjutkan saat direset"
 msgid "Resume automation"
 msgstr "Lanjutkan otomatisasi"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Lanjutkan sesi Grok yang tertaut dengan pengalihan bawaan."
-
 msgid "Resume notifications"
 msgstr "Lanjutkan notifikasi"
 
@@ -19196,9 +19202,6 @@ msgstr "Lihat lowongan yang ada, atau coba Paradev dulu."
 msgid "See this gate on the scorecard"
 msgstr "Lihat gerbang ini di kartu skor"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Lihat penggunaan dan waktu reset untuk setiap akun berlangganan."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Lihat apa yang berubah, beri masukan, dan merge pekerjaannya saat siap."
 
@@ -19571,9 +19574,6 @@ msgstr "Tetapkan proyek…"
 
 msgid "Set Run"
 msgstr "Setel Run"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Atur ambang pemadatan otomatis dari pemilih agen terpadu."
 
 msgid "Set this project"
 msgstr "Tetapkan proyek ini"

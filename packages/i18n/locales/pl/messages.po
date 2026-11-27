@@ -2518,6 +2518,9 @@ msgstr "Nie znaleziono agenta"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Wybór agenta (Claude, Codex, Cursor…) używany w każdym przepływie tworzenia sesji"
 
+msgid "Agent profiles"
+msgstr "Profile agentów"
+
 msgid "agent PRs merged"
 msgstr "scalone PR-y agentów"
 
@@ -3777,9 +3780,6 @@ msgstr "Wróć do stron"
 msgid "Back to the leaderboard"
 msgstr "Wróć do rankingu"
 
-msgid "Back up everything"
-msgstr "Utwórz pełną kopię"
-
 msgid "Backed by"
 msgstr "Wspierają nas"
 
@@ -4847,9 +4847,6 @@ msgstr "Wybierz"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Wybierz tylko jeden checkout każdego repozytorium Git w projekcie."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Wybierz rozmiar okna kontekstu spośród opcji swojego modelu Cursor."
-
 msgid "Choose the model"
 msgstr "Wybierz model"
 
@@ -4862,14 +4859,20 @@ msgstr "Wybierz główne repozytorium"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Wybierz, co wyczyścić z przeglądarki w aplikacji."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Wybierz, co uwzględnić. Wspólna historia i ustawienia aplikacji są zawsze zapisywane w kopii."
+
 msgid "Choose when Paradev pings you."
 msgstr "Wybierz, kiedy Paradev ma Cię powiadamiać."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Wybierz, gdzie otwierać agentów uruchamianych z komentarzy, trybu projektowania i Pages."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Wybierz folder startowy nowych terminali w obszarach roboczych z wieloma folderami."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Wybierz profile agentów i zapisane dane logowania, które chcesz uwzględnić w kopii."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Wybierz projekty i drzewa robocze, które chcesz uwzględnić w kopii."
 
 msgid "Choose your default skin tone"
 msgstr "Wybierz domyślny odcień skóry"
@@ -7096,6 +7099,9 @@ msgstr "Utwórz konto"
 
 msgid "Create an automation from this prompt"
 msgstr "Utwórz automatyzację z tego promptu"
+
+msgid "Create backup"
+msgstr "Utwórz kopię zapasową"
 
 msgid "Create environment"
 msgstr "Utwórz środowisko"
@@ -16591,6 +16597,9 @@ msgstr "Podgląd powiadomienia: potwierdzenie przed aktualizacją"
 msgid "Preview notice: warning"
 msgstr "Podgląd powiadomienia: ostrzeżenie"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Sprawdź rozmiar wybranej kopii zapasowej przed jej utworzeniem."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Podglądaj serwer deweloperski obok terminali. Agent może się po nim przeklikać i sprawdzić własną pracę."
 
@@ -18237,9 +18246,6 @@ msgstr "Wznów po resecie"
 msgid "Resume automation"
 msgstr "Wznów automatyzację"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Wznawiaj połączone sesje Grok z użyciem natywnego przekazywania."
-
 msgid "Resume notifications"
 msgstr "Wznów powiadomienia"
 
@@ -19196,9 +19202,6 @@ msgstr "Zobacz otwarte stanowiska albo najpierw wypróbuj Paradev."
 msgid "See this gate on the scorecard"
 msgstr "Zobacz tę bramkę na karcie wyników"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Sprawdź zużycie i czasy resetowania limitów dla każdego konta z subskrypcją."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Zobacz, co się zmieniło, przekaż uwagi i scal pracę, gdy będzie gotowa."
 
@@ -19571,9 +19574,6 @@ msgstr "Ustaw projekt…"
 
 msgid "Set Run"
 msgstr "Ustaw uruchamianie"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Ustaw próg automatycznej kompakcji we wspólnym selektorze agentów."
 
 msgid "Set this project"
 msgstr "Ustaw ten projekt"

@@ -2512,6 +2512,9 @@ msgstr "Агента не знайдено"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Вибір агента (Claude, Codex, Cursor…), який використовується в усіх сценаріях створення сеансів"
 
+msgid "Agent profiles"
+msgstr "Профілі агентів"
+
 msgid "agent PRs merged"
 msgstr "злитих агентських PR"
 
@@ -3771,9 +3774,6 @@ msgstr "Назад до сторінок"
 msgid "Back to the leaderboard"
 msgstr "Назад до таблиці лідерів"
 
-msgid "Back up everything"
-msgstr "Створити повну резервну копію"
-
 msgid "Backed by"
 msgstr "Нас підтримують"
 
@@ -4841,9 +4841,6 @@ msgstr "Виберіть варіант"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Виберіть лише один checkout кожного репозиторію Git у проєкті."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Виберіть вікно контексту з варіантів, доступних у вашій моделі Cursor."
-
 msgid "Choose the model"
 msgstr "Виберіть модель"
 
@@ -4856,14 +4853,20 @@ msgstr "Виберіть основний репозиторій"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Виберіть, що очистити у вбудованому браузері."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Виберіть, що включити. Спільна історія та налаштування застосунку завжди зберігаються в резервній копії."
+
 msgid "Choose when Paradev pings you."
 msgstr "Виберіть, коли Paradev надсилатиме вам сповіщення."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Виберіть, де відкриваються агенти, запущені з коментарів, режиму дизайну та Pages."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Вибирайте папку запуску нових терміналів у робочих просторах із кількома папками."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Виберіть профілі агентів і збережені облікові дані для резервного копіювання."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Виберіть проєкти й робочі дерева для резервного копіювання."
 
 msgid "Choose your default skin tone"
 msgstr "Виберіть тон шкіри за замовчуванням"
@@ -7090,6 +7093,9 @@ msgstr "Створити обліковий запис"
 
 msgid "Create an automation from this prompt"
 msgstr "Створити автоматизацію з цього промпту"
+
+msgid "Create backup"
+msgstr "Створити резервну копію"
 
 msgid "Create environment"
 msgstr "Створити середовище"
@@ -16585,6 +16591,9 @@ msgstr "Попередній перегляд повідомлення: підт
 msgid "Preview notice: warning"
 msgstr "Попередній перегляд повідомлення: попередження"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Перегляньте розмір вибраної резервної копії перед її створенням."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Переглядайте свій dev-сервер поруч із терміналами. Агент може клацати по ньому й перевіряти власну роботу."
 
@@ -18231,9 +18240,6 @@ msgstr "Відновити після скидання ліміту"
 msgid "Resume automation"
 msgstr "Відновити автоматизацію"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Відновлюйте пов’язані сеанси Grok за допомогою нативного передавання."
-
 msgid "Resume notifications"
 msgstr "Відновити сповіщення"
 
@@ -19190,9 +19196,6 @@ msgstr "Перегляньте вакансії або спершу спробу
 msgid "See this gate on the scorecard"
 msgstr "Переглянути цей поріг у таблиці оцінок"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Перегляньте використання й час скидання лімітів для кожного облікового запису з підпискою."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Подивіться, що змінилося, залиште відгук і злийте роботу, коли вона буде готова."
 
@@ -19565,9 +19568,6 @@ msgstr "Призначити проєкт…"
 
 msgid "Set Run"
 msgstr "Задати запуск"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Установіть поріг автостиснення в єдиному меню вибору агентів."
 
 msgid "Set this project"
 msgstr "Призначити цей проєкт"

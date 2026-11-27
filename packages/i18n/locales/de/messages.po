@@ -2518,6 +2518,9 @@ msgstr "Agent nicht gefunden"
 msgid "Agent picker (Claude, Codex, Cursor…) used by every session-creation flow"
 msgstr "Agentenauswahl (Claude, Codex, Cursor…), die jeder Sitzungserstellung zugrunde liegt"
 
+msgid "Agent profiles"
+msgstr "Agentenprofile"
+
 msgid "agent PRs merged"
 msgstr "gemergte Agenten-PRs"
 
@@ -3777,9 +3780,6 @@ msgstr "Zurück zu Seiten"
 msgid "Back to the leaderboard"
 msgstr "Zurück zum Leaderboard"
 
-msgid "Back up everything"
-msgstr "Alles sichern"
-
 msgid "Backed by"
 msgstr "Unterstützt von"
 
@@ -4847,9 +4847,6 @@ msgstr "Auswählen"
 msgid "Choose only one checkout of each Git repository in a project."
 msgstr "Wähle pro Projekt nur einen Checkout jedes Git-Repositorys."
 
-msgid "Choose the context window offered by your Cursor model."
-msgstr "Wählen Sie ein Kontextfenster aus den Optionen Ihres Cursor-Modells."
-
 msgid "Choose the model"
 msgstr "Modell auswählen"
 
@@ -4862,14 +4859,20 @@ msgstr "Primäres Repository wählen"
 msgid "Choose what to clear from the in-app browser."
 msgstr "Wähle, was aus dem In-App-Browser gelöscht werden soll."
 
+msgid "Choose what to include. Shared history and app settings stay in the backup."
+msgstr "Wähle aus, was gesichert werden soll. Der gemeinsame Verlauf und die App-Einstellungen werden immer gesichert."
+
 msgid "Choose when Paradev pings you."
 msgstr "Wähle, wann Paradev dich anstupst."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Wähle, wo aus Kommentaren, dem Designmodus und Pages gestartete Agenten geöffnet werden."
 
-msgid "Choose where new terminals start in multi-folder workspaces."
-msgstr "Wähle den Startordner für neue Terminals in Arbeitsbereichen mit mehreren Ordnern."
+msgid "Choose which agent profiles and saved logins to back up."
+msgstr "Wähle aus, welche Agentenprofile und gespeicherten Anmeldedaten gesichert werden sollen."
+
+msgid "Choose which projects and worktrees to back up."
+msgstr "Wähle aus, welche Projekte und Worktrees gesichert werden sollen."
 
 msgid "Choose your default skin tone"
 msgstr "Standard-Hautton wählen"
@@ -7096,6 +7099,9 @@ msgstr "Konto erstellen"
 
 msgid "Create an automation from this prompt"
 msgstr "Automatisierung aus diesem Prompt erstellen"
+
+msgid "Create backup"
+msgstr "Backup erstellen"
 
 msgid "Create environment"
 msgstr "Umgebung erstellen"
@@ -16591,6 +16597,9 @@ msgstr "Hinweisvorschau: Bestätigung vor dem Update"
 msgid "Preview notice: warning"
 msgstr "Hinweisvorschau: Warnung"
 
+msgid "Preview the size of your selected backup before creating it."
+msgstr "Prüfe vor dem Erstellen, wie groß das Backup mit deiner Auswahl ist."
+
 msgid "Preview your dev server next to your terminals. Your agent can click through it and check its own work."
 msgstr "Sieh dir deinen Dev-Server neben deinen Terminals an. Dein Agent kann sich durchklicken und seine eigene Arbeit prüfen."
 
@@ -18237,9 +18246,6 @@ msgstr "Bei Zurücksetzung fortsetzen"
 msgid "Resume automation"
 msgstr "Automatisierung fortsetzen"
 
-msgid "Resume linked Grok sessions with native handoff."
-msgstr "Verknüpfte Grok-Sitzungen per nativer Übergabe fortsetzen."
-
 msgid "Resume notifications"
 msgstr "Benachrichtigungen fortsetzen"
 
@@ -19196,9 +19202,6 @@ msgstr "Sieh dir die offenen Stellen an oder probier zuerst Paradev aus."
 msgid "See this gate on the scorecard"
 msgstr "Diese Schwelle im Scorecard ansehen"
 
-msgid "See usage and reset times for each subscription account."
-msgstr "Sieh dir die Nutzungsdaten und Zeitpunkte der Zurücksetzung für jedes Konto mit Abo an."
-
 msgid "See what changed, give feedback, and merge the work when it's ready."
 msgstr "Sieh, was sich geändert hat, gib Feedback und merge die Arbeit, wenn sie bereit ist."
 
@@ -19571,9 +19574,6 @@ msgstr "Projekt festlegen…"
 
 msgid "Set Run"
 msgstr "Run festlegen"
-
-msgid "Set the auto-compact threshold from the unified agent picker."
-msgstr "Legen Sie den Schwellenwert für die automatische Komprimierung in der gemeinsamen Agentenauswahl fest."
 
 msgid "Set this project"
 msgstr "Dieses Projekt festlegen"
