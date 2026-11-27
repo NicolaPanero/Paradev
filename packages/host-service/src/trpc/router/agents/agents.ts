@@ -151,6 +151,7 @@ function buildAttachmentBlock(
 export interface AgentRunInput {
 	modelCatalog?: "agent";
 	accountSelection?: string | null;
+	terminalCwd?: string;
 	launchSnapshot?: {
 		config: ResolvedHostAgentConfig;
 		env: Record<string, string>;
@@ -592,6 +593,7 @@ async function runTerminalAgent(
 		db: ctx.db,
 		eventBus: ctx.eventBus,
 		initialCommand: fullCommand,
+		cwd: input.terminalCwd,
 		colors: input.colors,
 	});
 

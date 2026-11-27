@@ -32,8 +32,16 @@ import { Route as PullRequestsLayoutRoute } from "../layout";
 export const Route = createFileRoute(
 	"/_authenticated/_dashboard/pull-requests/$prNumber/",
 )({
-	component: withForkPullRequest(PullRequestDetailPage),
+	component: withForkPullRequest(PullRequestDetailPage, usePullRequestRoute),
 });
+
+function usePullRequestRoute(): {
+	prNumber: string;
+	forkProvider?: string;
+	project?: string;
+} {
+	return { ...Route.useParams(), ...PullRequestsLayoutRoute.useSearch() };
+}
 
 function PullRequestDetailPage() {
 	const { prNumber: prNumberRaw } = Route.useParams();

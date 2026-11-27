@@ -9,6 +9,7 @@ import {
 	splitCursorContext,
 } from "@superset/shared/fork-cursor-context";
 import { TRPCError } from "@trpc/server";
+import { acpHarnessForPreset } from "../../../chat-v3/acpCatalogue";
 import { getForkModelCatalog } from "../../../chat-v3/forkModelCatalog";
 import type { HostDb } from "../../../db";
 import { resolveHostAgentConfig } from "../../../terminal-agents/agent-config";
@@ -49,6 +50,7 @@ export async function prepareForkCatalogLaunch<T extends Launch>(
 			message: "agent_config_unavailable",
 		});
 	const preset = resolveAgentLaunchPresetId(config.presetId, config.command);
+	if (!acpHarnessForPreset(preset)) return input;
 	const selection =
 		preset === "cursor-agent" && input.model
 			? splitCursorContext(input.model)

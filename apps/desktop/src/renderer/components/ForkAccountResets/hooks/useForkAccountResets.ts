@@ -9,20 +9,22 @@ export type AccountResetStatus =
 	inferRouterOutputs<AppRouter>["usage"]["accountResets"];
 export function useForkAccountResets(
 	hostUrl: string | null,
-	account: UsageAccount,
+	account: UsageAccount | undefined,
 	clientForHost = getHostServiceClientByUrl,
+	active = true,
 ) {
 	const client = useQueryClient();
 	const queryKey = [
 		"fork-account-resets",
-		account.agent,
+		account?.agent,
 		hostUrl,
-		account.selection,
-		account.email,
+		account?.selection,
+		account?.email,
 	];
 	const enabled =
 		!!hostUrl &&
-		account.agent === "codex" &&
+		active &&
+		account?.agent === "codex" &&
 		account.credentialKind === "subscription" &&
 		account.selection !== null &&
 		account.status !== "signed_out";
@@ -31,7 +33,7 @@ export function useForkAccountResets(
 		enabled,
 		queryFn: () =>
 			clientForHost(hostUrl as string).usage.accountResets.query({
-				selection: account.selection as string,
+				selection: account?.selection as string,
 			}),
 		retry: false,
 		throwOnError: false,
@@ -47,7 +49,7 @@ export function useForkAccountResets(
 			creditId?: string;
 			expectedIdentity: string;
 		}) => {
-			if (!enabled || !hostUrl || !account.selection)
+			if (!enabled || !hostUrl || !account?.selection)
 				throw new Error("reset_account_unavailable");
 			return clientForHost(hostUrl).usage.consumeAccountReset.mutate({
 				selection: account.selection,

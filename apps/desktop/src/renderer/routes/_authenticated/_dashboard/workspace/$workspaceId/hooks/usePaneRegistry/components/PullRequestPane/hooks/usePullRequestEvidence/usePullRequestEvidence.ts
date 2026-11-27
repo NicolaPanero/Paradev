@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { env } from "renderer/env.renderer";
 import { cloudTrpc } from "renderer/lib/cloud-trpc";
-import { useForkProFeatures } from "renderer/stores/fork-cli-options";
 import { pageLinkFinder } from "../../../../utils/pageLinks";
 import type { EvidencePage } from "../../components/PullRequestEvidence/components/EvidencePageCard";
 
@@ -13,7 +12,6 @@ export function usePullRequestEvidence(
 	body: string | null | undefined,
 	enabled: boolean,
 ) {
-	const showProFeatures = useForkProFeatures();
 	const [showAll, setShowAll] = useState(false);
 	const linkedSlugs = useMemo(
 		() => findPageLinks(body ?? "").map((link) => link.slug),
@@ -29,7 +27,7 @@ export function usePullRequestEvidence(
 			t.page.preview(
 				{ slug },
 				{
-					enabled: enabled && showProFeatures,
+					enabled,
 					refetchInterval: 30_000,
 					refetchOnWindowFocus: true,
 				},

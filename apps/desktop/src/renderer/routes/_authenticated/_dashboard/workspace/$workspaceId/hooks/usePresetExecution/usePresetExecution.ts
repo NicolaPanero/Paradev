@@ -208,7 +208,7 @@ export function usePresetExecution({
 
 			const linkedAgent = findLinkedAgent(agents, preset.agentId);
 			if (
-				!options?.cwd &&
+				(!options?.cwd || options.cwd === workspaceQuery.data?.worktreePath) &&
 				linkedAgent &&
 				acpHarnessForPreset(linkedAgent.presetId) &&
 				(plan === "new-tab-single" || plan === "active-tab-single")

@@ -55,6 +55,7 @@ export async function lineageResumeLaunch(
 		agent: config.id,
 		prompt: "",
 		resumeSessionId: node.sessionId,
+		terminalCwd: workspacePath,
 		launchSnapshot: { config, env },
 	};
 }

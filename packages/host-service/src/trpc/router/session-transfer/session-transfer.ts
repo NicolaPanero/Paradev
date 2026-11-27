@@ -33,6 +33,10 @@ import {
 	readHandoffSourcePage,
 } from "../../../session-transfer/fork-context-history";
 import { createExternalSessionsCache } from "../../../session-transfer/fork-external-sessions-cache";
+import {
+	inNativeSourceFolder,
+	requireNativeWorkspaceFolder,
+} from "../../../session-transfer/fork-workspace-folders";
 import { TransferJobs } from "../../../session-transfer/jobs";
 import {
 	type LineageNode,
@@ -465,7 +469,6 @@ export const sessionTransferRouter = router({
 							!config.resumeArgs.length
 						)
 							throw new Error("native_pair_unavailable");
-						const cwd = await realpath(workspace.worktreePath);
 						const launchEnv = agentLaunchEnv(ctx.db, config);
 						// Absolute CLI commands bypass Superset's identity wrapper. Cursor
 						// hooks use this native CLI marker to distinguish it from the IDE.
@@ -480,6 +483,7 @@ export const sessionTransferRouter = router({
 							binding.agentSessionId,
 							input.terminalId,
 						);
+						const { agentId, agentSessionId } = binding;
 						const sourceConfig = resolveHostAgentConfig(
 							ctx.db,
 							sourceNode?.configId ??
@@ -505,63 +509,80 @@ export const sessionTransferRouter = router({
 						)
 							sourceEnv[TRANSFER_AGENTS[binding.agentId].profileKey] =
 								sourceNode.profileOverride ?? "";
-						let sourceReference: string | null;
-						let sourceRoot: string;
-						if (binding.agentId === "claude" || binding.agentId === "codex") {
-							const files =
-								binding.agentId === "claude"
-									? claudeSessionFiles
-									: codexSessionFiles;
-							const reported = sourceNode?.reference ?? bound.ref.reportedPath;
-							sourceReference =
-								reported && isTrustedTranscriptPath(reported)
-									? reported
-									: files.locate({
-											sessionId: binding.agentSessionId,
-											worktreePath: cwd,
-											env: sourceEnv,
-										});
-							if (!sourceReference) throw new Error("source_unavailable");
-							sourceRoot = dirname(sourceReference);
-							const store = TRANSFER_AGENTS[binding.agentId].store;
-							while (
-								basename(sourceRoot) !== store &&
-								dirname(sourceRoot) !== sourceRoot
-							)
-								sourceRoot = dirname(sourceRoot);
-							if (basename(sourceRoot) !== store)
-								throw new Error("source_store_unavailable");
-						} else {
-							sourceRoot = await realpath(
-								defaultNativeStore(binding.agentId, {
-									...process.env,
-									...sourceEnv,
-								}),
+						const { result, lineageNodeId, terminalCwd } =
+							await inNativeSourceFolder(
+								ctx.db,
+								workspace,
+								async ({ cwd, path }) => {
+									let sourceReference: string | null;
+									let sourceRoot: string;
+									if (agentId === "claude" || agentId === "codex") {
+										const files =
+											agentId === "claude"
+												? claudeSessionFiles
+												: codexSessionFiles;
+										const reported =
+											sourceNode?.reference ?? bound.ref.reportedPath;
+										sourceReference =
+											reported && isTrustedTranscriptPath(reported)
+												? reported
+												: files.locate({
+														sessionId: agentSessionId,
+														worktreePath: cwd,
+														env: sourceEnv,
+													});
+										if (!sourceReference) throw new Error("source_unavailable");
+										sourceRoot = dirname(sourceReference);
+										const store = TRANSFER_AGENTS[agentId].store;
+										while (
+											basename(sourceRoot) !== store &&
+											dirname(sourceRoot) !== sourceRoot
+										)
+											sourceRoot = dirname(sourceRoot);
+										if (basename(sourceRoot) !== store)
+											throw new Error("source_store_unavailable");
+									} else {
+										sourceRoot = await realpath(
+											defaultNativeStore(agentId, {
+												...process.env,
+												...sourceEnv,
+											}),
+										);
+										sourceReference = locatePeerSessionReference(
+											agentId,
+											sourceRoot,
+											agentSessionId,
+											cwd,
+											path,
+										);
+									}
+									const { result, lineageNodeId } = await convertNative(
+										lineage,
+										{
+											transferId: input.transferId,
+											workspaceId: input.workspaceId,
+											cwd,
+											signal,
+											source: {
+												agent: agentId,
+												sessionId: agentSessionId,
+												root: sourceRoot,
+												reference: sourceReference,
+												configId: sourceConfig.id,
+												label: sourceConfig.label,
+												terminalId: input.terminalId,
+											},
+											target: {
+												config,
+												env,
+												root: targetRoot,
+												terminalId: null,
+											},
+										},
+									);
+									return { result, lineageNodeId, terminalCwd: path };
+								},
 							);
-							sourceReference = locatePeerSessionReference(
-								binding.agentId,
-								sourceRoot,
-								binding.agentSessionId,
-								cwd,
-								workspace.worktreePath,
-							);
-						}
-						const { result, lineageNodeId } = await convertNative(lineage, {
-							transferId: input.transferId,
-							workspaceId: input.workspaceId,
-							cwd,
-							signal,
-							source: {
-								agent: binding.agentId,
-								sessionId: binding.agentSessionId,
-								root: sourceRoot,
-								reference: sourceReference,
-								configId: sourceConfig.id,
-								label: sourceConfig.label,
-								terminalId: input.terminalId,
-							},
-							target: { config, env, root: targetRoot, terminalId: null },
-						});
 						return {
 							result,
 							lineageNodeId,
@@ -570,6 +591,7 @@ export const sessionTransferRouter = router({
 								agent: config.id,
 								prompt: "",
 								resumeSessionId: result.targetSessionId,
+								terminalCwd,
 								launchSnapshot: { config, env },
 							},
 						};
@@ -1046,7 +1068,7 @@ export const sessionTransferRouter = router({
 						const launch = await lineageResumeLaunch(
 							ctx.db,
 							node,
-							workspace.worktreePath,
+							await requireNativeWorkspaceFolder(ctx.db, workspace, node.cwd),
 						);
 						return { launch, lineageNodeId: node.id };
 					},
@@ -1087,18 +1109,17 @@ export const sessionTransferRouter = router({
 					code: "BAD_REQUEST",
 					message: "transfer_workspace_mismatch",
 				});
-			if (
-				!ctx.db
-					.select({ id: workspaces.id })
-					.from(workspaces)
-					.where(
-						and(
-							eq(workspaces.id, input.workspaceId),
-							isNull(workspaces.archivedAt),
-						),
-					)
-					.get()
-			)
+			const workspace = ctx.db
+				.select({ id: workspaces.id, worktreePath: workspaces.worktreePath })
+				.from(workspaces)
+				.where(
+					and(
+						eq(workspaces.id, input.workspaceId),
+						isNull(workspaces.archivedAt),
+					),
+				)
+				.get();
+			if (!workspace)
 				throw new TRPCError({
 					code: "NOT_FOUND",
 					message: "workspace_unavailable",
@@ -1130,7 +1151,20 @@ export const sessionTransferRouter = router({
 								sessionId: existing.terminalId,
 								label: job.launch.launchSnapshot?.config.label ?? "",
 							})
-						: runAgentInWorkspace(ctx, { ...job.launch, colors: input.colors });
+						: (async () => {
+								const terminalCwd = node
+									? await requireNativeWorkspaceFolder(
+											ctx.db,
+											workspace,
+											node.cwd,
+										)
+									: job.launch.terminalCwd;
+								return runAgentInWorkspace(ctx, {
+									...job.launch,
+									terminalCwd,
+									colors: input.colors,
+								});
+							})();
 					nodeLaunches.set(nodeKey, launched);
 					const current = launched;
 					void launched

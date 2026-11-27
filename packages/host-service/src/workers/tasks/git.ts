@@ -660,6 +660,16 @@ export const gitPushTask = defineWorkerTask<
 		const upstream = await resolveUpstream(git, branch);
 		const remoteUpstream = upstream?.remote === "." ? null : upstream;
 
+		if (remoteUpstream && linkedPrHeadBranch === remoteUpstream.remoteBranch) {
+			// A push default can point to a different repository than the PR.
+			await git.raw([
+				"push",
+				remoteUpstream.remote,
+				`HEAD:refs/heads/${linkedPrHeadBranch}`,
+			]);
+			return { ok: true };
+		}
+
 		if (remoteUpstream?.remoteBranch === branch) {
 			await git.raw(["push"]);
 			return { ok: true };
@@ -671,17 +681,6 @@ export const gitPushTask = defineWorkerTask<
 			remotes.find((r) => r.name === "origin")?.name ??
 			remotes[0]?.name;
 		if (!remote) return { ok: false, reason: "no-remote" };
-
-		if (remoteUpstream && linkedPrHeadBranch === remoteUpstream.remoteBranch) {
-			// PR checkout: the upstream deliberately points at the PR's head
-			// under a different local name. Push there and keep the tracking.
-			await git.raw([
-				"push",
-				remote,
-				`HEAD:refs/heads/${remoteUpstream.remoteBranch}`,
-			]);
-			return { ok: true };
-		}
 
 		// HEAD refspec avoids resolving the branch name as a local ref —
 		// more reliable in worktrees (mirrors v1's pushWithSetUpstream).

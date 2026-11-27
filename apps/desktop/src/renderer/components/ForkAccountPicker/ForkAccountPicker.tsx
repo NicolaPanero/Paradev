@@ -29,7 +29,9 @@ export function ForkAccountPicker({
 	provider: string | null;
 	model?: string;
 	compact?: boolean;
-	extraItems?: ReactNode;
+	extraItems?:
+		| ReactNode
+		| ((afterClose: (action: () => void) => void) => ReactNode);
 	hidden?: string | null;
 	disabled?: boolean;
 }) {
@@ -79,24 +81,30 @@ export function ForkAccountPicker({
 						</span>
 					</DropdownMenuTrigger>
 				)}
-				<DropdownMenuContent
-					className={cn(
-						"w-80 max-w-[calc(100vw-32px)] max-h-[min(60vh,var(--radix-dropdown-menu-content-available-height))] overflow-x-hidden overflow-y-auto",
-						!compact && "min-w-(--radix-dropdown-menu-trigger-width)",
-					)}
-					align="start"
-					collisionPadding={8}
-					onCloseAutoFocus={menuDialog.onCloseAutoFocus}
-				>
-					<ForkAccountMenuItems
-						account={account}
-						provider={provider}
-						model={model}
-						afterClose={menuDialog.afterClose}
-						extraItems={extraItems}
-						hidden={hidden}
-					/>
-				</DropdownMenuContent>
+				{account.pickerOpen && (
+					<DropdownMenuContent
+						className={cn(
+							"w-80 max-w-[calc(100vw-32px)] max-h-[min(60vh,var(--radix-dropdown-menu-content-available-height))] overflow-x-hidden overflow-y-auto",
+							!compact && "min-w-(--radix-dropdown-menu-trigger-width)",
+						)}
+						align="start"
+						collisionPadding={8}
+						onCloseAutoFocus={menuDialog.onCloseAutoFocus}
+					>
+						<ForkAccountMenuItems
+							account={account}
+							provider={provider}
+							model={model}
+							afterClose={menuDialog.afterClose}
+							extraItems={
+								typeof extraItems === "function"
+									? extraItems(menuDialog.afterClose)
+									: extraItems
+							}
+							hidden={hidden}
+						/>
+					</DropdownMenuContent>
+				)}
 			</DropdownMenu>
 			<ForkAccountDialogs account={account} provider={provider} />
 		</>

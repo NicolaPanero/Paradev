@@ -9,6 +9,39 @@ import {
 } from "./agents";
 import { prepareForkCatalogLaunch } from "./fork-catalog-launch";
 
+test("terminal-only agents use their bundled model catalog in workspace preflight", async () => {
+	const db = createTestDb();
+	try {
+		db.insert(hostAgentConfigs)
+			.values({
+				id: "copilot",
+				presetId: "copilot",
+				label: "Copilot",
+				command: "copilot",
+				promptTransport: "argv",
+				displayOrder: 0,
+			})
+			.run();
+		const input = {
+			agent: "copilot",
+			model: "auto",
+			modelCatalog: "agent" as const,
+			prompt: "hello",
+			workspaceId: "workspace",
+		};
+		const load: typeof getForkModelCatalog = async () => {
+			throw new Error("ACP discovery is unavailable for this agent");
+		};
+		expect(await prepareForkCatalogLaunch(db, input, {}, load)).toBe(input);
+		expect(() => validateAgentLaunchOptions(db, input)).not.toThrow();
+		expect(buildTerminalAgentLaunch(db, input).fullCommand).toContain(
+			"--model auto",
+		);
+	} finally {
+		db.$client.close();
+	}
+});
+
 test("discovered models and efforts survive workspace validation and launch instead of falling back to defaults", async () => {
 	const db = createTestDb();
 	try {
